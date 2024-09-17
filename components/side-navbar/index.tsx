@@ -72,7 +72,7 @@ export const SideNavBar = () => {
         </div>
 
         <div className="flex flex-col gap-4 mt-2">
-          <a
+          {/* <a
             href="https://github.com/13point5/open-artifacts"
             target="_blank"
             className="text-black flex items-center gap-4 px-1"
@@ -80,7 +80,7 @@ export const SideNavBar = () => {
             <Image src="/github.svg" height="24" width="24" alt="github logo" />
             <span className="text-sm font-medium">GitHub Repo</span>
           </a>
-          <UserSettings showLabel />
+          <UserSettings showLabel /> */}
           <UserButton expanded />
         </div>
       </div>
