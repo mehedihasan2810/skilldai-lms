@@ -199,7 +199,8 @@ export const ChatPanel = ({ id }: Props) => {
       },
       {
         body: {
-          model: "claude-3-5-sonnet-20240620",
+          model: "claude",
+          // model: "claude-3-5-sonnet-20240620",
           // model: settings.model,
           apiKey: process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY,
           // apiKey: settings.model.startsWith("gpt")
