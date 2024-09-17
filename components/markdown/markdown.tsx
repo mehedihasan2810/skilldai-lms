@@ -13,7 +13,7 @@ export default function Markdown({ text, className = "" }: Props) {
   return (
     <MemoizedReactMarkdown
       className={twMerge(
-        "prose text-black dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-none break-words",
+        "prose text-black dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words",
         className
       )}
       remarkPlugins={[remarkGfm]}
