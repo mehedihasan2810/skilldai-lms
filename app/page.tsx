@@ -22,7 +22,7 @@ export default async function LandingPage() {
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-gray-900">Open Artifacts</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Skilld AI</h1>
 
             <label htmlFor="menu-toggle" className="sm:hidden cursor-pointer">
               <MenuIcon className="h-6 w-6" />
@@ -46,14 +46,16 @@ export default async function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-extrabold text-[#F4FFFA00] bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 sm:text-5xl md:text-6xl">
-              Create Artifacts with any LLM
+              Skilld AI: Your AI Coding Assistant
             </h2>
 
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-4 md:text-xl md:max-w-3xl">
-              Generate Artifacts with your own API keys.
+            <p className="mt-5 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-4 md:text-xl md:max-w-3xl">
+              An intelligent chatbot designed to assist with coding questions,
+              provide real-time solutions, and help streamline development tasks
+              across multiple programming languages.
             </p>
 
-            <CTABar />
+            {/* <CTABar />
 
             <div className="mt-12 flex flex-col items-center gap-4">
               <h3 className="text-md font-medium text-gray-500 text-center">
@@ -78,9 +80,9 @@ export default async function LandingPage() {
                   />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="relative">
+          {/* <div className="relative">
             <Image
               src="/demo.png"
               alt="Open Artifacts Demo"
@@ -88,9 +90,9 @@ export default async function LandingPage() {
               height={675}
               className="rounded-lg shadow-2xl pt-1"
             />
-          </div>
+          </div> */}
 
-          <div className="mt-20 flex flex-col items-center">
+          {/* <div className="mt-20 flex flex-col items-center">
             <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
               📸 Crop and 🔊 Talk: Iterate Naturally
             </h3>
@@ -111,11 +113,11 @@ export default async function LandingPage() {
             </div>
 
             <CTABar />
-          </div>
+          </div> */}
         </div>
       </main>
 
-      <footer className="">
+      {/* <footer className="">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-base text-gray-400">
             &copy; 2024 Open Artifacts. All rights reserved.
@@ -142,7 +144,7 @@ export default async function LandingPage() {
             </a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
