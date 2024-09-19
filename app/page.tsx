@@ -63,7 +63,7 @@ export default async function LandingPage() {
         <main className="flex-grow">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+              <h2 className="text-4xl font-extrabold sm:text-5xl md:text-6xl bg-gradient-to-r from-teal-500 via-sky-600 to-cyan-500 bg-clip-text text-transparent">
                 Skilld AI: Your AI Coding Assistant
               </h2>
 
@@ -75,7 +75,10 @@ export default async function LandingPage() {
 
               <Link
                 href="/new"
-                className={buttonVariants({ className: "mt-6 text-lg", size: "lg" })}
+                className={buttonVariants({
+                  className: "mt-6 text-xl",
+                  size: "lg",
+                })}
               >
                 Get started
               </Link>

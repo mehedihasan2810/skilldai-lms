@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 import { SupabaseProvider } from "@/lib/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GeistSans } from "geist/font/sans";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,7 +34,11 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
+        className={cn(
+          "min-h-screen",
+          GeistSans.className
+          // fontSans.variable
+        )}
       >
         <ThemeProvider
           attribute="class"

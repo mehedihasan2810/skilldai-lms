@@ -122,8 +122,8 @@
   }
 }
 
-@media (max-width: 639px) {
+/* @media (max-width: 639px) {
   #menu-toggle:checked + nav {
     display: flex;
   }
-}
+} */
