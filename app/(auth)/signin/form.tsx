@@ -86,7 +86,8 @@ const SignInForm = () => {
     toast.success("Signed In! Taking you to the app", {
       position: "top-center",
     });
-    router.push("/new");
+    // router.refresh();
+    // router.push("/new");
   };
 
   const handleOAuthSignIn = async (provider: OAuthProviders) => {

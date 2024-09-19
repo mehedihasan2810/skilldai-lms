@@ -10,6 +10,7 @@ import {
   parseMessage,
 } from "@/lib/utils";
 import { BotIcon, CodeIcon, Loader2Icon, UserIcon } from "lucide-react";
+import Image from "next/image";
 
 const getDisplayNameFromRole = (
   role: ChatMessageRoles,
@@ -44,20 +45,30 @@ export const ChatMessage = ({
   setCurrentArtifact,
 }: Props) => {
   return (
-    <div
-      className={`flex items-start gap-2 px-2 py-2 rounded-md ${
-        role === "tool" ? "bg-[#F4F4F4]" : "bg-white"
-      }`}
-    >
-      <div
-        className={`border rounded-md p-1 ${
+    // <div
+    //   className={`flex items-start gap-2 px-2 py-2 rounded-md ${
+    //     role === "tool" ? "bg-[#F4F4F4]" : "bg-white"
+    //   }`}
+    // >
+    <div className={`flex items-start gap-2 px-2 py-2 rounded-md`}>
+      {/* <div
+        className={`border rounded-md p-1 
+          ${
           role === "user" ? "bg-white" : "bg-black border-black"
-        }`}
-      >
+        }
+        `}
+      > */}
+      <div className={`border rounded-md p-1`}>
         {role === "user" ? (
           <UserIcon size={20} />
         ) : (
-          <BotIcon size={20} color="white" />
+          <Image
+            src="/skilld-logo.png"
+            alt="Ai assistant logo"
+            className="size-5"
+            width={20}
+            height={20}
+          />
         )}
       </div>
 

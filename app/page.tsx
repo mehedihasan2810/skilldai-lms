@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { GithubIcon, RocketIcon, MenuIcon } from "lucide-react";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import GetToken from "@/components/get-token";
+import { ThemeToggle } from "@/components/theme-toggle";
+import MobileSidebar from "@/components/mobile-sidebar";
 
 export default async function LandingPage() {
   // const supabase = createServerComponentClient({ cookies });
@@ -21,8 +23,8 @@ export default async function LandingPage() {
   return (
     <>
       <GetToken />
-      <div className="min-h-screen flex flex-col">
-        <header className="bg-white shadow-sm sticky top-0 z-10">
+      <div className="min-h-screen flex flex-col relative">
+        <header className="border-b border-border/50 shadow-sm sticky top-0 z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
@@ -32,19 +34,22 @@ export default async function LandingPage() {
                   width={35}
                   height={35}
                 />
-                <h1 className="text-3xl font-bold text-gray-900">Skilld AI</h1>
+                <h1 className="text-3xl font-bold">Skilld AI</h1>
               </div>
 
-              <label htmlFor="menu-toggle" className="sm:hidden cursor-pointer">
+              <MobileSidebar />
+
+              {/* <label htmlFor="menu-toggle" className="sm:hidden cursor-pointer">
                 <MenuIcon className="h-6 w-6" />
-              </label>
+              </label> */}
 
-              <input type="checkbox" id="menu-toggle" className="hidden" />
+              {/* <input type="checkbox" id="menu-toggle" className="hidden" /> */}
 
-              <nav className="hidden sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static left-0 right-0 top-full bg-white sm:bg-transparent shadow-md sm:shadow-none pb-4 sm:pb-0">
+              <nav className="hidden sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static left-0 right-0 top-full sm:bg-transparent shadow-md sm:shadow-none pb-4 sm:pb-0">
                 <Link href="/signin">
-                  <Button variant="ghost">Sign In</Button>
+                  <Button variant="secondary">Sign In</Button>
                 </Link>
+                <ThemeToggle />
                 {/* <Link href="/signup">
                   <Button>Sign Up</Button>
                 </Link> */}
@@ -53,18 +58,27 @@ export default async function LandingPage() {
           </div>
         </header>
 
+        <div className=" absolute z-[-1] top-0 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/4 size-full lg:size-[800px] bg-gradient-to-r from-teal-500 to-pink-500 rounded-full blur-3xl opacity-20 dark:opacity-10"></div>
+
         <main className="flex-grow">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-extrabold text-[#F4FFFA00] bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 sm:text-5xl md:text-6xl">
+              <h2 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
                 Skilld AI: Your AI Coding Assistant
               </h2>
 
-              <p className="mt-5 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-4 md:text-xl md:max-w-3xl">
+              <p className="mt-5 max-w-md mx-auto text-base sm:text-lg md:mt-4 md:text-xl md:max-w-3xl text-muted-foreground">
                 An intelligent chatbot designed to assist with coding questions,
                 provide real-time solutions, and help streamline development
                 tasks across multiple programming languages.
               </p>
+
+              <Link
+                href="/new"
+                className={buttonVariants({ className: "mt-6 text-lg", size: "lg" })}
+              >
+                Get started
+              </Link>
 
               {/* <CTABar />
 

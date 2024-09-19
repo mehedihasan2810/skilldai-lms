@@ -8,10 +8,11 @@ import { getChats } from "@/lib/db";
 import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2Icon, SidebarIcon, SquarePenIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import { ThemeToggle } from "../theme-toggle";
+import Image from "next/image";
 
 export const SideNavBar = () => {
   const [open, setOpen] = useState(false);
@@ -33,11 +34,19 @@ export const SideNavBar = () => {
 
   if (open) {
     return (
-      <div className="h-screen max-h-screen overflow-hidden flex flex-col gap-4 justify-between px-2 py-2 pb-4 bg-slate-50 w-[200px] border-r">
+      <div className="h-screen max-h-screen overflow-hidden flex flex-col gap-4 justify-between px-2 py-2 pb-4 w-[200px] border-r">
         <div className="flex flex-col gap-2">
-          <Link href="/" className="text-lg font-semibold text-center">
-            Skilld AI
-          </Link>
+          <div className="flex gap-2 items-center">
+            <Image
+              src="/skilld-logo.png"
+              alt="Skilld AI logo"
+              width={20}
+              height={20}
+            />
+            <Link href="/" className="text-lg font-semibold text-center">
+              Skilld AI
+            </Link>
+          </div>
 
           <div className="flex items-center justify-between gap-2">
             <Button onClick={() => setOpen(false)} size="icon" variant="ghost">
@@ -81,6 +90,7 @@ export const SideNavBar = () => {
             <span className="text-sm font-medium">GitHub Repo</span>
           </a>
           <UserSettings showLabel /> */}
+          <ThemeToggle />
           <UserButton expanded />
         </div>
       </div>
@@ -116,6 +126,7 @@ export const SideNavBar = () => {
           <Image src="/github.svg" height="24" width="24" alt="github logo" />
         </a>
         <UserSettings /> */}
+        <ThemeToggle />
         <UserButton />
       </div>
     </div>

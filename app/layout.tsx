@@ -7,6 +7,7 @@ import ReactQueryProvider from "@/app/react-query-provider";
 import { cookies } from "next/headers";
 import { SupabaseProvider } from "@/lib/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -34,12 +35,19 @@ export default async function RootLayout({
       <body
         className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
       >
-        <SupabaseProvider session={session}>
-          <ReactQueryProvider>
-            {children}
-            <Toaster />
-          </ReactQueryProvider>
-        </SupabaseProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SupabaseProvider session={session}>
+            <ReactQueryProvider>
+              {children}
+              <Toaster />
+            </ReactQueryProvider>
+          </SupabaseProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
