@@ -115,16 +115,16 @@ const SignInForm = () => {
   };
 
   return (
-    <main className="flex flex-col gap-6 items-center w-full h-screen pt-32 px-4">
-      <Link href="/" className="flex items-center gap-4">
-        <Image
-          src="/skilld-logo.png"
-          alt="Skilld ai logo"
-          width={40}
-          height={40}
-        />
-        <h1 className="text-4xl font-bold">Skilld AI</h1>
-      </Link>
+    // <main className="flex flex-col gap-6 items-center w-full h-screen pt-32 px-4">
+    //   <Link href="/" className="flex items-center gap-4">
+    //     <Image
+    //       src="/skilld-logo.png"
+    //       alt="Skilld ai logo"
+    //       width={40}
+    //       height={40}
+    //     />
+    //     <h1 className="text-4xl font-bold">Skilld AI</h1>
+    //   </Link>
       <Card className="max-w-sm w-full">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Sign In</CardTitle>
@@ -218,8 +218,8 @@ const SignInForm = () => {
         </CardFooter> */}
       </Card>
 
-      {/* <SocialFooter /> */}
-    </main>
+      // {/* <SocialFooter /> */}
+    // {/* </main> */}
   );
 };
 
