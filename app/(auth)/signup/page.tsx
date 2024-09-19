@@ -4,15 +4,17 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const SignUpPage = async () => {
-  const supabase = createServerComponentClient({ cookies });
+  // const supabase = createServerComponentClient({ cookies });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
 
-  if (user) {
-    redirect("/new");
-  }
+  // if (user) {
+  //   redirect("/new");
+  // }
+
+  redirect("/signin");
 
   return <SignUpForm />;
 };

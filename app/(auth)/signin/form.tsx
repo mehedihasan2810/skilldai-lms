@@ -182,10 +182,10 @@ const SignInForm = () => {
           </Form>
         </CardContent>
 
-        <CardFooter className="flex flex-col gap-2">
-          {/* <ForgotPasswordFooter /> */}
+        {/* <CardFooter className="flex flex-col gap-2">
+          <ForgotPasswordFooter />
           <SignUpFooter />
-        </CardFooter>
+        </CardFooter> */}
       </Card>
 
       {/* <SocialFooter /> */}

@@ -5,57 +5,68 @@ import { GithubIcon, RocketIcon, MenuIcon } from "lucide-react";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import GetToken from "@/components/get-token";
 
 export default async function LandingPage() {
-  const supabase = createServerComponentClient({ cookies });
+  // const supabase = createServerComponentClient({ cookies });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
 
-  if (user) {
-    redirect("/new");
-  }
+  // if (user) {
+  //   redirect("/new");
+  // }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-gray-900">Skilld AI</h1>
+    <>
+      <GetToken />
+      <div className="min-h-screen flex flex-col">
+        <header className="bg-white shadow-sm sticky top-0 z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/skilld-logo.png"
+                  alt="Skilld AI logo"
+                  width={35}
+                  height={35}
+                />
+                <h1 className="text-3xl font-bold text-gray-900">Skilld AI</h1>
+              </div>
 
-            <label htmlFor="menu-toggle" className="sm:hidden cursor-pointer">
-              <MenuIcon className="h-6 w-6" />
-            </label>
+              <label htmlFor="menu-toggle" className="sm:hidden cursor-pointer">
+                <MenuIcon className="h-6 w-6" />
+              </label>
 
-            <input type="checkbox" id="menu-toggle" className="hidden" />
+              <input type="checkbox" id="menu-toggle" className="hidden" />
 
-            <nav className="hidden sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static left-0 right-0 top-full bg-white sm:bg-transparent shadow-md sm:shadow-none pb-4 sm:pb-0">
-              <Link href="/signin">
-                <Button variant="ghost">Sign In</Button>
-              </Link>
-              <Link href="/signup">
-                <Button>Sign Up</Button>
-              </Link>
-            </nav>
+              <nav className="hidden sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static left-0 right-0 top-full bg-white sm:bg-transparent shadow-md sm:shadow-none pb-4 sm:pb-0">
+                <Link href="/signin">
+                  <Button variant="ghost">Sign In</Button>
+                </Link>
+                {/* <Link href="/signup">
+                  <Button>Sign Up</Button>
+                </Link> */}
+              </nav>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main className="flex-grow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-extrabold text-[#F4FFFA00] bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 sm:text-5xl md:text-6xl">
-              Skilld AI: Your AI Coding Assistant
-            </h2>
+        <main className="flex-grow">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-extrabold text-[#F4FFFA00] bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 sm:text-5xl md:text-6xl">
+                Skilld AI: Your AI Coding Assistant
+              </h2>
 
-            <p className="mt-5 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-4 md:text-xl md:max-w-3xl">
-              An intelligent chatbot designed to assist with coding questions,
-              provide real-time solutions, and help streamline development tasks
-              across multiple programming languages.
-            </p>
+              <p className="mt-5 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-4 md:text-xl md:max-w-3xl">
+                An intelligent chatbot designed to assist with coding questions,
+                provide real-time solutions, and help streamline development
+                tasks across multiple programming languages.
+              </p>
 
-            {/* <CTABar />
+              {/* <CTABar />
 
             <div className="mt-12 flex flex-col items-center gap-4">
               <h3 className="text-md font-medium text-gray-500 text-center">
@@ -81,8 +92,8 @@ export default async function LandingPage() {
                 </Link>
               </div>
             </div> */}
-          </div>
-          {/* <div className="relative">
+            </div>
+            {/* <div className="relative">
             <Image
               src="/demo.png"
               alt="Open Artifacts Demo"
@@ -92,7 +103,7 @@ export default async function LandingPage() {
             />
           </div> */}
 
-          {/* <div className="mt-20 flex flex-col items-center">
+            {/* <div className="mt-20 flex flex-col items-center">
             <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
               📸 Crop and 🔊 Talk: Iterate Naturally
             </h3>
@@ -114,10 +125,10 @@ export default async function LandingPage() {
 
             <CTABar />
           </div> */}
-        </div>
-      </main>
+          </div>
+        </main>
 
-      {/* <footer className="">
+        {/* <footer className="">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-base text-gray-400">
             &copy; 2024 Open Artifacts. All rights reserved.
@@ -145,7 +156,8 @@ export default async function LandingPage() {
           </div>
         </div>
       </footer> */}
-    </div>
+      </div>
+    </>
   );
 }
 
