@@ -15,7 +15,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "Skilld AI",
-  description: "Create and Share Artifacts with Claude",
+  // description: "Create and Share Artifacts with Claude",
 };
 
 export default async function RootLayout({
@@ -30,14 +30,13 @@ export default async function RootLayout({
   } = await supabase.auth.getSession();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
       >
         <SupabaseProvider session={session}>
           <ReactQueryProvider>
             {children}
-
             <Toaster />
           </ReactQueryProvider>
         </SupabaseProvider>
