@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
-import { Loader2Icon } from "lucide-react";
+import { Eye, EyeOff, Loader, Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 import {
   ForgotPasswordFooter,
@@ -34,6 +34,8 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { OAuthProviderButton } from "@/components/oauth-provider-button";
 import { OAuthProviders } from "@/app/types";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string(),
@@ -48,7 +50,9 @@ enum FormStatus {
 }
 
 const SignInForm = () => {
+  const [isShowPass, setIsShowPass] = useState(false);
   const supabase = createClientComponentClient();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -72,16 +76,17 @@ const SignInForm = () => {
     if (res.error) {
       console.error(res.error);
       setFormStatus(FormStatus.Error);
-      toast.error("Could not Sign In", {
-        position: "bottom-center",
+      toast.error(res.error.message, {
+        position: "top-center",
       });
       return;
     }
 
     setFormStatus(FormStatus.Success);
     toast.success("Signed In! Taking you to the app", {
-      position: "bottom-center",
+      position: "top-center",
     });
+    router.push("/new");
   };
 
   const handleOAuthSignIn = async (provider: OAuthProviders) => {
@@ -94,8 +99,8 @@ const SignInForm = () => {
 
     if (error) {
       console.error(error);
-      toast.error("Could not Sign In", {
-        position: "top-right",
+      toast.error(error.message, {
+        position: "top-center",
       });
     }
   };
@@ -148,7 +153,7 @@ const SignInForm = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="you@email.com" {...field} />
+                      <Input placeholder="Enter your email..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -162,7 +167,25 @@ const SignInForm = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" {...field} />
+                      <div className="relative">
+                        <Input
+                          className="pr-11"
+                          type={isShowPass ? "text" : "password"}
+                          placeholder="Enter your password..."
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          onClick={() => setIsShowPass(!isShowPass)}
+                          size="icon"
+                          variant="ghost"
+                          className="absolute right-4 top-1/2 -translate-y-1/2  size-min"
+                        >
+                          <Eye className={cn({ hidden: isShowPass })} />
+                          <EyeOff className={cn({ hidden: !isShowPass })} />
+                        </Button>
+                      </div>
+                      {/* <Input type="password" {...field} /> */}
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -172,7 +195,7 @@ const SignInForm = () => {
               <Button type="submit" className="w-full">
                 {formStatus === FormStatus.Loading && (
                   <>
-                    <Loader2Icon className="animate-spin mr-2" /> Signing In
+                    <Loader className="animate-spin mr-2" /> Signing In
                   </>
                 )}
 
