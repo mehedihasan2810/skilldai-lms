@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -36,6 +35,7 @@ import { OAuthProviderButton } from "@/components/oauth-provider-button";
 import { OAuthProviders } from "@/app/types";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const formSchema = z.object({
   email: z.string(),
@@ -116,7 +116,13 @@ const SignInForm = () => {
 
   return (
     <main className="flex flex-col gap-6 items-center w-full h-screen pt-32 px-4">
-      <Link href="/">
+      <Link href="/" className="flex items-center gap-4">
+        <Image
+          src="/skilld-logo.png"
+          alt="Skilld ai logo"
+          width={40}
+          height={40}
+        />
         <h1 className="text-4xl font-bold">Skilld AI</h1>
       </Link>
       <Card className="max-w-sm w-full">
