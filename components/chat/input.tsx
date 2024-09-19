@@ -109,7 +109,7 @@ export const ChatInput = ({
         </Button>
       )}
 
-      <div className="w-full flex flex-col gap-1 bg-[#F4F4F4] p-2.5 pl-4 rounded-md border border-b-0 rounded-b-none shadow-md">
+      <div className="w-full flex flex-col gap-1 bg-[#F4F4F4] p-2.5 pb-8 pl-4 rounded-md border border-b-0 rounded-b-none shadow-md">
         {/* Attachment preview */}
         {attachments && (
           <div className="flex items-center gap-2 mb-2">
