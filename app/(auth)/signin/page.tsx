@@ -38,7 +38,7 @@ export default async function Page() {
       <div className="relative hidden h-full flex-col bg-secondary p-10 dark:border-r lg:flex">
         <div className="absolute inset-0 bg-secondary" />
         <Link
-          href="/dashboard"
+          href="/"
           className="relative z-20 flex items-center gap-3"
         >
           <Image
