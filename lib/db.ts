@@ -78,6 +78,8 @@ export const addMessage = async (
 ) => {
   if (!chatId) return message;
 
+  console.log({ attachments });
+
   const { error } = await supabase.from("messages").insert({
     chat_id: chatId,
     role: message.role,

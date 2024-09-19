@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
 import { Props as ReactArtifactProps } from "@/components/artifact/react";
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { useFakeWhisper } from "@/lib/hooks/use-fake-whisper";
 
@@ -37,6 +37,7 @@ export const ChatPanel = ({ id }: Props) => {
   const [currentArtifact, setCurrentArtifact] =
     useState<ArtifactMessagePartData | null>(null);
   const [attachments, setAttachments] = useState<Attachment[]>([]);
+  const [files, setFiles] = useState<FileList | null>(null);
   const [selectedArtifacts, setSelectedArtifacts] = useState<string[]>([]);
 
   // Fetch messages for existing chat
@@ -90,14 +91,20 @@ export const ChatPanel = ({ id }: Props) => {
     input,
     setInput,
     append,
+    handleSubmit,
+    handleInputChange,
     stop: stopGenerating,
     isLoading: generatingResponse,
   } = useChat({
     initialMessages,
     onFinish: async (message) => {
+      console.log({ message });
       if (chatId) {
         await addMessage(supabase, chatId, message);
       }
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
     sendExtraMessageFields: true,
   });
@@ -159,6 +166,11 @@ export const ChatPanel = ({ id }: Props) => {
     setAttachments((prev) => [...prev, ...newAttachments]);
   };
 
+  const handleAddFiles = (newFiles: FileList) => {
+    setFiles(newFiles);
+    // setFiles((prev) => [...prev, ...newFiles]);
+  };
+
   const handleRemoveAttachment: ChatInputProps["onRemoveAttachment"] = (
     attachment
   ) => {
@@ -168,7 +180,7 @@ export const ChatPanel = ({ id }: Props) => {
   };
 
   // Handle sending messages
-  const handleSend = async () => {
+  const handleSend = async (event?: SyntheticEvent) => {
     const query = input.trim();
     if (!query) return;
 
@@ -186,29 +198,37 @@ export const ChatPanel = ({ id }: Props) => {
 
     const messageAttachments = [
       ...attachments
-        .filter((item) => item.contentType?.startsWith("image"))
+        // .filter((item) => item.contentType?.startsWith("image"))
         .map((item) => ({ url: item.url, contentType: item.contentType })),
       ...selectedArtifacts.map((url) => ({ url })),
     ];
 
-    append(
-      {
-        role: "user",
-        content: query,
-        experimental_attachments: messageAttachments,
-      },
-      {
-        body: {
-          model: "claude",
-          // model: "claude-3-5-sonnet-20240620",
-          // model: settings.model,
-          apiKey: process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY,
-          // apiKey: settings.model.startsWith("gpt")
-          //   ? settings.openaiApiKey
-          //   : settings.anthropicApiKey,
-        },
-      }
-    );
+    // console.log({ messageAttachments });
+    // console.log({ files });
+
+    const options = files ? { experimental_attachments: files } : {};
+    // console.log({ files });
+    handleSubmit(event, options);
+
+    // append(
+    //   {
+    //     role: "user",
+    //     content: query,
+    //     experimental_attachments: files,
+    //     // experimental_attachments: messageAttachments,
+    //   }
+    //   // {
+    //   //   body: {
+    //   //     model: "claude",
+    //   //     // model: "claude-3-5-sonnet-20240620",
+    //   //     // model: settings.model,
+    //   //     apiKey: process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY,
+    //   //     // apiKey: settings.model.startsWith("gpt")
+    //   //     //   ? settings.openaiApiKey
+    //   //     //   : settings.anthropicApiKey,
+    //   //   },
+    //   // }
+    // );
 
     setInput("");
     stopRecording();
@@ -224,7 +244,10 @@ export const ChatPanel = ({ id }: Props) => {
 
     setAttachments([]);
     setSelectedArtifacts([]);
+    setFiles(null);
   };
+
+  // console.log({ messages });
 
   return (
     <>
@@ -242,6 +265,8 @@ export const ChatPanel = ({ id }: Props) => {
           />
 
           <ChatInput
+            files={files}
+            setFiles={(f: FileList | null) => setFiles(f)}
             input={input}
             setInput={setInput}
             onSubmit={handleSend}
@@ -251,6 +276,7 @@ export const ChatPanel = ({ id }: Props) => {
             onStopRecord={stopRecording}
             attachments={attachments}
             onAddAttachment={handleAddAttachment}
+            onAddFiles={handleAddFiles}
             onRemoveAttachment={handleRemoveAttachment}
             showScrollButton={showScrollButton}
             handleManualScroll={handleManualScroll}

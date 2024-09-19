@@ -52,7 +52,7 @@ export const ArtifactPanel = ({
     copyToClipboard(content);
   };
 
-  console.log({ type, title, language, content });
+  // console.log({ type, title, language, content });
 
   return (
     <Card className="w-full border-none rounded-none flex flex-col h-full max-h-full">

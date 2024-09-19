@@ -29,7 +29,13 @@ const getDisplayNameFromRole = (
   }
 };
 
+const getTextFromDataUrl = (dataUrl: string) => {
+  const base64 = dataUrl.split(",")[1];
+  return window.atob(base64);
+};
+
 type Props = {
+  files: FileList | null;
   role: ChatMessageRoles;
   model: Models | null;
   text: string;
@@ -38,6 +44,7 @@ type Props = {
 };
 
 export const ChatMessage = ({
+  files,
   role,
   text,
   attachments,
@@ -62,14 +69,30 @@ export const ChatMessage = ({
       </div>
 
       <div className="flex flex-col gap-2">
-        {attachments.length > 0 && (
+        {/* {files && files.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap">
-            {attachments.map((attachment, index) => (
-              <AttachmentPreviewButton key={index} value={attachment} />
+            {Array.from(files).map((file) => (
+              <AttachmentPreviewButton key={file.name} file={file} />
             ))}
           </div>
-        )}
+        )} */}
 
+        {attachments.map((attachment, i) => (
+          <div key={i} className="flex items-center gap-2 flex-wrap">
+            {attachment.contentType?.startsWith("image") ? (
+              <img
+                className="rounded-md w-40 mb-3"
+                key={attachment.name}
+                src={attachment.url}
+                alt={attachment.name}
+              />
+            ) : attachment.contentType?.startsWith("text") ? (
+              <div className="text-xs w-40 h-24 overflow-hidden text-zinc-400 border p-2 rounded-md dark:bg-zinc-800 dark:border-zinc-700 mb-3">
+                {getTextFromDataUrl(attachment.url)}
+              </div>
+            ) : null}
+          </div>
+        ))}
         {role === "user" && <Markdown text={text} />}
 
         {role === "assistant" &&

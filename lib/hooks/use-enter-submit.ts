@@ -1,7 +1,9 @@
+import { SyntheticEvent } from "react";
+
 export const useEnterSubmit = ({
   onSubmit,
 }: {
-  onSubmit: () => void;
+  onSubmit: (event?: SyntheticEvent) => void;
 }): {
   onKeyDown: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 } => {
@@ -14,7 +16,7 @@ export const useEnterSubmit = ({
       !event.nativeEvent.isComposing
     ) {
       event.preventDefault();
-      onSubmit();
+      onSubmit(event);
     }
   };
 
