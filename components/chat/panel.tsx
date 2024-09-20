@@ -235,27 +235,51 @@ export const ChatPanel = ({ id }: Props) => {
         <div className="relative mx-auto flex h-full w-full min-w-[400px] max-w-3xl flex-1 flex-col md:px-2">
           {fetchingMessages && <Loader2Icon className="animate-spin mx-auto" />}
 
-          <ChatMessageList
-            messages={messages}
-            setCurrentArtifact={setCurrentArtifact}
-            containerRef={messagesRef}
-          />
+          {!chatId ? (
+            <div>
+              <ChatInput
+                chatId={chatId}
+                input={input}
+                setInput={setInput}
+                onSubmit={handleSend}
+                isLoading={generatingResponse}
+                recording={recording}
+                onStartRecord={startRecording}
+                onStopRecord={stopRecording}
+                attachments={attachments}
+                onAddAttachment={handleAddAttachment}
+                onRemoveAttachment={handleRemoveAttachment}
+                showScrollButton={showScrollButton}
+                handleManualScroll={handleManualScroll}
+                stopGenerating={stopGenerating}
+              />
+            </div>
+          ) : (
+            <>
+              <ChatMessageList
+                messages={messages}
+                setCurrentArtifact={setCurrentArtifact}
+                containerRef={messagesRef}
+              />
 
-          <ChatInput
-            input={input}
-            setInput={setInput}
-            onSubmit={handleSend}
-            isLoading={generatingResponse}
-            recording={recording}
-            onStartRecord={startRecording}
-            onStopRecord={stopRecording}
-            attachments={attachments}
-            onAddAttachment={handleAddAttachment}
-            onRemoveAttachment={handleRemoveAttachment}
-            showScrollButton={showScrollButton}
-            handleManualScroll={handleManualScroll}
-            stopGenerating={stopGenerating}
-          />
+              <ChatInput
+                chatId={chatId}
+                input={input}
+                setInput={setInput}
+                onSubmit={handleSend}
+                isLoading={generatingResponse}
+                recording={recording}
+                onStartRecord={startRecording}
+                onStopRecord={stopRecording}
+                attachments={attachments}
+                onAddAttachment={handleAddAttachment}
+                onRemoveAttachment={handleRemoveAttachment}
+                showScrollButton={showScrollButton}
+                handleManualScroll={handleManualScroll}
+                stopGenerating={stopGenerating}
+              />
+            </>
+          )}
         </div>
       </div>
 

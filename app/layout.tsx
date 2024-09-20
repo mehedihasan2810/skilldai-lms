@@ -9,6 +9,7 @@ import { SupabaseProvider } from "@/lib/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
+import NextTopLoader from "nextjs-toploader";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default async function RootLayout({
             </ReactQueryProvider>
           </SupabaseProvider>
         </ThemeProvider>
+        <NextTopLoader color="hsl(0 0% 98%)" height={4} showSpinner={false} />
       </body>
     </html>
   );

@@ -27,9 +27,53 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui";
-import { convertFileToBase64 } from "@/lib/utils";
+import { cn, convertFileToBase64 } from "@/lib/utils";
+
+const examplePrompts = [
+  {
+    title: "Explain and Compare JavaScript Variables",
+    prompt:
+      "Explain this JavaScript code and the differences between let, const, and var:\n\nlet x = 5;\nconst PI = 3.14;\nvar oldWay = 'deprecated';\n\nAlso, when should I use each of these declaration keywords?",
+  },
+  {
+    title: "Analyze Python Equality Operators",
+    prompt:
+      "Compare these Python equality operations and explain the results:\n\n5 == 5.0  # True\n5 is 5.0  # False\n\nWhat's the fundamental difference between '==' and 'is' in Python?",
+  },
+  {
+    title: "Optimize C++ String Reversal Algorithm",
+    prompt:
+      'Is this the most efficient way to reverse a string in C++? If not, how can it be improved?\n\n#include <algorithm>\nstd::string str = "Hello";\nstd::reverse(str.begin(), str.end());\n\nAre there any potential issues with this method for very large strings?',
+  },
+  {
+    title: "Troubleshoot and Improve SQL Query",
+    prompt:
+      "Debug this SQL query and suggest improvements:\n\nSELECT * FROM users\nJOIN orders ON users.id = orders.user_id\nWHERE orders.status = 'completed'\nGROUP BY users.id\nHAVING COUNT(orders.id) > 5;\n\nHow can I modify this query to also include the total value of orders for each user?",
+  },
+  // {
+  //   title: "Develop Full CRUD API with Node.js",
+  //   prompt:
+  //     "How can I extend this Node.js code to create a full CRUD API?\n\nconst express = require('express');\nconst app = express();\n\napp.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'John' }]);\n});\n\napp.listen(3000, () => console.log('Server running'));\n\nWhat middleware should I consider adding for better security and functionality?",
+  // },
+  // {
+  //   title: "Refactor Python Code for Efficiency",
+  //   prompt:
+  //     "Refactor this Python code to be more efficient and Pythonic:\n\ndef find_max(numbers):\n    max_num = numbers[0]\n    for i in range(1, len(numbers)):\n        if numbers[i] > max_num:\n            max_num = numbers[i]\n    return max_num\n\nHow can this function be improved in terms of performance and readability?",
+  // },
+  // {
+  //   title: "Implement Sorting Algorithm in Java",
+  //   prompt:
+  //     "Implement a quick sort algorithm in Java. Explain the time and space complexity of your implementation. How does it compare to other sorting algorithms?",
+  // },
+  // {
+  //   title: "Design Object-Oriented System",
+  //   prompt:
+  //     "Design a class hierarchy for a library management system. Include classes for books, patrons, and librarians. What methods and attributes would each class have? How would they interact?",
+  // },
+];
 
 export type Props = {
+  chatId: string | null;
   input: string;
   setInput: (value: string) => void;
   onSubmit: () => void;
@@ -46,6 +90,7 @@ export type Props = {
 };
 
 export const ChatInput = ({
+  chatId,
   input,
   setInput,
   onSubmit,
@@ -97,7 +142,12 @@ export const ChatInput = ({
   };
 
   return (
-    <div className="sticky bottom-0 mx-auto w-full pt-6 flex flex-col gap-4 items-center">
+    <div
+      className={cn(" mx-auto w-full  flex flex-col  items-center", {
+        "mt-20": !chatId,
+        "sticky bottom-0 gap-4 mt-0": chatId,
+      })}
+    >
       {showScrollButton && (
         <Button
           onClick={handleManualScroll}
@@ -109,9 +159,18 @@ export const ChatInput = ({
         </Button>
       )}
 
-      <div className="w-full flex flex-col gap-1 bg-secondary text-secondary-foreground p-2.5 pb-8 pl-4 rounded-md border border-b-0 rounded-b-none shadow-md">
+      <div className="w-full  flex flex-col  items-center bg-background">
+      <div
+        className={cn(
+          "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10",
+          {
+            "rounded-xl": !chatId,
+            "rounded-xl mb-6": chatId,
+          }
+        )}
+      >
         {/* Attachment preview */}
-        {attachments && (
+        {chatId && attachments && attachments.length > 0 && (
           <div className="flex items-center gap-2 mb-2">
             {attachments.map((attachment, index) => (
               <AttachmentPreviewButton
@@ -129,8 +188,14 @@ export const ChatInput = ({
             ref={inputRef}
             tabIndex={0}
             onKeyDown={onKeyDown}
-            placeholder="Send a message."
-            className="min-h-15 max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none"
+            placeholder="How can skilld ai help you today?"
+            className={cn(
+              " max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
+              {
+                "min-h-24": !chatId,
+                "": chatId,
+              }
+            )}
             autoFocus
             spellCheck={false}
             autoComplete="off"
@@ -152,47 +217,23 @@ export const ChatInput = ({
           />
 
           {/* File upload button */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="w-8 h-8 bg-transparent"
-            onClick={handleFileUpload}
-          >
-            <PaperclipIcon className="w-4 h-4" />
-          </Button>
 
-          {/* Voice recording button */}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  onClick={() => (recording ? onStopRecord() : onStartRecord())}
-                  size="icon"
-                  variant="outline"
-                  className="w-8 h-8 bg-transparent disabled:pointer-events-auto"
-                >
-                  {recording ? (
-                    <PauseIcon className="w-4 h-4" />
-                  ) : (
-                    <MicIcon className="w-4 h-4" />
-                  )}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>
-                  {getSettings().openaiApiKey
-                    ? "Click to record voice and crop artifacts for editing"
-                    : "Missing OpenAI API Key in Settings for Speech to Text"}
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          {chatId && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-8"
+              onClick={handleFileUpload}
+            >
+              <PaperclipIcon className="size-4" />
+            </Button>
+          )}
 
-          {/* Submit button */}
+         
           <Button
             onClick={isLoading ? stopGenerating : onSubmit}
             size="icon"
-            className="w-8 h-8"
+            className="size-7"
           >
             {isLoading ? (
               <CircleStopIcon className="w-4 h-4" />
@@ -201,20 +242,67 @@ export const ChatInput = ({
             )}
           </Button>
         </div>
+      </div>
 
-        {/* Model selection dropdown */}
-        {/* <Select value={model || undefined} onValueChange={handleModelChange}>
-          <SelectTrigger className="w-fit bg-[#F4F4F4] flex items-center gap-2 border-none">
-            <SelectValue placeholder="Select Model" />
-          </SelectTrigger>
-          <SelectContent className="w-fit">
-            <SelectItem value={Models.claude}>Claude Sonnet</SelectItem>
-            <SelectItem value={Models.gpt4oMini}>GPT-4o Mini</SelectItem>
-            <SelectItem value={Models.gpt4o}>GPT-4o</SelectItem>
-            <SelectItem value={Models.gpt4turbo}>GPT-4 Turbo</SelectItem>
-            <SelectItem value={Models.gpt35turbo}>GPT-3.5 Turbo</SelectItem>
-          </SelectContent>
-        </Select> */}
+      {!chatId && (
+        <div className="px-4 w-full">
+          <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
+            <div className="mb-2 flex justify-between items-center">
+              <p className="text-muted-foreground text-sm font-semibold">
+                {attachments && attachments.length > 0
+                  ? `${attachments.length} file added`
+                  : "Get started with the example below"}
+              </p>
+
+              <button
+                className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground"
+                onClick={handleFileUpload}
+              >
+                <PaperclipIcon className="size-4" /> Add content
+              </button>
+            </div>
+            {attachments && attachments.length > 0 ? (
+              <div className="flex items-center gap-2">
+                {attachments.map((attachment, index) => (
+                  <AttachmentPreviewButton
+                    key={index}
+                    value={attachment}
+                    onRemove={onRemoveAttachment}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="flex gap-4">
+                {examplePrompts.map((prompt, i) => (
+                  <button
+                    onClick={() => setInput(prompt.prompt)}
+                    className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70"
+                    key={i}
+                  >
+                    {prompt.title}
+                  </button>
+                ))}
+              </div>
+            )}
+            {/* <div className="mb-2">
+              <p className="text-muted-foreground text-sm font-semibold">
+                Get started with the example below
+              </p>
+            </div>
+
+            <div className="flex gap-4">
+              {examplePrompts.map((prompt, i) => (
+                <button
+                  className="bg-background text-muted-foreground p-2 rounded-lg text-sm"
+                  key={i}
+                >
+                  {prompt.title}
+                </button>
+              ))}
+            </div> */}
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );

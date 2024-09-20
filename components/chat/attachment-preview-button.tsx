@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Attachment } from "@/app/types";
-import { Dialog, DialogContent } from "@/components/ui";
+import { Button, Dialog, DialogContent } from "@/components/ui";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -31,12 +31,14 @@ export const AttachmentPreviewButton = ({ value, onRemove }: Props) => {
       </div>
 
       {onRemove && (
-        <button
+        <Button
+          variant="secondary"
+          size="icon"
           onClick={() => onRemove(value)}
-          className="bg-white absolute right-1 top-1 -translate-y-1/2 translate-x-1/2 rounded-full border border-token-border-heavy bg-token-main-surface-secondary p-0.5 text-token-text-primary transition-colors hover:opacity-100 group-hover:opacity-100 md:opacity-0"
+          className="absolute right-1 top-1 -translate-y-1/2 translate-x-1/2 rounded-full size-5"
         >
-          <XIcon className="w-4 h-4" />
-        </button>
+          <XIcon className="size-full" />
+        </Button>
       )}
 
       <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
