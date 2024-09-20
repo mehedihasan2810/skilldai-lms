@@ -34,7 +34,10 @@ export const SideNavBar = () => {
 
   if (open) {
     return (
-      <div className="h-screen max-h-screen overflow-hidden flex flex-col gap-4 justify-between px-2 py-2 pb-4 w-[200px] border-r">
+      <div
+        className="hidden sm:flex h-screen max-h-screen overflow-hidden 
+       flex-col gap-4 justify-between px-2 py-2 pb-4 w-[200px] border-r"
+      >
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
             <Image
@@ -80,7 +83,7 @@ export const SideNavBar = () => {
           {error && <p className="text-red-500">Could not fetch chats</p>}
         </div>
 
-        <div className="flex flex-col gap-4 mt-2">
+        <div className="flex justify-between gap-4 mt-2">
           {/* <a
             href="https://github.com/13point5/open-artifacts"
             target="_blank"
@@ -98,7 +101,7 @@ export const SideNavBar = () => {
   }
 
   return (
-    <div className="h-screen max-h-screen flex flex-col gap-2 justify-between px-2 py-2 pb-4 items-center border-r">
+    <div className="hidden sm:flex h-screen max-h-screen flex-col gap-2 justify-between px-2 py-2 pb-4 items-center border-r">
       <div className="flex flex-col gap-2">
         <Link href="/" className="text-lg font-semibold text-center">
           Skilld

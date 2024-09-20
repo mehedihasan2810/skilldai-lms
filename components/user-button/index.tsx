@@ -50,12 +50,12 @@ export const UserButton = ({ expanded = false }: Props) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className="w-full flex items-center justify-start gap-4 px-1 h-6">
-          <UserIcon size={24} />
+        <DropdownMenuTrigger className="size-10 p-2 border flex justify-center items-center rounded hover:bg-secondary">
+          <UserIcon className="w-full" size={40} />
 
-          {expanded && (
+          {/* {expanded && (
             <span className="font-medium text-sm truncate">My Account</span>
-          )}
+          )} */}
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-56" align="end" forceMount>

@@ -2,6 +2,7 @@
 
 import { ChatPanel } from "@/components/chat/panel";
 import { SideNavBar } from "@/components/side-navbar";
+import ChatMobileSidebar from "@/components/side-navbar/chat-mobile-sidebar";
 import { useSupabase } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 
@@ -13,6 +14,8 @@ const NewChatPage = () => {
   return (
     <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden px-2 pl-0">
       <SideNavBar />
+
+      <ChatMobileSidebar/>
 
       <ChatPanel id={null} />
     </div>
