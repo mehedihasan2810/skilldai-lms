@@ -64,13 +64,13 @@ export default async function LandingPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-extrabold sm:text-5xl md:text-6xl bg-gradient-to-r from-teal-500 via-sky-600 to-cyan-500 bg-clip-text text-transparent">
-                Skilld AI: Your AI Coding Assistant
+                Skilld AI: Your AI Coding Learning Assistant
               </h2>
 
               <p className="mt-5 max-w-md mx-auto text-base sm:text-lg md:mt-4 md:text-xl md:max-w-3xl text-muted-foreground">
-                An intelligent chatbot designed to assist with coding questions,
-                provide real-time solutions, and help streamline development
-                tasks across multiple programming languages.
+                Learn to code with a friend by your side! Skilld offers
+                personalised lessons, real-time help, and cool projects to make
+                coding a breeze!
               </p>
 
               <Link

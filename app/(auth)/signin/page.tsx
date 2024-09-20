@@ -26,21 +26,9 @@ export default async function Page() {
 
   return (
     <div className="relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <Link
-        href="/"
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute right-4 top-4 md:right-8 md:top-8 hidden"
-        )}
-      >
-        Sign Up
-      </Link>
       <div className="relative hidden h-full flex-col bg-secondary p-10 dark:border-r lg:flex">
         <div className="absolute inset-0 bg-secondary" />
-        <Link
-          href="/"
-          className="relative z-20 flex items-center gap-3"
-        >
+        <Link href="/" className="relative z-20 flex items-center gap-3">
           <Image
             src="/skilld-logo.png"
             alt="Skilld Logo"
@@ -49,29 +37,27 @@ export default async function Page() {
             className="object-contain"
           />
           <span className="inline-block text-2xl font-semibold">Skilld AI</span>
-          {/* <Image
-            src="/Skilld AI Logos/Skilld Logo-colour.png"
-            alt="Skilld Logo"
-            width={100}
-            height={30}
-            className="dark:hidden h-[25px] w-[80px] md:w-[100px] md:h-[30px] object-contain"
-          /> */}
         </Link>
-        {/* <div className="relative z-20 flex items-center text-lg font-medium">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="mr-2 h-6 w-6"
-          >
-            <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-          </svg>
-          Skilld
-        </div> */}
+
+        <div className="z-20 my-auto flex flex-col gap-6 text-muted-foreground text-lg">
+          <p>
+            Share Your Code, Get a Personalised Path Upload your code and we&#39;ll
+            create a customised learning journey for you!
+          </p>
+          <p>
+            Stuck on a piece of Code? We&#39;ll Help You Out. Copy the code into our
+            platform, and let Skilld guide you through!
+          </p>
+          <p>
+            Understand Concepts with Ease. Skilld&#39;s customised content makes
+            complex ideas simple and clear!
+          </p>
+          <p>
+            Learn at Your Own Pace, Anytime Upload your code and learn whenever,
+            wherever you want with Skilld!
+          </p>
+        </div>
+
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
             <p className="text-lg text-muted-foreground">
