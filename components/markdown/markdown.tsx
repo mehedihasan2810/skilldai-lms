@@ -55,7 +55,6 @@ export default function Markdown({ text, className = "" }: Props) {
 
         code(props) {
           const { children, className, node, ...rest } = props;
-          console.log({ children });
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
             <CodeBlock

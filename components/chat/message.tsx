@@ -12,6 +12,7 @@ import {
 } from "@/lib/utils";
 import { BotIcon, CodeIcon, Divide, Loader2Icon, UserIcon } from "lucide-react";
 import Image from "next/image";
+import { memo } from "react";
 
 const getDisplayNameFromRole = (
   role: ChatMessageRoles,
@@ -39,13 +40,12 @@ type Props = {
   attachments: Attachment[];
 };
 
-export const ChatMessage = ({
+export const ChatMessage = memo(function ChatMessage({
   role,
   text,
   attachments,
   setCurrentArtifact,
-}: Props) => {
-  console.log({text})
+}: Props) {
   return (
     // <div
     //   className={`flex items-start gap-2 px-2 py-2 rounded-md ${
@@ -83,21 +83,31 @@ export const ChatMessage = ({
           </div>
         )}
 
-        {role === "user" && <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words whitespace-pre-wrap">{text}</div>}
+        {role === "user" && (
+          <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words whitespace-pre-wrap">
+            {text}
+          </div>
+        )}
         {/* {role === "user" && <Markdown text={text} />} */}
 
-        {role === "assistant" &&
+        {/* {role === "assistant" && (
+          <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words whitespace-pre-wrap">
+            {text}
+          </div>
+        )} */}
+        {role === "assistant" && <Markdown text={text} />}
+        {/* {role === "assistant" &&
           parseMessage(text).map((part, index) => (
             <MessagePart
               data={part}
               key={index}
               setCurrentArtifact={setCurrentArtifact}
             />
-          ))}
+          ))} */}
       </div>
     </div>
   );
-};
+});
 
 const MessagePart = ({
   data,

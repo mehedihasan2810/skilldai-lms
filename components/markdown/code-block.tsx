@@ -94,7 +94,6 @@ const CodeBlock = ({
     URL.revokeObjectURL(url);
   };
 
-  console.log({ value });
 
   return (
     <div

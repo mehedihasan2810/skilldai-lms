@@ -227,15 +227,12 @@ export const ChatPanel = ({ id }: Props) => {
     setSelectedArtifacts([]);
   };
 
-  console.log({ messages });
-
   return (
     <>
-      <div 
-        className={cn("relative flex w-full pt-4 sm:pt-6 flex-1 overflow-x-hidden overflow-y-scroll", {
-          "flex-1 overflow-x-hidden overflow-y-scroll": chatId,
-          "": !chatId && messages.length === 0,
-        })}
+      <div
+        className={cn(
+          "relative flex w-full pt-4 sm:pt-6 flex-1 overflow-x-hidden overflow-y-scroll"
+        )}
         ref={scrollRef}
       >
         <div className="relative mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2">
@@ -268,7 +265,6 @@ export const ChatPanel = ({ id }: Props) => {
                 setCurrentArtifact={setCurrentArtifact}
                 containerRef={messagesRef}
               />
-
               <ChatInput
                 hasChatMessages={messages.length === 0}
                 chatId={chatId}

@@ -24,7 +24,6 @@ const ChatPage = ({ params: { id } }: Props) => {
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
         <SideNavBar />
         {/* <ChatMobileSidebar /> */}
-
         <ChatPanel id={id} />
       </div>
     </div>

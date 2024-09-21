@@ -19,7 +19,7 @@ const NewChatPage = () => {
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
         <SideNavBar />
         {/* <ChatMobileSidebar /> */}
-
+       
         <ChatPanel id={null} />
       </div>
     </div>

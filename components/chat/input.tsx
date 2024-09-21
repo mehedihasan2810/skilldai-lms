@@ -10,7 +10,7 @@ import {
   PaperclipIcon,
   PauseIcon,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import Textarea from "react-textarea-autosize";
 import {
   Select,
@@ -95,7 +95,7 @@ export type Props = {
   stopGenerating: () => void;
 };
 
-export const ChatInput = ({
+export const ChatInput = memo(function ChatInput({
   hasChatMessages,
   chatId,
   input,
@@ -111,7 +111,7 @@ export const ChatInput = ({
   showScrollButton,
   handleManualScroll,
   stopGenerating,
-}: Props) => {
+}: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { onKeyDown } = useEnterSubmit({ onSubmit });
   const [model, setModel] = useState<Models>(getSettings().model);
@@ -129,8 +129,6 @@ export const ChatInput = ({
     queryFn: async () => await getChats(supabase, userId),
     enabled: !!userId,
   });
-
-  console.log({ error });
 
   // Handle file upload button click
   const handleFileUpload = () => {
@@ -163,13 +161,14 @@ export const ChatInput = ({
     updateSettings({ ...getSettings(), model: newModel });
   };
 
-  console.log({ chats });
+  console.count("input");
 
   return (
+    <>
     <div
-      className={cn(" mx-auto w-full  flex flex-col  items-center", {
-        "mt-24 sm:mt-20": !chatId && hasChatMessages,
-        "sticky bottom-0 gap-4 mt-0": chatId,
+      className={cn(" mx-auto w-full  flex flex-col  items-center sticky bottom-0 gap-4", {
+        "mt-24 sm:mt-20 ": !chatId && hasChatMessages,
+        "mt-0": chatId,
       })}
     >
       {chatId && showScrollButton && (
@@ -177,14 +176,14 @@ export const ChatInput = ({
           onClick={handleManualScroll}
           variant="outline"
           size="icon"
-          className="rounded-full shadow-lg w-8 h-8"
+          className="rounded-full shadow-lg w-8 h-8 shrink-0 absolute -top-14 "
         >
           <ArrowDownIcon className="h-4 w-4" />
         </Button>
       )}
 
       <div
-        className={cn("w-full  flex flex-col  items-center bg-background ", {
+        className={cn("w-full  flex flex-col  items-center bg-background pb-5", {
           "px-4 md:px-0": !chatId && !hasChatMessages,
           "px-4 md:px-0 a": chatId,
         })}
@@ -193,8 +192,8 @@ export const ChatInput = ({
           className={cn(
             "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl",
             {
-              "mb-6": !chatId && !hasChatMessages,
-              "mb-6 a": chatId,
+              "": !chatId && !hasChatMessages,
+              " a": chatId,
             }
           )}
         >
@@ -370,5 +369,6 @@ export const ChatInput = ({
         )}
       </div>
     </div>
+    </>
   );
-};
+});

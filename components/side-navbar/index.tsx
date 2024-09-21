@@ -35,7 +35,7 @@ export const SideNavBar = () => {
   if (open) {
     return (
       <div
-        className="hidden sm:flex h-screen max-h-screen overflow-hidden 
+        className="flex h-screen max-h-screen overflow-hidden 
        flex-col gap-4 justify-between px-2 py-2 pb-4 w-[200px] border-r"
       >
         <div className="flex flex-col gap-2">

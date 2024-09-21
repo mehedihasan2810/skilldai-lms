@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Attachment } from "@/app/types";
-import { Button, Dialog, DialogContent } from "@/components/ui";
+import { Button, Dialog, DialogContent, DialogTitle } from "@/components/ui";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
 
