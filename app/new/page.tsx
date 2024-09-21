@@ -12,9 +12,9 @@ const NewChatPage = () => {
   if (!session) redirect("/signin");
 
   return (
-    <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden px-2 pl-0">
+    <div className="sm:flex sm:gap-4 sm:w-full sm:h-screen sm:max-h-screen sm:overflow-hidden px-4 pb-10">
       <SideNavBar />
-      <ChatMobileSidebar/>
+      <ChatMobileSidebar />
 
       <ChatPanel id={null} />
     </div>

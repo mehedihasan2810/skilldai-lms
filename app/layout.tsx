@@ -10,6 +10,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
 import NextTopLoader from "nextjs-toploader";
+import { TooltipProvider } from "@/components/ui";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -49,7 +50,7 @@ export default async function RootLayout({
         >
           <SupabaseProvider session={session}>
             <ReactQueryProvider>
-              {children}
+              <TooltipProvider>{children}</TooltipProvider>
               <Toaster />
             </ReactQueryProvider>
           </SupabaseProvider>

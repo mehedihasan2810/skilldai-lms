@@ -41,12 +41,12 @@ export default async function Page() {
 
         <div className="z-20 my-auto flex flex-col gap-6 text-muted-foreground text-lg">
           <p>
-            Share Your Code, Get a Personalised Path Upload your code and we&#39;ll
-            create a customised learning journey for you!
+            Share Your Code, Get a Personalised Path Upload your code and
+            we&#39;ll create a customised learning journey for you!
           </p>
           <p>
-            Stuck on a piece of Code? We&#39;ll Help You Out. Copy the code into our
-            platform, and let Skilld guide you through!
+            Stuck on a piece of Code? We&#39;ll Help You Out. Copy the code into
+            our platform, and let Skilld guide you through!
           </p>
           <p>
             Understand Concepts with Ease. Skilld&#39;s customised content makes
@@ -61,9 +61,9 @@ export default async function Page() {
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
             <p className="text-lg text-muted-foreground">
-              &ldquo;An intelligent chatbot designed to assist with coding
-              questions, provide real-time solutions, and help streamline
-              development tasks across multiple programming languages.&rdquo;
+              &ldquo;Learn to code with a friend by your side! Skilld offers
+              personalised lessons, real-time help, and cool projects to make
+              coding a breeze!&rdquo;
             </p>
             {/* <footer className="text-sm">Ak</footer> */}
           </blockquote>
@@ -110,24 +110,3 @@ export default async function Page() {
     </div>
   );
 }
-
-// import SignInForm from "./form";
-// import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-// import { cookies } from "next/headers";
-// import { redirect } from "next/navigation";
-
-// const SignInPage = async () => {
-//   const supabase = createServerComponentClient({ cookies });
-
-//   const {
-//     data: { user },
-//   } = await supabase.auth.getUser();
-
-//   if (user) {
-//     redirect("/new");
-//   }
-
-//   return <SignInForm />;
-// };
-
-// export default SignInPage;

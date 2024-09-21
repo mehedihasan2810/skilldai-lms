@@ -5,6 +5,7 @@ import {
   ArrowUpIcon,
   CircleStopIcon,
   Loader2Icon,
+  MessageCircle,
   MicIcon,
   PaperclipIcon,
   PauseIcon,
@@ -28,6 +29,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui";
 import { cn, convertFileToBase64 } from "@/lib/utils";
+import { useSupabase } from "@/lib/supabase";
+import { useQuery } from "@tanstack/react-query";
+import { getChats } from "@/lib/db";
+import Link from "next/link";
 
 const examplePrompts = [
   {
@@ -110,6 +115,21 @@ export const ChatInput = ({
   const [model, setModel] = useState<Models>(getSettings().model);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const { supabase, session } = useSupabase();
+  const userId = session?.user.id;
+
+  const {
+    data: chats,
+    error,
+    isLoading: isChatLoading,
+  } = useQuery({
+    queryKey: ["chats"],
+    queryFn: async () => await getChats(supabase, userId),
+    enabled: !!userId,
+  });
+
+  console.log({ error });
+
   // Handle file upload button click
   const handleFileUpload = () => {
     fileInputRef.current?.click();
@@ -141,6 +161,8 @@ export const ChatInput = ({
     updateSettings({ ...getSettings(), model: newModel });
   };
 
+  console.log({ chats });
+
   return (
     <div
       className={cn(" mx-auto w-full  flex flex-col  items-center", {
@@ -148,7 +170,7 @@ export const ChatInput = ({
         "sticky bottom-0 gap-4 mt-0": chatId,
       })}
     >
-      {showScrollButton && (
+      {chatId && showScrollButton && (
         <Button
           onClick={handleManualScroll}
           variant="outline"
@@ -160,131 +182,141 @@ export const ChatInput = ({
       )}
 
       <div className="w-full  flex flex-col  items-center bg-background">
-      <div
-        className={cn(
-          "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10",
-          {
-            "rounded-xl": !chatId,
-            "rounded-xl mb-6": chatId,
-          }
-        )}
-      >
-        {/* Attachment preview */}
-        {chatId && attachments && attachments.length > 0 && (
-          <div className="flex items-center gap-2 mb-2">
-            {attachments.map((attachment, index) => (
-              <AttachmentPreviewButton
-                key={index}
-                value={attachment}
-                onRemove={onRemoveAttachment}
-              />
-            ))}
-          </div>
-        )}
-
-        <div className="flex gap-2 items-start">
-          {/* Main input textarea */}
-          <Textarea
-            ref={inputRef}
-            tabIndex={0}
-            onKeyDown={onKeyDown}
-            placeholder="How can skilld ai help you today?"
-            className={cn(
-              " max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
-              {
-                "min-h-24": !chatId,
-                "": chatId,
-              }
-            )}
-            autoFocus
-            spellCheck={false}
-            autoComplete="off"
-            autoCorrect="off"
-            name="message"
-            rows={1}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-
-          {/* Hidden file input */}
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            ref={fileInputRef}
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-
-          {/* File upload button */}
-
-          {chatId && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="size-8"
-              onClick={handleFileUpload}
-            >
-              <PaperclipIcon className="size-4" />
-            </Button>
+        <div
+          className={cn(
+            "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10",
+            {
+              "rounded-xl": !chatId,
+              "rounded-xl mb-6": chatId,
+            }
+          )}
+        >
+          {/* Attachment preview */}
+          {chatId && attachments && attachments.length > 0 && (
+            <div className="flex items-center gap-2 mb-2">
+              {attachments.map((attachment, index) => (
+                <AttachmentPreviewButton
+                  key={index}
+                  value={attachment}
+                  onRemove={onRemoveAttachment}
+                />
+              ))}
+            </div>
           )}
 
-         
-          <Button
-            onClick={isLoading ? stopGenerating : onSubmit}
-            size="icon"
-            className="size-7"
-          >
-            {isLoading ? (
-              <CircleStopIcon className="w-4 h-4" />
-            ) : (
-              <ArrowUpIcon className="w-4 h-4" />
-            )}
-          </Button>
-        </div>
-      </div>
+          <div className="flex gap-2 items-start">
+            {/* Main input textarea */}
+            <Textarea
+              ref={inputRef}
+              tabIndex={0}
+              onKeyDown={onKeyDown}
+              placeholder={
+                chatId
+                  ? "Reply to Skilld AI..."
+                  : "How can Skilld AI help you today?"
+              }
+              className={cn(
+                " max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
+                {
+                  "min-h-24": !chatId,
+                  "": chatId,
+                }
+              )}
+              autoFocus
+              spellCheck={false}
+              autoComplete="off"
+              autoCorrect="off"
+              name="message"
+              rows={1}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
 
-      {!chatId && (
-        <div className="px-4 w-full">
-          <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
-            <div className="mb-2 flex justify-between items-center">
-              <p className="text-muted-foreground text-sm font-semibold">
-                {attachments && attachments.length > 0
-                  ? `${attachments.length} file added`
-                  : "Get started with the example below"}
-              </p>
+            {/* Hidden file input */}
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
 
-              <button
-                className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground"
+            {/* File upload button */}
+
+            {chatId && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="size-8"
                 onClick={handleFileUpload}
               >
-                <PaperclipIcon className="size-4" /> Add content
-              </button>
-            </div>
-            {attachments && attachments.length > 0 ? (
-              <div className="flex items-center gap-2">
-                {attachments.map((attachment, index) => (
-                  <AttachmentPreviewButton
-                    key={index}
-                    value={attachment}
-                    onRemove={onRemoveAttachment}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="flex gap-4">
-                {examplePrompts.map((prompt, i) => (
-                  <button
-                    onClick={() => setInput(prompt.prompt)}
-                    className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70"
-                    key={i}
-                  >
-                    {prompt.title}
-                  </button>
-                ))}
-              </div>
+                <PaperclipIcon className="size-4" />
+              </Button>
             )}
-            {/* <div className="mb-2">
+
+            <Button
+              onClick={isLoading ? stopGenerating : onSubmit}
+              size="icon"
+              className="size-7"
+            >
+              {isLoading ? (
+                <CircleStopIcon className="w-4 h-4" />
+              ) : (
+                <ArrowUpIcon className="w-4 h-4" />
+              )}
+            </Button>
+          </div>
+        </div>
+
+        {!chatId && (
+          <div className="px-4 w-full">
+            <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
+              <div className="mb-2 flex gap-2 justify-between items-center">
+                <p className="text-muted-foreground text-sm font-semibold">
+                  {attachments && attachments.length > 0
+                    ? `${attachments.length} file added`
+                    : "Get started with the example below"}
+                </p>
+
+                <button
+                  className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground w-max"
+                  onClick={handleFileUpload}
+                >
+                  <PaperclipIcon className="size-4" /> Add content
+                </button>
+              </div>
+              {attachments && attachments.length > 0 ? (
+                <div className="flex items-center gap-2">
+                  {attachments.map((attachment, index) => (
+                    <AttachmentPreviewButton
+                      key={index}
+                      value={attachment}
+                      onRemove={onRemoveAttachment}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  {examplePrompts.map((prompt, i) => (
+                    <Tooltip key={i}>
+                      <TooltipTrigger>
+                        {" "}
+                        <button
+                          onClick={() => setInput(prompt.prompt)}
+                          className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
+                        >
+                          {prompt.title}
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Try this prompt</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
+                </div>
+              )}
+              {/* <div className="mb-2">
               <p className="text-muted-foreground text-sm font-semibold">
                 Get started with the example below
               </p>
@@ -300,9 +332,41 @@ export const ChatInput = ({
                 </button>
               ))}
             </div> */}
+            </div>
+
+            <div className="mt-10">
+              <p className="mb-4 font-semibold text-muted-foreground">
+                Your recent chats
+              </p>
+
+              <div>
+                {error ? (
+                  <p className="text-muted-foreground">
+                    Unable to fetch recent chats
+                  </p>
+                ) : isChatLoading ? (
+                  <p className="text-muted-foreground">
+                    Recent chats Loading...
+                  </p>
+                ) : (
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {chats?.slice(0, 3).map((chat) => (
+                      <Link
+                        href={`/chat/${chat.id}`}
+                        className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-2"
+                        key={chat.id}
+                      >
+                        <MessageCircle />
+                        <p>{chat.title}</p>
+                        <p>1 day ago</p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     </div>
   );

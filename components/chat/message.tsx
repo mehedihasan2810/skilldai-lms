@@ -6,10 +6,11 @@ import Markdown from "@/components/markdown/markdown";
 import { Button } from "@/components/ui/button";
 import {
   ArtifactMessagePartData,
+  cn,
   MessagePart as MessagePartType,
   parseMessage,
 } from "@/lib/utils";
-import { BotIcon, CodeIcon, Loader2Icon, UserIcon } from "lucide-react";
+import { BotIcon, CodeIcon, Divide, Loader2Icon, UserIcon } from "lucide-react";
 import Image from "next/image";
 
 const getDisplayNameFromRole = (
@@ -44,6 +45,7 @@ export const ChatMessage = ({
   attachments,
   setCurrentArtifact,
 }: Props) => {
+  console.log({text})
   return (
     // <div
     //   className={`flex items-start gap-2 px-2 py-2 rounded-md ${
@@ -81,7 +83,8 @@ export const ChatMessage = ({
           </div>
         )}
 
-        {role === "user" && <Markdown text={text} />}
+        {role === "user" && <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words whitespace-pre-wrap">{text}</div>}
+        {/* {role === "user" && <Markdown text={text} />} */}
 
         {role === "assistant" &&
           parseMessage(text).map((part, index) => (

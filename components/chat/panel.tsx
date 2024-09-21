@@ -10,7 +10,7 @@ import { Loader2Icon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSupabase } from "@/lib/supabase";
 import { Chat, Models, Attachment } from "@/app/types";
-import { ArtifactMessagePartData } from "@/lib/utils";
+import { ArtifactMessagePartData, cn } from "@/lib/utils";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
@@ -170,6 +170,9 @@ export const ChatPanel = ({ id }: Props) => {
   // Handle sending messages
   const handleSend = async () => {
     const query = input.trim();
+
+    console.log({ query });
+    return
     if (!query) return;
 
     const settings = getSettings();
@@ -229,10 +232,13 @@ export const ChatPanel = ({ id }: Props) => {
   return (
     <>
       <div
-        className="relative flex w-full flex-1 overflow-x-hidden overflow-y-scroll pt-6"
+        className={cn("relative flex w-full pt-4 sm:pt-6", {
+          "flex-1 overflow-x-hidden overflow-y-scroll": chatId,
+          "": !chatId,
+        })}
         ref={scrollRef}
       >
-        <div className="relative mx-auto flex h-full w-full min-w-[400px] max-w-3xl flex-1 flex-col md:px-2">
+        <div className="relative mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2">
           {fetchingMessages && <Loader2Icon className="animate-spin mx-auto" />}
 
           {!chatId ? (

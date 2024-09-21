@@ -95,7 +95,7 @@ const CodeBlock = ({
   };
 
   return (
-    <div className={twMerge("codeblock relative w-full font-sans", className)}>
+    <div className={twMerge("hello codeblock relative w-full font-sans", className)}>
       {showHeader && (
         <div className="flex items-center justify-between rounded-t-lg bg-zinc-700 px-4 py-1">
           <span className="text-xs lowercase text-white">{language}</span>
