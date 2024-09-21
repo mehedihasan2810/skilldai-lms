@@ -171,8 +171,6 @@ export const ChatPanel = ({ id }: Props) => {
   const handleSend = async () => {
     const query = input.trim();
 
-    console.log({ query });
-    return
     if (!query) return;
 
     const settings = getSettings();
@@ -229,21 +227,24 @@ export const ChatPanel = ({ id }: Props) => {
     setSelectedArtifacts([]);
   };
 
+  console.log({ messages });
+
   return (
     <>
       <div
         className={cn("relative flex w-full pt-4 sm:pt-6", {
           "flex-1 overflow-x-hidden overflow-y-scroll": chatId,
-          "": !chatId,
+          "": !chatId && messages.length === 0,
         })}
         ref={scrollRef}
       >
         <div className="relative mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2">
           {fetchingMessages && <Loader2Icon className="animate-spin mx-auto" />}
 
-          {!chatId ? (
+          {!chatId && messages.length === 0 ? (
             <div>
               <ChatInput
+                hasChatMessages={messages.length === 0}
                 chatId={chatId}
                 input={input}
                 setInput={setInput}
@@ -269,6 +270,7 @@ export const ChatPanel = ({ id }: Props) => {
               />
 
               <ChatInput
+                hasChatMessages={messages.length === 0}
                 chatId={chatId}
                 input={input}
                 setInput={setInput}

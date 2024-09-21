@@ -78,6 +78,7 @@ const examplePrompts = [
 ];
 
 export type Props = {
+  hasChatMessages: boolean;
   chatId: string | null;
   input: string;
   setInput: (value: string) => void;
@@ -95,6 +96,7 @@ export type Props = {
 };
 
 export const ChatInput = ({
+  hasChatMessages,
   chatId,
   input,
   setInput,
@@ -166,7 +168,7 @@ export const ChatInput = ({
   return (
     <div
       className={cn(" mx-auto w-full  flex flex-col  items-center", {
-        "mt-20": !chatId,
+        "mt-20": !chatId && hasChatMessages,
         "sticky bottom-0 gap-4 mt-0": chatId,
       })}
     >
@@ -184,10 +186,10 @@ export const ChatInput = ({
       <div className="w-full  flex flex-col  items-center bg-background">
         <div
           className={cn(
-            "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10",
+            "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl mb-6",
             {
-              "rounded-xl": !chatId,
-              "rounded-xl mb-6": chatId,
+              "": !chatId && hasChatMessages,
+              "": chatId,
             }
           )}
         >
@@ -218,7 +220,7 @@ export const ChatInput = ({
               className={cn(
                 " max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
                 {
-                  "min-h-24": !chatId,
+                  "min-h-24": !chatId && hasChatMessages,
                   "": chatId,
                 }
               )}
@@ -254,6 +256,16 @@ export const ChatInput = ({
                 <PaperclipIcon className="size-4" />
               </Button>
             )}
+            {!chatId && !hasChatMessages && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="size-8"
+                onClick={handleFileUpload}
+              >
+                <PaperclipIcon className="size-4" />
+              </Button>
+            )}
 
             <Button
               onClick={isLoading ? stopGenerating : onSubmit}
@@ -269,7 +281,7 @@ export const ChatInput = ({
           </div>
         </div>
 
-        {!chatId && (
+        {!chatId && hasChatMessages && (
           <div className="px-4 w-full">
             <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
               <div className="mb-2 flex gap-2 justify-between items-center">
