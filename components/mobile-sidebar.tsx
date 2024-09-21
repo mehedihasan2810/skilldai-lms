@@ -19,8 +19,9 @@ const MobileSidebar = () => {
       <SheetTrigger className="sm:hidden">
         <MenuIcon className="h-6 w-6" />
       </SheetTrigger>
-      <SheetContent className="w-[400px] sm:w-[540px]">
-        <SheetHeader>
+      <SheetContent className="w-[350px]">
+        <SheetHeader className="flex justify-between  items-center">
+          <div></div>
           <SheetTitle className="flex items-center gap-2">
             <Image
               src="/skilld-logo.png"

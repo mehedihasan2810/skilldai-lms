@@ -37,7 +37,9 @@ export default async function LandingPage() {
                 <h1 className="text-3xl font-bold">Skilld AI</h1>
               </div>
 
-              <MobileSidebar />
+             
+
+              {/* <MobileSidebar /> */}
 
               {/* <label htmlFor="menu-toggle" className="sm:hidden cursor-pointer">
                 <MenuIcon className="h-6 w-6" />
@@ -45,7 +47,7 @@ export default async function LandingPage() {
 
               {/* <input type="checkbox" id="menu-toggle" className="hidden" /> */}
 
-              <nav className="hidden sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static left-0 right-0 top-full sm:bg-transparent shadow-md sm:shadow-none pb-4 sm:pb-0">
+              <div className="flex sm:flex-row items-center gap-4 ">
                 <Link href="/signin">
                   <Button variant="secondary">Sign In</Button>
                 </Link>
@@ -53,7 +55,7 @@ export default async function LandingPage() {
                 {/* <Link href="/signup">
                   <Button>Sign Up</Button>
                 </Link> */}
-              </nav>
+              </div>
             </div>
           </div>
         </header>
