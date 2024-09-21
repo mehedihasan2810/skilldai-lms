@@ -168,7 +168,7 @@ export const ChatInput = ({
   return (
     <div
       className={cn(" mx-auto w-full  flex flex-col  items-center", {
-        "mt-20": !chatId && hasChatMessages,
+        "mt-24 sm:mt-20": !chatId && hasChatMessages,
         "sticky bottom-0 gap-4 mt-0": chatId,
       })}
     >
@@ -183,13 +183,18 @@ export const ChatInput = ({
         </Button>
       )}
 
-      <div className="w-full  flex flex-col  items-center bg-background">
+      <div
+        className={cn("w-full  flex flex-col  items-center bg-background ", {
+          "px-4 md:px-0": !chatId && !hasChatMessages,
+          "px-4 md:px-0 a": chatId,
+        })}
+      >
         <div
           className={cn(
-            "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl mb-6",
+            "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl",
             {
-              "": !chatId && hasChatMessages,
-              "": chatId,
+              "mb-6": !chatId && !hasChatMessages,
+              "mb-6 a": chatId,
             }
           )}
         >
@@ -218,7 +223,7 @@ export const ChatInput = ({
                   : "How can Skilld AI help you today?"
               }
               className={cn(
-                " max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
+                "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
                 {
                   "min-h-24": !chatId && hasChatMessages,
                   "": chatId,
@@ -282,7 +287,7 @@ export const ChatInput = ({
         </div>
 
         {!chatId && hasChatMessages && (
-          <div className="px-4 w-full">
+          <div className="px-4 w-full pb-8 md:pb-0">
             <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
               <div className="mb-2 flex gap-2 justify-between items-center">
                 <p className="text-muted-foreground text-sm font-semibold">
@@ -328,22 +333,6 @@ export const ChatInput = ({
                   ))}
                 </div>
               )}
-              {/* <div className="mb-2">
-              <p className="text-muted-foreground text-sm font-semibold">
-                Get started with the example below
-              </p>
-            </div>
-
-            <div className="flex gap-4">
-              {examplePrompts.map((prompt, i) => (
-                <button
-                  className="bg-background text-muted-foreground p-2 rounded-lg text-sm"
-                  key={i}
-                >
-                  {prompt.title}
-                </button>
-              ))}
-            </div> */}
             </div>
 
             <div className="mt-10">

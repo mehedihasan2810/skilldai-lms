@@ -1,5 +1,6 @@
 "use client";
 
+import { ChatHeader } from "@/components/chat-header";
 import { ChatPanel } from "@/components/chat/panel";
 import { SideNavBar } from "@/components/side-navbar";
 import ChatMobileSidebar from "@/components/side-navbar/chat-mobile-sidebar";
@@ -18,11 +19,14 @@ const ChatPage = ({ params: { id } }: Props) => {
   if (!session) redirect("/signin");
 
   return (
-    <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
-      <SideNavBar />
-      <ChatMobileSidebar />
+    <div className="relative isolate size-full">
+      <ChatHeader />
+      <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
+        <SideNavBar />
+        {/* <ChatMobileSidebar /> */}
 
-      <ChatPanel id={id} />
+        <ChatPanel id={id} />
+      </div>
     </div>
   );
 };

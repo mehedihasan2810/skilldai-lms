@@ -231,8 +231,8 @@ export const ChatPanel = ({ id }: Props) => {
 
   return (
     <>
-      <div
-        className={cn("relative flex w-full pt-4 sm:pt-6", {
+      <div 
+        className={cn("relative flex w-full pt-4 sm:pt-6 flex-1 overflow-x-hidden overflow-y-scroll", {
           "flex-1 overflow-x-hidden overflow-y-scroll": chatId,
           "": !chatId && messages.length === 0,
         })}
@@ -242,7 +242,7 @@ export const ChatPanel = ({ id }: Props) => {
           {fetchingMessages && <Loader2Icon className="animate-spin mx-auto" />}
 
           {!chatId && messages.length === 0 ? (
-            <div>
+            <div className="px-4 sm:px-0">
               <ChatInput
                 hasChatMessages={messages.length === 0}
                 chatId={chatId}

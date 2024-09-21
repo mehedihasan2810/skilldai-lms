@@ -94,8 +94,15 @@ const CodeBlock = ({
     URL.revokeObjectURL(url);
   };
 
+  console.log({ value });
+
   return (
-    <div className={twMerge("hello codeblock relative w-full font-sans", className)}>
+    <div
+      className={twMerge(
+        "hello codeblock relative w-full font-sans",
+        className
+      )}
+    >
       {showHeader && (
         <div className="flex items-center justify-between rounded-t-lg bg-zinc-700 px-4 py-1">
           <span className="text-xs lowercase text-white">{language}</span>
@@ -124,10 +131,14 @@ const CodeBlock = ({
       )}
 
       <SyntaxHighlighter
+        lineProps={{
+          style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+        }}
         language={language}
         style={oneDark}
         PreTag="div"
         showLineNumbers
+        wrapLines={true}
         customStyle={{
           margin: 0,
           width: "100%",

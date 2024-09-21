@@ -60,14 +60,14 @@ export const ChatMessage = ({
         }
         `}
       > */}
-      <div className={`border rounded-md p-1`}>
+      <div className={`border rounded-md p-1 shrink-0`}>
         {role === "user" ? (
           <UserIcon size={20} />
         ) : (
           <Image
             src="/skilld-logo.png"
             alt="Ai assistant logo"
-            className="size-5"
+            className="size-5 object-contain shrink-0"
             width={20}
             height={20}
           />
