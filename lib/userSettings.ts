@@ -18,7 +18,9 @@ const defaultSettings: SettingsSchema = {
 };
 
 export const getSettings = (): SettingsSchema => {
-  const storedSettings = window.localStorage.getItem(settingsLocalStorageKey);
+  const storedSettings = window
+    ? window.localStorage.getItem(settingsLocalStorageKey)
+    : undefined;
 
   if (!storedSettings) {
     return defaultSettings;

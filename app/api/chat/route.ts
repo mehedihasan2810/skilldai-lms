@@ -11,9 +11,9 @@ export const maxDuration = 60;
 // });
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages, user_email } = await req.json();
 
-  console.log({ messages: messages[0] });
+  console.log({ user_email, messages });
 
   const result = await streamText({
     model: anthropic("claude-3-5-sonnet-20240620"),
@@ -22,10 +22,21 @@ export async function POST(req: Request) {
 
     messages: convertToCoreMessages(messages),
     // ...options,
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "skilldai-function", // Trace name
+      metadata: {
+        // langfuseTraceId: "trace-123", // Langfuse trace
+        tags: [user_email], // Custom tags
+        userId: user_email, // Langfuse user
+        sessionId: "skilldai-session", // Langfuse session
+        user: user_email, // Any custom attribute recorded in metadata
+      },
+    },
   });
 
-  return result.toAIStreamResponse();
-  // return result.toDataStreamResponse();
+  // return result.toAIStreamResponse();
+  return result.toDataStreamResponse();
 }
 
 // import { ArtifactoSystemPrompt } from "@/app/api/chat/systemPrompt";

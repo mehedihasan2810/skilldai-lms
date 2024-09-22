@@ -25,8 +25,9 @@ type Props = {
 
 export const ChatPanel = ({ id }: Props) => {
   // Get settings and supabase instance
-  const settings = getSettings();
+  // const settings = getSettings();
   const { supabase, session } = useSupabase();
+  console.log({ session });
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -110,6 +111,7 @@ export const ChatPanel = ({ id }: Props) => {
       }
     },
     sendExtraMessageFields: true,
+    // body: { user_email: session?.user.email || "userrrr" },
   });
 
   // Scroll as new messages are added
@@ -208,9 +210,14 @@ export const ChatPanel = ({ id }: Props) => {
     //   ...selectedArtifacts.map((url) => ({ url })),
     // ];
 
+    console.log({ user: session?.user.email });
+
     const options = files ? { experimental_attachments: files } : {};
     // console.log({ files });
-    handleSubmit(event, options);
+    handleSubmit(event, {
+      body: { user_email: session?.user.email },
+      ...options,
+    });
 
     // append(
     //   {

@@ -202,10 +202,10 @@ export const ChatInput = memo(function ChatInput({
   }, []);
 
   // Handle model change and update settings
-  const handleModelChange = (newModel: Models) => {
-    setModel(newModel);
-    updateSettings({ ...getSettings(), model: newModel });
-  };
+  // const handleModelChange = (newModel: Models) => {
+  //   setModel(newModel);
+  //   updateSettings({ ...getSettings(), model: newModel });
+  // };
 
   return (
     <>
