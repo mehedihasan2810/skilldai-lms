@@ -177,7 +177,7 @@ export const ChatPanel = ({ id }: Props) => {
   const handleRemoveAttachment: ChatInputProps["onRemoveAttachment"] = (
     attachment
   ) => {
-    // setFiles(null);
+    setFiles(null);
     setAttachments((prev) =>
       prev.filter((item) => item.url !== attachment.url)
     );
@@ -255,7 +255,7 @@ export const ChatPanel = ({ id }: Props) => {
 
     setAttachments([]);
     setSelectedArtifacts([]);
-    // setFiles(null);
+    setFiles(null);
   };
 
   return (

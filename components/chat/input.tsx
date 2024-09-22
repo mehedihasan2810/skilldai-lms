@@ -152,31 +152,31 @@ export const ChatInput = memo(function ChatInput({
     console.log(e.target.files);
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      const file = e.target.files[0];
+      //   const file = e.target.files[0];
 
-      if (file.type.includes("image/") || file.type.includes("text/")) {
-        // console.log(e.target.files);
-        onAddFiles(e.target.files);
-      } else {
-        const contents = await Promise.all(
-          filesArray.map(async (file) => await convertFileToText(file))
-        );
-        console.log({ contents });
+      //   if (file.type.includes("image/") || file.type.includes("text/")) {
+      //     // console.log(e.target.files);
+      //     onAddFiles(e.target.files);
+      //   } else {
+      const contents = await Promise.all(
+        filesArray.map(async (file) => await convertFileToText(file))
+      );
+      console.log({ contents });
 
-        // const content = await convertFileToText(file);
-        // console.log({ content });
+      // const content = await convertFileToText(file);
+      // console.log({ content });
 
-        const convertedFiles = filesArray.map((f, i) =>
-          convertContentToTextFile(contents[i], f.name)
-        );
-        // console.log({ convertedFiles });
-        // const fileList = convertFilesToFileList([convertedFiles]);
+      const convertedFiles = filesArray.map((f, i) =>
+        convertContentToTextFile(contents[i], f.name)
+      );
+      // console.log({ convertedFiles });
+      // const fileList = convertFilesToFileList([convertedFiles]);
 
-        const fileList = fileToFileList(convertedFiles);
-        // console.log({ fileList });
+      const fileList = fileToFileList(convertedFiles);
+      // console.log({ fileList });
 
-        onAddFiles(fileList);
-      }
+      onAddFiles(fileList);
+      //   }
     }
 
     if (e.target.files) {
@@ -309,7 +309,7 @@ export const ChatInput = memo(function ChatInput({
                   type="file"
                   // accept="image/*"
                   accept=".js,.jsx,.ts,.tsx,.py,.java,.cpp,.c,.cs,.rb,.php,.html,.css,.scss,.sass,.less,.txt,.mjs"
-                  multiple
+                  // multiple
                   ref={fileInputRef}
                   style={{ display: "none" }}
                   onChange={handleFileChange}
@@ -361,8 +361,8 @@ export const ChatInput = memo(function ChatInput({
               <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
                 <div className="mb-1 flex gap-2 justify-between items-center">
                   <p className="text-muted-foreground text-sm font-semibold">
-                    {attachments && attachments.length > 0
-                      ? `${attachments.length} file added`
+                    {files && files.length > 0
+                      ? `${files.length} file added`
                       : "Get started with the example below"}
                   </p>
 
