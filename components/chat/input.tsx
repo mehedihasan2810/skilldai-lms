@@ -10,7 +10,7 @@ import {
   PaperclipIcon,
   PauseIcon,
 } from "lucide-react";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, SyntheticEvent, useEffect, useRef, useState } from "react";
 import Textarea from "react-textarea-autosize";
 import {
   Select,
@@ -28,7 +28,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui";
-import { cn, convertFileToBase64 } from "@/lib/utils";
+import {
+  cn,
+  convertContentToTextFile,
+  convertFileToBase64,
+  convertFileToText,
+  fileToFileList,
+} from "@/lib/utils";
 import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
@@ -78,11 +84,14 @@ const examplePrompts = [
 ];
 
 export type Props = {
+  files: FileList | null;
+  setFiles: (f: FileList | null) => void;
+  onAddFiles: (files: FileList) => void;
   hasChatMessages: boolean;
   chatId: string | null;
   input: string;
   setInput: (value: string) => void;
-  onSubmit: () => void;
+  onSubmit: (event?: SyntheticEvent) => void;
   isLoading: boolean;
   recording: boolean;
   onStartRecord: () => void;
@@ -96,6 +105,9 @@ export type Props = {
 };
 
 export const ChatInput = memo(function ChatInput({
+  files,
+  setFiles,
+  onAddFiles,
   hasChatMessages,
   chatId,
   input,
@@ -137,13 +149,47 @@ export const ChatInput = memo(function ChatInput({
 
   // Handle file selection and conversion to base64
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.files);
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files);
+      const file = e.target.files[0];
+
+      if (file.type.includes("image/") || file.type.includes("text/")) {
+        // console.log(e.target.files);
+        onAddFiles(e.target.files);
+      } else {
+        const contents = await Promise.all(
+          filesArray.map(async (file) => await convertFileToText(file))
+        );
+        console.log({ contents });
+
+        // const content = await convertFileToText(file);
+        // console.log({ content });
+
+        const convertedFiles = filesArray.map((f, i) =>
+          convertContentToTextFile(contents[i], f.name)
+        );
+        // console.log({ convertedFiles });
+        // const fileList = convertFilesToFileList([convertedFiles]);
+
+        const fileList = fileToFileList(convertedFiles);
+        // console.log({ fileList });
+
+        onAddFiles(fileList);
+      }
+    }
+
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
       const newAttachments = await Promise.all(
         filesArray.map(async (file) => ({
           url: await convertFileToBase64(file),
+          // url: file.type.includes("image/")
+          //   ? await convertFileToBase64(file)
+          //   : await convertFileToText(file),
           name: file.name,
           contentType: file.type,
+          // contentType: file.type.includes("image/") ? file.type : "text/plain",
         }))
       );
       onAddAttachment(newAttachments);
@@ -161,214 +207,249 @@ export const ChatInput = memo(function ChatInput({
     updateSettings({ ...getSettings(), model: newModel });
   };
 
-  console.count("input");
-
   return (
     <>
-    <div
-      className={cn(" mx-auto w-full  flex flex-col  items-center sticky bottom-0 gap-4", {
-        "mt-24 sm:mt-20 ": !chatId && hasChatMessages,
-        "mt-0": chatId,
-      })}
-    >
-      {chatId && showScrollButton && (
-        <Button
-          onClick={handleManualScroll}
-          variant="outline"
-          size="icon"
-          className="rounded-full shadow-lg w-8 h-8 shrink-0 absolute -top-14 "
-        >
-          <ArrowDownIcon className="h-4 w-4" />
-        </Button>
-      )}
-
       <div
-        className={cn("w-full  flex flex-col  items-center bg-background pb-5", {
-          "px-4 md:px-0": !chatId && !hasChatMessages,
-          "px-4 md:px-0 a": chatId,
-        })}
+        className={cn(
+          " mx-auto w-full  flex flex-col  items-center sticky bottom-0 gap-4",
+          {
+            "mt-24 sm:mt-20 ": !chatId && hasChatMessages,
+            "mt-0": chatId,
+          }
+        )}
       >
+        {chatId && showScrollButton && (
+          <Button
+            onClick={handleManualScroll}
+            variant="outline"
+            size="icon"
+            className="rounded-full shadow-lg w-8 h-8 shrink-0 absolute -top-14 "
+          >
+            <ArrowDownIcon className="h-4 w-4" />
+          </Button>
+        )}
+
         <div
           className={cn(
-            "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl",
+            "w-full  flex flex-col  items-center bg-background pb-5",
             {
-              "": !chatId && !hasChatMessages,
-              " a": chatId,
+              "px-4 md:px-0": !chatId && !hasChatMessages,
+              "px-4 md:px-0 a": chatId,
             }
           )}
         >
-          {/* Attachment preview */}
-          {chatId && attachments && attachments.length > 0 && (
-            <div className="flex items-center gap-2 mb-2">
-              {attachments.map((attachment, index) => (
-                <AttachmentPreviewButton
-                  key={index}
-                  value={attachment}
-                  onRemove={onRemoveAttachment}
-                />
-              ))}
-            </div>
-          )}
-
-          <div className="flex gap-2 items-start">
-            {/* Main input textarea */}
-            <Textarea
-              ref={inputRef}
-              tabIndex={0}
-              onKeyDown={onKeyDown}
-              placeholder={
-                chatId
-                  ? "Reply to Skilld AI..."
-                  : "How can Skilld AI help you today?"
+          <div
+            className={cn(
+              "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl",
+              {
+                "": !chatId && !hasChatMessages,
+                " a": chatId,
               }
-              className={cn(
-                "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
-                {
-                  "min-h-24": !chatId && hasChatMessages,
-                  "": chatId,
-                }
-              )}
-              autoFocus
-              spellCheck={false}
-              autoComplete="off"
-              autoCorrect="off"
-              name="message"
-              rows={1}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-
-            {/* Hidden file input */}
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              ref={fileInputRef}
-              style={{ display: "none" }}
-              onChange={handleFileChange}
-            />
-
-            {/* File upload button */}
-
-            {chatId && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-8"
-                onClick={handleFileUpload}
-              >
-                <PaperclipIcon className="size-4" />
-              </Button>
             )}
-            {!chatId && !hasChatMessages && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-8"
-                onClick={handleFileUpload}
-              >
-                <PaperclipIcon className="size-4" />
-              </Button>
-            )}
-
-            <Button
-              onClick={isLoading ? stopGenerating : onSubmit}
-              size="icon"
-              className="size-7"
-            >
-              {isLoading ? (
-                <CircleStopIcon className="w-4 h-4" />
-              ) : (
-                <ArrowUpIcon className="w-4 h-4" />
-              )}
-            </Button>
-          </div>
-        </div>
-
-        {!chatId && hasChatMessages && (
-          <div className="px-4 w-full pb-8 md:pb-0">
-            <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
-              <div className="mb-2 flex gap-2 justify-between items-center">
-                <p className="text-muted-foreground text-sm font-semibold">
-                  {attachments && attachments.length > 0
-                    ? `${attachments.length} file added`
-                    : "Get started with the example below"}
-                </p>
-
-                <button
-                  className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground w-max"
-                  onClick={handleFileUpload}
-                >
-                  <PaperclipIcon className="size-4" /> Add content
-                </button>
+          >
+            {/* Attachment preview */}
+            {/* {chatId && attachments && attachments.length > 0 && (
+              <div className="flex items-center gap-2 mb-2">
+                {attachments.map((attachment, index) => (
+                  <AttachmentPreviewButton
+                    key={index}
+                    value={attachment}
+                    onRemove={onRemoveAttachment}
+                  />
+                ))}
               </div>
-              {attachments && attachments.length > 0 ? (
-                <div className="flex items-center gap-2">
-                  {attachments.map((attachment, index) => (
-                    <AttachmentPreviewButton
-                      key={index}
-                      value={attachment}
-                      onRemove={onRemoveAttachment}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                  {examplePrompts.map((prompt, i) => (
-                    <Tooltip key={i}>
-                      <TooltipTrigger>
-                        {" "}
-                        <button
-                          onClick={() => setInput(prompt.prompt)}
-                          className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
-                        >
-                          {prompt.title}
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Try this prompt</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
-                </div>
-              )}
+            )} */}
+            {chatId && files && files.length > 0 && (
+              <div className="flex items-center gap-2 mb-2">
+                {Array.from(files).map((file, index) => (
+                  <AttachmentPreviewButton
+                    key={index}
+                    file={file}
+                    onRemove={onRemoveAttachment}
+                  />
+                ))}
+              </div>
+            )}
+
+            <div
+            // className="flex gap-2 items-start"
+            >
+              <form
+                className="flex gap-2 items-start"
+                onSubmit={(e) => onSubmit(e)}
+              >
+                <Textarea
+                  ref={inputRef}
+                  tabIndex={0}
+                  onKeyDown={onKeyDown}
+                  placeholder={
+                    chatId
+                      ? "Reply to Skilld AI..."
+                      : "How can Skilld AI help you today?"
+                  }
+                  className={cn(
+                    "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
+                    {
+                      "min-h-24": !chatId && hasChatMessages,
+                      "": chatId,
+                    }
+                  )}
+                  autoFocus
+                  spellCheck={false}
+                  autoComplete="off"
+                  autoCorrect="off"
+                  name="message"
+                  rows={1}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+
+                {/* Hidden file input */}
+                <input
+                  type="file"
+                  // accept="image/*"
+                  accept=".js,.jsx,.ts,.tsx,.py,.java,.cpp,.c,.cs,.rb,.php,.html,.css,.scss,.sass,.less,.txt,.mjs"
+                  multiple
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+
+                {/* File upload button */}
+
+                {chatId && (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="size-8"
+                    onClick={handleFileUpload}
+                  >
+                    <PaperclipIcon className="size-4" />
+                  </Button>
+                )}
+                {!chatId && !hasChatMessages && (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="size-8"
+                    onClick={handleFileUpload}
+                  >
+                    <PaperclipIcon className="size-4" />
+                  </Button>
+                )}
+
+                <Button
+                  type="submit"
+                  onClick={isLoading ? stopGenerating : onSubmit}
+                  size="icon"
+                  className="size-7"
+                >
+                  {isLoading ? (
+                    <CircleStopIcon className="w-4 h-4" />
+                  ) : (
+                    <ArrowUpIcon className="w-4 h-4" />
+                  )}
+                </Button>
+              </form>
             </div>
+          </div>
 
-            <div className="mt-10">
-              <p className="mb-4 font-semibold text-muted-foreground">
-                Your recent chats
-              </p>
+          {!chatId && hasChatMessages && (
+            <div className="px-4 w-full pb-8 md:pb-0">
+              <div className="w-full bg-secondary/90 dark:bg-secondary/40 p-4 rounded-b-lg pt-4 border border-t-0 border-primary/10">
+                <div className="mb-1 flex gap-2 justify-between items-center">
+                  <p className="text-muted-foreground text-sm font-semibold">
+                    {attachments && attachments.length > 0
+                      ? `${attachments.length} file added`
+                      : "Get started with the example below"}
+                  </p>
 
-              <div>
-                {error ? (
-                  <p className="text-muted-foreground">
-                    Unable to fetch recent chats
-                  </p>
-                ) : isChatLoading ? (
-                  <p className="text-muted-foreground">
-                    Recent chats Loading...
-                  </p>
+                  <button
+                    className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground w-max"
+                    onClick={handleFileUpload}
+                  >
+                    <PaperclipIcon className="size-4" /> Add content
+                  </button>
+                </div>
+                {/* {attachments && attachments.length > 0 ? (
+                  <div className="flex items-center gap-2">
+                    {attachments.map((attachment, index) => (
+                      <AttachmentPreviewButton
+                        key={index}
+                        value={attachment}
+                        onRemove={onRemoveAttachment}
+                      />
+                    ))}
+                  </div> */}
+                {files && files.length > 0 ? (
+                  <div className="flex items-center gap-2">
+                    {Array.from(files).map((file, index) => (
+                      <AttachmentPreviewButton
+                        key={index}
+                        file={file}
+                        onRemove={onRemoveAttachment}
+                      />
+                    ))}
+                  </div>
                 ) : (
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {chats?.slice(0, 3).map((chat) => (
-                      <Link
-                        href={`/chat/${chat.id}`}
-                        className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-2"
-                        key={chat.id}
-                      >
-                        <MessageCircle />
-                        <p>{chat.title}</p>
-                        <p>1 day ago</p>
-                      </Link>
+                  <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    {examplePrompts.map((prompt, i) => (
+                      <Tooltip key={i}>
+                        <TooltipTrigger>
+                          {" "}
+                          <button
+                            onClick={() => setInput(prompt.prompt)}
+                            className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
+                          >
+                            {prompt.title}
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Try this prompt</p>
+                        </TooltipContent>
+                      </Tooltip>
                     ))}
                   </div>
                 )}
               </div>
+
+              <div className="mt-10">
+                <p className="mb-2 font-semibold text-muted-foreground">
+                  Your recent chats
+                </p>
+
+                <div>
+                  {error ? (
+                    <p className="text-muted-foreground">
+                      Unable to fetch recent chats
+                    </p>
+                  ) : isChatLoading ? (
+                    <p className="text-muted-foreground">
+                      Recent chats Loading...
+                    </p>
+                  ) : (
+                    <div className="grid md:grid-cols-3 gap-4">
+                      {chats?.slice(0, 3).map((chat) => (
+                        <Link
+                          href={`/chat/${chat.id}`}
+                          className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-2"
+                          key={chat.id}
+                        >
+                          <MessageCircle />
+                          <p>{chat.title}</p>
+                          <p>1 day ago</p>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 });

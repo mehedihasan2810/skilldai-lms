@@ -10,12 +10,12 @@ import { Loader2Icon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSupabase } from "@/lib/supabase";
 import { Chat, Models, Attachment } from "@/app/types";
-import { ArtifactMessagePartData, cn } from "@/lib/utils";
+import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
 import { Props as ReactArtifactProps } from "@/components/artifact/react";
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { useFakeWhisper } from "@/lib/hooks/use-fake-whisper";
 
@@ -38,6 +38,7 @@ export const ChatPanel = ({ id }: Props) => {
     useState<ArtifactMessagePartData | null>(null);
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [selectedArtifacts, setSelectedArtifacts] = useState<string[]>([]);
+  const [files, setFiles] = useState<FileList | null>(null);
 
   // Fetch messages for existing chat
   const fetchMessages = async () => {
@@ -77,7 +78,14 @@ export const ChatPanel = ({ id }: Props) => {
       });
       setChatId(newChat.id);
 
-      await addMessage(supabase, newChat.id, firstMessage);
+      console.log({ firstMessage, secondMessage });
+
+      await addMessage(
+        supabase,
+        newChat.id,
+        firstMessage,
+        firstMessage.experimental_attachments
+      );
       await addMessage(supabase, newChat.id, secondMessage);
 
       router.push(`/chat/${newChat.id}`);
@@ -92,9 +100,11 @@ export const ChatPanel = ({ id }: Props) => {
     append,
     stop: stopGenerating,
     isLoading: generatingResponse,
+    handleSubmit,
   } = useChat({
     initialMessages,
     onFinish: async (message) => {
+      console.log({ chatId, message });
       if (chatId) {
         await addMessage(supabase, chatId, message);
       }
@@ -159,21 +169,27 @@ export const ChatPanel = ({ id }: Props) => {
     setAttachments((prev) => [...prev, ...newAttachments]);
   };
 
+  const handleAddFiles = (newFiles: FileList) => {
+    setFiles(newFiles);
+    // setFiles((prev) => [...prev, ...newFiles]);
+  };
+
   const handleRemoveAttachment: ChatInputProps["onRemoveAttachment"] = (
     attachment
   ) => {
+    // setFiles(null);
     setAttachments((prev) =>
       prev.filter((item) => item.url !== attachment.url)
     );
   };
 
   // Handle sending messages
-  const handleSend = async () => {
+  const handleSend = async (event?: SyntheticEvent) => {
     const query = input.trim();
 
     if (!query) return;
 
-    const settings = getSettings();
+    // const settings = getSettings();
 
     // if (settings.model === Models.claude && !settings.anthropicApiKey) {
     //   toast.error("Please enter your Claude API Key");
@@ -185,46 +201,61 @@ export const ChatPanel = ({ id }: Props) => {
     //   return;
     // }
 
-    const messageAttachments = [
-      ...attachments
-        .filter((item) => item.contentType?.startsWith("image"))
-        .map((item) => ({ url: item.url, contentType: item.contentType })),
-      ...selectedArtifacts.map((url) => ({ url })),
-    ];
+    // const messageAttachments = [
+    //   ...attachments
+    //     .filter((item) => item.contentType?.startsWith("image"))
+    //     .map((item) => ({ url: item.url, contentType: item.contentType })),
+    //   ...selectedArtifacts.map((url) => ({ url })),
+    // ];
 
-    append(
-      {
-        role: "user",
-        content: query,
-        experimental_attachments: messageAttachments,
-      },
-      {
-        body: {
-          model: "claude",
-          // model: "claude-3-5-sonnet-20240620",
-          // model: settings.model,
-          apiKey: process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY,
-          // apiKey: settings.model.startsWith("gpt")
-          //   ? settings.openaiApiKey
-          //   : settings.anthropicApiKey,
-        },
-      }
-    );
+    const options = files ? { experimental_attachments: files } : {};
+    // console.log({ files });
+    handleSubmit(event, options);
+
+    // append(
+    //   {
+    //     role: "user",
+    //     content: query,
+    //     experimental_attachments: messageAttachments,
+    //   },
+    //   {
+    //     body: {
+    //       model: "claude",
+    //       // model: "claude-3-5-sonnet-20240620",
+    //       // model: settings.model,
+    //       apiKey: process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY,
+    //       // apiKey: settings.model.startsWith("gpt")
+    //       //   ? settings.openaiApiKey
+    //       //   : settings.anthropicApiKey,
+    //     },
+    //   }
+    // );
 
     setInput("");
     stopRecording();
+
+    const userAttachment = files
+      ? [
+          {
+            contentType: files[0].type,
+            name: files[0].name,
+            url: await convertFileToBase64(files[0]),
+          },
+        ]
+      : [];
 
     if (chatId) {
       await addMessage(
         supabase,
         chatId,
         { role: "user", content: query },
-        attachments
+        userAttachment
       );
     }
 
     setAttachments([]);
     setSelectedArtifacts([]);
+    // setFiles(null);
   };
 
   return (
@@ -241,6 +272,9 @@ export const ChatPanel = ({ id }: Props) => {
           {!chatId && messages.length === 0 ? (
             <div className="px-4 sm:px-0">
               <ChatInput
+                files={files}
+                setFiles={(f: FileList | null) => setFiles(f)}
+                onAddFiles={handleAddFiles}
                 hasChatMessages={messages.length === 0}
                 chatId={chatId}
                 input={input}
@@ -266,6 +300,9 @@ export const ChatPanel = ({ id }: Props) => {
                 containerRef={messagesRef}
               />
               <ChatInput
+                files={files}
+                setFiles={(f: FileList | null) => setFiles(f)}
+                onAddFiles={handleAddFiles}
                 hasChatMessages={messages.length === 0}
                 chatId={chatId}
                 input={input}

@@ -32,6 +32,11 @@ const getDisplayNameFromRole = (
   }
 };
 
+const getTextFromDataUrl = (dataUrl: string) => {
+  const base64 = dataUrl.split(",")[1];
+  return window.atob(base64);
+};
+
 type Props = {
   role: ChatMessageRoles;
   model: Models | null;
@@ -75,13 +80,32 @@ export const ChatMessage = memo(function ChatMessage({
       </div>
 
       <div className="flex flex-col gap-2">
-        {attachments.length > 0 && (
+        <div className="flex flex-row gap-2">
+          {attachments.map((attachment) =>
+            attachment.contentType?.startsWith("image") ? (
+              <img
+                className="rounded-md w-40 mb-3"
+                key={attachment.name}
+                src={attachment.url}
+                alt={attachment.name}
+              />
+            ) : attachment.contentType?.startsWith("text") ? (
+              <div
+                key={attachment.name}
+                className="text-xs w-40 h-24 overflow-hidden text-zinc-400 border p-2 rounded-md dark:bg-zinc-800 dark:border-zinc-700 mb-3"
+              >
+                {getTextFromDataUrl(attachment.url)}
+              </div>
+            ) : null
+          )}
+        </div>
+        {/* {attachments.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap">
             {attachments.map((attachment, index) => (
-              <AttachmentPreviewButton key={index} value={attachment} />
+              <AttachmentPreviewButton key={index} file={attachment} />
             ))}
           </div>
-        )}
+        )} */}
 
         {role === "user" && (
           <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words whitespace-pre-wrap">

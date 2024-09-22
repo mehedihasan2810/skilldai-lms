@@ -10,6 +10,37 @@ export const convertFileToBase64 = (file: File): Promise<string> => {
   });
 };
 
+export const convertFileToText = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    // reader.readAsText(file);
+    reader.readAsText(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+};
+
+export const convertContentToTextFile = (
+  fileContent: string,
+  fileName: string
+) => {
+  const blob = new Blob([fileContent], { type: "text/plain" });
+  const file = new File([blob], fileName, { type: blob.type });
+  return file;
+};
+
+export const convertBlobToFile = (blob: Blob, fileName: string) => {
+  // Convert Blob to File by specifying a filename and MIME type
+  const file = new File([blob], fileName, { type: blob.type });
+  return file;
+};
+
+export function fileToFileList(files: File[]) {
+  const dataTransfer = new DataTransfer();
+  files.forEach((f) => dataTransfer.items.add(f));
+  return dataTransfer.files;
+}
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

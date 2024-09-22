@@ -46,7 +46,7 @@ export const SideNavBar = () => {
               width={20}
               height={20}
             />
-            <Link href="/" className="text-lg font-semibold text-center">
+            <Link href="/new" className="text-lg font-semibold text-center">
               Skilld AI
             </Link>
           </div>
@@ -103,7 +103,7 @@ export const SideNavBar = () => {
   return (
     <div className="hidden sm:flex h-screen max-h-screen flex-col gap-2 justify-between px-2 py-2 pb-4 items-center border-r">
       <div className="flex flex-col gap-2">
-        <Link href="/" className="text-lg font-semibold text-center">
+        <Link href="/new" className="text-lg font-semibold text-center">
           Skilld
         </Link>
 
