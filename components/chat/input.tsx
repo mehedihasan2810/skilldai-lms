@@ -308,7 +308,7 @@ export const ChatInput = memo(function ChatInput({
                 <input
                   type="file"
                   // accept="image/*"
-                  accept=".js,.jsx,.ts,.tsx,.py,.java,.cpp,.c,.cs,.rb,.php,.html,.css,.scss,.sass,.less,.txt,.mjs"
+                  accept=".js,.jsx,.ts,.tsx,.py,.java,.cpp,.c,.cs,.rb,.php,.html,.css,.scss,.sass,.less,.txt,.mjs,.json"
                   // multiple
                   ref={fileInputRef}
                   style={{ display: "none" }}
