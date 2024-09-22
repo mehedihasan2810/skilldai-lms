@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
 import NextTopLoader from "nextjs-toploader";
 import { TooltipProvider } from "@/components/ui";
+import { Analytics } from "@vercel/analytics/react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default async function RootLayout({
           </SupabaseProvider>
         </ThemeProvider>
         <NextTopLoader color="hsl(0 0% 98%)" height={4} showSpinner={false} />
+        <Analytics />
       </body>
     </html>
   );

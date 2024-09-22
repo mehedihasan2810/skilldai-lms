@@ -108,7 +108,7 @@ export const ChatMessage = memo(function ChatMessage({
         )} */}
 
         {role === "user" && (
-          <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words whitespace-pre-wrap">
+          <div className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 max-w-2xl break-words break-all whitespace-pre-wrap">
             {text}
           </div>
         )}

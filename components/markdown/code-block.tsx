@@ -94,14 +94,8 @@ const CodeBlock = ({
     URL.revokeObjectURL(url);
   };
 
-
   return (
-    <div
-      className={twMerge(
-        "hello codeblock relative w-full font-sans",
-        className
-      )}
-    >
+    <div className={twMerge("codeblock relative w-full font-sans", className)}>
       {showHeader && (
         <div className="flex items-center justify-between rounded-t-lg bg-zinc-700 px-4 py-1">
           <span className="text-xs lowercase text-white">{language}</span>
@@ -128,7 +122,6 @@ const CodeBlock = ({
           </div>
         </div>
       )}
-
       <SyntaxHighlighter
         lineProps={{
           style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
@@ -144,6 +137,7 @@ const CodeBlock = ({
           padding: "1.5rem 1rem",
           borderBottomLeftRadius: "8px",
           borderBottomRightRadius: "8px",
+          overflowX: "auto",
         }}
         codeTagProps={{
           style: {
