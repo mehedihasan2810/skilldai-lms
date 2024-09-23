@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "npx next telemetry enable"
+    "lint": "next lint"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^0.0.31",
