@@ -21,8 +21,8 @@ export async function POST(req: Request) {
   console.log({ user_email, messages });
 
   const result = await streamText({
-    // model: anthropic("claude-3-5-sonnet-20240620"),
-    model: groq("llama-3.1-70b-versatile"),
+    model: anthropic("claude-3-5-sonnet-20240620"),
+    // model: groq("llama-3.1-70b-versatile"),
     // model: groq("llama3-70b-8192"),
 
     system: systemPrompt,
