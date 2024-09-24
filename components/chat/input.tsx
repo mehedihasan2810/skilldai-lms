@@ -39,6 +39,7 @@ import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import Link from "next/link";
+import { formatDate } from "@/lib/formate-date";
 
 const examplePrompts = [
   {
@@ -397,14 +398,17 @@ export const ChatInput = memo(function ChatInput({
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
                     {examplePrompts.map((prompt, i) => (
                       <Tooltip key={i}>
-                        <TooltipTrigger>
+                        <TooltipTrigger
+                          onClick={() => setInput(prompt.prompt)}
+                          className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
+                        >
                           {" "}
-                          <button
+                          {/* <button
                             onClick={() => setInput(prompt.prompt)}
                             className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
-                          >
-                            {prompt.title}
-                          </button>
+                          > */}
+                          {prompt.title}
+                          {/* </button> */}
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Try this prompt</p>
@@ -439,7 +443,7 @@ export const ChatInput = memo(function ChatInput({
                         >
                           <MessageCircle />
                           <p>{chat.title}</p>
-                          <p>1 day ago</p>
+                          <p className="text-sm">{formatDate(chat.created_at)}</p>
                         </Link>
                       ))}
                     </div>

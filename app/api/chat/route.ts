@@ -1,4 +1,4 @@
-import { ArtifactoSystemPrompt } from "@/app/api/chat/systemPrompt";
+import { systemPrompt } from "@/app/api/chat/systemPrompt";
 import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
 import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
 import { createOpenAI, openai } from "@ai-sdk/openai";
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     // model: anthropic("claude-3-5-sonnet-20240620"),
     model: groq("llama3-70b-8192"),
 
-    system: ArtifactoSystemPrompt,
+    system: systemPrompt,
 
     messages: convertToCoreMessages(messages),
     // ...options,
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
   return result.toDataStreamResponse();
 }
 
-// import { ArtifactoSystemPrompt } from "@/app/api/chat/systemPrompt";
+// import { systemPrompt } from "@/app/api/chat/systemPrompt";
 // import { createAnthropic } from "@ai-sdk/anthropic";
 // import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
 // import { createOpenAI } from "@ai-sdk/openai";
@@ -108,7 +108,7 @@ export async function POST(req: Request) {
 //         ],
 //       },
 //     ],
-//     system: ArtifactoSystemPrompt,
+//     system: systemPrompt,
 //     ...options,
 //   });
 
