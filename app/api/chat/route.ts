@@ -10,13 +10,19 @@ export const maxDuration = 60;
 //   apiKey: process.env.ANTHROPIC_API_KEY,
 // });
 
+const groq = createOpenAI({
+  baseURL: "https://api.groq.com/openai/v1",
+  apiKey: process.env.GROQ_API_KEY,
+});
+
 export async function POST(req: Request) {
   const { messages, user_email } = await req.json();
 
   console.log({ user_email, messages });
 
   const result = await streamText({
-    model: anthropic("claude-3-5-sonnet-20240620"),
+    // model: anthropic("claude-3-5-sonnet-20240620"),
+    model: groq("llama3-70b-8192"),
 
     system: ArtifactoSystemPrompt,
 
