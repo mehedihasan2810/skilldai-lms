@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
 
   const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
-  const CURRENT_MONTH = new Date().getMonth() + 2;
+  const CURRENT_MONTH = new Date().getMonth() + 1;
   const CURRENT_YEAR = new Date().getFullYear();
 
   const { messages, user_email } = await req.json();
