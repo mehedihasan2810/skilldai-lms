@@ -419,7 +419,7 @@ export const ChatInput = memo(function ChatInput({
                 )}
               </div>
 
-              <div className="mt-10">
+              <div className="mt-8">
                 <p className="mb-2 font-semibold text-muted-foreground">
                   Your recent chats
                 </p>
@@ -435,17 +435,25 @@ export const ChatInput = memo(function ChatInput({
                     </p>
                   ) : (
                     <div className="grid md:grid-cols-3 gap-4">
-                      {chats?.slice(0, 3).map((chat) => (
-                        <Link
-                          href={`/chat/${chat.id}`}
-                          className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-2"
-                          key={chat.id}
-                        >
-                          <MessageCircle />
-                          <p>{chat.title}</p>
-                          <p className="text-sm">{formatDate(chat.created_at)}</p>
-                        </Link>
-                      ))}
+                      {chats && chats.length === 0 ? (
+                        <p className="text-muted-foreground text-sm">
+                          You haven&#39;t created any chats yet
+                        </p>
+                      ) : (
+                        chats?.slice(0, 3).map((chat) => (
+                          <Link
+                            href={`/chat/${chat.id}`}
+                            className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-2"
+                            key={chat.id}
+                          >
+                            <MessageCircle />
+                            <p>{chat.title}</p>
+                            <p className="text-sm">
+                              {formatDate(chat.created_at)}
+                            </p>
+                          </Link>
+                        ))
+                      )}
                     </div>
                   )}
                 </div>

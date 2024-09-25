@@ -3,6 +3,8 @@ import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
 import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
 import { createOpenAI, openai } from "@ai-sdk/openai";
 import { Models } from "@/app/types";
+import { cookies } from "next/headers";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 
 export const maxDuration = 60;
 
@@ -16,9 +18,32 @@ const groq = createOpenAI({
 });
 
 export async function POST(req: Request) {
+  const cookieStore = cookies();
+  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+
+  const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
+  const CURRENT_MONTH = new Date().getMonth() + 2;
+  const CURRENT_YEAR = new Date().getFullYear();
+
   const { messages, user_email } = await req.json();
 
-  console.log({ user_email, messages });
+  console.log({ user_email });
+
+  const { data: tokenUsage, error } = await supabase
+    .from("token_usage")
+    .select("total_tokens")
+    .eq("user_email", user_email)
+    .eq("month", CURRENT_MONTH)
+    .eq("year", CURRENT_YEAR)
+    .single();
+
+  console.log({ tokenUsage, error });
+
+  console.log({ MAX_TOKENS });
+
+  if ((tokenUsage?.total_tokens || 0) >= (Number(MAX_TOKENS) || 0)) {
+    return new Response("Monthly token limit reached", { status: 429 });
+  }
 
   const result = await streamText({
     model: anthropic("claude-3-5-sonnet-20240620"),
@@ -27,6 +52,7 @@ export async function POST(req: Request) {
 
     system: systemPrompt,
 
+    // maxTokens: 50,
     messages: convertToCoreMessages(messages),
     // ...options,
     experimental_telemetry: {
@@ -39,6 +65,24 @@ export async function POST(req: Request) {
         sessionId: "skilldai-session", // Langfuse session
         user: user_email, // Any custom attribute recorded in metadata
       },
+    },
+    onFinish: async ({ finishReason, usage }) => {
+      console.log({ finishReason, usage });
+      const { data, error: updateError } = await supabase
+        .from("token_usage")
+        .upsert(
+          {
+            user_email,
+            month: CURRENT_MONTH,
+            year: CURRENT_YEAR,
+            total_tokens: (tokenUsage?.total_tokens || 0) + usage.totalTokens,
+          },
+          {
+            onConflict: "user_email",
+          }
+        )
+        .select("total_tokens");
+      console.log({ data, updateError });
     },
   });
 

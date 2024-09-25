@@ -27,7 +27,6 @@ export const ChatPanel = ({ id }: Props) => {
   // Get settings and supabase instance
   // const settings = getSettings();
   const { supabase, session } = useSupabase();
-  console.log({ session });
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -109,6 +108,13 @@ export const ChatPanel = ({ id }: Props) => {
       if (chatId) {
         await addMessage(supabase, chatId, message);
       }
+    },
+    onError(error) {
+      console.log({ chatError: error.message });
+
+      toast.error(error.message, {
+        position: "top-center",
+      });
     },
     sendExtraMessageFields: true,
     // body: { user_email: session?.user.email || "userrrr" },
@@ -210,7 +216,7 @@ export const ChatPanel = ({ id }: Props) => {
     //   ...selectedArtifacts.map((url) => ({ url })),
     // ];
 
-    console.log({ user: session?.user.email });
+    // console.log({ user: session?.user.email });
 
     const options = files ? { experimental_attachments: files } : {};
     // console.log({ files });
