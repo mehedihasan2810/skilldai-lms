@@ -443,12 +443,14 @@ export const ChatInput = memo(function ChatInput({
                         chats?.slice(0, 3).map((chat) => (
                           <Link
                             href={`/chat/${chat.id}`}
-                            className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-2"
+                            className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-3"
                             key={chat.id}
                           >
                             <MessageCircle />
-                            <p>{chat.title}</p>
-                            <p className="text-sm">
+                            <p className="break-words  break-all">
+                              {chat.title}
+                            </p>
+                            <p className="text-sm mt-auto">
                               {formatDate(chat.created_at)}
                             </p>
                           </Link>
