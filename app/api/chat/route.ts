@@ -46,13 +46,14 @@ export async function POST(req: Request) {
   }
 
   const result = await streamText({
-    model: anthropic("claude-3-5-sonnet-20240620"),
+    model: anthropic(process.env.LLM_MODEL_NAME!),
+    // model: anthropic("claude-3-5-sonnet-20240620"),
     // model: groq("llama-3.1-70b-versatile"),
     // model: groq("llama3-70b-8192"),
 
     system: systemPrompt,
 
-    // maxTokens: 50,
+    maxTokens: 50,
     messages: convertToCoreMessages(messages),
     // ...options,
     experimental_telemetry: {
