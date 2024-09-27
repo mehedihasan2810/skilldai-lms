@@ -20,6 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useSupabase } from "@/lib/supabase";
 
 const formSchema = z.object({
   password: z
@@ -49,8 +50,9 @@ const formSchema = z.object({
 
 const SetPasswordForm = () => {
   const [isShowPass, setIsShowPass] = useState(false);
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const router = useRouter();
+  const { supabase } = useSupabase();
 
   // const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
