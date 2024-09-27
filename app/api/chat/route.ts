@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 
     system: systemPrompt,
 
-    maxTokens: 50,
+    // maxTokens: 50,
     messages: convertToCoreMessages(messages),
     // ...options,
     experimental_telemetry: {
