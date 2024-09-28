@@ -21,7 +21,7 @@ type Props = {
 export const UserButton = ({ expanded = false }: Props) => {
   const router = useRouter();
 
-  const { supabase } = useSupabase();
+  const { supabase, session } = useSupabase();
 
   const [isSignoutDialogOpen, setIsSignoutDialogOpen] = useState(false);
 
@@ -60,6 +60,10 @@ export const UserButton = ({ expanded = false }: Props) => {
 
         <DropdownMenuContent className="w-56" align="end" forceMount>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
+
+          <DropdownMenuSeparator />
+
+          <DropdownMenuLabel>hello@gmail.com</DropdownMenuLabel>
 
           <DropdownMenuSeparator />
 

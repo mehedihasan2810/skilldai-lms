@@ -1,5 +1,6 @@
 import { Attachment } from "@/app/types";
 import { SupabaseContextType } from "@/lib/supabase/types";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export const getChats = async (
   supabase: SupabaseContextType["supabase"],
@@ -93,4 +94,24 @@ export const addMessage = async (
   }
 
   return message;
+};
+
+export const addFeedback = async (feedback: string, email: string) => {
+  const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("feedback")
+    .insert({
+      feedback,
+      sender_email: email,
+    })
+    .select("id");
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
 };

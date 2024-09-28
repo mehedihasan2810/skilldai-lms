@@ -23,6 +23,7 @@ import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import { ChatItem } from "./chat-item";
+import FeedbackForm from "../feedback-form";
 
 const ChatMobileSidebar = () => {
   const [open, setOpen] = useState(false);
@@ -81,7 +82,8 @@ const ChatMobileSidebar = () => {
             {error && <p className="text-red-500">Could not fetch chats</p>}
           </div>
 
-          <div className="flex items-center justify-between gap-4 mt-2">
+          <div className="flex items-center gap-4 mt-2">
+            <FeedbackForm />
             <ThemeToggle />
             <UserButton />
           </div>

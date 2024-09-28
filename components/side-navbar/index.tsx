@@ -13,6 +13,7 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import { ThemeToggle } from "../theme-toggle";
 import Image from "next/image";
+import FeedbackForm from "../feedback-form";
 
 export const SideNavBar = () => {
   const [open, setOpen] = useState(false);
@@ -83,7 +84,7 @@ export const SideNavBar = () => {
           {error && <p className="text-red-500">Could not fetch chats</p>}
         </div>
 
-        <div className="flex justify-between gap-4 mt-2">
+        <div className="space-y-4 mt-2">
           {/* <a
             href="https://github.com/13point5/open-artifacts"
             target="_blank"
@@ -93,8 +94,12 @@ export const SideNavBar = () => {
             <span className="text-sm font-medium">GitHub Repo</span>
           </a>
           <UserSettings showLabel /> */}
+          
+          <FeedbackForm expanded/>
+          <div className="flex gap-4 items-center justify-center w-full">
           <ThemeToggle />
           <UserButton expanded />
+          </div>
         </div>
       </div>
     );
@@ -129,6 +134,7 @@ export const SideNavBar = () => {
           <Image src="/github.svg" height="24" width="24" alt="github logo" />
         </a>
         <UserSettings /> */}
+        <FeedbackForm/>
         <ThemeToggle />
         <UserButton />
       </div>
