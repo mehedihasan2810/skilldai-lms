@@ -59,11 +59,16 @@ export const UserButton = ({ expanded = false }: Props) => {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-56" align="end" forceMount>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
 
-          <DropdownMenuSeparator />
+          {/* <DropdownMenuSeparator /> */}
 
-          <DropdownMenuLabel>hello@gmail.com</DropdownMenuLabel>
+          <DropdownMenuLabel
+            className="truncate"
+            title={session?.user.email ?? ""}
+          >
+            {session?.user.email ?? ""}
+          </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
 
