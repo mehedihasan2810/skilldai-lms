@@ -71,6 +71,34 @@ export const createChat = async (
   return data[0];
 };
 
+export const deleteChat = async (chatId: string) => {
+  const supabase = createClientComponentClient();
+  const { data: messageData, error } = await supabase
+    .from("messages")
+    .delete()
+    .eq("chat_id", chatId)
+    .select("id");
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  const { data: chatData, error: chatError } = await supabase
+    .from("chats")
+    .delete()
+    .eq("id", chatId)
+    .select("id")
+    .single();
+
+  if (chatError) {
+    console.error(chatError);
+    throw new Error(chatError.message);
+  }
+
+  return { messageData, chatData };
+};
+
 export const addMessage = async (
   supabase: SupabaseContextType["supabase"],
   chatId: string | null,
