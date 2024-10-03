@@ -42,10 +42,15 @@ import Link from "next/link";
 import { formatDate } from "@/lib/formate-date";
 
 const examplePrompts = [
+  // {
+  //   title: "Explain and Compare JavaScript Variables",
+  //   prompt:
+  //     "Explain this JavaScript code and the differences between let, const, and var:\n\nlet x = 5;\nconst PI = 3.14;\nvar oldWay = 'deprecated';\n\nAlso, when should I use each of these declaration keywords?",
+  // },
   {
-    title: "Explain and Compare JavaScript Variables",
+    title: "how do i use this platform?",
     prompt:
-      "Explain this JavaScript code and the differences between let, const, and var:\n\nlet x = 5;\nconst PI = 3.14;\nvar oldWay = 'deprecated';\n\nAlso, when should I use each of these declaration keywords?",
+      "how do i use this platform?",
   },
   {
     title: "Analyze Python Equality Operators",
