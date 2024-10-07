@@ -61,8 +61,8 @@ export async function POST(req: Request) {
   const streamData = new StreamData();
 
   const result = await streamObject({
-    model: openai("gpt-4o-mini"),
-    // model: anthropic("claude-3-5-sonnet-20240620"),
+    // model: openai("gpt-4o-mini"),
+    model: anthropic("claude-3-5-sonnet-20240620"),
     // output: "array",
     schema: courseSchema,
     // prompt: `Generate 1 notifications for a messages app in this context: make one`,
