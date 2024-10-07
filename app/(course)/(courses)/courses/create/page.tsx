@@ -31,7 +31,7 @@ import {
 
 import { z } from "zod";
 import PageContainer from "@/components/dashboard/page-container";
-import { Loader } from "lucide-react";
+import { Loader, X } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 
 const formSchema = z.object({
@@ -133,7 +133,15 @@ const Page = () => {
             console.log("Inserted course quiz");
           }
         }
-        toast.success("Course generated successfully");
+
+        toast.success("Course generated successfully", {
+          duration: 20000,
+          position: "top-center",
+          action: {
+            label: "X",
+            onClick: () => {},
+          },
+        });
 
         setIsCourseSaveComplete(false);
       } catch (error) {
