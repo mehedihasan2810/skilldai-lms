@@ -1,7 +1,9 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { streamObject } from "ai";
+import { generateObject, streamObject } from "ai";
 import { z } from "zod";
 import { courseSchema } from "./schema";
+import { cookies } from "next/headers";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 
 export const maxDuration = 60;
 
@@ -38,32 +40,93 @@ Generate a course on the topic "${courseTopic}" for ${targetAudience} at a ${dif
 }
 
 export async function POST(req: Request) {
-  try {
-    const { courseTopic, targetAudience, difficultyLevel } = await req.json();
+  const cookieStore = cookies();
+  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
 
-    // Validate input data (if needed)
-    // You can define a separate Zod schema for input validation if required
+  const { courseTopic, targetAudience, difficultyLevel } = await req.json();
 
-    console.log({ courseTopic, targetAudience, difficultyLevel });
+  // Validate input data (if needed)
+  // You can define a separate Zod schema for input validation if required
 
-    // Ensure that the required parameters exist in the input data
-    if (!courseTopic || !targetAudience || !difficultyLevel) {
-      return new Response("Missing required fields", { status: 400 });
-    }
+  console.log({ courseTopic, targetAudience, difficultyLevel });
 
-    const result = await streamObject({
-      model: anthropic("claude-3-5-sonnet-20240620"),
-      output: "array",
-      schema: courseSchema,
-      system: systemPrompt,
-      prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel),
-    });
-
-    return result.toTextStreamResponse();
-  } catch (error) {
-    console.error("Error generating course:", error);
-    return new Response("Failed to generate course", { status: 500 });
+  // Ensure that the required parameters exist in the input data
+  if (!courseTopic || !targetAudience || !difficultyLevel) {
+    return new Response("Missing required fields", { status: 400 });
   }
+
+  const result = await streamObject({
+    model: anthropic("claude-3-5-sonnet-20240620"),
+    // output: "array",
+    schema: courseSchema,
+    system: systemPrompt,
+    prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel),
+    onFinish: async ({ object }) => {
+      console.log("object  titlee", object?.title);
+      const generatedCourse = object!;
+
+      const { data: course, error: courseError } = await supabase
+        .from("courses")
+        .insert({
+          title: generatedCourse.title,
+          description: generatedCourse.description,
+        })
+        .select("*")
+        .single();
+
+      if (courseError) {
+        console.error("Error inserting course:", courseError);
+        throw new Error("Failed to insert course");
+        // return new Response("Failed to insert course", { status: 500 });
+      }
+
+      const sections = generatedCourse.sections;
+
+      // Loop through sections and insert them into the database
+      for (const section of sections) {
+        const { title: sectionTitle, content, quizzes } = section;
+
+        // Insert each section
+        const { data: insertedSection, error: sectionError } = await supabase
+          .from("course_sections")
+          .insert({
+            course_id: course.id,
+            title: sectionTitle,
+            content,
+          })
+          .select("*")
+          .single();
+
+        if (sectionError) {
+          console.error("Error inserting section:", sectionError);
+          throw new Error("Failed to insert section");
+          // return new Response("Failed to insert section", { status: 500 });
+        }
+
+        // Insert quizzes for each section
+        for (const quiz of quizzes) {
+          const { question, options, answer } = quiz;
+
+          const { error: quizError } = await supabase
+            .from("course_quizzes")
+            .insert({
+              section_id: insertedSection.id,
+              question,
+              options,
+              answer,
+            });
+
+          if (quizError) {
+            console.error("Error inserting quiz:", quizError);
+            throw new Error("Failed to insert quiz");
+            // return new Response("Failed to insert quiz", { status: 500 });
+          }
+        }
+      }
+    },
+  });
+
+  return result.toTextStreamResponse();
 }
 
 // import { anthropic } from "@ai-sdk/anthropic";

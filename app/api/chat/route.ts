@@ -67,7 +67,7 @@ export async function POST(req: Request) {
         user: user_email, // Any custom attribute recorded in metadata
       },
     },
-    onFinish: async ({ finishReason, usage }) => {
+    onFinish: async ({ finishReason, usage,  }) => {
       console.log({ finishReason, usage });
       const { data, error: updateError } = await supabase
         .from("token_usage")

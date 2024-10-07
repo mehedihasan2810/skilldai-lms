@@ -9,9 +9,17 @@ const Page = () => {
   const { submit, isLoading, object, stop, error } = useObject({
     api: "/api/generate-course",
     schema: courseSchema,
+    onError: (error) => {
+      console.log("Error");
+      console.log({ error });
+    },
+    onFinish({ object }) {
+      console.log("Finish");
+      console.log({ object });
+    },
   });
 
-  console.log({ isLoading, error });
+  console.log({ isLoading });
   console.log(object);
 
   return (
@@ -19,7 +27,7 @@ const Page = () => {
       <Button
         onClick={() =>
           submit({
-            courseTopic: "html",
+            courseTopic: "css",
             targetAudience: "developer",
             difficultyLevel: "beginner",
           })

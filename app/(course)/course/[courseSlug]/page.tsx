@@ -140,7 +140,7 @@ export default  function DocPage({ params }: DocPageProps) {
 
 
         <div className="mx-auto w-full min-w-0">
-          <Markdown text={content?.content} />
+          <Markdown text={content!.content} />
 
           {/* <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
