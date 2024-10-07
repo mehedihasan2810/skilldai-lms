@@ -137,7 +137,7 @@ export function CourseSidebarNavItems({
             key={index}
             href={`/course/${courseId}/?section=${item.id}`}
             className={cn(
-              "group flex gap-2 items-center rounded-md  px-2 py-1 hover:bg-secondary hover:text-secondary-foreground",
+              "group flex gap-2 items-center rounded-md  px-3 py-2 hover:bg-secondary hover:text-secondary-foreground",
               { "bg-secondary": item.id === currentSectionId }
               // item.disabled && "cursor-not-allowed opacity-60",
               // pathname === item.href

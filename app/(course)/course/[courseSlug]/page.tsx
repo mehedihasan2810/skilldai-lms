@@ -37,6 +37,9 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
   const content = courseSections?.find(
     (course) => course.id === searchParams.section
   );
+  const contentIndex = courseSections?.findIndex(
+    (course) => course.id === searchParams.section
+  );
 
   const sectionJsx = error ? (
     <p className="text-red-500">
@@ -63,7 +66,9 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
           <div className="size-12 rounded-full flex justify-center items-center bg-sky-800 text-xl font-bold">
-            1
+            {contentIndex === -1 || contentIndex === undefined
+              ? 1
+              : contentIndex + 1}
           </div>
           <div className="space-y-1">
             <p className="text-sm text-muted-foreground">Chapter 1</p>
@@ -132,6 +137,9 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
         // className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
         {sectionJsx}
+
+
+        
       </main>
     </>
   );

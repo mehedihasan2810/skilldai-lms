@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, PanelLeftClose, PanelRightClose } from "lucide-react";
 import Link from "next/link";
 import { useSidebar } from "@/lib/hooks/use-sidebar";
 import { DashboardNav } from "./dashboard-nav";
@@ -55,9 +55,9 @@ export default function DashboardSidebar({ className }: SidebarProps) {
           </svg> */}
         </Link>
       </div>
-      <ChevronLeft
+      <PanelLeftClose
         className={cn(
-          "absolute -right-3 top-10 z-50 cursor-pointer rounded-full border bg-background text-3xl text-foreground",
+          "absolute -right-3 top-10 z-50 cursor-pointer bg-background text-3xl text-foreground hover:opacity-70",
           isMinimized && "rotate-180"
         )}
         onClick={handleToggle}

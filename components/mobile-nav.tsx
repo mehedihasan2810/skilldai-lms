@@ -1,20 +1,98 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import * as React from "react";
+import Link, { LinkProps } from "next/link";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { Button } from "./ui"
-import { ScrollArea } from "./ui/scroll-area"
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
-import { courseConfig } from "@/config"
-import Image from "next/image"
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { Icons } from "@/components/icons";
+import { Button } from "./ui";
+import { ScrollArea } from "./ui/scroll-area";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { courseConfig } from "@/config";
+import Image from "next/image";
+import { getSectionsByCourseId } from "@/lib/db";
+import { useQuery } from "@tanstack/react-query";
 
 export function MobileNav() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+
+  const sectionId = searchParams.get("section");
+
+  console.log({ sectionId });
+
+  const params = useParams<{ courseSlug: string }>();
+
+  console.log({ params });
+
+  const {
+    data: courseSections,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["sections", params.courseSlug],
+    queryFn: async () => await getSectionsByCourseId(params.courseSlug),
+  });
+
+  console.log({ courseSections });
+
+  const sectionLinkJsx = error ? (
+    <p>Something went wrong!</p>
+  ) : isLoading ? (
+    <div>Loading...</div>
+  ) : (
+    courseSections!.map((section, index) => (
+      <Link
+        onClick={() => {
+          setOpen(false);
+        }}
+        title={section.title}
+        key={index}
+        href={`/course/${params.courseSlug}/?section=${section.id}`}
+        className={cn(
+          "group flex gap-2 sections-center rounded-md  px-3 py-2 hover:bg-secondary hover:text-secondary-foreground mr-4",
+          { "bg-secondary": section.id === sectionId }
+          // section.disabled && "cursor-not-allowed opacity-60",
+          // pathname === section.href
+          //   ? "font-medium text-foreground"
+          //   : "text-muted-foreground"
+        )}
+        // target={section.external ? "_blank" : ""}
+        // rel={section.external ? "noreferrer" : ""}
+      >
+        <div className="p-2 rounded-full bg-sky-800 size-7 flex justify-center items-center text-sm">
+          {index + 1}
+        </div>
+
+        <div>
+          <p className="text-xs text-muted-foreground">Chapter {index + 1}</p>
+          <p className="text-sm">
+            {section.title.split("").length > 18
+              ? `${section.title.slice(0, 18)}...`
+              : section.title}
+          </p>
+        </div>
+
+        {/* {item.label && (
+        <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+          {item.label}
+        </span>
+      )} */}
+      </Link>
+      // <MobileLink
+      //   key={section.id}
+      //   href={`/course/${params.courseSlug}/?section=${section.id}`}
+      //   onOpenChange={setOpen}
+      //   className="hover:bg-secondary hover:text-secondary-foreground px-4 rounded-md py-2 mr-2"
+      // >
+      //   {section.title}
+      // </MobileLink>
+    ))
+  );
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -58,34 +136,21 @@ export function MobileNav() {
       <SheetContent side="left" className="pr-0 pt-20">
         <MobileLink
           href="/"
-          className="flex items-center"
+          className="flex items-center gap-2"
           onOpenChange={setOpen}
         >
-           <Image
+          <Image
             src="/skilld-logo.png"
             alt="Skilld logo"
             width={30}
             height={30}
           />
           {/* <Icons.logo className="mr-2 h-4 w-4" /> */}
-          <span className="font-bold">{siteConfig.name}</span>
+          <span className="font-bold text-lg">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3">
-            {courseConfig.mainNav?.map(
-              (item) =>
-                item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.title}
-                  </MobileLink>
-                )
-            )}
-          </div>
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-3">{sectionLinkJsx}</div>
+          {/* <div className="flex flex-col space-y-2">
             {courseConfig.sidebarNav.map((item, index) => (
               <div key={index} className="flex flex-col space-y-3 pt-6">
                 <h4 className="font-medium">{item.title}</h4>
@@ -113,17 +178,17 @@ export function MobileNav() {
                   ))}
               </div>
             ))}
-          </div>
+          </div> */}
         </ScrollArea>
       </SheetContent>
     </Sheet>
-  )
+  );
 }
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void
-  children: React.ReactNode
-  className?: string
+  onOpenChange?: (open: boolean) => void;
+  children: React.ReactNode;
+  className?: string;
 }
 
 function MobileLink({
@@ -133,18 +198,18 @@ function MobileLink({
   children,
   ...props
 }: MobileLinkProps) {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <Link
       href={href}
       onClick={() => {
-        router.push(href.toString())
-        onOpenChange?.(false)
+        router.push(href.toString());
+        onOpenChange?.(false);
       }}
       className={cn(className)}
       {...props}
     >
       {children}
     </Link>
-  )
+  );
 }

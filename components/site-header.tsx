@@ -7,24 +7,24 @@ import { Icons } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import { buttonVariants } from "./ui";
 import { MobileNav } from "./mobile-nav";
-import { MainNav } from "./main-nav";
+// import { MainNav } from "./main-nav";
 import { ThemeToggle } from "./theme-toggle";
 import { usePathname } from "next/navigation";
 
 export function SiteHeader() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-      <div className="max-w-6xl mx-auto flex h-14 items-center">
+    <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b ">
+      <div className="max-w-6xl mx-auto flex h-14 items-center justify-between px-4">
         {/* <MainNav /> */}
-        <Link href="/" className="mr-4 flex items-center space-x-2 lg:mr-6">
+        <Link href="/courses" className="mr-4 items-center space-x-2 lg:mr-6 hidden lg:flex">
           {/* <Icons.logo className="h-6 w-6" /> */}
           <span className="hidden font-bold lg:inline-block">
             {siteConfig.name}
           </span>
         </Link>
         <MobileNav />
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <div className="flex  items-center justify-between space-x-2 md:justify-end">
           {/* <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />
             comand menu

@@ -45,9 +45,9 @@ const Page = () => {
       <Link
         href={`/course/${course.id}`}
         key={course.id}
-        className="p-4 transition-colors bg-primary/5 hover:bg-primary/10 text-secondary-foreground space-y-3 rounded-md shadow border"
+        className="p-4 transition-colors bg-background space-y-3 rounded-md shadow border border-border/70 hover:bg-primary/5"
       >
-        <h2 className="text-xl">{course.title}</h2>
+        <h2 className="text-xl font-semibold">{course.title}</h2>
         <p className="text-muted-foreground">{course.description}</p>
       </Link>
     ))
