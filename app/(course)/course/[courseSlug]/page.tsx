@@ -65,7 +65,7 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
     <>
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <div className="size-12 rounded-full flex justify-center items-center bg-sky-800 text-xl font-bold">
+          <div className="size-12 rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground text-xl font-bold">
             {contentIndex === -1 || contentIndex === undefined
               ? 1
               : contentIndex + 1}
@@ -139,7 +139,7 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
         {sectionJsx}
 
 
-        
+
       </main>
     </>
   );

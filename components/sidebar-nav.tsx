@@ -137,7 +137,7 @@ export function CourseSidebarNavItems({
             key={index}
             href={`/course/${courseId}/?section=${item.id}`}
             className={cn(
-              "group flex gap-2 items-center rounded-md  px-3 py-2 hover:bg-secondary hover:text-secondary-foreground",
+              "group flex gap-2 items-center rounded-md  px-3 py-2 hover:bg-secondary hover:text-secondary-foreground ",
               { "bg-secondary": item.id === currentSectionId }
               // item.disabled && "cursor-not-allowed opacity-60",
               // pathname === item.href
@@ -147,7 +147,7 @@ export function CourseSidebarNavItems({
             // target={item.external ? "_blank" : ""}
             // rel={item.external ? "noreferrer" : ""}
           >
-            <div className="p-2 rounded-full bg-sky-800 size-7 flex justify-center items-center text-sm">
+            <div className="p-2 rounded-full bg-sky-800 size-7 flex justify-center items-center text-sm text-white dark:text-foreground">
               {index + 1}
             </div>
 

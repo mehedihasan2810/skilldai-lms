@@ -64,7 +64,7 @@ export function MobileNav() {
         // target={section.external ? "_blank" : ""}
         // rel={section.external ? "noreferrer" : ""}
       >
-        <div className="p-2 rounded-full bg-sky-800 size-7 flex justify-center items-center text-sm">
+        <div className="p-2 rounded-full bg-sky-800 size-7 flex justify-center items-center text-sm text-white dark:text-foreground">
           {index + 1}
         </div>
 
