@@ -11,6 +11,7 @@ import { Button } from "./ui"
 import { ScrollArea } from "./ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { courseConfig } from "@/config"
+import Image from "next/image"
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -54,13 +55,19 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
+      <SheetContent side="left" className="pr-0 pt-20">
         <MobileLink
           href="/"
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Icons.logo className="mr-2 h-4 w-4" />
+           <Image
+            src="/skilld-logo.png"
+            alt="Skilld logo"
+            width={30}
+            height={30}
+          />
+          {/* <Icons.logo className="mr-2 h-4 w-4" /> */}
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">

@@ -143,3 +143,39 @@ export const addFeedback = async (feedback: string, email: string) => {
 
   return data;
 };
+
+export const getCourses = async (email: string) => {
+  const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("courses")
+    .select("*")
+    // .eq("user_email", email)
+    .order("created_at");
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getSectionsByCourseId = async (id: string) => {
+  const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("course_sections")
+    .select("*")
+    .eq("course_id", id)
+    .order("created_at");
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};

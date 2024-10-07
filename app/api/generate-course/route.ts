@@ -1,9 +1,10 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { generateObject, streamObject } from "ai";
+import { generateObject, StreamData, streamObject } from "ai";
 import { z } from "zod";
 import { courseSchema } from "./schema";
 import { cookies } from "next/headers";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { openai } from "@ai-sdk/openai";
 
 export const maxDuration = 60;
 
@@ -39,9 +40,11 @@ Generate a course on the topic "${courseTopic}" for ${targetAudience} at a ${dif
 `;
 }
 
+
+
 export async function POST(req: Request) {
   const cookieStore = cookies();
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  // const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
 
   const { courseTopic, targetAudience, difficultyLevel } = await req.json();
 
@@ -55,74 +58,80 @@ export async function POST(req: Request) {
     return new Response("Missing required fields", { status: 400 });
   }
 
+  const streamData = new StreamData();
+
   const result = await streamObject({
-    model: anthropic("claude-3-5-sonnet-20240620"),
+    model: openai("gpt-4o-mini"),
+    // model: anthropic("claude-3-5-sonnet-20240620"),
     // output: "array",
     schema: courseSchema,
+    // prompt: `Generate 1 notifications for a messages app in this context: make one`,
     system: systemPrompt,
     prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel),
     onFinish: async ({ object }) => {
-      console.log("object  titlee", object?.title);
-      const generatedCourse = object!;
+      console.log("finish");
+      console.log(object);
+      // console.log("object  titlee", object?.title);
+      // const generatedCourse = object!;
 
-      const { data: course, error: courseError } = await supabase
-        .from("courses")
-        .insert({
-          title: generatedCourse.title,
-          description: generatedCourse.description,
-        })
-        .select("*")
-        .single();
+      // const { data: course, error: courseError } = await supabase
+      //   .from("courses")
+      //   .insert({
+      //     title: generatedCourse.title,
+      //     description: generatedCourse.description,
+      //   })
+      //   .select("*")
+      //   .single();
 
-      if (courseError) {
-        console.error("Error inserting course:", courseError);
-        throw new Error("Failed to insert course");
-        // return new Response("Failed to insert course", { status: 500 });
-      }
+      // if (courseError) {
+      //   console.error("Error inserting course:", courseError);
+      //   throw new Error("Failed to insert course");
+      //   // return new Response("Failed to insert course", { status: 500 });
+      // }
 
-      const sections = generatedCourse.sections;
+      // const sections = generatedCourse.sections;
 
-      // Loop through sections and insert them into the database
-      for (const section of sections) {
-        const { title: sectionTitle, content, quizzes } = section;
+      // // Loop through sections and insert them into the database
+      // for (const section of sections) {
+      //   const { title: sectionTitle, content, quizzes } = section;
 
-        // Insert each section
-        const { data: insertedSection, error: sectionError } = await supabase
-          .from("course_sections")
-          .insert({
-            course_id: course.id,
-            title: sectionTitle,
-            content,
-          })
-          .select("*")
-          .single();
+      //   // Insert each section
+      //   const { data: insertedSection, error: sectionError } = await supabase
+      //     .from("course_sections")
+      //     .insert({
+      //       course_id: course.id,
+      //       title: sectionTitle,
+      //       content,
+      //     })
+      //     .select("*")
+      //     .single();
 
-        if (sectionError) {
-          console.error("Error inserting section:", sectionError);
-          throw new Error("Failed to insert section");
-          // return new Response("Failed to insert section", { status: 500 });
-        }
+      //   if (sectionError) {
+      //     console.error("Error inserting section:", sectionError);
+      //     throw new Error("Failed to insert section");
+      //     // return new Response("Failed to insert section", { status: 500 });
+      //   }
 
-        // Insert quizzes for each section
-        for (const quiz of quizzes) {
-          const { question, options, answer } = quiz;
+      //   // Insert quizzes for each section
+      //   for (const quiz of quizzes) {
+      //     const { question, options, answer } = quiz;
 
-          const { error: quizError } = await supabase
-            .from("course_quizzes")
-            .insert({
-              section_id: insertedSection.id,
-              question,
-              options,
-              answer,
-            });
+      //     const { error: quizError } = await supabase
+      //       .from("course_quizzes")
+      //       .insert({
+      //         section_id: insertedSection.id,
+      //         question,
+      //         options,
+      //         answer,
+      //       });
 
-          if (quizError) {
-            console.error("Error inserting quiz:", quizError);
-            throw new Error("Failed to insert quiz");
-            // return new Response("Failed to insert quiz", { status: 500 });
-          }
-        }
-      }
+      //     if (quizError) {
+      //       console.error("Error inserting quiz:", quizError);
+      //       throw new Error("Failed to insert quiz");
+      //       // return new Response("Failed to insert quiz", { status: 500 });
+      //     }
+      //   }
+      // }
     },
   });
 

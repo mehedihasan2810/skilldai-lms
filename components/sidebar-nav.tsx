@@ -68,9 +68,17 @@ const sidebarNavs = [
 
 export interface CourseSidebarNavProps {
   config: CourseConfig;
+  courseId: string;
+  courseSections: any[];
+  currentSectionId: string;
 }
 
-export function CourseSidebarNav({ config }: CourseSidebarNavProps) {
+export function CourseSidebarNav({
+  config,
+  courseId,
+  courseSections,
+  currentSectionId,
+}: CourseSidebarNavProps) {
   const pathname = usePathname();
 
   const items = pathname?.startsWith("/charts")
@@ -79,10 +87,11 @@ export function CourseSidebarNav({ config }: CourseSidebarNavProps) {
 
   // console.log({ courseSidenavs });
 
+  const data = useCourseTrackStore((state) => state);
 
-  const data = useCourseTrackStore((state) => state)
+  console.log(data.bears);
 
-  console.log(data.bears)
+  console.log({ courseSections });
 
   return items.length ? (
     <div className="w-full">
@@ -92,7 +101,12 @@ export function CourseSidebarNav({ config }: CourseSidebarNavProps) {
             {item.title}
           </h4>
           {item?.items?.length && ( */}
-      <CourseSidebarNavItems items={courseSidenavs} pathname={pathname} />
+      <CourseSidebarNavItems
+        courseId={courseId}
+        items={courseSections}
+        pathname={pathname}
+        currentSectionId={currentSectionId}
+      />
       {/* )}
         </div>
       ))} */}
@@ -101,13 +115,17 @@ export function CourseSidebarNav({ config }: CourseSidebarNavProps) {
 }
 
 interface CourseSidebarNavItemsProps {
-  items: typeof courseSidenavs;
+  items: any[];
   pathname: string | null;
+  courseId: string;
+  currentSectionId: string;
 }
 
 export function CourseSidebarNavItems({
   items,
   pathname,
+  courseId,
+  currentSectionId,
 }: CourseSidebarNavItemsProps) {
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max gap-2 ">
@@ -117,9 +135,10 @@ export function CourseSidebarNavItems({
           <Link
             title={item.title}
             key={index}
-            href={item.href}
+            href={`/course/${courseId}/?section=${item.id}`}
             className={cn(
-              "group flex gap-2 items-center rounded-md  px-2 py-1 hover:bg-secondary hover:text-secondary-foreground"
+              "group flex gap-2 items-center rounded-md  px-2 py-1 hover:bg-secondary hover:text-secondary-foreground",
+              { "bg-secondary": item.id === currentSectionId }
               // item.disabled && "cursor-not-allowed opacity-60",
               // pathname === item.href
               //   ? "font-medium text-foreground"
@@ -170,8 +189,6 @@ export function CourseSidebarNavItems({
     </div>
   ) : null;
 }
-
-
 
 const courseSidenavs = exampleCourse[0].sections.map((section) => {
   return {

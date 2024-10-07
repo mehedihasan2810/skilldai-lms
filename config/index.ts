@@ -1,10 +1,55 @@
-import { MainNavItem, SidebarNavItem } from "@/types/nav"
+import { MainNavItem, NavItem, SidebarNavItem } from "@/types/nav"
 
 export interface CourseConfig {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
   chartsNav: SidebarNavItem[]
 }
+
+export const navItems: NavItem[] = [
+  {
+    title: "Courses",
+    href: "/courses",
+    icon: "book",
+    label: "Courses",
+  },
+  {
+    title: "Generate course",
+    href: "/courses/create",
+    icon: "plus",
+    label: "Generate course",
+  },
+  // {
+  //   title: "User",
+  //   href: "/dashboard/user",
+  //   icon: "user",
+  //   label: "user",
+  // },
+  // {
+  //   title: "Employee",
+  //   href: "/dashboard/employee",
+  //   icon: "employee",
+  //   label: "employee",
+  // },
+  // {
+  //   title: "Profile",
+  //   href: "/dashboard/profile",
+  //   icon: "profile",
+  //   label: "profile",
+  // },
+  // {
+  //   title: "Kanban",
+  //   href: "/dashboard/kanban",
+  //   icon: "kanban",
+  //   label: "kanban",
+  // },
+  // {
+  //   title: "Login",
+  //   href: "/",
+  //   icon: "login",
+  //   label: "login",
+  // },
+];
 
 
 export const exampleCourse = [

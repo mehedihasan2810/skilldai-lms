@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster } from "react-hot-toast";
+import { Toaster as ReactHostToaster } from "react-hot-toast";
 import ReactQueryProvider from "@/app/react-query-provider";
 import { cookies } from "next/headers";
 import { SupabaseProvider } from "@/lib/supabase";
@@ -12,6 +12,7 @@ import { GeistSans } from "geist/font/sans";
 import NextTopLoader from "nextjs-toploader";
 import { TooltipProvider } from "@/components/ui";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -52,9 +53,10 @@ export default async function RootLayout({
           <SupabaseProvider session={session}>
             <ReactQueryProvider>
               <TooltipProvider>{children}</TooltipProvider>
-              <Toaster />
+              <ReactHostToaster />
             </ReactQueryProvider>
           </SupabaseProvider>
+          <Toaster richColors />
         </ThemeProvider>
         <NextTopLoader color="hsl(0 0% 98%)" height={4} showSpinner={false} />
         <Analytics />
