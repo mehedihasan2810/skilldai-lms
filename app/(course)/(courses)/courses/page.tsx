@@ -1,5 +1,6 @@
 "use client";
 import PageContainer from "@/components/dashboard/page-container";
+import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getCourses } from "@/lib/db";
 import { useSupabase } from "@/lib/supabase";
@@ -26,7 +27,7 @@ const Page = () => {
       Unable to load the courses. Please try again by refreshing the page
     </p>
   ) : isLoading ? (
-    Array.from({ length: 10 }).map((_, i) => (
+    Array.from({ length: 5 }).map((_, i) => (
       <div key={i} className="border p-4 rounded-md bg-primary/5 ">
         <Skeleton className="w-[80%] h-[20px] rounded-md" />
 
@@ -45,10 +46,11 @@ const Page = () => {
       <Link
         href={`/course/${course.id}`}
         key={course.id}
-        className="p-4 transition-colors bg-background space-y-3 rounded-md shadow border border-border/70 hover:bg-primary/5"
+        className="transition-colors bg-background rounded-xl shadow border border-border/70 hover:bg-primary/5 overflow-hidden"
       >
-        <h2 className="text-xl font-semibold">{course.title}</h2>
-        <p className="text-muted-foreground">{course.description}</p>
+        <h2 className="text-xl font-semibold p-4 ">{course.title}</h2>
+        <Separator className=""/>
+        <p className="text-muted-foreground p-4 m-0  h-full bg-opacity-80">{course.description}</p>
       </Link>
     ))
   );

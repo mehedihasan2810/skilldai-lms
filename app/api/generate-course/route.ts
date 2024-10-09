@@ -40,8 +40,6 @@ Generate a course on the topic "${courseTopic}" for ${targetAudience} at a ${dif
 `;
 }
 
-
-
 export async function POST(req: Request) {
   const cookieStore = cookies();
   // const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
@@ -61,15 +59,16 @@ export async function POST(req: Request) {
   const streamData = new StreamData();
 
   const result = await streamObject({
-    // model: openai("gpt-4o-mini"),
-    model: anthropic("claude-3-5-sonnet-20240620"),
+    model: openai("gpt-4o-mini"),
+    // model: anthropic("claude-3-5-sonnet-20240620"),
     // output: "array",
     schema: courseSchema,
     // prompt: `Generate 1 notifications for a messages app in this context: make one`,
     system: systemPrompt,
     prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel),
-    onFinish: async ({ object }) => {
+    onFinish: async ({ object, usage }) => {
       console.log("finish");
+      console.log(usage);
       console.log(object);
       // console.log("object  titlee", object?.title);
       // const generatedCourse = object!;

@@ -9,7 +9,7 @@ import { useSupabase } from "@/lib/supabase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { experimental_useObject as useObject } from "ai/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import {
@@ -79,6 +79,7 @@ const Page = () => {
 
         if (courseError) {
           console.error("Error inserting course:", courseError);
+          setIsCourseSaveComplete(false);
           throw new Error("Failed to insert course");
           // return new Response("Failed to insert course", { status: 500 });
         }
@@ -106,6 +107,7 @@ const Page = () => {
 
           if (sectionError) {
             console.error("Error inserting section:", sectionError);
+            setIsCourseSaveComplete(false);
             throw new Error("Failed to insert section");
             // return new Response("Failed to insert section", { status: 500 });
           }
@@ -126,6 +128,7 @@ const Page = () => {
 
             if (quizError) {
               console.error("Error inserting quiz:", quizError);
+              setIsCourseSaveComplete(false);
               throw new Error("Failed to insert quiz");
               // return new Response("Failed to insert quiz", { status: 500 });
             }
@@ -172,8 +175,24 @@ const Page = () => {
     });
   }
 
+
+
+
   return (
     <PageContainer scrollable>
+      <div>
+
+        {/* {
+          isLoading && (
+<Card className="max-w-lg mx-auto mt-20">
+      <CardContent className="p-6 bg-background/10">
+
+      </CardContent>
+      </Card>
+          )
+        } */}
+      
+      
       <Card className="max-w-lg mx-auto mt-20">
         <CardContent className="p-6 bg-background/10">
           <Form {...form}>
@@ -248,6 +267,7 @@ const Page = () => {
           </Form>
         </CardContent>
       </Card>
+      </div>
     </PageContainer>
   );
 };
