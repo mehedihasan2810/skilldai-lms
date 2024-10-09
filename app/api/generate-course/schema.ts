@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const courseSchema = z.object({
     title: z.string().describe("Title of the course."),
-    description: z.string().describe("Description of the course."),
+    description: z.string().describe("Description of the course withing 25 words."),
     sections: z
       .array(
         z.object({
@@ -21,8 +21,8 @@ export const courseSchema = z.object({
                 answer: z.string().describe("The answer of the quiz question."),
               })
             )
-            .max(5)
-            .describe("The array of up to five quizzes."),
+            .max(3)
+            .describe("The array of up to three quizzes."),
         })
       )
       .min(5)

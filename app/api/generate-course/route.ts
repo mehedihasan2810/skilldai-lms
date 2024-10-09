@@ -12,15 +12,14 @@ export const maxDuration = 60;
 
 // Improved system prompt
 const systemPrompt = `
-You are an expert course creator. Your task is to generate a structured course based on the provided topic, difficulty level, and target audience. The course should consist of:
+You are an expert course creator. Your task is to generate a well-structured course based on the provided topic, difficulty level, and target audience. The course should consist of:
 
 - A Course Title
-- A Short Description (no more than 100 words)
-- Between 5 and 10 sections, each with a title and detailed content.
-- The section content should be in Markdown format (including code snippets, headers, lists, etc.).
-- For each section, include up to 5 quiz questions and answers.
-- Ensure the course is engaging, clear, and tailored to the specified audience and difficulty level (beginner, intermediate, or advanced).
-- Use Markdown formatting for the section content where needed, especially for technical explanations or code examples.
+- A Short Description (no more than 25 words). Please keep the description within 25 words.
+- Maximum 10 Sections, each with a title and detailed content. Please don't generate more than 10 sections.
+- For each section, include up to 3 quiz questions with answers. 
+- Make sure the course is engaging, clear, and tailored to the specified audience and difficulty level (beginner, intermediate, or advanced).
+- Format the content in a way that is easy to follow and provides step-by-step learning.
 `;
 
 // Dynamic user prompt
@@ -33,16 +32,16 @@ function getUserPrompt(
 Generate a course on the topic "${courseTopic}" for ${targetAudience} at a ${difficultyLevel} level. The course should include:
 
 - A course title
-- A short description
-- Between 5 and 10 sections, with each section having a title and detailed content.
-- Section content should be formatted in Markdown, including code snippets, lists, and other Markdown elements.
-- For each section, include up to 5 quiz questions and answers.
+- A short description. Please keep the description within 25 words.
+- Maximum 10 sections with titles and detailed content.
+- For each section, include up to 3 quiz questions and answers
+- The course should be designed to engage the audience, explain concepts in detail, and follow a clear progression.
 `;
 }
 
 export async function POST(req: Request) {
   const cookieStore = cookies();
-  // const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
 
   const { courseTopic, targetAudience, difficultyLevel } = await req.json();
 
@@ -69,7 +68,22 @@ export async function POST(req: Request) {
     onFinish: async ({ object, usage }) => {
       console.log("finish");
       console.log(usage);
-      console.log(object);
+      console.log(object?.title);
+
+      const { data: course, error: courseError } = await supabase
+        .from("course_token_usage")
+        .insert({
+          course_title: object?.title ?? "",
+          course_description: object?.description ?? "",
+          input_token: usage.promptTokens,
+          output_token: usage.completionTokens,
+          total_token: usage.totalTokens,
+        })
+        .select("id")
+        .single();
+
+      console.log({ course, courseError });
+
       // console.log("object  titlee", object?.title);
       // const generatedCourse = object!;
 

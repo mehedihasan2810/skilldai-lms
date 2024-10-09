@@ -31,7 +31,7 @@ import {
 
 import { z } from "zod";
 import PageContainer from "@/components/dashboard/page-container";
-import { Loader, X } from "lucide-react";
+import { Loader, Loader2, X } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 
 const formSchema = z.object({
@@ -44,6 +44,16 @@ const Page = () => {
   const queryClient = useQueryClient();
   const { session } = useSupabase();
   const [isCourseSaveComplete, setIsCourseSaveComplete] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      courseTopic: "",
+      difficultyLabel: "",
+      targetAudience: "",
+    },
+  });
+
   const { submit, isLoading, object, stop, error } = useObject({
     api: "/api/generate-course",
     schema: courseSchema,
@@ -55,8 +65,11 @@ const Page = () => {
     onFinish: async (objectData) => {
       console.log("finish");
       console.log(objectData);
-
       try {
+        if (objectData.error) {
+          console.log("finish error ", objectData.error);
+          throw new Error(objectData.error.message);
+        }
         setIsCourseSaveComplete(true);
         const supabase = createClientComponentClient();
 
@@ -73,6 +86,9 @@ const Page = () => {
             title: generatedCourse.title,
             description: generatedCourse.description,
             user_email: session?.user.email ?? "",
+            topic: form.getValues("courseTopic"),
+            difficulty: form.getValues("difficultyLabel"),
+            target_audience: form.getValues("targetAudience"),
           })
           .select("*")
           .single();
@@ -85,7 +101,7 @@ const Page = () => {
         }
 
         queryClient.setQueryData<any[]>(["courses"], (oldCourses) => {
-          return [...(oldCourses || []), course];
+          return [course, ...(oldCourses || [])];
         });
 
         console.log("Inserted course");
@@ -157,15 +173,6 @@ const Page = () => {
   console.log({ isLoading });
   console.log(object);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      courseTopic: "",
-      difficultyLabel: "",
-      targetAudience: "",
-    },
-  });
-
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ values });
     submit({
@@ -175,98 +182,112 @@ const Page = () => {
     });
   }
 
-
-
+  const sectionCount = object ? (object.sections ?? []).length : 0;
 
   return (
     <PageContainer scrollable>
-      <div>
+      <div className="space-y-8 mt-20">
+        {(isLoading || isCourseSaveComplete) && (
+          <Card className="max-w-lg mx-auto ">
+            <CardContent className="p-6 bg-background/10">
+              <div className="flex items-center gap-4 justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground text-lg font-bold">
+                    {sectionCount}
+                  </div>
 
-        {/* {
-          isLoading && (
-<Card className="max-w-lg mx-auto mt-20">
-      <CardContent className="p-6 bg-background/10">
+                  <p className="font-semibold">
+                    Course section{sectionCount > 1 ? "s" : ""} generated
+                  </p>
+                </div>
+                <Loader2 className="animate-spin size-5" />
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
-      </CardContent>
-      </Card>
-          )
-        } */}
-      
-      
-      <Card className="max-w-lg mx-auto mt-20">
-        <CardContent className="p-6 bg-background/10">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="courseTopic"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Course Topic</FormLabel>
-                    <FormControl>
-                      <Input placeholder="eg: Html" {...field} />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="difficultyLabel"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Difficulty Label</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select difficulty label" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="Beginner">Beginner</SelectItem>
-                        <SelectItem value="Intermediate">
-                          Intermediate
-                        </SelectItem>
-                        <SelectItem value="Advance">Advance</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="targetAudience"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Difficulty Label</FormLabel>
-                    <FormControl>
-                      <Input placeholder="eg: Developers" {...field} />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button
-                disabled={isLoading || isCourseSaveComplete}
-                type="submit"
-                className="w-full flex gap-2 items-center"
+        <Card className="max-w-lg mx-auto ">
+          <CardContent className="p-6 bg-background/10">
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8"
               >
-                {(isLoading || isCourseSaveComplete) && (
-                  <Loader className="size-5 animate-spin" />
-                )}
-                Generate course
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+                <FormField
+                  control={form.control}
+                  name="courseTopic"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Course Topic</FormLabel>
+                      <FormControl>
+                        <Input placeholder="eg: Html" {...field} />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="difficultyLabel"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Difficulty Label</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select difficulty label" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="Beginner">Beginner</SelectItem>
+                          <SelectItem value="Intermediate">
+                            Intermediate
+                          </SelectItem>
+                          <SelectItem value="Advance">Advance</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="targetAudience"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Difficulty Label</FormLabel>
+                      <FormControl>
+                        <Input placeholder="eg: Developers" {...field} />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button
+                  disabled={isLoading || isCourseSaveComplete}
+                  type="submit"
+                  className="w-full flex gap-2 items-center"
+                >
+                  {isLoading || isCourseSaveComplete ? (
+                    <>
+                      {" "}
+                      <Loader className="size-5 animate-spin" /> Generating
+                      course{" "}
+                    </>
+                  ) : (
+                    "Generate course"
+                  )}
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
       </div>
     </PageContainer>
   );

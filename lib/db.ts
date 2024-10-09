@@ -150,7 +150,7 @@ export const getCourses = async (email: string) => {
     .from("courses")
     .select("*")
     // .eq("user_email", email)
-    .order("created_at");
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);
@@ -178,4 +178,21 @@ export const getSectionsByCourseId = async (id: string) => {
   console.log({ data });
 
   return data;
+};
+
+export const deleteCourse = async (courseId: string) => {
+  const supabase = createClientComponentClient();
+  const { data: courseData, error } = await supabase
+    .from("courses")
+    .delete()
+    .eq("id", courseId)
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  return courseData;
 };
