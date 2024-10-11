@@ -260,7 +260,7 @@ const Page = () => {
                   name="targetAudience"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Difficulty Label</FormLabel>
+                      <FormLabel>Target Audience</FormLabel>
                       <FormControl>
                         <Input placeholder="eg: Developers" {...field} />
                       </FormControl>
