@@ -64,7 +64,7 @@ const Page = () => {
     courses!.map((course) => (
       <div
         key={course.id}
-        className="bg-background rounded-xl shadow border border-border/70 overflow-hidden group flex flex-col"
+        className="bg-card text-card-foreground rounded-xl shadow border border-border/70 overflow-hidden group flex flex-col"
       >
         <div className="p-4 flex justify-between gap-2">
           <div>

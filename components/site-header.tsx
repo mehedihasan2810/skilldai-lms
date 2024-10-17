@@ -14,8 +14,8 @@ import { usePathname } from "next/navigation";
 export function SiteHeader() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b ">
-      <div className="max-w-6xl mx-auto flex h-14 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b bg-card text-card-foreground">
+      <div className="max-w-6xl mx-auto flex h-16 items-center justify-between px-4">
         {/* <MainNav /> */}
         <Link href="/courses" className="mr-4 items-center space-x-2 lg:mr-6 hidden lg:flex">
           {/* <Icons.logo className="h-6 w-6" /> */}

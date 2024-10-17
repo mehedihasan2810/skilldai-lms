@@ -58,7 +58,7 @@ export default async function RootLayout({
           </SupabaseProvider>
           <Toaster richColors />
         </ThemeProvider>
-        <NextTopLoader color="hsl(0 0% 98%)" height={4} showSpinner={false} />
+        <NextTopLoader color="hsl(229 100% 62%)" height={4} showSpinner={false} />
         <Analytics />
       </body>
     </html>

@@ -10,6 +10,10 @@ import "react-circular-progressbar/dist/styles.css";
 import { getSectionsByCourseId } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button, buttonVariants } from "@/components/ui";
+import { ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface DocPageProps {
   params: {
@@ -37,6 +41,7 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
   const content = courseSections?.find(
     (course) => course.id === searchParams.section
   );
+
   const contentIndex = courseSections?.findIndex(
     (course) => course.id === searchParams.section
   );
@@ -71,8 +76,15 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
               : contentIndex + 1}
           </div>
           <div className="space-y-1">
-            <p className="text-sm text-muted-foreground">Chapter 1</p>
-            <p>{(content ?? courseSections![0]).title}</p>
+            <p className="text-sm text-muted-foreground">
+              Chapter{" "}
+              {contentIndex === -1 || contentIndex === undefined
+                ? 1
+                : contentIndex + 1}
+            </p>
+            <h1 className="text-lg font-bold">
+              {(content ?? courseSections![0]).title}
+            </h1>
           </div>
         </div>
 
@@ -94,6 +106,45 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
       <div className="mx-auto w-full min-w-0">
         <Markdown text={(content ?? courseSections![0]).content} />
       </div>
+
+      {courseSections![
+        contentIndex === -1 || contentIndex === undefined ? 1 : contentIndex + 1
+      ] ? (
+        <div className="border p-8 rounded-md text-center mt-20">
+          <div className="text-muted-foreground">Next up</div>
+          <div className="text-lg font-bold mb-3">
+            {(contentIndex === -1 || contentIndex === undefined
+              ? 1
+              : contentIndex + 1) + 1}
+            :{" "}
+            {
+              // content ??
+              courseSections![
+                contentIndex === -1 || contentIndex === undefined
+                  ? 1
+                  : contentIndex + 1
+              ].title
+            }
+          </div>
+          <Link
+            href="#"
+            className={buttonVariants({ className: "flex items-center gap-2" })}
+          >
+            Start Chapter{" "}
+            {(contentIndex === -1 || contentIndex === undefined
+              ? 1
+              : contentIndex + 1) + 1}
+            <ArrowRight />
+          </Link>
+        </div>
+      ) : (
+        <div className="border p-8 rounded-md text-center mt-20">
+          <div className="size-fit mx-auto rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground p-4">
+            <Check className="size-10" />
+          </div>
+          <p className="text-lg mt-4">Congratulations! You have completed the course.</p>
+        </div>
+      )}
     </>
   );
 
@@ -137,9 +188,6 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
         // className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
         {sectionJsx}
-
-
-
       </main>
     </>
   );
