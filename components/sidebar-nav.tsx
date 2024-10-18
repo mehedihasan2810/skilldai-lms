@@ -8,6 +8,7 @@ import { CourseConfig, exampleCourse } from "@/config";
 import { SidebarNavItem } from "@/types/nav";
 import ShortUniqueId from "short-unique-id";
 import { useCourseTrackStore } from "@/lib/stores/course-store";
+import { Check } from "lucide-react";
 
 const uid = new ShortUniqueId({ length: 10 });
 
@@ -71,6 +72,7 @@ export interface CourseSidebarNavProps {
   courseId: string;
   courseSections: any[];
   currentSectionId: string;
+  userId: string;
 }
 
 export function CourseSidebarNav({
@@ -78,6 +80,7 @@ export function CourseSidebarNav({
   courseId,
   courseSections,
   currentSectionId,
+  userId,
 }: CourseSidebarNavProps) {
   const pathname = usePathname();
 
@@ -89,9 +92,9 @@ export function CourseSidebarNav({
 
   const data = useCourseTrackStore((state) => state);
 
-  console.log(data.bears);
+  // console.log(data.bears);
 
-  console.log({ courseSections });
+  // console.log({ courseSections });
 
   return items.length ? (
     <div className="w-full">
@@ -106,6 +109,7 @@ export function CourseSidebarNav({
         items={courseSections}
         pathname={pathname}
         currentSectionId={currentSectionId}
+        userId={userId}
       />
       {/* )}
         </div>
@@ -119,6 +123,7 @@ interface CourseSidebarNavItemsProps {
   pathname: string | null;
   courseId: string;
   currentSectionId: string;
+  userId: string;
 }
 
 export function CourseSidebarNavItems({
@@ -126,7 +131,10 @@ export function CourseSidebarNavItems({
   pathname,
   courseId,
   currentSectionId,
+  userId,
 }: CourseSidebarNavItemsProps) {
+
+
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max gap-2 ">
       {items.map(
@@ -148,7 +156,8 @@ export function CourseSidebarNavItems({
             // rel={item.external ? "noreferrer" : ""}
           >
             <div className="p-2 rounded-full bg-sky-800 size-7 flex justify-center items-center text-sm text-white dark:text-foreground">
-              {index + 1}
+              {/* {index + 1} */}
+              {item.completed_users.includes(userId) ? <Check className="font-bold" /> : index + 1}
             </div>
 
             <div>

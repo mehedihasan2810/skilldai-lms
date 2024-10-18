@@ -166,9 +166,23 @@ export const getSectionsByCourseId = async (id: string) => {
   const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("course_sections")
-    .select("*")
+    // .select("*")
+    .select(
+      `
+      *,
+      course_quizzes (
+        id,
+        question,
+        answer,
+        options
+      )
+    `
+    )
     .eq("course_id", id)
+    // .order("created_at", { foreignTable: 'course_sections' });
     .order("created_at");
+
+  console.log("data ", data);
 
   if (error) {
     console.error(error);
@@ -195,4 +209,30 @@ export const deleteCourse = async (courseId: string) => {
   }
 
   return courseData;
+};
+
+export const updateSectionCompletion = async (
+  userId: string,
+  sectionId: string,
+  completedUsers: string[],
+) => {
+
+  console.log({userId, sectionId, completedUsers})
+
+  const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("course_sections")
+    .update({
+      completed_users: [userId, ...completedUsers],
+    })
+    .eq("id", sectionId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
 };

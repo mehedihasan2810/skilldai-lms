@@ -23,11 +23,11 @@ export function MobileNav() {
 
   const sectionId = searchParams.get("section");
 
-  console.log({ sectionId });
+  // console.log({ sectionId });
 
   const params = useParams<{ courseSlug: string }>();
 
-  console.log({ params });
+  // console.log({ params });
 
   const {
     data: courseSections,
@@ -38,7 +38,7 @@ export function MobileNav() {
     queryFn: async () => await getSectionsByCourseId(params.courseSlug),
   });
 
-  console.log({ courseSections });
+  // console.log({ courseSections });
 
   const sectionLinkJsx = error ? (
     <p>Something went wrong!</p>

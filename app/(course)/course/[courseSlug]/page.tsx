@@ -7,25 +7,36 @@ import Markdown from "@/components/markdown/markdown";
 import { Separator } from "@/components/ui/separator";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { getSectionsByCourseId } from "@/lib/db";
-import { useQuery } from "@tanstack/react-query";
+import { getSectionsByCourseId, updateSectionCompletion } from "@/lib/db";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button, buttonVariants } from "@/components/ui";
-import { ArrowRight, Check, ShieldQuestion } from "lucide-react";
+import { ArrowRight, Check, Loader, ShieldQuestion } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Quizzes } from "../_components/quizzes";
+import { useSupabase } from "@/lib/supabase";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { SectionProgress } from "../_components/section-progress";
 
-interface DocPageProps {
+interface PageProps {
   params: {
     courseSlug: string;
   };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function DocPage({ params, searchParams }: DocPageProps) {
-  console.log({ searchParams });
+export default function Page({ params, searchParams }: PageProps) {
+  // console.log({ searchParams });
 
+  const queryClient = useQueryClient();
+
+  const router = useRouter();
+
+  const { session } = useSupabase();
+
+  // console.log({ session });
   const {
     data: courseSections,
     error,
@@ -35,9 +46,19 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
     queryFn: async () => await getSectionsByCourseId(params.courseSlug),
   });
 
-  console.log({ error });
+  // console.log({ courseSections, error });
 
-  // console.log({ courseSections });
+  const updateSectionCompletionMutation = useMutation({
+    mutationFn: async ({
+      userId,
+      sectionId,
+      completedUsers,
+    }: {
+      userId: string;
+      sectionId: string;
+      completedUsers: string[];
+    }) => await updateSectionCompletion(userId, sectionId, completedUsers),
+  });
 
   const content = courseSections?.find(
     (course) => course.id === searchParams.section
@@ -71,7 +92,7 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
     <>
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <div className="size-12 rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground text-xl font-bold">
+          <div className="shrink-0 size-12 rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground text-xl font-bold">
             {contentIndex === -1 || contentIndex === undefined
               ? 1
               : contentIndex + 1}
@@ -89,17 +110,15 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          {/* <div className="text-right">
-            <div>0%</div>
-            <div className="text-sm text-muted-foreground">
-              0/{courseSections?.length} chapters
-            </div>
-          </div>
-          <div className="size-8">
-            <CircularProgressbar value={50} strokeWidth={12} />
-          </div> */}
-        </div>
+        <SectionProgress
+          sectionsLength={courseSections?.length ?? 0}
+          userId={session?.user.id ?? ""}
+          completedSections={
+            courseSections?.filter((section) =>
+              section.completed_users.includes(session?.user.id ?? "")
+            ).length ?? 0
+          }
+        />
       </div>
 
       <Separator className="my-10" />
@@ -120,13 +139,18 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
           </p>
         </div>
 
-       <Quizzes/>
+        <Quizzes
+          quizzes={(content ?? courseSections![0]).course_quizzes}
+          userId={session?.user.id ?? ""}
+          sectionId={(content ?? courseSections![0]).id}
+          completedUsers={(content ?? courseSections![0]).completed_users}
+        />
       </div>
 
       {courseSections![
         contentIndex === -1 || contentIndex === undefined ? 1 : contentIndex + 1
       ] ? (
-        <div className="border p-8 rounded-md text-center mt-20">
+        <div className="border p-8 rounded-md text-center mt-20 mb-10">
           <div className="text-muted-foreground">Next up</div>
           <div className="text-lg font-bold mb-3">
             {(contentIndex === -1 || contentIndex === undefined
@@ -142,32 +166,148 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
               ].title
             }
           </div>
-          <Link
-            href={`/course/${params.courseSlug}/?section=${
-              courseSections![
-                contentIndex === -1 || contentIndex === undefined
-                  ? 1
-                  : contentIndex + 1
-              ].id
-            }`}
-            className={buttonVariants({ className: "flex items-center gap-2" })}
+          <Button
+            onClick={() => {
+              const isUserExists = (
+                content ?? courseSections![0]
+              ).completed_users.includes(session?.user.id ?? "");
+              if (isUserExists) {
+                router.push(
+                  `/course/${params.courseSlug}/?section=${
+                    courseSections![
+                      contentIndex === -1 || contentIndex === undefined
+                        ? 1
+                        : contentIndex + 1
+                    ].id
+                  }`
+                );
+              } else {
+                updateSectionCompletionMutation.mutate(
+                  {
+                    // userId: "",
+                    userId: session?.user.id ?? "",
+                    sectionId: (content ?? courseSections![0]).id,
+                    completedUsers: (content ?? courseSections![0])
+                      .completed_users,
+                  },
+                  {
+                    onSuccess: (updatedSectionCompletedUsers) => {
+                      console.log({ updatedSectionCompletedUsers });
+
+                      queryClient.invalidateQueries({
+                        queryKey: ["sections", params.courseSlug],
+                      });
+
+                      router.push(
+                        `/course/${params.courseSlug}/?section=${
+                          courseSections![
+                            contentIndex === -1 || contentIndex === undefined
+                              ? 1
+                              : contentIndex + 1
+                          ].id
+                        }`
+                      );
+                    },
+                    onError: (error) => {
+                      toast.error(error.message);
+                    },
+                  }
+                );
+              }
+            }}
+            disabled={updateSectionCompletionMutation.isPending}
+            className="flex items-center gap-2 mx-auto"
           >
             Start Chapter{" "}
             {(contentIndex === -1 || contentIndex === undefined
               ? 1
               : contentIndex + 1) + 1}
-            <ArrowRight />
-          </Link>
+            {updateSectionCompletionMutation.isPending ? (
+              <Loader className="animate-spin" />
+            ) : (
+              <ArrowRight />
+            )}
+          </Button>
         </div>
       ) : (
-        <div className="border p-8 rounded-md text-center mt-20">
-          <div className="size-fit mx-auto rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground p-4">
-            <Check className="size-10" />
-          </div>
-          <p className="text-lg mt-4">
-            Congratulations! You have completed the course.
-          </p>
-        </div>
+        <>
+          {courseSections?.filter((section) =>
+            section.completed_users.includes(session?.user.id ?? "")
+          ).length === courseSections?.length ? (
+            <div className="border p-8 rounded-md text-center mt-20 mb-10">
+              <div className="size-fit mx-auto rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground p-4">
+                <Check className="size-10" />
+              </div>
+              <p className="text-lg mt-4">
+                Congratulations! You have completed the course.
+              </p>
+            </div>
+          ) : (
+            <div className="border p-8 rounded-md text-center mt-20 mb-10">
+              <Button
+                onClick={() => {
+                  const isUserExists = (
+                    content ?? courseSections![0]
+                  ).completed_users.includes(session?.user.id ?? "");
+                  if (isUserExists) {
+                    router.push(
+                      `/course/${params.courseSlug}/?section=${
+                        courseSections![
+                          contentIndex === -1 || contentIndex === undefined
+                            ? 1
+                            : contentIndex + 1
+                        ]?.id
+                      }`
+                    );
+                  } else {
+                    updateSectionCompletionMutation.mutate(
+                      {
+                        // userId: "",
+                        userId: session?.user.id ?? "",
+                        sectionId: (content ?? courseSections![0]).id,
+                        completedUsers: (content ?? courseSections![0])
+                          .completed_users,
+                      },
+                      {
+                        onSuccess: (updatedSectionCompletedUsers) => {
+                          console.log({ updatedSectionCompletedUsers });
+
+                          queryClient.invalidateQueries({
+                            queryKey: ["sections", params.courseSlug],
+                          });
+
+                          router.push(
+                            `/course/${params.courseSlug}/?section=${
+                              courseSections![
+                                contentIndex === -1 ||
+                                contentIndex === undefined
+                                  ? 1
+                                  : contentIndex + 1
+                              ].id
+                            }`
+                          );
+                        },
+                        onError: (error) => {
+                          console.log({error})
+                          // toast.error(error.message);
+                        },
+                      }
+                    );
+                  }
+                }}
+                disabled={updateSectionCompletionMutation.isPending}
+                className="flex items-center gap-2 mx-auto"
+              >
+                Mark as complete{" "}
+                {updateSectionCompletionMutation.isPending ? (
+                  <Loader className="animate-spin" />
+                ) : (
+                  <Check className="size-4" />
+                )}
+              </Button>
+            </div>
+          )}
+        </>
       )}
     </>
   );
@@ -203,6 +343,7 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
               courseSections={courseSections!}
               config={courseConfig}
               currentSectionId={searchParams.section ?? courseSections![0].id}
+              userId={session?.user.id ?? ""}
             />
           )}
         </ScrollArea>
