@@ -11,9 +11,10 @@ import { getSectionsByCourseId } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button, buttonVariants } from "@/components/ui";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ShieldQuestion } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Quizzes } from "../_components/quizzes";
 
 interface DocPageProps {
   params: {
@@ -107,6 +108,21 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
         <Markdown text={(content ?? courseSections![0]).content} />
       </div>
 
+      <div className="mt-20">
+        <div className="text-center space-y-3 mb-10">
+          <div className="size-fit mx-auto rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground p-4">
+            <ShieldQuestion className="size-7" />
+          </div>
+
+          <p>It’s time to take a quiz!</p>
+          <p className="text-muted-foreground">
+            Test your knowledge and see what you’ve just learned.
+          </p>
+        </div>
+
+       <Quizzes/>
+      </div>
+
       {courseSections![
         contentIndex === -1 || contentIndex === undefined ? 1 : contentIndex + 1
       ] ? (
@@ -127,7 +143,13 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
             }
           </div>
           <Link
-            href="#"
+            href={`/course/${params.courseSlug}/?section=${
+              courseSections![
+                contentIndex === -1 || contentIndex === undefined
+                  ? 1
+                  : contentIndex + 1
+              ].id
+            }`}
             className={buttonVariants({ className: "flex items-center gap-2" })}
           >
             Start Chapter{" "}
@@ -142,7 +164,9 @@ export default function DocPage({ params, searchParams }: DocPageProps) {
           <div className="size-fit mx-auto rounded-full flex justify-center items-center bg-sky-800 text-white dark:text-foreground p-4">
             <Check className="size-10" />
           </div>
-          <p className="text-lg mt-4">Congratulations! You have completed the course.</p>
+          <p className="text-lg mt-4">
+            Congratulations! You have completed the course.
+          </p>
         </div>
       )}
     </>
