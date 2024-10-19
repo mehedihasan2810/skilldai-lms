@@ -25,10 +25,11 @@ const NewChatPage = () => {
     // if(window !== undefined){
     //   window.
     // }
-    const checkSession = async () => {
-      const newSession = await supabase.auth.getSession();
-      console.log({ newSession: newSession.data.session });
-      if (!newSession.data.session) {
+    const checkSession = () => {
+      // const newSession = await supabase.auth.getSession();
+      // console.log({ newSession: newSession.data.session });
+      // if (!newSession.data.session) {
+      if (!session) {
         router.refresh();
         router.push("/signin");
       }
@@ -36,6 +37,10 @@ const NewChatPage = () => {
 
     checkSession();
   }, [supabase, router]);
+
+  if (!session) {
+    return null;
+  }
 
   return (
     <div className="relative isolate size-full">
