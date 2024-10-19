@@ -7,16 +7,35 @@ import ChatMobileSidebar from "@/components/side-navbar/chat-mobile-sidebar";
 import { UserButton } from "@/components/user-button";
 import { useSupabase } from "@/lib/supabase";
 import { redirect, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const NewChatPage = () => {
   const router = useRouter();
-  const { session } = useSupabase();
+  const { session, supabase } = useSupabase();
+  console.log({ session });
 
-  if (!session) {
-    router.refresh();
-    router.push("/signin");
-    return null;
-  }
+  // if (!session) {
+  //   router.refresh();
+  //   router.push("/signin");
+  //   return null;
+  // }
+
+  useEffect(() => {
+    // await supabase.auth.getSession()
+    // if(window !== undefined){
+    //   window.
+    // }
+    const checkSession = async () => {
+      const newSession = await supabase.auth.getSession();
+      console.log({ newSession: newSession.data.session });
+      if (!newSession.data.session) {
+        router.refresh();
+        router.push("/signin");
+      }
+    };
+
+    checkSession();
+  }, [supabase, router]);
 
   return (
     <div className="relative isolate size-full">
