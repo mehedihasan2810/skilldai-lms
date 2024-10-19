@@ -174,7 +174,8 @@ export const getSectionsByCourseId = async (id: string) => {
         id,
         question,
         answer,
-        options
+        options,
+        result
       )
     `
     )
@@ -214,16 +215,39 @@ export const deleteCourse = async (courseId: string) => {
 export const updateSectionCompletion = async (
   userId: string,
   sectionId: string,
-  completedUsers: string[],
+  completedUsers: string[]
 ) => {
-
-  console.log({userId, sectionId, completedUsers})
+  console.log({ userId, sectionId, completedUsers });
 
   const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("course_sections")
     .update({
       completed_users: [userId, ...completedUsers],
+    })
+    .eq("id", sectionId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const updateQuizResult = async (
+  sectionId: string,
+  result: Record<string, any>
+) => {
+  console.log({ sectionId, result });
+
+  const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("course_sections")
+    .update({
+      quizzes_result: result,
     })
     .eq("id", sectionId);
 

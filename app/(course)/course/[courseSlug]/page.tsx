@@ -141,9 +141,11 @@ export default function Page({ params, searchParams }: PageProps) {
 
         <Quizzes
           quizzes={(content ?? courseSections![0]).course_quizzes}
+          quizzesResult={(content ?? courseSections![0]).quizzes_result}
           userId={session?.user.id ?? ""}
           sectionId={(content ?? courseSections![0]).id}
           completedUsers={(content ?? courseSections![0]).completed_users}
+          courseSlug={params.courseSlug ?? ""}
         />
       </div>
 
@@ -246,10 +248,22 @@ export default function Page({ params, searchParams }: PageProps) {
             <div className="border p-8 rounded-md text-center mt-20 mb-10">
               <Button
                 onClick={() => {
+                  if (
+                    courseSections?.filter((section) =>
+                      section.completed_users.includes(session?.user.id ?? "")
+                    ).length !== courseSections?.length
+                  ) {
+                    toast.warning(
+                      "You haven't completed all the sections yet!"
+                    );
+                    return;
+                  }
+
                   const isUserExists = (
                     content ?? courseSections![0]
                   ).completed_users.includes(session?.user.id ?? "");
                   if (isUserExists) {
+                    router.refresh();
                     router.push(
                       `/course/${params.courseSlug}/?section=${
                         courseSections![
@@ -275,7 +289,7 @@ export default function Page({ params, searchParams }: PageProps) {
                           queryClient.invalidateQueries({
                             queryKey: ["sections", params.courseSlug],
                           });
-
+                          router.refresh();
                           router.push(
                             `/course/${params.courseSlug}/?section=${
                               courseSections![
@@ -288,7 +302,7 @@ export default function Page({ params, searchParams }: PageProps) {
                           );
                         },
                         onError: (error) => {
-                          console.log({error})
+                          console.log({ error });
                           // toast.error(error.message);
                         },
                       }

@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui";
-import { updateSectionCompletion } from "@/lib/db";
+import { updateQuizResult, updateSectionCompletion } from "@/lib/db";
 import { cn } from "@/lib/utils";
-import { useMutation } from "@tanstack/react-query";
-import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Check, Divide, Loader, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const alphabet = ["A", "B", "C", "D"];
@@ -12,6 +13,8 @@ export const Quizzes = ({
   userId,
   sectionId,
   completedUsers,
+  quizzesResult,
+  courseSlug,
 }: {
   quizzes: {
     id: string;
@@ -22,28 +25,39 @@ export const Quizzes = ({
   userId: string;
   sectionId: string;
   completedUsers: string[];
+  quizzesResult: Record<string, any>;
+  courseSlug: string;
 }) => {
-  //   console.log({ quizzes });
+  const queryClient = useQueryClient();
+  console.log({ quizzes });
 
-  const updateSectionCompletionMutation = useMutation({
+  const [selectedQuizzes, setSelectedQuizzes] = useState<Record<string, any>>(
+    {
+      isChecked: false,
+    }
+  );
+
+  console.log({ selectedQuizzes, quizzesResult });
+
+  const updateQuizMutation = useMutation({
     mutationFn: async ({
-      userId,
       sectionId,
-      completedUsers,
+      result,
     }: {
-      userId: string;
       sectionId: string;
-      completedUsers: string[];
-    }) => await updateSectionCompletion(userId, sectionId, completedUsers),
-    onSuccess: (updatedSectionCompletedUsers) => {
-      console.log({ updatedSectionCompletedUsers });
-
-      //   toast.success("Feedback has been successfully sent.");
-    },
-    onError: (error) => {
-      toast.error(error.message);
-    },
+      result: Record<string, any>;
+    }) => await updateQuizResult(sectionId, result),
   });
+
+  const userQuizzesResult = quizzesResult[userId] ?? {};
+
+  console.log({userQuizzesResult})
+
+  useEffect(() => {
+    setSelectedQuizzes({
+      isChecked: false,
+    });
+  }, [sectionId]);
 
   return (
     <div className="bg-secondary text-secondary-foreground p-4 md:p-6 rounded-md space-y-4">
@@ -57,29 +71,149 @@ export const Quizzes = ({
           </div>
 
           <div className="border border-black/40 dark:border-border rounded-md overflow-hidden">
-            {quiz.options.map((option, index) => (
-              <div
-                key={option}
-                className={cn(
-                  "bg-secondary text-secondary-foreground p-4   flex items-center gap-3 hover:bg-secondary/50",
-                  {
-                    "border-b border-black/40 dark:border-border":
-                      (index + 1) !== quiz.options.length,
-                  }
-                )}
-              >
-                <div className="size-8 rounded-full flex justify-center items-center bg-sky-800 text-sky-300 text-lg">
-                  {alphabet[index]}
-                </div>
-                {option}
-              </div>
-            ))}
+            {quiz.options.map((option, index) =>
+              userQuizzesResult.isChecked ? (
+                <button
+                  disabled={userQuizzesResult.isChecked}
+                  // onClick={() => {
+                  //   setSelectedQuizzes((q) => ({
+                  //     ...q,
+                  //     [quiz.id]: [quiz.id, option],
+                  //   }));
+                  // }}
+                  key={option}
+                  className={cn(
+                    "bg-secondary text-secondary-foreground p-4   flex items-center gap-3  w-full",
+                    {
+                      "border-b border-black/40 dark:border-border":
+                        index + 1 !== quiz.options.length,
+                      // "bg-primary text-primary-foreground hover:bg-none":
+                      //   userQuizzesResult[quiz.id]?.includes(option) &&
+                      //   userQuizzesResult[quiz.id]?.includes(quiz.answer),
+                      "bg-primary text-primary-foreground hover:bg-none border-none":
+                        option === quiz.answer,
+                      "bg-destructive text-destructive-foreground hover:bg-none border-none":
+                        userQuizzesResult[quiz.id]?.includes(option) &&
+                        !userQuizzesResult[quiz.id]?.includes(quiz.answer),
+                    }
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "size-8 rounded-full flex justify-center items-center  text-lg bg-primary text-primary-foreground",
+                      {
+                        "bg-card/20": option === quiz.answer,
+                        "bg-card/20 ":
+                          userQuizzesResult[quiz.id]?.includes(option) &&
+                          !userQuizzesResult[quiz.id]?.includes(quiz.answer),
+                      }
+                    )}
+                  >
+                    {option === quiz.answer ? (
+                      <Check />
+                    ) : userQuizzesResult[quiz.id]?.includes(option) &&
+                      !userQuizzesResult[quiz.id]?.includes(quiz.answer) ? (
+                      <X />
+                    ) : (
+                      alphabet[index]
+                    )}
+                  </div>
+                  {option}
+                </button>
+              ) : (
+                <button
+                  disabled={selectedQuizzes.isChecked}
+                  onClick={() => {
+                    setSelectedQuizzes((q) => ({
+                      ...q,
+                      [quiz.id]: [quiz.id, option],
+                    }));
+                  }}
+                  key={option}
+                  className={cn(
+                    "bg-secondary text-secondary-foreground p-4   flex items-center gap-3  w-full",
+                    {
+                      "border-b border-black/40 dark:border-border":
+                        index + 1 !== quiz.options.length,
+                      "bg-primary text-primary-foreground hover:bg-none":
+                        selectedQuizzes[quiz.id]?.includes(option),
+                      "hover:bg-secondary/50":
+                        !selectedQuizzes[quiz.id]?.includes(option),
+                    }
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "size-8 rounded-full flex justify-center items-center  text-lg",
+                      {
+                        "bg-card/20":
+                          selectedQuizzes[quiz.id]?.includes(option),
+                        "bg-primary text-primary-foreground":
+                          !selectedQuizzes[quiz.id]?.includes(option),
+                      }
+                    )}
+                  >
+                    {alphabet[index]}
+                  </div>
+                  {option}
+                </button>
+              )
+            )}
           </div>
+          {userQuizzesResult.isChecked && (
+            <div className="mt-4">
+              Answer:{" "}
+              <span className="font-bold text-primary">{quiz.answer}</span>
+            </div>
+          )}
         </div>
       ))}
 
-      <Button className="w-full" size="lg">
-        Check Answer
+      <Button
+        disabled={
+          userQuizzesResult.isChecked ||
+          updateQuizMutation.isPending ||
+          Object.keys(selectedQuizzes).length - 1 !== quizzes.length
+        }
+        onClick={() => {
+          if (userId === "") {
+            toast.error("user id not found");
+            return;
+          }
+
+          updateQuizMutation.mutate(
+            {
+              sectionId,
+              result: { [userId]: { ...selectedQuizzes, isChecked: true } },
+            },
+            {
+              onSuccess: (updatedQuizResult) => {
+                console.log({ updatedQuizResult });
+                //   toast.success("Feedback has been successfully sent.");
+                // setSelectedQuizzes((q) => ({ ...q, isChecked: true }));
+
+                queryClient.invalidateQueries({
+                  queryKey: ["sections", courseSlug],
+                });
+              },
+              onError: (updatedQuizResultError) => {
+                console.log({ updatedQuizResultError });
+                // toast.error(updatedQuizResultError.message);
+              },
+            }
+          );
+        }}
+        className="w-full flex items-center gap-2"
+        size="lg"
+      >
+        {userQuizzesResult.isChecked ? (
+          <>
+            Checked <Check />
+          </>
+        ) : (
+          "Check Answer"
+        )}
+        {updateQuizMutation.isPending && <Loader className="animate-spin" />}
       </Button>
     </div>
   );
