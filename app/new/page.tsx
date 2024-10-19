@@ -6,13 +6,14 @@ import { SideNavBar } from "@/components/side-navbar";
 import ChatMobileSidebar from "@/components/side-navbar/chat-mobile-sidebar";
 import { UserButton } from "@/components/user-button";
 import { useSupabase } from "@/lib/supabase";
+import { Session } from "@supabase/supabase-js";
 import { redirect, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const NewChatPage = () => {
   const router = useRouter();
-  const { session, supabase } = useSupabase();
-  console.log({ session });
+  const { supabase } = useSupabase();
+  const [session, setSession] = useState<Session | null>(null);
 
   // if (!session) {
   //   router.refresh();
@@ -25,11 +26,11 @@ const NewChatPage = () => {
     // if(window !== undefined){
     //   window.
     // }
-    const checkSession = () => {
-      // const newSession = await supabase.auth.getSession();
-      // console.log({ newSession: newSession.data.session });
-      // if (!newSession.data.session) {
-      if (!session) {
+    const checkSession = async () => {
+      const newSession = await supabase.auth.getSession();
+      console.log({ newSession: newSession.data.session });
+      setSession(newSession.data.session);
+      if (!newSession.data.session) {
         router.refresh();
         router.push("/signin");
       }
