@@ -6,12 +6,17 @@ import { SideNavBar } from "@/components/side-navbar";
 import ChatMobileSidebar from "@/components/side-navbar/chat-mobile-sidebar";
 import { UserButton } from "@/components/user-button";
 import { useSupabase } from "@/lib/supabase";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 const NewChatPage = () => {
+  const router = useRouter();
   const { session } = useSupabase();
 
-  if (!session) redirect("/signin");
+  if (!session) {
+    router.refresh();
+    router.push("/signin");
+    return null;
+  }
 
   return (
     <div className="relative isolate size-full">
