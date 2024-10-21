@@ -13,6 +13,7 @@ import NextTopLoader from "nextjs-toploader";
 import { TooltipProvider } from "@/components/ui";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -58,8 +59,22 @@ export default async function RootLayout({
           </SupabaseProvider>
           <Toaster richColors />
         </ThemeProvider>
-        <NextTopLoader color="hsl(229 100% 62%)" height={4} showSpinner={false} />
+        <NextTopLoader
+          color="hsl(229 100% 62%)"
+          height={4}
+          showSpinner={false}
+        />
         <Analytics />
+
+        <Script
+          id="supportChatbot"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+          window.$crisp=[];window.CRISP_WEBSITE_ID="0d02dec6-b49b-477b-8af3-357e2eb7064e";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+          `,
+          }}
+        />
       </body>
     </html>
   );
