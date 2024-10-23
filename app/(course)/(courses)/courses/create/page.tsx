@@ -232,14 +232,14 @@ const Page = () => {
                   name="difficultyLabel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Difficulty Label</FormLabel>
+                      <FormLabel>Difficulty Level</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select difficulty label" />
+                            <SelectValue placeholder="Select difficulty level" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
