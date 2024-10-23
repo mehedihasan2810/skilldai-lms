@@ -29,7 +29,6 @@ You are an expert course creator. Your task is to generate a well-structured and
 - A Short Description (no more than 25 words).
 - Maximum 10 Sections, each with a title and highly detailed content, formatted in Markdown. Please don't generate more than 10 sections.
 - For each section, include up to 3 quiz questions with answers.
-- Within the content of each section, include two YouTube video links that are relevant to the section’s topic for further learning. Mention these videos in a way that flows naturally with the content, such as "For more information, you can watch [this video](URL)".
 - Make sure the course is engaging, clear, and tailored to the specified audience and difficulty level (beginner, intermediate, or advanced).
 - Provide a step-by-step breakdown of concepts to ensure deep understanding.
 - Content should be formatted in a way that is easy to follow and digest.
@@ -47,10 +46,38 @@ Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudien
 - A short description. Please keep the description within 25 words.
 - Maximum 10 sections with titles and highly detailed content, breaking down complex ideas and providing clear explanations.
 - For each section, include up to 3 quiz questions and answers to reinforce learning.
-- Include two relevant YouTube video links within the content of each section. Mention these videos in a way that blends naturally with the text, like "To dive deeper into this concept, watch [this video](URL)" or "Learn more from [this tutorial](URL)".
 - The course should be designed to engage the audience, explain concepts thoroughly, and provide a logical progression.
 `;
 }
+// const systemPrompt = `
+// You are an expert course creator. Your task is to generate a well-structured and detailed course based on the provided topic, difficulty level, and target audience. The course should consist of:
+
+// - A Course Title
+// - A Short Description (no more than 25 words).
+// - Maximum 10 Sections, each with a title and highly detailed content, formatted in Markdown. Please don't generate more than 10 sections.
+// - For each section, include up to 3 quiz questions with answers.
+// - Within the content of each section, include two YouTube video links that are relevant to the section’s topic for further learning. Mention these videos in a way that flows naturally with the content, such as "For more information, you can watch [this video](URL)".
+// - Make sure the course is engaging, clear, and tailored to the specified audience and difficulty level (beginner, intermediate, or advanced).
+// - Provide a step-by-step breakdown of concepts to ensure deep understanding.
+// - Content should be formatted in a way that is easy to follow and digest.
+// `;
+
+// function getUserPrompt(
+//   courseTopic: string,
+//   targetAudience: string,
+//   difficultyLevel: string
+// ) {
+//   return `
+// Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudience} at a ${difficultyLevel} level. The course should include:
+
+// - A course title
+// - A short description. Please keep the description within 25 words.
+// - Maximum 10 sections with titles and highly detailed content, breaking down complex ideas and providing clear explanations.
+// - For each section, include up to 3 quiz questions and answers to reinforce learning.
+// - Include two relevant YouTube video links within the content of each section. Mention these videos in a way that blends naturally with the text, like "To dive deeper into this concept, watch [this video](URL)" or "Learn more from [this tutorial](URL)".
+// - The course should be designed to engage the audience, explain concepts thoroughly, and provide a logical progression.
+// `;
+// }
 
 
 

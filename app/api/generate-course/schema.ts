@@ -13,8 +13,11 @@ export const courseSchema = z.object({
         content: z
           .string()
           .describe(
-            "Detailed content of the section, including embedded YouTube video links, in Markdown format."
+            "Detailed content of the section in Markdown format."
           ),
+          // .describe(
+          //   "Detailed content of the section, including embedded YouTube video links, in Markdown format."
+          // ),
         quizzes: z
           .array(
             z.object({
