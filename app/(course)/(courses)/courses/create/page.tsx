@@ -247,7 +247,7 @@ const Page = () => {
                           <SelectItem value="Intermediate">
                             Intermediate
                           </SelectItem>
-                          <SelectItem value="Advance">Advance</SelectItem>
+                          <SelectItem value="Advance">Advanced</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
