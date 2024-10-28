@@ -2,18 +2,24 @@
 
 import { ChatItem } from "@/components/side-navbar/chat-item";
 import { UserSettings } from "@/components/side-navbar/user-settings";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { UserButton } from "@/components/user-button";
 import { getChats } from "@/lib/db";
 import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
-import { Loader2Icon, SidebarIcon, SquarePenIcon } from "lucide-react";
+import {
+  BookOpen,
+  Loader2Icon,
+  SidebarIcon,
+  SquarePenIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { ThemeToggle } from "../theme-toggle";
 import Image from "next/image";
 import FeedbackForm from "../feedback-form";
+import { cn } from "@/lib/utils";
 
 export const SideNavBar = () => {
   const [open, setOpen] = useState(false);
@@ -84,7 +90,7 @@ export const SideNavBar = () => {
           {error && <p className="text-red-500">Could not fetch chats</p>}
         </div>
 
-        <div className="space-y-4 mt-2">
+        <div className=" mt-2">
           {/* <a
             href="https://github.com/13point5/open-artifacts"
             target="_blank"
@@ -94,11 +100,20 @@ export const SideNavBar = () => {
             <span className="text-sm font-medium">GitHub Repo</span>
           </a>
           <UserSettings showLabel /> */}
-          
-          <FeedbackForm expanded/>
-          <div className="flex gap-4 items-center justify-center w-full">
-          <ThemeToggle />
-          <UserButton expanded />
+
+          <Link
+            className={buttonVariants({
+              variant: "ghost",
+              className: cn("flex gap-2 items-center w-full mb-1"),
+            })}
+            href="/courses"
+          >
+            <BookOpen className="size-5" /> Courses
+          </Link>
+          <FeedbackForm expanded />
+          <div className="flex gap-4 items-center justify-center w-full mt-4 mb-4">
+            <ThemeToggle />
+            <UserButton expanded />
           </div>
         </div>
       </div>
@@ -134,7 +149,19 @@ export const SideNavBar = () => {
           <Image src="/github.svg" height="24" width="24" alt="github logo" />
         </a>
         <UserSettings /> */}
-        <FeedbackForm/>
+
+        <Link
+        title="Courses"
+          className={buttonVariants({
+            variant: "outline",
+            size: "icon",
+            className: cn("flex gap-2 items-center"),
+          })}
+          href="/courses"
+        >
+          <BookOpen className="size-5" />{" "}
+        </Link>
+        <FeedbackForm />
         <ThemeToggle />
         <UserButton />
       </div>

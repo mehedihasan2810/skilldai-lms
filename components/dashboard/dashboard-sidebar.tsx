@@ -29,8 +29,7 @@ export default function DashboardSidebar({ className }: SidebarProps) {
     >
       <div className="hidden p-5 pt-10 lg:block">
         <Link
-          href={"/courses"}
-          target="_blank"
+          href={"/new"}
           className="flex items-center gap-2"
         >
           <Image
