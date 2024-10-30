@@ -1,13 +1,43 @@
+"use client";
+
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import {
+  createServerComponentClient,
+  Session,
+} from "@supabase/auth-helpers-nextjs";
+import { redirect, useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import { useEffect, useState } from "react";
+import { useSupabase } from "@/lib/supabase";
 
 interface CourseLayoutProps {
   children: React.ReactNode;
 }
 
-export default function CourseLayout({
-  children,
-}: CourseLayoutProps) {
+export default function CourseLayout({ children }: CourseLayoutProps) {
+  const router = useRouter();
+  const { supabase } = useSupabase();
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const newSession = await supabase.auth.getSession();
+      console.log({ newSession: newSession.data.session });
+      setSession(newSession.data.session);
+      if (!newSession.data.session) {
+        router.refresh();
+        router.push("/signin");
+      }
+    };
+
+    checkSession();
+  }, [supabase, router]);
+
+  if (!session) {
+    return null;
+  }
+
   return (
     <>
       <SiteHeader />

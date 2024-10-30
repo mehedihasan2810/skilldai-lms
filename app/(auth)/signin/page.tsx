@@ -1,27 +1,42 @@
+"use client"
 import { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import SignInForm from "./form";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { redirect } from "next/navigation";
+import { createServerComponentClient, Session } from "@supabase/auth-helpers-nextjs";
+import { redirect, useRouter } from "next/navigation";
 import { cookies } from "next/headers";
+import { useSupabase } from "@/lib/supabase";
+import { useEffect, useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Sign In | Skilld",
-  description: "Sign In to restart your journey with Skilld.",
-};
+// export const metadata: Metadata = {
+//   title: "Sign In | Skilld",
+//   description: "Sign In to restart your journey with Skilld.",
+// };
 
-export default async function Page() {
-  const supabase = createServerComponentClient({ cookies });
+export default function Page() {
+  const router = useRouter();
+  const { supabase } = useSupabase();
+  const [session, setSession] = useState<Session | null>(null);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  useEffect(() => {
+    const checkSession = async () => {
+      const newSession = await supabase.auth.getSession();
+      console.log({ newSession: newSession.data.session });
+      setSession(newSession.data.session);
+      if (!newSession.data.session) {
+        router.refresh();
+        router.push("/signin");
+      }
+    };
 
-  if (user) {
-    redirect("/new");
+    checkSession();
+  }, [supabase, router]);
+
+  if (session) {
+    return router.push("/new");
   }
 
   return (
