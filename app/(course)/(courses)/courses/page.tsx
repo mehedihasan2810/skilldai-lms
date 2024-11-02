@@ -111,12 +111,14 @@ const DeleteCourseDialog = ({ courseId }: { courseId: string }) => {
     onSuccess: async (deletedCourse) => {
       console.log({ deletedCourse });
 
-      queryClient.setQueryData<Chat[]>(["courses"], (oldCourses) => {
-        return (oldCourses ?? []).filter(
-          (course) => course.id !== deletedCourse.id
-        );
-        // return [...(oldCourses || []), newChat];
-      });
+      queryClient.invalidateQueries({ queryKey: ["courses"] });
+
+      // queryClient.setQueryData<Chat[]>(["courses"], (oldCourses) => {
+      //   return (oldCourses ?? []).filter(
+      //     (course) => course.id !== deletedCourse.id
+      //   );
+      //   // return [...(oldCourses || []), newChat];
+      // });
 
       toast.success("Deleted successfully");
 

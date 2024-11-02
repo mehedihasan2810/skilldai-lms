@@ -8,6 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
+  BookOpen,
   Loader2Icon,
   MenuIcon,
   SidebarIcon,
@@ -24,6 +25,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import { ChatItem } from "./chat-item";
 import FeedbackForm from "../feedback-form";
+import { cn } from "@/lib/utils";
 
 const ChatMobileSidebar = () => {
   const [open, setOpen] = useState(false);
@@ -67,8 +69,9 @@ const ChatMobileSidebar = () => {
             {chats && (
               <div className="flex flex-col flex-1 gap-2 overflow-auto">
                 {chats.map((item, index) => (
-                  <div onClick={() => setOpen(false)} key={index}>
+                  <div key={index}>
                     <ChatItem
+                      onClick={() => setOpen(false)}
                       id={item.id}
                       title={item.title}
                       selected={item.id === params.id}
@@ -83,6 +86,17 @@ const ChatMobileSidebar = () => {
           </div>
 
           <div className="flex items-center gap-4 mt-2">
+            <Link
+              title="Courses"
+              className={buttonVariants({
+                variant: "outline",
+                size: "icon",
+                className: cn("flex gap-2 items-center"),
+              })}
+              href="/courses"
+            >
+              <BookOpen className="size-5" />{" "}
+            </Link>
             <FeedbackForm />
             <ThemeToggle />
             <UserButton />

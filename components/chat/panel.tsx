@@ -73,9 +73,10 @@ export const ChatPanel = ({ id }: Props) => {
       secondMessage: Message;
     }) => await createChat(supabase, title, session?.user.id),
     onSuccess: async (newChat, { firstMessage, secondMessage }) => {
-      queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
-        return [...(oldChats || []), newChat];
-      });
+      // queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
+      //   return [...(oldChats || []), newChat];
+      // });
+      queryClient.invalidateQueries({ queryKey: ["chats"] });
       setChatId(newChat.id);
 
       console.log({ firstMessage, secondMessage });

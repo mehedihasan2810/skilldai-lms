@@ -7,16 +7,23 @@ type ChatItemProps = {
   selected: boolean;
   id: string;
   title: string;
+  onClick?: () => void;
 };
 
-export const ChatItem = ({ id, title, selected }: ChatItemProps) => {
+export const ChatItem = ({ id, title, selected, onClick }: ChatItemProps) => {
   return (
     <div
       className={`group cursor-pointer flex items-center gap-2 justify-between px-2 py-1 rounded-md w-full ${
         selected ? "bg-secondary text-secondary-foreground" : ""
       } hover:bg-secondary`}
     >
-      <Link href={`/chat/${id}`} className="flex-1 truncate text-sm">
+      <Link
+        onClick={() => {
+          onClick && onClick();
+        }}
+        href={`/chat/${id}`}
+        className="flex-1 truncate text-sm"
+      >
         <span className="flex-1 truncate text-sm">{title}</span>
       </Link>
       <DeleteChatDialog chatId={id} />

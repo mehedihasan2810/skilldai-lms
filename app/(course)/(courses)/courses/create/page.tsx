@@ -100,9 +100,11 @@ const Page = () => {
           // return new Response("Failed to insert course", { status: 500 });
         }
 
-        queryClient.setQueryData<any[]>(["courses"], (oldCourses) => {
-          return [course, ...(oldCourses || [])];
-        });
+        queryClient.invalidateQueries({ queryKey: ["courses"] });
+
+        // queryClient.setQueryData<any[]>(["courses"], (oldCourses) => {
+        //   return [course, ...(oldCourses || [])];
+        // });
 
         console.log("Inserted course");
 
@@ -288,6 +290,14 @@ const Page = () => {
             </Form>
           </CardContent>
         </Card>
+        {(isLoading || isCourseSaveComplete) && (
+          <Card className="max-w-lg mx-auto">
+            <CardContent className="p-4 text">
+              Please do not navigate away from this page until the course has
+              been created.
+            </CardContent>
+          </Card>
+        )}
       </div>
     </PageContainer>
   );

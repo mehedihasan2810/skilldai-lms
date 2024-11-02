@@ -30,12 +30,14 @@ const DeleteChatDialog = ({ chatId }: { chatId: string }) => {
     onSuccess: async (deletedChat) => {
       console.log({ deletedChat });
 
-      queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
-        return (oldChats ?? []).filter(
-          (chat) => chat.id !== deletedChat.chatData.id
-        );
-        // return [...(oldChats || []), newChat];
-      });
+      queryClient.invalidateQueries({ queryKey: ["chats"] });
+
+      // queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
+      //   return (oldChats ?? []).filter(
+      //     (chat) => chat.id !== deletedChat.chatData.id
+      //   );
+      //   // return [...(oldChats || []), newChat];
+      // });
 
       toast.success("Deleted successfully");
 
@@ -53,7 +55,7 @@ const DeleteChatDialog = ({ chatId }: { chatId: string }) => {
       <AlertDialogTrigger
         className={buttonVariants({
           className:
-            "invisible group-hover:visible w-fit h-fit px-2 py-1 text-rose-500 hover:text-rose-300",
+            "md:invisible md:group-hover:visible w-fit h-fit px-2 py-1 text-rose-500 hover:text-rose-300",
           variant: "ghost",
           size: "icon",
         })}
