@@ -8,6 +8,12 @@ export interface CourseConfig {
 
 export const navItems: NavItem[] = [
   {
+    title: "Reports",
+    href: "/reports",
+    icon: "chartArea",
+    label: "Reports",
+  },
+  {
     title: "Courses",
     href: "/courses",
     icon: "book",

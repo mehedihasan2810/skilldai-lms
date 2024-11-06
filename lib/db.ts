@@ -215,17 +215,23 @@ export const deleteCourse = async (courseId: string) => {
 export const updateSectionCompletion = async (
   userId: string,
   sectionId: string,
-  completedUsers: string[]
+  completedUsers: string[],
+  isMarkComplete: boolean,
+  courseId: string
 ) => {
-  console.log({ userId, sectionId, completedUsers });
+  console.log({ userId, sectionId, completedUsers, isMarkComplete, courseId });
 
   const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("course_sections")
     .update({
-      completed_users: [userId, ...completedUsers],
+      completed_users: [
+        userId,
+        ...completedUsers.filter((user) => user !== userId),
+      ],
     })
-    .eq("id", sectionId);
+    .eq("id", sectionId)
+    .select("id");
 
   if (error) {
     console.error(error);
@@ -233,6 +239,34 @@ export const updateSectionCompletion = async (
   }
 
   console.log({ data });
+
+  if (isMarkComplete) {
+    const { error: coursesError, data: courses } = await supabase
+      .from("courses")
+      .select("id, completed_users")
+      .eq("id", courseId)
+      .single();
+    // .order("created_at", { ascending: false });
+
+    console.log({ courses });
+
+    if (coursesError) {
+      throw new Error(coursesError.message);
+    }
+
+    const { error: courseUpdateErr, data: courseUpdateData } = await supabase
+      .from("courses")
+      .update({
+        completed_users: [
+          userId,
+          ...courses.completed_users.filter((user: string) => user !== userId),
+        ],
+      })
+      .eq("id", courseId)
+      .select("id");
+
+    console.log({ courseUpdateErr, courseUpdateData });
+  }
 
   return data;
 };
@@ -250,6 +284,86 @@ export const updateQuizResult = async (
       quizzes_result: result,
     })
     .eq("id", sectionId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const updateCourseStatusInprogress = async (
+  courseId: string,
+  status: string,
+  userId: string
+) => {
+  console.log({ courseId, status });
+
+  const supabase = createClientComponentClient();
+
+  const { error: coursesError, data: courses } = await supabase
+    .from("courses")
+    .select("id, in_progress_users")
+    .eq("id", courseId)
+    .single();
+
+  console.log({ coursesError, courses });
+
+  if (coursesError) {
+    return courses;
+  }
+
+  const { error, data } = await supabase
+    .from("courses")
+    .update({
+      in_progress_users: [
+        userId,
+        ...courses.in_progress_users.filter((user: string) => user !== userId),
+      ],
+    })
+    .eq("id", courseId);
+  // .("not_started_users", [userId]);
+  // .eq("status", "Not started");
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getCoursesForReports = async () => {
+  const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("courses")
+    .select(
+      `
+      id,
+      title,
+      completed_users,
+      in_progress_users,
+      not_started_users,
+      course_sections (
+        id,
+        completed_users,
+        quizzes_result,
+        user_id,
+        course_quizzes (
+        id,
+        answer
+        )
+      )
+    `
+    )
+    // .eq("id", "a26fbc61-ca47-4d59-9a1b-ed32ad66033b")
+    // .eq("user_email", email)
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);

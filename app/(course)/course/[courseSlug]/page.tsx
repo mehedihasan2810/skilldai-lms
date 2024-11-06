@@ -2,23 +2,25 @@
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CourseSidebarNav } from "@/components/sidebar-nav";
-import { courseConfig, exampleCourse } from "@/config";
+import { courseConfig } from "@/config";
 import Markdown from "@/components/markdown/markdown";
 import { Separator } from "@/components/ui/separator";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { getSectionsByCourseId, updateSectionCompletion } from "@/lib/db";
+import {
+  getSectionsByCourseId,
+  updateCourseStatusInprogress,
+  updateSectionCompletion,
+} from "@/lib/db";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button, buttonVariants } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { ArrowRight, Check, Loader, ShieldQuestion } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Quizzes } from "../_components/quizzes";
 import { useSupabase } from "@/lib/supabase";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { SectionProgress } from "../_components/section-progress";
+import { useEffect } from "react";
 
 interface PageProps {
   params: {
@@ -35,6 +37,21 @@ export default function Page({ params, searchParams }: PageProps) {
   const router = useRouter();
 
   const { session } = useSupabase();
+
+  const updateCourseStatusMutation = useMutation({
+    mutationFn: async ({
+      courseId,
+      status,
+    }: {
+      courseId: string;
+      status: string;
+    }) =>
+      await updateCourseStatusInprogress(
+        courseId,
+        status,
+        session?.user.id ?? ""
+      ),
+  });
 
   // console.log({ session });
   const {
@@ -53,11 +70,22 @@ export default function Page({ params, searchParams }: PageProps) {
       userId,
       sectionId,
       completedUsers,
+      isMarkComplete,
+      courseId,
     }: {
       userId: string;
       sectionId: string;
       completedUsers: string[];
-    }) => await updateSectionCompletion(userId, sectionId, completedUsers),
+      isMarkComplete: boolean;
+      courseId: string;
+    }) =>
+      await updateSectionCompletion(
+        userId,
+        sectionId,
+        completedUsers,
+        isMarkComplete,
+        courseId
+      ),
   });
 
   const content = courseSections?.find(
@@ -67,6 +95,26 @@ export default function Page({ params, searchParams }: PageProps) {
   const contentIndex = courseSections?.findIndex(
     (course) => course.id === searchParams.section
   );
+
+  useEffect(() => {
+    updateCourseStatusMutation.mutate(
+      {
+        status: "In progress",
+        courseId: params.courseSlug,
+      },
+      {
+        onSuccess: async (updatedStatus) => {
+          console.log({ updatedStatus });
+          await queryClient.invalidateQueries({ queryKey: ["courses"] });
+          await queryClient.invalidateQueries({ queryKey: ["coursesReports"] });
+        },
+        onError: (updateStatusErr) => {
+          console.log({ updateStatusErr });
+          // toast.error(updateStatusErr.message);
+        },
+      }
+    );
+  }, []);
 
   const sectionJsx = error ? (
     <p className="text-red-500">
@@ -191,12 +239,14 @@ export default function Page({ params, searchParams }: PageProps) {
                     sectionId: (content ?? courseSections![0]).id,
                     completedUsers: (content ?? courseSections![0])
                       .completed_users,
+                    isMarkComplete: false,
+                    courseId: params.courseSlug,
                   },
                   {
-                    onSuccess: (updatedSectionCompletedUsers) => {
+                    onSuccess: async (updatedSectionCompletedUsers) => {
                       console.log({ updatedSectionCompletedUsers });
 
-                      queryClient.invalidateQueries({
+                      await queryClient.invalidateQueries({
                         queryKey: ["sections", params.courseSlug],
                       });
 
@@ -248,10 +298,16 @@ export default function Page({ params, searchParams }: PageProps) {
             <div className="border p-8 rounded-md text-center mt-20 mb-10">
               <Button
                 onClick={() => {
+                  console.log(
+                    courseSections?.filter((section) =>
+                      section.completed_users.includes(session?.user.id ?? "")
+                    )
+                  );
                   if (
                     courseSections?.filter((section) =>
                       section.completed_users.includes(session?.user.id ?? "")
-                    ).length !== courseSections?.length
+                    ).length !==
+                    (courseSections?.length ?? 0) - 1
                   ) {
                     toast.warning(
                       "You haven't completed all the sections yet!"
@@ -281,14 +337,23 @@ export default function Page({ params, searchParams }: PageProps) {
                         sectionId: (content ?? courseSections![0]).id,
                         completedUsers: (content ?? courseSections![0])
                           .completed_users,
+                        isMarkComplete: true,
+                        courseId: params.courseSlug,
                       },
                       {
-                        onSuccess: (updatedSectionCompletedUsers) => {
+                        onSuccess: async (updatedSectionCompletedUsers) => {
                           console.log({ updatedSectionCompletedUsers });
 
-                          queryClient.invalidateQueries({
+                          await queryClient.invalidateQueries({
                             queryKey: ["sections", params.courseSlug],
                           });
+                          await queryClient.invalidateQueries({
+                            queryKey: ["courses"],
+                          });
+                          await queryClient.invalidateQueries({
+                            queryKey: ["coursesReports"],
+                          });
+
                           router.refresh();
                           router.push(
                             `/course/${params.courseSlug}/?section=${
@@ -297,7 +362,7 @@ export default function Page({ params, searchParams }: PageProps) {
                                 contentIndex === undefined
                                   ? 1
                                   : contentIndex + 1
-                              ].id
+                              ]?.id
                             }`
                           );
                         },

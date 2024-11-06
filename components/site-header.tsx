@@ -40,13 +40,13 @@ export function SiteHeader() {
               Skilld AI
             </Link>
             <Link
-              href="/courses"
+              href="/reports"
               className={cn(
                 "transition-colors hover:text-foreground/80",
                 pathname === "/courses" ? "text-foreground" : "text-foreground/60"
               )}
             >
-              Courses
+              Dashboard
             </Link>
             {/* <Link
               href={siteConfig.links.github}

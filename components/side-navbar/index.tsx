@@ -106,7 +106,7 @@ export const SideNavBar = () => {
               variant: "ghost",
               className: cn("flex gap-2 items-center w-full mb-1"),
             })}
-            href="/courses"
+            href="/reports"
           >
             <BookOpen className="size-5" /> Courses
           </Link>
@@ -157,7 +157,7 @@ export const SideNavBar = () => {
             size: "icon",
             className: cn("flex gap-2 items-center"),
           })}
-          href="/courses"
+          href="/reports"
         >
           <BookOpen className="size-5" />{" "}
         </Link>

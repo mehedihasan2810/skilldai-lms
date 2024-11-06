@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, PanelLeftClose, PanelRightClose } from "lucide-react";
+import { PanelLeftClose } from "lucide-react";
 import Link from "next/link";
 import { useSidebar } from "@/lib/hooks/use-sidebar";
 import { DashboardNav } from "./dashboard-nav";
@@ -28,17 +28,20 @@ export default function DashboardSidebar({ className }: SidebarProps) {
       )}
     >
       <div className="hidden p-5 pt-10 lg:block">
-        <Link
-          href={"/new"}
-          className="flex items-center gap-2"
-        >
+        <Link href={"/new"} className="flex items-center gap-2">
           <Image
             src="/skilld-logo.png"
             alt="Skilld logo"
             width={30}
             height={30}
           />
-           <h2 className={cn("font-bold text-lg truncate", {"hidden": isMinimized})}>Skilld AI</h2>
+          <h2
+            className={cn("font-bold text-lg truncate", {
+              hidden: isMinimized,
+            })}
+          >
+            Skilld AI
+          </h2>
 
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"

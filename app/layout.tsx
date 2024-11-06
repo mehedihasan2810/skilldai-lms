@@ -14,6 +14,7 @@ import { TooltipProvider } from "@/components/ui";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -53,7 +54,9 @@ export default async function RootLayout({
         >
           <SupabaseProvider session={session}>
             <ReactQueryProvider>
-              <TooltipProvider>{children}</TooltipProvider>
+              <NuqsAdapter>
+                <TooltipProvider>{children}</TooltipProvider>
+              </NuqsAdapter>
               <ReactHostToaster />
             </ReactQueryProvider>
           </SupabaseProvider>

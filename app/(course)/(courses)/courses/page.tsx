@@ -2,7 +2,10 @@
 import PageContainer from "@/components/dashboard/page-container";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { deleteCourse, getCourses } from "@/lib/db";
+import {
+  deleteCourse,
+  getCourses,
+} from "@/lib/db";
 import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
@@ -20,15 +23,20 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Loader, Trash } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteChat } from "@/lib/db";
 import toast from "react-hot-toast";
-import { Chat } from "@/app/types";
 import { useRouter } from "next/navigation";
-import { buttonVariants } from "@/components/ui";
+import {  buttonVariants, Input } from "@/components/ui";
 import { Badge } from "@/components/ui/badge";
+import { parseAsString, useQueryState } from "nuqs";
 
 const Page = () => {
+  const router = useRouter();
   const { session } = useSupabase();
+  // const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useQueryState(
+    "search",
+    parseAsString.withDefault("")
+  );
 
   const {
     data: courses,
@@ -61,37 +69,67 @@ const Page = () => {
       </div>
     ))
   ) : (
-    courses!.map((course) => (
-      <div
-        key={course.id}
-        className="bg-card text-card-foreground rounded-xl shadow border border-border/70 overflow-hidden group flex flex-col"
-      >
-        <div className="p-4 flex justify-between gap-2">
-          <div>
-          <h2 className="text-xl font-semibold grow">{course.title}</h2>
-          <div className="mt-2 flex gap-2 flex-wrap"><Badge>{course.topic}</Badge> <Badge>{course.difficulty}</Badge> <Badge>{course.target_audience}</Badge></div>
-          </div>
-          {/* <DeleteCourseDialog courseId={course.id} /> */}
-        </div>
-        <Separator className="" />
-        <p className="text-muted-foreground p-4 grow">
-          {course.description}
-        </p>
-       <div className="p-4 pt-0">
-       <Link
-          href={`/course/${course.id}`}
-          className={buttonVariants({className: "w-full text-muted-foreground"})}
+    courses!
+      .filter((c) => {
+        if (searchTerm.trim()) {
+          return (
+            c.title
+              .toLocaleLowerCase()
+              .includes(searchTerm.toLocaleLowerCase()) ||
+            [
+              c.title.toLocaleLowerCase(),
+              c.difficulty.toLocaleLowerCase(),
+              c.target_audience.toLocaleLowerCase(),
+            ].includes(searchTerm.toLocaleLowerCase())
+          );
+        }
+
+        return true;
+      })
+      .map((course) => (
+        <div
+          key={course.id}
+          className="bg-card text-card-foreground rounded-xl shadow border border-border/70 overflow-hidden group flex flex-col"
         >
-         Start learning
-        </Link>
-       </div>
-      </div>
-    ))
+          <div className="p-4 flex justify-between gap-2">
+            <div>
+              <h2 className="text-xl font-semibold grow">{course.title}</h2>
+              <div className="mt-2 flex gap-2 flex-wrap">
+                <Badge>{course.topic}</Badge> <Badge>{course.difficulty}</Badge>{" "}
+                <Badge>{course.target_audience}</Badge>
+              </div>
+            </div>
+            {/* <DeleteCourseDialog courseId={course.id} /> */}
+          </div>
+          <Separator className="" />
+          <p className="text-muted-foreground p-4 grow">{course.description}</p>
+          <div className="p-4 pt-0">
+            <Link
+              href={`/course/${course.id}`}
+              // className="w-full flex items-center gap-2"
+              className={buttonVariants({
+                className:
+                  "w-full text-muted-foreground flex items-center gap-2",
+              })}
+            >
+              Start learning
+            </Link>
+          </div>
+        </div>
+      ))
   );
 
   return (
     <PageContainer scrollable>
-      <h1 className="mb-4 mt-4 text-xl font-bold">Find your course</h1>
+      <div className="flex justify-between items-center mb-4 mt-4 ">
+        <h1 className="text-xl font-bold">Find your course</h1>
+        <Input
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search..."
+          className="w-80"
+        />
+      </div>
       <div className="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 pb-10">
         {courseJsx}
       </div>
