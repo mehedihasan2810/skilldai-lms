@@ -73,7 +73,7 @@ export async function POST(req: Request) {
         .from("token_usage")
         .upsert(
           {
-            user_email,
+            user_email: user_email,
             month: CURRENT_MONTH,
             year: CURRENT_YEAR,
             total_tokens: (tokenUsage?.total_tokens || 0) + usage.totalTokens,
