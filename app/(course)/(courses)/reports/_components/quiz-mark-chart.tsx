@@ -1,29 +1,18 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
-import {
-  Label,
-  PolarGrid,
-  PolarRadiusAxis,
-  RadialBar,
-  RadialBarChart,
-} from "recharts";
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getCoursesForReports } from "@/lib/db";
 import { Skeleton } from "@/components/ui/skeleton";
-
-export const description = "A radial chart with text";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { CircleHelp } from "lucide-react";
+import { buttonVariants } from "@/components/ui";
 
 export function QuizMarkChart() {
   const { session, supabase } = useSupabase();
@@ -85,6 +74,10 @@ export function QuizMarkChart() {
   //   });
   // );
 
+  const totalQuizzes = (courses || [])
+    .flatMap((course) => course.course_sections)
+    .flatMap((section) => section.course_quizzes).length;
+
   const completedQuizzes = (courses ?? [])
     .flatMap((course) => course.course_sections)
     .reduce((total, section) => {
@@ -98,50 +91,83 @@ export function QuizMarkChart() {
       return total;
     }, 0);
 
+  const completeQuizzes = (courses || [])
+    .flatMap((course) => course.course_sections)
+    .reduce((total, section) => {
+      if (section.quizzes_result[session?.user.id ?? ""]) {
+        const totalQuiz =
+          Object.keys(section.quizzes_result[session?.user.id ?? ""]).length -
+          1;
+        return total + totalQuiz;
+      }
+
+      return total;
+    }, 0);
+
+  const incompleteQuizzes = totalQuizzes - completeQuizzes;
+  // (courses || [])
+  //   .flatMap((course) => course.course_sections)
+  //   .reduce((total, section) => {
+  //     if (section.quizzes_result[session?.user.id ?? ""]) {
+  //       const totalQuiz =
+  //         Object.keys(section.quizzes_result[session?.user.id ?? ""]).length -
+  //         1;
+  //       return total + totalQuiz;
+  //     }
+
+  //     return total;
+  //   }, 0);
+
   return (
     <Card className="">
       <CardHeader className="">
-        <CardTitle>Quiz Mark</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          Quiz Mark{" "}
+          <HoverCard>
+            <HoverCardTrigger
+              className={buttonVariants({
+                size: "icon",
+                variant: "ghost",
+                className: "h-8 w-8  text-muted-foreground",
+              })}
+            >
+              <CircleHelp className="size-5" />
+            </HoverCardTrigger>
+            <HoverCardContent className="text-sm">
+              All the quizzes given have been shown with their average marks in
+              percentage.
+            </HoverCardContent>
+          </HoverCard>
+        </CardTitle>
       </CardHeader>
       <CardContent className="text-left">
-        <div className="grid grid-cols-2 gap-6">
-          <CircularProgressbar
-            text={`${Math.ceil(
-              (correctQuizzes.length / completedQuizzes) * 100
-            ) || 0}%`}
-            className="size-52 aspect-square w-fit shrink"
-            value={Math.ceil((correctQuizzes.length / completedQuizzes) * 100) || 0}
-            strokeWidth={12}
-          />
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-4">
+          <div className="size-60 self-center lg:justify-self-center">
+            <CircularProgressbar
+              text={`${
+                Math.ceil((correctQuizzes.length / completedQuizzes) * 100) || 0
+              }%`}
+              className="size-full"
+              value={
+                Math.ceil((correctQuizzes.length / completedQuizzes) * 100) || 0
+              }
+              strokeWidth={12}
+            />
+          </div>
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <div className="size-5 rounded-full bg-cyan-700"></div>
 
               <div>
-                <div>Completed Quiz</div>
+                <div>Complete Quiz</div>
 
                 {error ? (
                   <div>{error.message}</div>
                 ) : isLoading ? (
                   <Skeleton className="h-4 w-10" />
                 ) : (
-                  <div>
-                    {" "}
-                    {courses!
-                      .flatMap((course) => course.course_sections)
-                      .reduce((total, section) => {
-                        if (section.quizzes_result[session?.user.id ?? ""]) {
-                          const totalQuiz =
-                            Object.keys(
-                              section.quizzes_result[session?.user.id ?? ""]
-                            ).length - 1;
-                          return total + totalQuiz;
-                        }
-
-                        return total;
-                      }, 0)}
-                  </div>
+                  <div> {completeQuizzes}</div>
                 )}
               </div>
             </div>
@@ -155,25 +181,35 @@ export function QuizMarkChart() {
                 ) : isLoading ? (
                   <Skeleton className="h-4 w-10" />
                 ) : (
-                  <div>
-                    {" "}
-                    {courses!
-                      .flatMap((course) => course.course_sections)
-                      .flatMap((section) => section.course_quizzes).length -
-                      courses!
-                        .flatMap((course) => course.course_sections)
-                        .reduce((total, section) => {
-                          if (section.quizzes_result[session?.user.id ?? ""]) {
-                            const totalQuiz =
-                              Object.keys(
-                                section.quizzes_result[session?.user.id ?? ""]
-                              ).length - 1;
-                            return total + totalQuiz;
-                          }
+                  <div> {incompleteQuizzes}</div>
+                )}
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="size-5 rounded-full bg-primary"></div>
 
-                          return total;
-                        }, 0)}
-                  </div>
+              <div>
+                <div>Correct Quiz</div>
+                {error ? (
+                  <div>{error.message}</div>
+                ) : isLoading ? (
+                  <Skeleton className="h-4 w-10" />
+                ) : (
+                  <div> {correctQuizzes.length}</div>
+                )}
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="size-5 rounded-full bg-red-700"></div>
+
+              <div>
+                <div>Incorrect Quiz</div>
+                {error ? (
+                  <div>{error.message}</div>
+                ) : isLoading ? (
+                  <Skeleton className="h-4 w-10" />
+                ) : (
+                  <div> {completeQuizzes - correctQuizzes.length}</div>
                 )}
               </div>
             </div>
@@ -187,14 +223,7 @@ export function QuizMarkChart() {
                 ) : isLoading ? (
                   <Skeleton className="h-4 w-10" />
                 ) : (
-                  <div>
-                    {" "}
-                    {
-                      courses!
-                        .flatMap((course) => course.course_sections)
-                        .flatMap((section) => section.course_quizzes).length
-                    }
-                  </div>
+                  <div> {totalQuizzes}</div>
                 )}
               </div>
             </div>
@@ -204,21 +233,3 @@ export function QuizMarkChart() {
     </Card>
   );
 }
-
-// {
-//   "8fc4f0b7-be85-4b2f-995f-9820cf70a8da": {
-//     "isChecked": true,
-//     "401e72e3-3733-4a5a-8f43-a18a07e3f965": [
-//       "401e72e3-3733-4a5a-8f43-a18a07e3f965",
-//       "16-bit"
-//     ],
-//     "36f4f222-a2ae-4379-b7d4-1d1a966438f2": [
-//       "36f4f222-a2ae-4379-b7d4-1d1a966438f2",
-//       "AX"
-//     ],
-//     "786b1f58-b2b5-401b-829e-d014966a4f65": [
-//       "786b1f58-b2b5-401b-829e-d014966a4f65",
-//       "64KB"
-//     ]
-//   }
-// }

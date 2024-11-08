@@ -1,24 +1,25 @@
-import { MainNavItem, NavItem, SidebarNavItem } from "@/types/nav"
+import { MainNavItem, NavItem, SidebarNavItem } from "@/types/nav";
 
 export interface CourseConfig {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-  chartsNav: SidebarNavItem[]
+  mainNav: MainNavItem[];
+  sidebarNav: SidebarNavItem[];
+  chartsNav: SidebarNavItem[];
 }
 
 export const navItems: NavItem[] = [
-  {
-    title: "Reports",
-    href: "/reports",
-    icon: "chartArea",
-    label: "Reports",
-  },
   {
     title: "Courses",
     href: "/courses",
     icon: "book",
     label: "Courses",
   },
+  {
+    title: "Reports",
+    href: "/reports",
+    icon: "chartArea",
+    label: "Reports",
+  },
+
   {
     title: "Generate course",
     href: "/courses/create",
@@ -56,7 +57,6 @@ export const navItems: NavItem[] = [
   //   label: "login",
   // },
 ];
-
 
 export const exampleCourse = [
   {
@@ -223,9 +223,6 @@ export const exampleCourse = [
     ],
   },
 ];
-
-
-
 
 export const courseConfig: CourseConfig = {
   mainNav: [
@@ -679,4 +676,4 @@ export const courseConfig: CourseConfig = {
       ],
     },
   ],
-}
+};

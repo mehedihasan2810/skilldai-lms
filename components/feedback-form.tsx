@@ -30,6 +30,12 @@ import { addFeedback } from "@/lib/db";
 import toast from "react-hot-toast";
 import { useSupabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const formSchema = z.object({
   feedback: z.string().min(1, { message: "Required" }),
@@ -88,9 +94,22 @@ const FeedbackForm = ({ expanded = false }: { expanded?: boolean }) => {
           className: cn("flex gap-2 items-center", { "w-full": expanded }),
         })}
       >
-        <MessageCircleMore />
-        {expanded && "Feedback"}
+        {expanded ? (
+          <>
+            <MessageCircleMore />
+            Feedback
+          </>
+        ) : (
+          <Tooltip>
+            <TooltipTrigger>
+              {" "}
+              <MessageCircleMore />
+            </TooltipTrigger>
+            <TooltipContent side="right">Feedback</TooltipContent>
+          </Tooltip>
+        )}
       </DialogTrigger>
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Provide feedback</DialogTitle>

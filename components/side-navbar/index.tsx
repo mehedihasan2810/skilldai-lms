@@ -20,6 +20,7 @@ import { ThemeToggle } from "../theme-toggle";
 import Image from "next/image";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
 
 export const SideNavBar = () => {
   const [open, setOpen] = useState(false);
@@ -149,18 +150,25 @@ export const SideNavBar = () => {
           <Image src="/github.svg" height="24" width="24" alt="github logo" />
         </a>
         <UserSettings /> */}
+        <Tooltip >
+          <TooltipTrigger >
+            <Link
+              // title="Courses"
+              className={buttonVariants({
+                variant: "outline",
+                size: "icon",
+                className: cn("flex gap-2 items-center"),
+              })}
+              href="/courses"
+            >
+              <BookOpen className="size-5" />{" "}
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right" >
+            <p>Courses</p>
+          </TooltipContent>
+        </Tooltip>
 
-        <Link
-        title="Courses"
-          className={buttonVariants({
-            variant: "outline",
-            size: "icon",
-            className: cn("flex gap-2 items-center"),
-          })}
-          href="/reports"
-        >
-          <BookOpen className="size-5" />{" "}
-        </Link>
         <FeedbackForm />
         <ThemeToggle />
         <UserButton />

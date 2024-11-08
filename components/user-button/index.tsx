@@ -13,6 +13,12 @@ import { UserIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSupabase } from "@/lib/supabase";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Props = {
   expanded?: boolean;
@@ -39,7 +45,7 @@ export const UserButton = ({ expanded = false }: Props) => {
       if (res.error) throw new Error(res.error.message);
 
       router.refresh();
-      router.push("signin")
+      router.push("signin");
     } catch (error) {
       console.error(error);
       alert("Error signing out");
@@ -52,7 +58,13 @@ export const UserButton = ({ expanded = false }: Props) => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger className="size-10 p-2 border flex justify-center items-center rounded hover:bg-secondary">
-          <UserIcon className="w-full" size={40} />
+          <Tooltip>
+            <TooltipTrigger>
+              {" "}
+              <UserIcon className="w-full" size={40} />
+            </TooltipTrigger>
+            <TooltipContent side="right">User</TooltipContent>
+          </Tooltip>
 
           {/* {expanded && (
             <span className="font-medium text-sm truncate">My Account</span>
