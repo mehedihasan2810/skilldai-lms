@@ -12,10 +12,14 @@ export const maxDuration = 60;
 //   apiKey: process.env.ANTHROPIC_API_KEY,
 // });
 
-const groq = createOpenAI({
-  baseURL: "https://api.groq.com/openai/v1",
-  apiKey: process.env.GROQ_API_KEY,
+const deepseek = createOpenAI({
+  baseURL: "https://api.deepseek.com",
+  apiKey: "sk-c629e797f1e848c5bfa7ff555bab2cea",
 });
+// const groq = createOpenAI({
+//   baseURL: "https://api.groq.com/openai/v1",
+//   apiKey: process.env.GROQ_API_KEY,
+// });
 
 export async function POST(req: Request) {
   const cookieStore = cookies();
@@ -49,7 +53,7 @@ export async function POST(req: Request) {
     model: anthropic(process.env.LLM_MODEL_NAME!),
     // model: anthropic("claude-3-5-sonnet-20240620"),
     // model: groq("llama-3.1-70b-versatile"),
-    // model: groq("llama3-70b-8192"),
+    // model: deepseek("deepseek-chat"),
 
     system: systemPrompt,
 
