@@ -21,9 +21,11 @@ import { useFakeWhisper } from "@/lib/hooks/use-fake-whisper";
 
 type Props = {
   id: string | null;
+  userEmail: string;
+  userId: string
 };
 
-export const ChatPanel = ({ id }: Props) => {
+export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   // Get settings and supabase instance
   // const settings = getSettings();
   const { supabase, session } = useSupabase();
@@ -71,7 +73,7 @@ export const ChatPanel = ({ id }: Props) => {
       title: string;
       firstMessage: Message;
       secondMessage: Message;
-    }) => await createChat(supabase, title, session?.user.id),
+    }) => await createChat(supabase, title, userId),
     onSuccess: async (newChat, { firstMessage, secondMessage }) => {
       // queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
       //   return [...(oldChats || []), newChat];
@@ -222,7 +224,7 @@ export const ChatPanel = ({ id }: Props) => {
     const options = files ? { experimental_attachments: files } : {};
     // console.log({ files });
     handleSubmit(event, {
-      body: { user_email: session?.user.email },
+      body: { user_email: userEmail },
       ...options,
     });
 

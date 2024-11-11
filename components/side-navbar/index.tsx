@@ -22,13 +22,19 @@ import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
 
-export const SideNavBar = () => {
+export const SideNavBar = ({
+  userId,
+  userEmail,
+}: {
+  userId: string;
+  userEmail: string;
+}) => {
   const [open, setOpen] = useState(false);
 
   const params = useParams();
 
   const { supabase, session } = useSupabase();
-  const userId = session?.user.id;
+  // const userId = session?.user.id;
 
   const {
     data: chats,
@@ -114,7 +120,7 @@ export const SideNavBar = () => {
           <FeedbackForm expanded />
           <div className="flex gap-4 items-center justify-center w-full mt-4 mb-4">
             <ThemeToggle />
-            <UserButton expanded />
+            <UserButton expanded userEmail={userEmail} />
           </div>
         </div>
       </div>
@@ -150,8 +156,8 @@ export const SideNavBar = () => {
           <Image src="/github.svg" height="24" width="24" alt="github logo" />
         </a>
         <UserSettings /> */}
-        <Tooltip >
-          <TooltipTrigger >
+        <Tooltip>
+          <TooltipTrigger>
             <Link
               // title="Courses"
               className={buttonVariants({
@@ -164,14 +170,14 @@ export const SideNavBar = () => {
               <BookOpen className="size-5" />{" "}
             </Link>
           </TooltipTrigger>
-          <TooltipContent side="right" >
+          <TooltipContent side="right">
             <p>Courses</p>
           </TooltipContent>
         </Tooltip>
 
         <FeedbackForm />
         <ThemeToggle />
-        <UserButton />
+        <UserButton userEmail={userEmail} />
       </div>
     </div>
   );

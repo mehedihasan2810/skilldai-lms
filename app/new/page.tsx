@@ -47,9 +47,13 @@ const NewChatPage = () => {
     <div className="relative isolate size-full">
       <ChatHeader />
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
-        <SideNavBar />
+        <SideNavBar userId={session.user.id} userEmail={session.user.email!} />
         {/* <ChatMobileSidebar /> */}
-        <ChatPanel id={null} />
+        <ChatPanel
+          id={null}
+          userEmail={session.user.email!}
+          userId={session.user.id}
+        />
       </div>
     </div>
   );

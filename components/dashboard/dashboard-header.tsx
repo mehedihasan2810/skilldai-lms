@@ -3,6 +3,7 @@ import { ThemeToggle } from "../theme-toggle";
 import { MobileSidebar } from "./dashboard-mobile-sidebar";
 import { UserNav } from "../user-nav";
 import Link from "next/link";
+import { buttonVariants } from "../ui";
 
 export default function Header() {
   return (
@@ -12,7 +13,9 @@ export default function Header() {
           <MobileSidebar />
         </div>
         <div className="flex items-center gap-6">
-          <Link href="/new">Skilld AI</Link>
+          <Link className={buttonVariants({ variant: "ghost" })} href="/new">
+            Skilld AI
+          </Link>
           <UserNav />
           <ThemeToggle />
         </div>

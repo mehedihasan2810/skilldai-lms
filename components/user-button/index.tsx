@@ -22,9 +22,10 @@ import {
 
 type Props = {
   expanded?: boolean;
+  userEmail?: string
 };
 
-export const UserButton = ({ expanded = false }: Props) => {
+export const UserButton = ({ expanded = false, userEmail }: Props) => {
   const router = useRouter();
 
   const { supabase, session } = useSupabase();
@@ -45,7 +46,7 @@ export const UserButton = ({ expanded = false }: Props) => {
       if (res.error) throw new Error(res.error.message);
 
       router.refresh();
-      router.push("signin");
+      router.push("/signin");
     } catch (error) {
       console.error(error);
       alert("Error signing out");
@@ -78,9 +79,9 @@ export const UserButton = ({ expanded = false }: Props) => {
 
           <DropdownMenuLabel
             className="truncate"
-            title={session?.user.email ?? ""}
+            title={userEmail ?? session?.user.email}
           >
-            {session?.user.email ?? ""}
+            {userEmail ?? session?.user.email}
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
