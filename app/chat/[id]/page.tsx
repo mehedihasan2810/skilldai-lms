@@ -25,7 +25,7 @@ const ChatPage = ({ params: { id } }: Props) => {
         <SideNavBar userId={session.user.id} userEmail={session.user.email!} />
         {/* <ChatMobileSidebar /> */}
         <ChatPanel
-          id={null}
+          id={id}
           userEmail={session.user.email!}
           userId={session.user.id}
         />

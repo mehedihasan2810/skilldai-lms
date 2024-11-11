@@ -22,7 +22,7 @@ import { useFakeWhisper } from "@/lib/hooks/use-fake-whisper";
 type Props = {
   id: string | null;
   userEmail: string;
-  userId: string
+  userId: string;
 };
 
 export const ChatPanel = ({ id, userEmail, userId }: Props) => {
