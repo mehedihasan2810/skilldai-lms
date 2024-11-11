@@ -2,10 +2,7 @@
 import PageContainer from "@/components/dashboard/page-container";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  deleteCourse,
-  getCourses,
-} from "@/lib/db";
+import { deleteCourse, getCourses } from "@/lib/db";
 import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
@@ -25,9 +22,10 @@ import { Loader, Trash } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import {  buttonVariants, Input } from "@/components/ui";
+import { buttonVariants, Input } from "@/components/ui";
 import { Badge } from "@/components/ui/badge";
 import { parseAsString, useQueryState } from "nuqs";
+import { cn } from "@/lib/utils";
 
 const Page = () => {
   const router = useRouter();
@@ -49,6 +47,21 @@ const Page = () => {
 
   console.log({ courses });
 
+  const searchedCourses = (courses || []).filter((c) => {
+    if (searchTerm.trim()) {
+      return (
+        c.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+        [
+          c.title.toLocaleLowerCase(),
+          c.difficulty.toLocaleLowerCase(),
+          c.target_audience.toLocaleLowerCase(),
+        ].includes(searchTerm.toLocaleLowerCase())
+      );
+    }
+
+    return true;
+  });
+
   const courseJsx = error ? (
     <p className="text-red-500">
       Unable to load the courses. Please try again by refreshing the page
@@ -68,55 +81,44 @@ const Page = () => {
         </div>
       </div>
     ))
+  ) : searchedCourses.length === 0 ? (
+    <div>
+      It&#39;s not available, but you can create it.{" "}
+      <Link href="/courses/create" className="text-primary underline">
+        Create it from here
+      </Link>
+    </div>
   ) : (
-    courses!
-      .filter((c) => {
-        if (searchTerm.trim()) {
-          return (
-            c.title
-              .toLocaleLowerCase()
-              .includes(searchTerm.toLocaleLowerCase()) ||
-            [
-              c.title.toLocaleLowerCase(),
-              c.difficulty.toLocaleLowerCase(),
-              c.target_audience.toLocaleLowerCase(),
-            ].includes(searchTerm.toLocaleLowerCase())
-          );
-        }
-
-        return true;
-      })
-      .map((course) => (
-        <div
-          key={course.id}
-          className="bg-card text-card-foreground rounded-xl shadow border border-border/70 overflow-hidden group flex flex-col"
-        >
-          <div className="p-4 flex justify-between gap-2">
-            <div>
-              <h2 className="text-xl font-semibold grow">{course.title}</h2>
-              <div className="mt-2 flex gap-2 flex-wrap">
-                <Badge>{course.topic}</Badge> <Badge>{course.difficulty}</Badge>{" "}
-                <Badge>{course.target_audience}</Badge>
-              </div>
+    searchedCourses.map((course) => (
+      <div
+        key={course.id}
+        className="bg-card text-card-foreground rounded-xl shadow border border-border/70 overflow-hidden group flex flex-col"
+      >
+        <div className="p-4 flex justify-between gap-2">
+          <div>
+            <h2 className="text-xl font-semibold grow">{course.title}</h2>
+            <div className="mt-2 flex gap-2 flex-wrap">
+              <Badge>{course.topic}</Badge> <Badge>{course.difficulty}</Badge>{" "}
+              <Badge>{course.target_audience}</Badge>
             </div>
-            {/* <DeleteCourseDialog courseId={course.id} /> */}
           </div>
-          <Separator className="" />
-          <p className="text-muted-foreground p-4 grow">{course.description}</p>
-          <div className="p-4 pt-0">
-            <Link
-              href={`/course/${course.id}`}
-              // className="w-full flex items-center gap-2"
-              className={buttonVariants({
-                className:
-                  "w-full text-muted-foreground flex items-center gap-2",
-              })}
-            >
-              Start learning
-            </Link>
-          </div>
+          {/* <DeleteCourseDialog courseId={course.id} /> */}
         </div>
-      ))
+        <Separator className="" />
+        <p className="text-muted-foreground p-4 grow">{course.description}</p>
+        <div className="p-4 pt-0">
+          <Link
+            href={`/course/${course.id}`}
+            // className="w-full flex items-center gap-2"
+            className={buttonVariants({
+              className: "w-full text-muted-foreground flex items-center gap-2",
+            })}
+          >
+            Start learning
+          </Link>
+        </div>
+      </div>
+    ))
   );
 
   return (
@@ -130,7 +132,14 @@ const Page = () => {
           className="w-80"
         />
       </div>
-      <div className="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 pb-10">
+      <div
+        className={cn(
+          " pb-10",
+          searchedCourses.length === 0
+            ? ""
+            : "grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4"
+        )}
+      >
         {courseJsx}
       </div>
     </PageContainer>
