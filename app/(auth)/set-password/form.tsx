@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { Eye, EyeOff, LoaderIcon } from "lucide-react";
+import { Eye, EyeOff, Loader, LoaderIcon } from "lucide-react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
@@ -21,13 +21,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { createClient } from "@/lib/supabase/client";
+import { setPasswordAction } from "@/actions/set-password";
+import { useAction } from "next-safe-action/hooks";
 // import { useSupabase } from "@/lib/supabase";
 
 const formSchema = z.object({
   password: z
     .string()
     .trim()
-    .min(6, { message: "Password must be at least 6 characters long" }),
+    .min(6, { message: "Password must contain at least 6 character(s)" }),
   // .min(8, { message: "Password must be at least 8 characters long" })
   // .max(72, { message: "Password must not exceed 72 characters" })
   // .regex(/[a-z]/, {
@@ -60,6 +62,29 @@ const SetPasswordForm = () => {
 
   const searchParams = useSearchParams();
 
+  const { executeAsync, result, isPending } = useAction(setPasswordAction, {
+    onSuccess: ({ data, input }) => {
+      console.log({ data });
+      // router.replace("/new");
+      toast.success("Password has been updated successfully.");
+
+      router.push("/new");
+    },
+    onError: ({ error }) => {
+      console.log({ error });
+      if (error.serverError) {
+        toast.error(error.serverError);
+      }
+      if (error.validationErrors) {
+        toast.error(
+          `${error.validationErrors.password?.join(", ") ?? ""}. ${
+            error.validationErrors.refreshToken?.join(", ") ?? ""
+          }`
+        );
+      }
+    },
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,49 +101,54 @@ const SetPasswordForm = () => {
     //     position: "top-center",
     //   });
 
-    const refreshToken = searchParams.get("refresh_token");
+    const refreshToken = searchParams.get("refresh_token") ?? "";
 
-    if (!refreshToken?.trim())
-      return toast.error("Invalid token", { position: "top-center" });
-
-    console.log(refreshToken);
-
-    setIsLoading(true);
-
-    const supabase = createClient();
-
-    const data = await supabase.auth.refreshSession({
-      refresh_token: refreshToken,
+    const result = await executeAsync({
+      password,
+      refreshToken,
     });
 
-    if (data.error) {
-      setIsLoading(false);
-      return toast.error("Invalid token", { position: "top-center" });
-    }
+    // if (!refreshToken?.trim())
+    //   return toast.error("Invalid token", { position: "top-center" });
 
-    console.log(data.data);
+    // console.log(refreshToken);
 
-    const { data: userData, error: userError } = await supabase.auth.updateUser(
-      { password: password }
-    );
+    // setIsLoading(true);
 
-    console.log(userData);
+    // const supabase = createClient();
 
-    if (userError) {
-      console.log(userError);
+    // const data = await supabase.auth.refreshSession({
+    //   refresh_token: refreshToken,
+    // });
 
-      setIsLoading(false);
-      return toast.error(userError.message, { position: "top-center" });
-      // return toast.error(
-      //   "Something went wrong while setting the password! Please try again.",
-      //   { position: "top-center" }
-      // );
-    }
+    // if (data.error) {
+    //   setIsLoading(false);
+    //   return toast.error("Invalid token", { position: "top-center" });
+    // }
 
-    setIsLoading(false);
+    // console.log(data.data);
 
-    router.refresh();
-    return router.push(`/new`);
+    // const { data: userData, error: userError } = await supabase.auth.updateUser(
+    //   { password: password }
+    // );
+
+    // console.log(userData);
+
+    // if (userError) {
+    //   console.log(userError);
+
+    //   setIsLoading(false);
+    //   return toast.error(userError.message, { position: "top-center" });
+    //   // return toast.error(
+    //   //   "Something went wrong while setting the password! Please try again.",
+    //   //   { position: "top-center" }
+    //   // );
+    // }
+
+    // setIsLoading(false);
+
+    // router.refresh();
+    // return router.push(`/new`);
   }
   return (
     <Form {...form}>
@@ -160,9 +190,9 @@ const SetPasswordForm = () => {
           type="submit"
           className="w-full flex justify-center gap-2"
           // onClick={handleResetPassword}
-          disabled={isLoading}
+          disabled={isPending}
         >
-          {isLoading && <LoaderIcon className="animate-spin size-5" />}
+          {isPending && <Loader className="animate-spin size-5" />}
           Confirm
         </Button>
       </form>
