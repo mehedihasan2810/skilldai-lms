@@ -16,8 +16,7 @@ async function getSchema() {
 export const signInUser = action
   .metadata({ actionName: "signInUser" })
   .schema(getSchema, {
-    // Here we use the `flattenValidationErrors` function to customize the returned validation errors
-    // object to the client.
+
     handleValidationErrorsShape: async (ve) =>
       flattenValidationErrors(ve).fieldErrors,
   })
