@@ -21,14 +21,14 @@ import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useQuery } from "@tanstack/react-query";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { getCourses, getCoursesForReports } from "@/lib/db";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const description = "A radial chart with text";
 
-export function CourseCompletionChart() {
-  const { session } = useSupabase();
+export function CourseCompletionChart({userId}: {userId: string}) {
+  // const { session } = useSupabase();
   const {
     data: courses,
     error,
@@ -51,7 +51,7 @@ export function CourseCompletionChart() {
               text={`${
                 Math.ceil(
                   ((courses ?? []).filter((c) =>
-                    c.completed_users.includes(session?.user.id)
+                    c.completed_users.includes(userId)
                   ).length /
                     (courses ?? []).length) *
                     100
@@ -61,7 +61,7 @@ export function CourseCompletionChart() {
               value={
                 Math.ceil(
                   ((courses ?? []).filter((c) =>
-                    c.completed_users.includes(session?.user.id)
+                    c.completed_users.includes(userId)
                   ).length /
                     (courses ?? []).length) *
                     100
@@ -83,7 +83,7 @@ export function CourseCompletionChart() {
               <div className="font-bold  text-xl">
                 {
                   courses!.filter((c) =>
-                    c.completed_users.includes(session?.user.id)
+                    c.completed_users.includes(userId)
                   ).length
                 }
               </div>
@@ -97,7 +97,7 @@ export function CourseCompletionChart() {
               text={`${
                 Math.ceil(
                   ((courses ?? []).filter((c) =>
-                    c.in_progress_users.includes(session?.user.id)
+                    c.in_progress_users.includes(userId)
                   ).length /
                     (courses ?? []).length) *
                     100
@@ -107,7 +107,7 @@ export function CourseCompletionChart() {
               value={
                 Math.ceil(
                   ((courses ?? []).filter((c) =>
-                    c.in_progress_users.includes(session?.user.id)
+                    c.in_progress_users.includes(userId)
                   ).length /
                     (courses ?? []).length) *
                     100
@@ -129,7 +129,7 @@ export function CourseCompletionChart() {
                 {" "}
                 {
                   courses!.filter((c) =>
-                    c.in_progress_users.includes(session?.user.id)
+                    c.in_progress_users.includes(userId)
                   ).length
                 }
               </div>
@@ -143,10 +143,10 @@ export function CourseCompletionChart() {
               text={`${
                 Math.ceil(
                   (((courses ?? []).filter((c) =>
-                    c.in_progress_users.includes(session?.user.id)
+                    c.in_progress_users.includes(userId)
                   ).length +
                     (courses ?? []).filter((c) =>
-                      c.completed_users.includes(session?.user.id)
+                      c.completed_users.includes(userId)
                     ).length) /
                     (courses ?? []).length) *
                     100
@@ -162,10 +162,10 @@ export function CourseCompletionChart() {
               value={
                 Math.ceil(
                   (((courses ?? []).filter((c) =>
-                    c.in_progress_users.includes(session?.user.id)
+                    c.in_progress_users.includes(userId)
                   ).length +
                     (courses ?? []).filter((c) =>
-                      c.completed_users.includes(session?.user.id)
+                      c.completed_users.includes(userId)
                     ).length) /
                     (courses ?? []).length) *
                     100
@@ -193,10 +193,10 @@ export function CourseCompletionChart() {
               <div className="font-bold  text-xl">
                 {(courses ?? []).length -
                   ((courses ?? []).filter((c) =>
-                    c.in_progress_users.includes(session?.user.id)
+                    c.in_progress_users.includes(userId)
                   ).length +
                     (courses ?? []).filter((c) =>
-                      c.completed_users.includes(session?.user.id)
+                      c.completed_users.includes(userId)
                     ).length)}
               </div>
               <div className="w-max">Not Started</div>

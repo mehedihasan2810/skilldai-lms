@@ -11,12 +11,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getCourses, getCoursesForReports } from "@/lib/db";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
-const CourseTable = () => {
-  const { session } = useSupabase();
+const CourseTable = ({ userId }: { userId: string }) => {
+  // const { session } = useSupabase();
   const {
     data: courses,
     error,
@@ -79,18 +79,17 @@ const CourseTable = () => {
               <TableCell>
                 {
                   course.course_sections.filter((section) =>
-                    section.completed_users.includes(session?.user.id ?? "")
+                    section.completed_users.includes(userId ?? "")
                   ).length
                 }
                 /{course.course_sections.length}
               </TableCell>
               <TableCell>
                 {course.course_sections.reduce((total, section) => {
-                  if (section.quizzes_result[session?.user.id ?? ""]) {
+                  if (section.quizzes_result[userId ?? ""]) {
                     const totalQuiz =
-                      Object.keys(
-                        section.quizzes_result[session?.user.id ?? ""]
-                      ).length - 1;
+                      Object.keys(section.quizzes_result[userId ?? ""]).length -
+                      1;
                     return total + totalQuiz;
                   }
 
@@ -107,7 +106,7 @@ const CourseTable = () => {
                   className="min-w-16 md:min-w-auto"
                   value={Math.ceil(
                     (course.course_sections.filter((section) =>
-                      section.completed_users.includes(session?.user.id ?? "")
+                      section.completed_users.includes(userId ?? "")
                     ).length /
                       course.course_sections.length) *
                       100
@@ -116,7 +115,7 @@ const CourseTable = () => {
                 <div>
                   {Math.ceil(
                     (course.course_sections.filter((section) =>
-                      section.completed_users.includes(session?.user.id ?? "")
+                      section.completed_users.includes(userId ?? "")
                     ).length /
                       course.course_sections.length) *
                       100

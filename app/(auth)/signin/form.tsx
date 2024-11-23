@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -23,7 +18,6 @@ import * as z from "zod";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
 import { Eye, EyeOff, Loader, Loader2Icon } from "lucide-react";
-import toast from "react-hot-toast";
 import {
   ForgotPasswordFooter,
   SignUpFooter,
@@ -36,11 +30,14 @@ import { OAuthProviders } from "@/app/types";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
-const formSchema = z.object({
-  email: z.string(),
-  password: z.string(),
-});
+import { SubmitButton } from "@/components/submit-button";
+import { signInAction } from "@/actions/auth";
+import { Message } from "@/components/signin-form-message";
+import { Label } from "@/components/ui";
+import { useAction } from "next-safe-action/hooks";
+import { signInUser } from "@/actions/sign-in";
+import { toast } from "sonner";
+import { signInSchema } from "@/lib/validations/auth";
 
 enum FormStatus {
   Idle,
@@ -49,177 +46,169 @@ enum FormStatus {
   Success,
 }
 
-const SignInForm = () => {
+const SignInForm = ({ message }: { message: Message }) => {
   const [isShowPass, setIsShowPass] = useState(false);
-  const supabase = createClientComponentClient();
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const { executeAsync, result, isPending } = useAction(signInUser, {
+    onSuccess: ({ data, input }) => {
+      console.log({ data });
+      router.replace("/new");
+    },
+    onError: ({ error, input }) => {
+      console.log({ error });
+      if (error.serverError) {
+        toast.error(error.serverError);
+      }
+      if (error.validationErrors) {
+        toast.error(
+          `${error.validationErrors.email?.join(", ") ?? ""}. ${
+            error.validationErrors.password?.join(", ") ?? ""
+          }`
+        );
+      }
+    },
+  });
+
+  const form = useForm<z.infer<typeof signInSchema>>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  // state for signin progress, error, and success
-  const [formStatus, setFormStatus] = useState<FormStatus>(FormStatus.Idle);
+  // const [formStatus, setFormStatus] = useState<FormStatus>(FormStatus.Idle);
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setFormStatus(FormStatus.Loading);
+  const onSubmit = async (values: z.infer<typeof signInSchema>) => {
+    console.log({ values });
+    const result = await executeAsync(values);
+    console.log({ result });
 
-    const res = await supabase.auth.signInWithPassword({
-      email: values.email,
-      password: values.password,
-    });
+    // setFormStatus(FormStatus.Loading);
 
-    if (res.error) {
-      console.error(res.error);
-      setFormStatus(FormStatus.Error);
-      toast.error(res.error.message, {
-        position: "top-center",
-      });
-      return;
-    }
+    // const res = await supabase.auth.signInWithPassword({
+    //   email: values.email,
+    //   password: values.password,
+    // });
 
-    setFormStatus(FormStatus.Success);
-    toast.success("Signed In! Taking you to the app", {
-      position: "top-center",
-    });
-    router.refresh();
-    router.push("/new");
+    // if (res.error) {
+    //   console.error(res.error);
+    //   setFormStatus(FormStatus.Error);
+    //   toast.error(res.error.message, {
+    //     position: "top-center",
+    //   });
+    //   return;
+    // }
+
+    // setFormStatus(FormStatus.Success);
+    // toast.success("Signed In! Taking you to the app", {
+    //   position: "top-center",
+    // });
+    // router.refresh();
+    // router.push("/new");
   };
 
-  const handleOAuthSignIn = async (provider: OAuthProviders) => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/api/auth/callback`,
-      },
-    });
+  // const handleOAuthSignIn = async (provider: OAuthProviders) => {
+  //   const { error } = await supabase.auth.signInWithOAuth({
+  //     provider,
+  //     options: {
+  //       redirectTo: `${window.location.origin}/api/auth/callback`,
+  //     },
+  //   });
 
-    if (error) {
-      console.error(error);
-      toast.error(error.message, {
-        position: "top-center",
-      });
-    }
-  };
+  //   if (error) {
+  //     console.error(error);
+  //     toast.error(error.message, {
+  //       position: "top-center",
+  //     });
+  //   }
+  // };
 
-  const handleGoogleSignIn = () => {
-    handleOAuthSignIn(OAuthProviders.google);
-  };
+  // const handleGoogleSignIn = () => {
+  //   handleOAuthSignIn(OAuthProviders.google);
+  // };
 
-  const handleGitHubSignIn = () => {
-    handleOAuthSignIn(OAuthProviders.github);
-  };
+  // const handleGitHubSignIn = () => {
+  //   handleOAuthSignIn(OAuthProviders.github);
+  // };
 
   return (
-    // <main className="flex flex-col gap-6 items-center w-full h-screen pt-32 px-4">
-    //   <Link href="/" className="flex items-center gap-4">
-    //     <Image
-    //       src="/skilld-logo.png"
-    //       alt="Skilld ai logo"
-    //       width={40}
-    //       height={40}
-    //     />
-    //     <h1 className="text-4xl font-bold">Skilld AI</h1>
-    //   </Link>
-      <Card className="max-w-sm w-full">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Sign In</CardTitle>
-        </CardHeader>
+    <Card className="max-w-md w-full border">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-xl"> Sign In To Your Account</CardTitle>
+      </CardHeader>
 
-        <CardContent className="grid gap-4">
-          {/* <OAuthProviderButton
-            provider={OAuthProviders.google}
-            onClick={handleGoogleSignIn}
-          >
-            Sign in with Google
-          </OAuthProviderButton>
+      <CardContent className="grid gap-4">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
 
-          <OAuthProviderButton
-            provider={OAuthProviders.github}
-            onClick={handleGitHubSignIn}
-          >
-            Sign in with GitHub
-          </OAuthProviderButton>
+                  <FormControl>
+                    <Input placeholder="Enter your email..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <div className="flex items-center gap-4">
-            <Separator className="flex-1" />
-            <span className="text-neutral-500 text-sm">OR</span>
-            <Separator className="flex-1" />
-          </div> */}
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <div className="flex justify-between items-center">
+                  <FormLabel>Password</FormLabel>
+                    <Link
+                      className="text-sm underline text-muted-foreground"
+                      href="/forgot-password"
+                    >
+                      Forgot Password?
+                    </Link>
+                  </div>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        className="pr-11"
+                        type={isShowPass ? "text" : "password"}
+                        placeholder="Enter your password..."
+                        {...field}
+                      />
+                      <Button
+                        type="button"
+                        onClick={() => setIsShowPass(!isShowPass)}
+                        size="icon"
+                        variant="ghost"
+                        className="absolute right-4 top-1/2 -translate-y-1/2  size-min"
+                      >
+                        <Eye className={cn({ hidden: isShowPass })} />
+                        <EyeOff className={cn({ hidden: !isShowPass })} />
+                      </Button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Enter your email..." {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Input
-                          className="pr-11"
-                          type={isShowPass ? "text" : "password"}
-                          placeholder="Enter your password..."
-                          {...field}
-                        />
-                        <Button
-                          type="button"
-                          onClick={() => setIsShowPass(!isShowPass)}
-                          size="icon"
-                          variant="ghost"
-                          className="absolute right-4 top-1/2 -translate-y-1/2  size-min"
-                        >
-                          <Eye className={cn({ hidden: isShowPass })} />
-                          <EyeOff className={cn({ hidden: !isShowPass })} />
-                        </Button>
-                      </div>
-                      {/* <Input type="password" {...field} /> */}
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <Button type="submit" className="w-full">
-                {formStatus === FormStatus.Loading && (
-                  <>
-                    <Loader className="animate-spin mr-2" /> Signing In
-                  </>
-                )}
-
-                {formStatus !== FormStatus.Loading && "Sign In"}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-
-        {/* <CardFooter className="flex flex-col gap-2">
-          <ForgotPasswordFooter />
-          <SignUpFooter />
-        </CardFooter> */}
-      </Card>
-
-      // {/* <SocialFooter /> */}
-    // {/* </main> */}
+            <Button disabled={isPending} type="submit" className="w-full">
+              {isPending ? (
+                <>
+                  <Loader className="animate-spin mr-2" /> Signing In
+                </>
+              ) : (
+                "Sign In"
+              )}
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
   );
 };
 

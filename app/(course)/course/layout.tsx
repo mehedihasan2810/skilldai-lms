@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -9,33 +9,44 @@ import {
 import { redirect, useRouter } from "next/navigation";
 import { cookies } from "next/headers";
 import { useEffect, useState } from "react";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 
 interface CourseLayoutProps {
   children: React.ReactNode;
 }
 
-export default function CourseLayout({ children }: CourseLayoutProps) {
-  const router = useRouter();
-  const { supabase } = useSupabase();
-  const [session, setSession] = useState<Session | null>(null);
+export default async function CourseLayout({ children }: CourseLayoutProps) {
+  // const router = useRouter();
+  // const { supabase } = useSupabase();
+  // const [session, setSession] = useState<Session | null>(null);
 
-  useEffect(() => {
-    const checkSession = async () => {
-      const newSession = await supabase.auth.getSession();
-      console.log({ newSession: newSession.data.session });
-      setSession(newSession.data.session);
-      if (!newSession.data.session) {
-        router.refresh();
-        router.push("/signin");
-      }
-    };
+  // useEffect(() => {
+  //   const checkSession = async () => {
+  //     const newSession = await supabase.auth.getSession();
+  //     console.log({ newSession: newSession.data.session });
+  //     setSession(newSession.data.session);
+  //     if (!newSession.data.session) {
+  //       router.refresh();
+  //       router.push("/signin");
+  //     }
+  //   };
 
-    checkSession();
-  }, [supabase, router]);
+  //   checkSession();
+  // }, [supabase, router]);
 
-  if (!session) {
-    return null;
+  // if (!session) {
+  //   return null;
+  // }
+
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/signin");
   }
 
   return (

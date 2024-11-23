@@ -20,20 +20,20 @@ import { Button, buttonVariants } from "@/components/ui";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { UserButton } from "../user-button";
 import { useParams } from "next/navigation";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import { ChatItem } from "./chat-item";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 
-const ChatMobileSidebar = () => {
+const ChatMobileSidebar = ({email, userId}: {email: string, userId: string}) => {
   const [open, setOpen] = useState(false);
 
   const params = useParams();
 
-  const { supabase, session } = useSupabase();
-  const userId = session?.user.id;
+  // const { supabase, session } = useSupabase();
+  // const userId = session?.user.id;
 
   const {
     data: chats,
@@ -41,7 +41,7 @@ const ChatMobileSidebar = () => {
     isLoading,
   } = useQuery({
     queryKey: ["chats"],
-    queryFn: async () => await getChats(supabase, userId),
+    queryFn: async () => await getChats(userId),
     enabled: !!userId,
   });
 
@@ -97,9 +97,9 @@ const ChatMobileSidebar = () => {
             >
               <BookOpen className="size-5" />{" "}
             </Link>
-            <FeedbackForm />
+            <FeedbackForm  email={email} />
             <ThemeToggle />
-            <UserButton />
+            <UserButton userEmail={email} />
           </div>
         </div>
       </SheetContent>

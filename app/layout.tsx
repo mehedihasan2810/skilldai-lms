@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { EB_Garamond, Inter as FontSans, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster as ReactHostToaster } from "react-hot-toast";
 import ReactQueryProvider from "@/app/react-query-provider";
 import { cookies } from "next/headers";
-import { SupabaseProvider } from "@/lib/supabase";
+// import { SupabaseProvider } from "@/lib/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
@@ -21,27 +21,39 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+const eb_garamond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
 export const metadata: Metadata = {
   title: "Skilld AI",
   // description: "Create and Share Artifacts with Claude",
 };
+
+
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = createServerComponentClient({ cookies });
+  // const supabase = createServerComponentClient({ cookies });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  // const {
+  //   data: { session },
+  // } = await supabase.auth.getSession();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en"  
+    // className={cn(inter.variable, eb_garamond.variable)}
+     suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen",
+          // GeistSans.variable, eb_garamond.variable
           GeistSans.className
           // fontSans.variable
         )}
@@ -52,14 +64,14 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SupabaseProvider session={session}>
+          {/* <SupabaseProvider session={session}> */}
             <ReactQueryProvider>
               <NuqsAdapter>
                 <TooltipProvider>{children}</TooltipProvider>
               </NuqsAdapter>
               <ReactHostToaster />
             </ReactQueryProvider>
-          </SupabaseProvider>
+          {/* </SupabaseProvider> */}
           <Toaster richColors />
         </ThemeProvider>
         <NextTopLoader

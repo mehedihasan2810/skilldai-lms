@@ -12,13 +12,14 @@ import { SignOutDialog } from "./sign-out-dialog";
 import { UserIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { createClient } from "@/lib/supabase/client";
 
 type Props = {
   expanded?: boolean;
@@ -28,7 +29,7 @@ type Props = {
 export const UserButton = ({ expanded = false, userEmail }: Props) => {
   const router = useRouter();
 
-  const { supabase, session } = useSupabase();
+  // const { supabase, session } = useSupabase();
 
   const [isSignoutDialogOpen, setIsSignoutDialogOpen] = useState(false);
 
@@ -39,6 +40,8 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
     e
   ) => {
     e.preventDefault();
+
+    const supabase = createClient()
 
     try {
       const res = await supabase.auth.signOut();
@@ -79,9 +82,9 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
 
           <DropdownMenuLabel
             className="truncate"
-            title={userEmail ?? session?.user.email}
+            title={userEmail}
           >
-            {userEmail ?? session?.user.email}
+            {userEmail}
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
@@ -103,3 +106,7 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
     </>
   );
 };
+
+
+
+

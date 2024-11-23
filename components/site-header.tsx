@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 
@@ -10,6 +10,7 @@ import { MobileNav } from "./mobile-nav";
 // import { MainNav } from "./main-nav";
 import { ThemeToggle } from "./theme-toggle";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -17,13 +18,18 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-card text-card-foreground">
       <div className="max-w-6xl mx-auto flex h-16 items-center justify-between px-4">
         {/* <MainNav /> */}
-        <Link href="/courses" className="mr-4 items-center space-x-2 lg:mr-6 hidden lg:flex">
+        <Link
+          href="/courses"
+          className="mr-4 items-center space-x-2 lg:mr-6 hidden lg:flex"
+        >
           {/* <Icons.logo className="h-6 w-6" /> */}
           <span className="hidden font-bold lg:inline-block">
             {siteConfig.name}
           </span>
         </Link>
-        <MobileNav />
+        <Suspense fallback={null}>
+          <MobileNav />
+        </Suspense>
         <div className="flex  items-center justify-between space-x-2 md:justify-end">
           {/* <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />
@@ -43,7 +49,9 @@ export function SiteHeader() {
               href="/reports"
               className={cn(
                 "transition-colors hover:text-foreground/80",
-                pathname === "/courses" ? "text-foreground" : "text-foreground/60"
+                pathname === "/courses"
+                  ? "text-foreground"
+                  : "text-foreground/60"
               )}
             >
               Dashboard

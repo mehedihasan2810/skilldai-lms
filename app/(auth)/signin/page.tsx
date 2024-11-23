@@ -1,43 +1,64 @@
-"use client"
+// "use client"
 import { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import SignInForm from "./form";
-import { createServerComponentClient, Session } from "@supabase/auth-helpers-nextjs";
+import {
+  createServerComponentClient,
+  Session,
+} from "@supabase/auth-helpers-nextjs";
 import { redirect, useRouter } from "next/navigation";
 import { cookies } from "next/headers";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
+import { Message } from "@/components/signin-form-message";
+import { createClient } from "@/lib/supabase/server";
 
 // export const metadata: Metadata = {
 //   title: "Sign In | Skilld",
 //   description: "Sign In to restart your journey with Skilld.",
 // };
 
-export default function Page() {
-  const router = useRouter();
-  const { supabase } = useSupabase();
-  const [session, setSession] = useState<Session | null>(null);
+export default async function Page(props: { searchParams: Promise<Message> }) {
+  // const router = useRouter();
+  // const { supabase } = useSupabase();
+  // const [session, setSession] = useState<Session | null>(null);
 
-  useEffect(() => {
-    const checkSession = async () => {
-      const newSession = await supabase.auth.getSession();
-      console.log({ newSession: newSession.data.session });
-      setSession(newSession.data.session);
-      if (!newSession.data.session) {
-        router.refresh();
-        router.push("/signin");
-      }
-    };
+  // useEffect(() => {
+  //   const checkSession = async () => {
+  //     const newSession = await supabase.auth.getSession();
+  //     console.log({ newSession: newSession.data.session });
+  //     setSession(newSession.data.session);
+  //     if (!newSession.data.session) {
+  //       router.refresh();
+  //       router.push("/signin");
+  //     }
+  //   };
 
-    checkSession();
-  }, [supabase, router]);
+  //   checkSession();
+  // }, [supabase, router]);
 
-  if (session) {
-    return router.push("/new");
-  }
+  // if (session) {
+  //   return router.push("/new");
+  // }
+
+  const searchParams = await props.searchParams;
+
+  console.log({ searchParams });
+
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  console.log({ user });
+
+  // if (!user) {
+  //   return redirect("/sign-in");
+  // }
 
   return (
     <div className="relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -86,15 +107,15 @@ export default function Page() {
       </div>
       <div className="p-4 lg:p-8 h-full flex items-center">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 max-w-sm">
-          <div className="flex flex-col space-y-2 text-center">
+          {/* <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
               Sign In To Your Account
             </h1>
-            {/* <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               Enter your email and password below to create your account
-            </p> */}
-          </div>
-          <SignInForm />
+            </p>
+          </div> */}
+          <SignInForm message={searchParams} />
           {/* <div>
             <p className="text-center text-sm text-muted-foreground">
               Don&#39;t have an account?{" "}

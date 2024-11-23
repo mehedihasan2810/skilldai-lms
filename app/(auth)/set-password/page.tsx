@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import SetPasswordForm from "./form";
+import { Suspense } from "react";
 
 const Page = () => {
   // const handleResetPassword = async () => {
@@ -56,7 +57,9 @@ const Page = () => {
           <CardTitle>Set Password</CardTitle>
         </CardHeader>
         <CardContent className="w-[300px] md:w-[400px]">
-          <SetPasswordForm />
+          <Suspense fallback={null}>
+            <SetPasswordForm />
+          </Suspense>
         </CardContent>
       </Card>
     </div>

@@ -9,6 +9,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Button } from "../ui";
+import { signOutAction } from "@/actions/auth";
+import { SubmitButton } from "../submit-button";
 
 type Props = {
   open: boolean;
@@ -28,9 +31,19 @@ export const SignOutDialog = ({ open, onOpenChange, handleSignOut }: Props) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleSignOut}>
+          <form>
+            <SubmitButton
+              className="w-full"
+              pendingText="Signing out..."
+              formAction={signOutAction}
+            >
+              Sign out
+            </SubmitButton>
+          </form>
+
+          {/* <AlertDialogAction onClick={handleSignOut}>
             Sign Out
-          </AlertDialogAction>
+          </AlertDialogAction> */}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

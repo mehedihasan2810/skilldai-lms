@@ -1,9 +1,11 @@
 import { Attachment } from "@/app/types";
 import { SupabaseContextType } from "@/lib/supabase/types";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "./supabase/client";
+const supabase =  createClient();
 
 export const getChats = async (
-  supabase: SupabaseContextType["supabase"],
+  // supabase: SupabaseContextType["supabase"],
   userId: string | null | undefined
 ) => {
   if (!userId) throw new Error("User not authenticated");
@@ -23,7 +25,7 @@ export const getChats = async (
 };
 
 export const getChatMessages = async (
-  supabase: SupabaseContextType["supabase"],
+  // supabase: SupabaseContextType["supabase"],
   id: string | null
 ) => {
   if (!id) return [];
@@ -43,7 +45,7 @@ export const getChatMessages = async (
 };
 
 export const createChat = async (
-  supabase: SupabaseContextType["supabase"],
+  // supabase: SupabaseContextType["supabase"],
   title: string,
   userId: string | null | undefined
 ) => {
@@ -72,7 +74,7 @@ export const createChat = async (
 };
 
 export const deleteChat = async (chatId: string) => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { data: messageData, error } = await supabase
     .from("messages")
     .delete()
@@ -100,7 +102,7 @@ export const deleteChat = async (chatId: string) => {
 };
 
 export const addMessage = async (
-  supabase: SupabaseContextType["supabase"],
+  // supabase: SupabaseContextType["supabase"],
   chatId: string | null,
   message: { role: string; content: string; metadata?: Record<string, any> },
   attachments: Attachment[] = []
@@ -125,7 +127,7 @@ export const addMessage = async (
 };
 
 export const addFeedback = async (feedback: string, email: string) => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("feedback")
     .insert({
@@ -145,7 +147,7 @@ export const addFeedback = async (feedback: string, email: string) => {
 };
 
 export const getCourses = async (email: string) => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("courses")
     .select("*")
@@ -163,7 +165,7 @@ export const getCourses = async (email: string) => {
 };
 
 export const getSectionsByCourseId = async (id: string) => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("course_sections")
     // .select("*")
@@ -221,7 +223,7 @@ export const updateSectionCompletion = async (
 ) => {
   console.log({ userId, sectionId, completedUsers, isMarkComplete, courseId });
 
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("course_sections")
     .update({
@@ -277,7 +279,7 @@ export const updateQuizResult = async (
 ) => {
   console.log({ sectionId, result });
 
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("course_sections")
     .update({
@@ -302,7 +304,7 @@ export const updateCourseStatusInprogress = async (
 ) => {
   console.log({ courseId, status });
 
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
 
   const { error: coursesError, data: courses } = await supabase
     .from("courses")
@@ -339,7 +341,7 @@ export const updateCourseStatusInprogress = async (
 };
 
 export const getCoursesForReports = async () => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("courses")
     .select(

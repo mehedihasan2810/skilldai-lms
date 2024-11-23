@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses, getCoursesForReports } from "@/lib/db";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const ReportTopData = () => {
-  const { session } = useSupabase();
+export const ReportTopData = ({userId}: {userId: string}) => {
+  // const { session } = useSupabase();
   const {
     data: courses,
     error,
@@ -65,7 +65,7 @@ export const ReportTopData = () => {
               {" "}
               {
                 courses!.filter((c) =>
-                  c.completed_users.includes(session?.user.id)
+                  c.completed_users.includes(userId)
                 ).length
               }
             </div>
@@ -90,7 +90,7 @@ export const ReportTopData = () => {
             <div className="font-bold text-lg">
               {
                 courses!.filter((c) =>
-                  c.in_progress_users.includes(session?.user.id)
+                  c.in_progress_users.includes(userId)
                 ).length
               }
             </div>
@@ -116,10 +116,10 @@ export const ReportTopData = () => {
               {courses!
                 .flatMap((course) => course.course_sections)
                 .reduce((total, section) => {
-                  if (section.quizzes_result[session?.user.id ?? ""]) {
+                  if (section.quizzes_result[userId ?? ""]) {
                     const totalQuiz =
                       Object.keys(
-                        section.quizzes_result[session?.user.id ?? ""]
+                        section.quizzes_result[userId ?? ""]
                       ).length - 1;
                     return total + totalQuiz;
                   }

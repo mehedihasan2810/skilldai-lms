@@ -35,7 +35,7 @@ import {
   convertFileToText,
   fileToFileList,
 } from "@/lib/utils";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import Link from "next/link";
@@ -49,8 +49,7 @@ const examplePrompts = [
   // },
   {
     title: "how do i use this platform?",
-    prompt:
-      "how do i use this platform?",
+    prompt: "how do i use this platform?",
   },
   {
     title: "Analyze Python Equality Operators",
@@ -108,6 +107,7 @@ export type Props = {
   showScrollButton: boolean;
   handleManualScroll: () => void;
   stopGenerating: () => void;
+  userId: string;
 };
 
 export const ChatInput = memo(function ChatInput({
@@ -129,14 +129,15 @@ export const ChatInput = memo(function ChatInput({
   showScrollButton,
   handleManualScroll,
   stopGenerating,
+  userId,
 }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { onKeyDown } = useEnterSubmit({ onSubmit });
   const [model, setModel] = useState<Models>(getSettings().model);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { supabase, session } = useSupabase();
-  const userId = session?.user.id;
+  // const { supabase, session } = useSupabase();
+  // const userId = session?.user.id;
 
   const {
     data: chats,
@@ -144,7 +145,7 @@ export const ChatInput = memo(function ChatInput({
     isLoading: isChatLoading,
   } = useQuery({
     queryKey: ["chats"],
-    queryFn: async () => await getChats(supabase, userId),
+    queryFn: async () => await getChats(userId),
     enabled: !!userId,
   });
 

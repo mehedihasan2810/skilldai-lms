@@ -5,7 +5,7 @@ import { UserSettings } from "@/components/side-navbar/user-settings";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { UserButton } from "@/components/user-button";
 import { getChats } from "@/lib/db";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import {
   BookOpen,
@@ -33,7 +33,7 @@ export const SideNavBar = ({
 
   const params = useParams();
 
-  const { supabase, session } = useSupabase();
+  // const { supabase, session } = useSupabase();
   // const userId = session?.user.id;
 
   const {
@@ -42,7 +42,7 @@ export const SideNavBar = ({
     isLoading,
   } = useQuery({
     queryKey: ["chats"],
-    queryFn: async () => await getChats(supabase, userId),
+    queryFn: async () => await getChats(userId),
     enabled: !!userId,
   });
 
@@ -117,7 +117,7 @@ export const SideNavBar = ({
           >
             <BookOpen className="size-5" /> Courses
           </Link>
-          <FeedbackForm expanded />
+          <FeedbackForm expanded email={userEmail} />
           <div className="flex gap-4 items-center justify-center w-full mt-4 mb-4">
             <ThemeToggle />
             <UserButton expanded userEmail={userEmail} />
@@ -175,7 +175,7 @@ export const SideNavBar = ({
           </TooltipContent>
         </Tooltip>
 
-        <FeedbackForm />
+        <FeedbackForm email={userEmail} />
         <ThemeToggle />
         <UserButton userEmail={userEmail} />
       </div>

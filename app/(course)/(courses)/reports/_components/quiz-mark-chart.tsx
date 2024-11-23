@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { getCoursesForReports } from "@/lib/db";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -14,8 +14,8 @@ import {
 import { CircleHelp } from "lucide-react";
 import { buttonVariants } from "@/components/ui";
 
-export function QuizMarkChart() {
-  const { session, supabase } = useSupabase();
+export function QuizMarkChart({userId}: {userId: string}) {
+  // const { session, supabase } = useSupabase();
   const {
     data: courses,
     error,
@@ -28,7 +28,7 @@ export function QuizMarkChart() {
   const result = courses
     ?.flatMap((course) => course.course_sections)
     .map((section) => {
-      const result = section.quizzes_result[session?.user.id ?? ""];
+      const result = section.quizzes_result[userId ?? ""];
       if (result) {
         return result;
       }
@@ -57,7 +57,7 @@ export function QuizMarkChart() {
   // courses
   //   ?.flatMap((course) => course.course_sections)
   //   .filter((section) => {
-  //     const result = section.quizzes_result[session?.user.id ?? ""] ?? {};
+  //     const result = section.quizzes_result[userId ?? ""] ?? {};
   //     console.log({ result });
   //     const quiz = section.course_quizzes.filter((quiz) =>
   //       result[quiz.id] ? true : false
@@ -65,7 +65,7 @@ export function QuizMarkChart() {
   //     console.log({ quiz });
   //     // console.log(
   //     //   section.course_quizzes.find(
-  //     //     (quiz) => section.quizzes_result[session?.user.id ?? ""]
+  //     //     (quiz) => section.quizzes_result[userId ?? ""]
   //     //   )
   //     // );
   //     // if() {
@@ -81,9 +81,9 @@ export function QuizMarkChart() {
   const completedQuizzes = (courses ?? [])
     .flatMap((course) => course.course_sections)
     .reduce((total, section) => {
-      if (section.quizzes_result[session?.user.id ?? ""]) {
+      if (section.quizzes_result[userId ?? ""]) {
         const totalQuiz =
-          Object.keys(section.quizzes_result[session?.user.id ?? ""]).length -
+          Object.keys(section.quizzes_result[userId ?? ""]).length -
           1;
         return total + totalQuiz;
       }
@@ -94,9 +94,9 @@ export function QuizMarkChart() {
   const completeQuizzes = (courses || [])
     .flatMap((course) => course.course_sections)
     .reduce((total, section) => {
-      if (section.quizzes_result[session?.user.id ?? ""]) {
+      if (section.quizzes_result[userId ?? ""]) {
         const totalQuiz =
-          Object.keys(section.quizzes_result[session?.user.id ?? ""]).length -
+          Object.keys(section.quizzes_result[userId ?? ""]).length -
           1;
         return total + totalQuiz;
       }
@@ -108,9 +108,9 @@ export function QuizMarkChart() {
   // (courses || [])
   //   .flatMap((course) => course.course_sections)
   //   .reduce((total, section) => {
-  //     if (section.quizzes_result[session?.user.id ?? ""]) {
+  //     if (section.quizzes_result[userId ?? ""]) {
   //       const totalQuiz =
-  //         Object.keys(section.quizzes_result[session?.user.id ?? ""]).length -
+  //         Object.keys(section.quizzes_result[userId ?? ""]).length -
   //         1;
   //       return total + totalQuiz;
   //     }

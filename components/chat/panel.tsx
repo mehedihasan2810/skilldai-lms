@@ -8,7 +8,7 @@ import { getSettings } from "@/lib/userSettings";
 import { addMessage, createChat, getChatMessages } from "@/lib/db";
 import { Loader2Icon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { Chat, Models, Attachment } from "@/app/types";
 import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
 import toast from "react-hot-toast";
@@ -18,6 +18,7 @@ import { Props as ReactArtifactProps } from "@/components/artifact/react";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { useFakeWhisper } from "@/lib/hooks/use-fake-whisper";
+import { createClient } from "@/lib/supabase/client";
 
 type Props = {
   id: string | null;
@@ -28,7 +29,8 @@ type Props = {
 export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   // Get settings and supabase instance
   // const settings = getSettings();
-  const { supabase, session } = useSupabase();
+  // const supabase =  createClient();
+  // const { supabase, session } = useSupabase();
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -46,7 +48,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const fetchMessages = async () => {
     if (chatId) {
       setFetchingMessages(true);
-      const messages = await getChatMessages(supabase, chatId);
+      const messages = await getChatMessages(chatId);
       setInitialMessages(
         messages.map((message) => ({
           id: String(message.id),
@@ -73,7 +75,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       title: string;
       firstMessage: Message;
       secondMessage: Message;
-    }) => await createChat(supabase, title, userId),
+    }) => await createChat(title, userId),
     onSuccess: async (newChat, { firstMessage, secondMessage }) => {
       // queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
       //   return [...(oldChats || []), newChat];
@@ -84,12 +86,12 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       console.log({ firstMessage, secondMessage });
 
       await addMessage(
-        supabase,
+        // supabase,
         newChat.id,
         firstMessage,
         firstMessage.experimental_attachments
       );
-      await addMessage(supabase, newChat.id, secondMessage);
+      await addMessage(newChat.id, secondMessage);
 
       router.push(`/chat/${newChat.id}`);
     },
@@ -109,7 +111,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     onFinish: async (message) => {
       console.log({ chatId, message });
       if (chatId) {
-        await addMessage(supabase, chatId, message);
+        await addMessage( chatId, message);
       }
     },
     onError(error) {
@@ -262,7 +264,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
     if (chatId) {
       await addMessage(
-        supabase,
+        // supabase,
         chatId,
         { role: "user", content: query },
         userAttachment
@@ -288,6 +290,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
           {!chatId && messages.length === 0 ? (
             <div className="px-4 sm:px-0">
               <ChatInput
+              userId={userId}
                 files={files}
                 setFiles={(f: FileList | null) => setFiles(f)}
                 onAddFiles={handleAddFiles}
@@ -316,6 +319,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 containerRef={messagesRef}
               />
               <ChatInput
+               userId={userId}
                 files={files}
                 setFiles={(f: FileList | null) => setFiles(f)}
                 onAddFiles={handleAddFiles}

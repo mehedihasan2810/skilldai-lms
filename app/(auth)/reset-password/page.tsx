@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ForgotPasswordForm } from "./form";
+import { ResetPasswordForm } from "./form";
 import { Message } from "@/components/signin-form-message";
 import { createClient } from "@/lib/supabase/server";
 
@@ -73,7 +73,7 @@ export default async function Page(props: { searchParams: Promise<Message> }) {
               Sign In To Your Account
             </h1>
           </div> */}
-          <ForgotPasswordForm message={searchParams} />
+          <ResetPasswordForm message={searchParams} />
         </div>
       </div>
     </div>

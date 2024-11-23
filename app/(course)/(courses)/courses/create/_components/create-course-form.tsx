@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import {
   courseSchema,
@@ -33,9 +33,6 @@ import { z } from "zod";
 import PageContainer from "@/components/dashboard/page-container";
 import { Loader, Loader2, X } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
-import { CreateCourseForm } from "./_components/create-course-form";
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   courseTopic: z.string().min(1, { message: "Required" }),
@@ -43,166 +40,155 @@ const formSchema = z.object({
   targetAudience: z.string().min(1, { message: "Required" }),
 });
 
-const Page = async () => {
-  // const queryClient = useQueryClient();
-  // // const { session } = useSupabase();
-  // const [isCourseSaveComplete, setIsCourseSaveComplete] = useState(false);
+export const CreateCourseForm = ({ email }: { email: string }) => {
+  const queryClient = useQueryClient();
+  // const { session } = useSupabase();
+  const [isCourseSaveComplete, setIsCourseSaveComplete] = useState(false);
 
-  // const form = useForm<z.infer<typeof formSchema>>({
-  //   resolver: zodResolver(formSchema),
-  //   defaultValues: {
-  //     courseTopic: "",
-  //     difficultyLabel: "",
-  //     targetAudience: "",
-  //   },
-  // });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      courseTopic: "",
+      difficultyLabel: "",
+      targetAudience: "",
+    },
+  });
 
-  // const { submit, isLoading, object, stop, error } = useObject({
-  //   api: "/api/generate-course",
-  //   schema: courseSchema,
-  //   onError: (error) => {
-  //     console.log("Error");
-  //     console.log({ error });
-  //     toast.error(error.message);
-  //   },
-  //   onFinish: async (objectData) => {
-  //     console.log("finish");
-  //     console.log(objectData);
-  //     try {
-  //       if (objectData.error) {
-  //         console.log("finish error ", objectData.error);
-  //         throw new Error(objectData.error.message);
-  //       }
-  //       setIsCourseSaveComplete(true);
-  //       const supabase = createClientComponentClient();
+  const { submit, isLoading, object, stop, error } = useObject({
+    api: "/api/generate-course",
+    schema: courseSchema,
+    onError: (error) => {
+      console.log("Error");
+      console.log({ error });
+      toast.error(error.message);
+    },
+    onFinish: async (objectData) => {
+      console.log("finish");
+      console.log(objectData);
+      try {
+        if (objectData.error) {
+          console.log("finish error ", objectData.error);
+          throw new Error(objectData.error.message);
+        }
+        setIsCourseSaveComplete(true);
+        const supabase = createClientComponentClient();
 
-  //       const { object: generatedCourse } = objectData;
+        const { object: generatedCourse } = objectData;
 
-  //       if (!generatedCourse) {
-  //         toast.error("Something went wrong! Try again");
-  //         return;
-  //       }
+        if (!generatedCourse) {
+          toast.error("Something went wrong! Try again");
+          return;
+        }
 
-  //       const { data: course, error: courseError } = await supabase
-  //         .from("courses")
-  //         .insert({
-  //           title: generatedCourse.title,
-  //           description: generatedCourse.description,
-  //           user_email: session?.user.email ?? "",
-  //           topic: form.getValues("courseTopic"),
-  //           difficulty: form.getValues("difficultyLabel"),
-  //           target_audience: form.getValues("targetAudience"),
-  //         })
-  //         .select("*")
-  //         .single();
+        const { data: course, error: courseError } = await supabase
+          .from("courses")
+          .insert({
+            title: generatedCourse.title,
+            description: generatedCourse.description,
+            user_email: email,
+            topic: form.getValues("courseTopic"),
+            difficulty: form.getValues("difficultyLabel"),
+            target_audience: form.getValues("targetAudience"),
+          })
+          .select("*")
+          .single();
 
-  //       if (courseError) {
-  //         console.error("Error inserting course:", courseError);
-  //         setIsCourseSaveComplete(false);
-  //         throw new Error("Failed to insert course");
-  //         // return new Response("Failed to insert course", { status: 500 });
-  //       }
+        if (courseError) {
+          console.error("Error inserting course:", courseError);
+          setIsCourseSaveComplete(false);
+          throw new Error("Failed to insert course");
+          // return new Response("Failed to insert course", { status: 500 });
+        }
 
-  //       queryClient.invalidateQueries({ queryKey: ["courses"] });
+        queryClient.invalidateQueries({ queryKey: ["courses"] });
 
-  //       // queryClient.setQueryData<any[]>(["courses"], (oldCourses) => {
-  //       //   return [course, ...(oldCourses || [])];
-  //       // });
+        // queryClient.setQueryData<any[]>(["courses"], (oldCourses) => {
+        //   return [course, ...(oldCourses || [])];
+        // });
 
-  //       console.log("Inserted course");
+        console.log("Inserted course");
 
-  //       const sections = generatedCourse.sections;
+        const sections = generatedCourse.sections;
 
-  //       for (const section of sections) {
-  //         const { title: sectionTitle, content, quizzes } = section;
+        for (const section of sections) {
+          const { title: sectionTitle, content, quizzes } = section;
 
-  //         const { data: insertedSection, error: sectionError } = await supabase
-  //           .from("course_sections")
-  //           .insert({
-  //             course_id: course.id,
-  //             title: sectionTitle,
-  //             content,
-  //           })
-  //           .select("*")
-  //           .single();
+          const { data: insertedSection, error: sectionError } = await supabase
+            .from("course_sections")
+            .insert({
+              course_id: course.id,
+              title: sectionTitle,
+              content,
+            })
+            .select("*")
+            .single();
 
-  //         if (sectionError) {
-  //           console.error("Error inserting section:", sectionError);
-  //           setIsCourseSaveComplete(false);
-  //           throw new Error("Failed to insert section");
-  //           // return new Response("Failed to insert section", { status: 500 });
-  //         }
+          if (sectionError) {
+            console.error("Error inserting section:", sectionError);
+            setIsCourseSaveComplete(false);
+            throw new Error("Failed to insert section");
+            // return new Response("Failed to insert section", { status: 500 });
+          }
 
-  //         console.log("Inserted course sections");
+          console.log("Inserted course sections");
 
-  //         for (const quiz of quizzes) {
-  //           const { question, options, answer } = quiz;
+          for (const quiz of quizzes) {
+            const { question, options, answer } = quiz;
 
-  //           const { error: quizError } = await supabase
-  //             .from("course_quizzes")
-  //             .insert({
-  //               section_id: insertedSection.id,
-  //               question,
-  //               options,
-  //               answer,
-  //             });
+            const { error: quizError } = await supabase
+              .from("course_quizzes")
+              .insert({
+                section_id: insertedSection.id,
+                question,
+                options,
+                answer,
+              });
 
-  //           if (quizError) {
-  //             console.error("Error inserting quiz:", quizError);
-  //             setIsCourseSaveComplete(false);
-  //             throw new Error("Failed to insert quiz");
-  //             // return new Response("Failed to insert quiz", { status: 500 });
-  //           }
+            if (quizError) {
+              console.error("Error inserting quiz:", quizError);
+              setIsCourseSaveComplete(false);
+              throw new Error("Failed to insert quiz");
+              // return new Response("Failed to insert quiz", { status: 500 });
+            }
 
-  //           console.log("Inserted course quiz");
-  //         }
-  //       }
+            console.log("Inserted course quiz");
+          }
+        }
 
-  //       toast.success("Course generated successfully", {
-  //         duration: 20000,
-  //         position: "top-center",
-  //         action: {
-  //           label: "X",
-  //           onClick: () => {},
-  //         },
-  //       });
+        toast.success("Course generated successfully", {
+          duration: 20000,
+          position: "top-center",
+          action: {
+            label: "X",
+            onClick: () => {},
+          },
+        });
 
-  //       setIsCourseSaveComplete(false);
-  //     } catch (error) {
-  //       setIsCourseSaveComplete(false);
-  //       toast.error((error as Error).message);
-  //     }
-  //   },
-  // });
+        setIsCourseSaveComplete(false);
+      } catch (error) {
+        setIsCourseSaveComplete(false);
+        toast.error((error as Error).message);
+      }
+    },
+  });
 
-  // console.log({ isLoading });
-  // console.log(object);
+  console.log({ isLoading });
+  console.log(object);
 
-  // function onSubmit(values: z.infer<typeof formSchema>) {
-  //   console.log({ values });
-  //   submit({
-  //     courseTopic: values.courseTopic,
-  //     difficultyLevel: values.difficultyLabel,
-  //     targetAudience: values.targetAudience,
-  //   });
-  // }
-
-  // const sectionCount = object ? (object.sections ?? []).length : 0;
-
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return redirect("/signin");
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log({ values });
+    submit({
+      courseTopic: values.courseTopic,
+      difficultyLevel: values.difficultyLabel,
+      targetAudience: values.targetAudience,
+    });
   }
+
+  const sectionCount = object ? (object.sections ?? []).length : 0;
 
   return (
     <PageContainer scrollable>
-      <CreateCourseForm email={user.email!} />
-      {/* <div className="space-y-8 mt-20">
+      <div className="space-y-8 mt-20">
         {(isLoading || isCourseSaveComplete) && (
           <Card className="max-w-lg mx-auto ">
             <CardContent className="p-6 bg-background/10">
@@ -312,9 +298,7 @@ const Page = async () => {
             </CardContent>
           </Card>
         )}
-      </div> */}
+      </div>
     </PageContainer>
   );
 };
-
-export default Page;

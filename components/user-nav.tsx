@@ -11,15 +11,16 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SignOutDialog } from "./user-button/sign-out-dialog";
-export function UserNav() {
+import { createClient } from "@/lib/supabase/client";
+export function UserNav({ email }: { email: string }) {
   const [isSignoutDialogOpen, setIsSignoutDialogOpen] = useState(false);
   const handleOpenSignoutDialog = () => setIsSignoutDialogOpen(true);
   const handleCloseSignoutDialog = () => setIsSignoutDialogOpen(false);
-  const { session, supabase } = useSupabase();
+  // const { session, supabase } = useSupabase();
   const router = useRouter();
 
   const handleSignOut: React.MouseEventHandler<HTMLButtonElement> = async (
@@ -28,6 +29,7 @@ export function UserNav() {
     e.preventDefault();
 
     try {
+      const supabase = createClient();
       const res = await supabase.auth.signOut();
 
       if (res.error) throw new Error(res.error.message);
@@ -42,7 +44,7 @@ export function UserNav() {
     }
   };
 
-  if (!session) return null;
+  // if (!session) return null;
 
   return (
     <>
@@ -55,7 +57,7 @@ export function UserNav() {
                 // src={session.user?.image ?? ''}
                 // alt={session.user?.name ?? ''}
               />
-              <AvatarFallback>{session.user.email?.slice(0, 3)}</AvatarFallback>
+              <AvatarFallback>{email?.slice(0, 3)}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
@@ -64,15 +66,13 @@ export function UserNav() {
             <div className="flex flex-col space-y-1">
               {/* <p className="text-sm font-medium leading-none">John Doe</p> */}
               <p className="text-xs leading-none text-muted-foreground">
-                {session.user.email}
+                {email}
               </p>
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem
-           onClick={handleOpenSignoutDialog}
-          >
+          <DropdownMenuItem onClick={handleOpenSignoutDialog}>
             Log out
           </DropdownMenuItem>
         </DropdownMenuContent>

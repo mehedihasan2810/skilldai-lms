@@ -28,7 +28,7 @@ import { Loader, MessageCircleMore } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { addFeedback } from "@/lib/db";
 import toast from "react-hot-toast";
-import { useSupabase } from "@/lib/supabase";
+// import { useSupabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -41,8 +41,8 @@ const formSchema = z.object({
   feedback: z.string().min(1, { message: "Required" }),
 });
 
-const FeedbackForm = ({ expanded = false }: { expanded?: boolean }) => {
-  const { session } = useSupabase();
+const FeedbackForm = ({ expanded = false, email }: { expanded?: boolean, email: string }) => {
+  // const { session } = useSupabase();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -75,9 +75,8 @@ const FeedbackForm = ({ expanded = false }: { expanded?: boolean }) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
 
-    const email = session?.user.email;
+    // const email = session?.user.email;
 
-    console.log({ email });
 
     createFeedbackMutation.mutate({
       feedback: values.feedback,

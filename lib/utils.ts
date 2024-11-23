@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import { redirect } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export const convertFileToBase64 = (file: File): Promise<string> => {
@@ -179,4 +180,12 @@ function combineTextParts(parts: MessagePart[]): MessagePart[] {
   }
 
   return combinedParts;
+}
+
+export function encodedRedirect(
+  type: "error" | "success",
+  path: string,
+  message: string
+) {
+  return redirect(`${path}?${type}=${encodeURIComponent(message)}`);
 }

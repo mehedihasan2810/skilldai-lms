@@ -20,7 +20,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useSupabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
+// import { useSupabase } from "@/lib/supabase";
 
 const formSchema = z.object({
   password: z
@@ -52,7 +53,7 @@ const SetPasswordForm = () => {
   const [isShowPass, setIsShowPass] = useState(false);
   // const supabase = createClientComponentClient();
   const router = useRouter();
-  const { supabase } = useSupabase();
+  // const { supabase } = useSupabase();
 
   // const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -83,6 +84,8 @@ const SetPasswordForm = () => {
     console.log(refreshToken);
 
     setIsLoading(true);
+
+    const supabase = createClient();
 
     const data = await supabase.auth.refreshSession({
       refresh_token: refreshToken,
