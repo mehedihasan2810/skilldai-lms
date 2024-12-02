@@ -1,6 +1,6 @@
 import { Attachment } from "@/app/types";
 import { SupabaseContextType } from "@/lib/supabase/types";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "./supabase/client";
 const supabase =  createClient();
 
@@ -198,7 +198,7 @@ export const getSectionsByCourseId = async (id: string) => {
 };
 
 export const deleteCourse = async (courseId: string) => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { data: courseData, error } = await supabase
     .from("courses")
     .delete()

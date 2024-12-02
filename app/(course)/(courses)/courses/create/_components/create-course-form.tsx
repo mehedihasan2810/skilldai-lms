@@ -7,7 +7,7 @@ import {
 import { Button, Card, CardContent } from "@/components/ui";
 // import { useSupabase } from "@/lib/supabase";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { experimental_useObject as useObject } from "ai/react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -33,6 +33,7 @@ import { z } from "zod";
 import PageContainer from "@/components/dashboard/page-container";
 import { Loader, Loader2, X } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
+import { createClient } from "@/lib/supabase/client";
 
 const formSchema = z.object({
   courseTopic: z.string().min(1, { message: "Required" }),
@@ -71,7 +72,7 @@ export const CreateCourseForm = ({ email }: { email: string }) => {
           throw new Error(objectData.error.message);
         }
         setIsCourseSaveComplete(true);
-        const supabase = createClientComponentClient();
+        const supabase = createClient();
 
         const { object: generatedCourse } = objectData;
 

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { Eye, EyeOff, Loader, LoaderIcon } from "lucide-react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { z } from "zod";

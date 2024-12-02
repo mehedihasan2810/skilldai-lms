@@ -3,8 +3,8 @@ import { generateObject, StreamData, streamObject } from "ai";
 import { z } from "zod";
 import { courseSchema } from "./schema";
 import { cookies } from "next/headers";
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { openai } from "@ai-sdk/openai";
+import { createClient } from "@/lib/supabase/server";
 
 export const maxDuration = 60;
 
@@ -100,7 +100,8 @@ Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudien
 
 export async function POST(req: Request) {
   const cookieStore = cookies();
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  // const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const supabase = await createClient();
 
   const { courseTopic, targetAudience, difficultyLevel } = await req.json();
 
