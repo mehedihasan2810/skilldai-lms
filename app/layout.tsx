@@ -52,9 +52,10 @@ export default async function RootLayout({
      suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen",
+          "min-h-screen font-sans",
           // GeistSans.variable, eb_garamond.variable
-          GeistSans.className
+          inter.className,
+          eb_garamond.variable
           // fontSans.variable
         )}
       >

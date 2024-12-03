@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { GithubIcon, RocketIcon, MenuIcon } from "lucide-react";
+import { GithubIcon, RocketIcon, MenuIcon, ArrowLeft, ArrowRight } from "lucide-react";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -54,24 +54,34 @@ export default async function LandingPage() {
         <main className="flex-grow">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-extrabold sm:text-5xl md:text-6xl bg-gradient-to-r from-teal-500 via-sky-600 to-cyan-500 bg-clip-text text-transparent">
-                Skilld AI: Your AI Coding Learning Assistant
+              <h2 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl bg-gradient-to-r from-teal-500 via-sky-600 to-cyan-500 bg-clip-text text-transparent font-heading">
+                {/* Skilld AI: Your AI Coding Learning Assistant */}
+                Unlock Your Learning Superpowers!
               </h2>
 
-              <p className="mt-5 max-w-md mx-auto text-base sm:text-lg md:mt-4 md:text-xl md:max-w-3xl text-muted-foreground">
-                Learn to code with a friend by your side! Skilld offers
+              <p className="mt-5 max-w-md mx-auto text-base sm:text-lg md:mt-4 md:text-xl md:max-w-4xl text-muted-foreground">
+                {/* Learn to code with a friend by your side! Skilld offers
                 personalised lessons, real-time help, and cool projects to make
-                coding a breeze!
+                coding a breeze! */}
+              Learn with a Friend! Skilld creates a personalized adventure just for you, making complex ideas easy to understand and fun to learn!
               </p>
+              <p className="mt-5 max-w-md mx-auto text-base sm:text-lg md:mt-4 md:text-xl md:max-w-4xl text-muted-foreground">
+                {/* Learn to code with a friend by your side! Skilld offers
+                personalised lessons, real-time help, and cool projects to make
+                coding a breeze! */}
+                Build your own course, create your own quiz - do more with AI
+              </p>
+
+
 
               <Link
                 href="/new"
                 className={buttonVariants({
-                  className: "mt-6 text-xl",
+                  className: "mt-6 text-[1rem] ",
                   size: "lg",
                 })}
               >
-                Get started
+                Get started <ArrowRight className="ml-2"/>
               </Link>
             </div>
           </div>
