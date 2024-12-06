@@ -5,7 +5,7 @@ import { ChatInput, Props as ChatInputProps } from "@/components/chat/input";
 import { ChatMessageList } from "@/components/chat/message-list";
 import { Message, useChat } from "ai/react";
 import { addMessage, createChat, getChat, getChatMessages } from "@/lib/db";
-import { Loader2Icon } from "lucide-react";
+import { Loader, Loader2Icon } from "lucide-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // import { useSupabase } from "@/lib/supabase";
 import { Chat, Models, Attachment } from "@/app/types";
@@ -26,7 +26,6 @@ type Props = {
 };
 
 export const ChatPanel = ({ id, userEmail, userId }: Props) => {
-
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -41,6 +40,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const [files, setFiles] = useState<FileList | null>(null);
 
   const [activeChatTab, setActiveChatTab] = useState("studyBuddyGPT");
+  const [isChatCreating, setIsChatCreating] = useState(false);
 
   const {
     data: chat,
@@ -94,7 +94,9 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       // queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
       //   return [...(oldChats || []), newChat];
       // });
-      queryClient.invalidateQueries({ queryKey: ["chats"] });
+
+      setIsChatCreating(true);
+
       setChatId(newChat.id);
 
       console.log({ firstMessage, secondMessage });
@@ -106,6 +108,10 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
         firstMessage.experimental_attachments
       );
       await addMessage(newChat.id, secondMessage);
+
+      await queryClient.invalidateQueries({ queryKey: ["chats"] });
+
+      setIsChatCreating(false);
 
       router.push(`/chat/${newChat.id}`);
     },
@@ -219,7 +225,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
     if (!query) return;
 
-
     // if (settings.model === Models.claude && !settings.anthropicApiKey) {
     //   toast.error("Please enter your Claude API Key");
     //   return;
@@ -297,6 +302,12 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
   return (
     <>
+      {(createChatMutation.isPending || isChatCreating) && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 size-fit">
+          <Loader className="size-6 animate-spin" />
+        </div>
+      )}
+
       <div
         className={cn(
           "relative flex w-full pt-4 sm:pt-6 flex-1 overflow-x-hidden overflow-y-scroll"
@@ -361,7 +372,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 handleManualScroll={handleManualScroll}
                 stopGenerating={stopGenerating}
                 onChangeActiveChatTab={(v) => setActiveChatTab(v)}
-                activeChatTab={ activeChatTab}
+                activeChatTab={activeChatTab}
                 chatType={chat?.type ?? activeChatTab}
               />
             </>
