@@ -400,7 +400,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/signin");
+    return redirect("/");
   }
 
   return (

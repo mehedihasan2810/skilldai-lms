@@ -40,7 +40,7 @@ export default async function LandingPage() {
               </div>
 
               <div className="flex sm:flex-row items-center gap-4 ">
-                <Link href="/signin">
+                <Link href="/">
                   <Button variant="secondary">Sign In</Button>
                 </Link>
                 <ThemeToggle />

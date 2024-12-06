@@ -1,4 +1,3 @@
-// import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 // import { cookies } from "next/headers";
 // import { NextResponse } from "next/server";
 
@@ -14,7 +13,7 @@
 //   const next = searchParams.get("next") ?? "/";
 
 //   if (code) {
-//     const supabase = createRouteHandlerClient({ cookies });
+//     const supabase = await createClient()
 //     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
 //     if (!error) {

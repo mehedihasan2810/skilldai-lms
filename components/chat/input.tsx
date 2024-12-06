@@ -40,6 +40,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import Link from "next/link";
 import { formatDate } from "@/lib/formate-date";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const examplePrompts = [
   // {
@@ -88,6 +89,11 @@ const examplePrompts = [
   // },
 ];
 
+const chatTabs = [
+  { id: 1, label: "CodeGPT", value: "codeGPT" },
+  { id: 2, label: "StudyBuddyGPT", value: "studyBuddyGPT" },
+];
+
 export type Props = {
   files: FileList | null;
   setFiles: (f: FileList | null) => void;
@@ -108,6 +114,8 @@ export type Props = {
   handleManualScroll: () => void;
   stopGenerating: () => void;
   userId: string;
+  onChangeActiveChatTab: (v: string) => void;
+  activeChatTab: string;
 };
 
 export const ChatInput = memo(function ChatInput({
@@ -130,6 +138,8 @@ export const ChatInput = memo(function ChatInput({
   handleManualScroll,
   stopGenerating,
   userId,
+  onChangeActiveChatTab,
+  activeChatTab,
 }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { onKeyDown } = useEnterSubmit({ onSubmit });
@@ -144,7 +154,7 @@ export const ChatInput = memo(function ChatInput({
     error,
     isLoading: isChatLoading,
   } = useQuery({
-    queryKey: ["chats"],
+    queryKey: ["chats", userId],
     queryFn: async () => await getChats(userId),
     enabled: !!userId,
   });
@@ -245,6 +255,23 @@ export const ChatInput = memo(function ChatInput({
             }
           )}
         >
+          {!chatId && hasChatMessages && (
+            <div className="grid grid-cols-2 justify-items-center p-1.5 bg-secondary rounded-xl w-full mb-4">
+              {chatTabs.map((tab) => (
+                <button
+                  onClick={() => onChangeActiveChatTab(tab.value)}
+                  key={tab.id}
+                  className={cn("w-full p-1.5 rounded-xl", {
+                    "bg-primary text-primary-foreground":
+                      tab.value === activeChatTab,
+                  })}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          )}
+
           <div
             className={cn(
               "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl",
@@ -348,7 +375,7 @@ export const ChatInput = memo(function ChatInput({
                 )}
 
                 <Button
-                  type="submit"
+                  type={isLoading ? "button" : "submit"}
                   onClick={isLoading ? stopGenerating : onSubmit}
                   size="icon"
                   className="size-7"

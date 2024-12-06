@@ -1,9 +1,7 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { createClient } from "@/lib/supabase/server";
 
 export const GET = async () => {
-  const cookieStore = cookies();
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const supabase = await createClient()
   const { data, error } = await supabase
     .from("token_usage")
     .update({ total_tokens: 0 })

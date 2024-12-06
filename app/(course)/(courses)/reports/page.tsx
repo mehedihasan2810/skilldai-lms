@@ -22,7 +22,7 @@ const Page = async () => {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/signin");
+    return redirect("/");
   }
   return (
     <PageContainer scrollable>

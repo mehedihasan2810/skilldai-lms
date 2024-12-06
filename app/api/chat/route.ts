@@ -1,10 +1,11 @@
-import { systemPrompt } from "@/app/api/chat/systemPrompt";
+import {
+  codeGPTSystemPrompt,
+  studyBuddySystemPrompt,
+} from "@/app/api/chat/systemPrompt";
 import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
 import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
 import { createOpenAI, openai } from "@ai-sdk/openai";
-import { Models } from "@/app/types";
-import { cookies } from "next/headers";
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "@/lib/supabase/server";
 
 export const maxDuration = 60;
 
@@ -22,16 +23,18 @@ const deepseek = createOpenAI({
 // });
 
 export async function POST(req: Request) {
-  const cookieStore = cookies();
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const supabase = await createClient();
 
   const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
   const CURRENT_MONTH = new Date().getMonth() + 1;
   const CURRENT_YEAR = new Date().getFullYear();
 
-  const { messages, user_email } = await req.json();
+  const { messages, user_email, activeChatTab } = await req.json();
 
-  console.log({ user_email });
+  console.log("messagessssssssssssssss");
+  console.log(messages[0]?.experimental_attachments);
+
+  console.log({ user_email, activeChatTab });
 
   const { data: tokenUsage, error } = await supabase
     .from("token_usage")
@@ -56,7 +59,10 @@ export async function POST(req: Request) {
     // model: groq("llama-3.1-70b-versatile"),
     model: deepseek("deepseek-chat"),
 
-    system: systemPrompt,
+    system:
+      activeChatTab === "codeGPT"
+        ? codeGPTSystemPrompt
+        : studyBuddySystemPrompt,
 
     // maxTokens: 50,
     messages: convertToCoreMessages(messages),
@@ -72,7 +78,7 @@ export async function POST(req: Request) {
         user: user_email, // Any custom attribute recorded in metadata
       },
     },
-    onFinish: async ({ finishReason, usage,  }) => {
+    onFinish: async ({ finishReason, usage }) => {
       console.log({ finishReason, usage });
       const { data, error: updateError } = await supabase
         .from("token_usage")

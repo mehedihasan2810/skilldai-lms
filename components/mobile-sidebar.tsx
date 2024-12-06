@@ -34,7 +34,7 @@ const MobileSidebar = () => {
         </SheetHeader>
 
         <div className="flex flex-col gap-4 mt-8">
-          <Link href="/signin">
+          <Link href="/">
             <Button variant="secondary">Sign In</Button>
           </Link>
           <ThemeToggle />

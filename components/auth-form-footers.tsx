@@ -4,7 +4,7 @@ export const SignInFooter = () => {
   return (
     <p className="text-sm text-muted-foreground">
       Already have an account?{" "}
-      <Link href="/signin" className="hover:underline text-foreground">
+      <Link href="/" className="hover:underline text-foreground">
         Sign In
       </Link>
     </p>

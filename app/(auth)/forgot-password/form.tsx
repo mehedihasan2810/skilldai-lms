@@ -70,7 +70,7 @@ export function ForgotPasswordForm({ message }: { message: Message }) {
         Enter your email below to receive a link to reset your password.
           {/* {" "}
           Already have an account?{" "}
-          <Link className="text-primary underline" href="/signin">
+          <Link className="text-primary underline" href="/">
             Sign in */}
           {/* </Link> */}
         </CardDescription>

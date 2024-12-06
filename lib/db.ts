@@ -2,7 +2,7 @@ import { Attachment } from "@/app/types";
 import { SupabaseContextType } from "@/lib/supabase/types";
 // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "./supabase/client";
-const supabase =  createClient();
+const supabase = createClient();
 
 export const getChats = async (
   // supabase: SupabaseContextType["supabase"],
@@ -15,6 +15,20 @@ export const getChats = async (
     .select("*")
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+export const getChat = async ({ chatId }: { chatId: string | null }) => {
+  const { data, error } = await supabase
+    .from("chats")
+    .select("id,type")
+    .eq("id", chatId)
+    .single();
 
   if (error) {
     console.error(error);
@@ -44,11 +58,16 @@ export const getChatMessages = async (
   return data;
 };
 
-export const createChat = async (
-  // supabase: SupabaseContextType["supabase"],
-  title: string,
-  userId: string | null | undefined
-) => {
+export const createChat = async ({
+  title,
+  userId,
+  type,
+}: // supabase: SupabaseContextType["supabase"],
+{
+  title: string;
+  userId: string | null | undefined;
+  type: string;
+}) => {
   if (!userId) {
     throw new Error("User not authenticated");
   }
@@ -58,6 +77,7 @@ export const createChat = async (
     .insert({
       title,
       user_id: userId,
+      type,
     })
     .select();
 
@@ -369,6 +389,80 @@ export const getCoursesForReports = async () => {
 
   if (error) {
     console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const updateQFDQuizAnswers = async ({
+  answersInput,
+  quizId,
+}: {
+  answersInput: string[];
+  quizId: string;
+}) => {
+  console.log({ quizId, answersInput });
+  const { error, data } = await supabase
+    .from("qfd_quiz")
+    .update({
+      correct_answers: answersInput,
+    })
+    .eq("id", quizId);
+
+  if (error) {
+    console.log({ error });
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getQuiz = async ({ quizId }: { quizId: string }) => {
+  // const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("qfd_quiz")
+    // .select("*")
+    .select(
+      `
+    *,
+    qfd_questions (
+      id,
+      quiz_id,
+      question,
+      answer,
+      options
+    )
+  `
+    )
+    .eq("id", quizId)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const resetQFDQuiz = async ({ quizId }: { quizId: string }) => {
+  console.log({ quizId });
+  const { error, data } = await supabase
+    .from("qfd_quiz")
+    .update({
+      correct_answers: [],
+    })
+    .eq("id", quizId);
+
+  if (error) {
+    console.log({ error });
     throw new Error(error.message);
   }
 

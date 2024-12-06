@@ -35,7 +35,7 @@ export function UserNav({ email }: { email: string }) {
       if (res.error) throw new Error(res.error.message);
 
       router.refresh();
-      router.replace("/signin");
+      router.replace("/");
     } catch (error) {
       console.error(error);
       alert("Error signing out");

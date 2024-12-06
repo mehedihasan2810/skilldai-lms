@@ -5,9 +5,9 @@ import { ChatInput, Props as ChatInputProps } from "@/components/chat/input";
 import { ChatMessageList } from "@/components/chat/message-list";
 import { Message, useChat } from "ai/react";
 import { getSettings } from "@/lib/userSettings";
-import { addMessage, createChat, getChatMessages } from "@/lib/db";
+import { addMessage, createChat, getChat, getChatMessages } from "@/lib/db";
 import { Loader2Icon } from "lucide-react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // import { useSupabase } from "@/lib/supabase";
 import { Chat, Models, Attachment } from "@/app/types";
 import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
@@ -44,6 +44,20 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const [selectedArtifacts, setSelectedArtifacts] = useState<string[]>([]);
   const [files, setFiles] = useState<FileList | null>(null);
 
+  const [activeChatTab, setActiveChatTab] = useState("codeGPT");
+
+  const {
+    data: chat,
+    error,
+    isLoading: isChatLoading,
+  } = useQuery({
+    queryKey: ["chat", chatId],
+    queryFn: async () => await getChat({ chatId }),
+    enabled: !!chatId,
+  });
+
+  console.log({ chat });
+
   // Fetch messages for existing chat
   const fetchMessages = async () => {
     if (chatId) {
@@ -71,11 +85,15 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const createChatMutation = useMutation({
     mutationFn: async ({
       title,
+      type,
+      userId,
     }: {
       title: string;
       firstMessage: Message;
       secondMessage: Message;
-    }) => await createChat(title, userId),
+      type: string;
+      userId: string;
+    }) => await createChat({ title, userId, type }),
     onSuccess: async (newChat, { firstMessage, secondMessage }) => {
       // queryClient.setQueryData<Chat[]>(["chats"], (oldChats) => {
       //   return [...(oldChats || []), newChat];
@@ -111,7 +129,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     onFinish: async (message) => {
       console.log({ chatId, message });
       if (chatId) {
-        await addMessage( chatId, message);
+        await addMessage(chatId, message);
       }
     },
     onError(error) {
@@ -136,6 +154,8 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
         title: messages[0].content.slice(0, 100),
         firstMessage: messages[0],
         secondMessage: messages[1],
+        userId,
+        type: activeChatTab,
       });
     }
   }, [chatId, messages, generatingResponse]);
@@ -226,7 +246,10 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     const options = files ? { experimental_attachments: files } : {};
     // console.log({ files });
     handleSubmit(event, {
-      body: { user_email: userEmail },
+      body: {
+        user_email: userEmail,
+        activeChatTab: chat?.type ?? activeChatTab,
+      },
       ...options,
     });
 
@@ -290,7 +313,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
           {!chatId && messages.length === 0 ? (
             <div className="px-4 sm:px-0">
               <ChatInput
-              userId={userId}
+                userId={userId}
                 files={files}
                 setFiles={(f: FileList | null) => setFiles(f)}
                 onAddFiles={handleAddFiles}
@@ -309,6 +332,8 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 showScrollButton={showScrollButton}
                 handleManualScroll={handleManualScroll}
                 stopGenerating={stopGenerating}
+                onChangeActiveChatTab={(v) => setActiveChatTab(v)}
+                activeChatTab={activeChatTab}
               />
             </div>
           ) : (
@@ -319,7 +344,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 containerRef={messagesRef}
               />
               <ChatInput
-               userId={userId}
+                userId={userId}
                 files={files}
                 setFiles={(f: FileList | null) => setFiles(f)}
                 onAddFiles={handleAddFiles}
@@ -338,6 +363,8 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 showScrollButton={showScrollButton}
                 handleManualScroll={handleManualScroll}
                 stopGenerating={stopGenerating}
+                onChangeActiveChatTab={(v) => setActiveChatTab(v)}
+                activeChatTab={activeChatTab}
               />
             </>
           )}

@@ -14,7 +14,7 @@ const SignUpPage = async () => {
   //   redirect("/new");
   // }
 
-  redirect("/signin");
+  redirect("/");
 
   return <SignUpForm />;
 };

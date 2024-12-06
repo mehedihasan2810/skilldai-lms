@@ -29,12 +29,12 @@ const Navbar = () => {
             {/* {session ? (
               <Link className={buttonVariants({})} href="/new">To Assistant</Link>
             ) : (
-              <Link href="/signin">
+              <Link href="/">
                 <Button variant="secondary">Sign In</Button>
               </Link>
             )} */}
 
-            <Link href="/signin">
+            <Link href="/">
               <Button variant="secondary">Sign In</Button>
             </Link>
 

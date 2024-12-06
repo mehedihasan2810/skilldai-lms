@@ -28,7 +28,7 @@ export default async function CourseLayout({ children }: CourseLayoutProps) {
   //     setSession(newSession.data.session);
   //     if (!newSession.data.session) {
   //       router.refresh();
-  //       router.push("/signin");
+  //       router.push("/");
   //     }
   //   };
 
@@ -46,7 +46,7 @@ export default async function CourseLayout({ children }: CourseLayoutProps) {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/signin");
+    return redirect("/");
   }
 
   return (

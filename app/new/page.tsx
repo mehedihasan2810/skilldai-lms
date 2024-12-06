@@ -18,7 +18,7 @@ const NewChatPage = async () => {
 
   // // if (!session) {
   // //   router.refresh();
-  // //   router.push("/signin");
+  // //   router.push("/");
   // //   return null;
   // // }
 
@@ -33,7 +33,7 @@ const NewChatPage = async () => {
   //     setSession(newSession.data.session);
   //     if (!newSession.data.session) {
   //       router.refresh();
-  //       router.push("/signin");
+  //       router.push("/");
   //     }
   //   };
 
@@ -51,7 +51,7 @@ const NewChatPage = async () => {
   } = await supabase.auth.getUser();
 
   if(!user){
-    return redirect("/signin")
+    return redirect("/")
   }
 
   console.log({user})

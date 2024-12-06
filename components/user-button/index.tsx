@@ -49,7 +49,7 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
       if (res.error) throw new Error(res.error.message);
 
       router.refresh();
-      router.push("/signin");
+      router.push("/");
     } catch (error) {
       console.error(error);
       alert("Error signing out");

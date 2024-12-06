@@ -17,7 +17,7 @@ type Props = {
 const ChatPage = async ({ params: { id } }: Props) => {
   // const { session } = useSupabase();
 
-  // if (!session) redirect("/signin");
+  // if (!session) redirect("/");
 
   const supabase = await createClient();
 
@@ -26,7 +26,7 @@ const ChatPage = async ({ params: { id } }: Props) => {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/signin");
+    return redirect("/");
   }
 
   return (

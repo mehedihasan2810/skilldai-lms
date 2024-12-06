@@ -23,7 +23,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   //     setSession(newSession.data.session);
   //     if (!newSession.data.session) {
   //       router.refresh();
-  //       router.push("/signin");
+  //       router.push("/");
   //     }
   //   };
 
@@ -41,7 +41,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/signin");
+    return redirect("/");
   }
 
   return (
