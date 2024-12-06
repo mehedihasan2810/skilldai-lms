@@ -12,15 +12,7 @@ import {
 } from "lucide-react";
 import { memo, SyntheticEvent, useEffect, useRef, useState } from "react";
 import Textarea from "react-textarea-autosize";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Attachment, Models } from "@/app/types";
-import { getSettings, updateSettings } from "@/lib/userSettings";
 import { AttachmentPreviewButton } from "@/components/chat/attachment-preview-button";
 import {
   Tooltip,
@@ -143,7 +135,6 @@ export const ChatInput = memo(function ChatInput({
 }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { onKeyDown } = useEnterSubmit({ onSubmit });
-  const [model, setModel] = useState<Models>(getSettings().model);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // const { supabase, session } = useSupabase();
@@ -218,11 +209,7 @@ export const ChatInput = memo(function ChatInput({
     inputRef.current?.focus();
   }, []);
 
-  // Handle model change and update settings
-  // const handleModelChange = (newModel: Models) => {
-  //   setModel(newModel);
-  //   updateSettings({ ...getSettings(), model: newModel });
-  // };
+
 
   return (
     <>

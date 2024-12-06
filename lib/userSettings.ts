@@ -17,42 +17,7 @@ const defaultSettings: SettingsSchema = {
   model: Models.claude,
 };
 
-export const getSettings = (): SettingsSchema => {
-  const storedSettings = window
-    ? window.localStorage.getItem(settingsLocalStorageKey)
-    : undefined;
 
-  if (!storedSettings) {
-    return defaultSettings;
-  }
-
-  try {
-    const parsedSettings = JSON.parse(storedSettings);
-
-    // Merge stored settings with default settings to ensure all fields are present
-    const mergedSettings: SettingsSchema = {
-      ...defaultSettings,
-      ...parsedSettings,
-    };
-
-    // Ensure the model field is a valid enum value if it exists
-    if (
-      mergedSettings.model !== null &&
-      !Object.values(Models).includes(mergedSettings.model)
-    ) {
-      console.warn(
-        `Invalid model value: ${mergedSettings.model}. Resetting to null.`
-      );
-      mergedSettings.model = Models.claude;
-    }
-
-    // Validate and parse the merged settings
-    return settingsSchema.parse(mergedSettings);
-  } catch (error) {
-    console.error("Error parsing stored settings:", error);
-    return defaultSettings;
-  }
-};
 
 export const updateSettings = (newSettings: SettingsSchema) =>
   window.localStorage.setItem(

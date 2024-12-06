@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
-  getSettings,
+  // getSettings,
   SettingsSchema,
   settingsSchema,
   updateSettings,
@@ -36,12 +36,12 @@ type Props = {
 export const UserSettings = ({ showLabel = false }: Props) => {
   const form = useForm<SettingsSchema>({
     resolver: zodResolver(settingsSchema),
-    defaultValues: getSettings(),
+    defaultValues: {},
   });
 
   function onSubmit(values: SettingsSchema) {
     updateSettings({
-      ...getSettings(),
+      // ...getSettings(),
       ...values,
     });
     toast.success("Saved settings!", {

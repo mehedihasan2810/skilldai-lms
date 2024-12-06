@@ -65,7 +65,7 @@ export const ChatMessage = memo(function ChatMessage({
         }
         `}
       > */}
-      <div className={`border rounded-md p-1 shrink-0`}>
+      <div className={`border rounded-md p-1 shrink-0 mt-1.5`}>
         {role === "user" ? (
           <UserIcon size={20} />
         ) : (

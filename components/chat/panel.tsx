@@ -4,7 +4,6 @@ import { ArtifactPanel } from "@/components/artifact";
 import { ChatInput, Props as ChatInputProps } from "@/components/chat/input";
 import { ChatMessageList } from "@/components/chat/message-list";
 import { Message, useChat } from "ai/react";
-import { getSettings } from "@/lib/userSettings";
 import { addMessage, createChat, getChat, getChatMessages } from "@/lib/db";
 import { Loader2Icon } from "lucide-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -27,10 +26,7 @@ type Props = {
 };
 
 export const ChatPanel = ({ id, userEmail, userId }: Props) => {
-  // Get settings and supabase instance
-  // const settings = getSettings();
-  // const supabase =  createClient();
-  // const { supabase, session } = useSupabase();
+
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -161,12 +157,13 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   }, [chatId, messages, generatingResponse]);
 
   // Whisper hook setup for voice input
-  const useWhispherHook = getSettings().openaiApiKey
-    ? useRealWhisper
-    : useFakeWhisper;
+  const useWhispherHook = useRealWhisper;
+  // const useWhispherHook = "getSettings().openaiApiKey"
+  //   ? useRealWhisper
+  //   : useFakeWhisper;
   const { recording, transcribing, transcript, startRecording, stopRecording } =
     useWhispherHook({
-      apiKey: getSettings().openaiApiKey,
+      apiKey: "getSettings().openaiApiKey",
     });
 
   // Update input with transcribed text
@@ -222,7 +219,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
     if (!query) return;
 
-    // const settings = getSettings();
 
     // if (settings.model === Models.claude && !settings.anthropicApiKey) {
     //   toast.error("Please enter your Claude API Key");
