@@ -26,12 +26,12 @@ export const navItems: NavItem[] = [
     icon: "plus",
     label: "Generate course",
   },
-  {
-    title: "Generate quiz",
-    href: "/quiz-from-doc",
-    icon: "plus",
-    label: "Generate quiz",
-  },
+  // {
+  //   title: "Generate quiz",
+  //   href: "/quiz-from-doc",
+  //   icon: "plus",
+  //   label: "Generate quiz",
+  // },
   // {
   //   title: "User",
   //   href: "/dashboard/user",
