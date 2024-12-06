@@ -40,7 +40,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const [selectedArtifacts, setSelectedArtifacts] = useState<string[]>([]);
   const [files, setFiles] = useState<FileList | null>(null);
 
-  const [activeChatTab, setActiveChatTab] = useState("codeGPT");
+  const [activeChatTab, setActiveChatTab] = useState("studyBuddyGPT");
 
   const {
     data: chat,

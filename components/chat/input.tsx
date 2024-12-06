@@ -32,14 +32,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import Link from "next/link";
 import { formatDate } from "@/lib/formate-date";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const examplePrompts = [
-  // {
-  //   title: "Explain and Compare JavaScript Variables",
-  //   prompt:
-  //     "Explain this JavaScript code and the differences between let, const, and var:\n\nlet x = 5;\nconst PI = 3.14;\nvar oldWay = 'deprecated';\n\nAlso, when should I use each of these declaration keywords?",
-  // },
+const codeGPTExamplePrompts = [
   {
     title: "how do i use this platform?",
     prompt: "how do i use this platform?",
@@ -59,31 +53,32 @@ const examplePrompts = [
     prompt:
       "Debug this SQL query and suggest improvements:\n\nSELECT * FROM users\nJOIN orders ON users.id = orders.user_id\nWHERE orders.status = 'completed'\nGROUP BY users.id\nHAVING COUNT(orders.id) > 5;\n\nHow can I modify this query to also include the total value of orders for each user?",
   },
-  // {
-  //   title: "Develop Full CRUD API with Node.js",
-  //   prompt:
-  //     "How can I extend this Node.js code to create a full CRUD API?\n\nconst express = require('express');\nconst app = express();\n\napp.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'John' }]);\n});\n\napp.listen(3000, () => console.log('Server running'));\n\nWhat middleware should I consider adding for better security and functionality?",
-  // },
-  // {
-  //   title: "Refactor Python Code for Efficiency",
-  //   prompt:
-  //     "Refactor this Python code to be more efficient and Pythonic:\n\ndef find_max(numbers):\n    max_num = numbers[0]\n    for i in range(1, len(numbers)):\n        if numbers[i] > max_num:\n            max_num = numbers[i]\n    return max_num\n\nHow can this function be improved in terms of performance and readability?",
-  // },
-  // {
-  //   title: "Implement Sorting Algorithm in Java",
-  //   prompt:
-  //     "Implement a quick sort algorithm in Java. Explain the time and space complexity of your implementation. How does it compare to other sorting algorithms?",
-  // },
-  // {
-  //   title: "Design Object-Oriented System",
-  //   prompt:
-  //     "Design a class hierarchy for a library management system. Include classes for books, patrons, and librarians. What methods and attributes would each class have? How would they interact?",
-  // },
+];
+
+const studyBuddyGPTExamplePrompts = [
+  {
+    title: "What's the difference between mitosis and meiosis?",
+    prompt: "What's the difference between mitosis and meiosis?",
+  },
+  {
+    title: "How do I solve x^2 + 5x - 6 = 0?",
+    prompt: "How do I solve x^2 + 5x - 6 = 0?",
+  },
+  {
+    title:
+      "What are some reliable sources on social media's...",
+    prompt:
+      "What are some reliable sources on social media's impact on teen mental health?",
+  },
+  {
+    title: "What were the main events leading up to WWII?",
+    prompt: "What were the main events leading up to WWII?",
+  },
 ];
 
 const chatTabs = [
-  { id: 1, label: "CodeGPT", value: "codeGPT" },
-  { id: 2, label: "StudyBuddyGPT", value: "studyBuddyGPT" },
+  { id: 1, label: "StudyBuddyGPT", value: "studyBuddyGPT" },
+  { id: 2, label: "CodeGPT", value: "codeGPT" },
 ];
 
 export type Props = {
@@ -209,8 +204,6 @@ export const ChatInput = memo(function ChatInput({
     inputRef.current?.focus();
   }, []);
 
-
-
   return (
     <>
       <div
@@ -305,8 +298,8 @@ export const ChatInput = memo(function ChatInput({
                   onKeyDown={onKeyDown}
                   placeholder={
                     chatId
-                      ? "Reply to Skilld AI..."
-                      : "How can Skilld AI help you today?"
+                      ? `Reply to ${activeChatTab === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"}...`
+                      : `How can ${activeChatTab === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"} help you today?`
                   }
                   className={cn(
                     "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
@@ -387,12 +380,14 @@ export const ChatInput = memo(function ChatInput({
                       : "Get started with the example below"}
                   </p>
 
-                  <button
-                    className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground w-max"
-                    onClick={handleFileUpload}
-                  >
-                    <PaperclipIcon className="size-4" /> Add content
-                  </button>
+                  {activeChatTab === "codeGPT" && (
+                    <button
+                      className="flex items-center gap-2 hover:bg-secondary py-1 px-2 rounded-md text-muted-foreground w-max"
+                      onClick={handleFileUpload}
+                    >
+                      <PaperclipIcon className="size-4" /> Add content
+                    </button>
+                  )}
                 </div>
                 {/* {attachments && attachments.length > 0 ? (
                   <div className="flex items-center gap-2">
@@ -416,7 +411,10 @@ export const ChatInput = memo(function ChatInput({
                   </div>
                 ) : (
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    {examplePrompts.map((prompt, i) => (
+                    {(activeChatTab === "studyBuddyGPT"
+                      ? studyBuddyGPTExamplePrompts
+                      : codeGPTExamplePrompts
+                    ).map((prompt, i) => (
                       <Tooltip key={i}>
                         <TooltipTrigger
                           onClick={() => setInput(prompt.prompt)}
