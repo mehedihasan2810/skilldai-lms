@@ -330,6 +330,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 stopGenerating={stopGenerating}
                 onChangeActiveChatTab={(v) => setActiveChatTab(v)}
                 activeChatTab={activeChatTab}
+                chatType={chat?.type ?? activeChatTab}
               />
             </div>
           ) : (
@@ -360,7 +361,8 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 handleManualScroll={handleManualScroll}
                 stopGenerating={stopGenerating}
                 onChangeActiveChatTab={(v) => setActiveChatTab(v)}
-                activeChatTab={activeChatTab}
+                activeChatTab={ activeChatTab}
+                chatType={chat?.type ?? activeChatTab}
               />
             </>
           )}

@@ -103,6 +103,7 @@ export type Props = {
   userId: string;
   onChangeActiveChatTab: (v: string) => void;
   activeChatTab: string;
+  chatType: string
 };
 
 export const ChatInput = memo(function ChatInput({
@@ -127,6 +128,7 @@ export const ChatInput = memo(function ChatInput({
   userId,
   onChangeActiveChatTab,
   activeChatTab,
+  chatType
 }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { onKeyDown } = useEnterSubmit({ onSubmit });
@@ -298,8 +300,8 @@ export const ChatInput = memo(function ChatInput({
                   onKeyDown={onKeyDown}
                   placeholder={
                     chatId
-                      ? `Reply to ${activeChatTab === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"}...`
-                      : `How can ${activeChatTab === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"} help you today?`
+                      ? `Reply to ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"}...`
+                      : `How can ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"} help you today?`
                   }
                   className={cn(
                     "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
