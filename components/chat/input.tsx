@@ -300,8 +300,8 @@ export const ChatInput = memo(function ChatInput({
                   onKeyDown={onKeyDown}
                   placeholder={
                     chatId
-                      ? `Reply to ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"}...`
-                      : `How can ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "Skilld AI"} help you today?`
+                      ? `Reply to ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "CodeGPT"}...`
+                      : `How can ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "CodeGPT"} help you today?`
                   }
                   className={cn(
                     "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
