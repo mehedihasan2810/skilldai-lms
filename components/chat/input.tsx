@@ -256,7 +256,7 @@ export const ChatInput = memo(function ChatInput({
 
           <div
             className={cn(
-              "w-full flex flex-col gap-1 bg-secondary text-secondary-foreground py-3  px-5  border border-primary/10 rounded-xl",
+              "w-full flex flex-col gap-1 bg-secondary text-foreground py-3  px-5  border border-primary/10 rounded-xl",
               {
                 "": !chatId && !hasChatMessages,
                 " a": chatId,
