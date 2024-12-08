@@ -4,7 +4,7 @@ import { useState } from "react";
 import { experimental_useObject as useObject } from "ai/react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { FileUp, Plus, Loader2, GithubIcon } from "lucide-react";
+import { FileUp, Plus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,15 +15,13 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import NextLink from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { questionsSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { generateQuizTitle } from "@/actions/generate-quiz-title";
-import Quiz from "./quiz";
 import { createClient } from "@/lib/supabase/client";
 import ShortUniqueId from "short-unique-id";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 
 const uid = new ShortUniqueId({ length: 10 });
 
@@ -46,86 +44,93 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
     api: "/api/generate-quiz-from-document",
     schema: questionsSchema,
     initialValue: undefined,
-    onError: (error) => {
+    onError: (quizGenerateError) => {
+      console.log({ quizGenerateError });
       toast.error("Failed to generate quiz. Please try again.");
       setFiles([]);
     },
     onFinish: async ({ object }) => {
-      if (!object) {
-        toast.error("No quizzes generated! Please try again.");
-        return;
-      }
+      try {
+        if (!object) {
+          throw new Error("No quizzes generated! Please try again.");
+        }
 
-      const res = questionsSchema.safeParse(object);
-      if (res.error) {
-        // throw new Error(res.error.errors.map((e) => e.message).join("\n"));
-        toast.error(res.error.errors.map((e) => e.message).join("\n"));
+        const res = questionsSchema.safeParse(object);
+        if (res.error) {
+          throw new Error(res.error.errors.map((e) => e.message).join("\n"));
+        }
 
-        return;
-      }
+        setIsQuizSaving(true);
 
-      setIsQuizSaving(true);
+        const supabase = createClient();
 
-      const supabase = createClient();
+        const generatedTitle = await generateQuizTitle(files[0].name);
 
-      const generatedTitle = await generateQuizTitle(files[0].name);
+        console.log({ generatedTitle });
 
-      console.log({ generatedTitle });
+        // setTitle(generatedTitle);
 
-      const { error: quizError, data: quizData } = await supabase
-        .from("qfd_quiz")
-        .insert({
-          title: generatedTitle,
-          user_id: userId,
-          file_name: files[0].name,
-          file_url: "url",
-          correct_answers: [],
-        })
-        .select("id")
-        .single();
+        const { data: fileSaveRes, error: fileSaveErr } = await supabase.storage
+          .from("quiz-from-doc")
+          .upload(
+            `${userId}/${files[0].name
+              .replace(".pdf", "")
+              .replaceAll(" ", "-")}-${uid.rnd()}.pdf`,
+            files[0]
+          );
 
-      if (quizError) {
-        console.log({ quizError });
-        toast.error(quizError.message);
+        console.log({ fileSaveRes, fileSaveErr });
+
+        const fileUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${fileSaveRes?.fullPath}`;
+
+        console.log({ fileUrl });
+
+        const { error: quizError, data: quizData } = await supabase
+          .from("qfd_quiz")
+          .insert({
+            title: generatedTitle,
+            user_id: userId,
+            file_name: files[0].name,
+            file_url: fileSaveRes ? fileUrl : "",
+            correct_answers: [],
+          })
+          .select("id")
+          .single();
+
+        if (quizError) {
+          console.log({ quizError });
+          throw new Error(quizError.message);
+        }
+        console.log({ quizData });
+
+        const questions = object.map((q) => ({
+          quiz_id: quizData?.id,
+          question: q.question,
+          answer: q.answer,
+          options: q.options,
+        }));
+
+        const { error: questionError, data: quizQuestions } = await supabase
+          .from("qfd_questions")
+          .insert(questions)
+          .select("id");
+
+        if (questionError) {
+          console.log({ questionError });
+          throw new Error(questionError.message);
+        }
+
+        console.log({ quizQuestions });
+
         setIsQuizSaving(false);
-        return;
-      }
-      console.log({ quizData });
+        setQuestions(object ?? []);
 
-      const questions = object.map((q) => ({
-        quiz_id: quizData?.id,
-        question: q.question,
-        answer: q.answer,
-        options: q.options,
-      }));
-
-      const { error: questionError, data: quizQuestions } = await supabase
-        .from("qfd_questions")
-        .insert(questions)
-        .select("id");
-
-      if (questionError) {
-        console.log({ questionError });
-        toast.error(questionError.message);
+        router.push(`/quiz-from-doc/${quizData.id}`);
+      } catch (error) {
+        console.log({ error });
         setIsQuizSaving(false);
-        return;
+        toast.error((error as Error).message);
       }
-
-      console.log({ quizQuestions });
-
-      const { data: fileSaveRes, error: fileSaveErr } = await supabase.storage
-        .from("quiz-from-doc")
-        .upload(
-          `${userId}/${files[0].name.replace(".pdf", "")}-${uid.rnd()}.pdf`,
-          files[0]
-        );
-
-      console.log({ fileSaveRes, fileSaveErr });
-
-      setIsQuizSaving(false);
-      setQuestions(object ?? []);
-
-      router.push(`/quiz-from-doc/${quizData.id}`);
     },
   });
 
@@ -149,18 +154,18 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
       toast.error("Only PDF files under 5MB are allowed.");
     }
 
-    const supabase = createClient();
+    // const supabase = createClient();
 
-    console.log(validFiles[0]);
+    // console.log(validFiles[0]);
 
-    const { data, error } = await supabase.storage
-      .from("quiz-from-doc")
-      .upload(
-        `${userId}/${validFiles[0].name.replace(".pdf", "")}-${uid.rnd()}.pdf`,
-        validFiles[0]
-      );
+    // const { data, error } = await supabase.storage
+    //   .from("quiz-from-doc")
+    //   .upload(
+    //     `${userId}/${validFiles[0].name.replace(".pdf", "")}-${uid.rnd()}.pdf`,
+    //     validFiles[0]
+    //   );
 
-    console.log({ data, error });
+    // console.log({ data, error });
 
     setFiles(validFiles);
   };
@@ -187,7 +192,7 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
     // const generatedTitle = await generateQuizTitle(encodedFiles[0].name);
     // setTitle(generatedTitle);
 
-    setTitle("hello");
+    // setTitle("hello");
   };
 
   // const clearPDF = () => {
@@ -205,7 +210,7 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
 
   return (
     <div
-      className="min-h-[100dvh] w-full flex justify-center"
+      className="w-full flex justify-center"
       onDragOver={(e) => {
         e.preventDefault();
         setIsDragging(true);
@@ -237,7 +242,7 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <Card className="w-full max-w-md h-full border-0 sm:border sm:h-fit mt-12">
+      <Card className="w-full max-w-2xl h-full border-0 sm:border sm:h-fit mt-12">
         <CardHeader className="text-center space-y-6">
           <div className="mx-auto flex items-center justify-center space-x-2 text-muted-foreground">
             <div className="rounded-full bg-primary/10 p-2">
@@ -252,14 +257,14 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
             <CardTitle className="text-2xl font-bold">
               PDF Quiz Generator
             </CardTitle>
-            <CardDescription className="text-base">
+            {/* <CardDescription className="text-base">
               Upload a PDF to generate an interactive quiz based on its content
               using the <Link href="https://sdk.vercel.ai">AI SDK</Link> and{" "}
               <Link href="https://sdk.vercel.ai/providers/ai-sdk-providers/google-generative-ai">
                 Google&apos;s Gemini Pro
               </Link>
               .
-            </CardDescription>
+            </CardDescription> */}
           </div>
         </CardHeader>
         <CardContent>
@@ -326,29 +331,7 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
           </CardFooter>
         )}
       </Card>
-      <motion.div
-        className="flex flex-row gap-4 items-center justify-between fixed bottom-6 text-xs "
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-      >
-        <NextLink
-          target="_blank"
-          href="https://github.com/vercel-labs/ai-sdk-preview-pdf-support"
-          className="flex flex-row gap-2 items-center border px-2 py-1.5 rounded-md hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-800"
-        >
-          <GithubIcon />
-          View Source Code
-        </NextLink>
-
-        <NextLink
-          target="_blank"
-          href="https://vercel.com/templates/next.js/ai-quiz-generator"
-          className="flex flex-row gap-2 items-center bg-zinc-900 px-2 py-1.5 rounded-md text-zinc-50 hover:bg-zinc-950 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-50"
-        >
-          {/* <VercelIcon size={14} /> */}
-          Deploy with Vercel
-        </NextLink>
-      </motion.div>
+     
     </div>
   );
 }

@@ -67,7 +67,7 @@ export const CourseList =  ({email}: {email: string}) => {
       Unable to load the courses. Please try again by refreshing the page
     </p>
   ) : isLoading ? (
-    Array.from({ length: 5 }).map((_, i) => (
+    Array.from({ length: 4 }).map((_, i) => (
       <div key={i} className="border p-4 rounded-md bg-primary/5 ">
         <Skeleton className="w-[80%] h-[20px] rounded-md" />
 
@@ -137,7 +137,8 @@ export const CourseList =  ({email}: {email: string}) => {
           " pb-10",
           searchedCourses.length === 0
             ? ""
-            : "grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4"
+            : "grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4",
+            isLoading && "grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4"
         )}
       >
         {courseJsx}

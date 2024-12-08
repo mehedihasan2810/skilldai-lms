@@ -28,58 +28,6 @@ type QuizProps = {
   correctAnswers: string[];
 };
 
-const QuestionCard: React.FC<{
-  question: Question;
-  selectedAnswer: string | null;
-  onSelectAnswer: (answer: string) => void;
-  isSubmitted: boolean;
-  showCorrectAnswer: boolean;
-}> = ({ question, selectedAnswer, onSelectAnswer, showCorrectAnswer }) => {
-  const answerLabels = ["A", "B", "C", "D"];
-
-  return (
-    <div className="space-y-6">
-      <h2 className="text-lg font-semibold leading-tight">
-        {question.question}
-      </h2>
-      <div className="grid grid-cols-1 gap-4">
-        {question.options.map((option, index) => (
-          <Button
-            key={index}
-            variant={
-              selectedAnswer === answerLabels[index] ? "secondary" : "outline"
-            }
-            className={`h-auto py-6 px-4 justify-start text-left whitespace-normal ${
-              showCorrectAnswer && answerLabels[index] === question.answer
-                ? "bg-green-600 hover:bg-green-700"
-                : showCorrectAnswer &&
-                  selectedAnswer === answerLabels[index] &&
-                  selectedAnswer !== question.answer
-                ? "bg-red-600 hover:bg-red-700"
-                : ""
-            }`}
-            onClick={() => onSelectAnswer(answerLabels[index])}
-          >
-            <span className="text-lg font-medium mr-4 shrink-0">
-              {answerLabels[index]}
-            </span>
-            <span className="flex-grow">{option}</span>
-            {(showCorrectAnswer && answerLabels[index] === question.answer) ||
-              (selectedAnswer === answerLabels[index] && (
-                <Check className="ml-2 shrink-0 text-white" size={20} />
-              ))}
-            {showCorrectAnswer &&
-              selectedAnswer === answerLabels[index] &&
-              selectedAnswer !== question.answer && (
-                <X className="ml-2 shrink-0 text-white" size={20} />
-              )}
-          </Button>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 export default function Quiz({
   questions,
   // clearPDF,
@@ -118,9 +66,14 @@ export default function Quiz({
   const resetQuizMutation = useMutation({
     mutationFn: async ({ quizId }: { quizId: string }) =>
       await resetQFDQuiz({ quizId }),
-    onSuccess: (resetQuizData) => {
+    onSuccess: async (resetQuizData) => {
       console.log({ resetQuizData });
-      queryClient.invalidateQueries({ queryKey: ["qfdQuiz"] });
+      await queryClient.invalidateQueries({ queryKey: ["qfdQuiz", quizId] });
+
+      setCurrentQuestionIndex(0);
+      setProgress(0);
+      setIsSubmitted(false);
+      setAnswers(Array(questions.length).fill(null));
     },
     onError: (resetQuizError) => {
       console.log({ resetQuizError });
@@ -174,8 +127,6 @@ export default function Quiz({
     // setAnswers(Array(questions.length).fill(null));
     // setIsSubmitted(false);
     // setScore(null);
-    setCurrentQuestionIndex(0);
-    setProgress(0);
   };
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -191,7 +142,7 @@ export default function Quiz({
           {title}
         </h1>
         <div className="relative">
-          {!isSubmitted && <Progress value={progress} className="h-1 mb-8" />}
+          {!isSubmitted && <Progress value={progress} className="h-2.5 mb-8" />}
           <div className="min-h-[400px]">
             {" "}
             {/* Prevent layout shift */}
@@ -217,7 +168,7 @@ export default function Quiz({
                       <Button
                         onClick={handlePreviousQuestion}
                         disabled={currentQuestionIndex === 0}
-                        variant="ghost"
+                        variant="secondary"
                       >
                         <ChevronLeft className="mr-2 h-4 w-4" /> Previous
                       </Button>
@@ -226,12 +177,20 @@ export default function Quiz({
                       </span>
                       <Button
                         onClick={handleNextQuestion}
-                        disabled={answers[currentQuestionIndex] === null}
-                        variant="ghost"
+                        disabled={answers[currentQuestionIndex] === null || updateQuizQuestionMutation.isPending}
+                        variant="secondary"
+                        className="flex items-center gap-2"
                       >
-                        {currentQuestionIndex === questions.length - 1
-                          ? "Submit"
-                          : "Next"}{" "}
+                        {currentQuestionIndex === questions.length - 1 ? (
+                          <>
+                            {updateQuizQuestionMutation.isPending && (
+                              <Loader className="size-5 animate-spin" />
+                            )}{" "}
+                            Submit
+                          </>
+                        ) : (
+                          "Next"
+                        )}{" "}
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
                     </div>
@@ -284,3 +243,55 @@ export default function Quiz({
     </div>
   );
 }
+
+const QuestionCard: React.FC<{
+  question: Question;
+  selectedAnswer: string | null;
+  onSelectAnswer: (answer: string) => void;
+  isSubmitted: boolean;
+  showCorrectAnswer: boolean;
+}> = ({ question, selectedAnswer, onSelectAnswer, showCorrectAnswer }) => {
+  const answerLabels = ["A", "B", "C", "D"];
+
+  return (
+    <div className="space-y-6">
+      <h2 className="text-lg font-semibold leading-tight">
+        {question.question}
+      </h2>
+      <div className="grid grid-cols-1 gap-4">
+        {question.options.map((option, index) => (
+          <Button
+            key={index}
+            variant={
+              selectedAnswer === answerLabels[index] ? "default" : "outline"
+            }
+            className={`h-auto py-6 px-4 justify-start text-left whitespace-normal ${
+              showCorrectAnswer && answerLabels[index] === question.answer
+                ? "bg-green-600 hover:bg-green-700"
+                : showCorrectAnswer &&
+                  selectedAnswer === answerLabels[index] &&
+                  selectedAnswer !== question.answer
+                ? "bg-red-600 hover:bg-red-700"
+                : ""
+            }`}
+            onClick={() => onSelectAnswer(answerLabels[index])}
+          >
+            <span className="text-lg font-medium mr-4 shrink-0">
+              {answerLabels[index]}
+            </span>
+            <span className="flex-grow">{option}</span>
+            {(showCorrectAnswer && answerLabels[index] === question.answer) ||
+              (selectedAnswer === answerLabels[index] && (
+                <Check className="ml-2 shrink-0 text-white" size={20} />
+              ))}
+            {showCorrectAnswer &&
+              selectedAnswer === answerLabels[index] &&
+              selectedAnswer !== question.answer && (
+                <X className="ml-2 shrink-0 text-white" size={20} />
+              )}
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
+};

@@ -470,3 +470,21 @@ export const resetQFDQuiz = async ({ quizId }: { quizId: string }) => {
 
   return data;
 };
+
+export const getQFDQuizzes = async (
+  {userId}:{userId: string | null | undefined}
+) => {
+
+  const { data, error } = await supabase
+    .from("qfd_quiz")
+    .select("*")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  return data;
+};

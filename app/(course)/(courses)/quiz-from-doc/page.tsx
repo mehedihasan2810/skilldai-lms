@@ -3,6 +3,7 @@ import React from "react";
 import { CreateQuizFromDocPanel } from "./_components/create-quiz-from-doc-panel";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import { RecentQuizList } from "./_components/recent-quiz-list";
 
 const Page = async () => {
   const supabase = await createClient();
@@ -18,6 +19,7 @@ const Page = async () => {
   return (
     <PageContainer scrollable>
       <CreateQuizFromDocPanel userId={user.id} />
+      <RecentQuizList userId={user.id} />
     </PageContainer>
   );
 };

@@ -3,6 +3,7 @@ import { getQuiz } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Quiz from "./quiz";
+import { Loader } from "lucide-react";
 
 export const QuizPanel = ({ quizId }: { quizId: string }) => {
   const {
@@ -10,7 +11,7 @@ export const QuizPanel = ({ quizId }: { quizId: string }) => {
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["qfdQuiz"],
+    queryKey: ["qfdQuiz", quizId],
     queryFn: async () => await getQuiz({ quizId }),
   });
 
@@ -20,7 +21,11 @@ export const QuizPanel = ({ quizId }: { quizId: string }) => {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <p className="flex items-center gap-2">
+        <Loader className="size-5 animate-spin" /> Loading...
+      </p>
+    );
   }
 
   return (
