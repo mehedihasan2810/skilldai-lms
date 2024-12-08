@@ -24,7 +24,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { SignInFooter } from "@/components/auth-form-footers";
-import toast from "react-hot-toast";
 import { Loader2Icon } from "lucide-react";
 import { SocialFooter } from "@/components/social-footer";
 import Link from "next/link";
@@ -32,6 +31,7 @@ import { Separator } from "@/components/ui/separator";
 import { OAuthProviderButton } from "@/components/oauth-provider-button";
 import { OAuthProviders } from "@/app/types";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 
 enum FormStatus {
   Idle,

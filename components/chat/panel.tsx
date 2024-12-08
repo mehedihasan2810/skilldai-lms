@@ -8,16 +8,15 @@ import { addMessage, createChat, getChat, getChatMessages } from "@/lib/db";
 import { Loader, Loader2Icon } from "lucide-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // import { useSupabase } from "@/lib/supabase";
-import { Chat, Models, Attachment } from "@/app/types";
+import { Attachment } from "@/app/types";
 import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
 import { Props as ReactArtifactProps } from "@/components/artifact/react";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
-import { useFakeWhisper } from "@/lib/hooks/use-fake-whisper";
-import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 
 type Props = {
   id: string | null;

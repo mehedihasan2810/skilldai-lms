@@ -95,16 +95,16 @@ export const createChat = async ({
 
 export const deleteChat = async (chatId: string) => {
   // const supabase = createClientComponentClient();
-  const { data: messageData, error } = await supabase
-    .from("messages")
-    .delete()
-    .eq("chat_id", chatId)
-    .select("id");
+  // const { data: messageData, error } = await supabase
+  //   .from("messages")
+  //   .delete()
+  //   .eq("chat_id", chatId)
+  //   .select("id");
 
-  if (error) {
-    console.error(error);
-    throw new Error(error.message);
-  }
+  // if (error) {
+  //   console.error(error);
+  //   throw new Error(error.message);
+  // }
 
   const { data: chatData, error: chatError } = await supabase
     .from("chats")
@@ -118,7 +118,7 @@ export const deleteChat = async (chatId: string) => {
     throw new Error(chatError.message);
   }
 
-  return { messageData, chatData };
+  return { chatData };
 };
 
 export const addMessage = async (

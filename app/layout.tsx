@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { EB_Garamond, Inter as FontSans, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster as ReactHostToaster } from "react-hot-toast";
 import ReactQueryProvider from "@/app/react-query-provider";
 import { cookies } from "next/headers";
 // import { SupabaseProvider } from "@/lib/supabase";
@@ -70,7 +69,6 @@ export default async function RootLayout({
               <NuqsAdapter>
                 <TooltipProvider>{children}</TooltipProvider>
               </NuqsAdapter>
-              <ReactHostToaster />
             </ReactQueryProvider>
           {/* </SupabaseProvider> */}
           <Toaster richColors />

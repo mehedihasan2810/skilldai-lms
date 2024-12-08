@@ -16,9 +16,9 @@ import { Loader, Trash } from "lucide-react";
 import { buttonVariants } from "../ui";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteChat } from "@/lib/db";
-import toast from "react-hot-toast";
 import { Chat } from "@/app/types";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const DeleteChatDialog = ({ chatId }: { chatId: string }) => {
   const router = useRouter();

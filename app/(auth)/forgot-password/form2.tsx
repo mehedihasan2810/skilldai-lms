@@ -25,11 +25,11 @@ import * as z from "zod";
 // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
 import { Loader2Icon } from "lucide-react";
-import toast from "react-hot-toast";
 import { SignInFooter, SignUpFooter } from "@/components/auth-form-footers";
 import { SocialFooter } from "@/components/social-footer";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string(),

@@ -20,12 +20,12 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Loader, Trash } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { buttonVariants, Input } from "@/components/ui";
 import { Badge } from "@/components/ui/badge";
 import { parseAsString, useQueryState } from "nuqs";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 export const CourseList =  ({email}: {email: string}) => {
   const router = useRouter();

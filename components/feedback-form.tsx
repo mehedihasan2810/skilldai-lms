@@ -27,7 +27,6 @@ import { Textarea } from "./ui";
 import { Loader, MessageCircleMore } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { addFeedback } from "@/lib/db";
-import toast from "react-hot-toast";
 // import { useSupabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 import {
@@ -36,6 +35,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   feedback: z.string().min(1, { message: "Required" }),

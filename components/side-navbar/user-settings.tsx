@@ -27,7 +27,7 @@ import {
   settingsSchema,
   updateSettings,
 } from "@/lib/userSettings";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 type Props = {
   showLabel?: boolean;

@@ -7,20 +7,6 @@ import { deleteCourse, getCourses } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React, { useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Loader, Trash } from "lucide-react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 import { buttonVariants, Input } from "@/components/ui";
 import { Badge } from "@/components/ui/badge";

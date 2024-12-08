@@ -7,7 +7,6 @@ import { useState } from "react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { Eye, EyeOff, Loader, LoaderIcon } from "lucide-react";
 // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -23,6 +22,7 @@ import {
 import { createClient } from "@/lib/supabase/client";
 import { setPasswordAction } from "@/actions/set-password";
 import { useAction } from "next-safe-action/hooks";
+import { toast } from "sonner";
 // import { useSupabase } from "@/lib/supabase";
 
 const formSchema = z.object({
