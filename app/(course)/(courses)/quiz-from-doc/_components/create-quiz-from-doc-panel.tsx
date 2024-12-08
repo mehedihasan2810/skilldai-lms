@@ -152,20 +152,8 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
 
     if (validFiles.length !== selectedFiles.length) {
       toast.error("Only PDF files under 5MB are allowed.");
+      return;
     }
-
-    // const supabase = createClient();
-
-    // console.log(validFiles[0]);
-
-    // const { data, error } = await supabase.storage
-    //   .from("quiz-from-doc")
-    //   .upload(
-    //     `${userId}/${validFiles[0].name.replace(".pdf", "")}-${uid.rnd()}.pdf`,
-    //     validFiles[0]
-    //   );
-
-    // console.log({ data, error });
 
     setFiles(validFiles);
   };
@@ -188,6 +176,7 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
         data: await encodeFileAsBase64(file),
       }))
     );
+    console.log({ encodedFiles });
     submit({ files: encodedFiles });
     // const generatedTitle = await generateQuizTitle(encodedFiles[0].name);
     // setTitle(generatedTitle);
@@ -331,7 +320,6 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
           </CardFooter>
         )}
       </Card>
-     
     </div>
   );
 }

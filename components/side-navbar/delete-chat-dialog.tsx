@@ -17,8 +17,8 @@ import { buttonVariants } from "../ui";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteChat } from "@/lib/db";
 import { Chat } from "@/app/types";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useRouter } from "nextjs-toploader/app";
 
 const DeleteChatDialog = ({ chatId }: { chatId: string }) => {
   const router = useRouter();

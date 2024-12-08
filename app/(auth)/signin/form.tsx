@@ -46,7 +46,7 @@ enum FormStatus {
   Success,
 }
 
-const SignInForm = ({ message }: { message: Message }) => {
+const SignInForm = () => {
   const [isShowPass, setIsShowPass] = useState(false);
   const router = useRouter();
 

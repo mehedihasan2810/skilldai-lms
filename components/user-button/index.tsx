@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SignOutDialog } from "./sign-out-dialog";
 import { UserIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 // import { useSupabase } from "@/lib/supabase";
 import {
@@ -20,6 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { createClient } from "@/lib/supabase/client";
+import { useRouter } from "nextjs-toploader/app";
 
 type Props = {
   expanded?: boolean;

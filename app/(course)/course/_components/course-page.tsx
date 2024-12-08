@@ -18,9 +18,9 @@ import { ArrowRight, Check, Loader, ShieldQuestion } from "lucide-react";
 import { Quizzes } from "../_components/quizzes";
 // import { useSupabase } from "@/lib/supabase";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { SectionProgress } from "../_components/section-progress";
 import { useEffect } from "react";
+import { useRouter } from "nextjs-toploader/app";
 
 interface PageProps {
 //   params: {

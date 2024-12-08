@@ -2,18 +2,17 @@
 
 import * as React from "react";
 import Link, { LinkProps } from "next/link";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams,  useSearchParams } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Icons } from "@/components/icons";
 import { Button } from "./ui";
 import { ScrollArea } from "./ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { courseConfig } from "@/config";
 import Image from "next/image";
 import { getSectionsByCourseId } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "nextjs-toploader/app";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
