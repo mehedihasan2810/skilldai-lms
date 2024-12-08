@@ -24,7 +24,7 @@ export default async function Page({ params, searchParams }: PageProps) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log({ user });
+  // console.log({ user });
 
   if (user) {
     return redirect("/new");

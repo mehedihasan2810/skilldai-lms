@@ -39,11 +39,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const supabase = createServerComponentClient({ cookies });
 
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession();
 
   return (
     <html lang="en"  
@@ -71,12 +67,13 @@ export default async function RootLayout({
               </NuqsAdapter>
             </ReactQueryProvider>
           {/* </SupabaseProvider> */}
-          <Toaster richColors />
+          <Toaster richColors closeButton />
         </ThemeProvider>
         <NextTopLoader
           color="hsl(229 100% 62%)"
           height={4}
           showSpinner={false}
+          
         />
         <Analytics />
 
