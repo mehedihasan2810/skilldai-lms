@@ -1,12 +1,10 @@
-// "use client";
-
 import { ChatHeader } from "@/components/chat-header";
 import { ChatPanel } from "@/components/chat/panel";
 import { SideNavBar } from "@/components/side-navbar";
-import ChatMobileSidebar from "@/components/side-navbar/chat-mobile-sidebar";
-// import { useSupabase } from "@/lib/supabase";
 import { createClient } from "@/lib/supabase/server";
+import { Loader } from "lucide-react";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 type Props = {
   params: {
@@ -14,11 +12,23 @@ type Props = {
   };
 };
 
-const ChatPage = async ({ params: { id } }: Props) => {
-  // const { session } = useSupabase();
+const ChatPage = ({ params: { id } }: Props) => {
+  return (
+    <div className="relative isolate size-full">
+      <Suspense
+        fallback={
+          <div className="h-screen w-screen flex items-center justify-center gap-2">
+            <Loader className="size-6 animate-spin" /> Loading...
+          </div>
+        }
+      >
+        <Chat chatId={id} />
+      </Suspense>
+    </div>
+  );
+};
 
-  // if (!session) redirect("/");
-
+const Chat = async ({ chatId }: { chatId: string }) => {
   const supabase = await createClient();
 
   const {
@@ -30,14 +40,13 @@ const ChatPage = async ({ params: { id } }: Props) => {
   }
 
   return (
-    <div className="relative isolate size-full">
+    <>
       <ChatHeader userId={user.id} email={user.email!} />
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
         <SideNavBar userId={user.id} userEmail={user.email!} />
-        {/* <ChatMobileSidebar /> */}
-        <ChatPanel id={id} userEmail={user.email!} userId={user.id} />
+        <ChatPanel id={chatId} userEmail={user.email!} userId={user.id} />
       </div>
-    </div>
+    </>
   );
 };
 
