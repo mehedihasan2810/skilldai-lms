@@ -15,6 +15,7 @@
     "@chengsokdara/use-whisper": "^0.2.0",
     "@ffmpeg/core": "^0.11.0",
     "@hookform/resolvers": "^3.9.0",
+    "@openrouter/ai-sdk-provider": "^0.0.6",
     "@opentelemetry/api-logs": "^0.53.0",
     "@opentelemetry/instrumentation": "^0.53.0",
     "@opentelemetry/sdk-logs": "^0.53.0",

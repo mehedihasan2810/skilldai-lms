@@ -471,10 +471,11 @@ export const resetQFDQuiz = async ({ quizId }: { quizId: string }) => {
   return data;
 };
 
-export const getQFDQuizzes = async (
-  {userId}:{userId: string | null | undefined}
-) => {
-
+export const getQFDQuizzes = async ({
+  userId,
+}: {
+  userId: string | null | undefined;
+}) => {
   const { data, error } = await supabase
     .from("qfd_quiz")
     .select("*")
@@ -485,6 +486,43 @@ export const getQFDQuizzes = async (
     console.error(error);
     throw new Error(error.message);
   }
+
+  return data;
+};
+
+export const saveUserInfo = async ({
+  userId,
+  institution,
+  profession,
+}: {
+  userId: string;
+  institution: string;
+  profession: string;
+}) => {
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const { data, error } = await supabase
+    .from("user_info")
+    .insert({
+      user_id: userId,
+      institution,
+      profession,
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  if (!data) {
+    throw new Error("Could not save the data");
+  }
+
+  console.log({ data });
 
   return data;
 };

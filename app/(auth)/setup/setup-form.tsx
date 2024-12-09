@@ -3,12 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { Eye, EyeOff, Loader, LoaderIcon } from "lucide-react";
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cn } from "@/lib/utils";
-import { z } from "zod";
+import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -19,43 +14,47 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { createClient } from "@/lib/supabase/client";
-import { setPasswordAction } from "@/actions/set-password";
-import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-// import { useSupabase } from "@/lib/supabase";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
+import { saveUserInfo } from "@/lib/db";
+import { useRouter } from "nextjs-toploader/app";
+
+const professions = ["Student", "Teacher", "Developer", "Other"];
 
 const formSchema = z.object({
   institution: z.string().trim().min(1, { message: "Required" }),
   profession: z.string().trim().min(1, { message: "Required" }),
 });
 
-export const SetupForm = () => {
+export const SetupForm = ({ userId }: { userId: string }) => {
   const router = useRouter();
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const searchParams = useSearchParams();
-
-  const { executeAsync, result, isPending } = useAction(setPasswordAction, {
-    onSuccess: ({ data, input }) => {
-      console.log({ data });
-      toast.success("Password has been updated successfully.");
+  const saveUserInfoMutation = useMutation({
+    mutationFn: async ({
+      userId,
+      profession,
+      institution,
+    }: {
+      userId: string;
+      profession: string;
+      institution: string;
+    }) => await saveUserInfo({ userId, profession, institution }),
+    onSuccess: (savedData) => {
+      console.log({ savedData });
 
       router.push("/new");
     },
-    onError: ({ error }) => {
-      console.log({ error });
-      if (error.serverError) {
-        toast.error(error.serverError);
-      }
-      if (error.validationErrors) {
-        toast.error(
-          `${error.validationErrors.password?.join(", ") ?? ""}. ${
-            error.validationErrors.refreshToken?.join(", ") ?? ""
-          }`
-        );
-      }
+    onError: (error) => {
+      console.error({ error });
+      toast.error(error.message);
     },
   });
 
@@ -69,13 +68,11 @@ export const SetupForm = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ values });
-    const password = values.institution;
 
-    const refreshToken = searchParams.get("refresh_token") ?? "";
-
-    const result = await executeAsync({
-      password,
-      refreshToken,
+    saveUserInfoMutation.mutate({
+      userId,
+      profession: values.profession,
+      institution: values.institution,
     });
   }
   return (
@@ -106,25 +103,34 @@ export const SetupForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Profession</FormLabel>
-              <FormControl>
-                <Input
-                  className="pr-11"
-                  type="text"
-                  placeholder="eg: student or teacher or developer"
-                  {...field}
-                />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Please select your profession" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {professions.map((profession) => (
+                    <SelectItem key={profession} value={profession}>
+                      {profession}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
               <FormMessage />
             </FormItem>
           )}
         />
+
         <Button
           type="submit"
           className="w-full flex justify-center gap-2"
-          disabled={isPending}
+          disabled={saveUserInfoMutation.isPending}
         >
-          {isPending && <Loader className="animate-spin size-5" />}
+          {saveUserInfoMutation.isPending && (
+            <Loader className="animate-spin size-5" />
+          )}
           Confirm
         </Button>
       </form>

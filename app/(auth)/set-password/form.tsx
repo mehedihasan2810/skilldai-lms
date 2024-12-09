@@ -4,9 +4,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { Eye, EyeOff, Loader, LoaderIcon } from "lucide-react";
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useSearchParams } from "next/navigation";
+import { Eye, EyeOff, Loader } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -19,11 +18,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { createClient } from "@/lib/supabase/client";
 import { setPasswordAction } from "@/actions/set-password";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-// import { useSupabase } from "@/lib/supabase";
+import { useRouter } from "nextjs-toploader/app";
 
 const formSchema = z.object({
   password: z
@@ -53,22 +51,16 @@ const formSchema = z.object({
 
 const SetPasswordForm = () => {
   const [isShowPass, setIsShowPass] = useState(false);
-  // const supabase = createClientComponentClient();
   const router = useRouter();
-  // const { supabase } = useSupabase();
-
-  // const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const searchParams = useSearchParams();
 
   const { executeAsync, result, isPending } = useAction(setPasswordAction, {
-    onSuccess: ({ data, input }) => {
+    onSuccess: ({ data }) => {
       console.log({ data });
-      // router.replace("/new");
-      toast.success("Password has been updated successfully.");
+      toast.success("Password has been added successfully.");
 
-      router.push("/new");
+      router.push("/setup");
     },
     onError: ({ error }) => {
       console.log({ error });
@@ -95,60 +87,13 @@ const SetPasswordForm = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ values });
     const password = values.password;
-    // if (!password.trim()) return toast.error("Please enter your password.");
-    // if (password.trim().length < 6)
-    //   return toast.error("Password should be minimum 6 characters.", {
-    //     position: "top-center",
-    //   });
 
     const refreshToken = searchParams.get("refresh_token") ?? "";
 
-    const result = await executeAsync({
+     await executeAsync({
       password,
       refreshToken,
     });
-
-    // if (!refreshToken?.trim())
-    //   return toast.error("Invalid token", { position: "top-center" });
-
-    // console.log(refreshToken);
-
-    // setIsLoading(true);
-
-    // const supabase = createClient();
-
-    // const data = await supabase.auth.refreshSession({
-    //   refresh_token: refreshToken,
-    // });
-
-    // if (data.error) {
-    //   setIsLoading(false);
-    //   return toast.error("Invalid token", { position: "top-center" });
-    // }
-
-    // console.log(data.data);
-
-    // const { data: userData, error: userError } = await supabase.auth.updateUser(
-    //   { password: password }
-    // );
-
-    // console.log(userData);
-
-    // if (userError) {
-    //   console.log(userError);
-
-    //   setIsLoading(false);
-    //   return toast.error(userError.message, { position: "top-center" });
-    //   // return toast.error(
-    //   //   "Something went wrong while setting the password! Please try again.",
-    //   //   { position: "top-center" }
-    //   // );
-    // }
-
-    // setIsLoading(false);
-
-    // router.refresh();
-    // return router.push(`/new`);
   }
   return (
     <Form {...form}>
@@ -179,9 +124,7 @@ const SetPasswordForm = () => {
                   </Button>
                 </div>
               </FormControl>
-              {/* <FormDescription>
-                      This is your public display name.
-                    </FormDescription> */}
+
               <FormMessage />
             </FormItem>
           )}
@@ -189,7 +132,6 @@ const SetPasswordForm = () => {
         <Button
           type="submit"
           className="w-full flex justify-center gap-2"
-          // onClick={handleResetPassword}
           disabled={isPending}
         >
           {isPending && <Loader className="animate-spin size-5" />}
