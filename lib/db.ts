@@ -505,11 +505,14 @@ export const saveUserInfo = async ({
 
   const { data, error } = await supabase
     .from("user_info")
-    .insert({
-      user_id: userId,
-      institution,
-      profession,
-    })
+    .upsert(
+      {
+        user_id: userId,
+        institution,
+        profession,
+      },
+      { onConflict: "user_id" }
+    )
     .select("id")
     .single();
 
