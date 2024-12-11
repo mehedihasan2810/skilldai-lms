@@ -11,7 +11,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Attachment } from "@/app/types";
 import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
 // import { useRouter } from "next/navigation";
-import { useRouter } from 'nextjs-toploader/app';
+import { useRouter } from "nextjs-toploader/app";
 import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
 import { Props as ReactArtifactProps } from "@/components/artifact/react";
 import { SyntheticEvent, useEffect, useState } from "react";
@@ -247,6 +247,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     // console.log({ files });
     handleSubmit(event, {
       body: {
+        userId,
         user_email: userEmail,
         activeChatTab: chat?.type ?? activeChatTab,
       },

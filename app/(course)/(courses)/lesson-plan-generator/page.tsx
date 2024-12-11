@@ -1,9 +1,9 @@
 import PageContainer from "@/components/dashboard/page-container";
 import React from "react";
-import { CreateQuizFromDocPanel } from "./_components/create-quiz-from-doc-panel";
+import { LessonPlanForm } from "./_components/lesson-plan-generator-form";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { RecentQuizList } from "./_components/recent-quiz-list";
+import { LessonPlanList } from "./_components/lesson-plan-list";
 
 const Page = async () => {
   const supabase = await createClient();
@@ -15,11 +15,10 @@ const Page = async () => {
   if (!user) {
     return redirect("/");
   }
-
   return (
     <PageContainer scrollable>
-      <CreateQuizFromDocPanel userId={user.id} userEmail={user.email ?? ""} />
-      <RecentQuizList userId={user.id} />
+      <LessonPlanForm userId={user.id} userEmail={user.email ?? ""} />
+      <LessonPlanList userId={user.id} />
     </PageContainer>
   );
 };

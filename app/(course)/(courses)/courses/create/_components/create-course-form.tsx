@@ -41,7 +41,7 @@ const formSchema = z.object({
   targetAudience: z.string().min(1, { message: "Required" }),
 });
 
-export const CreateCourseForm = ({ email }: { email: string }) => {
+export const CreateCourseForm = ({ email, userId }: { email: string, userId: string }) => {
   const queryClient = useQueryClient();
   // const { session } = useSupabase();
   const [isCourseSaveComplete, setIsCourseSaveComplete] = useState(false);
@@ -179,6 +179,8 @@ export const CreateCourseForm = ({ email }: { email: string }) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ values });
     submit({
+      userId,
+      userEmail: email,
       courseTopic: values.courseTopic,
       difficultyLevel: values.difficultyLabel,
       targetAudience: values.targetAudience,

@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { google } from "@ai-sdk/google";
-import { openai } from "@ai-sdk/openai";
-import { convertToCoreMessages, streamObject } from "ai";
+import {  streamObject } from "ai";
 import { z } from "zod";
 
 export const maxDuration = 60;
@@ -23,9 +22,8 @@ const questionSchema = z.object({
 
 const questionsSchema = z.array(questionSchema).length(4);
 
-
 export async function POST(req: Request) {
-  const { files } = await req.json();
+  const { files, userId,  userEmail } = await req.json();
   const firstFile = files[0].data;
 
   console.log({ firstFile });
@@ -87,15 +85,33 @@ export async function POST(req: Request) {
     // ]),
     schema: questionSchema,
     output: "array",
-    onFinish: async ({ object }) => {
-      const res = questionsSchema.safeParse(object);
-      if (res.error) {
-        throw new Error(res.error.errors.map((e) => e.message).join("\n"));
-      }
+    onFinish: async ({ object, usage }) => {
+      const supabase = await createClient();
 
-      // const supabase = await createClient()
+      const CURRENT_MONTH = new Date().getMonth() + 1;
+      const CURRENT_YEAR = new Date().getFullYear();
+      const { data, error: error } = await supabase
+        .from("token_usage")
+        .insert({
+          type: "course",
+          user_id: userId,
+          email: userEmail,
+          month: CURRENT_MONTH,
+          year: CURRENT_YEAR,
+          input_token: usage.promptTokens,
+          output_token: usage.completionTokens,
+          total_tokens: usage.totalTokens,
+          llm: "google",
+          model: "gemini-1.5-pro-latest",
+        })
+        .select("total_tokens");
 
-      
+      console.log({ data, error });
+
+      // const res = questionsSchema.safeParse(object);
+      // if (res.error) {
+      //   throw new Error(res.error.errors.map((e) => e.message).join("\n"));
+      // }
     },
   });
 

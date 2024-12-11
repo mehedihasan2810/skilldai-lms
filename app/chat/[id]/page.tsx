@@ -43,8 +43,8 @@ const Chat = async ({ chatId }: { chatId: string }) => {
     <>
       <ChatHeader userId={user.id} email={user.email!} />
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
-        <SideNavBar userId={user.id} userEmail={user.email!} />
-        <ChatPanel id={chatId} userEmail={user.email!} userId={user.id} />
+        <SideNavBar userId={user.id} userEmail={user.email ?? ""} />
+        <ChatPanel id={chatId} userEmail={user.email ?? ""} userId={user.id} />
       </div>
     </>
   );

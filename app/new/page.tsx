@@ -60,11 +60,11 @@ const NewChatPage = async () => {
     <div className="relative isolate size-full">
       <ChatHeader userId={user.id} email={user.email!} />
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
-        <SideNavBar userId={user.id} userEmail={user.email!} />
+        <SideNavBar userId={user.id} userEmail={user.email ?? ""} />
         {/* <ChatMobileSidebar /> */}
         <ChatPanel
           id={null}
-          userEmail={user.email!}
+          userEmail={user.email ??  ""}
           userId={user.id}
         />
       </div>

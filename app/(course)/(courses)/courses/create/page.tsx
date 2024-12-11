@@ -201,7 +201,7 @@ const Page = async () => {
 
   return (
     <PageContainer scrollable>
-      <CreateCourseForm email={user.email!} />
+      <CreateCourseForm email={user.email!} userId={user.id} />
       {/* <div className="space-y-8 mt-20">
         {(isLoading || isCourseSaveComplete) && (
           <Card className="max-w-lg mx-auto ">

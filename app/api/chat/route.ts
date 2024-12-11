@@ -30,16 +30,13 @@ export async function POST(req: Request) {
   const CURRENT_MONTH = new Date().getMonth() + 1;
   const CURRENT_YEAR = new Date().getFullYear();
 
-  const { messages, user_email, activeChatTab } = await req.json();
+  const { messages, user_email, userId, activeChatTab } = await req.json();
 
-  console.log("messagessssssssssssssss");
-  console.log(messages[0]?.experimental_attachments);
-
-  console.log({ user_email, activeChatTab });
+  console.log({ user_email, userId, activeChatTab });
 
   const { data: tokenUsage, error } = await supabase
     .from("token_usage")
-    .select("total_tokens")
+    .select("total_tokens,input_token,output_token")
     .eq("user_email", user_email)
     .eq("month", CURRENT_MONTH)
     .eq("year", CURRENT_YEAR)
@@ -88,10 +85,21 @@ export async function POST(req: Request) {
         .from("token_usage")
         .upsert(
           {
+            type: "chat",
+            user_id: userId,
             user_email: user_email,
+            email: user_email,
             month: CURRENT_MONTH,
             year: CURRENT_YEAR,
+            input_token: (tokenUsage?.input_token || 0) + usage.promptTokens,
+            output_token:
+              (tokenUsage?.output_token || 0) + usage.completionTokens,
             total_tokens: (tokenUsage?.total_tokens || 0) + usage.totalTokens,
+            llm: activeChatTab === "codeGPT" ? "anthropic" : "deepseek",
+            model:
+              activeChatTab === "codeGPT"
+                ? "claude-3-5-sonnet-20240620"
+                : "deepseek-chat",
           },
           {
             onConflict: "user_email",
@@ -102,76 +110,5 @@ export async function POST(req: Request) {
     },
   });
 
-  // return result.toAIStreamResponse();
   return result.toDataStreamResponse();
 }
-
-// import { systemPrompt } from "@/app/api/chat/systemPrompt";
-// import { createAnthropic } from "@ai-sdk/anthropic";
-// import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
-// import { createOpenAI } from "@ai-sdk/openai";
-// import { Models } from "@/app/types";
-
-// export const maxDuration = 60;
-
-// export async function POST(req: Request) {
-//   const { messages, apiKey, model } = await req.json();
-
-//   let llm;
-//   let options: Record<string, any> = {};
-
-//   if (model === Models.claude) {
-//     const anthropic = createAnthropic({
-//       apiKey,
-//     });
-
-//     llm = anthropic("claude-3-5-sonnet-20240620");
-
-//     options = {
-//       ...options,
-//       maxTokens: 8192,
-//       headers: {
-//         ...(options.headers || {}),
-//         "anthropic-beta": "max-tokens-3-5-sonnet-2024-07-15",
-//       },
-//     };
-//   } else if (model.startsWith("gpt")) {
-//     const openai = createOpenAI({
-//       compatibility: "strict", // strict mode, enable when using the OpenAI API
-//       apiKey,
-//     });
-
-//     llm = openai(model);
-//   }
-
-//   if (!llm) throw new Error(`Unsupported model: ${model}`);
-
-//   const initialMessages = messages.slice(0, -1);
-//   const currentMessage: Message = messages[messages.length - 1];
-//   const attachments = currentMessage.experimental_attachments || [];
-//   const imageParts: ImagePart[] = attachments.map((file) => ({
-//     type: "image",
-//     image: new URL(file.url),
-//   }));
-
-//   const result = await streamText({
-//     model: llm,
-//     messages: [
-//       ...convertToCoreMessages(initialMessages),
-//       {
-//         role: "user",
-//         content: [
-//           {
-//             type: "text",
-//             text: currentMessage.content,
-//           },
-//           ...imageParts,
-//         ],
-//       },
-//     ],
-//     system: systemPrompt,
-//     ...options,
-//   });
-
-//   return result.toAIStreamResponse();
-// }

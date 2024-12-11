@@ -21,16 +21,22 @@ export const navItems: NavItem[] = [
   },
 
   {
-    title: "Generate course",
+    title: "Course Generator",
     href: "/courses/create",
-    icon: "plus",
-    label: "Generate course",
+    icon: "graduationCap",
+    label: "Course Generator",
   },
   {
-    title: "Generate quiz",
+    title: "Quiz Generator",
     href: "/quiz-from-doc",
-    icon: "plus",
-    label: "Generate quiz",
+    icon: "shieldQuestion",
+    label: "Quiz Generator",
+  },
+  {
+    title: "Lesson Plan Generator",
+    href: "/lesson-plan-generator",
+    icon: "bookOpen",
+    label: "Lesson Plan Generator",
   },
 ];
 

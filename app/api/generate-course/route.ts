@@ -17,7 +17,7 @@ export const maxDuration = 60;
 // - A Course Title
 // - A Short Description (no more than 25 words). Please keep the description within 25 words.
 // - Maximum 10 Sections, each with a title and detailed content. Please don't generate more than 10 sections.
-// - For each section, include up to 3 quiz questions with answers. 
+// - For each section, include up to 3 quiz questions with answers.
 // - Make sure the course is engaging, clear, and tailored to the specified audience and difficulty level (beginner, intermediate, or advanced).
 // - Format the content in a way that is easy to follow and provides step-by-step learning.
 // `;
@@ -79,8 +79,6 @@ Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudien
 // `;
 // }
 
-
-
 // // Dynamic user prompt
 // function getUserPrompt(
 //   courseTopic: string,
@@ -101,19 +99,24 @@ Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudien
 export async function POST(req: Request) {
   const supabase = await createClient();
 
-  const { courseTopic, targetAudience, difficultyLevel } = await req.json();
+  const { courseTopic, targetAudience, difficultyLevel, userId, userEmail } =
+    await req.json();
 
   // Validate input data (if needed)
   // You can define a separate Zod schema for input validation if required
 
-  console.log({ courseTopic, targetAudience, difficultyLevel });
+  console.log({
+    courseTopic,
+    targetAudience,
+    difficultyLevel,
+    userId,
+    userEmail,
+  });
 
   // Ensure that the required parameters exist in the input data
   if (!courseTopic || !targetAudience || !difficultyLevel) {
     return new Response("Missing required fields", { status: 400 });
   }
-
-  const streamData = new StreamData();
 
   const result = await streamObject({
     model: openai("gpt-4o"),
@@ -128,19 +131,40 @@ export async function POST(req: Request) {
       console.log(usage);
       console.log(object?.title);
 
-      const { data: course, error: courseError } = await supabase
-        .from("course_token_usage")
+      const CURRENT_MONTH = new Date().getMonth() + 1;
+      const CURRENT_YEAR = new Date().getFullYear();
+
+      const { data, error: error } = await supabase
+        .from("token_usage")
         .insert({
-          course_title: object?.title ?? "",
-          course_description: object?.description ?? "",
+          type: "course",
+          user_id: userId,
+          email: userEmail,
+          month: CURRENT_MONTH,
+          year: CURRENT_YEAR,
           input_token: usage.promptTokens,
           output_token: usage.completionTokens,
-          total_token: usage.totalTokens,
+          total_tokens: usage.totalTokens,
+          llm: "openai",
+          model: "gpt-4o",
         })
-        .select("id")
-        .single();
+        .select("total_tokens");
 
-      console.log({ course, courseError });
+      console.log({ data, error });
+
+      // const { data: course, error: courseError } = await supabase
+      //   .from("course_token_usage")
+      //   .insert({
+      //     course_title: object?.title ?? "",
+      //     course_description: object?.description ?? "",
+      //     input_token: usage.promptTokens,
+      //     output_token: usage.completionTokens,
+      //     total_token: usage.totalTokens,
+      //   })
+      //   .select("id")
+      //   .single();
+
+      // console.log({ course, courseError });
 
       // console.log("object  titlee", object?.title);
       // const generatedCourse = object!;

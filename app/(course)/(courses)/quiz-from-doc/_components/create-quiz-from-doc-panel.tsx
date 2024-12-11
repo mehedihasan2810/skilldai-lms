@@ -25,7 +25,7 @@ import { useRouter } from "nextjs-toploader/app";
 
 const uid = new ShortUniqueId({ length: 10 });
 
-export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
+export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string,  userEmail: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [questions, setQuestions] = useState<z.infer<typeof questionsSchema>>(
     []
@@ -177,7 +177,7 @@ export function CreateQuizFromDocPanel({ userId }: { userId: string }) {
       }))
     );
     console.log({ encodedFiles });
-    submit({ files: encodedFiles });
+    submit({ files: encodedFiles, userId, userEmail });
     // const generatedTitle = await generateQuizTitle(encodedFiles[0].name);
     // setTitle(generatedTitle);
 

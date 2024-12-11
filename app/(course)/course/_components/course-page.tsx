@@ -175,7 +175,7 @@ export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
       <Separator className="my-10" />
 
       <div className="mx-auto w-full min-w-0">
-        <Markdown text={(content ?? courseSections![0]).content} />
+        <Markdown text={(content ?? courseSections![0]).content} className="max-w-2xl" />
       </div>
 
       <div className="mt-20">

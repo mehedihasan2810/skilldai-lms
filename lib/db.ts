@@ -529,3 +529,95 @@ export const saveUserInfo = async ({
 
   return data;
 };
+
+export const saveLessonPlan = async ({
+  userId,
+  title,
+  plan,
+  topic,
+  gradeLevel,
+  focusingOn,
+  style,
+  duration,
+  previousLessonInfo,
+}: {
+  userId: string;
+  title: string;
+  plan: string;
+  topic: string;
+  gradeLevel: string;
+  focusingOn: string;
+  style: string;
+  duration: string;
+  previousLessonInfo: string;
+}) => {
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const { data, error } = await supabase
+    .from("lesson_plan")
+    .insert({
+      title,
+      plan,
+      user_id: userId,
+      topic,
+      grade_level: gradeLevel,
+      focusing_on: focusingOn,
+      style,
+      duration,
+      previous_lesson_info: previousLessonInfo,
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  if (!data) {
+    throw new Error("Could not save the data");
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getLessonPlan = async ({
+  lessonPlanId,
+}: {
+  lessonPlanId: string;
+}) => {
+  const { error, data } = await supabase
+    .from("lesson_plan")
+    .select("*")
+    .eq("id", lessonPlanId)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getLessonPlans = async ({ userId }: { userId: string }) => {
+  const { error, data } = await supabase
+    .from("lesson_plan")
+    .select("*")
+    .eq("user_id", userId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};

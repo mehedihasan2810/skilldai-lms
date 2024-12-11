@@ -87,7 +87,7 @@ export const ArtifactPanel = ({
         {type === "text/markdown" && (
           <Markdown
             text={content}
-            className="h-full max-h-full overflow-auto py-4 px-4"
+            className="h-full max-h-full overflow-auto py-4 px-4 max-w-2xl"
           />
         )}
 
