@@ -169,8 +169,10 @@ export const LessonPlanForm = ({
           >
             <Loader className="size-5 animate-spin mr-2" /> Generating...
           </Button>
-
-          <Markdown text={dummyLessonPlan} className="w-full" />
+          <h1 className="text-2xl font-bold mb-2 mt-6">
+            {lessonPlan?.title ?? ""}
+          </h1>
+          <Markdown text={lessonPlan?.plan ?? ""} className="w-full" />
         </div>
       </>
     );
