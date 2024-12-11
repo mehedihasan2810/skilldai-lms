@@ -162,7 +162,7 @@ export const LessonPlanForm = ({
   if ((lessonPlan && isLoading) || saveLessonPlanMutation.isPending) {
     return (
       <>
-        <div className="relative mb-16 mt-8 bg-card w-fit rounded-xl p-6 max-w-4xl mx-auto shadow-md border border-border/50">
+        <div className="relative mb-16 mt-8 bg-card w-full rounded-xl p-6 max-w-4xl mx-auto shadow-md border border-border/50">
           <Button
             variant="outline"
             className="absolute -top-5 left-1/2 -translate-x-1/2"
@@ -172,7 +172,7 @@ export const LessonPlanForm = ({
           <h1 className="text-2xl font-bold mb-2 mt-6">
             {lessonPlan?.title ?? ""}
           </h1>
-          <Markdown text={lessonPlan?.plan ?? ""} className="w-full" />
+          <Markdown text={lessonPlan?.plan ?? ""} className="max-w-4xl" />
         </div>
       </>
     );
