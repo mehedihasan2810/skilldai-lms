@@ -112,7 +112,7 @@ export const LessonPlanPage = ({
         </div>
       ) : (
         <>
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center flex-wrap gap-4 mb-4">
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={buttonVariants({

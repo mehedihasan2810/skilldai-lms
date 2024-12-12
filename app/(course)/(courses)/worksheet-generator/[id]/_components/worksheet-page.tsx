@@ -112,7 +112,7 @@ export const WorksheetPage = ({
         </div>
       ) : (
         <>
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-4 mb-4 flex-wrap">
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={buttonVariants({

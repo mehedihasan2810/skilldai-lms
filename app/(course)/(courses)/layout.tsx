@@ -83,7 +83,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     <div className="flex">
       <DashboardSidebar navItems={filteredNavItems} />
       <main className="w-full flex-1 overflow-hidden">
-        <Header email={user.email!} />
+        <Header email={user.email!} navItems={filteredNavItems}  />
         {children}
       </main>
     </div>

@@ -18,7 +18,7 @@ export default function Error({
 
   return (
     <div className="h-screen w-screen grid place-items-center">
-      <div className="items-center">
+      <div className="items-center px-4">
         <h2 className="text-xl font-semibold mb-1">Something went wrong!</h2>
         <p>Error: {error.message}</p>
         <div>

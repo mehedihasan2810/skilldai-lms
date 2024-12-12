@@ -3,15 +3,16 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
 import { DashboardNav } from "./dashboard-nav";
-import { navItems } from "@/config";
+import { NavItem } from "@/types/nav";
 
 // import { Playlist } from "../data/playlists";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   // playlists: Playlist[];
+  navItems: NavItem[]
 }
 
-export function MobileSidebar({ className }: SidebarProps) {
+export function MobileSidebar({ className, navItems }: SidebarProps) {
   const [open, setOpen] = useState(false);
   return (
     <>
