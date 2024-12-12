@@ -98,14 +98,13 @@ You are an AI assistant tasked with creating a detailed, engaging, and actionabl
 2. Create a lesson plan with the following structure:
 
 a) Objectives
-b) Previous Lesson (if applicable)
-c) Beginning of the Lesson
-d) Learning/Inquiry
-e) Practice/Experience
-f) Assessment
-g) Summary
-h) Homework
-i) Resources Required
+b) Beginning of the Lesson
+c) Learning/Inquiry
+d) Practice/Experience
+e) Assessment
+f) Summary
+g) Homework
+h) Resources Required
 
 3. For each section of the lesson plan, follow these guidelines:
 
