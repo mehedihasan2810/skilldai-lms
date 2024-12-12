@@ -65,8 +65,7 @@ const studyBuddyGPTExamplePrompts = [
     prompt: "How do I solve x^2 + 5x - 6 = 0?",
   },
   {
-    title:
-      "What are some reliable sources on social media's...",
+    title: "What are some reliable sources on social media's...",
     prompt:
       "What are some reliable sources on social media's impact on teen mental health?",
   },
@@ -103,7 +102,7 @@ export type Props = {
   userId: string;
   onChangeActiveChatTab: (v: string) => void;
   activeChatTab: string;
-  chatType: string
+  chatType: string;
 };
 
 export const ChatInput = memo(function ChatInput({
@@ -128,7 +127,7 @@ export const ChatInput = memo(function ChatInput({
   userId,
   onChangeActiveChatTab,
   activeChatTab,
-  chatType
+  chatType,
 }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { onKeyDown } = useEnterSubmit({ onSubmit });
@@ -300,8 +299,16 @@ export const ChatInput = memo(function ChatInput({
                   onKeyDown={onKeyDown}
                   placeholder={
                     chatId
-                      ? `Reply to ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "CodeGPT"}...`
-                      : `How can ${chatType === "studyBuddyGPT" ? "StudyBuddy" : "CodeGPT"} help you today?`
+                      ? `Reply to ${
+                          chatType === "studyBuddyGPT"
+                            ? "StudyBuddy"
+                            : "CodeGPT"
+                        }...`
+                      : `How can ${
+                          chatType === "studyBuddyGPT"
+                            ? "StudyBuddy"
+                            : "CodeGPT"
+                        } help you today?`
                   }
                   className={cn(
                     "max-h-96 overflow-auto w-full bg-transparent border-none resize-none focus-within:outline-none",
@@ -413,28 +420,25 @@ export const ChatInput = memo(function ChatInput({
                   </div>
                 ) : (
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    {(activeChatTab === "studyBuddyGPT"
-                      ? studyBuddyGPTExamplePrompts
-                      : codeGPTExamplePrompts
-                    ).map((prompt, i) => (
-                      <Tooltip key={i}>
-                        <TooltipTrigger
-                          onClick={() => setInput(prompt.prompt)}
-                          className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
-                        >
-                          {" "}
-                          {/* <button
+                    <TooltipProvider>
+                      {(activeChatTab === "studyBuddyGPT"
+                        ? studyBuddyGPTExamplePrompts
+                        : codeGPTExamplePrompts
+                      ).map((prompt, i) => (
+                        <Tooltip key={i}>
+                          <TooltipTrigger
+                            // asChild
                             onClick={() => setInput(prompt.prompt)}
                             className="bg-background text-muted-foreground p-2 rounded-lg text-sm hover:bg-background/70 w-full h-full text-left"
-                          > */}
-                          {prompt.title}
-                          {/* </button> */}
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Try this prompt</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
+                          >
+                            {prompt.title}
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Try this prompt</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      ))}
+                    </TooltipProvider>
                   </div>
                 )}
               </div>

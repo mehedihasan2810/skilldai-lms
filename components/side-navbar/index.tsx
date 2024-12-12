@@ -1,11 +1,9 @@
 "use client";
 
 import { ChatItem } from "@/components/side-navbar/chat-item";
-import { UserSettings } from "@/components/side-navbar/user-settings";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { UserButton } from "@/components/user-button";
 import { getChats } from "@/lib/db";
-// import { useSupabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import {
   BookOpen,
@@ -33,9 +31,6 @@ export const SideNavBar = ({
 
   const params = useParams();
 
-  // const { supabase, session } = useSupabase();
-  // const userId = session?.user.id;
-
   const {
     data: chats,
     error,
@@ -50,7 +45,7 @@ export const SideNavBar = ({
     return (
       <div
         className="flex h-screen max-h-screen overflow-hidden 
-       flex-col gap-4 justify-between px-2 py-2 pb-4 w-[250px] border-r"
+       flex-col gap-4 justify-between px-2 py-2 pb-4 w-[250px] border-r bg-card"
       >
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
@@ -98,16 +93,6 @@ export const SideNavBar = ({
         </div>
 
         <div className=" mt-2">
-          {/* <a
-            href="https://github.com/13point5/open-artifacts"
-            target="_blank"
-            className="text-black flex items-center gap-4 px-1"
-          >
-            <Image src="/github.svg" height="24" width="24" alt="github logo" />
-            <span className="text-sm font-medium">GitHub Repo</span>
-          </a>
-          <UserSettings showLabel /> */}
-
           <Link
             className={buttonVariants({
               variant: "ghost",
@@ -128,7 +113,7 @@ export const SideNavBar = ({
   }
 
   return (
-    <div className="hidden sm:flex h-screen max-h-screen flex-col gap-2 justify-between px-2 py-2 pb-4 items-center border-r">
+    <div className="hidden sm:flex h-screen max-h-screen flex-col gap-2 justify-between px-2 py-2 pb-4 items-center border-r bg-card">
       <div className="flex flex-col gap-2">
         <Link href="/new" className="text-lg font-semibold text-center">
           Skilld
@@ -148,18 +133,9 @@ export const SideNavBar = ({
       </div>
 
       <div className="flex flex-col items-center gap-4">
-        {/* <a
-          href="https://github.com/13point5/open-artifacts"
-          target="_blank"
-          className="text-black"
-        >
-          <Image src="/github.svg" height="24" width="24" alt="github logo" />
-        </a>
-        <UserSettings /> */}
         <Tooltip>
           <TooltipTrigger>
             <Link
-              // title="Courses"
               className={buttonVariants({
                 variant: "outline",
                 size: "icon",

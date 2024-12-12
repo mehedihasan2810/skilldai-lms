@@ -13,7 +13,7 @@ export default function Header({email}: {email: string}) {
           <MobileSidebar />
         </div>
         <div className="flex items-center gap-6">
-          <Link className={buttonVariants({ variant: "ghost" })} href="/new">
+          <Link className={buttonVariants()} href="/new">
             Skilld AI
           </Link>
           <UserNav email={email} />

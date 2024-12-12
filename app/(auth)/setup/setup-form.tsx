@@ -32,6 +32,9 @@ const professions = ["Student", "Teacher", "Developer", "Other"];
 const formSchema = z.object({
   institution: z.string().trim().min(1, { message: "Required" }),
   profession: z.string().trim().min(1, { message: "Required" }),
+  className: z.string(),
+  section: z.string(),
+  subject: z.string(),
 });
 
 export const SetupForm = ({ userId }: { userId: string }) => {
@@ -42,11 +45,25 @@ export const SetupForm = ({ userId }: { userId: string }) => {
       userId,
       profession,
       institution,
+      className,
+      section,
+      subject,
     }: {
       userId: string;
       profession: string;
       institution: string;
-    }) => await saveUserInfo({ userId, profession, institution }),
+      className: string;
+      section: string;
+      subject: string;
+    }) =>
+      await saveUserInfo({
+        userId,
+        profession,
+        institution,
+        className,
+        section,
+        subject,
+      }),
     onSuccess: (savedData) => {
       console.log({ savedData });
 
@@ -63,6 +80,9 @@ export const SetupForm = ({ userId }: { userId: string }) => {
     defaultValues: {
       institution: "",
       profession: "",
+      className: "",
+      section: "",
+      subject: "",
     },
   });
 
@@ -73,8 +93,12 @@ export const SetupForm = ({ userId }: { userId: string }) => {
       userId,
       profession: values.profession,
       institution: values.institution,
+      className: values.className,
+      section: values.section,
+      subject: values.subject,
     });
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -122,6 +146,72 @@ export const SetupForm = ({ userId }: { userId: string }) => {
             </FormItem>
           )}
         />
+
+        {(form.watch("profession") === "Teacher" ||
+          form.watch("profession") === "Student") && (
+          <>
+            <FormField
+              control={form.control}
+              name="className"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Class</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="pr-11"
+                      type="text"
+                      placeholder="Enter class name"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="section"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Section</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="pr-11"
+                      type="text"
+                      placeholder="Enter section name"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
+
+        {form.watch("profession") === "Teacher" && (
+          <FormField
+            control={form.control}
+            name="subject"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Subject</FormLabel>
+                <FormControl>
+                  <Input
+                    className="pr-11"
+                    type="text"
+                    placeholder="Enter subject name"
+                    {...field}
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
 
         <Button
           type="submit"

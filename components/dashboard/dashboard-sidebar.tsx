@@ -5,15 +5,20 @@ import { ChevronLeft, PanelLeftClose } from "lucide-react";
 import Link from "next/link";
 import { useSidebar } from "@/lib/hooks/use-sidebar";
 import { DashboardNav } from "./dashboard-nav";
-import { navItems } from "@/config";
+// import { navItems } from "@/config";
 import Image from "next/image";
 import { Button } from "../ui";
+import { NavItem } from "@/types/nav";
 
 type SidebarProps = {
   className?: string;
+  navItems: NavItem[];
 };
 
-export default function DashboardSidebar({ className }: SidebarProps) {
+export default function DashboardSidebar({
+  className,
+  navItems,
+}: SidebarProps) {
   const { isMinimized, toggle } = useSidebar();
 
   const handleToggle = () => {

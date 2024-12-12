@@ -14,8 +14,8 @@ const Page = async () => {
   if (!user) return redirect("/");
 
   return (
-    <div className="w-screen h-screen grid place-items-center px-4">
-      <Card className="w-full md:max-w-[450px]">
+    <div className="pt-12 md:pt-0 md:w-screen md:h-screen grid place-items-center px-4">
+      <Card className="w-full md:max-w-[550px]">
         <CardHeader>
           <CardTitle className="text-xl">Please fill up this below form to continue.</CardTitle>
         </CardHeader>

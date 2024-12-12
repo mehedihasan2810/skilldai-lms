@@ -28,15 +28,15 @@ export const LessonPlanList = ({ userId }: { userId: string }) => {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {lessonPlans?.length === 0 ? (
-            <div>You haven&#39;t generated any lesson plans yet!</div>
+            <p className="text-muted-foreground">You haven&#39;t generated any lesson plans yet!</p>
           ) : (
             lessonPlans?.map((lessonPlan) => (
               <div
                 className="border bg-card text-card-foreground p-4 rounded-md flex flex-col"
-                key={"lessonPlan.id"}
+                key={lessonPlan.id}
               >
                 <div className="grow">
-                  <h3>{lessonPlan.title}</h3>
+                  <h3 className="text-lg font-semibold">{lessonPlan.title}</h3>
 
                   <div className="flex flex-wrap gap-2 mt-2">
                     <Badge>{lessonPlan.topic}</Badge>

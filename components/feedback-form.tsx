@@ -41,7 +41,13 @@ const formSchema = z.object({
   feedback: z.string().min(1, { message: "Required" }),
 });
 
-const FeedbackForm = ({ expanded = false, email }: { expanded?: boolean, email: string }) => {
+const FeedbackForm = ({
+  expanded = false,
+  email,
+}: {
+  expanded?: boolean;
+  email: string;
+}) => {
   // const { session } = useSupabase();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -77,7 +83,6 @@ const FeedbackForm = ({ expanded = false, email }: { expanded?: boolean, email: 
 
     // const email = session?.user.email;
 
-
     createFeedbackMutation.mutate({
       feedback: values.feedback,
       email: email as string,
@@ -87,25 +92,36 @@ const FeedbackForm = ({ expanded = false, email }: { expanded?: boolean, email: 
   return (
     <Dialog open={isDialogOpen} onOpenChange={(v) => setIsDialogOpen(v)}>
       <DialogTrigger
-        className={buttonVariants({
-          variant: expanded ? "ghost" : "outline",
-          size: expanded ? "default" : "icon",
-          className: cn("flex gap-2 items-center", { "w-full": expanded }),
-        })}
+        className={cn("flex gap-2 items-center", { "w-full": expanded })}
       >
         {expanded ? (
-          <>
+          <div
+            className={buttonVariants({
+              variant: "ghost",
+              className: cn("flex gap-2 items-center cursor-pointer", {
+                "w-full": expanded,
+              }),
+            })}
+          >
             <MessageCircleMore />
             Feedback
-          </>
+          </div>
         ) : (
-          <Tooltip>
-            <TooltipTrigger>
-              {" "}
-              <MessageCircleMore />
-            </TooltipTrigger>
-            <TooltipContent side="right">Feedback</TooltipContent>
-          </Tooltip>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span
+                  className={buttonVariants({
+                    variant: "outline",
+                    size: "icon",
+                  })}
+                >
+                  <MessageCircleMore />
+                </span>
+              </TooltipTrigger>
+              <TooltipContent side="right">Feedback</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )}
       </DialogTrigger>
 

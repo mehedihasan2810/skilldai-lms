@@ -20,10 +20,11 @@ import {
 } from "@/components/ui/tooltip";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "nextjs-toploader/app";
+import { buttonVariants } from "../ui";
 
 type Props = {
   expanded?: boolean;
-  userEmail?: string
+  userEmail?: string;
 };
 
 export const UserButton = ({ expanded = false, userEmail }: Props) => {
@@ -41,7 +42,7 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
   ) => {
     e.preventDefault();
 
-    const supabase = createClient()
+    const supabase = createClient();
 
     try {
       const res = await supabase.auth.signOut();
@@ -61,29 +62,26 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className="size-10 p-2 border flex justify-center items-center rounded hover:bg-secondary">
-          <Tooltip>
-            <TooltipTrigger>
-              {" "}
-              <UserIcon className="w-full" size={40} />
-            </TooltipTrigger>
-            <TooltipContent side="right">User</TooltipContent>
-          </Tooltip>
-
-          {/* {expanded && (
-            <span className="font-medium text-sm truncate">My Account</span>
-          )} */}
+        <DropdownMenuTrigger
+          className={buttonVariants({
+            variant: "outline",
+            size: "icon",
+            className:
+              "size-10 p-2 border flex justify-center items-center rounded hover:bg-secondary",
+          })}
+        >
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                  <UserIcon className="w-full" />
+              </TooltipTrigger>
+              <TooltipContent side="right">User</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-56" align="end" forceMount>
-          {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-
-          {/* <DropdownMenuSeparator /> */}
-
-          <DropdownMenuLabel
-            className="truncate"
-            title={userEmail}
-          >
+          <DropdownMenuLabel className="truncate" title={userEmail}>
             {userEmail}
           </DropdownMenuLabel>
 
@@ -106,7 +104,3 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
     </>
   );
 };
-
-
-
-

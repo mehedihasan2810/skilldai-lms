@@ -494,10 +494,16 @@ export const saveUserInfo = async ({
   userId,
   institution,
   profession,
+  className,
+  section,
+  subject,
 }: {
   userId: string;
   institution: string;
   profession: string;
+  className: string;
+  section: string;
+  subject: string;
 }) => {
   if (!userId) {
     throw new Error("User not authenticated");
@@ -510,6 +516,9 @@ export const saveUserInfo = async ({
         user_id: userId,
         institution,
         profession,
+        class_name: className,
+        section,
+        subject,
       },
       { onConflict: "user_id" }
     )
@@ -609,6 +618,89 @@ export const getLessonPlan = async ({
 export const getLessonPlans = async ({ userId }: { userId: string }) => {
   const { error, data } = await supabase
     .from("lesson_plan")
+    .select("*")
+    .eq("user_id", userId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const saveWorksheets = async ({
+  userId,
+  title,
+  worksheets,
+  topic,
+  gradeLevel,
+  numOfQuestions,
+}: {
+  userId: string;
+  title: string;
+  worksheets: string;
+  topic: string;
+  gradeLevel: string;
+  numOfQuestions: number;
+}) => {
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const { data, error } = await supabase
+    .from("worksheets")
+    .insert({
+      title,
+      worksheets,
+      user_id: userId,
+      topic,
+      grade_level: gradeLevel,
+      num_of_questions: numOfQuestions,
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  if (!data) {
+    throw new Error("Could not save the data");
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getWorksheet = async ({
+  worksheetId,
+}: {
+  worksheetId: string;
+}) => {
+  const { error, data } = await supabase
+    .from("worksheets")
+    .select("*")
+    .eq("id", worksheetId)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getWorksheets = async ({ userId }: { userId: string }) => {
+  const { error, data } = await supabase
+    .from("worksheets")
     .select("*")
     .eq("user_id", userId);
 
