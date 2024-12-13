@@ -218,7 +218,7 @@ export const WorksheetGeneratorPage = ({
                   <FormControl>
                     <Input
                       type="number"
-                      placeholder="Enter difficulty level (eg: 3rd grade, beginners)"
+                      placeholder="Enter number of questions to generate"
                       {...field}
                     />
                   </FormControl>

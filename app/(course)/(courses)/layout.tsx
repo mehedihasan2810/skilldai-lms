@@ -58,20 +58,44 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     return redirect("/");
   }
 
-  const { error, data } = await supabase
+  const { error: userInfoError, data: userInfo } = await supabase
     .from("user_info")
     .select("id,profession")
     .eq("user_id", user.id)
     .single();
 
-  if (error) {
-    console.error(error);
-    throw new Error(error.message);
+  console.log({ userInfo });
+
+  if (
+    userInfoError?.message ===
+    "JSON object requested, multiple (or no) rows returned"
+  ) {
+    console.error(userInfoError);
+    const { data: userCreatedData, error: userCreatedErr } = await supabase
+      .from("user_info")
+      .upsert(
+        {
+          user_id: user.id,
+          institution: "",
+          profession: "Teacher",
+          class_name: "",
+          section: "",
+          subject: "",
+        },
+        { onConflict: "user_id" }
+      )
+      .select("id")
+      .single();
+
+    console.log({ userCreatedData });
+    console.error({ userCreatedErr });
+
+    // if (userCreatedData) {
+    //   revalidatePath("/courses");
+    // }
   }
 
-  console.log({ data });
-
-  const isRoleTeacher = data.profession === "Teacher";
+  const isRoleTeacher = userInfo?.profession === "Teacher";
 
   const filteredNavItems = isRoleTeacher
     ? navItems
@@ -83,7 +107,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     <div className="flex">
       <DashboardSidebar navItems={filteredNavItems} />
       <main className="w-full flex-1 overflow-hidden">
-        <Header email={user.email!} navItems={filteredNavItems}  />
+        <Header email={user.email!} navItems={filteredNavItems} />
         {children}
       </main>
     </div>

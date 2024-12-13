@@ -26,6 +26,7 @@ import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { saveUserInfo } from "@/lib/db";
 import { useRouter } from "nextjs-toploader/app";
+import { revalidateSetupForm } from "@/actions/revalidate-setup-form";
 
 const professions = ["Student", "Teacher", "Developer", "Other"];
 
@@ -64,8 +65,10 @@ export const SetupForm = ({ userId }: { userId: string }) => {
         section,
         subject,
       }),
-    onSuccess: (savedData) => {
+    onSuccess: async (savedData) => {
       console.log({ savedData });
+
+      await revalidateSetupForm();
 
       router.push("/new");
     },
