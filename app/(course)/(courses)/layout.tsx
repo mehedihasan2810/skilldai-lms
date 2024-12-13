@@ -77,7 +77,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         {
           user_id: user.id,
           institution: "",
-          profession: "Teacher",
+          profession: "Student",
           class_name: "",
           section: "",
           subject: "",
