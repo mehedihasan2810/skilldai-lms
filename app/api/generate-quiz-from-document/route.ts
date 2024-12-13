@@ -34,7 +34,7 @@ export async function POST(req: Request) {
       {
         role: "system",
         content:
-          "You are a teacher. Your job is to take a document, and create a multiple choice test (with 4 questions) based on the content of the document. Each option should be roughly equal in length.",
+          "You are a teacher. Your job is to take a document, and create a multiple choice test (with maximum 10 questions) based on the content of the document. Each option should be roughly equal in length.",
       },
       {
         role: "user",
@@ -87,6 +87,8 @@ export async function POST(req: Request) {
     output: "array",
     onFinish: async ({ object, usage }) => {
       const supabase = await createClient();
+
+      console.log({object})
 
       const CURRENT_MONTH = new Date().getMonth() + 1;
       const CURRENT_YEAR = new Date().getFullYear();

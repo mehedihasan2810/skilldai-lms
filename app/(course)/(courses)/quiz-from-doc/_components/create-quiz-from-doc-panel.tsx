@@ -189,7 +189,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
   //   setQuestions([]);
   // };
 
-  const progress = partialQuestions ? (partialQuestions.length / 4) * 100 : 0;
+  const progress = partialQuestions ? (partialQuestions.length / 10) * 100 : 0;
 
   // if (questions.length === 4) {
   //   return (
@@ -246,14 +246,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
             <CardTitle className="text-2xl font-bold">
               PDF Quiz Generator
             </CardTitle>
-            {/* <CardDescription className="text-base">
-              Upload a PDF to generate an interactive quiz based on its content
-              using the <Link href="https://sdk.vercel.ai">AI SDK</Link> and{" "}
-              <Link href="https://sdk.vercel.ai/providers/ai-sdk-providers/google-generative-ai">
-                Google&apos;s Gemini Pro
-              </Link>
-              .
-            </CardDescription> */}
+           
           </div>
         </CardHeader>
         <CardContent>
@@ -312,7 +305,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
                 />
                 <span className="text-muted-foreground text-center col-span-4 sm:col-span-2">
                   {partialQuestions
-                    ? `Generating question ${partialQuestions.length + 1} of 4`
+                    ? `Generating question ${partialQuestions.length} of maximum 10`
                     : "Analyzing PDF content"}
                 </span>
               </div>

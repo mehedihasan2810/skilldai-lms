@@ -173,7 +173,7 @@ export default function Quiz({
                         <ChevronLeft className="mr-2 h-4 w-4" /> Previous
                       </Button>
                       <span className="text-sm font-medium">
-                        {currentQuestionIndex + 1} / {questions.length}
+                        {currentQuestionIndex} / {questions.length}
                       </span>
                       <Button
                         onClick={handleNextQuestion}
