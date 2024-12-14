@@ -98,9 +98,9 @@ export const SideNavBar = ({
               variant: "ghost",
               className: cn("flex gap-2 items-center w-full mb-1"),
             })}
-            href="/reports"
+            href="/tools"
           >
-            <BookOpen className="size-5" /> Courses
+            <BookOpen className="size-5" />AI Tools
           </Link>
           <FeedbackForm expanded email={userEmail} />
           <div className="flex gap-4 items-center justify-center w-full mt-4 mb-4">
@@ -141,13 +141,13 @@ export const SideNavBar = ({
                 size: "icon",
                 className: cn("flex gap-2 items-center"),
               })}
-              href="/courses"
+              href="/tools"
             >
               <BookOpen className="size-5" />{" "}
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">
-            <p>Courses</p>
+            <p>AI Tools</p>
           </TooltipContent>
         </Tooltip>
 

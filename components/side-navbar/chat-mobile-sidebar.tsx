@@ -87,13 +87,13 @@ const ChatMobileSidebar = ({email, userId}: {email: string, userId: string}) => 
 
           <div className="flex items-center gap-4 mt-2">
             <Link
-              title="Courses"
+              title="Tools"
               className={buttonVariants({
                 variant: "outline",
                 size: "icon",
                 className: cn("flex gap-2 items-center"),
               })}
-              href="/courses"
+              href="/tools"
             >
               <BookOpen className="size-5" />{" "}
             </Link>
