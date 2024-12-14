@@ -7,41 +7,40 @@ import { NavItem } from "@/types/nav";
 
 const navItems: NavItem[] = [
   {
+    title: "AI Tools",
+    href: "/tools",
+    icon: "book",
+  },
+  {
     title: "Courses",
     href: "/courses",
     icon: "book",
-    label: "Courses",
   },
   {
     title: "Reports",
     href: "/reports",
     icon: "chartArea",
-    label: "Reports",
   },
 
   {
     title: "Course Generator",
     href: "/courses/create",
     icon: "graduationCap",
-    label: "Course Generator",
   },
   {
     title: "Quiz Generator",
     href: "/quiz-from-doc",
     icon: "shieldQuestion",
-    label: "Quiz Generator",
   },
   {
     title: "Lesson Plan Generator",
     href: "/lesson-plan-generator",
     icon: "bookOpen",
-    label: "Lesson Plan Generator",
   },
   {
     title: "Worksheet Generator",
     href: "/worksheet-generator",
     icon: "bookOpen",
-    label: "Worksheet Generator",
   },
 ];
 
