@@ -1,6 +1,8 @@
 import PageContainer from "@/components/dashboard/page-container";
 import { buttonVariants } from "@/components/ui";
+import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
 import React from "react";
 
 const tools = [
@@ -32,12 +34,43 @@ const tools = [
   },
 ];
 
-const Page = () => {
+const teacherOnlyTools = ["/lesson-plan-generator", "/worksheet-generator"];
+
+const Page = async () => {
+   const supabase = await createClient();
+  
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+  
+    if (!user) {
+      return redirect("/");
+    }
+  
+    const { error, data } = await supabase
+      .from("user_info")
+      .select("id,profession")
+      .eq("user_id", user.id)
+      .single();
+  
+    if (error) {
+      console.error(error);
+      // throw new Error(error.message);
+    }
+  
+    const isRoleTeacher = data?.profession === "Teacher";
+  
+    const filteredTools = isRoleTeacher
+    ? tools
+    : tools.filter(
+        (navItem) => !teacherOnlyTools.includes(navItem.href ?? "")
+      );
+  
   return (
     <PageContainer scrollable>
       <h2 className="text-2xl font-bold mb-3">AI Tools</h2>
       <div className="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-        {tools.map((tool, i) => (
+        {filteredTools.map((tool, i) => (
           <div
             key={i}
             className="p-6 rounded-lg shadow bg-card text-card-foreground border border-border/60 flex flex-col justify-between"
