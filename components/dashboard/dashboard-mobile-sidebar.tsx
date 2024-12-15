@@ -17,7 +17,7 @@ export function MobileSidebar({ className, navItems }: SidebarProps) {
   return (
     <>
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild>
+        <SheetTrigger asChild className="md:hidden">
           <MenuIcon />
         </SheetTrigger>
         <SheetContent side="left" className="!px-0">

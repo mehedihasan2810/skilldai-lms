@@ -42,11 +42,11 @@ const navItems: NavItem[] = [
     href: "/worksheet-generator",
     icon: "bookOpen",
   },
-  // {
-  //   title: "AI Summarizer",
-  //   href: "/ai-summarizer",
-  //   icon: "bookOpen",
-  // },
+  {
+    title: "AI Summarizer",
+    href: "/ai-summarizer",
+    icon: "bookOpen",
+  },
 ];
 
 const teacherOnlyNavItems = ["/lesson-plan-generator", "/worksheet-generator"];

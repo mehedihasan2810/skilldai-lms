@@ -713,3 +713,82 @@ export const getWorksheets = async ({ userId }: { userId: string }) => {
 
   return data;
 };
+
+export const saveSummary = async ({
+  userId,
+  title,
+  summary,
+  fileName,
+  fileUrl,
+}: {
+  userId: string;
+  title: string;
+  summary: string;
+  fileName: string;
+  fileUrl: string;
+}) => {
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const { data, error } = await supabase
+    .from("ai_summarizer")
+    .insert({
+      title,
+      summary,
+      user_id: userId,
+      file_name: fileName,
+      file_url: fileUrl,
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  if (!data) {
+    throw new Error("Could not save the data");
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getSummary = async ({ summaryId }: { summaryId: string }) => {
+  const { error, data } = await supabase
+    .from("ai_summarizer")
+    .select("*")
+    .eq("id", summaryId)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const getSummaries = async ({
+  userId,
+}: {
+  userId: string | null | undefined;
+}) => {
+  const { data, error } = await supabase
+    .from("ai_summarizer")
+    .select("id,summary")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  return data;
+};

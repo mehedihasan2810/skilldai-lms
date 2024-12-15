@@ -119,7 +119,7 @@ export const ChatMessage = memo(function ChatMessage({
             {text}
           </div>
         )} */}
-        {role === "assistant" && <Markdown text={text} className="max-w-2xl" />}
+        {role === "assistant" && <Markdown text={text} className="max-w-2xl break-all" />}
         {/* {role === "assistant" &&
           parseMessage(text).map((part, index) => (
             <MessagePart
@@ -140,7 +140,7 @@ const MessagePart = ({
   data: MessagePartType;
   setCurrentArtifact: (data: ArtifactMessagePartData) => void;
 }) => {
-  if (data.type === "text") return <Markdown text={data.data} className="max-w-2xl" />;
+  if (data.type === "text") return <Markdown text={data.data} className="max-w-2xl break-all" />;
 
   if (data.type === "artifact")
     return (

@@ -1,136 +1,120 @@
 "use client";
 
-import { useState } from "react";
-import { experimental_useObject as useObject } from "ai/react";
-import { z } from "zod";
-import { toast } from "sonner";
-import { FileUp, Plus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { AnimatePresence, motion } from "framer-motion";
-import { questionsSchema } from "@/lib/schemas";
-import { generateQuizTitle } from "@/actions/generate-quiz-title";
-import { createClient } from "@/lib/supabase/client";
-import ShortUniqueId from "short-unique-id";
+
+import * as z from "zod";
 import { useRouter } from "nextjs-toploader/app";
+import { experimental_useObject as useObject } from "ai/react";
+import { useState } from "react";
+import { toast } from "sonner";
+import { FileUp, Loader, Loader2, Plus } from "lucide-react";
+import Markdown from "@/components/markdown/markdown";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  saveSummary,
+} from "@/lib/db";
+import { AnimatePresence, motion } from "framer-motion";
 
-const uid = new ShortUniqueId({ length: 10 });
+const outputSchema = z.object({
+  // title: z.string().describe("A max eight-word title for the summary."),
+  summary: z.string().describe("A concise summary of the document."),
+});
 
-export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string,  userEmail: string }) {
-  const [files, setFiles] = useState<File[]>([]);
-  const [questions, setQuestions] = useState<z.infer<typeof questionsSchema>>(
-    []
-  );
+export const formSchema = z.object({
+  topic: z.string().trim().min(1, { message: "Required" }),
+  gradeLevel: z.string(),
+  numOfQuestions: z.coerce.number().max(20, { message: "Max questions: 20" }),
+});
+
+export const AISummarizerPage = ({
+  userId,
+  userEmail,
+}: {
+  userId: string;
+  userEmail: string;
+}) => {
   const [isDragging, setIsDragging] = useState(false);
-  const [title, setTitle] = useState<string>();
-  const [isQuizSaving, setIsQuizSaving] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
+
+  const queryClient = useQueryClient();
 
   const router = useRouter();
 
+  const saveSummaryMutation = useMutation({
+    mutationFn: async ({
+      userId,
+      title,
+      summary,
+      fileName,
+      fileUrl,
+    }: {
+      userId: string;
+      title: string;
+      summary: string;
+      fileName: string;
+      fileUrl: string;
+    }) =>
+      await saveSummary({
+        userId,
+        title,
+        summary,
+        fileName,
+        fileUrl,
+      }),
+    onSuccess: async (savedData) => {
+      console.log({ savedData });
+
+      await queryClient.invalidateQueries({ queryKey: ["summaryList"] });
+
+      router.push(`/ai-summarizer/${savedData.id}`);
+    },
+    onError: (error) => {
+      console.error({ error });
+      toast.error(error.message);
+    },
+  });
+
   const {
     submit,
-    object: partialQuestions,
+    object: summary,
     isLoading,
   } = useObject({
-    api: "/api/generate-quiz-from-document",
-    schema: questionsSchema,
-    initialValue: undefined,
-    onError: (quizGenerateError) => {
-      console.log({ quizGenerateError });
-      toast.error("Failed to generate quiz. Please try again.");
-      setFiles([]);
+    api: "/api/ai-summarizer",
+    schema: outputSchema,
+    // initialValue: undefined,
+    onError: (worksheetsError) => {
+      console.log({ worksheetsError });
+      toast.error(worksheetsError.message);
     },
     onFinish: async ({ object }) => {
+      console.log({ object });
       try {
         if (!object) {
-          throw new Error("No quizzes generated! Please try again.");
+          throw new Error("Something went wrong!");
         }
+        console.log({ object });
 
-        const res = questionsSchema.safeParse(object);
-        if (res.error) {
-          throw new Error(res.error.errors.map((e) => e.message).join("\n"));
-        }
-
-        setIsQuizSaving(true);
-
-        const supabase = createClient();
-
-        const generatedTitle = await generateQuizTitle(files[0].name);
-
-        console.log({ generatedTitle });
-
-        // setTitle(generatedTitle);
-
-        const { data: fileSaveRes, error: fileSaveErr } = await supabase.storage
-          .from("quiz-from-doc")
-          .upload(
-            `${userId}/${files[0].name
-              .replace(".pdf", "")
-              .replaceAll(" ", "-")}-${uid.rnd()}.pdf`,
-            files[0]
-          );
-
-        console.log({ fileSaveRes, fileSaveErr });
-
-        const fileUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${fileSaveRes?.fullPath}`;
-
-        console.log({ fileUrl });
-
-        const { error: quizError, data: quizData } = await supabase
-          .from("qfd_quiz")
-          .insert({
-            title: generatedTitle,
-            user_id: userId,
-            file_name: files[0].name,
-            file_url: fileSaveRes ? fileUrl : "",
-            correct_answers: [],
-          })
-          .select("id")
-          .single();
-
-        if (quizError) {
-          console.log({ quizError });
-          throw new Error(quizError.message);
-        }
-        console.log({ quizData });
-
-        const questions = object.map((q) => ({
-          quiz_id: quizData?.id,
-          question: q.question,
-          answer: q.answer,
-          options: q.options,
-        }));
-
-        const { error: questionError, data: quizQuestions } = await supabase
-          .from("qfd_questions")
-          .insert(questions)
-          .select("id");
-
-        if (questionError) {
-          console.log({ questionError });
-          throw new Error(questionError.message);
-        }
-
-        console.log({ quizQuestions });
-
-        setIsQuizSaving(false);
-        setQuestions(object ?? []);
-
-        router.push(`/quiz-from-doc/${quizData.id}`);
+        saveSummaryMutation.mutate({
+          title: "",
+          summary: object.summary,
+          userId: userId,
+          fileName: "",
+          fileUrl: "",
+        });
       } catch (error) {
         console.log({ error });
-        setIsQuizSaving(false);
         toast.error((error as Error).message);
       }
     },
   });
+
+  console.log({ summary });
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -182,18 +166,24 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
     // setTitle("hello");
   };
 
-  // const clearPDF = () => {
-  //   setFiles([]);
-  //   setQuestions([]);
-  // };
-
-  const progress = partialQuestions ? (partialQuestions.length / 10) * 100 : 0;
-
-  // if (questions.length === 4) {
-  //   return (
-  //     <Quiz title={title ?? "Quiz"} questions={questions} clearPDF={clearPDF} />
-  //   );
-  // }
+  if ((summary && isLoading) || saveSummaryMutation.isPending) {
+    return (
+      <>
+        <div className="relative mb-16 mt-8 bg-card w-full rounded-xl p-6 max-w-4xl mx-auto shadow-md border border-border/50">
+          <Button
+            variant="outline"
+            className="absolute -top-5 left-1/2 -translate-x-1/2 mb-2"
+          >
+            <Loader className="size-5 animate-spin mr-2" /> Generating...
+          </Button>
+          {/* <h1 className="text-2xl font-bold mb-2 mt-6">
+            {summary?.title ?? ""}
+          </h1> */}
+          <Markdown text={summary?.summary ?? ""} className="max-w-4xl" />
+        </div>
+      </>
+    );
+  }
 
   return (
     <div
@@ -241,10 +231,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
             </div>
           </div>
           <div className="space-y-2">
-            <CardTitle className="text-2xl font-bold">
-              PDF Quiz Generator
-            </CardTitle>
-           
+            <CardTitle className="text-2xl font-bold">AI Summarizer</CardTitle>
           </div>
         </CardHeader>
         <CardContent>
@@ -277,40 +264,19 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
               {isLoading ? (
                 <span className="flex items-center space-x-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>Generating Quiz...</span>
+                  <span>Summarizing...</span>
                 </span>
               ) : (
-                "Generate Quiz"
+                "Summarize"
               )}
             </Button>
           </form>
         </CardContent>
-        {(isLoading || isQuizSaving) && (
-          <CardFooter className="flex flex-col space-y-4">
-            <div className="w-full space-y-1">
-              <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Progress</span>
-                <span>{Math.round(progress)}%</span>
-              </div>
-              <Progress value={progress} className="h-2" />
-            </div>
-            <div className="w-full space-y-2">
-              <div className="grid grid-cols-6 sm:grid-cols-4 items-center space-x-2 text-sm">
-                <div
-                  className={`h-2 w-2 rounded-full ${
-                    isLoading ? "bg-yellow-500/50 animate-pulse" : "bg-muted"
-                  }`}
-                />
-                <span className="text-muted-foreground text-center col-span-4 sm:col-span-2">
-                  {partialQuestions
-                    ? `Generating question ${partialQuestions.length} of maximum 10`
-                    : "Analyzing PDF content"}
-                </span>
-              </div>
-            </div>
-          </CardFooter>
-        )}
       </Card>
     </div>
   );
-}
+};
+
+
+
+
