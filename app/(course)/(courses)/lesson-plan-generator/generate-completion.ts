@@ -11,7 +11,7 @@ export async function generateCompletion(input: z.infer<typeof formSchema>) {
     ...input,
   });
 
-  const result = await streamText({
+  const result = streamText({
     model: openai("gpt-4o-mini"),
     maxTokens: 2000,
     prompt,

@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     return new Response("Monthly token limit reached", { status: 429 });
   }
 
-  const result = await streamText({
+  const result = streamText({
     // model: anthropic(process.env.LLM_MODEL_NAME!),
     // model: anthropic("claude-3-haiku-20240307"),
     // model: anthropic("claude-3-5-sonnet-20240620"),

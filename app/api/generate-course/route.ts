@@ -118,7 +118,7 @@ export async function POST(req: Request) {
     return new Response("Missing required fields", { status: 400 });
   }
 
-  const result = await streamObject({
+  const result = streamObject({
     model: openai("gpt-4o"),
     // model: anthropic("claude-3-5-sonnet-20240620"),
     // output: "array",

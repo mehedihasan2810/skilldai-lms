@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 
   console.log({ firstFile });
 
-  const result = await streamObject({
+  const result = streamObject({
     model: google("gemini-1.5-pro-latest"),
     messages: [
       {

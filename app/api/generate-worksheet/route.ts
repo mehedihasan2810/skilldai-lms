@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
   console.log({ systemPrompt });
 
-  const result = await streamObject({
+  const result = streamObject({
     model: openai("gpt-4o-mini"),
     prompt: systemPrompt,
     maxTokens: 1000,

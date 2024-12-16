@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
   console.log({ firstFile, userId, userEmail });
 
-  const result = await streamObject({
+  const result = streamObject({
     model: anthropic("claude-3-5-sonnet-20240620"),
     // model: openai("gpt-4o-mini"),
     // model: google("gemini-1.5-pro-latest"),
