@@ -127,17 +127,17 @@ export const AISummarizerPage = ({
     }
 
     const selectedFiles = Array.from(e.target.files || []);
-    const validFiles = selectedFiles.filter(
-      (file) => file.type === "application/pdf" && file.size <= 5 * 1024 * 1024
-    );
-    console.log(validFiles);
+    // const validFiles = selectedFiles.filter(
+    //   (file) => file.type === "application/pdf" && file.size <= 5 * 1024 * 1024
+    // );
+    // console.log(validFiles);
 
-    if (validFiles.length !== selectedFiles.length) {
-      toast.error("Only PDF files under 5MB are allowed.");
-      return;
-    }
+    // if (validFiles.length !== selectedFiles.length) {
+    //   toast.error("Only PDF files under 5MB are allowed.");
+    //   return;
+    // }
 
-    setFiles(validFiles);
+    setFiles(selectedFiles);
   };
 
   const encodeFileAsBase64 = (file: File): Promise<string> => {
@@ -242,7 +242,7 @@ export const AISummarizerPage = ({
               <input
                 type="file"
                 onChange={handleFileChange}
-                accept="application/pdf"
+                // accept="application/pdf"
                 className="absolute inset-0 opacity-0 cursor-pointer"
               />
               <FileUp className="h-8 w-8 mb-2 text-muted-foreground" />
