@@ -79,6 +79,7 @@ export async function POST(req: Request) {
         .insert({
           type: "summary",
           user_id: userId,
+          user_email: userEmail,
           email: userEmail,
           month: CURRENT_MONTH,
           year: CURRENT_YEAR,

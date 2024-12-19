@@ -44,6 +44,7 @@ export async function POST(req: Request) {
         .insert({
           type: "worksheet",
           user_id: inputData.userId,
+          user_email: inputData.userEmail,
           email: inputData.userEmail,
           month: CURRENT_MONTH,
           year: CURRENT_YEAR,
