@@ -2701,7 +2701,7 @@ const LoadingFallback = () => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
     <div className="text-center space-y-4">
       <h1 className="text-4xl sm:text-6xl mb-1 text-neutral-800 dark:text-neutral-100 font-serif animate-pulse">
-        MiniPerplx
+        SearchGPT
       </h1>
       <p className="text-xl sm:text-2xl font-serif text-neutral-600 dark:text-neutral-400 animate-pulse">
         Loading your minimalist AI experience...

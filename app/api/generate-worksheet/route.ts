@@ -8,6 +8,7 @@ export const maxDuration = 60;
 interface InputData {
   topic: string;
   gradeLevel: string;
+  difficulty: string;
   numOfQuestions: string;
   userId: string;
   userEmail: string;
@@ -65,11 +66,17 @@ export async function POST(req: Request) {
   return result.toTextStreamResponse();
 }
 
-const getPrompt = ({ topic, numOfQuestions, gradeLevel }: InputData) => {
+const getPrompt = ({
+  topic,
+  numOfQuestions,
+  gradeLevel,
+  difficulty,
+}: InputData) => {
   return `
 You are an AI assistant tasked with generating educational worksheets for teachers. Your goal is to create a comprehensive and engaging worksheet based on the provided input. Follow these instructions carefully:
 
 1. You will receive the following inputs:
+
 <subject_topic>
 ${topic}
 </subject_topic>
@@ -78,14 +85,18 @@ ${topic}
 ${gradeLevel}
 </grade_level>
 
+<difficulty_level>
+${difficulty}
+</difficulty_level>
+
 <num_questions>
 ${numOfQuestions}
 </num_questions>
 
-2. Create a worksheet that is appropriate for the given subject/topic and grade level. The worksheet should contain the specified number of questions, plus one creative task.
+2. Create a worksheet that is appropriate for the given subject/topic, grade level and difficulty level. The worksheet should contain the specified number of questions, plus one creative task.
 
 3. Guidelines for worksheet creation:
-   - Ensure all content is age-appropriate and aligned with typical curricula for the specified grade level.
+   - Ensure all content is age-appropriate and aligned with typical curricula for the specified grade level and difficulty level.
    - Use clear, concise language that students can easily understand.
    - Include a variety of question types (e.g., multiple choice, true/false, fill-in-the-blank, short answer).
    - Make the worksheet engaging and, where appropriate, include real-world applications of the subject matter.
@@ -112,7 +123,7 @@ ${numOfQuestions}
       - For open-ended questions or creative tasks, provide guidelines for acceptable answers.
 
 7. Before finalizing your worksheet, review it to ensure:
-   - All content is accurate and grade-appropriate.
+   - All content is accurate and grade-appropriate and difficulty-appropriate.
    - The worksheet flows logically and is well-organized.
    - There are no spelling or grammatical errors.
 

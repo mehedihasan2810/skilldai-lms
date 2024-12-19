@@ -23,7 +23,7 @@ export const maxDuration = 60;
 // `;
 
 const systemPrompt = `
-You are an expert course creator. Your task is to generate a well-structured and detailed course based on the provided topic, difficulty level, and target audience. The course should consist of:
+You are an expert course creator. Your task is to generate a well-structured and detailed course based on the provided topic, grade level, and target audience. The course should consist of:
 
 - A Course Title
 - A Short Description (no more than 25 words).
@@ -37,10 +37,11 @@ You are an expert course creator. Your task is to generate a well-structured and
 function getUserPrompt(
   courseTopic: string,
   targetAudience: string,
-  difficultyLevel: string
+  difficultyLevel: string,
+  grade: string
 ) {
   return `
-Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudience} at a ${difficultyLevel} level. The course should include:
+Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudience} at a ${grade} level. The course should include:
 
 - A course title
 - A short description. Please keep the description within 25 words.
@@ -99,7 +100,7 @@ Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudien
 export async function POST(req: Request) {
   const supabase = await createClient();
 
-  const { courseTopic, targetAudience, difficultyLevel, userId, userEmail } =
+  const { courseTopic, targetAudience, difficultyLevel, grade, userId, userEmail } =
     await req.json();
 
   // Validate input data (if needed)
@@ -109,12 +110,13 @@ export async function POST(req: Request) {
     courseTopic,
     targetAudience,
     difficultyLevel,
+    grade,
     userId,
     userEmail,
   });
 
   // Ensure that the required parameters exist in the input data
-  if (!courseTopic || !targetAudience || !difficultyLevel) {
+  if (!courseTopic || !targetAudience || !grade) {
     return new Response("Missing required fields", { status: 400 });
   }
 
@@ -125,7 +127,7 @@ export async function POST(req: Request) {
     schema: courseSchema,
     // prompt: `Generate 1 notifications for a messages app in this context: make one`,
     system: systemPrompt,
-    prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel),
+    prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel, grade),
     onFinish: async ({ object, usage }) => {
       console.log("finish");
       console.log(usage);

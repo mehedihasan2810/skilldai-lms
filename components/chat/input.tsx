@@ -78,6 +78,7 @@ const studyBuddyGPTExamplePrompts = [
 const chatTabs = [
   { id: 1, label: "StudyBuddyGPT", value: "studyBuddyGPT" },
   { id: 2, label: "CodeGPT", value: "codeGPT" },
+  { id: 3, label: "SearchGPT", value: "searchGPT" },
 ];
 
 export type Props = {
@@ -237,19 +238,32 @@ export const ChatInput = memo(function ChatInput({
           )}
         >
           {!chatId && hasChatMessages && (
-            <div className="grid grid-cols-2 justify-items-center p-1.5 bg-secondary rounded-xl w-full mb-4">
-              {chatTabs.map((tab) => (
-                <button
-                  onClick={() => onChangeActiveChatTab(tab.value)}
-                  key={tab.id}
-                  className={cn("w-full p-1.5 rounded-xl", {
-                    "bg-primary text-primary-foreground":
-                      tab.value === activeChatTab,
-                  })}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            <div className="grid grid-cols-3 justify-items-center p-1.5 bg-secondary rounded-xl w-full mb-4">
+              {chatTabs.map((tab) => {
+                if (tab.value === "searchGPT") {
+                  return (
+                    <Link
+                      key={tab.id}
+                      href="/search"
+                      className="w-full p-1.5 rounded-xl text-center"
+                    >
+                      {tab.label}
+                    </Link>
+                  );
+                }
+                return (
+                  <button
+                    onClick={() => onChangeActiveChatTab(tab.value)}
+                    key={tab.id}
+                    className={cn("w-full p-1.5 rounded-xl text-center", {
+                      "bg-primary text-primary-foreground":
+                        tab.value === activeChatTab,
+                    })}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
           )}
 

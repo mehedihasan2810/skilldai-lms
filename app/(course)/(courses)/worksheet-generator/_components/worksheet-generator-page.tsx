@@ -40,6 +40,7 @@ const outputSchema = z.object({
 export const formSchema = z.object({
   topic: z.string().trim().min(1, { message: "Required" }),
   gradeLevel: z.string(),
+  difficulty: z.string(),
   numOfQuestions: z.coerce.number().max(20, { message: "Max questions: 20" }),
 });
 
@@ -59,6 +60,7 @@ export const WorksheetGeneratorPage = ({
     defaultValues: {
       topic: "",
       gradeLevel: "",
+      difficulty: "",
       numOfQuestions: 5,
     },
   });
@@ -70,6 +72,7 @@ export const WorksheetGeneratorPage = ({
       worksheets,
       topic,
       gradeLevel,
+      difficulty,
       numOfQuestions,
     }: {
       userId: string;
@@ -77,6 +80,7 @@ export const WorksheetGeneratorPage = ({
       worksheets: string;
       topic: string;
       gradeLevel: string;
+      difficulty: string;
       numOfQuestions: number;
     }) =>
       await saveWorksheets({
@@ -85,6 +89,7 @@ export const WorksheetGeneratorPage = ({
         worksheets,
         topic,
         gradeLevel,
+        difficulty,
         numOfQuestions,
       }),
     onSuccess: async (savedData) => {
@@ -126,6 +131,7 @@ export const WorksheetGeneratorPage = ({
           userId: userId,
           topic: form.watch("topic"),
           gradeLevel: form.watch("gradeLevel"),
+          difficulty: form.watch("difficulty"),
           numOfQuestions: form.watch("numOfQuestions"),
         });
       } catch (error) {
@@ -200,7 +206,24 @@ export const WorksheetGeneratorPage = ({
 
                   <FormControl>
                     <Input
-                      placeholder="Enter difficulty level (eg: 3rd grade, beginners)"
+                      placeholder="Enter grade level (eg: 3rd grade)"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="difficulty"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Difficulty (optional)</FormLabel>
+
+                  <FormControl>
+                    <Input
+                      placeholder="Enter difficulty level (eg: beginners)"
                       {...field}
                     />
                   </FormControl>

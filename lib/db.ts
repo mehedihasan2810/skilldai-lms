@@ -637,6 +637,7 @@ export const saveWorksheets = async ({
   worksheets,
   topic,
   gradeLevel,
+  difficulty,
   numOfQuestions,
 }: {
   userId: string;
@@ -644,6 +645,7 @@ export const saveWorksheets = async ({
   worksheets: string;
   topic: string;
   gradeLevel: string;
+  difficulty: string;
   numOfQuestions: number;
 }) => {
   if (!userId) {
@@ -658,6 +660,7 @@ export const saveWorksheets = async ({
       user_id: userId,
       topic,
       grade_level: gradeLevel,
+      difficulty,
       num_of_questions: numOfQuestions,
     })
     .select("id")

@@ -98,7 +98,7 @@ export const CourseList =  ({email}: {email: string}) => {
           <div>
             <h2 className="text-xl font-semibold grow">{course.title}</h2>
             <div className="mt-2 flex gap-2 flex-wrap">
-              <Badge>{course.topic}</Badge> <Badge>{course.difficulty}</Badge>{" "}
+              <Badge>{course.topic}</Badge> <Badge>{course.difficulty || course.grade}</Badge>{" "}
               <Badge>{course.target_audience}</Badge>
             </div>
           </div>

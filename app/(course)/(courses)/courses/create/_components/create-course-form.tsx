@@ -37,7 +37,8 @@ import { createClient } from "@/lib/supabase/client";
 
 const formSchema = z.object({
   courseTopic: z.string().min(1, { message: "Required" }),
-  difficultyLabel: z.string().min(1, { message: "Required" }),
+  grade: z.string().min(1, { message: "Required" }),
+  // difficultyLabel: z.string().min(1, { message: "Required" }),
   targetAudience: z.string().min(1, { message: "Required" }),
 });
 
@@ -50,7 +51,8 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
     resolver: zodResolver(formSchema),
     defaultValues: {
       courseTopic: "",
-      difficultyLabel: "",
+      grade: "",
+      // difficultyLabel: "",
       targetAudience: "",
     },
   });
@@ -88,7 +90,9 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
             description: generatedCourse.description,
             user_email: email,
             topic: form.getValues("courseTopic"),
-            difficulty: form.getValues("difficultyLabel"),
+            grade: form.getValues("grade"),
+            difficulty: "",
+            // difficulty: form.getValues("difficultyLabel"),
             target_audience: form.getValues("targetAudience"),
           })
           .select("*")
@@ -182,7 +186,9 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
       userId,
       userEmail: email,
       courseTopic: values.courseTopic,
-      difficultyLevel: values.difficultyLabel,
+      difficultyLevel: "",
+      grade: values.grade,
+      // difficultyLevel: values.difficultyLabel,
       targetAudience: values.targetAudience,
     });
   }
@@ -234,6 +240,20 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
                 />
                 <FormField
                   control={form.control}
+                  name="grade"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Grade</FormLabel>
+                      <FormControl>
+                        <Input placeholder="eg: 12th grade" {...field} />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {/* <FormField
+                  control={form.control}
                   name="difficultyLabel"
                   render={({ field }) => (
                     <FormItem>
@@ -258,7 +278,7 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
 
                 <FormField
                   control={form.control}
