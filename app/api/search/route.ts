@@ -19,8 +19,10 @@ import { tavily } from "@tavily/core";
 import { openai } from "@ai-sdk/openai";
 import { getGroupConfig } from "@/actions/search";
 
+export const maxDuration = 60;
+
 // Allow streaming responses up to 60 seconds
-export const maxDuration = 120;
+// export const maxDuration = 120;
 
 interface XResult {
   id: string;
