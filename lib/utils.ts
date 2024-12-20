@@ -1,7 +1,15 @@
 import { type ClassValue, clsx } from "clsx";
 import { redirect } from "next/navigation";
 import { twMerge } from "tailwind-merge";
-import { Globe, Book, ShoppingBasket, YoutubeIcon, Pen, ArrowLeft } from "lucide-react";
+import {
+  Globe,
+  Book,
+  ShoppingBasket,
+  YoutubeIcon,
+  Pen,
+  ArrowLeft,
+} from "lucide-react";
+import mime from "mime";
 
 export const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -212,7 +220,7 @@ export const searchGroups = [
     description: "Search across the entire internet",
     icon: Globe,
   },
- 
+
   // {
   //   id: "shopping" as const,
   //   name: "Shopping",
@@ -268,3 +276,7 @@ export const groupPrompts = {
 } as const;
 
 export type SearchGroup = (typeof searchGroups)[number];
+
+export const getMimeType = (filePath: string) => {
+  return mime.getType(filePath) || "unknown";
+};

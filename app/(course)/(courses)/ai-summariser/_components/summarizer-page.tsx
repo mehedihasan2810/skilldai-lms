@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import * as z from "zod";
 import { useRouter } from "nextjs-toploader/app";
@@ -16,10 +11,9 @@ import { toast } from "sonner";
 import { FileUp, Loader, Loader2, Plus } from "lucide-react";
 import Markdown from "@/components/markdown/markdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  saveSummary,
-} from "@/lib/db";
+import { saveSummary } from "@/lib/db";
 import { AnimatePresence, motion } from "framer-motion";
+import { getMimeType } from "@/lib/utils";
 
 const outputSchema = z.object({
   // title: z.string().describe("A max eight-word title for the summary."),
@@ -127,6 +121,7 @@ export const AISummarizerPage = ({
     }
 
     const selectedFiles = Array.from(e.target.files || []);
+    console.log({ selectedFiles });
     const validFiles = selectedFiles.filter(
       (file) => file.size <= 5 * 1024 * 1024
     );
@@ -153,14 +148,24 @@ export const AISummarizerPage = ({
 
   const handleSubmitWithFiles = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const mimeType = getMimeType(files[0].name);
+
+    console.log({ mimeType });
+
     const encodedFiles = await Promise.all(
       files.map(async (file) => ({
         name: file.name,
-        type: file.type,
+        type: getMimeType(file.name),
         data: await encodeFileAsBase64(file),
       }))
     );
-    console.log({ encodedFiles });
+
+    if (encodedFiles[0].type === "unknown") {
+      toast.error("File is not supported!");
+      return;
+    }
+
     submit({ files: encodedFiles, userId, userEmail });
     // const generatedTitle = await generateQuizTitle(encodedFiles[0].name);
     // setTitle(generatedTitle);
@@ -261,7 +266,9 @@ export const AISummarizerPage = ({
             <Button
               type="submit"
               className="w-full"
-              disabled={files.length === 0 || isLoading || saveSummaryMutation.isPending}
+              disabled={
+                files.length === 0 || isLoading || saveSummaryMutation.isPending
+              }
             >
               {isLoading ? (
                 <span className="flex items-center space-x-2">
@@ -278,7 +285,3 @@ export const AISummarizerPage = ({
     </div>
   );
 };
-
-
-
-
