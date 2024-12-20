@@ -78,7 +78,7 @@ const studyBuddyGPTExamplePrompts = [
 const chatTabs = [
   { id: 1, label: "StudyBuddyGPT", value: "studyBuddyGPT" },
   { id: 2, label: "CodeGPT", value: "codeGPT" },
-  { id: 3, label: "SearchGPT", value: "searchGPT" },
+  { id: 3, label: "ResearchGPT", value: "researchGPT" },
 ];
 
 export type Props = {
@@ -240,7 +240,7 @@ export const ChatInput = memo(function ChatInput({
           {!chatId && hasChatMessages && (
             <div className="grid grid-cols-3 justify-items-center p-1.5 bg-secondary rounded-xl w-full mb-4">
               {chatTabs.map((tab) => {
-                if (tab.value === "searchGPT") {
+                if (tab.value === "researchGPT") {
                   return (
                     <Link
                       key={tab.id}

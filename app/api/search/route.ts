@@ -212,8 +212,8 @@ When asked a "What is" question, maintain the same format as the question and an
 - Do not wrap any equation or formulas or any sort of math related block in round brackets() as it will crash the response.`;
 
 export async function POST(req: Request) {
-  const { messages, model, group } = await req.json();
-  console.log({ messages, model, group });
+  const { messages, model, group, userEmail } = await req.json();
+  console.log({ messages, model, group, userEmail });
   const { tools: activeTools, systemPrompt } = await getGroupConfig(group);
   console.log({ activeTools, systemPrompt });
 
@@ -1372,6 +1372,17 @@ export async function POST(req: Request) {
         "Messages: ",
         event.response.messages[event.response.messages.length - 1].content
       );
+    },
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "skilldai-function", // Trace name
+      metadata: {
+        // langfuseTraceId: "trace-123", // Langfuse trace
+        tags: [userEmail], // Custom tags
+        userId: userEmail, // Langfuse user
+        sessionId: "skilldai-session", // Langfuse session
+        user: userEmail, // Any custom attribute recorded in metadata
+      },
     },
   });
 
