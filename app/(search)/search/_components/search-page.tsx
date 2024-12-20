@@ -649,14 +649,15 @@ export const HomeContent = ({
     },
     onError: (error) => {
       console.error("Chat error:", error.cause, error.message);
-      toast.error("An error occurred.", {
-        description:
-          "We must have ran out of credits. Sponsor us on GitHub to keep this service running.",
-        action: {
-          label: "Sponsor",
-          onClick: () => window.open("https://git.new/mplx", "_blank"),
-        },
-      });
+      toast.error(error.message)
+      // toast.error("An error occurred.", {
+      //   description:
+      //     "We must have ran out of credits. Sponsor us on GitHub to keep this service running.",
+      //   action: {
+      //     label: "Sponsor",
+      //     onClick: () => window.open("https://git.new/mplx", "_blank"),
+      //   },
+      // });
     },
   });
 
