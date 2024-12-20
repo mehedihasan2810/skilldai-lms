@@ -43,8 +43,8 @@ const navItems: NavItem[] = [
     icon: "bookOpen",
   },
   {
-    title: "AI Summarizer",
-    href: "/ai-summarizer",
+    title: "AI Summariser",
+    href: "/ai-summariser",
     icon: "bookOpen",
   },
 ];

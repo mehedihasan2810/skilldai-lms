@@ -79,6 +79,9 @@ export async function POST(req: Request) {
         user: user_email, // Any custom attribute recorded in metadata
       },
     },
+    frequencyPenalty: 0,
+    presencePenalty: 0,
+    temperature: 0.2,
     onFinish: async ({ finishReason, usage }) => {
       console.log({ finishReason, usage });
       const { data, error: updateError } = await supabase

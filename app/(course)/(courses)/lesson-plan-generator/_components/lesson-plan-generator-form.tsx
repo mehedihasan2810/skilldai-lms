@@ -190,6 +190,7 @@ export const LessonPlanForm = ({
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="topic"
@@ -224,6 +225,8 @@ export const LessonPlanForm = ({
                 </FormItem>
               )}
             />
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="gradeLevel"
@@ -258,6 +261,7 @@ export const LessonPlanForm = ({
                 </FormItem>
               )}
             />
+            </div>
             <FormField
               control={form.control}
               name="duration"

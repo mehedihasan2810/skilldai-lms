@@ -601,7 +601,7 @@ const HomeContent = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const initializedRef = useRef(false);
-  const [selectedGroup, setSelectedGroup] = useState<SearchGroupId>("web");
+  const [selectedGroup, setSelectedGroup] = useState<SearchGroupId>("academic");
 
   const { theme } = useTheme();
 
@@ -2504,7 +2504,7 @@ The new Anthropic models: Claude 3.5 Sonnet and 3.5 Haiku models are now availab
                 selectedGroup={selectedGroup}
                 setSelectedGroup={setSelectedGroup}
               />
-              <SuggestionCards selectedModel={selectedModel} />
+              {/* <SuggestionCards selectedModel={selectedModel} /> */}
             </motion.div>
           )}
         </AnimatePresence>

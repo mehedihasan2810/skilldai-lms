@@ -32,6 +32,12 @@ const tools = [
     description: "Effortlessly create engaging worksheets with our AI.Specify a topic, and our tool generates customized, printable worksheets to enhance classroom learning!",
     href: "/worksheet-generator",
   },
+  {
+    id: 4,
+    title: "AI Summariser",
+    description: "Quickly distill lengthy content into concise summaries with our AI. Upload text or documents, and get clear, accurate overviews in seconds!",
+    href: "/ai-summariser",
+  },
 ];
 
 const teacherOnlyTools = ["/lesson-plan-generator", "/worksheet-generator"];

@@ -222,7 +222,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div>Drag and drop files here</div>
+            <div>Drag and drop files here. Max 5MB</div>
             <div className="text-sm dark:text-zinc-400 text-zinc-500">
               {"(PDFs only)"}
             </div>
@@ -265,14 +265,14 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
                     {files[0].name}
                   </span>
                 ) : (
-                  <span>Drop your PDF here or click to browse.</span>
+                  <span>Drop your PDF here or click to browse. Max 5MB.</span>
                 )}
               </p>
             </div>
             <Button
               type="submit"
               className="w-full"
-              disabled={files.length === 0}
+              disabled={files.length === 0 || isLoading || isQuizSaving}
             >
               {isLoading ? (
                 <span className="flex items-center space-x-2">

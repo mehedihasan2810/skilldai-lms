@@ -201,17 +201,18 @@ export type SearchGroupId =
 
 export const searchGroups = [
   {
-    id: "web" as const,
-    name: "Web",
-    description: "Search across the entire internet",
-    icon: Globe,
-  },
-  {
     id: "academic" as const,
     name: "Academic",
     description: "Search academic papers and research",
     icon: Book,
   },
+  {
+    id: "web" as const,
+    name: "Web",
+    description: "Search across the entire internet",
+    icon: Globe,
+  },
+ 
   // {
   //   id: "shopping" as const,
   //   name: "Shopping",

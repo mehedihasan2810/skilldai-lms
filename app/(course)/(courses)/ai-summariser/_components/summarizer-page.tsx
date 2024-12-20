@@ -72,7 +72,7 @@ export const AISummarizerPage = ({
 
       await queryClient.invalidateQueries({ queryKey: ["summaryList"] });
 
-      router.push(`/ai-summarizer/${savedData.id}`);
+      router.push(`/ai-summariser/${savedData.id}`);
     },
     onError: (error) => {
       console.error({ error });
@@ -127,15 +127,17 @@ export const AISummarizerPage = ({
     }
 
     const selectedFiles = Array.from(e.target.files || []);
+    const validFiles = selectedFiles.filter(
+      (file) => file.size <= 5 * 1024 * 1024
+    );
     // const validFiles = selectedFiles.filter(
     //   (file) => file.type === "application/pdf" && file.size <= 5 * 1024 * 1024
     // );
-    // console.log(validFiles);
 
-    // if (validFiles.length !== selectedFiles.length) {
-    //   toast.error("Only PDF files under 5MB are allowed.");
-    //   return;
-    // }
+    if (validFiles.length !== selectedFiles.length) {
+      toast.error("Only PDF files under 5MB are allowed.");
+      return;
+    }
 
     setFiles(selectedFiles);
   };
@@ -212,7 +214,7 @@ export const AISummarizerPage = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div>Drag and drop files here</div>
+            <div>Drag and drop files here. Max 5MB.</div>
             <div className="text-sm dark:text-zinc-400 text-zinc-500">
               {"(PDFs only)"}
             </div>
@@ -231,7 +233,7 @@ export const AISummarizerPage = ({
             </div>
           </div>
           <div className="space-y-2">
-            <CardTitle className="text-2xl font-bold">AI Summarizer</CardTitle>
+            <CardTitle className="text-2xl font-bold">AI Summariser</CardTitle>
           </div>
         </CardHeader>
         <CardContent>
@@ -252,14 +254,14 @@ export const AISummarizerPage = ({
                     {files[0].name}
                   </span>
                 ) : (
-                  <span>Drop your PDF here or click to browse.</span>
+                  <span>Drop your PDF here or click to browse. Max 5MB.</span>
                 )}
               </p>
             </div>
             <Button
               type="submit"
               className="w-full"
-              disabled={files.length === 0}
+              disabled={files.length === 0 || isLoading || saveSummaryMutation.isPending}
             >
               {isLoading ? (
                 <span className="flex items-center space-x-2">
