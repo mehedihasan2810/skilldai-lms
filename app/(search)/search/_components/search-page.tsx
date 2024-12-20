@@ -578,7 +578,13 @@ const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, index }) => {
   );
 };
 
-export const HomeContent = ({ userEmail }: { userEmail: string }) => {
+export const HomeContent = ({
+  userEmail,
+  userId,
+}: {
+  userEmail: string;
+  userId: string;
+}) => {
   const searchParams = useSearchParams();
 
   // Memoize initial values to prevent re-calculation
@@ -624,6 +630,7 @@ export const HomeContent = ({ userEmail }: { userEmail: string }) => {
       model: selectedModel,
       group: selectedGroup,
       userEmail,
+      userId,
     },
     onFinish: async (message, { finishReason }) => {
       console.log("[finish reason]:", finishReason);

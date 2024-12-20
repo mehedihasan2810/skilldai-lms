@@ -18,6 +18,7 @@ import FirecrawlApp from "@mendable/firecrawl-js";
 import { tavily } from "@tavily/core";
 import { openai } from "@ai-sdk/openai";
 import { getGroupConfig } from "@/actions/search";
+import { createClient } from "@/lib/supabase/server";
 
 export const maxDuration = 60;
 
@@ -212,8 +213,8 @@ When asked a "What is" question, maintain the same format as the question and an
 - Do not wrap any equation or formulas or any sort of math related block in round brackets() as it will crash the response.`;
 
 export async function POST(req: Request) {
-  const { messages, model, group, userEmail } = await req.json();
-  console.log({ messages, model, group, userEmail });
+  const { messages, model, group, userEmail, userId } = await req.json();
+  console.log({ messages, model, group, userEmail, userId });
   const { tools: activeTools, systemPrompt } = await getGroupConfig(group);
   console.log({ activeTools, systemPrompt });
 
@@ -1365,13 +1366,37 @@ export async function POST(req: Request) {
         console.log("Warnings: ", event.warnings);
       }
     },
-    onFinish(event) {
-      console.log("Fin reason: ", event.finishReason);
-      console.log("Steps ", event.steps);
+    async onFinish({ finishReason, usage, steps, response }) {
+      console.log("Fin reason: ", finishReason);
+      console.log("Steps ", steps);
       console.log(
         "Messages: ",
-        event.response.messages[event.response.messages.length - 1].content
+        response.messages[response.messages.length - 1].content
       );
+      const supabase = await createClient();
+
+      console.log({ usage });
+
+      const CURRENT_MONTH = new Date().getMonth() + 1;
+      const CURRENT_YEAR = new Date().getFullYear();
+      const { data, error: error } = await supabase
+        .from("token_usage")
+        .insert({
+          type: `research:${group}`,
+          user_id: userId,
+          // user_email: userEmail,
+          email: userEmail,
+          month: CURRENT_MONTH,
+          year: CURRENT_YEAR,
+          input_token: usage.promptTokens,
+          output_token: usage.completionTokens,
+          total_tokens: usage.totalTokens,
+          llm: "openai",
+          model: "gpt-4o-mini",
+        })
+        .select("total_tokens");
+
+      console.log({ data, error });
     },
     experimental_telemetry: {
       isEnabled: true,

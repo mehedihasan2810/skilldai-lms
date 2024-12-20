@@ -97,7 +97,9 @@ export async function POST(req: Request) {
         .from("token_usage")
         .upsert(
           {
-            type: "chat",
+            type: `chat:${
+              activeChatTab === "codeGPT" ? "codeGPT" : "studyBuddyGPT"
+            }`,
             user_id: userId,
             user_email: user_email,
             email: user_email,

@@ -13,7 +13,7 @@ const Home = async () => {
     return redirect("/");
   }
 
-  return <HomeContent userEmail={user.email ?? ""} />;
+  return <HomeContent userEmail={user.email ?? ""} userId={user.id} />;
 };
 
 export default Home;

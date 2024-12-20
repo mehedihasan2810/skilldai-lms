@@ -35,7 +35,8 @@ export async function POST(req: Request) {
       },
       {
         role: "user",
-        content: "Summarize the content of this document or image (if it is image then say image and if it is document then say document).",
+        content:
+          "Summarize the content of this document or image (if it is image then say image and if it is document then say document).",
         experimental_attachments: [
           {
             name: firstFile.name,
@@ -79,15 +80,15 @@ export async function POST(req: Request) {
         .insert({
           type: "summary",
           user_id: userId,
-          user_email: userEmail,
+          // user_email: userEmail,
           email: userEmail,
           month: CURRENT_MONTH,
           year: CURRENT_YEAR,
           input_token: usage.promptTokens,
           output_token: usage.completionTokens,
           total_tokens: usage.totalTokens,
-          llm: "google",
-          model: "gemini-1.5-pro-latest",
+          llm: "anthropic",
+          model: "claude-3-5-sonnet-20240620",
         })
         .select("total_tokens");
 
@@ -131,6 +132,3 @@ You are an expert summarizer tasked with creating a detailed and well-structured
 
 Remember, your goal is to provide a comprehensive yet concise summary that allows readers to quickly grasp the main points and key details of the original document/image.
 `;
-
-
-

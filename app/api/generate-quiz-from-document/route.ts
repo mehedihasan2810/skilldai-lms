@@ -97,7 +97,7 @@ export async function POST(req: Request) {
         .insert({
           type: "course",
           user_id: userId,
-          user_email: userEmail,
+          // user_email: userEmail,
           email: userEmail,
           month: CURRENT_MONTH,
           year: CURRENT_YEAR,
