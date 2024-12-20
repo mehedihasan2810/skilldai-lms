@@ -1375,13 +1375,13 @@ export async function POST(req: Request) {
     },
     experimental_telemetry: {
       isEnabled: true,
-      functionId: "skilldai-function", // Trace name
+      functionId: "ResearchGPT-function",
       metadata: {
-        // langfuseTraceId: "trace-123", // Langfuse trace
-        tags: [userEmail], // Custom tags
-        userId: userEmail, // Langfuse user
-        sessionId: "skilldai-session", // Langfuse session
-        user: userEmail, // Any custom attribute recorded in metadata
+        // langfuseTraceId: "trace-123",
+        tags: ["ResearchGPT", userEmail],
+        userId: userEmail,
+        sessionId: "ResearchGPT-session",
+        user: userEmail,
       },
     },
   });

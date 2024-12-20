@@ -70,13 +70,22 @@ export async function POST(req: Request) {
     // ...options,
     experimental_telemetry: {
       isEnabled: true,
-      functionId: "skilldai-function", // Trace name
+      functionId:
+        activeChatTab === "codeGPT"
+          ? "CodeGPT-function"
+          : "StudyBuddyGPT-function",
       metadata: {
         // langfuseTraceId: "trace-123", // Langfuse trace
-        tags: [user_email], // Custom tags
-        userId: user_email, // Langfuse user
-        sessionId: "skilldai-session", // Langfuse session
-        user: user_email, // Any custom attribute recorded in metadata
+        tags: [
+          activeChatTab === "codeGPT" ? "CodeGPT" : "StudyBuddyGPT",
+          user_email,
+        ],
+        userId: user_email,
+        sessionId:
+          activeChatTab === "codeGPT"
+            ? "CodeGPT-session"
+            : "StudyBuddyGPT-session",
+        user: user_email,
       },
     },
     frequencyPenalty: 0,
