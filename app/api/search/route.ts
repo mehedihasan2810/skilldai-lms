@@ -215,6 +215,29 @@ When asked a "What is" question, maintain the same format as the question and an
 export async function POST(req: Request) {
   const { messages, model, group, userEmail, userId } = await req.json();
   console.log({ messages, model, group, userEmail, userId });
+
+  const supabase = await createClient();
+
+  const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
+  const CURRENT_MONTH = new Date().getMonth() + 1;
+  const CURRENT_YEAR = new Date().getFullYear();
+
+  const { data: tokenUsage, error } = await supabase
+    .from("token_usage")
+    .select("total_tokens,input_token,output_token")
+    .eq("user_email", userEmail)
+    .eq("month", CURRENT_MONTH)
+    .eq("year", CURRENT_YEAR)
+    .single();
+
+  console.log({ tokenUsage, error });
+
+  console.log({ MAX_TOKENS });
+
+  if ((tokenUsage?.total_tokens || 0) >= (Number(MAX_TOKENS) || 0)) {
+    return new Response("Monthly token limit reached", { status: 429 });
+  }
+
   const { tools: activeTools, systemPrompt } = await getGroupConfig(group);
   console.log({ activeTools, systemPrompt });
 
@@ -1373,30 +1396,53 @@ export async function POST(req: Request) {
         "Messages: ",
         response.messages[response.messages.length - 1].content
       );
-      const supabase = await createClient();
-
-      console.log({ usage });
-
-      const CURRENT_MONTH = new Date().getMonth() + 1;
-      const CURRENT_YEAR = new Date().getFullYear();
-      const { data, error: error } = await supabase
+      const { data, error: updateError } = await supabase
         .from("token_usage")
-        .insert({
-          type: `research:${group}`,
-          user_id: userId,
-          // user_email: userEmail,
-          email: userEmail,
-          month: CURRENT_MONTH,
-          year: CURRENT_YEAR,
-          input_token: usage.promptTokens,
-          output_token: usage.completionTokens,
-          total_tokens: usage.totalTokens,
-          llm: "openai",
-          model: "gpt-4o-mini",
-        })
+        .upsert(
+          {
+            type: `research:${group}`,
+            user_id: userId,
+            user_email: userEmail,
+            email: userEmail,
+            month: CURRENT_MONTH,
+            year: CURRENT_YEAR,
+            input_token: (tokenUsage?.input_token || 0) + usage.promptTokens,
+            output_token:
+              (tokenUsage?.output_token || 0) + usage.completionTokens,
+            total_tokens: (tokenUsage?.total_tokens || 0) + usage.totalTokens,
+            llm: "openai",
+            model: "gpt-4o-mini",
+          },
+          {
+            onConflict: "user_email",
+          }
+        )
         .select("total_tokens");
+      console.log({ data, updateError });
+      // const supabase = await createClient();
 
-      console.log({ data, error });
+      // console.log({ usage });
+
+      // const CURRENT_MONTH = new Date().getMonth() + 1;
+      // const CURRENT_YEAR = new Date().getFullYear();
+      // const { data, error: error } = await supabase
+      //   .from("token_usage")
+      //   .insert({
+      //     type: `research:${group}`,
+      //     user_id: userId,
+      //     // user_email: userEmail,
+      //     email: userEmail,
+      //     month: CURRENT_MONTH,
+      //     year: CURRENT_YEAR,
+      //     input_token: usage.promptTokens,
+      //     output_token: usage.completionTokens,
+      //     total_tokens: usage.totalTokens,
+      //     llm: "openai",
+      //     model: "gpt-4o-mini",
+      //   })
+      //   .select("total_tokens");
+
+      // console.log({ data, error });
     },
     experimental_telemetry: {
       isEnabled: true,
