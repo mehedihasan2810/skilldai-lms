@@ -33,10 +33,16 @@ const tools = [
     href: "/worksheet-generator",
   },
   {
-    id: 4,
+    id: 5,
     title: "AI Summariser",
     description: "Quickly distill lengthy content into concise summaries with our AI. Upload text or documents, and get clear, accurate overviews in seconds!",
     href: "/ai-summariser",
+  },
+  {
+    id: 6,
+    title: "AI Skill Assessment",
+    description: "Evaluate skills effortlessly with our AI-powered tool. Generate personalized assessments to measure knowledge, track progress, and identify areas for improvement!",
+    href: "/skill-assessment",
   },
 ];
 
