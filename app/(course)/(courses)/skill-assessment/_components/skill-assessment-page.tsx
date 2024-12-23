@@ -10,13 +10,12 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { Button, Input, Textarea } from "@/components/ui";
-import { Loader, Plus, RefreshCw, X } from "lucide-react";
+import { Button, buttonVariants, Input, Textarea } from "@/components/ui";
+import { Download, FileText, Loader, Plus, RefreshCw, X } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { getSuggestedSkills } from "@/actions/skill-assessment";
 import { toast } from "sonner";
 import { useAction } from "next-safe-action/hooks";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useDebouncedCallback } from "use-debounce";
 import { experimental_useObject as useObject } from "ai/react";
 import { Label } from "@/components/ui/label";
@@ -24,6 +23,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Markdown from "@/components/markdown/markdown";
 import { useLocalStorage } from "usehooks-ts";
 import { SkillRadar } from "./radar-chart";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import markdownToTxt from "markdown-to-txt";
 
 const outputSchema = z.object({
   type: z.enum(["multiple-choice", "input"]),
@@ -205,38 +211,23 @@ export const SkillAssessmentPage = ({
     });
   }
 
-  useEffect(() => {
-    // console.log(
-    //   form.watch("skillCategory"),
-    //   form
-    //     .watch("skills")
-    //     .map((skill) => skill.skill)
-    //     .join(",")
-    // );
-    const shouldGenerate =
-      form.watch("skillCategory").trim() &&
-      form
-        .watch("skills")
-        .map((skill) => skill.skill)
-        .join(",")
-        .trim() &&
-      !isSuggestSkillsPending;
-    // && form.watch("skills").length === 1;
+  const downloadTxtFile = () => {
+    const element = document.createElement("a");
 
-    if (shouldGenerate) {
-      console.log({ shouldGenerate });
-      debounced({
-        skillCategory: form.watch("skillCategory"),
-        skills: form.watch("skills"),
-      });
-    }
-  }, [
-    form.watch("skillCategory"),
-    form
-      .watch("skills")
-      .map((skill) => skill.skill)
-      .join(","),
-  ]);
+    const assessmentText = Object.values(assessmentObject || assessmentLS || {})
+      .filter((value) => !Array.isArray(value))
+      .join("\n\n");
+
+    console.log({ assessmentText });
+    const texts = markdownToTxt(assessmentText ?? "");
+    const file = new Blob([`${texts}`], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = "my-assessment.txt";
+    // document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
 
   const onHandleAnalysis = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -273,6 +264,39 @@ export const SkillAssessmentPage = ({
   };
 
   const assessmentData = assessmentObject || assessmentLS;
+
+  useEffect(() => {
+    // console.log(
+    //   form.watch("skillCategory"),
+    //   form
+    //     .watch("skills")
+    //     .map((skill) => skill.skill)
+    //     .join(",")
+    // );
+    const shouldGenerate =
+      form.watch("skillCategory").trim() &&
+      form
+        .watch("skills")
+        .map((skill) => skill.skill)
+        .join(",")
+        .trim() &&
+      !isSuggestSkillsPending;
+    // && form.watch("skills").length === 1;
+
+    if (shouldGenerate) {
+      console.log({ shouldGenerate });
+      debounced({
+        skillCategory: form.watch("skillCategory"),
+        skills: form.watch("skills"),
+      });
+    }
+  }, [
+    form.watch("skillCategory"),
+    form
+      .watch("skills")
+      .map((skill) => skill.skill)
+      .join(","),
+  ]);
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 mt-10 mb-20">
@@ -513,19 +537,40 @@ export const SkillAssessmentPage = ({
               <h1 className="text-2xl font-bold">
                 Your Skill Assessment Results
               </h1>
-              <Button
-                onClick={() => {
-                  setAssessmentLS(null);
-                  window.location.reload();
-                }}
-                className="flex items-center gap-2"
-                variant="destructive"
-              >
-                <RefreshCw className="size-4" /> Reset
-              </Button>
+
+              <div className="flex items-center gap-2">
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    className={buttonVariants({
+                      className: "flex items-center gap-2",
+                    })}
+                  >
+                    <Download className="size-5" /> Export
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem
+                      onClick={downloadTxtFile}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <FileText className="size-5" /> Text
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                <Button
+                  onClick={() => {
+                    setAssessmentLS(null);
+                    window.location.reload();
+                  }}
+                  className="flex items-center gap-2"
+                  variant="destructive"
+                >
+                  <RefreshCw className="size-4" /> Reset
+                </Button>
+              </div>
             </div>
           )}
-            {/* @ts-expect-error: blah */}
+          {/* @ts-expect-error: blah */}
           <SkillRadar radarData={assessmentData.skillRadar ?? []} />
 
           <div className="p-6 rounded-xl bg-primary/5 shadow border border-border/30">

@@ -44,10 +44,7 @@ export function SkillRadar({
         <CardTitle>Skill Radar</CardTitle>
       </CardHeader>
       <CardContent className="pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
+        <ChartContainer config={chartConfig} className="mx-auto max-h-[300px]">
           <RadarChart data={radarData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <PolarAngleAxis dataKey="skill" />
