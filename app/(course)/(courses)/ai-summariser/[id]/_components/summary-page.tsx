@@ -14,6 +14,7 @@ import { getSummary } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import markdownToTxt from "markdown-to-txt";
+import { EditSummariseDialog } from "./edit-dialog";
 
 export const SummaryPage = ({ userId, id }: { userId: string; id: string }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -135,6 +136,8 @@ export const SummaryPage = ({ userId, id }: { userId: string; id: string }) => {
             <Button onClick={handlePrint} className="flex items-center gap-2">
               <Printer className="size-5" /> Print
             </Button>
+
+            <EditSummariseDialog summary={summary?.summary ?? ""} summaryId={id} />
           </div>
 
           {/* <h1 className="text-2xl font-bold mb-2 mt-6">{summary?.title}</h1> */}

@@ -50,7 +50,7 @@ export const RecentSummaryList = ({ userId }: { userId: string }) => {
                 />
                 <h3 className="text-lg font-medium">{summary.summary.slice(0,40)}...</h3>
                 <Link
-                  href={`/ai-summarizer/${summary.id}`}
+                  href={`/ai-summariser/${summary.id}`}
                   className={buttonVariants({
                     className: "w-full flex items-center gap-2",
                   })}

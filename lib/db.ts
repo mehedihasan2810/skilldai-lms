@@ -795,3 +795,30 @@ export const getSummaries = async ({
 
   return data;
 };
+
+export const updateSummary = async ({
+  summaryId,
+  summary,
+}: {
+  summaryId: string;
+  summary: string;
+}) => {
+  console.log({ summaryId, summary });
+
+  // const supabase = createClientComponentClient();
+  const { error, data } = await supabase
+    .from("ai_summarizer")
+    .update({
+      summary,
+    })
+    .eq("id", summaryId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};

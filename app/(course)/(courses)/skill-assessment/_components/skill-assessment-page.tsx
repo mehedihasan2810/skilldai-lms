@@ -358,7 +358,7 @@ export const SkillAssessmentPage = ({
                           name={`skills.${index}.rating`}
                           render={({ field: { onChange, value } }) => (
                             <FormItem className="w-full md:w-96">
-                              <FormLabel className="sr-only">
+                              <FormLabel className="">
                                 Rate your skill
                               </FormLabel>
                               <FormControl>
