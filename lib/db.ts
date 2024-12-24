@@ -849,3 +849,28 @@ export const updateWorksheet = async ({
 
   return data;
 };
+export const updateLessonPlan = async ({
+  lessonPlanId,
+  lessonPlan,
+}: {
+  lessonPlanId: string;
+  lessonPlan: string;
+}) => {
+  console.log({ lessonPlanId, lessonPlan });
+
+  const { error, data } = await supabase
+    .from("lesson_plan")
+    .update({
+      plan: lessonPlan,
+    })
+    .eq("id",lessonPlanId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};

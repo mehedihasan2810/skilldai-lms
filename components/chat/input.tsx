@@ -245,7 +245,7 @@ export const ChatInput = memo(function ChatInput({
                     <Link
                       key={tab.id}
                       href="/search"
-                      className="w-full p-1.5 rounded-xl text-center"
+                      className="w-full p-1.5 rounded-xl text-center truncate"
                     >
                       {tab.label}
                     </Link>
@@ -255,7 +255,7 @@ export const ChatInput = memo(function ChatInput({
                   <button
                     onClick={() => onChangeActiveChatTab(tab.value)}
                     key={tab.id}
-                    className={cn("w-full p-1.5 rounded-xl text-center", {
+                    className={cn("w-full p-1.5 rounded-xl text-center truncate", {
                       "bg-primary text-primary-foreground":
                         tab.value === activeChatTab,
                     })}

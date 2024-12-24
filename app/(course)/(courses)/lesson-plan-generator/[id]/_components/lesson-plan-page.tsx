@@ -14,6 +14,7 @@ import { getLessonPlan } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import markdownToTxt from "markdown-to-txt";
+import { LessonPlanEditorDialog } from "./lesson-plan-editor";
 
 export const LessonPlanPage = ({
   userId,
@@ -142,9 +143,14 @@ export const LessonPlanPage = ({
             <Button onClick={handlePrint} className="flex items-center gap-2">
               <Printer className="size-5" /> Print
             </Button>
+
+            <LessonPlanEditorDialog
+              lessonPlan={lessonPlan?.plan ?? ""}
+              lessonPlanId={id}
+            />
           </div>
 
-          <h1 className="text-2xl font-bold mb-2 mt-6">{lessonPlan?.title}</h1>
+          {/* <h1 className="text-2xl font-bold mb-2 mt-6">{lessonPlan?.title}</h1> */}
           <Markdown text={lessonPlan?.plan ?? ""} className="max-w-4xl" />
         </>
       )}
