@@ -14,6 +14,7 @@ import { getWorksheet } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import markdownToTxt from "markdown-to-txt";
+import { WorksheetEditorDialog } from "./worksheet-editor";
 
 export const WorksheetPage = ({
   userId,
@@ -142,9 +143,11 @@ export const WorksheetPage = ({
             <Button onClick={handlePrint} className="flex items-center gap-2">
               <Printer className="size-5" /> Print
             </Button>
+
+              <WorksheetEditorDialog worksheet={worksheet?.worksheets ?? ""} worksheetId={id} />
           </div>
 
-          <h1 className="text-2xl font-bold mb-2 mt-6">{worksheet?.title}</h1>
+          {/* <h1 className="text-2xl font-bold mb-2 mt-6">{worksheet?.title}</h1> */}
           <Markdown text={worksheet?.worksheets ?? ""} className="max-w-4xl" />
         </>
       )}

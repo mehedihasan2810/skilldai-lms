@@ -16,8 +16,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getMimeType } from "@/lib/utils";
 
 const outputSchema = z.object({
-  // title: z.string().describe("A max eight-word title for the summary."),
-  summary: z.string().describe("A concise summary of the document."),
+  title: z.string().describe("A max eight-word title for the summary."),
+  summary: z.string().describe("A concise summary of the document/image."),
 });
 
 export const formSchema = z.object({
@@ -95,7 +95,7 @@ export const AISummarizerPage = ({
         console.log({ object });
 
         saveSummaryMutation.mutate({
-          title: "",
+          title: object.title,
           summary: object.summary,
           userId: userId,
           fileName: "",

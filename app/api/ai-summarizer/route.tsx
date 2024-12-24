@@ -8,7 +8,7 @@ import { z } from "zod";
 export const maxDuration = 60;
 
 const outputSchema = z.object({
-  // title: z.string().describe("A max eight-word title for the summary."),
+  title: z.string().describe("A max eight-word title for the summary."),
   summary: z.string().describe("A concise summary of the document/image."),
 });
 

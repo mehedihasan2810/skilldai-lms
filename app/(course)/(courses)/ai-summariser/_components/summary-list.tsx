@@ -48,7 +48,7 @@ export const RecentSummaryList = ({ userId }: { userId: string }) => {
                   width={300}
                   height={200}
                 />
-                <h3 className="text-lg font-medium">{summary.summary.slice(0,40)}...</h3>
+                <h3 className="text-lg font-medium">{summary.title}</h3>
                 <Link
                   href={`/ai-summariser/${summary.id}`}
                   className={buttonVariants({

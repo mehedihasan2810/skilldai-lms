@@ -619,7 +619,8 @@ export const getLessonPlans = async ({ userId }: { userId: string }) => {
   const { error, data } = await supabase
     .from("lesson_plan")
     .select("*")
-    .eq("user_id", userId);
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);
@@ -705,7 +706,8 @@ export const getWorksheets = async ({ userId }: { userId: string }) => {
   const { error, data } = await supabase
     .from("worksheets")
     .select("*")
-    .eq("user_id", userId);
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);
@@ -784,7 +786,7 @@ export const getSummaries = async ({
 }) => {
   const { data, error } = await supabase
     .from("ai_summarizer")
-    .select("id,summary")
+    .select("id,title")
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
 
@@ -805,13 +807,38 @@ export const updateSummary = async ({
 }) => {
   console.log({ summaryId, summary });
 
-  // const supabase = createClientComponentClient();
   const { error, data } = await supabase
     .from("ai_summarizer")
     .update({
       summary,
     })
     .eq("id", summaryId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+
+export const updateWorksheet = async ({
+  worksheetId,
+  worksheets,
+}: {
+  worksheetId: string;
+  worksheets: string;
+}) => {
+  console.log({ worksheetId, worksheets });
+
+  const { error, data } = await supabase
+    .from("worksheets")
+    .update({
+      worksheets,
+    })
+    .eq("id", worksheetId);
 
   if (error) {
     console.error(error);
