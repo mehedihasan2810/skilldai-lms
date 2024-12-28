@@ -34,9 +34,9 @@ const tools = [
   },
   {
     id: 5,
-    title: "AI Summariser",
-    description: "Quickly distill lengthy content into concise summaries with our AI. Upload text or documents, and get clear, accurate overviews in seconds!",
-    href: "/ai-summariser",
+    title: "PDF Chat",
+    description: "Chat with your PDF documents effortlessly. Upload, ask questions, and get answers instantly using advanced AI-powered PDF analysis.",
+    href: "/pdf-chat",
   },
   {
     id: 6,

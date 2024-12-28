@@ -15,21 +15,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui";
 import { ArrowRight, Check, Loader, ShieldQuestion } from "lucide-react";
-import { Quizzes } from "../_components/quizzes";
+import { Quizzes } from "./quizzes";
 // import { useSupabase } from "@/lib/supabase";
 import { toast } from "sonner";
-import { SectionProgress } from "../_components/section-progress";
+import { SectionProgress } from "./section-progress";
 import { useEffect } from "react";
 import { useRouter } from "nextjs-toploader/app";
 
 interface PageProps {
-//   params: {
-//     courseSlug: string;
-//   };
-//   searchParams: { [key: string]: string | string[] | undefined };
-  userId: string
-  courseSlug: string
-  sectionSlug: string
+  //   params: {
+  //     courseSlug: string;
+  //   };
+  //   searchParams: { [key: string]: string | string[] | undefined };
+  userId: string;
+  courseSlug: string;
+  sectionSlug: string;
 }
 
 export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
@@ -39,7 +39,7 @@ export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
 
   const router = useRouter();
 
-//   const { session } = useSupabase();
+  //   const { session } = useSupabase();
 
   const updateCourseStatusMutation = useMutation({
     mutationFn: async ({
@@ -48,12 +48,7 @@ export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
     }: {
       courseId: string;
       status: string;
-    }) =>
-      await updateCourseStatusInprogress(
-        courseId,
-        status,
-        userId ?? ""
-      ),
+    }) => await updateCourseStatusInprogress(courseId, status, userId ?? ""),
   });
 
   // console.log({ session });
@@ -91,9 +86,7 @@ export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
       ),
   });
 
-  const content = courseSections?.find(
-    (course) => course.id === sectionSlug
-  );
+  const content = courseSections?.find((course) => course.id === sectionSlug);
 
   const contentIndex = courseSections?.findIndex(
     (course) => course.id === sectionSlug
@@ -175,7 +168,10 @@ export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
       <Separator className="my-10" />
 
       <div className="mx-auto w-full min-w-0">
-        <Markdown text={(content ?? courseSections![0]).content} className="max-w-2xl" />
+        <Markdown
+          text={(content ?? courseSections![0]).content}
+          className="max-w-2xl"
+        />
       </div>
 
       <div className="mt-20">

@@ -30,6 +30,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import markdownToTxt from "markdown-to-txt";
+import generatePDF, { Options } from "react-to-pdf";
 
 const outputSchema = z.object({
   type: z.enum(["multiple-choice", "input"]),
@@ -98,6 +99,22 @@ const formSchema = z.object({
     })
   ),
 });
+
+const getTargetElement = () => {
+  const containerElement = document.getElementById("assessment-container");
+  // if(!containerElement) return null;
+
+  // containerElement.style.display = "block";
+
+  return containerElement;
+};
+const options: Options = {
+  filename: "using-function.pdf",
+  page: {
+    margin: 20,
+  },
+};
+const downloadPdf = () => generatePDF(getTargetElement, options);
 
 export const SkillAssessmentPage = ({
   userId,
@@ -533,42 +550,50 @@ export const SkillAssessmentPage = ({
       {assessmentData && (
         <>
           {!isAssessmentIsLoading && (
-            <div className="flex justify-between gap-4 items-center">
-              <h1 className="text-2xl font-bold">
-                Your Skill Assessment Results
-              </h1>
+            <>
+              <div className="flex justify-between gap-4 items-center">
+                <h1 className="text-2xl font-bold">
+                  Your Skill Assessment Results
+                </h1>
 
-              <div className="flex items-center gap-2">
-                <DropdownMenu>
-                  <DropdownMenuTrigger
-                    className={buttonVariants({
-                      className: "flex items-center gap-2",
-                    })}
-                  >
-                    <Download className="size-5" /> Export
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem
-                      onClick={downloadTxtFile}
-                      className="flex items-center gap-2 cursor-pointer"
+                <div className="flex items-center gap-2">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger
+                      className={buttonVariants({
+                        className: "flex items-center gap-2",
+                      })}
                     >
-                      <FileText className="size-5" /> Text
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                      <Download className="size-5" /> Export
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem
+                        onClick={downloadTxtFile}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
+                        <FileText className="size-5" /> Text
+                      </DropdownMenuItem>
+                      {/* <DropdownMenuItem
+                        onClick={downloadPdf}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
+                        <FileText className="size-5" /> PDF
+                      </DropdownMenuItem> */}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
 
-                <Button
-                  onClick={() => {
-                    setAssessmentLS(null);
-                    window.location.reload();
-                  }}
-                  className="flex items-center gap-2"
-                  variant="destructive"
-                >
-                  <RefreshCw className="size-4" /> Reset
-                </Button>
+                  <Button
+                    onClick={() => {
+                      setAssessmentLS(null);
+                      window.location.reload();
+                    }}
+                    className="flex items-center gap-2"
+                    variant="destructive"
+                  >
+                    <RefreshCw className="size-4" /> Reset
+                  </Button>
+                </div>
               </div>
-            </div>
+            </>
           )}
           {/* @ts-expect-error: blah */}
           <SkillRadar radarData={assessmentData.skillRadar ?? []} />
