@@ -8,10 +8,10 @@ import { useRouter } from "nextjs-toploader/app";
 import { experimental_useObject as useObject } from "ai/react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { FileUp, Loader, Loader2, Plus } from "lucide-react";
+import { FileUp, Loader, Loader2, MessageSquareMore, Plus } from "lucide-react";
 import Markdown from "@/components/markdown/markdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { saveSummary } from "@/lib/db";
+import { savePDFInfo } from "@/lib/db";
 import { AnimatePresence, motion } from "framer-motion";
 import { getMimeType } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ export const formSchema = z.object({
   numOfQuestions: z.coerce.number().max(20, { message: "Max questions: 20" }),
 });
 
-export const AISummarizerPage = ({
+export const PDFChatPage = ({
   userId,
   userEmail,
 }: {
@@ -40,75 +40,24 @@ export const AISummarizerPage = ({
 
   const router = useRouter();
 
-  const saveSummaryMutation = useMutation({
-    mutationFn: async ({
-      userId,
-      title,
-      summary,
-      fileName,
-      fileUrl,
-    }: {
-      userId: string;
-      title: string;
-      summary: string;
-      fileName: string;
-      fileUrl: string;
-    }) =>
-      await saveSummary({
+  const savePDFInfoMutation = useMutation({
+    mutationFn: async ({ userId, file }: { userId: string; file: File }) =>
+      await savePDFInfo({
         userId,
-        title,
-        summary,
-        fileName,
-        fileUrl,
+        file,
       }),
     onSuccess: async (savedData) => {
       console.log({ savedData });
 
-      await queryClient.invalidateQueries({ queryKey: ["summaryList"] });
+      await queryClient.invalidateQueries({ queryKey: ["pdfChatList"] });
 
-      router.push(`/ai-summariser/${savedData.id}`);
+      router.push(`/pdf-chat/${savedData.id}`);
     },
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
     },
   });
-
-  const {
-    submit,
-    object: summary,
-    isLoading,
-  } = useObject({
-    api: "/api/ai-summarizer",
-    schema: outputSchema,
-    // initialValue: undefined,
-    onError: (worksheetsError) => {
-      console.log({ worksheetsError });
-      toast.error(worksheetsError.message);
-    },
-    onFinish: async ({ object }) => {
-      console.log({ object });
-      try {
-        if (!object) {
-          throw new Error("Something went wrong!");
-        }
-        console.log({ object });
-
-        saveSummaryMutation.mutate({
-          title: object.title,
-          summary: object.summary,
-          userId: userId,
-          fileName: "",
-          fileUrl: "",
-        });
-      } catch (error) {
-        console.log({ error });
-        toast.error((error as Error).message);
-      }
-    },
-  });
-
-  console.log({ summary });
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -149,48 +98,57 @@ export const AISummarizerPage = ({
   const handleSubmitWithFiles = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const mimeType = getMimeType(files[0].name);
+    const file = files[0];
+    console.log({ file });
 
-    console.log({ mimeType });
-
-    const encodedFiles = await Promise.all(
-      files.map(async (file) => ({
-        name: file.name,
-        type: getMimeType(file.name),
-        data: await encodeFileAsBase64(file),
-      }))
-    );
-
-    if (encodedFiles[0].type === "unknown") {
-      toast.error("File is not supported!");
+    if (!file) {
+      toast.warning("Please upload a PDF file.");
       return;
     }
 
-    submit({ files: encodedFiles, userId, userEmail });
+    savePDFInfoMutation.mutate({ userId, file });
+
+    // const mimeType = getMimeType(files[0].name);
+
+    // console.log({ mimeType });
+
+    // const encodedFiles = await Promise.all(
+    //   files.map(async (file) => ({
+    //     name: file.name,
+    //     type: getMimeType(file.name),
+    //     data: await encodeFileAsBase64(file),
+    //   }))
+    // );
+
+    // if (encodedFiles[0].type === "unknown") {
+    //   toast.error("File is not supported!");
+    //   return;
+    // }
+
     // const generatedTitle = await generateQuizTitle(encodedFiles[0].name);
     // setTitle(generatedTitle);
 
     // setTitle("hello");
   };
 
-  if ((summary && isLoading) || saveSummaryMutation.isPending) {
-    return (
-      <>
-        <div className="relative mb-16 mt-8 bg-card w-full rounded-xl p-6 max-w-4xl mx-auto shadow-md border border-border/50">
-          <Button
-            variant="outline"
-            className="absolute -top-5 left-1/2 -translate-x-1/2 mb-2"
-          >
-            <Loader className="size-5 animate-spin mr-2" /> Generating...
-          </Button>
-          {/* <h1 className="text-2xl font-bold mb-2 mt-6">
-            {summary?.title ?? ""}
-          </h1> */}
-          <Markdown text={summary?.summary ?? ""} className="max-w-4xl" />
-        </div>
-      </>
-    );
-  }
+  // if ((summary && isLoading) || saveSummaryMutation.isPending) {
+  //   return (
+  //     <>
+  //       <div className="relative mb-16 mt-8 bg-card w-full rounded-xl p-6 max-w-4xl mx-auto shadow-md border border-border/50">
+  //         <Button
+  //           variant="outline"
+  //           className="absolute -top-5 left-1/2 -translate-x-1/2 mb-2"
+  //         >
+  //           <Loader className="size-5 animate-spin mr-2" /> Generating...
+  //         </Button>
+  //         {/* <h1 className="text-2xl font-bold mb-2 mt-6">
+  //           {summary?.title ?? ""}
+  //         </h1> */}
+  //         <Markdown text={summary?.summary ?? ""} className="max-w-4xl" />
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   return (
     <div
@@ -234,11 +192,11 @@ export const AISummarizerPage = ({
             </div>
             <Plus className="h-4 w-4" />
             <div className="rounded-full bg-primary/10 p-2">
-              <Loader2 className="h-6 w-6" />
+              <MessageSquareMore className="h-6 w-6" />
             </div>
           </div>
           <div className="space-y-2">
-            <CardTitle className="text-2xl font-bold">AI Summariser</CardTitle>
+            <CardTitle className="text-2xl font-bold">PDF Chat</CardTitle>
           </div>
         </CardHeader>
         <CardContent>
@@ -266,17 +224,15 @@ export const AISummarizerPage = ({
             <Button
               type="submit"
               className="w-full"
-              disabled={
-                files.length === 0 || isLoading || saveSummaryMutation.isPending
-              }
+              disabled={files.length === 0 || savePDFInfoMutation.isPending}
             >
-              {isLoading ? (
+              {savePDFInfoMutation.isPending ? (
                 <span className="flex items-center space-x-2">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>Summarizing...</span>
+                  <Loader className="h-4 w-4 animate-spin" />
+                  <span>Start Chat</span>
                 </span>
               ) : (
-                "Summarize"
+                "Start Chat"
               )}
             </Button>
           </form>

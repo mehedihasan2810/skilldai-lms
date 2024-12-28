@@ -43,8 +43,8 @@ const navItems: NavItem[] = [
     icon: "bookOpen",
   },
   {
-    title: "AI Summariser",
-    href: "/ai-summariser",
+    title: "PDF Chat",
+    href: "/pdf-chat",
     icon: "bookOpen",
   },
   {
@@ -73,7 +73,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     .eq("user_id", user.id)
     .single();
 
-  console.log({ userInfo });
+  // console.log({ userInfo });
 
   if (
     userInfoError?.message ===
@@ -96,8 +96,8 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       .select("id")
       .single();
 
-    console.log({ userCreatedData });
-    console.error({ userCreatedErr });
+    // console.log({ userCreatedData });
+    // console.error({ userCreatedErr });
 
     // if (userCreatedData) {
     //   revalidatePath("/courses");

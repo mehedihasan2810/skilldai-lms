@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import MinimalTiptapEditor from "@/components/rich-text-editor/minimal-tiptap";
 import { Edit, Loader } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateSummary, updateWorksheet } from "@/lib/db";
+import { updateWorksheet } from "@/lib/db";
 import { toast } from "sonner";
 import { useState } from "react";
 

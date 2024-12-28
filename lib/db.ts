@@ -2,7 +2,14 @@ import { Attachment } from "@/app/types";
 import { SupabaseContextType } from "@/lib/supabase/types";
 // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "./supabase/client";
+import { generateQuizTitle } from "@/actions/generate-quiz-title";
+import ShortUniqueId from "short-unique-id";
+import { getQueryClient } from "@/app/react-query-provider";
+
+const uid = new ShortUniqueId({ length: 10 });
 const supabase = createClient();
+
+const queryClient = getQueryClient();
 
 export const getChats = async (
   // supabase: SupabaseContextType["supabase"],
@@ -719,30 +726,43 @@ export const getWorksheets = async ({ userId }: { userId: string }) => {
   return data;
 };
 
-export const saveSummary = async ({
+export const savePDFInfo = async ({
   userId,
-  title,
-  summary,
-  fileName,
-  fileUrl,
+  file,
 }: {
   userId: string;
-  title: string;
-  summary: string;
-  fileName: string;
-  fileUrl: string;
+  file: File;
 }) => {
   if (!userId) {
     throw new Error("User not authenticated");
   }
 
+  const generatedTitle = await generateQuizTitle(file.name);
+
+  console.log({ generatedTitle });
+
+  const { data: fileSaveRes, error: fileSaveErr } = await supabase.storage
+    .from("pdf_chat")
+    .upload(
+      `${userId}/${file.name
+        .replace(".pdf", "")
+        .replaceAll(" ", "-")}-${uid.rnd()}.pdf`,
+      file
+    );
+
+  console.log({ fileSaveRes, fileSaveErr });
+
+  const fileUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${fileSaveRes?.fullPath}`;
+
+  console.log({ fileUrl });
+
   const { data, error } = await supabase
-    .from("ai_summarizer")
+    .from("pdf_chat")
     .insert({
-      title,
-      summary,
+      title: generatedTitle,
+      summary: "",
       user_id: userId,
-      file_name: fileName,
+      file_name: file.name,
       file_url: fileUrl,
     })
     .select("id")
@@ -762,11 +782,18 @@ export const saveSummary = async ({
   return data;
 };
 
-export const getSummary = async ({ summaryId }: { summaryId: string }) => {
+export const getPDFData = async ({ pdfId }: { pdfId: string }) => {
   const { error, data } = await supabase
-    .from("ai_summarizer")
-    .select("*")
-    .eq("id", summaryId)
+    .from("pdf_chat")
+    .select(
+      `
+      *,
+      pdf_chat_messages (
+      *
+      )
+      `
+    )
+    .eq("id", pdfId)
     .single();
 
   if (error) {
@@ -779,13 +806,13 @@ export const getSummary = async ({ summaryId }: { summaryId: string }) => {
   return data;
 };
 
-export const getSummaries = async ({
+export const getAllPDFInfo = async ({
   userId,
 }: {
   userId: string | null | undefined;
 }) => {
   const { data, error } = await supabase
-    .from("ai_summarizer")
+    .from("pdf_chat")
     .select("id,title")
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
@@ -798,28 +825,28 @@ export const getSummaries = async ({
   return data;
 };
 
-export const updateSummary = async ({
-  summaryId,
+export const updatePDFChatSummary = async ({
+  pdfChatId,
   summary,
 }: {
-  summaryId: string;
+  pdfChatId: string;
   summary: string;
 }) => {
-  console.log({ summaryId, summary });
+  console.log({ pdfChatId, summary });
 
   const { error, data } = await supabase
-    .from("ai_summarizer")
+    .from("pdf_chat")
     .update({
       summary,
     })
-    .eq("id", summaryId);
+    .eq("id", pdfChatId);
 
   if (error) {
     console.error(error);
     throw new Error(error.message);
   }
 
-  console.log({ data });
+  // console.log({ data });
 
   return data;
 };
@@ -863,7 +890,7 @@ export const updateLessonPlan = async ({
     .update({
       plan: lessonPlan,
     })
-    .eq("id",lessonPlanId);
+    .eq("id", lessonPlanId);
 
   if (error) {
     console.error(error);
@@ -873,4 +900,32 @@ export const updateLessonPlan = async ({
   console.log({ data });
 
   return data;
+};
+
+export const savePdfChatMessage = async ({
+  pdfChatId,
+  message,
+}: {
+  pdfChatId: string | null;
+  message: { role: string; content: string; metadata?: Record<string, any> };
+  // attachments: Attachment[] = [];
+}) => {
+  console.log({ pdfChatId, message });
+
+  if (!pdfChatId) return message;
+
+  const { error } = await supabase.from("pdf_chat_messages").insert({
+    pdf_chat_id: pdfChatId,
+    role: message.role,
+    content: message.content,
+  });
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  await queryClient.invalidateQueries({ queryKey: ["pdfData", pdfChatId] });
+
+  return message;
 };

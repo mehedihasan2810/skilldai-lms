@@ -32,6 +32,8 @@ export async function POST(req: Request) {
 
   const { messages, user_email, userId, activeChatTab } = await req.json();
 
+  
+
   console.log({ user_email, userId, activeChatTab });
 
   const { data: tokenUsage, error } = await supabase

@@ -1,9 +1,9 @@
 import PageContainer from "@/components/dashboard/page-container";
 import React from "react";
-import { AISummarizerPage } from "./_components/summarizer-page";
+import { PDFChatPage } from "./_components/pdf-chat-page";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { RecentSummaryList } from "./_components/summary-list";
+import { RecentPDFList } from "./_components/pdf-list";
 
 const Page = async () => {
   const supabase = await createClient();
@@ -18,8 +18,8 @@ const Page = async () => {
 
   return (
     <PageContainer scrollable>
-      <AISummarizerPage userId={user.id} userEmail={user.email ?? ""} />
-      <RecentSummaryList userId={user.id} />
+      <PDFChatPage userId={user.id} userEmail={user.email ?? ""} />
+      <RecentPDFList userId={user.id} />
     </PageContainer>
   );
 };

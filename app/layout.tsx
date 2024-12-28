@@ -14,6 +14,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { RestrictSupportChat } from "@/components/restrict-support-chat";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -75,9 +76,11 @@ export default async function RootLayout({
           showSpinner={false}
           
         />
+
+        <RestrictSupportChat/>
         <Analytics />
 
-        <Script
+        {/* <Script
           id="supportChatbot"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -85,7 +88,7 @@ export default async function RootLayout({
           window.$crisp=[];window.CRISP_WEBSITE_ID="0d02dec6-b49b-477b-8af3-357e2eb7064e";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
           `,
           }}
-        />
+        /> */}
       </body>
     </html>
   );

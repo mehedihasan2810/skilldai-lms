@@ -244,7 +244,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     // console.log({ user: session?.user.email });
 
     const options = files ? { experimental_attachments: files } : {};
-    // console.log({ files });
+    console.log({ files });
     handleSubmit(event, {
       body: {
         userId,
@@ -299,6 +299,8 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     setSelectedArtifacts([]);
     setFiles(null);
   };
+
+  console.log({ messages });
 
   return (
     <>
