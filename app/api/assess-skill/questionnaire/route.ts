@@ -1,4 +1,5 @@
 import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamObject } from "ai";
 import { z } from "zod";
 
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
     )
     .join(", ");
 
-    console.log({formattedSkills})
+  console.log({ formattedSkills });
 
   const prompt = `
     Generate a maximum of 10 questions to assess the following skills across this category: ${skillCategory}.
@@ -39,8 +40,12 @@ export async function POST(req: Request) {
     - Highlight category-specific nuances in the questions when applicable.
     `;
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamObject({
-    model: openai("gpt-4o-mini"),
+    model: openrouter("openai/gpt-4o-mini"),
     schema: outputSchema,
     maxTokens: 1000,
     prompt,
@@ -52,8 +57,6 @@ export async function POST(req: Request) {
 
   return result.toTextStreamResponse();
 }
-
-
 
 const dummyPrompt = `
 You are an AI assistant tasked with generating a comprehensive skill assessment analysis based on a user's answers to questions about specific skills. Your goal is to provide valuable insights and recommendations to help the user understand their current skill level and potential career paths.
@@ -117,4 +120,4 @@ Format your output as follows:
 </analysis>
 
 Ensure that your analysis is detailed, constructive, and tailored to the user's specific skills and answers. Use professional language and provide actionable advice throughout the analysis.
-`
+`;

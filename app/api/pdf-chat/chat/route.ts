@@ -1,6 +1,7 @@
 import { anthropic } from "@ai-sdk/anthropic";
 import { google } from "@ai-sdk/google";
 import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamText, convertToCoreMessages } from "ai";
 
 export const maxDuration = 60;
@@ -11,6 +12,10 @@ export async function POST(req: Request) {
   console.log({ user_email, userId });
 
   console.log(messages);
+
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
 
   const result = streamText({
     // model: openai("gpt-4o"),

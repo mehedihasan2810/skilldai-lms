@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamObject } from "ai";
 import { z } from "zod";
 
@@ -28,8 +29,14 @@ export async function POST(req: Request) {
 
   console.log({ systemPrompt });
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamObject({
-    model: openai("gpt-4o-mini"),
+    model: openrouter("deepseek/deepseek-chat"),
+    // model: openrouter("openai/gpt-4o-mini"),
+    // model: openrouter("google/gemini-flash-1.5"),
     prompt: systemPrompt,
     maxTokens: 1000,
     schema: outputSchema,

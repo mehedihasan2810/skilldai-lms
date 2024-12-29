@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { google } from "@ai-sdk/google";
-import {  streamObject } from "ai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { streamObject } from "ai";
 import { z } from "zod";
 
 export const maxDuration = 60;
@@ -23,12 +24,17 @@ const questionSchema = z.object({
 const questionsSchema = z.array(questionSchema).length(4);
 
 export async function POST(req: Request) {
-  const { files, userId,  userEmail } = await req.json();
+  const { files, userId, userEmail } = await req.json();
   const firstFile = files[0].data;
 
   console.log({ firstFile });
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamObject({
+    // model: openrouter("anthropic/claude-3.5-sonnet"),
     model: google("gemini-1.5-pro-latest"),
     messages: [
       {
@@ -88,7 +94,7 @@ export async function POST(req: Request) {
     onFinish: async ({ object, usage }) => {
       const supabase = await createClient();
 
-      console.log({object})
+      console.log({ object });
 
       const CURRENT_MONTH = new Date().getMonth() + 1;
       const CURRENT_YEAR = new Date().getFullYear();

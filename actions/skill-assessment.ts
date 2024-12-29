@@ -6,6 +6,7 @@ import { generateObject } from "ai";
 import { flattenValidationErrors } from "next-safe-action";
 import { z } from "zod";
 import { suggestQuestions } from "./search";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 const setPasswordSchema = z.object({
   skillCategory: z.string().trim().min(1, { message: "Required" }),
   skills: z.object({ skill: z.string(), rating: z.number() }).array(),
@@ -29,8 +30,13 @@ export const getSuggestedSkills = action
         ", "
       )}", suggest up to 5 concise, job-relevant professional skills. Ensure the suggestions are specific and aligned with the category and input skills.`;
     console.log({ prompt });
+
+    const openrouter = createOpenRouter({
+      apiKey: process.env.OPENROUTER_API_KEY,
+    });
+
     const { object, usage } = await generateObject({
-      model: openai("gpt-4o-mini"),
+      model: openrouter("openai/gpt-4o-mini"),
       maxTokens: 200,
       prompt,
       schema: z.object({
@@ -47,4 +53,3 @@ export const getSuggestedSkills = action
 
     return { suggestedSkills: object?.suggestedSkills ?? [] };
   });
- 

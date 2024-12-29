@@ -19,6 +19,7 @@ import { tavily } from "@tavily/core";
 import { openai } from "@ai-sdk/openai";
 import { getGroupConfig } from "@/actions/search";
 import { createClient } from "@/lib/supabase/server";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 export const maxDuration = 60;
 
@@ -105,6 +106,10 @@ const azure = createAzure({
   apiKey: process.env.AZURE_API_KEY,
 });
 
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
 // Provider registry
 const registry = experimental_createProviderRegistry({
   anthropic,
@@ -112,6 +117,7 @@ const registry = experimental_createProviderRegistry({
   google,
   xai,
   openai,
+  // openrouter,
 });
 
 function sanitizeUrl(url: string): string {

@@ -1,4 +1,5 @@
 import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamObject } from "ai";
 import { z } from "zod";
 
@@ -121,8 +122,12 @@ Ensure that your output uses appropriate markdown formatting, such as headings (
 
   console.log(prompt);
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamObject({
-    model: openai("gpt-4o-mini"),
+    model: openrouter("openai/gpt-4o-mini"),
     schema: outputSchema,
     maxTokens: 1000,
     prompt,

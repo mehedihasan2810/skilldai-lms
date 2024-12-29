@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamObject } from "ai";
 import { z } from "zod";
 
@@ -30,8 +31,13 @@ export async function POST(req: Request) {
 
   console.log({ systemPrompt });
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamObject({
-    model: openai("gpt-4o-mini"),
+    model: openrouter("deepseek/deepseek-chat"),
+    // model: openrouter("openai/gpt-4o-mini"),
     prompt: systemPrompt,
     // messages: [
     //   {
@@ -178,42 +184,39 @@ Remember to tailor the lesson plan to the specific inputs provided, ensuring it 
 // `;
 // };
 
+// "**Title: Introduction to History for Beginners**
 
+// **Introduction:**
+// Welcome to your history worksheet! In this activity, you will learn about important events and figures from the past. Understanding history helps us learn from our experiences and shapes our future.
 
+// **Questions:**
+// 1. **Multiple Choice:** Who was the first President of the United States?
+//    a) Abraham Lincoln
+//    b) George Washington
+//    c) Thomas Jefferson
+//    d) John Adams
 
-// "**Title: Introduction to History for Beginners**  
-  
-// **Introduction:**  
-// Welcome to your history worksheet! In this activity, you will learn about important events and figures from the past. Understanding history helps us learn from our experiences and shapes our future.  
-  
-// **Questions:**  
-// 1. **Multiple Choice:** Who was the first President of the United States?  
-//    a) Abraham Lincoln  
-//    b) George Washington  
-//    c) Thomas Jefferson  
-//    d) John Adams  
-  
-// 2. **True/False:** The Titanic sank on its first voyage.  
-  
-// 3. **Fill in the Blank:** The ancient Egyptian writing system is called __________.  
-  
-// 4. **Short Answer:** Name one reason why the ancient Greeks are important in history.  
-  
-// 5. **Multiple Choice:** Which event is celebrated on July 4th in the United States?  
-//    a) Thanksgiving  
-//    b) Independence Day  
-//    c) New Year's Day  
-//    d) Memorial Day  
-  
-// **Creative Task:**  
-// Imagine you are a time traveler visiting ancient Egypt. Write a short diary entry (3-5 sentences) about what you see and experience. What do you find interesting?  
-  
-// **Answer Key:**  
-// 1. b) George Washington  
-// 2. True  
-// 3. Hieroglyphics  
-// 4. Acceptable answers include: They created democracy, made advances in philosophy, or contributed to art and architecture.  
-// 5. b) Independence Day  
-  
-// **Creative Task Answer Guidelines:**  
+// 2. **True/False:** The Titanic sank on its first voyage.
+
+// 3. **Fill in the Blank:** The ancient Egyptian writing system is called __________.
+
+// 4. **Short Answer:** Name one reason why the ancient Greeks are important in history.
+
+// 5. **Multiple Choice:** Which event is celebrated on July 4th in the United States?
+//    a) Thanksgiving
+//    b) Independence Day
+//    c) New Year's Day
+//    d) Memorial Day
+
+// **Creative Task:**
+// Imagine you are a time traveler visiting ancient Egypt. Write a short diary entry (3-5 sentences) about what you see and experience. What do you find interesting?
+
+// **Answer Key:**
+// 1. b) George Washington
+// 2. True
+// 3. Hieroglyphics
+// 4. Acceptable answers include: They created democracy, made advances in philosophy, or contributed to art and architecture.
+// 5. b) Independence Day
+
+// **Creative Task Answer Guidelines:**
 // Students should mention elements like pyramids, pharaohs, or daily life in ancient Egypt. Encourage creativity and personal expression."

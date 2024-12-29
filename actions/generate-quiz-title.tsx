@@ -1,13 +1,15 @@
 "use server";
 
-import { google } from "@ai-sdk/google";
-import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { generateObject } from "ai";
 import { z } from "zod";
 
 export const generateQuizTitle = async (fileName: string) => {
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
   const result = await generateObject({
-    model: google("gemini-1.5-flash-latest"),
+    model: openrouter("google/gemini-flash-1.5"),
     schema: z.object({
       title: z
         .string()

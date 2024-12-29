@@ -5,6 +5,7 @@ import { courseSchema } from "./schema";
 import { cookies } from "next/headers";
 import { openai } from "@ai-sdk/openai";
 import { createClient } from "@/lib/supabase/server";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 export const maxDuration = 60;
 
@@ -100,8 +101,14 @@ Generate a comprehensive course on the topic "${courseTopic}" for ${targetAudien
 export async function POST(req: Request) {
   const supabase = await createClient();
 
-  const { courseTopic, targetAudience, difficultyLevel, grade, userId, userEmail } =
-    await req.json();
+  const {
+    courseTopic,
+    targetAudience,
+    difficultyLevel,
+    grade,
+    userId,
+    userEmail,
+  } = await req.json();
 
   // Validate input data (if needed)
   // You can define a separate Zod schema for input validation if required
@@ -120,8 +127,12 @@ export async function POST(req: Request) {
     return new Response("Missing required fields", { status: 400 });
   }
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamObject({
-    model: openai("gpt-4o"),
+    model: openrouter("openai/gpt-4o"),
     // model: anthropic("claude-3-5-sonnet-20240620"),
     // output: "array",
     schema: courseSchema,

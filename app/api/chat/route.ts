@@ -6,6 +6,7 @@ import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
 import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
 import { createOpenAI, openai } from "@ai-sdk/openai";
 import { createClient } from "@/lib/supabase/server";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 export const maxDuration = 60;
 
@@ -32,8 +33,6 @@ export async function POST(req: Request) {
 
   const { messages, user_email, userId, activeChatTab } = await req.json();
 
-  
-
   console.log({ user_email, userId, activeChatTab });
 
   const { data: tokenUsage, error } = await supabase
@@ -52,6 +51,10 @@ export async function POST(req: Request) {
     return new Response("Monthly token limit reached", { status: 429 });
   }
 
+  const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
   const result = streamText({
     // model: anthropic(process.env.LLM_MODEL_NAME!),
     // model: anthropic("claude-3-haiku-20240307"),
@@ -59,8 +62,8 @@ export async function POST(req: Request) {
     // model: groq("llama-3.1-70b-versatile"),
     model:
       activeChatTab === "codeGPT"
-        ? anthropic("claude-3-5-sonnet-20240620")
-        : deepseek("deepseek-chat"),
+        ? openrouter("anthropic/claude-3.5-sonnet")
+        : openrouter("deepseek/deepseek-chat"),
 
     system:
       activeChatTab === "codeGPT"
