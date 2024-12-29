@@ -207,7 +207,7 @@ export const PDFChatPage = ({
               <input
                 type="file"
                 onChange={handleFileChange}
-                // accept="application/pdf"
+                accept="application/pdf"
                 className="absolute inset-0 opacity-0 cursor-pointer"
               />
               <FileUp className="h-8 w-8 mb-2 text-muted-foreground" />
