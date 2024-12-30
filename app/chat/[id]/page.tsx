@@ -18,7 +18,7 @@ const ChatPage = ({ params: { id } }: Props) => {
       <Suspense
         fallback={
           <div className="h-screen w-screen flex items-center justify-center gap-2">
-            <Loader className="size-6 animate-spin" /> Loading...
+            <Loader className="size-6 animate-spin" /> Please wait...
           </div>
         }
       >

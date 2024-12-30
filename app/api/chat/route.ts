@@ -63,7 +63,8 @@ export async function POST(req: Request) {
     model:
       activeChatTab === "codeGPT"
         ? openrouter("anthropic/claude-3.5-sonnet")
-        : openrouter("deepseek/deepseek-chat"),
+        : // : openai("gpt-4o-mini"),
+          openrouter("deepseek/deepseek-chat"),
 
     system:
       activeChatTab === "codeGPT"

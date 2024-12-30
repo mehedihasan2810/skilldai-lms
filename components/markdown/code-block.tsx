@@ -5,7 +5,10 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
-import { twMerge } from "tailwind-merge";
+import { cn, shortUid } from "@/lib/utils";
+import React from "react";
+import { useTheme } from "next-themes";
+import { vs } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface Props {
   language: string;
@@ -44,59 +47,48 @@ export const programmingLanguages: languageMap = {
   css: ".css",
 };
 
-export const generateRandomString = (length: number, lowercase = false) => {
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXY3456789"; // excluding similar looking characters like Z, 2, I, 1, O, 0
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return lowercase ? result.toLowerCase() : result;
-};
+export const CodeBlock = React.memo(
+  ({
+    language,
+    value,
+    // showHeader = true,
+    className = "",
+  }: Props) => {
+    const { isCopied, copyToClipboard } = useCopyToClipboard({
+      timeout: 2000,
+    });
+    const { theme } = useTheme();
 
-const CodeBlock = ({
-  language,
-  value,
-  showHeader = true,
-  className = "",
-}: Props) => {
-  // * Copy to clipboard is used in multiple places, so using a custom hook
-  const { isCopied, copyToClipboard } = useCopyToClipboard({
-    timeout: 2000,
-  });
-
-  function onCopy() {
-    if (isCopied) return;
-    copyToClipboard(value);
-  }
-
-  const downloadAsFile = () => {
-    const fileExtension = programmingLanguages[language] || ".file";
-    const suggestedFileName = `file-${generateRandomString(
-      3,
-      true
-    )}${fileExtension}`;
-    const fileName = window.prompt("Enter file name" || "", suggestedFileName);
-
-    if (!fileName) {
-      // user pressed cancel on prompt
-      return;
+    function onCopy() {
+      if (isCopied) return;
+      copyToClipboard(value);
     }
 
-    const blob = new Blob([value], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.download = fileName;
-    link.href = url;
-    link.style.display = "none";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+    const downloadAsFile = () => {
+      const fileExtension = programmingLanguages[language] || ".file";
+      const suggestedFileName = `my-file-${shortUid.rnd()}${fileExtension}`;
+      const fileName = window.prompt("Enter file name", suggestedFileName);
 
-  return (
-    <div className={twMerge("codeblock relative w-full font-sans", className)}>
-      {showHeader && (
+      if (!fileName) {
+        // user pressed cancel on prompt
+        return;
+      }
+
+      const blob = new Blob([value], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.download = fileName;
+      link.href = url;
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    };
+
+    return (
+      <div className={cn("codeblock relative w-full font-sans", className)}>
+        {/* {showHeader && ( */}
         <div className="flex items-center justify-between rounded-t-lg bg-zinc-700 px-4 py-1">
           <span className="text-xs lowercase text-white">{language}</span>
           <div className="flex items-center gap-2">
@@ -121,37 +113,41 @@ const CodeBlock = ({
             </button>
           </div>
         </div>
-      )}
-      <SyntaxHighlighter
-        lineProps={{
-          style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
-        }}
-        language={language}
-        style={oneDark}
-        PreTag="div"
-        showLineNumbers
-        wrapLines={true}
-        customStyle={{
-          margin: 0,
-          width: "100%",
-          padding: "1.5rem 1rem",
-          borderBottomLeftRadius: "8px",
-          borderBottomRightRadius: "8px",
-          overflowX: "auto",
-        }}
-        codeTagProps={{
-          style: {
-            fontSize: "0.9rem",
-            fontFamily: "var(--font-inter)",
-          },
-        }}
-      >
-        {value}
-      </SyntaxHighlighter>
-    </div>
-  );
-};
+        {/* )} */}
+        <SyntaxHighlighter
+          lineProps={{
+            style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+          }}
+          language={language}
+          style={theme === "dark" ? oneDark : vs}
+          PreTag="div"
+          showLineNumbers
+          wrapLines={true}
+          customStyle={{
+            margin: 0,
+            width: "100%",
+            padding: "1.5rem 1rem",
+            borderBottomLeftRadius: "8px",
+            borderBottomRightRadius: "8px",
+            borderTopLeftRadius: "0px",
+            borderTopRightRadius: "0px",
+            overflowX: "auto",
+          }}
+          codeTagProps={{
+            style: {
+              fontSize: "0.9rem",
+              fontFamily: "var(--font-inter)",
+            },
+          }}
+        >
+          {value}
+        </SyntaxHighlighter>
+      </div>
+    );
+  },
+  (prevProps, nextProps) =>
+    prevProps.value === nextProps.value &&
+    prevProps.language === nextProps.language
+);
 
 CodeBlock.displayName = "CodeBlock";
-
-export { CodeBlock };

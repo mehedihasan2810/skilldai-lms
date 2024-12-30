@@ -10,6 +10,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import mime from "mime";
+import ShortUniqueId from "short-unique-id";
 
 export const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -280,3 +281,14 @@ export type SearchGroup = (typeof searchGroups)[number];
 export const getMimeType = (filePath: string) => {
   return mime.getType(filePath) || "unknown";
 };
+
+export const isValidUrl = (str: string) => {
+  try {
+      new URL(str);
+      return true;
+  } catch {
+      return false;
+  }
+};
+
+export const shortUid = new ShortUniqueId({ length: 10 });

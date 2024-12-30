@@ -18,10 +18,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { questionsSchema } from "@/lib/schemas";
 import { generateQuizTitle } from "@/actions/generate-quiz-title";
 import { createClient } from "@/lib/supabase/client";
-import ShortUniqueId from "short-unique-id";
 import { useRouter } from "nextjs-toploader/app";
+import { shortUid } from "@/lib/utils";
 
-const uid = new ShortUniqueId({ length: 10 });
 
 export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string,  userEmail: string }) {
   const [files, setFiles] = useState<File[]>([]);
@@ -73,7 +72,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
           .upload(
             `${userId}/${files[0].name
               .replace(".pdf", "")
-              .replaceAll(" ", "-")}-${uid.rnd()}.pdf`,
+              .replaceAll(" ", "-")}-${shortUid.rnd()}.pdf`,
             files[0]
           );
 

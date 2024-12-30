@@ -6,11 +6,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { CourseConfig, exampleCourse } from "@/config";
 import { SidebarNavItem } from "@/types/nav";
-import ShortUniqueId from "short-unique-id";
 import { useCourseTrackStore } from "@/lib/stores/course-store";
 import { Check } from "lucide-react";
 
-const uid = new ShortUniqueId({ length: 10 });
 
 const sidebarNavs = [
   {

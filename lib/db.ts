@@ -3,10 +3,9 @@ import { SupabaseContextType } from "@/lib/supabase/types";
 // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "./supabase/client";
 import { generateQuizTitle } from "@/actions/generate-quiz-title";
-import ShortUniqueId from "short-unique-id";
 import { getQueryClient } from "@/app/react-query-provider";
+import { shortUid } from "./utils";
 
-const uid = new ShortUniqueId({ length: 10 });
 const supabase = createClient();
 
 const queryClient = getQueryClient();
@@ -746,7 +745,7 @@ export const savePDFInfo = async ({
     .upload(
       `${userId}/${file.name
         .replace(".pdf", "")
-        .replaceAll(" ", "-")}-${uid.rnd()}.pdf`,
+        .replaceAll(" ", "-")}-${shortUid.rnd()}.pdf`,
       file
     );
 
