@@ -88,8 +88,8 @@ export const PDFChatPanel = ({
       <div className="grow overflow-y-auto" ref={scrollRef}>
         <ChatMessageList
           messages={messages}
-          setCurrentArtifact={() => {}}
           containerRef={messagesRef}
+          isLoading={isChatLoading}
         />
       </div>
       <div

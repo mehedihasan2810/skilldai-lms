@@ -350,8 +350,8 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
             <>
               <ChatMessageList
                 messages={messages}
-                setCurrentArtifact={setCurrentArtifact}
                 containerRef={messagesRef}
+                isLoading={generatingResponse}
               />
               <ChatInput
                 userId={userId}
