@@ -25,6 +25,7 @@ interface Props {
   pdfFileName: string;
   userId: string;
   userEmail: string;
+  stopGenerating: () => void;
 }
 
 export const PDFChatPanel = ({
@@ -38,6 +39,7 @@ export const PDFChatPanel = ({
   pdfFileName,
   userId,
   userEmail,
+  stopGenerating,
 }: Props) => {
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
@@ -100,7 +102,7 @@ export const PDFChatPanel = ({
         <div>
           <form
             className="flex gap-2 items-start"
-            onSubmit={(e) => onHandleSend(e)}
+            onSubmit={isChatLoading ? stopGenerating : (e) => onHandleSend(e)}
           >
             <TextareaAutosize
               //   ref={inputRef}
@@ -144,8 +146,8 @@ export const PDFChatPanel = ({
             </Button> */}
 
             <Button
-              //   type={isLoading ? "button" : "submit"}
-              //   onClick={isLoading ? stopGenerating : onSubmit}
+              type="submit"
+              // onClick={isLoading ? stopGenerating : onSubmit}
               size="icon"
               //   className="size-7"
             >

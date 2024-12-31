@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { google } from "@ai-sdk/google";
+import { openai } from "@ai-sdk/openai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamObject } from "ai";
 import { z } from "zod";
@@ -34,8 +35,9 @@ export async function POST(req: Request) {
   });
 
   const result = streamObject({
-    // model: openrouter("anthropic/claude-3.5-sonnet"),
-    model: google("gemini-1.5-pro-latest"),
+    model: openrouter("anthropic/claude-3.5-sonnet:beta"),
+    // model: openai("gpt-4o-mini"),
+    // model: google("gemini-1.5-pro-latest"),
     messages: [
       {
         role: "system",

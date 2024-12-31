@@ -60,7 +60,8 @@ export const ChatMessageList = React.memo(
   },
   (prevProps, nextProps) =>
     prevProps.messages === nextProps.messages &&
-    prevProps.containerRef === nextProps.containerRef
+    prevProps.containerRef === nextProps.containerRef &&
+    prevProps.isLoading === nextProps.isLoading
 );
 
 ChatMessageList.displayName = "ChatMessageList";

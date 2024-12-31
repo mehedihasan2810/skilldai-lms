@@ -63,16 +63,13 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
   const pdfContainerRef = useRef<HTMLDivElement | null>(null);
   const documentContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const onResize = useCallback<ResizeObserverCallback>(
-    (entries) => {
-      const [entry] = entries;
+  const onResize = useCallback<ResizeObserverCallback>((entries) => {
+    const [entry] = entries;
 
-      if (entry) {
-        setContainerWidth(entry.contentRect.width);
-      }
-    },
-    []
-  );
+    if (entry) {
+      setContainerWidth(entry.contentRect.width);
+    }
+  }, []);
 
   useResizeObserver(
     documentContainerRef.current,
@@ -101,11 +98,17 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
 
     if (!selection.trim()) return;
 
-    onChatAppend({ role: "user", content: `Summarise:\n${selection}` });
+    onChatAppend({
+      role: "user",
+      content: `Summarise:\n${selection.replaceAll("\n", " ")}`,
+    });
 
     savePdfChatMessage({
       pdfChatId: pdfChatId,
-      message: { role: "user", content: `Summarise:\n${selection}` },
+      message: {
+        role: "user",
+        content: `Summarise:\n${selection.replaceAll("\n", " ")}`,
+      },
     });
   };
 
@@ -114,11 +117,17 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
 
     if (!selection.trim()) return;
 
-    onChatAppend({ role: "user", content: `Explain:\n${selection}` });
+    onChatAppend({
+      role: "user",
+      content: `Explain:\n${selection.replaceAll("\n", " ")}`,
+    });
 
     savePdfChatMessage({
       pdfChatId: pdfChatId,
-      message: { role: "user", content: `Explain:\n${selection}` },
+      message: {
+        role: "user",
+        content: `Explain:\n${selection.replaceAll("\n", " ")}`,
+      },
     });
   };
 

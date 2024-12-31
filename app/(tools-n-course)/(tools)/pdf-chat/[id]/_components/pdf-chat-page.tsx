@@ -74,12 +74,12 @@ export const TalkToPDF = ({
         })
       ),
     ],
-    onFinish: async (message) => {
-      console.log({ message });
+    onFinish: async (assistantMessage) => {
+      console.log({ assistantMessage });
 
       await savePdfChatMessage({
         pdfChatId: pdfId,
-        message,
+        message: assistantMessage,
       });
     },
     onError(error) {
@@ -139,7 +139,7 @@ export const TalkToPDF = ({
   if (idPDFDataLoading) {
     return (
       <div className="h-full flex items-center justify-center gap-2">
-        <Loader className="animate-spin size-6" /> Loading...
+        <Loader className="animate-spin size-6" /> Please wait...
       </div>
     );
   }
@@ -148,7 +148,7 @@ export const TalkToPDF = ({
     return <p>{error ? error.message : "Unable to load the data!"}</p>;
   }
 
-  console.log({ summaryMessages });
+  console.log({ isLoading, summaryMessages });
 
   return (
     <div className="">
@@ -211,13 +211,16 @@ export const TalkToPDF = ({
                 pdfFileName={pdfChatData.file_name}
                 userId={userId}
                 userEmail={userEmail}
+                stopGenerating={stopGenerating}
               />
             </TabsContent>
             <TabsContent value="summary">
-              {summaryMessages[summaryMessages.length - 1]?.role === "user" ||
-              (summaryMessages[summaryMessages.length - 1]?.role ===
-                "assistant" &&
-                summaryMessages[summaryMessages.length - 1]?.content === "") ? (
+              {(summaryMessages[summaryMessages.length - 1]?.role === "user" ||
+                (summaryMessages[summaryMessages.length - 1]?.role ===
+                  "assistant" &&
+                  summaryMessages[summaryMessages.length - 1]?.content ===
+                    "")) &&
+              isSummaryLoading ? (
                 <div className="flex items-center gap-2 p-4">
                   <Loader className="size-6 animate-spin" /> Summarising...
                 </div>
