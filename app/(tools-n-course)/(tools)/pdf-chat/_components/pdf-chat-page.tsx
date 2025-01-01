@@ -72,14 +72,14 @@ export const PDFChatPage = ({
     const selectedFiles = Array.from(e.target.files || []);
     console.log({ selectedFiles });
     const validFiles = selectedFiles.filter(
-      (file) => file.size <= 5 * 1024 * 1024
+      (file) => file.size <= 15 * 1024 * 1024
     );
     // const validFiles = selectedFiles.filter(
     //   (file) => file.type === "application/pdf" && file.size <= 5 * 1024 * 1024
     // );
 
     if (validFiles.length !== selectedFiles.length) {
-      toast.error("Only PDF files under 5MB are allowed.");
+      toast.error("Only PDF files under or equal 15MB are allowed.");
       return;
     }
 
