@@ -49,9 +49,6 @@ interface Props {
 }
 
 export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
-  const [file, setFile] = useState<PDFFile>(
-    "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/quiz-from-doc/299d3d87-8bb7-4527-b9af-137cb14c6914/A_Brief_Introduction_To_AI-NPysQAnDTG.pdf"
-  );
   const [numPages, setNumPages] = useState<number>(1);
   const [containerWidth, setContainerWidth] = useState<number>();
   const [floatButtonsPosition, setFloatButtonsPosition] = useState<{
@@ -174,7 +171,7 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
 
   return (
     <div>
-      <div className="bg-gray-50 rounded-xl py-4 relative h-full">
+      <div className="bg-gray-200 rounded-xl py-4 relative h-full">
         <div className="flex items-center gap-2 text-black px-4 pb-4">
           <input
             onChange={(e) =>

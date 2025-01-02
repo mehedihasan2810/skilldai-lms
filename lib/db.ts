@@ -928,3 +928,65 @@ export const savePdfChatMessage = async ({
 
   return message;
 };
+
+export const createNCERTChat = async ({
+  userId,
+  pdfUrl,
+}: {
+  userId: string;
+  pdfUrl: string;
+}) => {
+  console.log({ userId, pdfUrl });
+
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const { error: chatError, data: chat } = await supabase
+    .from("pdf_chat")
+    .select(`id`)
+    .eq("file_url", pdfUrl);
+  // .single();
+
+  if (chatError) {
+    console.error(chatError);
+    throw new Error(chatError.message);
+  }
+
+  console.log({ chat });
+  if (chat && chat.length > 0) return chat[0];
+
+  const generatedTitle = await generateQuizTitle(
+    pdfUrl.replace(
+      "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/",
+      ""
+    )
+  );
+
+  console.log({ generatedTitle });
+
+  const { data, error } = await supabase
+    .from("pdf_chat")
+    .insert({
+      title: generatedTitle,
+      summary: "",
+      user_id: userId,
+      file_name: "",
+      file_url: pdfUrl,
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  if (!data) {
+    throw new Error("Could not save the data");
+  }
+
+  console.log({ data });
+
+  return data;
+};

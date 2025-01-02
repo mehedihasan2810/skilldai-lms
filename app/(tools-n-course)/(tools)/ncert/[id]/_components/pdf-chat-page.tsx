@@ -16,19 +16,11 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Divide, Loader } from "lucide-react";
 import Markdown from "@/components/markdown/markdown";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const PDFViewer = dynamic(
   () => import("./pdf-viewer").then((mod) => mod.PDFViewer),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="bg-gray-50 rounded-xl py-4 grid place-items-center h-[89vh] text-gray-900">
-        <div className="flex items-center gap-2">
-          <Loader className="size-6 animate-spin" /> Loading...
-        </div>
-      </div>
-    ),
-  }
+  { ssr: false }
 );
 
 const initialMessages = [
@@ -57,7 +49,7 @@ export const TalkToPDF = ({
     error,
     isLoading: idPDFDataLoading,
   } = useQuery({
-    queryKey: ["pdfData", pdfId],
+    queryKey: ["NCERTPdfData", pdfId],
     queryFn: async () => await getPDFData({ pdfId }),
   });
 
@@ -165,9 +157,9 @@ export const TalkToPDF = ({
         <ResizablePanel className="pr-4">
           {" "}
           <PDFViewer
+            pdfUrl={pdfChatData.file_url}
             onChatAppend={append}
             pdfChatId={pdfId}
-            pdfUrl={pdfChatData.file_url}
           />
         </ResizablePanel>
         <ResizableHandle withHandle />
@@ -230,8 +222,11 @@ export const TalkToPDF = ({
                   summaryMessages[summaryMessages.length - 1]?.content ===
                     "")) &&
               isSummaryLoading ? (
-                <div className="flex items-center gap-2 p-4">
-                  <Loader className="size-6 animate-spin" /> Summarising...
+                <div className="flex flex-col gap-2 pt-4">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-[95%]" />
+                  <Skeleton className="h-4 w-[90%]" />
+                  <Skeleton className="h-4 w-[85%]" />
                 </div>
               ) : (
                 <ScrollArea className="h-[85vh]">

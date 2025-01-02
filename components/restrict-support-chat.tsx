@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 import React, { useEffect } from "react";
 
-const restrictPathnames = ["/pdf-chat/"];
+const restrictPathnames = ["/pdf-chat/",  "/ncert/"];
 
 export const RestrictSupportChat = () => {
   const pathname = usePathname();

@@ -37,16 +37,18 @@ export const RecentPDFList = ({ userId }: { userId: string }) => {
             pdfs?.map((pdfData) => (
               <div
                 key={pdfData.id}
-                className="border p-4 rounded-md bg-card text-card-foreground space-y-2"
+                className="border p-4 rounded-md bg-card text-card-foreground space-y-2 flex flex-col justify-between"
               >
+                <div>
                 <Image
-                  className="w-full rounded-md aspect-video"
+                  className="w-full rounded-md aspect-video mb-2"
                   src="/pdf.png"
                   alt="Pdf image"
                   width={300}
                   height={200}
                 />
-                <h3 className="text-lg font-medium">{pdfData.title}</h3>
+                <h4 className=" font-medium">{pdfData.title}</h4>
+                </div>
                 <Link
                   href={`/pdf-chat/${pdfData.id}`}
                   className={buttonVariants({
