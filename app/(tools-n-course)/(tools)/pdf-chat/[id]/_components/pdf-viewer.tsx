@@ -20,6 +20,8 @@ import { Button } from "@/components/ui";
 import { ChatRequestOptions, CreateMessage, Message } from "ai";
 import { Separator } from "@/components/ui/separator";
 import { savePdfChatMessage } from "@/lib/db";
+import { toast } from "sonner";
+import { isMonthlyTokenUsageReached } from "@/lib/utils";
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 //   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -46,9 +48,15 @@ interface Props {
   ) => Promise<string | null | undefined>;
   pdfChatId: string;
   pdfUrl: string;
+  totalTokens?: number;
 }
 
-export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
+export function PDFViewer({
+  onChatAppend,
+  pdfChatId,
+  pdfUrl,
+  totalTokens = 0,
+}: Props) {
   const [file, setFile] = useState<PDFFile>(
     "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/quiz-from-doc/299d3d87-8bb7-4527-b9af-137cb14c6914/A_Brief_Introduction_To_AI-NPysQAnDTG.pdf"
   );
@@ -96,6 +104,8 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
   const onHandleSummarize = () => {
     console.log({ selection });
 
+    if (isMonthlyTokenUsageReached({ totalTokens })) return;
+
     if (!selection.trim()) return;
 
     onChatAppend({
@@ -114,6 +124,7 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
 
   const onHandleExplain = () => {
     console.log({ selection });
+    if (isMonthlyTokenUsageReached({ totalTokens })) return;
 
     if (!selection.trim()) return;
 

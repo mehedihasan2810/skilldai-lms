@@ -90,7 +90,7 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
     onSuccess: async (createdChat) => {
       console.log({ createdChat });
 
-      router.push(`/ncert/${createdChat.id}`);
+      router.push(`/pdf-chat/${createdChat.id}`);
     },
     onError: (error) => {
       console.error({ error });

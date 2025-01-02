@@ -1,7 +1,7 @@
 import { ChatMessageList } from "@/components/chat/message-list";
 import { Button } from "@/components/ui";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
-import { cn } from "@/lib/utils";
+import { cn, isMonthlyTokenUsageReached } from "@/lib/utils";
 import { ArrowUpIcon, CircleStopIcon } from "lucide-react";
 import React, { SyntheticEvent } from "react";
 import TextareaAutosize from "react-textarea-autosize";
@@ -26,6 +26,7 @@ interface Props {
   userId: string;
   userEmail: string;
   stopGenerating: () => void;
+  totalTokens: number;
 }
 
 export const PDFChatPanel = ({
@@ -40,11 +41,14 @@ export const PDFChatPanel = ({
   userId,
   userEmail,
   stopGenerating,
+  totalTokens = 0,
 }: Props) => {
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
 
   const onHandleSend = async (event?: SyntheticEvent) => {
+    if (isMonthlyTokenUsageReached({ totalTokens })) return;
+
     const content = chatInput.trim();
 
     if (!content) return;

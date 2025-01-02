@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import mime from "mime";
 import ShortUniqueId from "short-unique-id";
+import { toast } from "sonner";
 
 export const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -284,11 +285,25 @@ export const getMimeType = (filePath: string) => {
 
 export const isValidUrl = (str: string) => {
   try {
-      new URL(str);
-      return true;
+    new URL(str);
+    return true;
   } catch {
-      return false;
+    return false;
   }
 };
 
 export const shortUid = new ShortUniqueId({ length: 10 });
+
+export const isMonthlyTokenUsageReached = ({
+  totalTokens = 0,
+}: {
+  totalTokens: number;
+}) => {
+  const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
+  if (totalTokens > (Number(MAX_TOKENS) || 0)) {
+    toast.warning("Monthly token limit reached");
+    return true;
+  }
+
+  return false
+};

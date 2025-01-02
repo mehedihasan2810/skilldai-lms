@@ -16,6 +16,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Divide, Loader } from "lucide-react";
 import Markdown from "@/components/markdown/markdown";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useUsageToken } from "@/lib/hooks/use-usage-token";
 
 const PDFViewer = dynamic(
   () => import("./pdf-viewer").then((mod) => mod.PDFViewer),
@@ -52,6 +53,10 @@ export const TalkToPDF = ({
 
   const queryClient = useQueryClient();
 
+  const { totalTokens, insertUsageTokens } = useUsageToken({ userId });
+
+  console.log({ totalTokens });
+
   const {
     data: pdfChatData,
     error,
@@ -83,12 +88,23 @@ export const TalkToPDF = ({
         })
       ),
     ],
-    onFinish: async (assistantMessage) => {
-      console.log({ assistantMessage });
+    onFinish: async (assistantMessage, { usage }) => {
+      console.log({ assistantMessage, usage });
 
-      await savePdfChatMessage({
+      savePdfChatMessage({
         pdfChatId: pdfId,
         message: assistantMessage,
+      });
+
+      insertUsageTokens({
+        userId,
+        userEmail,
+        type: "pdfChat",
+        llm: "anthropic",
+        model: "claude-3-5-sonnet-20241022",
+        promptTokens: usage.promptTokens,
+        completionTokens: usage.completionTokens,
+        totalTokens: usage.totalTokens,
       });
     },
     onError(error) {
@@ -168,6 +184,7 @@ export const TalkToPDF = ({
             onChatAppend={append}
             pdfChatId={pdfId}
             pdfUrl={pdfChatData.file_url}
+            totalTokens={totalTokens}
           />
         </ResizablePanel>
         <ResizableHandle withHandle />
@@ -221,6 +238,7 @@ export const TalkToPDF = ({
                 userId={userId}
                 userEmail={userEmail}
                 stopGenerating={stopGenerating}
+                totalTokens={totalTokens}
               />
             </TabsContent>
             <TabsContent value="summary">

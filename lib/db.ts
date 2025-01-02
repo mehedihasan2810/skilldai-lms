@@ -990,3 +990,66 @@ export const createNCERTChat = async ({
 
   return data;
 };
+
+export const getUsageTokens = async ({ userId }: { userId: string }) => {
+  console.log({ userId });
+
+  const CURRENT_MONTH = new Date().getMonth() + 1;
+  const CURRENT_YEAR = new Date().getFullYear();
+  const { data: tokenUsage, error } = await supabase
+    .from("token_usage")
+    .select("total_tokens")
+    .eq("user_id", userId)
+    .eq("month", CURRENT_MONTH)
+    .eq("year", CURRENT_YEAR);
+
+  const totalTokens = (tokenUsage ?? []).reduce(
+    (acc, token) => acc + token.total_tokens,
+    0
+  );
+
+  console.log({ tokenUsage, totalTokens });
+
+  return { totalTokens };
+};
+
+export const insertUsageTokens = async ({
+  userId,
+  userEmail,
+  promptTokens,
+  completionTokens,
+  totalTokens,
+  llm,
+  model,
+  type,
+}: {
+  userId: string;
+  userEmail: string;
+  promptTokens: number;
+  completionTokens: number;
+  totalTokens: number;
+  llm: string;
+  model: string;
+  type: string;
+}) => {
+  const CURRENT_MONTH = new Date().getMonth() + 1;
+  const CURRENT_YEAR = new Date().getFullYear();
+  const { data, error: error } = await supabase
+    .from("token_usage")
+    .insert({
+      type,
+      user_id: userId,
+      // user_email: inputData.userEmail,
+      email: userEmail,
+      month: CURRENT_MONTH,
+      year: CURRENT_YEAR,
+      input_token: promptTokens,
+      output_token: completionTokens,
+      total_tokens: totalTokens,
+      llm,
+      model,
+    })
+    .select("total_tokens");
+
+  console.log({ data, error });
+};
