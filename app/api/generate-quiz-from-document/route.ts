@@ -26,6 +26,31 @@ const questionsSchema = z.array(questionSchema).length(4);
 
 export async function POST(req: Request) {
   const { files, userId, userEmail } = await req.json();
+
+  const supabase = await createClient();
+
+  const CURRENT_MONTH = new Date().getMonth() + 1;
+  const CURRENT_YEAR = new Date().getFullYear();
+  const { data: tokenUsage, error } = await supabase
+    .from("token_usage")
+    .select("total_tokens")
+    .eq("user_id", userId)
+    .eq("month", CURRENT_MONTH)
+    .eq("year", CURRENT_YEAR);
+
+  const totalTokens = (tokenUsage ?? []).reduce(
+    (acc, token) => acc + token.total_tokens,
+    0
+  );
+
+  console.log({ tokenUsage, totalTokens });
+
+  const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
+
+  if (totalTokens > (Number(MAX_TOKENS) || 0)) {
+    return new Response("Monthly token limit reached", { status: 429 });
+  }
+
   const firstFile = files[0].data;
 
   console.log({ firstFile });
@@ -94,12 +119,8 @@ export async function POST(req: Request) {
     schema: questionSchema,
     output: "array",
     onFinish: async ({ object, usage }) => {
-      const supabase = await createClient();
-
       console.log({ object });
 
-      const CURRENT_MONTH = new Date().getMonth() + 1;
-      const CURRENT_YEAR = new Date().getFullYear();
       const { data, error: error } = await supabase
         .from("token_usage")
         .insert({
@@ -112,8 +133,8 @@ export async function POST(req: Request) {
           input_token: usage.promptTokens,
           output_token: usage.completionTokens,
           total_tokens: usage.totalTokens,
-          llm: "google",
-          model: "gemini-1.5-pro-latest",
+          llm: "anthropic",
+          model: "claude-3.5-sonnet",
         })
         .select("total_tokens");
 
