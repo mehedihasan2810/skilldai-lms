@@ -425,9 +425,8 @@ export const NCERTPage = ({
   console.log({ activeClass, activeSubject, activeBook, activeChapter });
 
   return (
-    <div>
-      <div className="grid grid-cols-2 gap-8">
-        <ScrollArea className="h-[89vh] rounded-xl">
+      <div className="grid md:grid-cols-2 gap-8 pb-10 md:pb-0">
+        <ScrollArea className="h-[70vh] md:h-[89vh] rounded-xl">
           {ncertClasses.map((ncertClass) => (
             <Accordion
               value={activeClassAccordion}
@@ -528,6 +527,5 @@ export const NCERTPage = ({
           />
         </div>
       </div>
-    </div>
   );
 };

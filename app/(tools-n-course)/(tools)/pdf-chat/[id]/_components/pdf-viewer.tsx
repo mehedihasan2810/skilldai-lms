@@ -198,10 +198,10 @@ export function PDFViewer({
         </div>
 
         <ScrollArea
-          className="h-[70vh] md:h-[82vh] px-4 rounded-xl relative"
+          className="h-[70vh] md:h-[82vh] px-4 rounded-xl relative w-[calc(100dvw-32px)] md:w-auto"
           ref={documentContainerRef}
         >
-          <div ref={pdfContainerRef} className="h-[82vh]">
+          <div ref={pdfContainerRef} className="h-[70vh] md:h-[82vh]">
             {floatButtonsPosition && (
               <div
                 ref={floatButtonsRef}

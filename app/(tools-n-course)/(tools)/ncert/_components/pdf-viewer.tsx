@@ -130,10 +130,10 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
       </div>
 
       <ScrollArea
-        className="h-[80vh] px-4 rounded-xl relative"
+        className="h-[70vh] md:h-[80vh] px-4 rounded-xl relative w-[calc(100dvw-32px)] md:w-auto"
         ref={documentContainerRef}
       >
-        <div ref={pdfContainerRef} className="h-[80vh]">
+        <div ref={pdfContainerRef} className="h-[70vh] md:h-[80vh]">
           <Document
             file={pdfUrl}
             onLoadSuccess={onDocumentLoadSuccess}

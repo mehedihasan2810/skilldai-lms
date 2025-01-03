@@ -2,6 +2,7 @@ import React from "react";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { NCERTPage } from "./_components/ncert-page";
+import PageContainer from "@/components/dashboard/page-container";
 
 const Page = async ({
   params,
@@ -28,9 +29,9 @@ const Page = async ({
   }
   console.log(searchParams);
   return (
-    <div className="p-4 h-[calc(100dvh-65px)]">
+    <PageContainer scrollable>
       <NCERTPage searchParams={searchParams} userId={user.id} />
-    </div>
+    </PageContainer>
   );
 };
 
