@@ -88,10 +88,10 @@ export const PDFChatPanel = ({
   return (
     <div
       className={cn(
-        "relative flex flex-col w-full overflow-x-hidden h-[84vh] "
+        "relative flex flex-col w-full overflow-x-hidden h-[70vh] md:h-[84vh]"
       )}
     >
-      <div className="grow overflow-y-auto" ref={scrollRef}>
+      <div className="pdf-chat-scroll-container grow overflow-y-auto" ref={scrollRef}>
         <ChatMessageList
           messages={messages}
           containerRef={messagesRef}

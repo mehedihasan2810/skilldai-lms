@@ -177,94 +177,179 @@ export const TalkToPDF = ({
 
   return (
     <div className="">
-      <ResizablePanelGroup direction="horizontal" className="w-full h-full">
-        <ResizablePanel className="pr-4">
-          {" "}
-          <PDFViewer
-            onChatAppend={append}
-            pdfChatId={pdfId}
-            pdfUrl={pdfChatData.file_url}
-            totalTokens={totalTokens}
-          />
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel className="pl-4">
-          <Tabs defaultValue="chat" className=" h-full">
-            <TabsList className="grid grid-cols-2">
-              <TabsTrigger className="" value="chat">
-                Chat
-              </TabsTrigger>
-              <TabsTrigger
-                onClick={() => {
-                  if (pdfChatData.summary || isSummaryLoading) return;
+      <div className="hidden md:block p-4">
+        <ResizablePanelGroup direction="horizontal" className="w-full h-full">
+          <ResizablePanel className="pr-4">
+            {" "}
+            <PDFViewer
+              onChatAppend={append}
+              pdfChatId={pdfId}
+              pdfUrl={pdfChatData.file_url}
+              totalTokens={totalTokens}
+            />
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel className="pl-4">
+            <Tabs defaultValue="chat" className=" h-full">
+              <TabsList className="grid grid-cols-2">
+                <TabsTrigger className="" value="chat">
+                  Chat
+                </TabsTrigger>
+                <TabsTrigger
+                  onClick={() => {
+                    if (pdfChatData.summary || isSummaryLoading) return;
 
-                  summaryAppend(
-                    {
-                      role: "user",
-                      content: `Summarise this pdf document please.`,
-                    },
-                    {
-                      experimental_attachments: [
-                        {
-                          name: pdfChatData.file_name,
-                          url: pdfChatData.file_url,
-                          contentType: "application/pdf",
-                        },
-                      ],
-                    }
-                  );
-                }}
-                value="summary"
-              >
-                {isSummaryLoading ? (
-                  <div className="flex items-center gap-2">
-                    <Loader className="size-5 animate-spin" /> Summarising...
+                    summaryAppend(
+                      {
+                        role: "user",
+                        content: `Summarise this pdf document please.`,
+                      },
+                      {
+                        experimental_attachments: [
+                          {
+                            name: pdfChatData.file_name,
+                            url: pdfChatData.file_url,
+                            contentType: "application/pdf",
+                          },
+                        ],
+                      }
+                    );
+                  }}
+                  value="summary"
+                >
+                  {isSummaryLoading ? (
+                    <div className="flex items-center gap-2">
+                      <Loader className="size-5 animate-spin" /> Summarising...
+                    </div>
+                  ) : (
+                    "Summary"
+                  )}
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="chat" className="">
+                <PDFChatPanel
+                  onHandleChatSubmit={handleSubmit}
+                  messages={messages}
+                  onHandleSetInput={setInput}
+                  chatInput={input}
+                  isChatLoading={isLoading}
+                  pdfChatId={pdfId}
+                  pdfUrl={pdfChatData.file_url}
+                  pdfFileName={pdfChatData.file_name}
+                  userId={userId}
+                  userEmail={userEmail}
+                  stopGenerating={stopGenerating}
+                  totalTokens={totalTokens}
+                />
+              </TabsContent>
+              <TabsContent value="summary">
+                {(summaryMessages[summaryMessages.length - 1]?.role ===
+                  "user" ||
+                  (summaryMessages[summaryMessages.length - 1]?.role ===
+                    "assistant" &&
+                    summaryMessages[summaryMessages.length - 1]?.content ===
+                      "")) &&
+                isSummaryLoading ? (
+                  <div className="flex items-center gap-2 p-4">
+                    <Loader className="size-6 animate-spin" /> Summarising...
                   </div>
                 ) : (
-                  "Summary"
+                  <ScrollArea className="h-[85vh]">
+                    <Markdown
+                      text={
+                        pdfChatData.summary || summaryMessages[1]?.content || ""
+                      }
+                      className="p-4"
+                    />
+                  </ScrollArea>
                 )}
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="chat" className="">
-              <PDFChatPanel
-                onHandleChatSubmit={handleSubmit}
-                messages={messages}
-                onHandleSetInput={setInput}
-                chatInput={input}
-                isChatLoading={isLoading}
-                pdfChatId={pdfId}
-                pdfUrl={pdfChatData.file_url}
-                pdfFileName={pdfChatData.file_name}
-                userId={userId}
-                userEmail={userEmail}
-                stopGenerating={stopGenerating}
-                totalTokens={totalTokens}
-              />
-            </TabsContent>
-            <TabsContent value="summary">
-              {(summaryMessages[summaryMessages.length - 1]?.role === "user" ||
-                (summaryMessages[summaryMessages.length - 1]?.role ===
-                  "assistant" &&
-                  summaryMessages[summaryMessages.length - 1]?.content ===
-                    "")) &&
-              isSummaryLoading ? (
-                <div className="flex items-center gap-2 p-4">
-                  <Loader className="size-6 animate-spin" /> Summarising...
+              </TabsContent>
+            </Tabs>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+      <div className="p-4 pb-10 block md:hidden">
+        <PDFViewer
+          onChatAppend={append}
+          pdfChatId={pdfId}
+          pdfUrl={pdfChatData.file_url}
+          totalTokens={totalTokens}
+        />
+
+        <Tabs defaultValue="chat" className=" h-full mt-8 md:mt-0">
+          <TabsList className="grid grid-cols-2">
+            <TabsTrigger className="" value="chat">
+              Chat
+            </TabsTrigger>
+            <TabsTrigger
+              onClick={() => {
+                if (pdfChatData.summary || isSummaryLoading) return;
+
+                summaryAppend(
+                  {
+                    role: "user",
+                    content: `Summarise this pdf document please.`,
+                  },
+                  {
+                    experimental_attachments: [
+                      {
+                        name: pdfChatData.file_name,
+                        url: pdfChatData.file_url,
+                        contentType: "application/pdf",
+                      },
+                    ],
+                  }
+                );
+              }}
+              value="summary"
+            >
+              {isSummaryLoading ? (
+                <div className="flex items-center gap-2">
+                  <Loader className="size-5 animate-spin" /> Summarising...
                 </div>
               ) : (
-                <ScrollArea className="h-[85vh]">
-                  <Markdown
-                    text={
-                      pdfChatData.summary || summaryMessages[1]?.content || ""
-                    }
-                    className="p-4"
-                  />
-                </ScrollArea>
+                "Summary"
               )}
-            </TabsContent>
-          </Tabs>
-        </ResizablePanel>
-      </ResizablePanelGroup>
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="chat" className="">
+            <PDFChatPanel
+              onHandleChatSubmit={handleSubmit}
+              messages={messages}
+              onHandleSetInput={setInput}
+              chatInput={input}
+              isChatLoading={isLoading}
+              pdfChatId={pdfId}
+              pdfUrl={pdfChatData.file_url}
+              pdfFileName={pdfChatData.file_name}
+              userId={userId}
+              userEmail={userEmail}
+              stopGenerating={stopGenerating}
+              totalTokens={totalTokens}
+            />
+          </TabsContent>
+          <TabsContent value="summary">
+            {(summaryMessages[summaryMessages.length - 1]?.role === "user" ||
+              (summaryMessages[summaryMessages.length - 1]?.role ===
+                "assistant" &&
+                summaryMessages[summaryMessages.length - 1]?.content === "")) &&
+            isSummaryLoading ? (
+              <div className="flex items-center gap-2 p-4">
+                <Loader className="size-6 animate-spin" /> Summarising...
+              </div>
+            ) : (
+              <ScrollArea className="h-[85vh]">
+                <Markdown
+                  text={
+                    pdfChatData.summary || summaryMessages[1]?.content || ""
+                  }
+                  className="p-4"
+                />
+              </ScrollArea>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };

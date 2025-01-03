@@ -20,7 +20,7 @@ const Page = async ({
     return redirect("/");
   }
   return (
-    <div className="p-4 h-full">
+    <div className="h-full">
       <TalkToPDF
         pdfId={params.id}
         userId={user.id}
