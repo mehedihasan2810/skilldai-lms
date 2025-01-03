@@ -17,6 +17,8 @@ import { Divide, Loader } from "lucide-react";
 import Markdown from "@/components/markdown/markdown";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useUsageToken } from "@/lib/hooks/use-usage-token";
+import { CreateNote } from "./create-note";
+import { NoteList } from "./note-list";
 
 const PDFViewer = dynamic(
   () => import("./pdf-viewer").then((mod) => mod.PDFViewer),
@@ -195,36 +197,7 @@ export const TalkToPDF = ({
                 <TabsTrigger className="" value="chat">
                   Chat
                 </TabsTrigger>
-                <TabsTrigger
-                  onClick={() => {
-                    if (pdfChatData.summary || isSummaryLoading) return;
-
-                    summaryAppend(
-                      {
-                        role: "user",
-                        content: `Summarise this pdf document please.`,
-                      },
-                      {
-                        experimental_attachments: [
-                          {
-                            name: pdfChatData.file_name,
-                            url: pdfChatData.file_url,
-                            contentType: "application/pdf",
-                          },
-                        ],
-                      }
-                    );
-                  }}
-                  value="summary"
-                >
-                  {isSummaryLoading ? (
-                    <div className="flex items-center gap-2">
-                      <Loader className="size-5 animate-spin" /> Summarising...
-                    </div>
-                  ) : (
-                    "Summary"
-                  )}
-                </TabsTrigger>
+                <TabsTrigger value="note">Note</TabsTrigger>
               </TabsList>
               <TabsContent value="chat" className="">
                 <PDFChatPanel
@@ -242,27 +215,11 @@ export const TalkToPDF = ({
                   totalTokens={totalTokens}
                 />
               </TabsContent>
-              <TabsContent value="summary">
-                {(summaryMessages[summaryMessages.length - 1]?.role ===
-                  "user" ||
-                  (summaryMessages[summaryMessages.length - 1]?.role ===
-                    "assistant" &&
-                    summaryMessages[summaryMessages.length - 1]?.content ===
-                      "")) &&
-                isSummaryLoading ? (
-                  <div className="flex items-center gap-2 p-4">
-                    <Loader className="size-6 animate-spin" /> Summarising...
-                  </div>
-                ) : (
-                  <ScrollArea className="h-[85vh]">
-                    <Markdown
-                      text={
-                        pdfChatData.summary || summaryMessages[1]?.content || ""
-                      }
-                      className="p-4"
-                    />
-                  </ScrollArea>
-                )}
+              <TabsContent value="note">
+                <ScrollArea className="h-[84vh] pr-4">
+                  <CreateNote pdfChatId={pdfId} />
+                  <NoteList pdfChatId={pdfId} />
+                </ScrollArea>
               </TabsContent>
             </Tabs>
           </ResizablePanel>
@@ -281,36 +238,7 @@ export const TalkToPDF = ({
             <TabsTrigger className="" value="chat">
               Chat
             </TabsTrigger>
-            <TabsTrigger
-              onClick={() => {
-                if (pdfChatData.summary || isSummaryLoading) return;
-
-                summaryAppend(
-                  {
-                    role: "user",
-                    content: `Summarise this pdf document please.`,
-                  },
-                  {
-                    experimental_attachments: [
-                      {
-                        name: pdfChatData.file_name,
-                        url: pdfChatData.file_url,
-                        contentType: "application/pdf",
-                      },
-                    ],
-                  }
-                );
-              }}
-              value="summary"
-            >
-              {isSummaryLoading ? (
-                <div className="flex items-center gap-2">
-                  <Loader className="size-5 animate-spin" /> Summarising...
-                </div>
-              ) : (
-                "Summary"
-              )}
-            </TabsTrigger>
+            <TabsTrigger value="note">Note</TabsTrigger>
           </TabsList>
           <TabsContent value="chat" className="">
             <PDFChatPanel
@@ -328,25 +256,11 @@ export const TalkToPDF = ({
               totalTokens={totalTokens}
             />
           </TabsContent>
-          <TabsContent value="summary">
-            {(summaryMessages[summaryMessages.length - 1]?.role === "user" ||
-              (summaryMessages[summaryMessages.length - 1]?.role ===
-                "assistant" &&
-                summaryMessages[summaryMessages.length - 1]?.content === "")) &&
-            isSummaryLoading ? (
-              <div className="flex items-center gap-2 p-4">
-                <Loader className="size-6 animate-spin" /> Summarising...
-              </div>
-            ) : (
-              <ScrollArea className="h-[85vh]">
-                <Markdown
-                  text={
-                    pdfChatData.summary || summaryMessages[1]?.content || ""
-                  }
-                  className="p-4"
-                />
-              </ScrollArea>
-            )}
+          <TabsContent value="note">
+            <ScrollArea className="h-[70vh] pr-4">
+              <CreateNote pdfChatId={pdfId} />
+              <NoteList pdfChatId={pdfId} />
+            </ScrollArea>
           </TabsContent>
         </Tabs>
       </div>

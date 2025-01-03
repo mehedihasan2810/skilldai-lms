@@ -1053,3 +1053,60 @@ export const insertUsageTokens = async ({
 
   console.log({ data, error });
 };
+export const createNote = async ({
+  title,
+  note,
+  pdfChatId,
+}: {
+  title: string;
+  note: string;
+  pdfChatId: string;
+}) => {
+  const { data, error: error } = await supabase
+    .from("pdf_chat_notes")
+    .insert({
+      title,
+      note,
+      pdf_chat_id: pdfChatId,
+    })
+    .select("id")
+    .single();
+
+  console.log({ data, error });
+
+  if (!data || error) {
+    throw new Error(error.message ?? "Something went wrong!");
+  }
+
+  return data;
+};
+
+export const getPDFChatNotes = async ({ pdfChatId }: { pdfChatId: string }) => {
+  console.log({ pdfChatId });
+
+  const { data: notes, error } = await supabase
+    .from("pdf_chat_notes")
+    .select("id,title,note")
+    .eq("pdf_chat_id", pdfChatId);
+
+  if (!notes || error) {
+    throw new Error(error.message ?? "Something went wrong!");
+  }
+
+  return notes;
+};
+
+export const deletePDFChatNote = async ({ noteId }: { noteId: string }) => {
+  const { data, error } = await supabase
+    .from("pdf_chat_notes")
+    .delete()
+    .eq("id", noteId)
+    .select("id")
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
