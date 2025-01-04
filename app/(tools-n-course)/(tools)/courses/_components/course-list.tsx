@@ -123,7 +123,7 @@ export const CourseList =  ({email}: {email: string}) => {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4 mt-4 ">
+      <div className="flex justify-between items-center mb-4 mt-4 flex-1">
         <h1 className="text-xl font-bold">Find your course</h1>
         <Input
           value={searchTerm}

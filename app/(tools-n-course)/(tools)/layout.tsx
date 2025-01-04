@@ -4,6 +4,23 @@ import React from "react";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { NavItem } from "@/types/nav";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/tools-sidebar/tools-sidebar";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems: NavItem[] = [
   {
@@ -113,13 +130,59 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       );
 
   return (
-    <div className="flex overflow-hidden">
-      <DashboardSidebar navItems={filteredNavItems} />
-      <main className="w-full flex-1 overflow-hidden">
-        <Header email={user.email!} navItems={filteredNavItems} />
-        {children}
-      </main>
-    </div>
+    <SidebarProvider className="w-screen">
+      <AppSidebar
+        userProfession={userInfo?.profession ?? ""}
+        userEmail={user.email ?? ""}
+      />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b border-border/30 overflow-x-hidden">
+          <div className="flex items-center gap-2 px-4 grow">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <div className="flex items-center justify-between gap-6 grow">
+              <div></div>
+              <div className="flex items-center gap-6">
+                <Link className="hover:underline" href="/new">
+                  Skilld AI
+                </Link>
+                <ThemeToggle />
+              </div>
+            </div>
+            {/* <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb> */}
+          </div>
+        </header>
+        <div className="flex flex-1 overflow-hidden w-full">
+          {children}
+          {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+          <div className="aspect-video rounded-xl bg-muted/50" />
+          <div className="aspect-video rounded-xl bg-muted/50" />
+          <div className="aspect-video rounded-xl bg-muted/50" />
+        </div>
+        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
+
+    // <div className="flex overflow-hidden">
+    //   <DashboardSidebar navItems={filteredNavItems} />
+    //   <main className="w-full flex-1 overflow-hidden">
+    //     <Header email={user.email!} navItems={filteredNavItems} />
+    //     {children}
+    //   </main>
+    // </div>
   );
 };
 

@@ -44,12 +44,12 @@ const tools = [
     description: "Evaluate skills effortlessly with our AI-powered tool. Generate personalized assessments to measure knowledge, track progress, and identify areas for improvement!",
     href: "/skill-assessment",
   },
-  {
-    id: 7,
-    title: "NCERT",
-    description: "The NCERT curriculum is based on the National Curriculum Framework (NCF) developed by the National Council of Educational Research and Training. The curriculum is designed to provide a comprehensive and holistic education to students from pre-primary to higher secondary levels",
-    href: "/ncert",
-  },
+  // {
+  //   id: 7,
+  //   title: "NCERT",
+  //   description: "The NCERT curriculum is based on the National Curriculum Framework (NCF) developed by the National Council of Educational Research and Training. The curriculum is designed to provide a comprehensive and holistic education to students from pre-primary to higher secondary levels",
+  //   href: "/ncert",
+  // },
 ];
 
 const teacherOnlyTools = ["/lesson-plan-generator", "/worksheet-generator"];
