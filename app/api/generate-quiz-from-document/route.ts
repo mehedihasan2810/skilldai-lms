@@ -48,9 +48,9 @@ export async function POST(req: Request) {
 
   const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
 
-  // if (totalTokens > (Number(MAX_TOKENS) || 0)) {
-  //   return new Response("Monthly token limit reached", { status: 429 });
-  // }
+  if (totalTokens > (Number(MAX_TOKENS) || 0)) {
+    return new Response("Monthly token limit reached", { status: 429 });
+  }
 
   const firstFile = files[0].data;
 
