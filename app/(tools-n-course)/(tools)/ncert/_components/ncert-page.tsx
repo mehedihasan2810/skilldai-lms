@@ -372,6 +372,350 @@ const ncertClasses = [
       },
     ],
   },
+  {
+    name: "8th",
+    subjects: [
+      {
+        name: "English",
+        books: [
+          {
+            name: "Honeydew",
+            chapters: [
+              {
+                name: "hehd101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd101.pdf",
+              },
+              {
+                name: "hehd102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd102.pdf",
+              },
+              {
+                name: "hehd103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd103.pdf",
+              },
+              {
+                name: "hehd104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd104.pdf",
+              },
+              {
+                name: "hehd105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd105.pdf",
+              },
+              {
+                name: "hehd106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd106.pdf",
+              },
+              {
+                name: "hehd107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd107.pdf",
+              },
+              {
+                name: "hehd108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd108.pdf",
+              },
+              {
+                name: "hehd1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "It So Happened",
+            chapters: [
+              {
+                name: "heih101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih101.pdf?t=2025-01-05T14%3A54%3A18.785Z",
+              },
+              {
+                name: "heih102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih102.pdf",
+              },
+              {
+                name: "heih103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih103.pdf",
+              },
+              {
+                name: "heih104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih104.pdf",
+              },
+              {
+                name: "heih105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih105.pdf",
+              },
+              {
+                name: "heih106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih106.pdf",
+              },
+              {
+                name: "heih107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih107.pdf",
+              },
+              {
+                name: "heih108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih108.pdf",
+              },
+              {
+                name: "heih1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Math",
+        books: [
+          {
+            name: "hemh1dd",
+            chapters: [
+              {
+                name: "hemh101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh101.pdf",
+              },
+              {
+                name: "hemh102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh102.pdf",
+              },
+              {
+                name: "hemh103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh103.pdf",
+              },
+              {
+                name: "hemh104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh104.pdf",
+              },
+              {
+                name: "hemh105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh105.pdf",
+              },
+              {
+                name: "hemh106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh106.pdf",
+              },
+              {
+                name: "hemh107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh107.pdf",
+              },
+              {
+                name: "hemh108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh108.pdf",
+              },
+              {
+                name: "hemh109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh109.pdf",
+              },
+              {
+                name: "hemh110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh110.pdf",
+              },
+              {
+                name: "hemh111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh111.pdf",
+              },
+              {
+                name: "hemh112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh112.pdf",
+              },
+              {
+                name: "hemh113",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh113.pdf",
+              },
+              {
+                name: "hemh1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh1an.pdf",
+              },
+              {
+                name: "hemh1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Science",
+        books: [
+          {
+            name: "hesc1dd",
+            chapters: [
+              {
+                name: "hesc101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc101.pdf",
+              },
+              {
+                name: "hesc102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc102.pdf",
+              },
+              {
+                name: "hesc103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc103.pdf",
+              },
+              {
+                name: "hesc104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc104.pdf",
+              },
+              {
+                name: "hesc105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc105.pdf",
+              },
+              {
+                name: "hesc106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc106.pdf",
+              },
+              {
+                name: "hesc107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc107.pdf",
+              },
+              {
+                name: "hesc108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc108.pdf",
+              },
+              {
+                name: "hesc109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc109.pdf",
+              },
+              {
+                name: "hesc110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc110.pdf",
+              },
+              {
+                name: "hesc111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc111.pdf",
+              },
+              {
+                name: "hesc112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc112.pdf",
+              },
+              {
+                name: "hesc113",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc113.pdf",
+              },
+              {
+                name: "hesc1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Social Science",
+        books: [
+          {
+            name: "Our Past III",
+            chapters: [
+              {
+                name: "hess201",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess201.pdf",
+              },
+              {
+                name: "hess202",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess202.pdf",
+              },
+              {
+                name: "hess203",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess203.pdf",
+              },
+              {
+                name: "hess204",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess204.pdf",
+              },
+              {
+                name: "hess205",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess205.pdf",
+              },
+              {
+                name: "hess206",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess206.pdf",
+              },
+              {
+                name: "hess207",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess207.pdf",
+              },
+              {
+                name: "hess208",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess208.pdf",
+              },
+              {
+                name: "hess2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess2ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Resourse and Developement (Geography)",
+            chapters: [
+              {
+                name: "hess401",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess401.pdf",
+              },
+              {
+                name: "hess402",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess402.pdf",
+              },
+              {
+                name: "hess403",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess403.pdf",
+              },
+              {
+                name: "hess404",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess404.pdf",
+              },
+              {
+                name: "hess405",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess405.pdf",
+              },
+              {
+                name: "hess4ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess4ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Social and Political Life",
+            chapters: [
+              {
+                name: "hess301",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess301.pdf",
+              },
+              {
+                name: "hess302",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess302.pdf",
+              },
+              {
+                name: "hess303",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess303.pdf",
+              },
+              {
+                name: "hess304",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess304.pdf",
+              },
+              {
+                name: "hess305",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess305.pdf",
+              },
+              {
+                name: "hess306",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess306.pdf",
+              },
+              {
+                name: "hess307",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess307.pdf",
+              },
+              {
+                name: "hess308",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess308.pdf",
+              },
+              {
+                name: "hess3ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess3ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const NCERTPage = ({
@@ -425,107 +769,108 @@ export const NCERTPage = ({
   console.log({ activeClass, activeSubject, activeBook, activeChapter });
 
   return (
-      <div className="grid md:grid-cols-2 gap-8 pb-10 md:pb-0">
-        <ScrollArea className="h-[70vh] md:h-[89vh] rounded-xl">
-          {ncertClasses.map((ncertClass) => (
-            <Accordion
-              value={activeClassAccordion}
-              onValueChange={(v) => setActiveClassAccordion(v)}
-              key={ncertClass.name}
-              type="single"
-              collapsible
+    <div className="grid md:grid-cols-2 gap-8 pb-10 md:pb-0">
+      <ScrollArea className="h-[70vh] md:h-[89vh] rounded-xl ">
+        <div className="flex flex-col gap-4 pb-4">
+        {ncertClasses.map((ncertClass) => (
+          <Accordion
+            value={activeClassAccordion}
+            onValueChange={(v) => setActiveClassAccordion(v)}
+            key={ncertClass.name}
+            type="single"
+            collapsible
+          >
+            <AccordionItem
+              value={ncertClass.name}
+              className="border border-border/40 rounded-xl px-4 bg-card"
             >
-              <AccordionItem
-                value={ncertClass.name}
-                className="border border-border/40 rounded-xl px-4 bg-card"
-              >
-                <AccordionTrigger>
-                  {ncertClass.name}
-                  {/* <div className="text-left ">
+              <AccordionTrigger>
+                {ncertClass.name} grade
+                {/* <div className="text-left ">
                     <p>{ncertClass.name}</p>
                     <p className="text-muted-foreground text-xs mt-1 ml-2">
                       {ncertClass.subjects.length} Subjects
                     </p>
                   </div> */}
-                </AccordionTrigger>
-                <AccordionContent>
-                  {ncertClass.subjects.map((subject) => (
-                    <Accordion
-                      key={subject.name}
-                      type="single"
-                      collapsible
-                      className=""
-                      value={activeSubjectAccordion}
-                      onValueChange={(v) => setActiveSubjectAccordion(v)}
+              </AccordionTrigger>
+              <AccordionContent>
+                {ncertClass.subjects.map((subject) => (
+                  <Accordion
+                    key={subject.name}
+                    type="single"
+                    collapsible
+                    className=""
+                    value={activeSubjectAccordion}
+                    onValueChange={(v) => setActiveSubjectAccordion(v)}
+                  >
+                    <AccordionItem
+                      value={subject.name}
+                      className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
                     >
-                      <AccordionItem
-                        value={subject.name}
-                        className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
-                      >
-                        <AccordionTrigger className="">
-                          <div className="flex items-center gap-4">
-                            <CornerDownRight className="size-4" />{" "}
-                            {subject.name}
-                          </div>
-                        </AccordionTrigger>
-                        <AccordionContent>
-                          {subject.books.map((book) => (
-                            <Accordion
-                              key={book.name}
-                              type="single"
-                              collapsible
-                              value={activeBookAccordion}
-                              onValueChange={(v) => setActiveBookAccordion(v)}
+                      <AccordionTrigger className="">
+                        <div className="flex items-center gap-4">
+                          <CornerDownRight className="size-4" /> {subject.name}
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        {subject.books.map((book) => (
+                          <Accordion
+                            key={book.name}
+                            type="single"
+                            collapsible
+                            value={activeBookAccordion}
+                            onValueChange={(v) => setActiveBookAccordion(v)}
+                          >
+                            <AccordionItem
+                              value={book.name}
+                              className="border-none rounded-xl px-4 bg-gray-400/15 dark:bg-gray-900/30 mb-2"
                             >
-                              <AccordionItem
-                                value={book.name}
-                                className="border-none rounded-xl px-4 bg-gray-400/15 dark:bg-gray-900/30 mb-2"
-                              >
-                                <AccordionTrigger>
-                                  <div className="flex items-center gap-4">
-                                    <CornerDownRight className="size-4" />{" "}
-                                    {book.name}
-                                  </div>
-                                </AccordionTrigger>
-                                <AccordionContent className="border-t space-y-2 pt-2">
-                                  {book.chapters.map((chapter) => (
-                                    <Link
-                                      href={`/ncert/?g=${ncertClass.name}&s=${subject.name}&b=${book.name}&c=${chapter.name}`}
-                                      className={cn(
-                                        "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
-                                        (activeChapter ?? defaultChapter)
-                                          .name === chapter.name
-                                          ? "bg-muted"
-                                          : ""
-                                      )}
-                                      key={chapter.name}
-                                    >
-                                      <BookText className="size-5" />{" "}
-                                      {chapter.name}
-                                    </Link>
-                                  ))}
-                                </AccordionContent>
-                              </AccordionItem>
-                            </Accordion>
-                          ))}
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
-                  ))}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          ))}
-        </ScrollArea>
-
-        <div>
-          <PDFViewer
-            pdfUrl={(activeChapter ?? defaultChapter).url}
-            // pdfUrl="https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc101.pdf?t=2025-01-01T08%3A32%3A10.988Z"
-            sourcePage="ncert"
-            userId={userId}
-          />
+                              <AccordionTrigger>
+                                <div className="flex items-center gap-4">
+                                  <CornerDownRight className="size-4" />{" "}
+                                  {book.name}
+                                </div>
+                              </AccordionTrigger>
+                              <AccordionContent className="border-t space-y-2 pt-2">
+                                {book.chapters.map((chapter) => (
+                                  <Link
+                                    href={`/ncert/?g=${ncertClass.name}&s=${subject.name}&b=${book.name}&c=${chapter.name}`}
+                                    className={cn(
+                                      "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
+                                      (activeChapter ?? defaultChapter).name ===
+                                        chapter.name
+                                        ? "bg-muted"
+                                        : ""
+                                    )}
+                                    key={chapter.name}
+                                  >
+                                    <BookText className="size-5" />{" "}
+                                    {chapter.name}
+                                  </Link>
+                                ))}
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        ))}
         </div>
+      </ScrollArea>
+
+      <div>
+        <PDFViewer
+          pdfUrl={(activeChapter ?? defaultChapter).url}
+          // pdfUrl="https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc101.pdf?t=2025-01-01T08%3A32%3A10.988Z"
+          sourcePage="ncert"
+          userId={userId}
+        />
       </div>
+    </div>
   );
 };
