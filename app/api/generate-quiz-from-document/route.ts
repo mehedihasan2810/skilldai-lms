@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { anthropic } from "@ai-sdk/anthropic";
 import { google } from "@ai-sdk/google";
 import { openai } from "@ai-sdk/openai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
@@ -47,9 +48,9 @@ export async function POST(req: Request) {
 
   const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
 
-  if (totalTokens > (Number(MAX_TOKENS) || 0)) {
-    return new Response("Monthly token limit reached", { status: 429 });
-  }
+  // if (totalTokens > (Number(MAX_TOKENS) || 0)) {
+  //   return new Response("Monthly token limit reached", { status: 429 });
+  // }
 
   const firstFile = files[0].data;
 
@@ -60,7 +61,8 @@ export async function POST(req: Request) {
   });
 
   const result = streamObject({
-    model: openrouter("anthropic/claude-3.5-sonnet:beta"),
+    model: anthropic("claude-3-5-sonnet-20241022"),
+    // model: openrouter("anthropic/claude-3.5-sonnet"),
     // model: openai("gpt-4o-mini"),
     // model: google("gemini-1.5-pro-latest"),
     messages: [

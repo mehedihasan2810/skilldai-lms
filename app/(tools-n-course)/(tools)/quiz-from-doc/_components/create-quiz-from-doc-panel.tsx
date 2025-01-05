@@ -43,7 +43,7 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
     initialValue: undefined,
     onError: (quizGenerateError) => {
       console.log({ quizGenerateError });
-      toast.error("Failed to generate quiz. Please try again.");
+      toast.error(quizGenerateError.message.trim() || "Failed to generate quiz. Please try again.");
       setFiles([]);
     },
     onFinish: async ({ object }) => {
