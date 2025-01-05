@@ -716,6 +716,524 @@ const ncertClasses = [
       },
     ],
   },
+  {
+    name: "9th",
+    subjects: [
+      {
+        name: "English",
+        books: [
+          {
+            name: "Beehive",
+            chapters: [
+              {
+                name: "iebe101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe101.pdf",
+              },
+              {
+                name: "iebe102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe102.pdf",
+              },
+              {
+                name: "iebe103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe103.pdf",
+              },
+              {
+                name: "iebe104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe104.pdf",
+              },
+              {
+                name: "iebe105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe105.pdf",
+              },
+              {
+                name: "iebe106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe106.pdf",
+              },
+              {
+                name: "iebe107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe107.pdf",
+              },
+              {
+                name: "iebe108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe108.pdf",
+              },
+              {
+                name: "iebe109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe109.pdf",
+              },
+              {
+                name: "iebe1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Moments Supplementary Reader",
+            chapters: [
+              {
+                name: "iemo101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo101.pdf",
+              },
+              {
+                name: "iemo102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo102.pdf",
+              },
+              {
+                name: "iemo103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo103.pdf",
+              },
+              {
+                name: "iemo104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo104.pdf",
+              },
+              {
+                name: "iemo105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo105.pdf",
+              },
+              {
+                name: "iemo106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo106.pdf",
+              },
+              {
+                name: "iemo107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo107.pdf",
+              },
+              {
+                name: "iemo108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo108.pdf",
+              },
+              {
+                name: "iemo109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo109.pdf",
+              },
+              {
+                name: "iemo1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Words and Expressions",
+            chapters: [
+              {
+                name: "iewe101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe101.pdf",
+              },
+              {
+                name: "iewe102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe102.pdf",
+              },
+              {
+                name: "iewe103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe103.pdf",
+              },
+              {
+                name: "iewe104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe104.pdf",
+              },
+              {
+                name: "iewe105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe105.pdf",
+              },
+              {
+                name: "iewe106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe106.pdf",
+              },
+              {
+                name: "iewe107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe107.pdf",
+              },
+              {
+                name: "iewe108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe108.pdf",
+              },
+              {
+                name: "iewe109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe109.pdf",
+              },
+              {
+                name: "iewe1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Health and Physical Education",
+        books: [
+          {
+            name: "iehp1dd",
+            chapters: [
+              {
+                name: "iehp101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp101.pdf",
+              },
+              {
+                name: "iehp102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp102.pdf",
+              },
+              {
+                name: "iehp103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp103.pdf",
+              },
+              {
+                name: "iehp104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp104.pdf",
+              },
+              {
+                name: "iehp105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp105.pdf",
+              },
+              {
+                name: "iehp106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp106.pdf",
+              },
+              {
+                name: "iehp107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp107.pdf",
+              },
+              {
+                name: "iehp108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp108.pdf",
+              },
+              {
+                name: "iehp109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp109.pdf",
+              },
+              {
+                name: "iehp110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp110.pdf",
+              },
+              {
+                name: "iehp111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp111.pdf",
+              },
+              {
+                name: "iehp112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp112.pdf",
+              },
+              {
+                name: "iehp113",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp113.pdf",
+              },
+              {
+                name: "iehp114",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp114.pdf",
+              },
+              {
+                name: "iehp1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "ICT",
+        books: [
+          {
+            name: "iict1dd",
+            chapters: [
+              {
+                name: "iict101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict101.pdf",
+              },
+              {
+                name: "iict102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict102.pdf",
+              },
+              {
+                name: "iict103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict103.pdf",
+              },
+              {
+                name: "iict104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict104.pdf",
+              },
+              {
+                name: "iict105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict105.pdf",
+              },
+              {
+                name: "iict106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict106.pdf",
+              },
+              {
+                name: "iict107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict107.pdf",
+              },
+              {
+                name: "iict108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict108.pdf",
+              },
+              {
+                name: "iict1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Maths",
+        books: [
+          {
+            name: "iemh1dd",
+            chapters: [
+              {
+                name: "iemh101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh101.pdf",
+              },
+              {
+                name: "iemh102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh102.pdf",
+              },
+              {
+                name: "iemh103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh103.pdf",
+              },
+              {
+                name: "iemh104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh104.pdf",
+              },
+              {
+                name: "iemh105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh105.pdf",
+              },
+              {
+                name: "iemh106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh106.pdf",
+              },
+              {
+                name: "iemh107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh107.pdf",
+              },
+              {
+                name: "iemh108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh108.pdf",
+              },
+              {
+                name: "iemh109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh109.pdf",
+              },
+              {
+                name: "iemh110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh110.pdf",
+              },
+              {
+                name: "iemh111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh111.pdf",
+              },
+              {
+                name: "iemh112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh112.pdf",
+              },
+              {
+                name: "iemh1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh1a1.pdf",
+              },
+              {
+                name: "iemh1a2",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh1a2.pdf",
+              },
+              {
+                name: "iemh1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh1an.pdf",
+              },
+              {
+                name: "iemh1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Science",
+        books: [
+          {
+            name: "iesc1dd",
+            chapters: [
+              {
+                name: "iesc101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc101.pdf",
+              },
+              {
+                name: "iesc102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc102.pdf",
+              },
+              {
+                name: "iesc103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc103.pdf",
+              },
+              {
+                name: "iesc104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc104.pdf",
+              },
+              {
+                name: "iesc105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc105.pdf",
+              },
+              {
+                name: "iesc106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc106.pdf",
+              },
+              {
+                name: "iesc107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc107.pdf",
+              },
+              {
+                name: "iesc108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc108.pdf",
+              },
+              {
+                name: "iesc109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc109.pdf",
+              },
+              {
+                name: "iesc110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc110.pdf",
+              },
+              {
+                name: "iesc111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc111.pdf",
+              },
+              {
+                name: "iesc112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc112.pdf",
+              },
+              {
+                name: "iesc112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc112.pdf",
+              },
+              {
+                name: "iesc1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Social Science",
+        books: [
+          {
+            name: "Contemporary India",
+            chapters: [
+              {
+                name: "iess101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess101.pdf",
+              },
+              {
+                name: "iess102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess102.pdf",
+              },
+              {
+                name: "iess103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess103.pdf",
+              },
+              {
+                name: "iess104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess104.pdf",
+              },
+              {
+                name: "iess105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess105.pdf",
+              },
+              {
+                name: "iess106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess106.pdf",
+              },
+              {
+                name: "iess1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/iess1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Democratic Politics",
+            chapters: [
+              {
+                name: "iess401",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Democratic%20Politics/iess401.pdf",
+              },
+              {
+                name: "iess402",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Democratic%20Politics/iess402.pdf",
+              },
+              {
+                name: "iess403",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Democratic%20Politics/iess403.pdf",
+              },
+              {
+                name: "iess404",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Democratic%20Politics/iess404.pdf",
+              },
+              {
+                name: "iess405",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Democratic%20Politics/iess405.pdf",
+              },
+              {
+                name: "iess4ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Democratic%20Politics/iess4ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Economics",
+            chapters: [
+              {
+                name: "iess201",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Economics/iess201.pdf",
+              },
+              {
+                name: "iess202",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Economics/iess202.pdf",
+              },
+              {
+                name: "iess203",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Economics/iess203.pdf",
+              },
+              {
+                name: "iess204",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Economics/iess204.pdf",
+              },
+              {
+                name: "iess2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Economics/iess2ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "India and the Contemporary World-I",
+            chapters: [
+              {
+                name: "iess302",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/India%20and%20the%20Contemporary%20World-I/iess302.pdf",
+              },
+              {
+                name: "iess303",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/India%20and%20the%20Contemporary%20World-I/iess303.pdf",
+              },
+              {
+                name: "iess304",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/India%20and%20the%20Contemporary%20World-I/iess304.pdf",
+              },
+              {
+                name: "iess305",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/India%20and%20the%20Contemporary%20World-I/iess305.pdf",
+              },
+              {
+                name: "iess3ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/India%20and%20the%20Contemporary%20World-I/iess3ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const NCERTPage = ({
@@ -772,94 +1290,95 @@ export const NCERTPage = ({
     <div className="grid md:grid-cols-2 gap-8 pb-10 md:pb-0">
       <ScrollArea className="h-[70vh] md:h-[89vh] rounded-xl ">
         <div className="flex flex-col gap-4 pb-4">
-        {ncertClasses.map((ncertClass) => (
-          <Accordion
-            value={activeClassAccordion}
-            onValueChange={(v) => setActiveClassAccordion(v)}
-            key={ncertClass.name}
-            type="single"
-            collapsible
-          >
-            <AccordionItem
-              value={ncertClass.name}
-              className="border border-border/40 rounded-xl px-4 bg-card"
+          {ncertClasses.map((ncertClass) => (
+            <Accordion
+              value={activeClassAccordion}
+              onValueChange={(v) => setActiveClassAccordion(v)}
+              key={ncertClass.name}
+              type="single"
+              collapsible
             >
-              <AccordionTrigger>
-                {ncertClass.name} grade
-                {/* <div className="text-left ">
+              <AccordionItem
+                value={ncertClass.name}
+                className="border border-border/40 rounded-xl px-4 bg-card"
+              >
+                <AccordionTrigger>
+                  {ncertClass.name} grade
+                  {/* <div className="text-left ">
                     <p>{ncertClass.name}</p>
                     <p className="text-muted-foreground text-xs mt-1 ml-2">
                       {ncertClass.subjects.length} Subjects
                     </p>
                   </div> */}
-              </AccordionTrigger>
-              <AccordionContent>
-                {ncertClass.subjects.map((subject) => (
-                  <Accordion
-                    key={subject.name}
-                    type="single"
-                    collapsible
-                    className=""
-                    value={activeSubjectAccordion}
-                    onValueChange={(v) => setActiveSubjectAccordion(v)}
-                  >
-                    <AccordionItem
-                      value={subject.name}
-                      className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
+                </AccordionTrigger>
+                <AccordionContent>
+                  {ncertClass.subjects.map((subject) => (
+                    <Accordion
+                      key={subject.name}
+                      type="single"
+                      collapsible
+                      className=""
+                      value={activeSubjectAccordion}
+                      onValueChange={(v) => setActiveSubjectAccordion(v)}
                     >
-                      <AccordionTrigger className="">
-                        <div className="flex items-center gap-4">
-                          <CornerDownRight className="size-4" /> {subject.name}
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        {subject.books.map((book) => (
-                          <Accordion
-                            key={book.name}
-                            type="single"
-                            collapsible
-                            value={activeBookAccordion}
-                            onValueChange={(v) => setActiveBookAccordion(v)}
-                          >
-                            <AccordionItem
-                              value={book.name}
-                              className="border-none rounded-xl px-4 bg-gray-400/15 dark:bg-gray-900/30 mb-2"
+                      <AccordionItem
+                        value={subject.name}
+                        className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
+                      >
+                        <AccordionTrigger className="">
+                          <div className="flex items-center gap-4">
+                            <CornerDownRight className="size-4" />{" "}
+                            {subject.name}
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          {subject.books.map((book) => (
+                            <Accordion
+                              key={book.name}
+                              type="single"
+                              collapsible
+                              value={activeBookAccordion}
+                              onValueChange={(v) => setActiveBookAccordion(v)}
                             >
-                              <AccordionTrigger>
-                                <div className="flex items-center gap-4">
-                                  <CornerDownRight className="size-4" />{" "}
-                                  {book.name}
-                                </div>
-                              </AccordionTrigger>
-                              <AccordionContent className="border-t space-y-2 pt-2">
-                                {book.chapters.map((chapter) => (
-                                  <Link
-                                    href={`/ncert/?g=${ncertClass.name}&s=${subject.name}&b=${book.name}&c=${chapter.name}`}
-                                    className={cn(
-                                      "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
-                                      (activeChapter ?? defaultChapter).name ===
-                                        chapter.name
-                                        ? "bg-muted"
-                                        : ""
-                                    )}
-                                    key={chapter.name}
-                                  >
-                                    <BookText className="size-5" />{" "}
-                                    {chapter.name}
-                                  </Link>
-                                ))}
-                              </AccordionContent>
-                            </AccordionItem>
-                          </Accordion>
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        ))}
+                              <AccordionItem
+                                value={book.name}
+                                className="border-none rounded-xl px-4 bg-gray-400/15 dark:bg-gray-900/30 mb-2"
+                              >
+                                <AccordionTrigger>
+                                  <div className="flex items-center gap-4">
+                                    <CornerDownRight className="size-4" />{" "}
+                                    {book.name}
+                                  </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="border-t space-y-2 pt-2">
+                                  {book.chapters.map((chapter) => (
+                                    <Link
+                                      href={`/ncert/?g=${ncertClass.name}&s=${subject.name}&b=${book.name}&c=${chapter.name}`}
+                                      className={cn(
+                                        "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
+                                        (activeChapter ?? defaultChapter)
+                                          .name === chapter.name
+                                          ? "bg-muted"
+                                          : ""
+                                      )}
+                                      key={chapter.name}
+                                    >
+                                      <BookText className="size-5" />{" "}
+                                      {chapter.name}
+                                    </Link>
+                                  ))}
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))}
         </div>
       </ScrollArea>
 
