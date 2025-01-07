@@ -17,6 +17,7 @@ import { Props as ReactArtifactProps } from "@/components/artifact/react";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { toast } from "sonner";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 type Props = {
   id: string | null;
@@ -138,6 +139,12 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
       toast.error(error.message, {
         position: "top-center",
+      });
+      reportErrorAction({
+        userEmail,
+        errorMessage: error.message,
+        errorTrace: `[ChatPanel] [useChat] [onError] [app/components/chat/panel.tsx]`,
+        errorSourceUrl: "/chat",
       });
     },
     sendExtraMessageFields: true,

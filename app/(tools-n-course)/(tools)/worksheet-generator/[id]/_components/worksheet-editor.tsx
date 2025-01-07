@@ -26,6 +26,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateWorksheet } from "@/lib/db";
 import { toast } from "sonner";
 import { useState } from "react";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   worksheet: z
@@ -78,6 +79,12 @@ export function WorksheetEditorDialog({
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: (error as Error).message,
+        errorTrace: `[WorksheetEditorDialog] [updateWorksheetMutation] [onError] [app/(tools-n-course)/(tools)/worksheet-generator/%5Bid%5D/_components/worksheet-editor.tsx]`,
+        errorSourceUrl: "/worksheet-generator",
+      });
     },
   });
 

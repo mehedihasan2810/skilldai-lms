@@ -15,6 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import markdownToTxt from "markdown-to-txt";
 import { WorksheetEditorDialog } from "./worksheet-editor";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 export const WorksheetPage = ({
   userId,
@@ -45,6 +46,7 @@ export const WorksheetPage = ({
     } catch (err) {
       console.error("Failed to copy text:", err);
       toast.error(`Failed to copy text: ${(err as Error).message}`);
+      
     }
   };
 
@@ -144,7 +146,10 @@ export const WorksheetPage = ({
               <Printer className="size-5" /> Print
             </Button>
 
-              <WorksheetEditorDialog worksheet={worksheet?.worksheets ?? ""} worksheetId={id} />
+            <WorksheetEditorDialog
+              worksheet={worksheet?.worksheets ?? ""}
+              worksheetId={id}
+            />
           </div>
 
           {/* <h1 className="text-2xl font-bold mb-2 mt-6">{worksheet?.title}</h1> */}

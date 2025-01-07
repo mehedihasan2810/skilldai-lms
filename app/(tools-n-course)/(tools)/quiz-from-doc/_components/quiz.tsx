@@ -19,6 +19,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { resetQFDQuiz, updateQFDQuizAnswers } from "@/lib/db";
 import Link from "next/link";
 import { toast } from "sonner";
+import { report } from "process";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 type QuizProps = {
   questions: Question[];
@@ -60,6 +62,12 @@ export default function Quiz({
     onError: (updateQuestionError) => {
       console.log({ updateQuestionError });
       toast.error(updateQuestionError.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: updateQuestionError.message,
+        errorTrace: `[Quiz] [updateQuizQuestionMutation] [onError] [app/%28tools-n-course%29/%28tools%29/quiz-from-doc/_components/quiz.tsx]`,
+        errorSourceUrl: "/quiz-from-doc",
+      })
     },
   });
 
@@ -78,6 +86,12 @@ export default function Quiz({
     onError: (resetQuizError) => {
       console.log({ resetQuizError });
       toast.error(resetQuizError.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: resetQuizError.message,
+        errorTrace: `[Quiz] [resetQuizMutation] [onError] [app/%28tools-n-course%29/%28tools%29/quiz-from-doc/_components/quiz.tsx]`,
+        errorSourceUrl: "/quiz-from-doc",
+      });
     },
   });
 

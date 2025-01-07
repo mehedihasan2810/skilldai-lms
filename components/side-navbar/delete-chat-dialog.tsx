@@ -19,6 +19,7 @@ import { deleteChat } from "@/lib/db";
 import { Chat } from "@/app/types";
 import { toast } from "sonner";
 import { useRouter } from "nextjs-toploader/app";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const DeleteChatDialog = ({ chatId }: { chatId: string }) => {
   const router = useRouter();
@@ -47,6 +48,12 @@ const DeleteChatDialog = ({ chatId }: { chatId: string }) => {
     },
     onError: (error) => {
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: error.message,
+        errorTrace: `[DeleteChatDialog] [deleteChatMutation] [onError] [app/%28tools-n-course%29/%28tools%29/pdf-chat/%5Bid%5D/_components/delete-chat-dialog.tsx]`,
+        errorSourceUrl: "/pdf-chat/[id]",
+      });
     },
   });
 

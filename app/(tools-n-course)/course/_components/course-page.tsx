@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { SectionProgress } from "./section-progress";
 import { useEffect } from "react";
 import { useRouter } from "nextjs-toploader/app";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 interface PageProps {
   //   params: {
@@ -261,6 +262,12 @@ export function CoursePage({ userId, courseSlug, sectionSlug }: PageProps) {
                     },
                     onError: (error) => {
                       toast.error(error.message);
+                      reportErrorAction({
+                        userEmail: userId ?? "",
+                        errorMessage: error.message,
+                        errorTrace: `[CoursePage] [updateSectionCompletionMutation] [onError] [app/%28tools-n-course%29/course/_components/course-page.tsx]`,
+                        errorSourceUrl: "/course",
+                      });
                     },
                   }
                 );

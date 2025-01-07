@@ -26,6 +26,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateLessonPlan } from "@/lib/db";
 import { toast } from "sonner";
 import { useState } from "react";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   lessonPlan: z
@@ -78,6 +79,12 @@ export function LessonPlanEditorDialog({
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: (error as Error).message,
+        errorTrace: `[LessonPlanEditorDialog] [updateLessonPlanMutation] [onError] [app/%28tools-n-course%29/%28tools%29/lesson-plan-generator/%5Bid%5D/_components/lesson-plan-editor.tsx]`,
+        errorSourceUrl: "/lesson-plan-generator",
+      });
     },
   });
 

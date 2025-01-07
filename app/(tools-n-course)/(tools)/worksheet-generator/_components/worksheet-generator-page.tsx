@@ -31,6 +31,7 @@ import Markdown from "@/components/markdown/markdown";
 import { createClient } from "@/lib/supabase/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getLessonPlan, saveLessonPlan, saveWorksheets } from "@/lib/db";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const outputSchema = z.object({
   title: z.string().describe("A max eight-word title for the worksheets."),
@@ -102,6 +103,12 @@ export const WorksheetGeneratorPage = ({
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: (error as Error).message,
+        errorTrace: `[WorksheetGeneratorPage] [saveWorksheetsMutation] [onError] [app/%28tools-n-course%29/%28tools%29/worksheet-generator/%5Bid%5D/_components/worksheet-generator-page.tsx]`,
+        errorSourceUrl: "/worksheet-generator",
+      });
     },
   });
 
@@ -116,6 +123,12 @@ export const WorksheetGeneratorPage = ({
     onError: (worksheetsError) => {
       console.log({ worksheetsError });
       toast.error(worksheetsError.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: worksheetsError.message,
+        errorTrace: `[WorksheetGeneratorPage] [useObject] [onError] [app/%28tools-n-course%29/%28tools%29/worksheet-generator/%5Bid%5D/_components/worksheet-generator-page.tsx]`,
+        errorSourceUrl: "/worksheet-generator",
+      });
     },
     onFinish: async ({ object }) => {
       console.log({ object });
@@ -137,6 +150,12 @@ export const WorksheetGeneratorPage = ({
       } catch (error) {
         console.log({ error });
         toast.error((error as Error).message);
+        reportErrorAction({
+          userEmail,
+          errorMessage: (error as Error).message,
+          errorTrace: `[WorksheetGeneratorPage] [useObject] [onFinish] [app/%28tools-n-course%29/%28tools%29/worksheet-generator/%5Bid%5D/_components/worksheet-generator-page.tsx]`,
+          errorSourceUrl: "/worksheet-generator",
+        });
       }
     },
   });

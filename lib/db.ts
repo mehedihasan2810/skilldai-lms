@@ -1110,3 +1110,47 @@ export const deletePDFChatNote = async ({ noteId }: { noteId: string }) => {
 
   return data;
 };
+export const deleteLessonPlan = async ({
+  lessonPlanId,
+}: {
+  lessonPlanId: string;
+}) => {
+  const { data, error } = await supabase
+    .from("lesson_plan")
+    .delete()
+    .eq("id", lessonPlanId)
+    .select("id")
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
+export const editLessonPlanTitle = async ({
+  lessonPlanId,
+  title,
+}: {
+  lessonPlanId: string;
+  title: string;
+}) => {
+  console.log({ lessonPlanId, title });
+
+  const { error, data } = await supabase
+    .from("lesson_plan")
+    .update({
+      title: title,
+    })
+    .eq("id", lessonPlanId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};

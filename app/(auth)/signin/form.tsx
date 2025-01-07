@@ -38,6 +38,7 @@ import { useAction } from "next-safe-action/hooks";
 import { signInUser } from "@/actions/sign-in";
 import { toast } from "sonner";
 import { signInSchema } from "@/lib/validations/auth";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 enum FormStatus {
   Idle,
@@ -59,6 +60,12 @@ const SignInForm = () => {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: error.serverError ?? "Unknown",
+          errorTrace: `[SignInForm] [signInUser] [onError] [app/(auth)/signin/form.tsx]`,
+          errorSourceUrl: "/signin",
+        });
       }
       if (error.validationErrors) {
         toast.error(
@@ -66,6 +73,14 @@ const SignInForm = () => {
             error.validationErrors.password?.join(", ") ?? ""
           }`
         );
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: `${error.validationErrors.email?.join(", ") ?? ""}. ${
+            error.validationErrors.password?.join(", ") ?? ""
+          }`,
+          errorTrace: `[SignInForm] [signInUser] [onError] [ValidationError] [app/(auth)/signin/form.tsx]`,
+          errorSourceUrl: "/signin",
+        });
       }
     },
   });
@@ -163,7 +178,7 @@ const SignInForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex justify-between items-center">
-                  <FormLabel>Password</FormLabel>
+                    <FormLabel>Password</FormLabel>
                     <Link
                       className="text-sm underline text-muted-foreground"
                       href="/forgot-password"

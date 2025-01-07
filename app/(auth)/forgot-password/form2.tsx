@@ -30,6 +30,8 @@ import { SocialFooter } from "@/components/social-footer";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { report } from "process";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   email: z.string(),
@@ -67,6 +69,12 @@ const ForgotPasswordForm = () => {
       setFormStatus(FormStatus.Error);
       toast.error(error.message, {
         position: "bottom-center",
+      });
+      reportErrorAction({
+        userEmail: values.email,
+        errorMessage: error.message,
+        errorTrace: `[ForgotPasswordForm] [onSubmit] [app/(auth)/forgot-password/form2.tsx]`,
+        errorSourceUrl: "/forgot-password",
       });
       return;
     }

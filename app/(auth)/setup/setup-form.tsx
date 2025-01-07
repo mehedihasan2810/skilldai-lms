@@ -27,6 +27,7 @@ import { useMutation } from "@tanstack/react-query";
 import { saveUserInfo } from "@/lib/db";
 import { useRouter } from "nextjs-toploader/app";
 import { revalidateSetupForm } from "@/actions/revalidate-setup-form";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const professions = ["Student", "Teacher", "Developer", "Other"];
 
@@ -38,7 +39,7 @@ const formSchema = z.object({
   subject: z.string(),
 });
 
-export const SetupForm = ({ userId }: { userId: string }) => {
+export const SetupForm = ({ userId, userEmail }: { userId: string, userEmail: string }) => {
   const router = useRouter();
 
   const saveUserInfoMutation = useMutation({
@@ -75,6 +76,12 @@ export const SetupForm = ({ userId }: { userId: string }) => {
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: userEmail,
+        errorMessage: error.message,
+        errorTrace: `[SetupForm] [saveUserInfoMutation] [onError] [app/(auth)/setup/setup-form.tsx]`,
+        errorSourceUrl: "/setup",
+      });
     },
   });
 

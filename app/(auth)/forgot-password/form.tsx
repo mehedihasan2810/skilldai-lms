@@ -1,5 +1,6 @@
 "use client";
 import { forgotPasswordAction } from "@/actions/forgot-password";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 import { Message } from "@/components/signin-form-message";
 import { SubmitButton } from "@/components/submit-button";
 import {
@@ -43,9 +44,21 @@ export function ForgotPasswordForm({ message }: { message: Message }) {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: error.serverError ?? "Unknown",
+          errorTrace: `[ForgotPasswordForm] [forgotPasswordAction] [onError] [app/(auth)/forgot-password/form.tsx]`,
+          errorSourceUrl: "/forgot-password",
+        });
       }
       if (error.validationErrors) {
         toast.error(error.validationErrors.email?.join(", ") ?? "");
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: error.validationErrors.email?.join(", ") ?? "",
+          errorTrace: `[ForgotPasswordForm] [forgotPasswordAction] [onError] [ValidationError] [app/(auth)/forgot-password/form.tsx]`,
+          errorSourceUrl: "/forgot-password",
+        });
       }
     },
   });
@@ -67,7 +80,7 @@ export function ForgotPasswordForm({ message }: { message: Message }) {
       <CardHeader>
         <CardTitle className="text-xl">Send Reset Password Link</CardTitle>
         <CardDescription>
-        Enter your email below to receive a link to reset your password.
+          Enter your email below to receive a link to reset your password.
           {/* {" "}
           Already have an account?{" "}
           <Link className="text-primary underline" href="/">
@@ -95,9 +108,7 @@ export function ForgotPasswordForm({ message }: { message: Message }) {
             />
 
             <Button disabled={isPending} type="submit" className="w-full">
-              {isPending && (
-                  <Loader className="animate-spin mr-2" /> 
-              )}
+              {isPending && <Loader className="animate-spin mr-2" />}
               Send Link
             </Button>
           </form>

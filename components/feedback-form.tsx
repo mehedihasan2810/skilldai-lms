@@ -36,6 +36,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { toast } from "sonner";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   feedback: z.string().min(1, { message: "Required" }),
@@ -68,6 +69,12 @@ const FeedbackForm = ({
     },
     onError: (error) => {
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: email,
+        errorMessage: error.message,
+        errorTrace: `[FeedbackForm] [createFeedbackMutation] [onError] [components/feedback-form.tsx]`,
+        errorSourceUrl: "/feedback",
+      });
     },
   });
 

@@ -1726,6 +1726,420 @@ const ncertClasses = [
       },
     ],
   },
+  {
+    name: "11th",
+    subjects: [
+      {
+        name: "Accountancy",
+        books: [
+          {
+            name: "Accountancy-II",
+            chapters: [
+              {
+                name: "keac201",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Accountancy-II/keac201.pdf",
+              },
+              {
+                name: "keac202",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Accountancy-II/keac202.pdf",
+              },
+              {
+                name: "keac203",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Accountancy-II/keac203.pdf",
+              },
+            ],
+          },
+          {
+            name: "Financial Accounting-I",
+            chapters: [
+              {
+                name: "keac101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac101.pdf",
+              },
+              {
+                name: "keac102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac102.pdf",
+              },
+              {
+                name: "keac103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac103.pdf",
+              },
+
+              {
+                name: "keac104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac104.pdf",
+              },
+              {
+                name: "keac105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac105.pdf",
+              },
+              {
+                name: "keac106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac106.pdf",
+              },
+              {
+                name: "keac107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac107.pdf",
+              },
+              {
+                name: "keac1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Accountancy/Financial%20Accounting-I/keac1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Biology",
+        books: [
+          {
+            name: "kebo1dd",
+            chapters: [
+              {
+                name: "kebo101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo101.pdf",
+              },
+              {
+                name: "kebo102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo102.pdf",
+              },
+              {
+                name: "kebo103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo103.pdf",
+              },
+              {
+                name: "kebo104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo104.pdf",
+              },
+              {
+                name: "kebo105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo105.pdf",
+              },
+              {
+                name: "kebo106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo106.pdf",
+              },
+              {
+                name: "kebo107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo107.pdf",
+              },
+              {
+                name: "kebo108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo108.pdf",
+              },
+              {
+                name: "kebo109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo109.pdf",
+              },
+              {
+                name: "kebo110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo110.pdf",
+              },
+              {
+                name: "kebo111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo111.pdf",
+              },
+              {
+                name: "kebo112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo112.pdf",
+              },
+              {
+                name: "kebo113",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo113.pdf",
+              },
+              {
+                name: "kebo114",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo114.pdf",
+              },
+              {
+                name: "kebo115",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo115.pdf",
+              },
+              {
+                name: "kebo116",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo116.pdf",
+              },
+              {
+                name: "kebo117",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo117.pdf",
+              },
+              {
+                name: "kebo118",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo118.pdf",
+              },
+              {
+                name: "kebo119",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo119.pdf",
+              },
+              {
+                name: "kebo1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biology/kebo1dd/kebo1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Biotechnology",
+        books: [
+          {
+            name: "kebt1dd",
+            chapters: [
+              {
+                name: "kebt101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt101.pdf",
+              },
+              {
+                name: "kebt102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt102.pdf",
+              },
+              {
+                name: "kebt103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt103.pdf",
+              },
+              {
+                name: "kebt104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt104.pdf",
+              },
+              {
+                name: "kebt105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt105.pdf",
+              },
+              {
+                name: "kebt106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt106.pdf",
+              },
+              {
+                name: "kebt107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt107.pdf",
+              },
+              {
+                name: "kebt108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt108.pdf",
+              },
+              {
+                name: "kebt109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt109.pdf",
+              },
+              {
+                name: "kebt110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt110.pdf",
+              },
+              {
+                name: "kebt111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt111.pdf",
+              },
+              {
+                name: "kebt112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt112.pdf",
+              },
+              {
+                name: "kebt1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Biotechnology/kebt1dd/kebt1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Business Studies",
+        books: [
+          {
+            name: "kebs1dd",
+            chapters: [
+              {
+                name: "kebs101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs101.pdf",
+              },
+              {
+                name: "kebs102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs102.pdf",
+              },
+              {
+                name: "kebs103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs103.pdf",
+              },
+              {
+                name: "kebs104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs104.pdf",
+              },
+              {
+                name: "kebs105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs105.pdf",
+              },
+              {
+                name: "kebs106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs106.pdf",
+              },
+              {
+                name: "kebs107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs107.pdf",
+              },
+              {
+                name: "kebs108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs108.pdf",
+              },
+              {
+                name: "kebs109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs109.pdf",
+              },
+              {
+                name: "kebs110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs110.pdf",
+              },
+              {
+                name: "kebs111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs111.pdf",
+              },
+              {
+                name: "kebs1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Business%20Studies/kebs1dd/kebs1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Chemistry",
+        books: [
+          {
+            name: "Chemisrty Part-I",
+            chapters: [
+              {
+                name: "kech101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech101.pdf",
+              },
+              {
+                name: "kech102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech102.pdf",
+              },
+              {
+                name: "kech103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech103.pdf",
+              },
+              {
+                name: "kech104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech104.pdf",
+              },
+              {
+                name: "kech105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech105.pdf",
+              },
+              {
+                name: "kech106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech106.pdf",
+              },
+              {
+                name: "kech1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech1a1.pdf",
+              },
+              {
+                name: "kech1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech1an.pdf",
+              },
+              {
+                name: "kech1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part-I/kech1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Chemistry Part-II",
+            chapters: [
+              {
+                name: "kech201",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part%20II/kech201.pdf",
+              },
+              {
+                name: "kech202",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part%20II/kech202.pdf",
+              },
+              {
+                name: "kech203",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part%20II/kech203.pdf",
+              },
+              {
+                name: "kech2an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part%20II/kech2an.pdf",
+              },
+              {
+                name: "kech2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Chemistry/Chemistry%20Part%20II/kech2ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Computer Science",
+        books: [
+          {
+            name: "lecs1dd",
+            chapters: [
+              {
+                name: "lecs101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs101.pdf",
+              },
+              {
+                name: "lecs102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs102.pdf",
+              },
+              {
+                name: "lecs103",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs103.pdf",
+              },
+              {
+                name: "lecs104",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs104.pdf",
+              },
+              {
+                name: "lecs105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs105.pdf",
+              },
+              {
+                name: "lecs106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs106.pdf",
+              },
+              {
+                name: "lecs107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs107.pdf",
+              },
+              {
+                name: "lecs108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs108.pdf",
+              },
+              {
+                name: "lecs109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs109.pdf",
+              },
+              {
+                name: "lecs110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs110.pdf",
+              },
+              {
+                name: "lecs111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs111.pdf",
+              },
+              {
+                name: "lecs112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs112.pdf",
+              },
+              {
+                name: "lecs113",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs113.pdf",
+              },
+              {
+                name: "lecs1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Computer%20science/lecs1dd/lecs1ps.pdf",
+              },
+             
+            ],
+          },
+        
+        ],
+      },
+    ],
+  },
 ];
 
 export const NCERTPage = ({

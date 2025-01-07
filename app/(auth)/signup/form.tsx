@@ -32,6 +32,7 @@ import { OAuthProviderButton } from "@/components/oauth-provider-button";
 import { OAuthProviders } from "@/app/types";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 enum FormStatus {
   Idle,
@@ -73,7 +74,7 @@ const SignUpForm = () => {
       },
     });
 
-    console.log({data})
+    console.log({ data });
 
     if (error) {
       console.error(error);
@@ -81,7 +82,12 @@ const SignUpForm = () => {
       toast.error(error.message, {
         position: "bottom-center",
       });
-
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: error.message,
+        errorTrace: `[SignUpForm] [onSubmit] [supabase.auth.signUp] [app/(auth)/signup/form.tsx]`,
+        errorSourceUrl: "/signup",
+      });
       return;
     }
 
@@ -103,6 +109,12 @@ const SignUpForm = () => {
       console.error(error);
       toast.error("Could not Sign In", {
         position: "top-right",
+      });
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: `Could not Sign In with ${provider}`,
+        errorTrace: `[SignUpForm] [handleOAuthSignIn] [supabase.auth.signInWithOAuth] [app/(auth)/signup/form.tsx]`,
+        errorSourceUrl: "/signup",
       });
     }
   };

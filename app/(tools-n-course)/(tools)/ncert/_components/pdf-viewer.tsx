@@ -14,6 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "nextjs-toploader/app";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 //   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -95,6 +96,12 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: (error as Error).message,
+        errorTrace: `[PDFViewer] [createNCERTChatMutation] [onError] [app/%28tools-n-course%29/%28tools%29/ncert/_components/pdf-viewer.tsx]`,
+        errorSourceUrl: "/pdf-viewer",
+      });
     },
   });
 

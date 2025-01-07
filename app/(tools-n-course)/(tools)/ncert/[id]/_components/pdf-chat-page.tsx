@@ -17,6 +17,7 @@ import { Divide, Loader } from "lucide-react";
 import Markdown from "@/components/markdown/markdown";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const PDFViewer = dynamic(
   () => import("./pdf-viewer").then((mod) => mod.PDFViewer),
@@ -89,6 +90,12 @@ export const TalkToPDF = ({
       toast.error(error.message, {
         position: "top-center",
       });
+      reportErrorAction({
+        userEmail,
+        errorMessage: error.message,
+        errorTrace: `[TalkToPDF] [useChat] [onError] [app/%28tools-n-course%29/%28tools%29/ncert/%5Bid%5D/_components/pdf-chat-page.tsx]`,
+        errorSourceUrl: "/pdf-chat",
+      });
     },
     sendExtraMessageFields: true,
     body: {
@@ -128,6 +135,12 @@ export const TalkToPDF = ({
 
       toast.error(error.message, {
         position: "top-center",
+      });
+      reportErrorAction({
+        userEmail,
+        errorMessage: error.message,
+        errorTrace: `[TalkToPDF] [useChat] [onError] [app/%28tools-n-course%29/%28tools%29/ncert/%5Bid%5D/_components/pdf-chat-page.tsx]`,
+        errorSourceUrl: "/pdf-chat",
       });
     },
     sendExtraMessageFields: true,

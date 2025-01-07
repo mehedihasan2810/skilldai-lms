@@ -19,6 +19,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useUsageToken } from "@/lib/hooks/use-usage-token";
 import { CreateNote } from "./create-note";
 import { NoteList } from "./note-list";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const PDFViewer = dynamic(
   () => import("./pdf-viewer").then((mod) => mod.PDFViewer),
@@ -114,6 +115,12 @@ export const TalkToPDF = ({
 
       toast.error(error.message, {
         position: "top-center",
+      });
+      reportErrorAction({
+        userEmail,
+        errorMessage: error.message,
+        errorTrace: `[TalkToPDF] [useChat] [onError] [app/%28tools-n-course%29/%28tools%29/pdf-chat/%5Bid%5D/_components/pdf-chat-page.tsx]`,
+        errorSourceUrl: "/pdf-chat/[id]",
       });
     },
     sendExtraMessageFields: true,

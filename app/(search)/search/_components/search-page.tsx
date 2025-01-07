@@ -135,6 +135,7 @@ import {
   fetchMetadata,
   generateSpeech,
 } from "@/actions/search";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 export const maxDuration = 60;
 
@@ -649,7 +650,13 @@ export const HomeContent = ({
     },
     onError: (error) => {
       console.error("Chat error:", error.cause, error.message);
-      toast.error(error.message)
+      toast.error(error.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: `${error.cause}: ${error.message}`,
+        errorTrace: `[HomeContent] [useChat] [onError] [app/(search)/search/_components/search-page.tsx]`,
+        errorSourceUrl: "/search",
+      });
       // toast.error("An error occurred.", {
       //   description:
       //     "We must have ran out of credits. Sponsor us on GitHub to keep this service running.",
@@ -2365,6 +2372,7 @@ The new Anthropic models: Claude 3.5 Sonnet and 3.5 Haiku models are now availab
         handleSubmit(e);
       } else {
         toast.error("Please enter a valid message.");
+
       }
     },
     [input, messages, editingMessageIndex, setMessages, handleSubmit]

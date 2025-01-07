@@ -34,6 +34,7 @@ import PageContainer from "@/components/dashboard/page-container";
 import { Loader, Loader2, X } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   courseTopic: z.string().min(1, { message: "Required" }),
@@ -42,7 +43,13 @@ const formSchema = z.object({
   targetAudience: z.string().min(1, { message: "Required" }),
 });
 
-export const CreateCourseForm = ({ email, userId }: { email: string, userId: string }) => {
+export const CreateCourseForm = ({
+  email,
+  userId,
+}: {
+  email: string;
+  userId: string;
+}) => {
   const queryClient = useQueryClient();
   // const { session } = useSupabase();
   const [isCourseSaveComplete, setIsCourseSaveComplete] = useState(false);
@@ -64,6 +71,12 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
       console.log("Error");
       console.log({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: email,
+        errorMessage: error.message,
+        errorTrace: `[CreateCourseForm] [useObject] [onError] [app/(tools-n-course)/(tools)/courses/create/_components/create-course-form.tsx]`,
+        errorSourceUrl: "/tools/courses/create",
+      });
     },
     onFinish: async (objectData) => {
       console.log("finish");
@@ -79,7 +92,14 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
         const { object: generatedCourse } = objectData;
 
         if (!generatedCourse) {
-          toast.error("Something went wrong! Try again");
+          toast.error("Generated course not found");
+
+          reportErrorAction({
+            userEmail: email,
+            errorMessage: "Generated course not found",
+            errorTrace: `[CreateCourseForm] [useObject] [onFinish] [app/(tools-n-course)/(tools)/courses/create/_components/create-course-form.tsx]`,
+            errorSourceUrl: "/tools/courses/create",
+          });
           return;
         }
 
@@ -173,6 +193,12 @@ export const CreateCourseForm = ({ email, userId }: { email: string, userId: str
       } catch (error) {
         setIsCourseSaveComplete(false);
         toast.error((error as Error).message);
+        reportErrorAction({
+          userEmail: email,
+          errorMessage: (error as Error).message,
+          errorTrace: `[CreateCourseForm] [useObject] [onFinish] [Error] [app/(tools-n-course)/(tools)/courses/create/_components/create-course-form.tsx]`,
+          errorSourceUrl: "/tools/courses/create",
+        });
       }
     },
   });

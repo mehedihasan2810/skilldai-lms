@@ -20,9 +20,16 @@ import { generateQuizTitle } from "@/actions/generate-quiz-title";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "nextjs-toploader/app";
 import { shortUid } from "@/lib/utils";
+import { report } from "process";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
-
-export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string,  userEmail: string }) {
+export function CreateQuizFromDocPanel({
+  userId,
+  userEmail,
+}: {
+  userId: string;
+  userEmail: string;
+}) {
   const [files, setFiles] = useState<File[]>([]);
   const [questions, setQuestions] = useState<z.infer<typeof questionsSchema>>(
     []
@@ -43,8 +50,17 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
     initialValue: undefined,
     onError: (quizGenerateError) => {
       console.log({ quizGenerateError });
-      toast.error(quizGenerateError.message.trim() || "Failed to generate quiz. Please try again.");
+      toast.error(
+        quizGenerateError.message.trim() ||
+          "Failed to generate quiz. Please try again."
+      );
       setFiles([]);
+      reportErrorAction({
+        userEmail,
+        errorMessage: quizGenerateError.message,
+        errorTrace: `[CreateQuizFromDocPanel] [useObject] [onError] [app/%28tools-n-course%29/%28tools%29/quiz-from-doc/_components/create-quiz-from-doc-panel.tsx]`,
+        errorSourceUrl: "/quiz-from-doc",
+      });
     },
     onFinish: async ({ object }) => {
       try {
@@ -127,6 +143,12 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
         console.log({ error });
         setIsQuizSaving(false);
         toast.error((error as Error).message);
+        reportErrorAction({
+          userEmail,
+          errorMessage: (error as Error).message,
+          errorTrace: `[CreateQuizFromDocPanel] [useObject] [onFinish] [app/%28tools-n-course%29/%28tools%29/quiz-from-doc/_components/create-quiz-from-doc-panel.tsx]`,
+          errorSourceUrl: "/quiz-from-doc",
+        });
       }
     },
   });
@@ -243,7 +265,6 @@ export function CreateQuizFromDocPanel({ userId, userEmail }: { userId: string, 
             <CardTitle className="text-2xl font-bold">
               PDF Quiz Generator
             </CardTitle>
-           
           </div>
         </CardHeader>
         <CardContent>

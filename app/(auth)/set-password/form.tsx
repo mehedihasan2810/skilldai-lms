@@ -22,6 +22,7 @@ import { setPasswordAction } from "@/actions/set-password";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
 import { useRouter } from "nextjs-toploader/app";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   password: z
@@ -66,6 +67,12 @@ const SetPasswordForm = () => {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: error.serverError,
+          errorTrace: `[SetPasswordForm] [setPasswordAction] [onError] [app/(auth)/set-password/form.tsx]`,
+          errorSourceUrl: "/set-password",
+        });
       }
       if (error.validationErrors) {
         toast.error(
@@ -73,6 +80,14 @@ const SetPasswordForm = () => {
             error.validationErrors.refreshToken?.join(", ") ?? ""
           }`
         );
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: `${error.validationErrors.password?.join(", ") ?? ""}. ${
+            error.validationErrors.refreshToken?.join(", ") ?? ""
+          }`,
+          errorTrace: `[SetPasswordForm] [setPasswordAction] [onError] [ValidationError] [app/(auth)/set-password/form.tsx]`,
+          errorSourceUrl: "/set-password",
+        });
       }
     },
   });
@@ -90,7 +105,7 @@ const SetPasswordForm = () => {
 
     const refreshToken = searchParams.get("refresh_token") ?? "";
 
-     await executeAsync({
+    await executeAsync({
       password,
       refreshToken,
     });

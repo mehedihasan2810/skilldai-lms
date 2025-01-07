@@ -17,6 +17,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 export const NoteList = ({ pdfChatId }: { pdfChatId: string }) => {
   const {
@@ -101,6 +102,12 @@ const DeleteNoteDialog = ({
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: error.message,
+        errorTrace: `[DeleteNoteDialog] [deleteNoteMutation] [onError] [app/%28tools-n-course%29/%28tools%29/pdf-chat/%5Bid%5D/_components/note-list.tsx]`,
+        errorSourceUrl: "/pdf-chat/[id]",
+      });
     },
   });
 

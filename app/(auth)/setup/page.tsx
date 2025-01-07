@@ -21,7 +21,7 @@ const Page = async () => {
         </CardHeader>
         <CardContent >
           <Suspense fallback={null}>
-            <SetupForm userId={user.id} />
+            <SetupForm userId={user.id} userEmail={user.email ?? ""} />
           </Suspense>
         </CardContent>
       </Card>

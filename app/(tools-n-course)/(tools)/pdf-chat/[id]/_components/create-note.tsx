@@ -17,6 +17,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { createNote } from "@/lib/db";
 import { Loader } from "lucide-react";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const formSchema = z.object({
   title: z
@@ -68,6 +69,12 @@ export const CreateNote = ({ pdfChatId }: { pdfChatId: string }) => {
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail: "Unknown",
+        errorMessage: error.message,
+        errorTrace: `[CreateNote] [createNote] [onError] [app/%28tools-n-course%29/%28tools%29/pdf-chat/%5Bid%5D/_components/create-note.tsx]`,
+        errorSourceUrl: "/pdf-chat/[id]",
+      });
     },
   });
 

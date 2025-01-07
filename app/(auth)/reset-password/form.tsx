@@ -28,6 +28,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { resetPasswordSchema } from "@/lib/validations/auth";
 import { useRouter } from "nextjs-toploader/app";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 export function ResetPasswordForm({ message }: { message: Message }) {
   const [isShowPass, setIsShowPass] = useState(false);
@@ -47,6 +48,12 @@ export function ResetPasswordForm({ message }: { message: Message }) {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: error.serverError ?? "Unknown",
+          errorTrace: `[ResetPasswordForm] [resetPasswordAction] [onError] [app/(auth)/reset-password/form.tsx]`,
+          errorSourceUrl: "/reset-password",
+        });
       }
       if (error.validationErrors) {
         toast.error(
@@ -54,6 +61,14 @@ export function ResetPasswordForm({ message }: { message: Message }) {
             error.validationErrors.confirmPassword?.join(", ") ?? ""
           }`
         );
+        reportErrorAction({
+          userEmail: "Unknown",
+          errorMessage: `${error.validationErrors.password?.join(", ") ?? ""}. ${
+            error.validationErrors.confirmPassword?.join(", ") ?? ""
+          }`,
+          errorTrace: `[ResetPasswordForm] [resetPasswordAction] [onError] [ValidationError] [app/(auth)/reset-password/form.tsx]`,
+          errorSourceUrl: "/reset-password",
+        });
       }
     },
   });

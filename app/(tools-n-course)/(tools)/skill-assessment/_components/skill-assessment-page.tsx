@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import markdownToTxt from "markdown-to-txt";
 import generatePDF, { Options } from "react-to-pdf";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const outputSchema = z.object({
   type: z.enum(["multiple-choice", "input"]),
@@ -162,6 +163,12 @@ export const SkillAssessmentPage = ({
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
+        reportErrorAction({
+          userEmail,
+          errorMessage: error.serverError ?? "Unknown",
+          errorTrace: `[SkillAssessmentPage] [getSuggestedSkills] [onError] [app/%28tools-n-course%29/%28tools%29/skill-assessment`,
+          errorSourceUrl: "/skill-assessment",
+        });
       }
       if (error.validationErrors) {
         toast.error(
@@ -169,6 +176,14 @@ export const SkillAssessmentPage = ({
             error.validationErrors.skills?.join(", ") ?? ""
           }`
         );
+        reportErrorAction({
+          userEmail,
+          errorMessage: `${
+            error.validationErrors.skillCategory?.join(", ") ?? ""
+          }. ${error.validationErrors.skills?.join(", ") ?? ""}`,
+          errorTrace: `[SkillAssessmentPage] [getSuggestedSkills] [onError] [ValidationError] [app/%28tools-n-course%29/%28tools%29/skill-assessment`,
+          errorSourceUrl: "/skill-assessment",
+        });
       }
     },
   });
@@ -186,6 +201,12 @@ export const SkillAssessmentPage = ({
     onError: (questionnaireError) => {
       console.log({ questionnaireError });
       toast.error(questionnaireError.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: questionnaireError.message,
+        errorTrace: `[SkillAssessmentPage] [useObject] [onError] [app/%28tools-n-course%29/%28tools%29/skill-assessment`,
+        errorSourceUrl: "/skill-assessment",
+      });
     },
     onFinish: async ({ object }) => {
       console.log({ object });
@@ -205,6 +226,12 @@ export const SkillAssessmentPage = ({
     onError: (assessmentError) => {
       console.log({ assessmentError });
       toast.error(assessmentError.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: assessmentError.message,
+        errorTrace: `[SkillAssessmentPage] [useObject] [onError] [app/%28tools-n-course%29/%28tools%29/skill-assessment`,
+        errorSourceUrl: "/skill-assessment",
+      });
     },
     onFinish: async ({ object }) => {
       console.log({ object });

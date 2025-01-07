@@ -31,6 +31,7 @@ import Markdown from "@/components/markdown/markdown";
 import { createClient } from "@/lib/supabase/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getLessonPlan, saveLessonPlan } from "@/lib/db";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 
 const outputSchema = z.object({
   title: z.string().describe("A max eight-word title for the lesson plan."),
@@ -112,6 +113,12 @@ export const LessonPlanForm = ({
     onError: (error) => {
       console.error({ error });
       toast.error(error.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: error.message,
+        errorTrace: `[LessonPlanForm] [saveLessonPlanMutation] [onError] [app/%28tools-n-course%29/%28tools%29/lesson-plan-generator/_components/lesson-plan-form.tsx]`,
+        errorSourceUrl: "/lesson-plan-generator",
+      });
     },
   });
 
@@ -126,11 +133,17 @@ export const LessonPlanForm = ({
     onError: (lessonPlanError) => {
       console.log({ lessonPlanError });
       toast.error(lessonPlanError.message);
+      reportErrorAction({
+        userEmail,
+        errorMessage: lessonPlanError.message,
+        errorTrace: `[LessonPlanForm] [useObject] [onError] [app/%28tools-n-course%29/%28tools%29/lesson-plan-generator/_components/lesson-plan-form.tsx]`,
+        errorSourceUrl: "/lesson-plan-generator",
+      });
     },
     onFinish: async ({ object }) => {
       try {
         if (!object) {
-          throw new Error("Something went wrong!");
+          throw new Error("No lesson plan generated.");
         }
         console.log({ object });
 
@@ -148,6 +161,12 @@ export const LessonPlanForm = ({
       } catch (error) {
         console.log({ error });
         toast.error((error as Error).message);
+        reportErrorAction({
+          userEmail,
+          errorMessage: (error as Error).message,
+          errorTrace: `[LessonPlanForm] [useObject] [onError] [app/%28tools-n-course%29/%28tools%29/lesson-plan-generator/_components/lesson-plan-form.tsx]`,
+          errorSourceUrl: "/lesson-plan-generator",
+        });
       }
     },
   });
@@ -191,76 +210,76 @@ export const LessonPlanForm = ({
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="topic"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Lesson Topic</FormLabel>
+              <FormField
+                control={form.control}
+                name="topic"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lesson Topic</FormLabel>
 
-                  <FormControl>
-                    <Input
-                      placeholder="Enter the  general subject of the lesson (eg: History, Math)"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="focusingOn"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Focusing On (optional)</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter the  general subject of the lesson (eg: History, Math)"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="focusingOn"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Focusing On (optional)</FormLabel>
 
-                  <FormControl>
-                    <Input
-                      placeholder="Enter topics to  focus on (eg: industrial revolution)"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormControl>
+                      <Input
+                        placeholder="Enter topics to  focus on (eg: industrial revolution)"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="gradeLevel"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Grade Level (optional)</FormLabel>
+              <FormField
+                control={form.control}
+                name="gradeLevel"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Grade Level (optional)</FormLabel>
 
-                  <FormControl>
-                    <Input
-                      placeholder="Enter difficulty level (eg: 3rd grade, beginners)"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="style"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Lesson Style (optional)</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter difficulty level (eg: 3rd grade, beginners)"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="style"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lesson Style (optional)</FormLabel>
 
-                  <FormControl>
-                    <Input
-                      placeholder="Enter style for the lesson (eg:creative, lecture)"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormControl>
+                      <Input
+                        placeholder="Enter style for the lesson (eg:creative, lecture)"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             <FormField
               control={form.control}
