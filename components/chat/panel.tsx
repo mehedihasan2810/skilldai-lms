@@ -54,6 +54,16 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
   console.log({ chat });
 
+  // const {
+  //   data: initialMessages2,
+  //   error: initialMessagesError,
+  //   isLoading: isInitialMessagesLoading,
+  // } = useQuery({
+  //   queryKey: ["initialMessages", chatId],
+  //   queryFn: async () => await getChatMessages(chatId),
+  //   enabled: !!chatId,
+  // });
+
   // Fetch messages for existing chat
   const fetchMessages = async () => {
     if (chatId) {

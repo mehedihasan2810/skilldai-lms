@@ -2,12 +2,13 @@ import { ChatMessageList } from "@/components/chat/message-list";
 import { Button } from "@/components/ui";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { cn, isMonthlyTokenUsageReached } from "@/lib/utils";
-import { ArrowUpIcon, CircleStopIcon } from "lucide-react";
-import React, { SyntheticEvent } from "react";
+import { ArrowUpIcon, CircleStopIcon, Mic, MicOff } from "lucide-react";
+import React, { SyntheticEvent, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { ChatRequestOptions, Message } from "ai";
 import { savePdfChatMessage } from "@/lib/db";
+import { useVoiceToText } from "@/hooks/use-voice-to-text";
 
 interface Props {
   onHandleChatSubmit: (
@@ -45,6 +46,15 @@ export const PDFChatPanel = ({
 }: Props) => {
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
+
+  const {
+    startListening,
+    stopListening,
+    transcript,
+    setTranscript,
+    reset,
+    isListening,
+  } = useVoiceToText();
 
   const onHandleSend = async (event?: SyntheticEvent) => {
     if (isMonthlyTokenUsageReached({ totalTokens })) return;
@@ -85,13 +95,22 @@ export const PDFChatPanel = ({
 
   const { onKeyDown } = useEnterSubmit({ onSubmit: onHandleSend });
 
+  useEffect(() => {
+    if (transcript && isListening) {
+      onHandleSetInput(transcript.trim());
+    }
+  }, [isListening, onHandleSetInput, transcript]);
+
   return (
     <div
       className={cn(
         "relative flex flex-col w-full overflow-x-hidden h-[70vh] md:h-[84vh]"
       )}
     >
-      <div className="pdf-chat-scroll-container grow overflow-y-auto" ref={scrollRef}>
+      <div
+        className="pdf-chat-scroll-container grow overflow-y-auto"
+        ref={scrollRef}
+      >
         <ChatMessageList
           messages={messages}
           containerRef={messagesRef}
@@ -100,14 +119,11 @@ export const PDFChatPanel = ({
       </div>
       <div
         className={cn(
-          "w-full flex flex-col gap-1 bg-secondary text-foreground py-3  px-5  border border-primary/10 rounded-xl"
+          "w-full flex flex-col gap-1 bg-secondary text-foreground py-3 pl-4 pr-3  border border-primary/10 rounded-xl"
         )}
       >
         <div>
-          <form
-            className="flex gap-2 items-start"
-            onSubmit={isChatLoading ? stopGenerating : (e) => onHandleSend(e)}
-          >
+          <form className="flex gap-2 items-start" onSubmit={onHandleSend}>
             <TextareaAutosize
               //   ref={inputRef}
               tabIndex={0}
@@ -150,13 +166,50 @@ export const PDFChatPanel = ({
             </Button> */}
 
             <Button
-              type="submit"
-              // onClick={isLoading ? stopGenerating : onSubmit}
-              size="icon"
-              //   className="size-7"
+              onClick={
+                isListening
+                  ? () => {
+                      stopListening();
+                      onHandleSetInput("");
+                    }
+                  : startListening
+              }
+              variant={"ghost"}
+              size={"icon"}
+              // className="size-7"
+              type="button"
+              className={cn(
+                "relative text-muted-foreground",
+                isListening
+                  ? "text-red-500 after:absolute after:right-0 after:top-0 after:size-3 after:animate-ping after:rounded-full after:bg-red-500 after:duration-1000 hover:text-red-500/80"
+                  : ""
+              )}
             >
-              {isChatLoading ? <CircleStopIcon /> : <ArrowUpIcon />}
+              {isListening ? <MicOff className="" /> : <Mic className="" />}
             </Button>
+
+            {isChatLoading ? (
+              <Button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  stopGenerating();
+                }}
+                size="icon"
+                //   className="size-7"
+              >
+                <CircleStopIcon />
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                // onClick={isLoading ? stopGenerating : onSubmit}
+                size="icon"
+                //   className="size-7"
+              >
+                <ArrowUpIcon />
+              </Button>
+            )}
           </form>
         </div>
       </div>
