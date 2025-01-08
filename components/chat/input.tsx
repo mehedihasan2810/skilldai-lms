@@ -6,7 +6,9 @@ import {
   CircleStopIcon,
   Loader2Icon,
   MessageCircle,
+  Mic,
   MicIcon,
+  MicOff,
   PaperclipIcon,
   PauseIcon,
 } from "lucide-react";
@@ -32,6 +34,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getChats } from "@/lib/db";
 import Link from "next/link";
 import { formatDate } from "@/lib/formate-date";
+import { useVoiceToText } from "@/hooks/use-voice-to-text";
+import { Skeleton } from "../ui/skeleton";
 
 const codeGPTExamplePrompts = [
   {
@@ -138,6 +142,15 @@ export const ChatInput = memo(function ChatInput({
   // const userId = session?.user.id;
 
   const {
+    startListening,
+    stopListening,
+    transcript,
+    setTranscript,
+    reset,
+    isListening,
+  } = useVoiceToText();
+
+  const {
     data: chats,
     error,
     isLoading: isChatLoading,
@@ -201,10 +214,18 @@ export const ChatInput = memo(function ChatInput({
     }
   };
 
+  useEffect(() => {
+    if (transcript && isListening) {
+      setInput(transcript.trim());
+    }
+  }, [isListening, setInput, transcript]);
+
   // Focus on input field when component mounts
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  console.log({ isListening });
 
   return (
     <>
@@ -255,10 +276,13 @@ export const ChatInput = memo(function ChatInput({
                   <button
                     onClick={() => onChangeActiveChatTab(tab.value)}
                     key={tab.id}
-                    className={cn("w-full p-1.5 rounded-xl text-center truncate", {
-                      "bg-primary text-primary-foreground":
-                        tab.value === activeChatTab,
-                    })}
+                    className={cn(
+                      "w-full p-1.5 rounded-xl text-center truncate",
+                      {
+                        "bg-primary text-primary-foreground":
+                          tab.value === activeChatTab,
+                      }
+                    )}
                   >
                     {tab.label}
                   </button>
@@ -305,12 +329,19 @@ export const ChatInput = memo(function ChatInput({
             >
               <form
                 className="flex gap-2 items-start"
-                onSubmit={(e) => onSubmit(e)}
+                onSubmit={(e) => {
+                  stopListening();
+                  onSubmit(e);
+                }}
               >
                 <Textarea
                   ref={inputRef}
                   tabIndex={0}
-                  onKeyDown={onKeyDown}
+                  onKeyDown={(e) => {
+                    stopListening();
+
+                    onKeyDown(e);
+                  }}
                   placeholder={
                     chatId
                       ? `Reply to ${
@@ -359,7 +390,7 @@ export const ChatInput = memo(function ChatInput({
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="size-8"
+                    className="size-7 text-muted-foreground"
                     onClick={handleFileUpload}
                   >
                     <PaperclipIcon className="size-4" />
@@ -370,7 +401,7 @@ export const ChatInput = memo(function ChatInput({
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="size-8"
+                    className="size-7 text-muted-foreground"
                     onClick={handleFileUpload}
                   >
                     <PaperclipIcon className="size-4" />
@@ -378,17 +409,59 @@ export const ChatInput = memo(function ChatInput({
                 )}
 
                 <Button
-                  type={isLoading ? "button" : "submit"}
-                  onClick={isLoading ? stopGenerating : onSubmit}
-                  size="icon"
-                  className="size-7"
+                  onClick={
+                    isListening
+                      ? () => {
+                          stopListening();
+                          setInput("");
+                        }
+                      : startListening
+                  }
+                  variant={"ghost"}
+                  size={"icon"}
+                  // className="size-7"
+                  type="button"
+                  className={cn(
+                    "size-7 relative text-muted-foreground",
+                    isListening
+                      ? "text-red-500 after:absolute after:right-0 after:top-0 after:size-3 after:animate-ping after:rounded-full after:bg-red-500 after:duration-1000 hover:text-red-500/80"
+                      : ""
+                  )}
                 >
-                  {isLoading ? (
-                    <CircleStopIcon className="w-4 h-4" />
+                  {isListening ? (
+                    <MicOff className="size-4" />
                   ) : (
-                    <ArrowUpIcon className="w-4 h-4" />
+                    <Mic className="size-4" />
                   )}
                 </Button>
+                {isLoading ? (
+                  <Button
+                    type={"button"}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      stopGenerating();
+                    }}
+                    size="icon"
+                    className="size-7"
+                  >
+                    <CircleStopIcon className="size-4" />
+                  </Button>
+                ) : (
+                  <Button
+                    type={"submit"}
+                    onClick={onSubmit}
+                    // onClick={isLoading ? stopGenerating : onSubmit}
+                    size="icon"
+                    className="size-7"
+                  >
+                    <ArrowUpIcon className="size-4" />
+                    {/* {isLoading ? (
+                      <CircleStopIcon className="size-4" />
+                    ) : (
+                      <ArrowUpIcon className="size-4" />
+                    )} */}
+                  </Button>
+                )}
               </form>
             </div>
           </div>
@@ -468,9 +541,18 @@ export const ChatInput = memo(function ChatInput({
                       Unable to fetch recent chats
                     </p>
                   ) : isChatLoading ? (
-                    <p className="text-muted-foreground">
-                      Recent chats Loading...
-                    </p>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      {Array.from({ length: 3 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className="bg-secondary/50 hover:bg-secondary text-muted-foreground p-4 rounded-xl flex flex-col gap-3"
+                        >
+                          <Skeleton className="h-4 w-[50%]" />
+                          <Skeleton className="h-4 w-[70%]" />
+                          <Skeleton className="h-4 w-full" />
+                        </div>
+                      ))}
+                    </div>
                   ) : (
                     <div className="grid md:grid-cols-3 gap-4">
                       {chats && chats.length === 0 ? (
@@ -488,7 +570,7 @@ export const ChatInput = memo(function ChatInput({
                             <p className="break-words  break-all">
                               {chat.title}
                             </p>
-                            <p className="text-sm mt-auto">
+                            <p className="text-xs mt-auto">
                               {formatDate(chat.created_at)}
                             </p>
                           </Link>
