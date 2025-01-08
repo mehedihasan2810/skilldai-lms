@@ -83,20 +83,20 @@ export function CreateQuizFromDocPanel({
 
         // setTitle(generatedTitle);
 
-        const { data: fileSaveRes, error: fileSaveErr } = await supabase.storage
-          .from("quiz-from-doc")
-          .upload(
-            `${userId}/${files[0].name
-              .replace(".pdf", "")
-              .replaceAll(" ", "-")}-${shortUid.rnd()}.pdf`,
-            files[0]
-          );
+        // const { data: fileSaveRes, error: fileSaveErr } = await supabase.storage
+        //   .from("quiz-from-doc")
+        //   .upload(
+        //     `${userId}/${files[0].name
+        //       .replace(".pdf", "")
+        //       .replaceAll(" ", "-")}-${shortUid.rnd()}.pdf`,
+        //     files[0]
+        //   );
 
-        console.log({ fileSaveRes, fileSaveErr });
+        // console.log({ fileSaveRes, fileSaveErr });
 
-        const fileUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${fileSaveRes?.fullPath}`;
+        // const fileUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${fileSaveRes?.fullPath}`;
 
-        console.log({ fileUrl });
+        // console.log({ fileUrl });
 
         const { error: quizError, data: quizData } = await supabase
           .from("qfd_quiz")
@@ -104,7 +104,8 @@ export function CreateQuizFromDocPanel({
             title: generatedTitle,
             user_id: userId,
             file_name: files[0].name,
-            file_url: fileSaveRes ? fileUrl : "",
+            file_url: "",
+            // file_url: fileSaveRes ? fileUrl : "",
             correct_answers: [],
           })
           .select("id")

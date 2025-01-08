@@ -812,7 +812,7 @@ export const getAllPDFInfo = async ({
 }) => {
   const { data, error } = await supabase
     .from("pdf_chat")
-    .select("id,title")
+    .select("id,title,created_at")
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
 
@@ -1129,7 +1129,7 @@ export const deleteLessonPlan = async ({
   return data;
 };
 
-export const editLessonPlanTitle = async ({
+export const renameLessonPlanTitle = async ({
   lessonPlanId,
   title,
 }: {
@@ -1144,6 +1144,140 @@ export const editLessonPlanTitle = async ({
       title: title,
     })
     .eq("id", lessonPlanId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+export const deleteWorksheet = async ({
+  worksheetId,
+}: {
+  worksheetId: string;
+}) => {
+  const { data, error } = await supabase
+    .from("worksheets")
+    .delete()
+    .eq("id", worksheetId)
+    .select("id")
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
+export const renameWorksheetTitle = async ({
+  worksheetId,
+  title,
+}: {
+  worksheetId: string;
+  title: string;
+}) => {
+  console.log({ worksheetId, title });
+
+  const { error, data } = await supabase
+    .from("worksheets")
+    .update({
+      title: title,
+    })
+    .eq("id", worksheetId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+export const deleteQFDQuiz = async ({ quizId }: { quizId: string }) => {
+  const { data, error } = await supabase
+    .from("qfd_quiz")
+    .delete()
+    .eq("id", quizId)
+    .select("id")
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
+export const renameQFDQuizTitle = async ({
+  quizId,
+  title,
+}: {
+  quizId: string;
+  title: string;
+}) => {
+  console.log({ quizId, title });
+
+  const { error, data } = await supabase
+    .from("qfd_quiz")
+    .update({
+      title: title,
+    })
+    .eq("id", quizId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  console.log({ data });
+
+  return data;
+};
+export const deletePDFChat = async ({ id }: { id: string }) => {
+  const { data, error } = await supabase
+    .from("pdf_chat")
+    .delete()
+    .eq("id", id)
+    .select("id,file_url")
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  // console.log({data})
+
+  // const storagePath = data.file_url.split("public/pdf_chat/")[1];
+
+  // const { data: storageData, error: storageError } = await supabase.storage
+  //   .from("pdf_chat")
+  //   .remove([storagePath]);
+
+  // console.log({ storageData, storageError });
+
+  return data;
+};
+
+export const renamePDFChatTitle = async ({
+  id,
+  title,
+}: {
+  id: string;
+  title: string;
+}) => {
+  console.log({ id, title });
+
+  const { error, data } = await supabase
+    .from("pdf_chat")
+    .update({
+      title: title,
+    })
+    .eq("id", id);
 
   if (error) {
     console.error(error);

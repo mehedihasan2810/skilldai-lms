@@ -27,6 +27,8 @@ export const reportErrorAction = async ({
   browser,
   device,
 }: Props) => {
+  if (process.env.NODE_ENV === "development") return;
+
   try {
     console.log({
       userEmail,
