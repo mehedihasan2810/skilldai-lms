@@ -449,7 +449,7 @@ export const ChatInput = memo(function ChatInput({
                 ) : (
                   <Button
                     type={"submit"}
-                    onClick={onSubmit}
+                    // onClick={onSubmit}
                     // onClick={isLoading ? stopGenerating : onSubmit}
                     size="icon"
                     className="size-7"
