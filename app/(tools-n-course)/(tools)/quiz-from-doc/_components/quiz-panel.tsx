@@ -22,9 +22,11 @@ export const QuizPanel = ({ quizId }: { quizId: string }) => {
 
   if (isLoading) {
     return (
-      <p className="flex items-center gap-2">
-        <Loader className="size-5 animate-spin" /> Loading...
-      </p>
+      <div className="flex items-center justify-center gap-2 h-full w-full">
+        <div className="flex items-center gap-2">
+          <Loader className="size-5 animate-spin" /> Please wait...
+        </div>
+      </div>
     );
   }
 

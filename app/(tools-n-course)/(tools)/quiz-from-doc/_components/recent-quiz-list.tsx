@@ -128,13 +128,13 @@ export const RecentQuizList = ({ userId }: { userId: string }) => {
                 className="border dark:border-border/40 p-4 rounded-md bg-card text-card-foreground flex flex-col gap-2 relative isolate group"
               >
                 <div className="grow space-y-2">
-                  <Image
+                  {/* <Image
                     className="w-full rounded-md aspect-video"
                     src="/pdf.png"
                     alt="Pdf image"
                     width={300}
                     height={200}
-                  />
+                  /> */}
                   <h3 className="text-lg font-semibold">{quiz.title}</h3>
                   <div className="text-sm text-muted-foreground mt-4">
                     Created on {format(quiz.created_at, "MMM d, yyyy")}
@@ -151,7 +151,7 @@ export const RecentQuizList = ({ userId }: { userId: string }) => {
                   <DropdownMenuTrigger
                     className={buttonVariants({
                       className:
-                        "absolute top-0 right-0 mt-2 mr-2 lg:opacity-0 lg:group-hover:opacity-100 backdrop-blur-md text-gray-800",
+                        "absolute top-0 right-0 mt-2 mr-2 lg:opacity-0 lg:group-hover:opacity-100 backdrop-blur-md",
                       variant: "ghost",
                       size: "icon",
                     })}

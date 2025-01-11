@@ -37,9 +37,9 @@ export function QuizReview({ questions, userAnswers }: QuizReviewProps) {
                     key={optionIndex}
                     className={`flex items-center p-4 rounded-lg ${
                       isCorrect
-                        ? "bg-green-100 dark:bg-green-700/50"
+                        ? "bg-primary/60 dark:bg-primary/40 text-primary-foreground"
                         : isIncorrectSelection
-                        ? "bg-red-100 dark:bg-red-700/50"
+                        ? "bg-red-400 dark:bg-red-700/50 text-white"
                         : "border border-border"
                     }`}
                   >
@@ -49,13 +49,12 @@ export function QuizReview({ questions, userAnswers }: QuizReviewProps) {
                     <span className="flex-grow">{option}</span>
                     {isCorrect && (
                       <Check
-                        className="ml-2 text-green-600 dark:text-green-400"
-                        size={20}
+                        className="ml-2 text-primary size-6 font-bold"
                       />
                     )}
                     {isIncorrectSelection && (
                       <X
-                        className="ml-2 text-red-600 dark:text-red-400"
+                        className="ml-2 text-red-600 dark:text-red-600"
                         size={20}
                       />
                     )}

@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
   },
   {
     title: "Quiz Generator",
-    href: "/quiz-from-doc",
+    href: "/quiz-generator",
     icon: "shieldQuestion",
   },
   {

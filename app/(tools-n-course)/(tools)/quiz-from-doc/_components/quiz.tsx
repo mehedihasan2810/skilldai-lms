@@ -11,6 +11,7 @@ import {
   RefreshCw,
   FileText,
   Loader,
+  Book,
 } from "lucide-react";
 import { Question } from "@/lib/schemas";
 import { QuizScore } from "./score";
@@ -21,6 +22,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { report } from "process";
 import { reportErrorAction } from "@/actions/report-error-via-mail";
+import confetti from "canvas-confetti";
 
 type QuizProps = {
   questions: Question[];
@@ -67,7 +69,7 @@ export default function Quiz({
         errorMessage: updateQuestionError.message,
         errorTrace: `[Quiz] [updateQuizQuestionMutation] [onError] [app/%28tools-n-course%29/%28tools%29/quiz-from-doc/_components/quiz.tsx]`,
         errorSourceUrl: "/quiz-from-doc",
-      })
+      });
     },
   });
 
@@ -156,7 +158,9 @@ export default function Quiz({
           {title}
         </h1>
         <div className="relative">
-          {!isSubmitted && <Progress value={progress} className="h-2.5 mb-8" />}
+          {/* {(!isSubmitted || correctAnswers.length !== questions.length) && (
+            <Progress value={progress} className="h-2.5 mb-8" />
+          )} */}
           <div className="min-h-[400px]">
             {" "}
             {/* Prevent layout shift */}
@@ -170,43 +174,50 @@ export default function Quiz({
               >
                 {/* {!isSubmitted ? ( */}
                 {correctAnswers.length !== questions.length ? (
-                  <div className="space-y-8">
-                    <QuestionCard
-                      question={currentQuestion}
-                      selectedAnswer={answers[currentQuestionIndex]}
-                      onSelectAnswer={handleSelectAnswer}
-                      isSubmitted={isSubmitted}
-                      showCorrectAnswer={false}
-                    />
-                    <div className="flex justify-between items-center pt-4">
-                      <Button
-                        onClick={handlePreviousQuestion}
-                        disabled={currentQuestionIndex === 0}
-                        variant="secondary"
-                      >
-                        <ChevronLeft className="mr-2 h-4 w-4" /> Previous
-                      </Button>
-                      <span className="text-sm font-medium">
-                        {currentQuestionIndex} / {questions.length}
-                      </span>
-                      <Button
-                        onClick={handleNextQuestion}
-                        disabled={answers[currentQuestionIndex] === null || updateQuizQuestionMutation.isPending}
-                        variant="secondary"
-                        className="flex items-center gap-2"
-                      >
-                        {currentQuestionIndex === questions.length - 1 ? (
-                          <>
-                            {updateQuizQuestionMutation.isPending && (
-                              <Loader className="size-5 animate-spin" />
-                            )}{" "}
-                            Submit
-                          </>
-                        ) : (
-                          "Next"
-                        )}{" "}
-                        <ChevronRight className="ml-2 h-4 w-4" />
-                      </Button>
+                  <div>
+                    <Progress value={progress} className="h-2.5 mb-8" />
+
+                    <div className="space-y-8">
+                      <QuestionCard
+                        question={currentQuestion}
+                        selectedAnswer={answers[currentQuestionIndex]}
+                        onSelectAnswer={handleSelectAnswer}
+                        isSubmitted={isSubmitted}
+                        showCorrectAnswer={false}
+                      />
+                      <div className="flex justify-between items-center pt-4">
+                        <Button
+                          onClick={handlePreviousQuestion}
+                          disabled={currentQuestionIndex === 0}
+                          variant="secondary"
+                        >
+                          <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+                        </Button>
+                        <span className="text-sm font-medium">
+                          {currentQuestionIndex} / {questions.length}
+                        </span>
+                        <Button
+                          onClick={handleNextQuestion}
+                          disabled={
+                            answers[currentQuestionIndex] === null ||
+                            updateQuizQuestionMutation.isPending
+                          }
+                          variant="secondary"
+                          className="flex items-center gap-2"
+                        >
+                          {currentQuestionIndex === questions.length - 1 ? (
+                            <>
+                              {updateQuizQuestionMutation.isPending && (
+                                <Loader className="size-5 animate-spin" />
+                              )}{" "}
+                              Submit
+                            </>
+                          ) : (
+                            "Next"
+                          )}{" "}
+                          <ChevronRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -238,13 +249,13 @@ export default function Quiz({
                         )}
                       </Button>
                       <Link
-                        href="/quiz-from-doc"
+                        href="/quiz-generator"
                         // onClick={clearPDF}
                         className={buttonVariants({
                           className: "bg-primary hover:bg-primary/90 w-full",
                         })}
                       >
-                        <FileText className="mr-2 h-4 w-4" /> Try Another PDF
+                        <Book className="mr-2 h-4 w-4" /> New quiz
                       </Link>
                     </div>
                   </div>
@@ -279,19 +290,19 @@ const QuestionCard: React.FC<{
             variant={
               selectedAnswer === answerLabels[index] ? "default" : "outline"
             }
-            className={`h-auto py-6 px-4 justify-start text-left whitespace-normal ${
+            className={`h-auto py-5 px-4 justify-start text-left whitespace-normal ${
               showCorrectAnswer && answerLabels[index] === question.answer
                 ? "bg-green-600 hover:bg-green-700"
                 : showCorrectAnswer &&
-                  selectedAnswer === answerLabels[index] &&
-                  selectedAnswer !== question.answer
-                ? "bg-red-600 hover:bg-red-700"
-                : ""
+                    selectedAnswer === answerLabels[index] &&
+                    selectedAnswer !== question.answer
+                  ? "bg-red-600 hover:bg-red-700"
+                  : ""
             }`}
             onClick={() => onSelectAnswer(answerLabels[index])}
           >
             <span className="text-lg font-medium mr-4 shrink-0">
-              {answerLabels[index]}
+              {answerLabels[index]}.
             </span>
             <span className="flex-grow">{option}</span>
             {(showCorrectAnswer && answerLabels[index] === question.answer) ||
@@ -309,3 +320,41 @@ const QuestionCard: React.FC<{
     </div>
   );
 };
+
+function ConfettiSideCannons() {
+  const handleClick = () => {
+    const end = Date.now() + 3 * 1000; // 3 seconds
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+
+    const frame = () => {
+      if (Date.now() > end) return;
+
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      });
+
+      requestAnimationFrame(frame);
+    };
+
+    frame();
+  };
+
+  return (
+    <div className="relative">
+      <Button onClick={handleClick}>Trigger Side Cannons</Button>
+    </div>
+  );
+}

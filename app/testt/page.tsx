@@ -4,16 +4,17 @@ import { Button } from "@react-email/components";
 import React from "react";
 
 const Page = () => {
+  function speak(){
+    let utterance = new SpeechSynthesisUtterance("Hello World");
+  let voicesArray = speechSynthesis.getVoices();
+  utterance.voice = voicesArray[2];
+  speechSynthesis.speak(utterance);
+}
   return (
     <div>
       <Button
         onClick={() => {
-          reportErrorAction({
-            userEmail: "test@gmail.com",
-            errorMessage: "Unknown",
-            errorTrace: "Unknown",
-            errorSourceUrl: "Unknown",
-          });
+          speak()
         }}
       >
         Click me

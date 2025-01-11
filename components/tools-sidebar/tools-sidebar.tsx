@@ -166,7 +166,7 @@ const data = {
 
         {
           title: "Quiz Generator",
-          url: "/quiz-from-doc",
+          url: "/quiz-generator",
           icon: ShieldQuestion,
         },
         {

@@ -325,7 +325,7 @@ export function CreateQuizFromDocPanel({
                 <span className="text-muted-foreground text-center col-span-4 sm:col-span-2">
                   {partialQuestions
                     ? `Generating question ${partialQuestions.length} of maximum 10`
-                    : "Analyzing PDF content"}
+                    : "Analyzing"}
                 </span>
               </div>
             </div>
