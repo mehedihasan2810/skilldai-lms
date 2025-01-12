@@ -2,10 +2,20 @@
 
 import { ChatMessage } from "@/components/chat/message";
 import { Separator } from "@/components/ui/separator";
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
+import { useSpeechSynthesis } from "@/lib/hooks/use-speech-synthesis";
 import { Message } from "ai";
-import { Loader } from "lucide-react";
+import {
+  Check,
+  CircleStop,
+  Copy,
+  Loader,
+  Mic,
+  Speaker,
+  Volume2,
+} from "lucide-react";
 import Image from "next/image";
-import React, { Fragment, RefObject } from "react";
+import React, { Fragment, RefObject, useState } from "react";
 
 type Props = {
   messages: Message[];
@@ -15,16 +25,44 @@ type Props = {
 
 export const ChatMessageList = React.memo(
   ({ messages, containerRef, isLoading }: Props) => {
+    const { isCopied, copyToClipboard } = useCopyToClipboard({
+      timeout: 2000,
+    });
+    const { speak, stop, isSpeaking, voices } = useSpeechSynthesis();
+    const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
+    const [speakId, setSpeakId] = useState<string | null>(null);
+
     const isChatLoading =
       (messages[messages.length - 1]?.role === "user" ||
         (messages[messages.length - 1]?.role === "assistant" &&
           messages[messages.length - 1]?.content === "")) &&
       isLoading;
 
+    function onCopy(content: string, messageId: string) {
+      // if (isCopied) return;
+      copyToClipboard(content);
+
+      setCopiedMessageId(messageId);
+      copyToClipboard(content);
+
+      setTimeout(() => {
+        setCopiedMessageId(null);
+      }, 2000);
+    }
+
+    // function speak(content: string) {
+    //   let utterance = new SpeechSynthesisUtterance(content);
+    //   let voicesArray = speechSynthesis.getVoices();
+    //   utterance.voice = voicesArray[2];
+    //   speechSynthesis.speak(utterance);
+    // }
+
+    console.log({ isSpeaking, voices });
+
     return (
       <div
         ref={containerRef}
-        className="flex-1 flex flex-col gap-4 max-w-3xl mx-auto w-full pt-20 sm:pt-4 pb-10 px-2 sm:px-0"
+        className="flex-1 flex flex-col gap-4 max-w-3xl mx-auto w-full pt-20 sm:pt-4 pb-10 px-2 sm:px-0 "
       >
         {messages.map((message, index) => (
           <Fragment key={message.id}>
@@ -33,6 +71,40 @@ export const ChatMessageList = React.memo(
               text={message.content}
               attachments={message.experimental_attachments || []}
             />
+            {message.role === "assistant" && !isLoading && (
+              <div className="flex items-center  gap-1 text-muted-foreground -translate-y-2 pl-10">
+                <button
+                  title="Read aloud"
+                  className="p-1.5 rounded-md hover:bg-muted"
+                  onClick={() => {
+                    if (isSpeaking && message.id === speakId) {
+                      setSpeakId(null);
+                      stop();
+                      return;
+                    }
+                    setSpeakId(message.id);
+                    speak(message.content);
+                  }}
+                >
+                  {isSpeaking && message.id === speakId ? (
+                    <CircleStop className="size-5" />
+                  ) : (
+                    <Volume2 className="size-5" />
+                  )}
+                </button>
+                <button
+                  title="Copy"
+                  className="p-1.5 rounded-md hover:bg-muted"
+                  onClick={() => onCopy(message.content, message.id)}
+                >
+                  {copiedMessageId === message.id ? (
+                    <Check className="size-4" aria-hidden="true" />
+                  ) : (
+                    <Copy className="size-4" aria-hidden="true" />
+                  )}
+                </button>
+              </div>
+            )}
 
             {index !== messages.length - 1 && <Separator />}
           </Fragment>
