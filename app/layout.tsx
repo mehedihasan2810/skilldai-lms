@@ -15,6 +15,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { RestrictSupportChat } from "@/components/restrict-support-chat";
+import { CSPostHogProvider } from "./providers";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,54 +34,53 @@ export const metadata: Metadata = {
   // description: "Create and Share Artifacts with Claude",
 };
 
-
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
-    <html lang="en"  
-    // className={cn(inter.variable, eb_garamond.variable)}
-     suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen font-sans",
-          // GeistSans.variable, eb_garamond.variable
-          inter.className,
-          eb_garamond.variable
-          // fontSans.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <html
+      lang="en"
+      // className={cn(inter.variable, eb_garamond.variable)}
+      suppressHydrationWarning
+    >
+
+      <CSPostHogProvider>
+        <body
+          className={cn(
+            "min-h-screen font-sans",
+            // GeistSans.variable, eb_garamond.variable
+            inter.className,
+            eb_garamond.variable
+            // fontSans.variable
+          )}
         >
-          {/* <SupabaseProvider session={session}> */}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {/* <SupabaseProvider session={session}> */}
             <ReactQueryProvider>
               <NuqsAdapter>
                 <TooltipProvider>{children}</TooltipProvider>
               </NuqsAdapter>
             </ReactQueryProvider>
-          {/* </SupabaseProvider> */}
-          <Toaster richColors closeButton />
-        </ThemeProvider>
-        <NextTopLoader
-          color="hsl(229 100% 62%)"
-          height={4}
-          showSpinner={false}
-          
-        />
+            {/* </SupabaseProvider> */}
+            <Toaster richColors closeButton />
+          </ThemeProvider>
+          <NextTopLoader
+            color="hsl(229 100% 62%)"
+            height={4}
+            showSpinner={false}
+          />
 
-        <RestrictSupportChat/>
-        <Analytics />
+          <RestrictSupportChat />
+          {/* <Analytics /> */}
 
-        {/* <Script
+          {/* <Script
           id="supportChatbot"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -89,7 +89,8 @@ export default async function RootLayout({
           `,
           }}
         /> */}
-      </body>
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }
