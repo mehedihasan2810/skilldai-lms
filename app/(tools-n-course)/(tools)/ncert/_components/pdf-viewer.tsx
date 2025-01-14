@@ -15,6 +15,11 @@ import { useRouter } from "nextjs-toploader/app";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
 import { reportErrorAction } from "@/actions/report-error-via-mail";
+import axios from "axios";
+interface ValidationError {
+  error: { message: string };
+  errors: Record<string, string[]>;
+}
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 //   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -91,17 +96,37 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
     onSuccess: async (createdChat) => {
       console.log({ createdChat });
 
-      router.push(`/pdf-chat/${createdChat.id}`);
+      // router.push(`/pdf-chat/${createdChat.id}`);
     },
     onError: (error) => {
-      console.error({ error });
-      toast.error(error.message);
-      reportErrorAction({
-        userEmail: "Unknown",
-        errorMessage: (error as Error).message,
-        errorTrace: `[PDFViewer] [createNCERTChatMutation] [onError] [app/%28tools-n-course%29/%28tools%29/ncert/_components/pdf-viewer.tsx]`,
-        errorSourceUrl: "/pdf-viewer",
-      });
+      // console.error({ error });
+      // toast.error(error.message);
+
+      if (axios.isAxiosError<ValidationError, Record<string, unknown>>(error)) {
+        console.error(
+          error.response?.data?.error?.message ?? "An unexpected error occurred"
+        );
+        toast.error(
+          error.response?.data?.error?.message ?? "An unexpected error occurred"
+        );
+        reportErrorAction({
+          userEmail: userId,
+          errorMessage:
+            error.response?.data?.error?.message ??
+            "An unexpected error occurred",
+          errorTrace: `[PDFViewer] [createNCERTChatMutation] [onError] [app/%28tools-n-course%29/%28tools%29/ncert/_components/pdf-viewer.tsx]`,
+          errorSourceUrl: "/pdf-viewer",
+        });
+      } else {
+        console.error(error.message);
+        toast.error(error.message);
+        reportErrorAction({
+          userEmail: userId,
+          errorMessage: (error as Error).message,
+          errorTrace: `[PDFViewer] [createNCERTChatMutation] [onError] [app/%28tools-n-course%29/%28tools%29/ncert/_components/pdf-viewer.tsx]`,
+          errorSourceUrl: "/pdf-viewer",
+        });
+      }
     },
   });
 
@@ -143,6 +168,7 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
         <div ref={pdfContainerRef} className="h-[70vh] md:h-[80vh]">
           <Document
             file={pdfUrl}
+            // @ts-ignore
             onLoadSuccess={onDocumentLoadSuccess}
             options={options}
             className="space-y-4 text-black"

@@ -57,7 +57,7 @@ export const ChatMessageList = React.memo(
     //   speechSynthesis.speak(utterance);
     // }
 
-    console.log({ isSpeaking, voices });
+    // console.log({ isSpeaking, voices });
 
     return (
       <div

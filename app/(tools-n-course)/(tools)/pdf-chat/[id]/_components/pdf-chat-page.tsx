@@ -58,7 +58,7 @@ export const TalkToPDF = ({
 
   const { totalTokens, insertUsageTokens } = useUsageToken({ userId });
 
-  console.log({ totalTokens });
+  // console.log({ totalTokens });
 
   const {
     data: pdfChatData,
@@ -111,7 +111,7 @@ export const TalkToPDF = ({
       });
     },
     onError(error) {
-      console.log({ chatError: error.message });
+      console.error({ chatError: error });
 
       toast.error(error.message, {
         position: "top-center",
@@ -127,8 +127,12 @@ export const TalkToPDF = ({
     body: {
       userId,
       userEmail,
+      pdfChatId: pdfId,
+      fileUrl: pdfChatData?.file_url ?? "",
     },
   });
+
+  console.log({messages})
 
   const {
     messages: summaryMessages,
@@ -182,7 +186,7 @@ export const TalkToPDF = ({
     return <p>{error ? error.message : "Unable to load the data!"}</p>;
   }
 
-  console.log({ isLoading, summaryMessages });
+  // console.log({ isLoading, summaryMessages });
 
   return (
     <div className="">

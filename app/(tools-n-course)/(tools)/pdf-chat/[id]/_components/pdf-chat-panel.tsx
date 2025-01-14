@@ -72,20 +72,21 @@ export const PDFChatPanel = ({
         },
       ],
     };
-    onHandleChatSubmit(event, {
-      // body: {
-      //   userId,
-      //   userEmail,
-      // },
-      experimental_attachments: [
-        {
-          name: pdfFileName,
-          url: pdfUrl,
-          contentType: "application/pdf",
-        },
-      ],
-      // ...options,
-    });
+    onHandleChatSubmit(event);
+    // onHandleChatSubmit(event, {
+    //   // body: {
+    //   //   userId,
+    //   //   userEmail,
+    //   // },
+    //   experimental_attachments: [
+    //     {
+    //       name: pdfFileName,
+    //       url: pdfUrl,
+    //       contentType: "application/pdf",
+    //     },
+    //   ],
+    //   // ...options,
+    // });
 
     savePdfChatMessage({
       pdfChatId: pdfChatId,

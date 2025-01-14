@@ -5,6 +5,7 @@ import { createClient } from "./supabase/client";
 import { generateQuizTitle } from "@/actions/generate-quiz-title";
 import { getQueryClient } from "@/app/react-query-provider";
 import { shortUid } from "./utils";
+import axios from "axios";
 
 const supabase = createClient();
 
@@ -942,53 +943,60 @@ export const createNCERTChat = async ({
     throw new Error("User not authenticated");
   }
 
-  const { error: chatError, data: chat } = await supabase
-    .from("pdf_chat")
-    .select(`id`)
-    .eq("file_url", pdfUrl);
-  // .single();
+  // const { error: chatError, data: chat } = await supabase
+  //   .from("pdf_chat")
+  //   .select(`id`)
+  //   .eq("file_url", pdfUrl);
+  // // .single();
 
-  if (chatError) {
-    console.error(chatError);
-    throw new Error(chatError.message);
-  }
+  // if (chatError) {
+  //   console.error(chatError);
+  //   throw new Error(chatError.message);
+  // }
 
-  console.log({ chat });
-  if (chat && chat.length > 0) return chat[0];
+  // console.log({ chat });
+  // if (chat && chat.length > 0) return chat[0];
 
-  const generatedTitle = await generateQuizTitle(
-    pdfUrl.replace(
-      "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/",
-      ""
-    )
+  const fileName = pdfUrl.replace(
+    "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/",
+    ""
   );
+
+  const generatedTitle = await generateQuizTitle(fileName);
 
   console.log({ generatedTitle });
 
-  const { data, error } = await supabase
-    .from("pdf_chat")
-    .insert({
-      title: generatedTitle,
-      summary: "",
-      user_id: userId,
-      file_name: "",
-      file_url: pdfUrl,
-    })
-    .select("id")
-    .single();
+  const createdPdfChatRes = await axios.post("/api/pdf-chat/create-pdf-chat", {
+    userId,
+    fileUrl: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/299d3d87-8bb7-4527-b9af-137cb14c6914/A_Brief_Introduction_To_AI-bY6MEr7kOD.pdf",
+    title: generatedTitle,
+    fileName,
+  });
 
-  if (error) {
-    console.error(error);
-    throw new Error(error.message);
-  }
+  // const { data, error } = await supabase
+  //   .from("pdf_chat")
+  //   .insert({
+  //     title: generatedTitle,
+  //     summary: "",
+  //     user_id: userId,
+  //     file_name: "",
+  //     file_url: pdfUrl,
+  //   })
+  //   .select("id")
+  //   .single();
 
-  if (!data) {
-    throw new Error("Could not save the data");
-  }
+  // if (error) {
+  //   console.error(error);
+  //   throw new Error(error.message);
+  // }
 
-  console.log({ data });
+  // if (!data) {
+  //   throw new Error("Could not save the data");
+  // }
 
-  return data;
+  // console.log({ data });
+
+  return createdPdfChatRes.data;
 };
 
 export const getUsageTokens = async ({ userId }: { userId: string }) => {

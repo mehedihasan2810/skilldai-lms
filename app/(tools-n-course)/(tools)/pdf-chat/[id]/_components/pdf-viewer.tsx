@@ -240,6 +240,7 @@ export function PDFViewer({
             )}
             <Document
               file={pdfUrl}
+              // @ts-ignore
               onLoadSuccess={onDocumentLoadSuccess}
               options={options}
               className="space-y-4 text-black"
