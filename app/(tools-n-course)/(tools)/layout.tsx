@@ -45,10 +45,15 @@ const navItems: NavItem[] = [
     icon: "graduationCap",
   },
   {
-    title: "Quiz Generator",
-    href: "/quiz-generator",
+    title: "Quiz Generator2",
+    href: "/quiz-from-doc",
     icon: "shieldQuestion",
   },
+  // {
+  //   title: "Quiz Generator",
+  //   href: "/quiz-generator",
+  //   icon: "shieldQuestion",
+  // },
   {
     title: "Lesson Plan Generator",
     href: "/lesson-plan-generator",

@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { anthropic } from "@ai-sdk/anthropic";
+import { openai } from "@ai-sdk/openai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamText, Message, ToolInvocation, Attachment } from "ai";
 
@@ -104,28 +105,28 @@ export async function POST(req: Request) {
     // temperature: 0.2,
     onFinish: async ({ finishReason, usage }) => {
       console.log({ finishReason, usage });
-      const supabase = await createClient();
+      // const supabase = await createClient();
 
-      const CURRENT_MONTH = new Date().getMonth() + 1;
-      const CURRENT_YEAR = new Date().getFullYear();
-      const { data, error: error } = await supabase
-        .from("token_usage")
-        .insert({
-          type: "pdfChat",
-          user_id: userId,
-          // user_email: inputData.userEmail,
-          email: userEmail,
-          month: CURRENT_MONTH,
-          year: CURRENT_YEAR,
-          input_token: usage.promptTokens,
-          output_token: usage.completionTokens,
-          total_tokens: usage.totalTokens,
-          llm: "anthropic",
-          model: "claude-3-5-sonnet-20241022",
-        })
-        .select("total_tokens");
+      // const CURRENT_MONTH = new Date().getMonth() + 1;
+      // const CURRENT_YEAR = new Date().getFullYear();
+      // const { data, error: error } = await supabase
+      //   .from("token_usage")
+      //   .insert({
+      //     type: "pdfChat",
+      //     user_id: userId,
+      //     // user_email: inputData.userEmail,
+      //     email: userEmail,
+      //     month: CURRENT_MONTH,
+      //     year: CURRENT_YEAR,
+      //     input_token: usage.promptTokens,
+      //     output_token: usage.completionTokens,
+      //     total_tokens: usage.totalTokens,
+      //     llm: "anthropic",
+      //     model: "claude-3-5-sonnet-20241022",
+      //   })
+      //   .select("total_tokens");
 
-      console.log({ data, error });
+      // console.log({ data, error });
     },
   });
 

@@ -166,9 +166,14 @@ const data = {
 
         {
           title: "Quiz Generator",
-          url: "/quiz-generator",
+          url: "/quiz-from-doc",
           icon: ShieldQuestion,
         },
+        // {
+        //   title: "Quiz Generator",
+        //   url: "/quiz-generator",
+        //   icon: ShieldQuestion,
+        // },
         {
           title: "Lesson Plan Generator",
           url: "/lesson-plan-generator",

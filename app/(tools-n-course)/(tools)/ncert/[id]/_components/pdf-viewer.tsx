@@ -14,7 +14,6 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 
 // import "./Sample.css";
 
-import type { PDFDocumentProxy } from "pdfjs-dist";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui";
 import { ChatRequestOptions, CreateMessage, Message } from "ai";
@@ -76,7 +75,7 @@ export function PDFViewer({ onChatAppend, pdfChatId, pdfUrl }: Props) {
 
   function onDocumentLoadSuccess({
     numPages: nextNumPages,
-  }: PDFDocumentProxy): void {
+  }: any): void {
     setNumPages(nextNumPages);
   }
 
