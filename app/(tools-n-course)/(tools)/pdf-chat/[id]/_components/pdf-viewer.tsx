@@ -104,7 +104,7 @@ export function PDFViewer({
   const onHandleSummarize = () => {
     console.log({ selection });
 
-    if (isMonthlyTokenUsageReached({ totalTokens })) return;
+    // if (isMonthlyTokenUsageReached({ totalTokens })) return;
 
     if (!selection.trim()) return;
 
@@ -124,7 +124,7 @@ export function PDFViewer({
 
   const onHandleExplain = () => {
     console.log({ selection });
-    if (isMonthlyTokenUsageReached({ totalTokens })) return;
+    // if (isMonthlyTokenUsageReached({ totalTokens })) return;
 
     if (!selection.trim()) return;
 

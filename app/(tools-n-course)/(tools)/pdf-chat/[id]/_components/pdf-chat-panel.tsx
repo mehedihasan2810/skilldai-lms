@@ -57,7 +57,8 @@ export const PDFChatPanel = ({
   } = useVoiceToText();
 
   const onHandleSend = async (event?: SyntheticEvent) => {
-    if (isMonthlyTokenUsageReached({ totalTokens })) return;
+    //  TODO
+    // if (isMonthlyTokenUsageReached({ totalTokens })) return;
 
     const content = chatInput.trim();
 

@@ -26,7 +26,7 @@ export const POST = async (req: Request) => {
 
       const text = textContent.items.map((item: any) => item.str).join(" ");
 
-      //   console.log({ text });
+        console.log({ text });
 
       fileContent.push(`Page number ${i}:\n\n${text}`);
 
