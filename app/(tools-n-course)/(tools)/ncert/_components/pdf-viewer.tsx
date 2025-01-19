@@ -151,10 +151,14 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
             }}
             disabled={createNCERTChatMutation.isPending}
           >
-            {createNCERTChatMutation.isPending && (
-              <Loader className="size-5 animate-spin" />
+            {createNCERTChatMutation.isPending ? (
+              <>
+                <Loader className="size-5 animate-spin" />
+                Processing...
+              </>
+            ) : (
+              "Chat with this PDF"
             )}
-            Chat with this PDF
           </Button>
         ) : (
           <div></div>

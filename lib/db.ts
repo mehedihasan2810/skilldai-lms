@@ -756,30 +756,37 @@ export const savePDFInfo = async ({
 
   console.log({ fileUrl });
 
-  const { data, error } = await supabase
-    .from("pdf_chat")
-    .insert({
-      title: generatedTitle,
-      summary: "",
-      user_id: userId,
-      file_name: file.name,
-      file_url: fileUrl,
-    })
-    .select("id")
-    .single();
+  const createdPdfChatRes = await axios.post("/api/pdf-chat/create-pdf-chat", {
+    userId,
+    fileUrl,
+    title: generatedTitle,
+    fileName: file.name,
+  });
 
-  if (error) {
-    console.error(error);
-    throw new Error(error.message);
-  }
+  // const { data, error } = await supabase
+  //   .from("pdf_chat")
+  //   .insert({
+  //     title: generatedTitle,
+  //     summary: "",
+  //     user_id: userId,
+  //     file_name: file.name,
+  //     file_url: fileUrl,
+  //   })
+  //   .select("id")
+  //   .single();
 
-  if (!data) {
-    throw new Error("Could not save the data");
-  }
+  // if (error) {
+  //   console.error(error);
+  //   throw new Error(error.message);
+  // }
 
-  console.log({ data });
+  // if (!data) {
+  //   throw new Error("Could not save the data");
+  // }
 
-  return data;
+  // console.log({ data });
+
+  return createdPdfChatRes.data;
 };
 
 export const getPDFData = async ({ pdfId }: { pdfId: string }) => {
@@ -968,7 +975,10 @@ export const createNCERTChat = async ({
 
   const createdPdfChatRes = await axios.post("/api/pdf-chat/create-pdf-chat", {
     userId,
-    fileUrl: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/299d3d87-8bb7-4527-b9af-137cb14c6914/A_Brief_Introduction_To_AI-bY6MEr7kOD.pdf",
+    // fileUrl:
+    //   "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/299d3d87-8bb7-4527-b9af-137cb14c6914/A_Brief_Introduction_To_AI-bY6MEr7kOD.pdf",
+    fileUrl:
+      "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Social%20Science/Contemporary%20India/Climate.pdf",
     title: generatedTitle,
     fileName,
   });
@@ -1258,15 +1268,20 @@ export const deletePDFChat = async ({ id }: { id: string }) => {
     throw new Error(error.message);
   }
 
-  // console.log({data})
+  console.log({ data });
 
-  // const storagePath = data.file_url.split("public/pdf_chat/")[1];
+  const storagePath = data.file_url.split("public/pdf_chat/")[1];
+  const isNCERT = data.file_url.split("/").includes("NCERT");
 
-  // const { data: storageData, error: storageError } = await supabase.storage
-  //   .from("pdf_chat")
-  //   .remove([storagePath]);
+  console.log({ storagePath, isNCERT });
 
-  // console.log({ storageData, storageError });
+  if (!isNCERT) {
+    const { data: storageData, error: storageError } = await supabase.storage
+      .from("pdf_chat")
+      .remove([storagePath]);
+
+    console.log({ storageData, storageError });
+  }
 
   return data;
 };

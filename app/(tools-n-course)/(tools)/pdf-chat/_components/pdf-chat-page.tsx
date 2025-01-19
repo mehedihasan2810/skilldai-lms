@@ -228,8 +228,8 @@ export const PDFChatPage = ({
             >
               {savePDFInfoMutation.isPending ? (
                 <span className="flex items-center space-x-2">
-                  <Loader className="h-4 w-4 animate-spin" />
-                  <span>Start Chat</span>
+                  <Loader className="size-5 animate-spin" />
+                  <span>Processing...</span>
                 </span>
               ) : (
                 "Start Chat"

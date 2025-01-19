@@ -64,7 +64,8 @@ export const POST = async (req: Request) => {
     console.log({ createdPdfChatData });
 
     const { embeddings } = await embedMany({
-      model: openai.embedding("text-embedding-3-small"),
+      model: openai.embedding("text-embedding-ada-002"),
+      // model: openai.embedding("text-embedding-3-small"),
       values: fileContent,
     });
 

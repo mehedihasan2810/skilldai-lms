@@ -95,7 +95,8 @@ Provide the classification in lowercase.
 
     // Embed the hypothetical answer
     const { embedding: hypotheticalAnswerEmbedding } = await embed({
-      model: openai.embedding("text-embedding-3-small"),
+      model: openai.embedding("text-embedding-ada-002"),
+      // model: openai.embedding("text-embedding-3-small"),
       // value: lastUserMessageContent,
       value: hypotheticalAnswer,
     });
