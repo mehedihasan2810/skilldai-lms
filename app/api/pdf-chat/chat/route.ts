@@ -21,9 +21,9 @@ export async function POST(req: Request) {
 
   console.log({ userEmail, userId, pdfChatId, fileUrl });
 
-  const openrouter = createOpenRouter({
-    apiKey: process.env.OPENROUTER_API_KEY,
-  });
+  // const openrouter = createOpenRouter({
+  //   apiKey: process.env.OPENROUTER_API_KEY,
+  // });
 
   const result = streamText({
     model: customModel,

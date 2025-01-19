@@ -9,6 +9,7 @@ import { experimental_wrapLanguageModel as wrapLanguageModel } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { createClient } from "@/lib/supabase/server";
 import { deepseek } from "@ai-sdk/deepseek";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 const selectionSchema = z.object({
   data: z.object({
@@ -16,6 +17,10 @@ const selectionSchema = z.object({
     fileUrl: z.string(),
     pdfChatId: z.string(),
   }),
+});
+
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
 });
 
 const ragMiddleware: Experimental_LanguageModelV1Middleware = {
@@ -81,7 +86,7 @@ Provide the classification in lowercase.
     // Use hypothetical document embeddings:
     const { text: hypotheticalAnswer } = await generateText({
       // fast model for generating hypothetical answer:
-      model: deepseek("deepseek-chat"),
+      model: openrouter("deepseek/deepseek-chat"),
       //   model: openai("gpt-4o-mini", { structuredOutputs: true }),
       system:
         "You are assisting a user by answering their question based on hypothetical document embeddings. Provide a concise answer (within 200 tokens) that is informative and directly relevant to the question:",
@@ -110,7 +115,7 @@ Provide the classification in lowercase.
         embedding: hypotheticalAnswerEmbedding,
         match_threshold: 0.5,
         // match_threshold: 0.78,
-        match_count: 3,
+        match_count: 5,
         // min_content_length: 50,
       }
     );
@@ -142,6 +147,7 @@ Provide the classification in lowercase.
 
 export const customModel = wrapLanguageModel({
   //   model: openai("gpt-4o"),
-  model: deepseek("deepseek-chat"),
+  model: openrouter("deepseek/deepseek-chat"),
+  // model: deepseek("deepseek-chat"),
   middleware: ragMiddleware,
 });
