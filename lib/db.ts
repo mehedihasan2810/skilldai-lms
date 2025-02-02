@@ -945,8 +945,9 @@ export const createNCERTChat = async ({
   const { error: chatError, data: chat } = await supabase
     .from("pdf_chat")
     .select(`id`)
-    .eq("file_url", pdfUrl);
-  // .single();
+    .eq("file_url", pdfUrl)
+    .eq("user_id", userId)
+    .maybeSingle();
 
   if (chatError) {
     console.error(chatError);
@@ -954,7 +955,7 @@ export const createNCERTChat = async ({
   }
 
   console.log({ chat });
-  if (chat && chat.length > 0) return chat[0];
+  if (chat) return chat;
 
   const generatedTitle = await generateQuizTitle(
     pdfUrl.replace(
