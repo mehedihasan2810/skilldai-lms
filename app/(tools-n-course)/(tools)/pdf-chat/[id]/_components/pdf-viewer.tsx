@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  MutableRefObject,
   useCallback,
   useEffect,
   useRef,
@@ -14,13 +13,10 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 
 // import "./Sample.css";
 
-import type { PDFDocumentProxy } from "pdfjs-dist";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui";
 import { ChatRequestOptions, CreateMessage, Message } from "ai";
 import { Separator } from "@/components/ui/separator";
 import { savePdfChatMessage } from "@/lib/db";
-import { toast } from "sonner";
 import { isMonthlyTokenUsageReached } from "@/lib/utils";
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -85,9 +81,7 @@ export function PDFViewer({
     onResize
   );
 
-  function onDocumentLoadSuccess({
-    numPages: nextNumPages,
-  }: PDFDocumentProxy): void {
+  function onDocumentLoadSuccess({ numPages: nextNumPages }: { numPages: number }): void {
     setNumPages(nextNumPages);
   }
 

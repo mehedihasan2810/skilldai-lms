@@ -64,9 +64,7 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
     onResize
   );
 
-  function onDocumentLoadSuccess({
-    numPages: nextNumPages,
-  }: PDFDocumentProxy): void {
+  function onDocumentLoadSuccess({ numPages: nextNumPages }: { numPages: number }): void {
     setNumPages(nextNumPages);
   }
 
