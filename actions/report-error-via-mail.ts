@@ -51,8 +51,7 @@ export const reportErrorAction = async ({
 
     const { data, error } = await resend.emails.send({
       from: "Skilld AI <support@updates.skilld.ai>",
-      //   to: ["mehedi.hasan.webcraft@gmail.com", "as@millionlights.uk"],
-      to: ["mehedi.hasan.webcraft@gmail.com"],
+      to: ["as@millionlights.uk"],
       subject: `Error Report: ${errorMessage}`,
       react: ErrorReportEmail({
         userEmail,

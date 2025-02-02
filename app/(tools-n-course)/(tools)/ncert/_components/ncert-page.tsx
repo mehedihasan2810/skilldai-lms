@@ -38,36 +38,36 @@ const ncertClasses = [
             name: "Honeycomb",
             chapters: [
               {
-                name: "gehc101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc101.pdf?t=2025-01-01T08%3A32%3A10.988Z",
+                name: "Three Questions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/Three Questions.pdf?t=2025-01-01T08%3A32%3A10.988Z",
               },
               {
-                name: "gehc102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc102.pdf",
+                name: "A Gift of Chappals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/A Gift of Chappals.pdf",
               },
               {
-                name: "gehc103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc103.pdf",
+                name: "Gopal and the Hilsa-fish",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/Gopal and the Hilsa-fish.pdf",
               },
               {
-                name: "gehc104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc104.pdf",
+                name: "The Ashes That Made Trees Bloom",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/The Ashes That Made Trees Bloom.pdf",
               },
               {
-                name: "gehc105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc105.pdf",
+                name: "Quality",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/Quality.pdf",
               },
               {
-                name: "gehc106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc106.pdf",
+                name: "Expert Detectives",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/Expert Detectives.pdf",
               },
               {
-                name: "gehc107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc107.pdf",
+                name: "The Invention of Vita-Wonk",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/The Invention of Vita-Wonk.pdf",
               },
               {
-                name: "gehc108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc108.pdf",
+                name: "A Homage to our Brave Soldiers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/A Homage to our Brave Soldiers.pdf",
               },
             ],
           },
@@ -75,32 +75,32 @@ const ncertClasses = [
             name: "The Alian Hand Supplementry",
             chapters: [
               {
-                name: "geah101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah101.pdf",
+                name: "The Tiny Teacher",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/The Tiny Teacher.pdf",
               },
               {
-                name: "geah102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah102.pdf",
+                name: "Bringing Up Kari",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/Bringing Up Kari.pdf",
               },
               {
-                name: "geah103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah103.pdf",
+                name: "Golu Grows a Nose",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/Golu Grows a Nose.pdf",
               },
               {
-                name: "geah104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah104.pdf",
+                name: "Chandni",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/Chandni.pdf",
               },
               {
-                name: "geah105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah105.pdf",
+                name: "The Bear Story",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/The Bear Story.pdf",
               },
               {
-                name: "geah106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah106.pdf",
+                name: "A Tiger in the House",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/A Tiger in the House.pdf",
               },
               {
-                name: "geah107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/geah107.pdf",
+                name: "An Alien Hand",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/The%20Alian%20Hand%20Supplementry/An Alien Hand.pdf",
               },
               {
                 name: "geah1ps",
@@ -117,56 +117,56 @@ const ncertClasses = [
             name: "gemh1dd",
             chapters: [
               {
-                name: "gemh101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh101.pdf",
+                name: "Integers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/Maths/gemh1dd/Integers.pdf",
               },
               {
-                name: "gemh102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh102.pdf",
+                name: "Fractions and Decimals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Fractions and Decimals.pdf",
               },
               {
-                name: "gemh103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh103.pdf",
+                name: "Data Handling",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Data Handling.pdf",
               },
               {
-                name: "gemh104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh104.pdf",
+                name: "Simple Equations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Simple Equations.pdf",
               },
               {
-                name: "gemh105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh105.pdf",
+                name: "Lines and Angles",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Lines and Angles.pdf",
               },
               {
-                name: "gemh106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh106.pdf",
+                name: "The Triangle and its Properties",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/The Triangle and its Properties.pdf",
               },
               {
-                name: "gemh107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh107.pdf",
+                name: "Compairing Quantities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Compairing Quantities.pdf",
               },
               {
-                name: "gemh108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh108.pdf",
+                name: "Rational Numbers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Rational Numbers.pdf",
               },
               {
-                name: "gemh109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh109.pdf",
+                name: "Perimeter ans Area",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Perimeter ans Area.pdf",
               },
               {
-                name: "gemh110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh110.pdf",
+                name: "Algebraic Expressions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Algebraic Expressions.pdf",
               },
               {
-                name: "gemh111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh111.pdf",
+                name: "Exponents and Powers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Exponents and Powers.pdf",
               },
               {
-                name: "gemh112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh112.pdf",
+                name: "Symmetry",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Symmetry.pdf",
               },
               {
-                name: "gemh113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/gemh113.pdf",
+                name: "Visualising Solid Shapes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/maths/gemh1dd/Visualising Solid Shapes.pdf",
               },
               {
                 name: "gemh1an",
@@ -187,56 +187,56 @@ const ncertClasses = [
             name: "gesc1dd",
             chapters: [
               {
-                name: "gesc101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc101.pdf",
+                name: "Nutrition in Plants",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Nutrition in Plants.pdf",
               },
               {
-                name: "gesc102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc102.pdf",
+                name: "Nutrition in Animals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Nutrition in Animals.pdf",
               },
               {
-                name: "gesc103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc103.pdf",
+                name: "Heat",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Heat.pdf",
               },
               {
-                name: "gesc104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc104.pdf",
+                name: "Acids, Bases and Salts",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Acids, Bases and Salts.pdf",
               },
               {
-                name: "gesc105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc105.pdf",
+                name: "Physical and Chemical Changes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Physical and Chemical Changes.pdf",
               },
               {
-                name: "gesc106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc106.pdf",
+                name: "Respiration in Organisms",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Respiration in Organisms.pdf",
               },
               {
-                name: "gesc107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc107.pdf",
+                name: "Transportation in Animals and Plants",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Transportation in Animals and Plants.pdf",
               },
               {
-                name: "gesc108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc108.pdf",
+                name: "Reproduction in Plants",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Reproduction in Plants.pdf",
               },
               {
-                name: "gesc109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc109.pdf",
+                name: "Motion and Time",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Motion and Time.pdf",
               },
               {
-                name: "gesc110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc110.pdf",
+                name: "Electric Current and its Effects",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Electric Current and its Effects.pdf",
               },
               {
-                name: "gesc111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc111.pdf",
+                name: "Light",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Light.pdf",
               },
               {
-                name: "gesc112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc112.pdf",
+                name: "Forests: Our Lifeline",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Forests: Our Lifeline.pdf",
               },
               {
-                name: "gesc113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/gesc113.pdf",
+                name: "Wastewater Story",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/science/gesc1dd/Wastewater Story.pdf",
               },
               {
                 name: "gesc1ps",
@@ -253,32 +253,32 @@ const ncertClasses = [
             name: "Geography-Our Environment",
             chapters: [
               {
-                name: "gess201",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess201.pdf",
+                name: "Environment",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Environment.pdf",
               },
               {
-                name: "gess202",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess202.pdf",
+                name: "Inside Our Earth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Inside Our Earth.pdf",
               },
               {
-                name: "gess203",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess203.pdf",
+                name: "Our Changing Earth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Our Changing Earth.pdf",
               },
               {
-                name: "gess204",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess204.pdf",
+                name: "Air",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Air.pdf",
               },
               {
-                name: "gess205",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess205.pdf",
+                name: "Water",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Water.pdf",
               },
               {
-                name: "gess206",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess206.pdf",
+                name: "Human environment interaction- The Tropical and Subtropical Region",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Human environment interaction- The Tropical and Subtropical Region.pdf",
               },
               {
-                name: "gess207",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/gess207.pdf",
+                name: "Life in the Desert",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Geography-Our%20Environment/Life in the Desert.pdf",
               },
               {
                 name: "gess2ps",
@@ -290,36 +290,36 @@ const ncertClasses = [
             name: "History - Our Pasts II",
             chapters: [
               {
-                name: "gess101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess101.pdf",
+                name: "Introduction- Tracing changes Through a Thousand years",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/Introduction- Tracing changes Through a Thousand years.pdf",
               },
               {
-                name: "gess102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess102.pdf",
+                name: "Kings and Kingdoms",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/Kings and Kingdoms.pdf",
               },
               {
-                name: "gess103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess103.pdf",
+                name: "Delhi: 12th to 15th Century",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/Delhi: 12th to 15th Century.pdf",
               },
               {
-                name: "gess104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess104.pdf",
+                name: "The Mughals ( 16th to 17th Century)",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/The Mughals ( 16th to 17th Century).pdf",
               },
               {
-                name: "gess105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess105.pdf",
+                name: "Tribes, Nomads and Settled Communities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/Tribes, Nomads and Settled Communities.pdf",
               },
               {
-                name: "gess106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess106.pdf",
+                name: "Devotional Paths to the Divine",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/Devotional Paths to the Divine.pdf",
               },
               {
-                name: "gess107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess107.pdf",
+                name: "The Making of Regional Cultures",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/The Making of Regional Cultures.pdf",
               },
               {
-                name: "gess108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/gess108.pdf",
+                name: "Eighteenth-Century Political Formations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/History-%20Our%20Pasts%20II/Eighteenth-Century Political Formations.pdf",
               },
               {
                 name: "gess1ps",
@@ -331,36 +331,36 @@ const ncertClasses = [
             name: "Social and political life",
             chapters: [
               {
-                name: "gess301",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess301.pdf",
+                name: "Equality in Indian democracy",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/Equality in Indian democracy.pdf",
               },
               {
-                name: "gess302",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess302.pdf",
+                name: "Role Of The Government in Health",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/Role Of The Government in Health.pdf",
               },
               {
-                name: "gess303",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess303.pdf",
+                name: "How the State Government Works",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/How the State Government Works.pdf",
               },
               {
-                name: "gess304",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess304.pdf",
+                name: "Growing up as Boys and Girls",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/Growing up as Boys and Girls.pdf",
               },
               {
-                name: "gess305",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess305.pdf",
+                name: "Women Change the world",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/Women Change the world.pdf",
               },
               {
-                name: "gess306",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess306.pdf",
+                name: "Understanding Media",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/Understanding Media.pdf",
               },
               {
-                name: "gess307",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess307.pdf",
+                name: "Markets Around Us",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/Markets Around Us.pdf",
               },
               {
-                name: "gess308",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/gess308.pdf",
+                name: "A Shirt in The Market",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/social%20science/Social%20and%20political%20life/A Shirt in The Market.pdf",
               },
               {
                 name: "gess3ps",
@@ -382,36 +382,36 @@ const ncertClasses = [
             name: "Honeydew",
             chapters: [
               {
-                name: "hehd101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd101.pdf",
+                name: "The Best Christmas Present in the World",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/The Best Christmas Present in the World.pdf",
               },
               {
-                name: "hehd102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd102.pdf",
+                name: "The Tsunami",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/The Tsunami.pdf",
               },
               {
-                name: "hehd103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd103.pdf",
+                name: "Glimpses of the Past",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/Glimpses of the Past.pdf",
               },
               {
-                name: "hehd104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd104.pdf",
+                name: "Bepin Choudhury’s Lapse of Memory",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/Bepin Choudhury’s Lapse of Memory.pdf",
               },
               {
-                name: "hehd105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd105.pdf",
+                name: "The Summit Within",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/The Summit Within.pdf",
               },
               {
-                name: "hehd106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd106.pdf",
+                name: "This is Jody’s Fawn",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/This is Jody’s Fawn.pdf",
               },
               {
-                name: "hehd107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd107.pdf",
+                name: "A Visit to Cambridge",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/A Visit to Cambridge.pdf",
               },
               {
-                name: "hehd108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/hehd108.pdf",
+                name: "A Short Monsoon Diary",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/Honeydew/A Short Monsoon Diary.pdf",
               },
               {
                 name: "hehd1ps",
@@ -423,36 +423,36 @@ const ncertClasses = [
             name: "It So Happened",
             chapters: [
               {
-                name: "heih101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih101.pdf?t=2025-01-05T14%3A54%3A18.785Z",
+                name: "How the Camel got his hump",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/How the Camel got his hump.pdf",
               },
               {
-                name: "heih102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih102.pdf",
+                name: "Children at work",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/Children at work.pdf",
               },
               {
-                name: "heih103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih103.pdf",
+                name: "The Selfish Giant",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/The Selfish Giant.pdf",
               },
               {
-                name: "heih104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih104.pdf",
+                name: "The treasure within",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/The treasure within.pdf",
               },
               {
-                name: "heih105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih105.pdf",
+                name: "Princess September",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/Princess September.pdf",
               },
               {
-                name: "heih106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih106.pdf",
+                name: "The fight",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/The fight.pdf",
               },
               {
-                name: "heih107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih107.pdf",
+                name: "Jalebis",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/Jalebis.pdf",
               },
               {
-                name: "heih108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/heih108.pdf",
+                name: "Ancient Education System of India",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/English/It%20So%20Happened/Ancient Education System of India.pdf",
               },
               {
                 name: "heih1ps",
@@ -469,56 +469,56 @@ const ncertClasses = [
             name: "hemh1dd",
             chapters: [
               {
-                name: "hemh101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh101.pdf",
+                name: "Rational Numbers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Rational Numbers.pdf",
               },
               {
-                name: "hemh102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh102.pdf",
+                name: "Linear Equations in One Variable",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Linear Equations in One Variable.pdf",
               },
               {
-                name: "hemh103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh103.pdf",
+                name: "Understanding Quadrilaterals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Understanding Quadrilaterals.pdf",
               },
               {
-                name: "hemh104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh104.pdf",
+                name: "Data Handling",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Data Handling.pdf",
               },
               {
-                name: "hemh105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh105.pdf",
+                name: "Squares and Square Roots",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Squares and Square Roots.pdf",
               },
               {
-                name: "hemh106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh106.pdf",
+                name: "Cubes and Cube Roots",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Cubes and Cube Roots.pdf",
               },
               {
-                name: "hemh107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh107.pdf",
+                name: "Comparing Quantities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Comparing Quantities.pdf",
               },
               {
-                name: "hemh108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh108.pdf",
+                name: "Algebraic Expressions and Identities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Algebraic Expressions and Identities.pdf",
               },
               {
-                name: "hemh109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh109.pdf",
+                name: "Mensuration",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Mensuration.pdf",
               },
               {
-                name: "hemh110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh110.pdf",
+                name: "Exponents and Powers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Exponents and Powers.pdf",
               },
               {
-                name: "hemh111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh111.pdf",
+                name: "Direct and Inverse Proportions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Direct and Inverse Proportions.pdf",
               },
               {
-                name: "hemh112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh112.pdf",
+                name: "Factorisation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Factorisation.pdf",
               },
               {
-                name: "hemh113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/hemh113.pdf",
+                name: "Introduction to Graphs",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Maths/hemh1dd/Introduction to Graphs.pdf",
               },
               {
                 name: "hemh1an",
@@ -539,56 +539,56 @@ const ncertClasses = [
             name: "hesc1dd",
             chapters: [
               {
-                name: "hesc101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc101.pdf",
+                name: "Crop Production and management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Crop Production and management.pdf",
               },
               {
-                name: "hesc102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc102.pdf",
+                name: "Microorganism:Friend and foe",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Microorganism:Friend and foe.pdf",
               },
               {
-                name: "hesc103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc103.pdf",
+                name: "Coal and Petroleum",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Coal and Petroleum.pdf",
               },
               {
-                name: "hesc104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc104.pdf",
+                name: "Combustion and Flame",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Combustion and Flame.pdf",
               },
               {
-                name: "hesc105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc105.pdf",
+                name: "Conservation of Plants and Animals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Conservation of Plants and Animals.pdf",
               },
               {
-                name: "hesc106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc106.pdf",
+                name: "Reproduction in Animals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Reproduction in Animals.pdf",
               },
               {
-                name: "hesc107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc107.pdf",
+                name: "Reaching the age of Adolescence",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Reaching the age of Adolescence.pdf",
               },
               {
-                name: "hesc108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc108.pdf",
+                name: "Force and Pressure",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Force and Pressure.pdf",
               },
               {
-                name: "hesc109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc109.pdf",
+                name: "Friction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Friction.pdf",
               },
               {
-                name: "hesc110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc110.pdf",
+                name: "Sound",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Sound.pdf",
               },
               {
-                name: "hesc111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc111.pdf",
+                name: "Chemical Effects of Electric Current",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Chemical Effects of Electric Current.pdf",
               },
               {
-                name: "hesc112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc112.pdf",
+                name: "Some Natural Phenomena",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Some Natural Phenomena.pdf",
               },
               {
-                name: "hesc113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/hesc113.pdf",
+                name: "Light",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Science/hesc1dd/Light.pdf",
               },
               {
                 name: "hesc1ps",
@@ -605,36 +605,36 @@ const ncertClasses = [
             name: "Our Past III",
             chapters: [
               {
-                name: "hess201",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess201.pdf",
+                name: "Introduction: How, When and Where",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/Introduction: How, When and Where.pdf",
               },
               {
-                name: "hess202",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess202.pdf",
+                name: "From Trade to Territory The Company Establishes Power",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/From Trade to Territory The Company Establishes Power.pdf",
               },
               {
-                name: "hess203",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess203.pdf",
+                name: "Ruling the Countryside",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/Ruling the Countryside.pdf",
               },
               {
-                name: "hess204",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess204.pdf",
+                name: "Tribals, Dikus, and the Vision of a Golden Age",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/Tribals, Dikus, and the Vision of a Golden Age.pdf",
               },
               {
-                name: "hess205",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess205.pdf",
+                name: "When People Revolt 1857 and After",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/When People Revolt 1857 and After.pdf",
               },
               {
-                name: "hess206",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess206.pdf",
+                name: "Civilising the “Native”, Educating the Nation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/Civilising the “Native”, Educating the Nation.pdf",
               },
               {
-                name: "hess207",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess207.pdf",
+                name: "Women, Caste and Reform",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/Women, Caste and Reform.pdf",
               },
               {
-                name: "hess208",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/hess208.pdf",
+                name: "The Making of the National Movement: 1870s–1947",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Our%20Past%20III/The Making of the National Movement: 1870s–1947.pdf",
               },
               {
                 name: "hess2ps",
@@ -646,24 +646,24 @@ const ncertClasses = [
             name: "Resourse and Developement (Geography)",
             chapters: [
               {
-                name: "hess401",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess401.pdf",
+                name: "Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/Resources.pdf",
               },
               {
-                name: "hess402",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess402.pdf",
+                name: "Land, Soil, Water, Natural Vegetation and Wildlife Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/Land, Soil, Water, Natural Vegetation and Wildlife Resources.pdf",
               },
               {
-                name: "hess403",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess403.pdf",
+                name: "Agriculture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/Agriculture.pdf",
               },
               {
-                name: "hess404",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess404.pdf",
+                name: "Industries",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/Industries.pdf",
               },
               {
-                name: "hess405",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/hess405.pdf",
+                name: "Human Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Resourse%20and%20Developement%20(Geography)/Human Resources.pdf",
               },
               {
                 name: "hess4ps",
@@ -675,36 +675,36 @@ const ncertClasses = [
             name: "Social and Political Life",
             chapters: [
               {
-                name: "hess301",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess301.pdf",
+                name: "The Indian Constitution",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/The Indian Constitution.pdf",
               },
               {
-                name: "hess302",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess302.pdf",
+                name: "Understanding Secularism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Understanding Secularism.pdf",
               },
               {
-                name: "hess303",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess303.pdf",
+                name: "Parliament and the Making of Laws",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Parliament and the Making of Laws.pdf",
               },
               {
-                name: "hess304",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess304.pdf",
+                name: "Judiciary",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Judiciary.pdf",
               },
               {
-                name: "hess305",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess305.pdf",
+                name: "Understanding Marginalisation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Understanding Marginalisation.pdf",
               },
               {
-                name: "hess306",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess306.pdf",
+                name: "Confronting Marginalisation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Confronting Marginalisation.pdf",
               },
               {
-                name: "hess307",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess307.pdf",
+                name: "Public Facilities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Public Facilities.pdf",
               },
               {
-                name: "hess308",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/hess308.pdf",
+                name: "Law and Social Justice",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/8th/Social%20Science/Social%20and%20Political%20Life/Law and Social Justice.pdf",
               },
               {
                 name: "hess3ps",
@@ -726,40 +726,40 @@ const ncertClasses = [
             name: "Beehive",
             chapters: [
               {
-                name: "iebe101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe101.pdf",
+                name: "The Fun They Had",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/The Fun They Had.pdf",
               },
               {
-                name: "iebe102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe102.pdf",
+                name: "The Sound of Music",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/The Sound of Music.pdf",
               },
               {
-                name: "iebe103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe103.pdf",
+                name: "The Little Girl",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/The Little Girl.pdf",
               },
               {
-                name: "iebe104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe104.pdf",
+                name: "A Truly Beautiful Mind",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/A Truly Beautiful Mind.pdf",
               },
               {
-                name: "iebe105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe105.pdf",
+                name: "The Snake and the Mirror",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/The Snake and the Mirror.pdf",
               },
               {
-                name: "iebe106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe106.pdf",
+                name: "My Childhood",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/My Childhood.pdf",
               },
               {
-                name: "iebe107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe107.pdf",
+                name: "Reach for the Top",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/Reach for the Top.pdf",
               },
               {
-                name: "iebe108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe108.pdf",
+                name: "Kathmandu",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/Kathmandu.pdf",
               },
               {
-                name: "iebe109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/iebe109.pdf",
+                name: "If I Were You",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Beehive/If I Were You.pdf",
               },
               {
                 name: "iebe1ps",
@@ -771,40 +771,40 @@ const ncertClasses = [
             name: "Moments Supplementary Reader",
             chapters: [
               {
-                name: "iemo101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo101.pdf",
+                name: "The Lost Child",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/The Lost Child.pdf",
               },
               {
-                name: "iemo102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo102.pdf",
+                name: "The Adventures of Toto",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/The Adventures of Toto.pdf",
               },
               {
-                name: "iemo103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo103.pdf",
+                name: "Iswaran the Storyteller",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/Iswaran the Storyteller.pdf",
               },
               {
-                name: "iemo104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo104.pdf",
+                name: "In the Kingdom of Fools",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/In the Kingdom of Fools.pdf",
               },
               {
-                name: "iemo105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo105.pdf",
+                name: "The Happy Prince",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/The Happy Prince.pdf",
               },
               {
-                name: "iemo106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo106.pdf",
+                name: "Weathering the Storm in Ersama",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/Weathering the Storm in Ersama.pdf",
               },
               {
-                name: "iemo107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo107.pdf",
+                name: "The Last Leaf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/The Last Leaf.pdf",
               },
               {
-                name: "iemo108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo108.pdf",
+                name: "A House Is Not a Home",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/A House Is Not a Home.pdf",
               },
               {
-                name: "iemo109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/iemo109.pdf",
+                name: "The Beggar",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Moments%20Supplementary%20Reader/The Beggar.pdf",
               },
               {
                 name: "iemo1ps",
@@ -816,8 +816,8 @@ const ncertClasses = [
             name: "Words and Expressions",
             chapters: [
               {
-                name: "iewe101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/iewe101.pdf",
+                name: "Reading Comprehension",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/English/Words%20and%20Expressions/Unit 1 Reading Comprehension.pdf",
               },
               {
                 name: "iewe102",
@@ -866,64 +866,64 @@ const ncertClasses = [
             name: "iehp1dd",
             chapters: [
               {
-                name: "iehp101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp101.pdf",
+                name: "Health and Diseases",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Health and Diseases.pdf",
               },
               {
-                name: "iehp102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp102.pdf",
+                name: "Growing up with Confidence",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Growing up with Confidence.pdf",
               },
               {
-                name: "iehp103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp103.pdf",
+                name: "Physical Education",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Physical Education.pdf",
               },
               {
-                name: "iehp104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp104.pdf",
+                name: "Physical Fitness",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Physical Fitness.pdf",
               },
               {
-                name: "iehp105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp105.pdf",
+                name: "Sports Training",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Sports Training.pdf",
               },
               {
-                name: "iehp106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp106.pdf",
+                name: "Individual Sports",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Individual Sports.pdf",
               },
               {
-                name: "iehp107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp107.pdf",
+                name: "Team Games",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Team Games.pdf",
               },
               {
-                name: "iehp108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp108.pdf",
+                name: "Ethics in Sports",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Ethics in Sports.pdf",
               },
               {
-                name: "iehp109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp109.pdf",
+                name: "Personality Development Through yoga",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Personality Development Through yoga.pdf",
               },
               {
-                name: "iehp110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp110.pdf",
+                name: "Waste Management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Waste Management.pdf",
               },
               {
-                name: "iehp111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp111.pdf",
+                name: "Diet for Healthy Living",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Diet for Healthy Living.pdf",
               },
               {
-                name: "iehp112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp112.pdf",
+                name: "First Aid and Safety",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/First Aid and Safety.pdf",
               },
               {
-                name: "iehp113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp113.pdf",
+                name: "Social Health",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Social Health.pdf",
               },
               {
-                name: "iehp114",
+                name: "Adolescent Friendly Health Services (AFHS)",
                 url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp114.pdf",
               },
               {
                 name: "iehp1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/iehp1ps.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Health%20and%20Physical%20Education/iehp1dd/Adolescent Friendly Health Services (AFHS).pdf",
               },
             ],
           },
@@ -933,39 +933,39 @@ const ncertClasses = [
         name: "ICT",
         books: [
           {
-            name: "iict1dd",
+            name: "Introduction to ICT",
             chapters: [
               {
-                name: "iict101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict101.pdf",
+                name: "Introduction to ICT",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Introduction to ICT.pdf",
               },
               {
-                name: "iict102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict102.pdf",
+                name: "Creating Textual Communication",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Creating Textual Communication.pdf",
               },
               {
-                name: "iict103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict103.pdf",
+                name: "Creating Visual Communication",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Creating Visual Communication.pdf",
               },
               {
-                name: "iict104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict104.pdf",
+                name: "Creating Audio‑Video Communication",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Creating Audio‑Video Communication.pdf",
               },
               {
-                name: "iict105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict105.pdf",
+                name: "Presenting Ideas",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Presenting Ideas.pdf",
               },
               {
-                name: "iict106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict106.pdf",
+                name: "Getting Connected: Internet",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Getting Connected: Internet.pdf",
               },
               {
-                name: "iict107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict107.pdf",
+                name: "Safety and Security in the Cyber World",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Safety and Security in the Cyber World.pdf",
               },
               {
-                name: "iict108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/iict108.pdf",
+                name: "Fun with Logic",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/ICT/iict1dd/Fun with Logic.pdf",
               },
               {
                 name: "iict1ps",
@@ -982,52 +982,52 @@ const ncertClasses = [
             name: "iemh1dd",
             chapters: [
               {
-                name: "iemh101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh101.pdf",
+                name: "Number System",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Number System.pdf",
               },
               {
-                name: "iemh102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh102.pdf",
+                name: "Polynomials",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Polynomials.pdf",
               },
               {
-                name: "iemh103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh103.pdf",
+                name: "Coordinate Geometry",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Coordinate Geometry.pdf",
               },
               {
-                name: "iemh104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh104.pdf",
+                name: "Linear Equations in two Variables",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Linear Equations in two Variables.pdf",
               },
               {
-                name: "iemh105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh105.pdf",
+                name: "Introduction to Euclid's Geometry",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Introduction to Euclid's Geometry.pdf",
               },
               {
-                name: "iemh106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh106.pdf",
+                name: "Lines and Angles",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Lines and Angles.pdf",
               },
               {
-                name: "iemh107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh107.pdf",
+                name: "Triangles",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Triangles.pdf",
               },
               {
-                name: "iemh108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh108.pdf",
+                name: "Quadrilaterals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Quadrilaterals.pdf",
               },
               {
-                name: "iemh109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh109.pdf",
+                name: "Circles",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Circles.pdf",
               },
               {
-                name: "iemh110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh110.pdf",
+                name: "Heron's Formula",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Heron's Formula.pdf",
               },
               {
-                name: "iemh111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh111.pdf",
+                name: "Surface areas and Volume",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Surface areas and Volume.pdf",
               },
               {
-                name: "iemh112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/iemh112.pdf",
+                name: "Statistics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Maths/iemh1dd/Statistics.pdf",
               },
               {
                 name: "iemh1a1",
@@ -1056,52 +1056,52 @@ const ncertClasses = [
             name: "iesc1dd",
             chapters: [
               {
-                name: "iesc101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc101.pdf",
+                name: "Matter in our Surrounding",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Matter in our Surrounding.pdf",
               },
               {
-                name: "iesc102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc102.pdf",
+                name: "Is matter around us is pure?",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Is matter around us is pure?.pdf",
               },
               {
-                name: "iesc103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc103.pdf",
+                name: "Atoms and Molecules",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Atoms and Molecules.pdf",
               },
               {
-                name: "iesc104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc104.pdf",
+                name: "Structure of the Atom",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Structure of the Atom.pdf",
               },
               {
-                name: "iesc105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc105.pdf",
+                name: "The Fundamental Unit of Life",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/The Fundamental Unit of Life.pdf",
               },
               {
-                name: "iesc106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc106.pdf",
+                name: "Tissues",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Tissues.pdf",
               },
               {
-                name: "iesc107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc107.pdf",
+                name: "Motion",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Motion.pdf",
               },
               {
-                name: "iesc108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc108.pdf",
+                name: "Force and Laws of Motion",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Force and Laws of Motion.pdf",
               },
               {
-                name: "iesc109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc109.pdf",
+                name: "Gravitation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Gravitation.pdf",
               },
               {
-                name: "iesc110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc110.pdf",
+                name: "Work and Energy",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Work and Energy.pdf",
               },
               {
-                name: "iesc111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc111.pdf",
+                name: "Sound",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Sound.pdf",
               },
               {
-                name: "iesc112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/iesc112.pdf",
+                name: "Improvement in food Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/9th/Science/iesc1dd/Improvement in food Resources.pdf",
               },
               {
                 name: "iesc112",
@@ -1236,497 +1236,229 @@ const ncertClasses = [
   },
   {
     name: "10th",
-    subjects: [
-      {
-        name: "English",
-        books: [
-          {
-            name: "First Flight",
-            chapters: [
-              {
-                name: "jeff101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff101.pdf",
-              },
-              {
-                name: "jeff102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff102.pdf",
-              },
-              {
-                name: "jeff103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff103.pdf",
-              },
-              {
-                name: "jeff104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff104.pdf",
-              },
-              {
-                name: "jeff105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff105.pdf",
-              },
-              {
-                name: "jeff106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff106.pdf",
-              },
-              {
-                name: "jeff107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff107.pdf",
-              },
-              {
-                name: "jeff108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff108.pdf",
-              },
-              {
-                name: "jeff109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff109.pdf",
-              },
-              {
-                name: "jeff1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff1ps.pdf",
-              },
-            ],
-          },
-          {
-            name: "Footprints without Feet",
-            chapters: [
-              {
-                name: "jefp101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp101.pdf",
-              },
-              {
-                name: "jefp102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp102.pdf",
-              },
-              {
-                name: "jefp103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp103.pdf",
-              },
-              {
-                name: "jefp104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp104.pdf",
-              },
-              {
-                name: "jefp105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp105.pdf",
-              },
-              {
-                name: "jefp106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp106.pdf",
-              },
-              {
-                name: "jefp107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp107.pdf",
-              },
-              {
-                name: "jefp108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp108.pdf",
-              },
-              {
-                name: "jefp109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp109.pdf",
-              },
-              {
-                name: "jefp1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp1ps.pdf",
-              },
-            ],
-          },
-          {
-            name: "Words and Expressions -II",
-            chapters: [
-              {
-                name: "jewe201",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe201.pdf",
-              },
-              {
-                name: "jewe202",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe202.pdf",
-              },
-              {
-                name: "jewe203",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe203.pdf",
-              },
-              {
-                name: "jewe204",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe204.pdf",
-              },
-              {
-                name: "jewe205",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe205.pdf",
-              },
-              {
-                name: "jewe206",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe206.pdf",
-              },
-              {
-                name: "jewe207",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe207.pdf",
-              },
-              {
-                name: "jewe208",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe208.pdf",
-              },
-              {
-                name: "jewe209",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe209.pdf",
-              },
-              {
-                name: "jewe2ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe2ps.pdf",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Health and Physical Education",
-        books: [
-          {
-            name: "jehp1dd",
-            chapters: [
-              {
-                name: "jehp101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp101.pdf",
-              },
-              {
-                name: "jehp102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp102.pdf",
-              },
-              {
-                name: "jehp103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp103.pdf",
-              },
-              {
-                name: "jehp104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp104.pdf",
-              },
-              {
-                name: "jehp105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp105.pdf",
-              },
-              {
-                name: "jehp106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp106.pdf",
-              },
-              {
-                name: "jehp107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp107.pdf",
-              },
-              {
-                name: "jehp108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp108.pdf",
-              },
-              {
-                name: "jehp109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp109.pdf",
-              },
-              {
-                name: "jehp110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp110.pdf",
-              },
-              {
-                name: "jehp111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp111.pdf",
-              },
-              {
-                name: "jehp112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp112.pdf",
-              },
-              {
-                name: "jehp113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp113.pdf",
-              },
-              {
-                name: "jehp1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp1ps.pdf",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Maths",
-        books: [
-          {
-            name: "jemh1dd",
-            chapters: [
-              {
-                name: "jemh101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh101.pdf",
-              },
-              {
-                name: "jemh102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh102.pdf",
-              },
-              {
-                name: "jemh103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh103.pdf",
-              },
-              {
-                name: "jemh104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh104.pdf",
-              },
-              {
-                name: "jemh105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh105.pdf",
-              },
-              {
-                name: "jemh106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh106.pdf",
-              },
-              {
-                name: "jemh107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh107.pdf",
-              },
-              {
-                name: "jemh108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh108.pdf",
-              },
-              {
-                name: "jemh109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh109.pdf",
-              },
-              {
-                name: "jemh110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh110.pdf",
-              },
-              {
-                name: "jemh111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh111.pdf",
-              },
-              {
-                name: "jemh112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh112.pdf",
-              },
-              {
-                name: "jemh113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh113.pdf",
-              },
-              {
-                name: "jemh114",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh114.pdf",
-              },
-              {
-                name: "jemh1a1",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1a1.pdf",
-              },
-              {
-                name: "jemh1a2",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1a2.pdf",
-              },
-              {
-                name: "jemh1an",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1an.pdf",
-              },
-              {
-                name: "jemh1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1ps.pdf",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Science",
-        books: [
-          {
-            name: "jesc1dd",
-            chapters: [
-              {
-                name: "jesc101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc101.pdf",
-              },
-              {
-                name: "jesc102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc102.pdf",
-              },
-              {
-                name: "jesc103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc103.pdf",
-              },
-              {
-                name: "jesc104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc104.pdf",
-              },
-              {
-                name: "jesc105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc105.pdf",
-              },
-              {
-                name: "jesc106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc106.pdf",
-              },
-              {
-                name: "jesc107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc107.pdf",
-              },
-              {
-                name: "jesc108",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc108.pdf",
-              },
-              {
-                name: "jesc109",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc109.pdf",
-              },
-              {
-                name: "jesc110",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc110.pdf",
-              },
-              {
-                name: "jesc111",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc111.pdf",
-              },
-              {
-                name: "jesc112",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc112.pdf",
-              },
-              {
-                name: "jesc113",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc113.pdf",
-              },
-              {
-                name: "jesc1an",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc1an.pdf",
-              },
-              {
-                name: "jesc1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc1ps.pdf",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Social Science",
-        books: [
-          {
-            name: "Contemporary India",
-            chapters: [
-              {
-                name: "jess101",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess101.pdf",
-              },
-              {
-                name: "jess102",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess102.pdf",
-              },
-              {
-                name: "jess103",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess103.pdf",
-              },
-              {
-                name: "jess104",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess104.pdf",
-              },
-              {
-                name: "jess105",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess105.pdf",
-              },
-              {
-                name: "jess106",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess106.pdf",
-              },
-              {
-                name: "jess107",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess107.pdf",
-              },
-              {
-                name: "jess1a1",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess1a1.pdf",
-              },
-              {
-                name: "jess1ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess1ps.pdf",
-              },
-            ],
-          },
-          {
-            name: "Democratic Politics",
-            chapters: [
-              {
-                name: "jess401",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess401.pdf",
-              },
-              {
-                name: "jess402",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess402.pdf",
-              },
-              {
-                name: "jess403",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess403.pdf",
-              },
-              {
-                name: "jess404",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess404.pdf",
-              },
-              {
-                name: "jess405",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess405.pdf",
-              },
-              {
-                name: "jess4ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess4ps.pdf",
-              },
-            ],
-          },
-          {
-            name: "India and the Contemporary World-II",
-            chapters: [
-              {
-                name: "jess301",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/jess301.pdf",
-              },
-              {
-                name: "jess302",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/jess302.pdf",
-              },
-              {
-                name: "jess303",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/jess303.pdf",
-              },
-              {
-                name: "jess304",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/jess304.pdf",
-              },
-              {
-                name: "jess305",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/jess305.pdf",
-              },
-            ],
-          },
-          {
-            name: "Understanding Economic Development",
-            chapters: [
-              {
-                name: "jess201",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess201.pdf",
-              },
-              {
-                name: "jess202",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess202.pdf",
-              },
-              {
-                name: "jess203",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess203.pdf",
-              },
-              {
-                name: "jess204",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess204.pdf",
-              },
-              {
-                name: "jess205",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess205.pdf",
-              },
-              {
-                name: "jess2ps",
-                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess2ps.pdf",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
+  subjects: [{'name': 'English',
+    'books': [{'name': 'First Flight',
+      'chapters': [{'name': 'A Letter to God',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/A Letter to God.pdf'},
+       {'name': 'Nelson Mandela: Long Walk to Freedom',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/Nelson Mandela: Long Walk to Freedom.pdf'},
+       {'name': 'Two Stories about Flying',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/Two Stories about Flying.pdf'},
+       {'name': 'From the Diary of Anne Frank',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/From the Diary of Anne Frank.pdf'},
+       {'name': 'Glimpses of India',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/Glimpses of India.pdf'},
+       {'name': 'Mijbil the Otter',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/Mijbil the Otter.pdf'},
+       {'name': 'Madam Rides the Bus',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/Madam Rides the Bus.pdf'},
+       {'name': 'The Sermon at Benares',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/The Sermon at Benares.pdf'},
+       {'name': 'The Proposal',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/The Proposal.pdf'},
+       {'name': 'jeff1ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/First%20Flight/jeff1ps.pdf'}]},
+     {'name': 'Footprints without Feet',
+      'chapters': [{'name': 'A Triumph of Surgery',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/A Triumph of Surgery.pdf'},
+       {'name': 'The Thief’s Story',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/The Thief’s Story.pdf'},
+       {'name': 'The Midnight Visitor',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/The Midnight Visitor.pdf'},
+       {'name': 'A Question of Trust',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/A Question of Trust.pdf'},
+       {'name': 'Footprints without Feet',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/Footprints without Feet.pdf'},
+       {'name': 'The Making of a Scientist',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/The Making of a Scientist.pdf'},
+       {'name': 'The Necklace',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/The Necklace.pdf'},
+       {'name': 'Bholi',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/Bholi.pdf'},
+       {'name': 'The Book That Saved the Earth',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/The Book That Saved the Earth.pdf'},
+       {'name': 'jefp1ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Footprints%20without%20Feet/jefp1ps.pdf'}]},
+     {'name': 'Words and Expressions -II',
+      'chapters': [{'name': 'A Letter To God',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/A Letter To God.pdf'},
+       {'name': 'Nelson Mandela: Long walk to freedom',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/Nelson Mandela: Long walk to freedom.pdf'},
+       {'name': 'Two Stories about Flying',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/Two Stories about Flying.pdf'},
+       {'name': 'From the Diary of Anne Frank',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/From the Diary of Anne Frank.pdf'},
+       {'name': 'Glimpses of India',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/Glimpses of India.pdf'},
+       {'name': 'Mijbil the Otter',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/Mijbil the Otter.pdf'},
+       {'name': 'Madam rides the bus',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/Madam rides the bus.pdf'},
+       {'name': 'The sermon at Benares',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/The sermon at Benares.pdf'},
+       {'name': 'The Proposal',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/The Proposal.pdf'},
+       {'name': 'jewe2ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/English/Words%20and%20Expressions%20-II/jewe2ps.pdf'}]}]},
+   {'name': 'Health and Physical Education',
+    'books': [{'name': 'jehp1dd',
+      'chapters': [{'name': 'Physical Education: Relation with other Subjects',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Physical Education: Relation with other Subjects.pdf'},
+       {'name': 'Effects of Physical Activities on Human body',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Effects of Physical Activities on Human body.pdf'},
+       {'name': 'Growth and Development During Adolescence',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Growth and Development During Adolescence.pdf'},
+       {'name': 'Individual Games and Sports-I',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Individual Games and Sports-I.pdf'},
+       {'name': 'Individual Games and Sports-II',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Individual Games and Sports-II.pdf'},
+       {'name': 'Team Games and Sports-I',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Team Games and Sports-I.pdf'},
+       {'name': 'Team Games and Sports-II',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Team Games and Sports-II.pdf'},
+       {'name': 'Yoga for healthy living',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Yoga for healthy living.pdf'},
+       {'name': 'Dietary Consideration and Food Quality',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Dietary Consideration and Food Quality.pdf'},
+       {'name': 'Safety Measures for Healthy Living',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Safety Measures for Healthy Living.pdf'},
+       {'name': 'Healthy community living',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Healthy community living.pdf'},
+       {'name': 'Social Health',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Social Health.pdf'},
+       {'name': 'Agencies and Awards Promoting health, Sports and yoga',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/Agencies and Awards Promoting health, Sports and yoga.pdf'},
+       {'name': 'jehp1ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Health%20and%20Physical%20Education/jehp1dd/jehp1ps.pdf'}]}]},
+   {'name': 'Maths',
+    'books': [{'name': 'jemh1dd',
+      'chapters': [{'name': 'Real Numbers',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Real Numbers.pdf'},
+       {'name': 'Polynomials',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Polynomials.pdf'},
+       {'name': 'Pair of Linear Equations in Two Variables',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Pair of Linear Equations in Two Variables.pdf'},
+       {'name': 'Quadratic Equations',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Quadratic Equations.pdf'},
+       {'name': 'Arithmetic Progressions',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Arithmetic Progressions.pdf'},
+       {'name': 'Triangles',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Triangles.pdf'},
+       {'name': 'Coordinate Geometry',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Coordinate Geometry.pdf'},
+       {'name': 'Introduction to Trigonometry',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Introduction to Trigonometry.pdf'},
+       {'name': 'Some Applications of Trigonometry',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Some Applications of Trigonometry.pdf'},
+       {'name': 'Circles',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Circles.pdf'},
+       {'name': 'Areas Related to Circles',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Areas Related to Circles.pdf'},
+       {'name': 'Surface Areas and Volumes',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Surface Areas and Volumes.pdf'},
+       {'name': 'Statistics',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Statistics.pdf'},
+       {'name': 'Probability',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/Probability.pdf'},
+       {'name': 'jemh1a1',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1a1.pdf'},
+       {'name': 'jemh1a2',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1a2.pdf'},
+       {'name': 'jemh1an',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1an.pdf'},
+       {'name': 'jemh1ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Maths/jemh1dd/jemh1ps.pdf'}]}]},
+   {'name': 'Science',
+    'books': [{'name': 'jesc1dd',
+      'chapters': [{'name': 'Chemical Reactions and Equations',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Chemical Reactions and Equations.pdf'},
+       {'name': 'Acids, Bases and Salts',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Acids, Bases and Salts.pdf'},
+       {'name': 'Metals and Non-metals',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Metals and Non-metals.pdf'},
+       {'name': 'Carbon and its Compounds',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Carbon and its Compounds.pdf'},
+       {'name': 'Life Processes',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Life Processes.pdf'},
+       {'name': 'Control and Coordination',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Control and Coordination.pdf'},
+       {'name': 'How do Organisms Reproduce?',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/How do Organisms Reproduce?.pdf'},
+       {'name': 'Heredity',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Heredity.pdf'},
+       {'name': 'Light Reflection and Refraction',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Light Reflection and Refraction.pdf'},
+       {'name': 'The Human Eye and the Colourful World',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/The Human Eye and the Colourful World.pdf'},
+       {'name': 'Electricity',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Electricity.pdf'},
+       {'name': 'Magnetic Effects of Electric Current',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Magnetic Effects of Electric Current.pdf'},
+       {'name': 'Our Environment',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/Our Environment.pdf'},
+       {'name': 'jesc1an',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc1an.pdf'},
+       {'name': 'jesc1ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Science/jesc1dd/jesc1ps.pdf'}]}]},
+   {'name': 'Social Science',
+    'books': [{'name': 'Contemporary India',
+      'chapters': [{'name': 'Resources and Development',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Resources and Development.pdf'},
+       {'name': 'Forest and Wildlife Resources',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Forest and Wildlife Resources.pdf'},
+       {'name': 'Water Resources',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Water Resources.pdf'},
+       {'name': 'Agriculture',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Agriculture.pdf'},
+       {'name': 'Minerals and Energy Resources',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Minerals and Energy Resources.pdf'},
+       {'name': 'Manufacturing Industries',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Manufacturing Industries.pdf'},
+       {'name': 'Lifelines of National Economy',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/Lifelines of National Economy.pdf'},
+       {'name': 'jess1a1',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess1a1.pdf'},
+       {'name': 'jess1ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Contemporary%20India/jess1ps.pdf'}]},
+     {'name': 'Democratic Politics',
+      'chapters': [{'name': 'Power-sharing',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/Power-sharing.pdf'},
+       {'name': 'Federalism',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/Federalism.pdf'},
+       {'name': 'Gender, Religion and Caste',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/Gender, Religion and Caste.pdf'},
+       {'name': 'Political Parties',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/Political Parties.pdf'},
+       {'name': 'Outcomes of Democracy',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/Outcomes of Democracy.pdf'},
+       {'name': 'jess4ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Democratic%20Politics/jess4ps.pdf'}]},
+     {'name': 'India and the Contemporary World-II',
+      'chapters': [{'name': 'The Rise of Nationalism in Europe',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/The Rise of Nationalism in Europe.pdf'},
+       {'name': 'Nationalism in India',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/Nationalism in India.pdf'},
+       {'name': 'The Making of a Global World',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/The Making of a Global World.pdf'},
+       {'name': 'The Age of Industrialisation',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/The Age of Industrialisation.pdf'},
+       {'name': 'Print Culture and the Modern World',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/India%20and%20the%20Contemporary%20World-II/Print Culture and the Modern World.pdf'}]},
+     {'name': 'Understanding Economic Development',
+      'chapters': [{'name': 'Development',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/Development.pdf'},
+       {'name': 'Sector of the Indian Economy',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/Sector of the Indian Economy.pdf'},
+       {'name': 'Money and Credit',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/Money and Credit.pdf'},
+       {'name': 'Globalisation and the Indian Economy',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/Globalisation and the Indian Economy.pdf'},
+       {'name': 'Consumer rights',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/Consumer rights.pdf'},
+       {'name': 'jess2ps',
+        'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess2ps.pdf'}]}]}]
+       },
+        {
     name: "11th",
     subjects: [
       {
