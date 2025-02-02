@@ -6,7 +6,6 @@ import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-import type { PDFDocumentProxy } from "pdfjs-dist";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui";
 import { createNCERTChat } from "@/lib/db";
