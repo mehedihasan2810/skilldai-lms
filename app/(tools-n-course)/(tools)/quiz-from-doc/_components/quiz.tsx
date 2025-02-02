@@ -249,7 +249,8 @@ export default function Quiz({
                         )}
                       </Button>
                       <Link
-                        href="/quiz-generator"
+                        href="/quiz-from-doc"
+                        // href="/quiz-generator"
                         // onClick={clearPDF}
                         className={buttonVariants({
                           className: "bg-primary hover:bg-primary/90 w-full",
