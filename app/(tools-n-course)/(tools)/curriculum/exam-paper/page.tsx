@@ -13,6 +13,8 @@ const Page = async ({
   };
   searchParams: {
     g: string | undefined;
+    category: string | undefined;
+    y: string | undefined;
     s: string | undefined;
     b: string | undefined;
     c: string | undefined;

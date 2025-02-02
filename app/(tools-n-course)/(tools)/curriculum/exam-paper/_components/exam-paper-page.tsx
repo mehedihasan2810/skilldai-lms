@@ -12,7 +12,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { examPapers } from "../data";
+import { examPapers, examPapers2 } from "../data";
+import { ExamPaperPage2 } from "./exam-paper-page2";
 
 const PDFViewer = dynamic(
   () => import("./pdf-viewer").then((mod) => mod.PDFViewer),
@@ -373,11 +374,8 @@ const PDFViewer = dynamic(
 //       },
 //     ],
 //   },
-  
+
 // ];
-
-
-
 
 export const ExamPaperPage = ({
   searchParams,
@@ -385,6 +383,8 @@ export const ExamPaperPage = ({
 }: {
   searchParams: {
     g: string | undefined;
+    category: string | undefined;
+    y: string | undefined;
     s: string | undefined;
     b: string | undefined;
     c: string | undefined;
@@ -414,19 +414,27 @@ export const ExamPaperPage = ({
     (ncertClass) => ncertClass.name === searchParams.g
   );
 
-  const activeSubject = (activeClass?.subjects ?? []).find(
-    (subject) => subject.name === searchParams.s
+  const activeCategory = (examPapers2[0].categories ?? []).find(
+    (category) => category.name === searchParams.category
+  );
+  const activeYear = (activeCategory?.years ?? []).find(
+    (year) => year.name === searchParams.y
   );
 
+  const activeSubject = (
+    (searchParams.category ? activeYear?.subjects : activeClass?.subjects) ?? []
+  ).find((subject) => subject.name === searchParams.s);
+
   const activeBook = (activeSubject?.papers ?? []).find(
-    (book) => book.name === searchParams.b
+    (book) =>
+      book.name.replaceAll("&", "").trim() === searchParams.b?.replaceAll("%20", " ")?.trim()
   );
 
   // const activeChapter = (activeBook?.chapters ?? []).find(
   //   (chapter) => chapter.name === searchParams.c
   // );
 
-  console.log({ activeClass, activeSubject, activeBook });
+  // console.log({ activeClass, activeSubject, activeBook, activeYear, activeCategory });
 
   return (
     <div className="grid md:grid-cols-2 gap-8 pb-10 md:pb-0">
@@ -444,15 +452,7 @@ export const ExamPaperPage = ({
                 value={ncertClass.name}
                 className="border border-border/40 rounded-xl px-4 bg-card"
               >
-                <AccordionTrigger>
-                  {ncertClass.name} grade
-                  {/* <div className="text-left ">
-                    <p>{ncertClass.name}</p>
-                    <p className="text-muted-foreground text-xs mt-1 ml-2">
-                      {ncertClass.subjects.length} Subjects
-                    </p>
-                  </div> */}
-                </AccordionTrigger>
+                <AccordionTrigger>{ncertClass.name} grade</AccordionTrigger>
                 <AccordionContent>
                   {ncertClass.subjects.map((subject) => (
                     <Accordion
@@ -475,20 +475,18 @@ export const ExamPaperPage = ({
                         </AccordionTrigger>
                         <AccordionContent>
                           {subject.papers.map((paper) => (
-                           <Link
-                           href={`/curriculum/exam-paper/?g=${ncertClass.name}&s=${subject.name}&b=${paper.name}`}
-                           className={cn(
-                             "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
-                             (activeBook ?? defaultBook)
-                               .name === paper.name
-                               ? "bg-muted"
-                               : ""
-                           )}
-                           key={paper.name}
-                         >
-                           <BookText className="size-5" />{" "}
-                           {paper.name}
-                         </Link>
+                            <Link
+                              href={`/curriculum/exam-paper/?g=${ncertClass.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
+                              className={cn(
+                                "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
+                                (activeBook ?? defaultBook).name === paper.name
+                                  ? "bg-muted"
+                                  : ""
+                              )}
+                              key={paper.name}
+                            >
+                              <BookText className="size-5" /> {paper.name}
+                            </Link>
                           ))}
                         </AccordionContent>
                       </AccordionItem>
@@ -498,6 +496,7 @@ export const ExamPaperPage = ({
               </AccordionItem>
             </Accordion>
           ))}
+          <ExamPaperPage2 searchParams={searchParams} userId={userId} />
         </div>
       </ScrollArea>
 

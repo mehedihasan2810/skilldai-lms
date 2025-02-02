@@ -68,6 +68,10 @@ const data = {
           title: "NCERT",
           url: "/ncert",
         },
+        {
+          title: "Exams",
+          url: "/curriculum/exam-paper",
+        },
       ],
     },
     // {
