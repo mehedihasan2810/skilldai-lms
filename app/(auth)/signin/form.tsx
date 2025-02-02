@@ -214,7 +214,7 @@ const SignInForm = () => {
             <Button disabled={isPending} type="submit" className="w-full">
               {isPending ? (
                 <>
-                  <Loader className="animate-spin mr-2" /> Signing In
+                  <Loader className="animate-spin" /> Signing In
                 </>
               ) : (
                 "Sign In"
