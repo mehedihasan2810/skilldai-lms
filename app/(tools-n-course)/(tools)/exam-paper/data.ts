@@ -4020,7 +4020,7 @@ const grade12thCategories = [
       },
     ],
   },
-  { name: "Mains", years: [{ name: "2022", subjects: [] }] },
+  // { name: "Mains", years: [{ name: "2022", subjects: [] }] },
 ];
 
 export const examPapers2 = [{ name: "10th", categories: grade10thCategories },

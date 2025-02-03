@@ -482,7 +482,7 @@ export const ExamPaperPage = ({
                           <AccordionContent>
                             {subject.papers.map((paper) => (
                               <Link
-                                href={`/curriculum/exam-paper/?g=${grade.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
+                                href={`/exam-paper/?g=${grade.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
                                 className={cn(
                                   "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
                                   (activePaper ?? defaultPaper).name ===
@@ -547,7 +547,7 @@ export const ExamPaperPage = ({
                           <AccordionContent>
                             {subject.papers.map((paper) => (
                               <Link
-                                href={`/curriculum/exam-paper/?g=${grade.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
+                                href={`/exam-paper/?g=${grade.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
                                 className={cn(
                                   "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
                                   (activePaper ?? defaultPaper).name ===
