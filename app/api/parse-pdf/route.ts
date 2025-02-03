@@ -1,6 +1,6 @@
-import { normalizeText } from '@/lib/utils';
-import { NextRequest } from 'next/server';
-import pdfParse from 'pdf-parse';
+import { normalizeText } from "@/lib/utils";
+import { NextRequest } from "next/server";
+import pdfParse from "pdf-parse";
 
 interface PDFParseRequest {
   resumeUrl: string;
@@ -8,6 +8,8 @@ interface PDFParseRequest {
 
 export async function POST(request: NextRequest) {
   const { resumeUrl } = (await request.json()) as PDFParseRequest;
+
+  console.log({ resumeUrl });
 
   const response = await fetch(resumeUrl);
   const arrayBuffer = await response.arrayBuffer();

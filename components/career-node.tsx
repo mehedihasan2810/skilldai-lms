@@ -43,7 +43,7 @@ function CareerNode({ data }: NodeProps<CareerNodeProps>) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className='border border-gray-300 rounded-2xl py-4 px-7 max-w-[350px] bg-gray-50'>
+        <div className='border rounded-2xl py-4 px-7 max-w-[350px] bg-card text-foreground'>
           <Handle type='target' position={position} />
           <h1 className='text-2xl font-bold mb-2'>{jobTitle}</h1>
           <p className='mb-4 font-light'>{jobDescription}</p>
@@ -78,14 +78,14 @@ function CareerNode({ data }: NodeProps<CareerNodeProps>) {
           <DialogTitle className='flex justify-between'>
             <div className='flex items-center gap-3'>
               <span className='text-2xl'>{jobTitle ?? 'SEO Specialist'}</span>
-              <span className='border rounded-3xl border-gray-200 px-3 py-1 text-sm'>
+              <span className='border rounded-3xl px-3 py-1 text-sm'>
                 {timeline}
               </span>
-              <span className='border rounded-3xl border-gray-200 px-3 py-1 text-sm'>
+              <span className='border rounded-3xl  px-3 py-1 text-sm'>
                 {salary}
               </span>
               <span
-                className={`border rounded-3xl border-gray-200 px-3 py-1 text-sm font-semibold ${
+                className={`border rounded-3xl  px-3 py-1 text-sm font-semibold ${
                   difficulty?.toLowerCase() == 'low'
                     ? 'text-green-600'
                     : difficulty?.toLowerCase() == 'high'
@@ -98,13 +98,13 @@ function CareerNode({ data }: NodeProps<CareerNodeProps>) {
             </div>
             <div className='flex items-center gap-3 mr-5'>
               <div className='font-bold'>Work Required:</div>
-              <span className='border rounded-3xl border-gray-200 px-3 py-1 text-sm'>
+              <span className='border rounded-3xl px-3 py-1 text-sm'>
                 {workRequired ?? '10-20 hrs/week'}
               </span>
             </div>
           </DialogTitle>
         </DialogHeader>
-        <div className='flex gap-7 border-t border-black pt-6'>
+        <div className='flex gap-7 border-t pt-6'>
           <div className='flex flex-col gap-4 w-2/5'>
             <div>
               <h2 className='text-lg font-semibold mb-2'>
