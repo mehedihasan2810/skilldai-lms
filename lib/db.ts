@@ -1,6 +1,4 @@
 import { Attachment } from "@/app/types";
-import { SupabaseContextType } from "@/lib/supabase/types";
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "./supabase/client";
 import { generateQuizTitle } from "@/actions/generate-quiz-title";
 import { getQueryClient } from "@/app/react-query-provider";
@@ -11,7 +9,6 @@ const supabase = createClient();
 const queryClient = getQueryClient();
 
 export const getChats = async (
-  // supabase: SupabaseContextType["supabase"],
   userId: string | null | undefined
 ) => {
   if (!userId) throw new Error("User not authenticated");
@@ -969,7 +966,7 @@ export const createNCERTChat = async ({
   const { data, error } = await supabase
     .from("pdf_chat")
     .insert({
-      title: generatedTitle,
+      title: generatedTitle ?? "Untitled",
       summary: "",
       user_id: userId,
       file_name: "",

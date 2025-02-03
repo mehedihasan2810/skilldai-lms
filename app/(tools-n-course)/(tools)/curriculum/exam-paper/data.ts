@@ -515,17 +515,307 @@ const subjects9th = [
   },
 ];
 
+const subjects11th = [
+  {
+    name: "Accounts",
+    papers: [
+      {
+        name: "class11-accounts-qp-2018-1-025a19bbc0a57.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-qp-2018-1-025a19bbc0a57.pdf",
+      },
+      {
+        name: "class11-accounts-qp-2019-025a19baf1368.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-qp-2019-025a19baf1368.pdf",
+      },
+      {
+        name: "class11-accounts-qp-2020-025a19a494138.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-qp-2020-025a19a494138.pdf",
+      },
+      {
+        name: "class11-accounts-sample-paper-01-1-converted-0253b13990fd6.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-sample-paper-01-1-converted-0253b13990fd6.pdf",
+      },
+      {
+        name: "class11-accounts-sample-paper-02-1-converted-0253b13cd1b80.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-sample-paper-02-1-converted-0253b13cd1b80.pdf",
+      },
+      {
+        name: "class11-accounts-sample-paper-03-0253b13dc89dd.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-sample-paper-03-0253b13dc89dd.pdf",
+      },
+      {
+        name: "class11-accounts-sample-paper-04-0253b13ec1bb2.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-sample-paper-04-0253b13ec1bb2.pdf",
+      },
+      {
+        name: "class11-accounts-sample-paper-05-0253b13fb15f5.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-accounts-sample-paper-05-0253b13fb15f5.pdf",
+      },
+      {
+        name: "class11-Sample-Papers-Accountancy-2020-Set-2.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Accounts/class11-Sample-Papers-Accountancy-2020-Set-2.pdf",
+      },
+    ],
+  },
+  {
+    name: "biology",
+    papers: [
+      {
+        name: "Class-11-Biology-selfstudys_com_file (1).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(1).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (2).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(2).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (3).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(3).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (4).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(4).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (5).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(5).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (6).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(6).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (7).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(7).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (8).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(8).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file (9).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file%20(9).pdf",
+      },
+      {
+        name: "Class-11-Biology-selfstudys_com_file.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/biology/Class-11-Biology-selfstudys_com_file.pdf",
+      },
+    ],
+  },
+  {
+    name: "Chemistry",
+    papers: [
+      {
+        name: "class11-Chemistry-selfstudys_com_file (1).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(1).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (2).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(2).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (3).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(3).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (4).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(4).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (5).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(5).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (6).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(6).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (7).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(7).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file (8).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file%20(8).pdf",
+      },
+      {
+        name: "class11-Chemistry-selfstudys_com_file.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Chemistry/class11-Chemistry-selfstudys_com_file.pdf",
+      },
+    ],
+  },
+  {
+    name: "Economy",
+    papers: [
+      {
+        name: "cbse-class-11-economics-2016.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Economy/cbse-class-11-economics-2016.pdf",
+      },
+      {
+        name: "CBSE-CLASS-11-ECONOMICS-SAMPLE-PAPER-SET-1-QUESTIONS.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Economy/CBSE-CLASS-11-ECONOMICS-SAMPLE-PAPER-SET-1-QUESTIONS.pdf",
+      },
+      {
+        name: "cbse-class-11-hy-economics-2016.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Economy/cbse-class-11-hy-economics-2016.pdf",
+      },
+      {
+        name: "cbse-class-11-hy-economics-additional-2017.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Economy/cbse-class-11-hy-economics-additional-2017.pdf",
+      },
+      {
+        name: "class11-Sample-Papers-Economics-2020-Set-2.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Economy/class11-Sample-Papers-Economics-2020-Set-2.pdf",
+      },
+    ],
+  },
+  {
+    name: "English",
+    papers: [
+      {
+        name: "cbse-class-11-english-120724-2022.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/English/cbse-class-11-english-120724-2022.pdf",
+      },
+      {
+        name: "cbse-class-11-sa2-english-special-120724-2022.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/English/cbse-class-11-sa2-english-special-120724-2022.pdf",
+      },
+      {
+        name: "Class 11 English Core Practice Paper 2022-23.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/English/Class%2011%20English%20Core%20Practice%20Paper%202022-23.pdf",
+      },
+      {
+        name: "Class 11 English Core Practice Paper 2023-24 Set 2.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/English/Class%2011%20English%20Core%20Practice%20Paper%202023-24%20Set%202.pdf",
+      },
+    ],
+  },
+  {
+    name: "Geography",
+    papers: [
+      {
+        name: "class11_geography_eng_pp_2023_24_1.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Geography/class11_geography_eng_pp_2023_24_1.pdf",
+      },
+    ],
+  },
+  {
+    name: "Maths",
+    papers: [
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-10.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-10.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-3.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-3.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-4.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-4.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-5.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-5.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-6.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-6.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-7.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-7.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-8.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-8.pdf",
+      },
+      {
+        name: "CBSE-Sample-Paper-Class-11-Maths-Set-9.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/Maths/CBSE-Sample-Paper-Class-11-Maths-Set-9.pdf",
+      },
+    ],
+  },
+  {
+    name: "physics",
+    papers: [
+      {
+        name: "class 11-Physics- selfstudys_com_file (10).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-%20selfstudys_com_file%20(10).pdf",
+      },
+      {
+        name: "class 11-Physics-selfstudys_com_file (1).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-selfstudys_com_file%20(1).pdf",
+      },
+      {
+        name: "class 11-Physics- selfstudys_com_file (2).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-%20selfstudys_com_file%20(2).pdf",
+      },
+      {
+        name: "class 11-Physics-selfstudys_com_file (3).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-selfstudys_com_file%20(3).pdf",
+      },
+      {
+        name: "class 11-Physics-selfstudys_com_file (4).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-selfstudys_com_file%20(4).pdf",
+      },
+      {
+        name: "class 11 -Physics-selfstudys_com_file (5).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011%20-Physics-selfstudys_com_file%20(5).pdf",
+      },
+      {
+        name: "class 11 -Physics-selfstudys_com_file (6).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011%20-Physics-selfstudys_com_file%20(6).pdf",
+      },
+      {
+        name: "class 11 -Physics-selfstudys_com_file (7).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011%20-Physics-selfstudys_com_file%20(7).pdf",
+      },
+      {
+        name: "class 11-Physics- selfstudys_com_file (8).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-%20selfstudys_com_file%20(8).pdf",
+      },
+      {
+        name: "class 11-Physics- selfstudys_com_file (9).pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-%20selfstudys_com_file%20(9).pdf",
+      },
+      {
+        name: "class 11-Physics-selfstudys_com_file.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/class%2011-Physics-selfstudys_com_file.pdf",
+      },
+    ],
+  },
+  {
+    name: "History",
+    papers: [
+      {
+        name: "cbse-class-11-hy-history-2016.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/cbse-class-11-hy-history-2016.pdf",
+      },
+    ],
+  },
+  {
+    name: "Political Science",
+    papers: [
+      {
+        name: "cbse-class-11-hy-political-science-2016.pdf",
+        url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/cbse-class-11-hy-political-science-2016.pdf",
+      },
+    ],
+  },
+];
+
 export const examPapers = [
   { name: "7th", subjects: subjects7th },
   { name: "8th", subjects: subjects8th },
   { name: "9th", subjects: subjects9th },
+  { name: "11th", subjects: subjects11th },
 ];
 
 const grade10thCategories = [
   {
     name: "Compartment",
     years: [
-       {
+      {
         name: "2019",
         subjects: [
           {
@@ -730,7 +1020,7 @@ const grade10thCategories = [
           },
         ],
       },
-       {
+      {
         name: "2020",
         subjects: [
           {
@@ -899,7 +1189,7 @@ const grade10thCategories = [
           },
         ],
       },
-       {
+      {
         name: "2021",
         subjects: [
           {
@@ -940,7 +1230,7 @@ const grade10thCategories = [
           },
         ],
       },
-       {
+      {
         name: "2022",
         subjects: [
           {
@@ -1205,7 +1495,7 @@ const grade10thCategories = [
           },
         ],
       },
-       {
+      {
         name: "2024",
         subjects: [
           {
@@ -1324,7 +1614,7 @@ const grade10thCategories = [
             ],
           },
         ],
-      }
+      },
     ],
   },
   {
@@ -1351,7 +1641,7 @@ const grade10thCategories = [
               },
             ],
           },
-           {
+          {
             name: "English & Lit",
             papers: [
               {
@@ -1422,7 +1712,7 @@ const grade10thCategories = [
               },
             ],
           },
-           {
+          {
             name: "Math_B",
             papers: [
               {
@@ -1491,7 +1781,7 @@ const grade10thCategories = [
               },
             ],
           },
-           {
+          {
             name: "Math_S",
             papers: [
               {
@@ -1544,7 +1834,7 @@ const grade10thCategories = [
               },
             ],
           },
-           {
+          {
             name: "Science",
             papers: [
               {
@@ -1597,7 +1887,7 @@ const grade10thCategories = [
               },
             ],
           },
-           {
+          {
             name: "Social Science",
             papers: [
               {
@@ -1649,7 +1939,7 @@ const grade10thCategories = [
                 url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/10th/Mains/2022/SST/SST/32-4-3%20Social%20Science.pdf",
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -2571,7 +2861,4 @@ const grade10thCategories = [
   },
 ];
 
-export const examPapers2 = [
-  { name: "10th", categories: grade10thCategories },
-
-];
+export const examPapers2 = [{ name: "10th", categories: grade10thCategories }];
