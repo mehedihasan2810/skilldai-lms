@@ -307,3 +307,33 @@ export const isMonthlyTokenUsageReached = ({
 
   return false
 };
+
+
+export function normalizeText(input: string): string {
+  // Replace multiple spaces with a single space
+  let normalized = input.replace(/\s+/g, ' ');
+  // Replace multiple line breaks with a single line break
+  normalized = normalized.replace(/\n+/g, '\n');
+  // Trim leading/trailing whitespace
+  return normalized.trim();
+}
+
+
+export const uploaderOptions = {
+  apiKey: !!process.env.NEXT_PUBLIC_BYTESCALE_API_KEY
+    ? process.env.NEXT_PUBLIC_BYTESCALE_API_KEY
+    : 'free',
+  maxFileCount: 1,
+  mimeTypes: ['application/pdf'],
+  editor: { images: { crop: false } },
+  styles: {
+    colors: {
+      primary: '#000',
+    },
+  },
+  tags: ['career_explorer'],
+  locale: {
+    orDragDropFile: 'Your resume is automatically deleted after 24h',
+    uploadFileBtn: 'Upload your Resume',
+  },
+};
