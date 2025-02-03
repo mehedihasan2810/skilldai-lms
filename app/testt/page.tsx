@@ -8,19 +8,19 @@ const Page = () => {
     // https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/10th/Compartment/2019/Social%20science/32-1-1_Social_Science.pdf
     const { data, error } = await supabase.storage
       .from("pdf_chat")
-      .list("EXAMS-PAPER/11th/physics");
-      // .list("EXAMS-PAPER/11th");
+      .list("EXAMS-PAPER/12th/Compartment/2024/SHORTHAND");
+    // .list("EXAMS-PAPER/11th");
 
     console.error(error);
 
     const res = data?.map((item) => {
       // return {
       //   name: item.name,
-      //   papers: [{name: "", url: ""}],
+      //   papers: [{ name: "", url: "" }],
       // };
       return {
         name: item.name,
-        url: `https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/11th/physics/${item.name.replaceAll(" ", "%20")}`,
+        url: `https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/SHORTHAND/${item.name.replaceAll(" ", "%20")}`,
       };
     });
 

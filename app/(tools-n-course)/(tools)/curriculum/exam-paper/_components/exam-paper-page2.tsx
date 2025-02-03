@@ -31,6 +31,7 @@ const PDFViewer = dynamic(
 export const ExamPaperPage2 = ({
   searchParams,
   userId,
+  gradeRank
 }: {
   searchParams: {
     g: string | undefined;
@@ -41,6 +42,7 @@ export const ExamPaperPage2 = ({
     c: string | undefined;
   };
   userId: string;
+  gradeRank: string;
 }) => {
   console.log({ searchParams });
 
@@ -98,7 +100,7 @@ export const ExamPaperPage2 = ({
 
   return (
     <>
-      {examPapers2.map((grade) => (
+      {examPapers2.filter(g => g.name === gradeRank).map((grade) => (
         <Accordion
           value={activeGradeAccordion}
           onValueChange={(v) => setActiveGradeAccordion(v)}

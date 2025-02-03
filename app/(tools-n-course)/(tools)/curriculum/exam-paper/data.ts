@@ -2861,4 +2861,1168 @@ const grade10thCategories = [
   },
 ];
 
-export const examPapers2 = [{ name: "10th", categories: grade10thCategories }];
+const grade12thCategories = [
+  {
+    name: "Compartment",
+    years: [
+      {
+        name: "2022",
+        subjects: [
+          {
+            name: "ACCOUNTANCY",
+            papers: [
+              {
+                name: "264-6-1 Accountancy Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ACCOUNTANCY/ACCOUNTANCY/264-6-1%20Accountancy%20Urdu.pdf",
+              },
+              {
+                name: "264-6-2 Accountancy Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ACCOUNTANCY/ACCOUNTANCY/264-6-2%20Accountancy%20Urdu.pdf",
+              },
+              {
+                name: "264-6-3 Accountancy Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ACCOUNTANCY/ACCOUNTANCY/264-6-3%20Accountancy%20Urdu.pdf",
+              },
+              {
+                name: "67-6-1 accountancy.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ACCOUNTANCY/ACCOUNTANCY/67-6-1%20accountancy.pdf",
+              },
+              {
+                name: "67-6-2 accountancy.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ACCOUNTANCY/ACCOUNTANCY/67-6-2%20accountancy.pdf",
+              },
+              {
+                name: "67-6-3 ACCOUNTANCY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ACCOUNTANCY/ACCOUNTANCY/67-6-3%20ACCOUNTANCY.pdf",
+              },
+            ],
+          },
+          {
+            name: "Applied_Mathematics",
+            papers: [
+              {
+                name: "465 Applied Mathematics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Applied_Mathematics/465%20Applied%20Mathematics.pdf",
+              },
+            ],
+          },
+          {
+            name: "Banking",
+            papers: [
+              {
+                name: "335 Banking",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Banking/335%20Banking.pdf",
+              },
+            ],
+          },
+          {
+            name: "BIOLOGY",
+            papers: [
+              {
+                name: "57-6-1 BIOLOGY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BIOLOGY/BIOLOGY/57-6-1%20BIOLOGY.pdf",
+              },
+              {
+                name: "57-6-2 BIOLOGY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BIOLOGY/BIOLOGY/57-6-2%20BIOLOGY.pdf",
+              },
+              {
+                name: "57-6-3 BIOLOGY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BIOLOGY/BIOLOGY/57-6-3%20BIOLOGY.pdf",
+              },
+              {
+                name: "57-B-6 Biology Blind.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BIOLOGY/BIOLOGY/57-B-6%20Biology%20Blind.pdf",
+              },
+            ],
+          },
+          {
+            name: "Biotechnology",
+            papers: [
+              {
+                name: "99 Biotechnology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Biotechnology/99%20Biotechnology.pdf",
+              },
+            ],
+          },
+
+          {
+            name: "BUSINESS_STUDIES",
+            papers: [
+              {
+                name: "263-6-1 Business Studies Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BUSINESS_STUDIES/BUSINESS_STUDIES/263-6-1%20Business%20Studies%20Urdu.pdf",
+              },
+              {
+                name: "263-6-2 Business Studies Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BUSINESS_STUDIES/BUSINESS_STUDIES/263-6-2%20Business%20Studies%20Urdu.pdf",
+              },
+              {
+                name: "263-6-3 Business Studies Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BUSINESS_STUDIES/BUSINESS_STUDIES/263-6-3%20Business%20Studies%20Urdu.pdf",
+              },
+              {
+                name: "66-6-1 BST.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BUSINESS_STUDIES/BUSINESS_STUDIES/66-6-1%20BST.pdf",
+              },
+              {
+                name: "66-6-2 BST.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BUSINESS_STUDIES/BUSINESS_STUDIES/66-6-2%20BST.pdf",
+              },
+              {
+                name: "66-6-3 BST.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/BUSINESS_STUDIES/BUSINESS_STUDIES/66-6-3%20BST.pdf",
+              },
+            ],
+          },
+          {
+            name: "CHEMISTRY",
+            papers: [
+              {
+                name: "56-6-1 CHEMISTRY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/CHEMISTRY/CHEMISTRY/56-6-1%20CHEMISTRY.pdf",
+              },
+              {
+                name: "56-6-2 CHEMISTRY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/CHEMISTRY/CHEMISTRY/56-6-2%20CHEMISTRY.pdf",
+              },
+              {
+                name: "56-6-3 CHEMISTRY.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/CHEMISTRY/CHEMISTRY/56-6-3%20CHEMISTRY.pdf",
+              },
+              {
+                name: "56-B-6 Chemistry Blind.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/CHEMISTRY/CHEMISTRY/56-B-6%20Chemistry%20Blind.pdf",
+              },
+            ],
+          },
+          {
+            name: "Commercial_Art",
+            papers: [
+              {
+                name: "72 Commercial Art..pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Commercial_Art/Commercial_Art/72%20Commercial%20Art..pdf",
+              },
+              {
+                name: "72 Commercial Art.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Commercial_Art/Commercial_Art/72%20Commercial%20Art.pdf",
+              },
+            ],
+          },
+          {
+            name: "computer_science",
+            papers: [
+              {
+                name: "91 computer science",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/computer_science/91%20computer%20science.pdf",
+              },
+            ],
+          },
+          {
+            name: "Cost Accounting",
+            papers: [
+              {
+                name: "347 Cost Accounting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Cost%20Accounting/347%20Cost%20Accounting.pdf",
+              },
+            ],
+          },
+          {
+            name: "ECONOMICS",
+            papers: [
+              {
+                name: "226-6-1 Economics Punjabi.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/226-6-1%20Economics%20Punjabi.pdf",
+              },
+              {
+                name: "226-6-2 Economics Punjabi.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/226-6-2%20Economics%20Punjabi.pdf",
+              },
+              {
+                name: "226-6-3 Economics Punjabi.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/226-6-3%20Economics%20Punjabi.pdf",
+              },
+              {
+                name: "251-6-1 Economics Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/251-6-1%20Economics%20Urdu.pdf",
+              },
+              {
+                name: "251-6-2 Economics Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/251-6-2%20Economics%20Urdu.pdf",
+              },
+              {
+                name: "251-6-3 Economics Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/251-6-3%20Economics%20Urdu.pdf",
+              },
+              {
+                name: "58-6-1 ECONOMICS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/58-6-1%20ECONOMICS.pdf",
+              },
+              {
+                name: "58-6-2 ECONOMICS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/58-6-2%20ECONOMICS.pdf",
+              },
+              {
+                name: "58-6-3 ECONOMICS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/ECONOMICS/ECONOMICS/58-6-3%20ECONOMICS.pdf",
+              },
+            ],
+          },
+          {
+            name: "Electrical_Technology",
+            papers: [
+              {
+                name: "343 Electrical Technology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Electrical_Technology/343%20Electrical%20Technology.pdf",
+              },
+            ],
+          },
+
+          {
+            name: "English_Core",
+            papers: [
+              {
+                name: "1-6-1 English Core.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/English_Core/English_Core/1-6-1%20English%20Core.pdf",
+              },
+              {
+                name: "1-6-2 English Core.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/English_Core/English_Core/1-6-2%20English%20Core.pdf",
+              },
+              {
+                name: "1-6-3 ENGLISH CORE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/English_Core/English_Core/1-6-3%20ENGLISH%20CORE.pdf",
+              },
+            ],
+          },
+          {
+            name: "Graphics",
+            papers: [
+              {
+                name: "74 Graphics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Graphics/74%20Graphics.pdf",
+              },
+            ],
+          },
+          {
+            name: "Home_Science",
+            papers: [
+              {
+                name: "69 Home Science..pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Home_Science/Home_Science/69%20Home%20Science..pdf",
+              },
+              {
+                name: "69 Home Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Home_Science/Home_Science/69%20Home%20Science.pdf",
+              },
+            ],
+          },
+          {
+            name: "INFORMATIC PRACTICES",
+            papers: [
+              {
+                name: "90 INFORMATIC PRACTICES.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/INFORMATIC%20PRACTICES/90%20INFORMATIC%20PRACTICES.pdf",
+              },
+            ],
+          },
+          {
+            name: "Information_Technology",
+            papers: [
+              {
+                name: "326 Information Technology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Information_Technology/326%20Information%20Technology.pdf",
+              },
+            ],
+          },
+          {
+            name: "Library_and_Information_Science",
+            papers: [
+              {
+                name: "360 Library and Information Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Library_and_Information_Science/360%20Library%20and%20Information%20Science.pdf",
+              },
+            ],
+          },
+          {
+            name: "MATHS",
+            papers: [
+              {
+                name: "65-6-1 MATHS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/MATHS/MATHS/65-6-1%20MATHS.pdf",
+              },
+              {
+                name: "65-6-2 maths.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/MATHS/MATHS/65-6-2%20maths.pdf",
+              },
+              {
+                name: "65-6-3 maths.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/MATHS/MATHS/65-6-3%20maths.pdf",
+              },
+              {
+                name: "65-B-6 Maths Blind.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/MATHS/MATHS/65-B-6%20Maths%20Blind.pdf",
+              },
+            ],
+          },
+          {
+            name: "PHYSICAL EDUCATION",
+            papers: [
+              {
+                name: "75 PHYSICAL EDUCATION.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/PHYSICAL%20EDUCATION/75%20PHYSICAL%20EDUCATION.pdf",
+              },
+            ],
+          },
+          {
+            name: "PHYSICS",
+            papers: [
+              {
+                name: "55-6-1 PHYSICS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/PHYSICS/PHYSICS/55-6-1%20PHYSICS.pdf",
+              },
+              {
+                name: "55-6-2 PHYSICS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/PHYSICS/PHYSICS/55-6-2%20PHYSICS.pdf",
+              },
+              {
+                name: "55-6-3 PHYSICS.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/PHYSICS/PHYSICS/55-6-3%20PHYSICS.pdf",
+              },
+              {
+                name: "55-B-6 Physics Blind.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/PHYSICS/PHYSICS/55-B-6%20Physics%20Blind.pdf",
+              },
+            ],
+          },
+          {
+            name: "POL_SCIENCE",
+            papers: [
+              {
+                name: "221-6-1 Political Science Punjabi.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/221-6-1%20Political%20Science%20Punjabi.pdf",
+              },
+              {
+                name: "221-6-2 Political Science Punjabi.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/221-6-2%20Political%20Science%20Punjabi.pdf",
+              },
+              {
+                name: "221-6-3 Political Science Punjabi.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/221-6-3%20Political%20Science%20Punjabi.pdf",
+              },
+              {
+                name: "252-6-1 Polotical Science Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/252-6-1%20Polotical%20Science%20Urdu.pdf",
+              },
+              {
+                name: "252-6-2 Poliotical Science Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/252-6-2%20Poliotical%20Science%20Urdu.pdf",
+              },
+              {
+                name: "252-6-3 Political Science Urdu.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/252-6-3%20Political%20Science%20Urdu.pdf",
+              },
+              {
+                name: "59-6-1 POL SCIENCE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/59-6-1%20POL%20SCIENCE.pdf",
+              },
+              {
+                name: "59-6-2 POL SCIENCE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/59-6-2%20POL%20SCIENCE.pdf",
+              },
+              {
+                name: "59-6-3 POL SCIENCE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/POL_SCIENCE/POL_SCIENCE/59-6-3%20POL%20SCIENCE.pdf",
+              },
+            ],
+          },
+          {
+            name: "Psychology",
+            papers: [
+              {
+                name: "63 Psychology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Psychology/63%20Psychology.pdf",
+              },
+            ],
+          },
+          {
+            name: "Shorthand_English",
+            papers: [
+              {
+                name: "349 Shorthand English.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Shorthand_English/349%20Shorthand%20English.pdf",
+              },
+            ],
+          },
+          {
+            name: "sociology",
+            papers: [
+              {
+                name: "62 sociology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/sociology/62%20sociology.pdf",
+              },
+            ],
+          },
+          {
+            name: "Yoga",
+            papers: [
+              {
+                name: "365 Yoga.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2022/Yoga/365%20Yoga.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "2023",
+        subjects: [
+          {
+            name: "Accountancy",
+            papers: [
+              {
+                name: "67_C_1 Accountancy.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Accountancy/Accountancy/67_C_1%20Accountancy.pdf",
+              },
+              {
+                name: "67_C_2 Accountancy.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Accountancy/Accountancy/67_C_2%20Accountancy.pdf",
+              },
+              {
+                name: "67_C_3 Accountancy.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Accountancy/Accountancy/67_C_3%20Accountancy.pdf",
+              },
+            ],
+          },
+          {
+            name: "BANKING",
+            papers: [
+              {
+                name: "BANKING",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/BANKING/BANKING.pdf",
+              },
+            ],
+          },
+          {
+            name: "BIOTECHNOLOGY",
+            papers: [
+              {
+                name: "BIOTECHNOLOGY",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/BIOTECHNOLOGY/BIOTECHNOLOGY.pdf",
+              },
+            ],
+          },
+          {
+            name: "BUSINESS _ADMINISTRATION",
+            papers: [
+              {
+                name: "BUSINESS ADMINISTRATION",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/BUSINESS%20_ADMINISTRATION/BUSINESS%20_ADMINISTRATION.pdf",
+              },
+            ],
+          },
+          {
+            name: "Business_Studies",
+            papers: [
+              {
+                name: "66_C_1 Business Studies.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Business_Studies/Business_Studies/66_C_1%20Business%20Studies.pdf",
+              },
+              {
+                name: "66_C_2 Business Studies.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Business_Studies/Business_Studies/66_C_2%20Business%20Studies.pdf",
+              },
+              {
+                name: "66_C_3 Business Studies.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Business_Studies/Business_Studies/66_C_3%20Business%20Studies.pdf",
+              },
+            ],
+          },
+          {
+            name: "Chemistry",
+            papers: [
+              {
+                name: "56_C_1 Chemistry.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/56_C_1%20Chemistry.pdf",
+              },
+              {
+                name: "56_C_2 Chemistry.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/56_C_2%20Chemistry.pdf",
+              },
+              {
+                name: "56_C_3 Chemistry.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/56_C_3%20Chemistry.pdf",
+              },
+              {
+                name: "56_C_B Chemistry.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/56_C_B%20Chemistry.pdf",
+              },
+              {
+                name: "58_C_1 Economics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/58_C_1%20Economics.pdf",
+              },
+              {
+                name: "58_C_2 Economics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/58_C_2%20Economics.pdf",
+              },
+              {
+                name: "58_C_3 Economics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Chemistry/Chemistry/58_C_3%20Economics.pdf",
+              },
+            ],
+          },
+          {
+            name: "Computer_Science",
+            papers: [
+              {
+                name: "Computer_Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Computer_Science/Computer_Science.pdf",
+              },
+            ],
+          },
+          {
+            name: "COST_ACCOUNTING",
+            papers: [
+              {
+                name: "COST_ACCOUNTING.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/COST_ACCOUNTING/COST_ACCOUNTING.pdf",
+              },
+            ],
+          },
+          {
+            name: "Economics",
+            papers: [
+              {
+                name: "57_C_1 Biology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Economics/Economics/Biology_C_17_07_2023/57_C_1%20Biology.pdf",
+              },
+              {
+                name: "57_C_2 Biology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Economics/Economics/Biology_C_17_07_2023/57_C_2%20Biology.pdf",
+              },
+              {
+                name: "57_C_3 Biology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Economics/Economics/Biology_C_17_07_2023/57_C_3%20Biology.pdf",
+              },
+              {
+                name: "57_C_B Biology.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Economics/Economics/Biology_C_17_07_2023/57_C_B%20Biology.pdf",
+              },
+            ],
+          },
+          {
+            name: "ELECTRICAL_TECHNOLOGY",
+            papers: [
+              {
+                name: "343 ELECTRICAL_TECHNOLOGY",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/ELECTRICAL_TECHNOLOGY/ELECTRICAL_TECHNOLOGY.pdf",
+              },
+              {
+                name: "344 ELECTRICAL_TECHNOLOGY",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/ELECTRONICS_TECHNOLOGY/ELECTRONICS_TECHNOLOGY.pdf",
+              },
+            ],
+          },
+
+          {
+            name: "ENGINEERING_GRAPHICS",
+            papers: [
+              {
+                name: "ENGINEERING_GRAPHICS",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/ENGINEERING_GRAPHICS/ENGINEERING_GRAPHICS.pdf",
+              },
+            ],
+          },
+          {
+            name: "English_Core",
+            papers: [
+              {
+                name: "1_C_1 ENGLISH CORE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/English_Core/English_Core/1_C_1%20ENGLISH%20CORE.pdf",
+              },
+              {
+                name: "1_C_2 ENGLISH CORE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/English_Core/English_Core/1_C_2%20ENGLISH%20CORE.pdf",
+              },
+              {
+                name: "1_C_3 ENGLISH CORE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/English_Core/English_Core/1_C_3%20ENGLISH%20CORE.pdf",
+              },
+            ],
+          },
+          {
+            name: "English_Elective",
+            papers: [
+              {
+                name: "28_C ENGLISH ELECTIVE.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/English_Elective/English_Elective/28_C%20ENGLISH%20ELECTIVE.pdf",
+              },
+            ],
+          },
+          {
+            name: "Entrepreneurship",
+            papers: [
+              {
+                name: "Entrepreneurship.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Entrepreneurship/Entrepreneurship.pdf",
+              },
+            ],
+          },
+          {
+            name: "Geography",
+            papers: [
+              {
+                name: "255_C_1 GEOGRAPHY (URDU).pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Geography/Geography/255_C_1%20GEOGRAPHY%20(URDU).pdf",
+              },
+              {
+                name: "255_C_-2 GEOGRAPHY (URDU).pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Geography/Geography/255_C_-2%20GEOGRAPHY%20(URDU).pdf",
+              },
+              {
+                name: "255_C_3 GEOGRAPHY (URDU).pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Geography/Geography/255_C_3%20GEOGRAPHY%20(URDU).pdf",
+              },
+              {
+                name: "64_C_1 Geography.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Geography/Geography/64_C_1%20Geography.pdf",
+              },
+              {
+                name: "64_C_2 Geography.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Geography/Geography/64_C_2%20Geography.pdf",
+              },
+              {
+                name: "64_C_3 Geography.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Geography/Geography/64_C_3%20Geography.pdf",
+              },
+            ],
+          },
+          {
+            name: "History",
+            papers: [
+              {
+                name: "61_C_1 History.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/History/History/61_C_1%20History.pdf",
+              },
+              {
+                name: "61_C_2 History.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/History/History/61_C_2%20History.pdf",
+              },
+              {
+                name: "61_C_3 History.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/History/History/61_C_3%20History.pdf",
+              },
+            ],
+          },
+          {
+            name: "HOME_SCIENCE",
+            papers: [
+              {
+                name: "Home_Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/HOME_SCIENCE/Home_Science.pdf",
+              },
+              {
+                name: "HOME_SCIENCE_PUNJABI.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/HOME_SCIENCE/HOME_SCIENCE_PUNJABI.pdf",
+              },
+              {
+                name: "HOME_SCIENCE_URDU.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/HOME_SCIENCE/HOME_SCIENCE_URDU.pdf",
+              },
+            ],
+          },
+
+          {
+            name: "Informatics_Practices",
+            papers: [
+              {
+                name: "Informatics_Practices",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Informatics_Practices/Informatics_Practices.pdf",
+              },
+            ],
+          },
+          {
+            name: "Information_Technology",
+            papers: [
+              {
+                name: "Information_Technology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Information_Technology/Information_Technology.pdf",
+              },
+            ],
+          },
+          {
+            name: "LIBRARYINFORMATION_SCIENCE_NEW",
+            papers: [
+              {
+                name: "LIBRARYINFORMATION_SCIENCE_NEW",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/LIBRARYINFORMATION_SCIENCE_NEW/LIBRARYINFORMATION_SCIENCE_NEW.pdf",
+              },
+            ],
+          },
+          {
+            name: "MARKETING",
+            papers: [
+              {
+                name: "MARKETING",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/MARKETING/MARKETING.pdf",
+              },
+            ],
+          },
+          {
+            name: "Mathematics",
+            papers: [
+              {
+                name: "465_C Applied Mathematics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Mathematics/Mathematics/465_C%20Applied%20Mathematics.pdf",
+              },
+              {
+                name: "65_C_1 Mathematics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Mathematics/Mathematics/65_C_1%20Mathematics.pdf",
+              },
+              {
+                name: "65_C_2 Mathematics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Mathematics/Mathematics/65_C_2%20Mathematics.pdf",
+              },
+              {
+                name: "65_C_3 Mathematics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Mathematics/Mathematics/65_C_3%20Mathematics.pdf",
+              },
+              {
+                name: "65_C_B Mathematics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Mathematics/Mathematics/65_C_B%20Mathematics.pdf",
+              },
+            ],
+          },
+          {
+            name: "PHYSICAL_EDUCATION",
+            papers: [
+              {
+                name: "PHY_EDU_PUNJABI",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/PHYSICAL_EDUCATION/PHY_EDU_PUNJABI.pdf",
+              },
+              {
+                name: "Physical_Education",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/PHYSICAL_EDUCATION/Physical_Education.pdf",
+              },
+            ],
+          },
+          {
+            name: "Physics",
+            papers: [
+              {
+                name: "55_C_1 Physics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Physics/Physics/55_C_1%20Physics.pdf",
+              },
+              {
+                name: "55_C_2 Physics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Physics/Physics/55_C_2%20Physics.pdf",
+              },
+              {
+                name: "55_C_3 Physics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Physics/Physics/55_C_3%20Physics.pdf",
+              },
+              {
+                name: "55_C_B Physics.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Physics/Physics/55_C_B%20Physics.pdf",
+              },
+            ],
+          },
+          {
+            name: "Political_Science",
+            papers: [
+              {
+                name: "221_C_1 POLITICAL SCIENCE Punjabi version.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/221_C_1%20POLITICAL%20SCIENCE%20Punjabi%20version.pdf",
+              },
+              {
+                name: "221_C_2 POLITICAL SCIENCE Punjabi version.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/221_C_2%20POLITICAL%20SCIENCE%20Punjabi%20version.pdf",
+              },
+              {
+                name: "221_C_3 POLITICAL SCIENCE Punjabi version.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/221_C_3%20POLITICAL%20SCIENCE%20Punjabi%20version.pdf",
+              },
+              {
+                name: "252_C_1 POLITICAL SCIENCE (URDU).pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/252_C_1%20POLITICAL%20SCIENCE%20(URDU).pdf",
+              },
+              {
+                name: "252_C_2 POLITICAL SCIENCE (URDU).pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/252_C_2%20POLITICAL%20SCIENCE%20(URDU).pdf",
+              },
+              {
+                name: "252_C_3 POLITICAL SCIENCE (URDU).pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/252_C_3%20POLITICAL%20SCIENCE%20(URDU).pdf",
+              },
+              {
+                name: "59_C_1 Political Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/59_C_1%20Political%20Science.pdf",
+              },
+              {
+                name: "59_C_2 Political Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/59_C_2%20Political%20Science.pdf",
+              },
+              {
+                name: "59_C_3 Political Science.pdf",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Political_Science/Political_Science/59_C_3%20Political%20Science.pdf",
+              },
+            ],
+          },
+          {
+            name: "Psychology",
+            papers: [
+              {
+                name: "Psychology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/Psychology/Psychology.pdf",
+              },
+            ],
+          },
+          {
+            name: "SHORTHAND_ENGLISH",
+            papers: [
+              {
+                name: "SHORTHAND_ENGLISH",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/SHORTHAND_ENGLISH/SHORTHAND_ENGLISH.pdf",
+              },
+            ],
+          },
+          {
+            name: "SOCIOLOGY",
+            papers: [
+              {
+                name: "Sociology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/SOCIOLOGY/Sociology.pdf",
+              },
+              {
+                name: "SOCIOLOGY_PUNJABI",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/SOCIOLOGY/SOCIOLOGY_PUNJABI.pdf",
+              },
+              {
+                name: "SOCIOLOGY_URDU",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/SOCIOLOGY/SOCIOLOGY_URDU.pdf",
+              },
+            ],
+          },
+          {
+            name: "YOGA",
+            papers: [
+              {
+                name: "YOGA",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2023/YOGA/YOGA.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "2024",
+        subjects: [
+          {
+            name: "Accountancy",
+            papers:[
+              {
+                  "name": "67-S-1 ACCOUNTANCY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Accountancy/67-S-1%20ACCOUNTANCY.pdf"
+              },
+              {
+                  "name": "67-S-2 ACCOUNTANCY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Accountancy/67-S-2%20ACCOUNTANCY.pdf"
+              },
+              {
+                  "name": "67-S-3 ACCOUNTANCY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Accountancy/67-S-3%20ACCOUNTANCY.pdf"
+              }
+          ]
+          },
+          {
+            name: "Applied_Maths",
+            papers: [
+              {
+                name: "465-S Applied Maths",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Applied_Maths/465-S%20Applied%20Maths.pdf",
+              },
+            ],
+          },
+          {
+            name: "Biology",
+            papers: [
+              {
+                  "name": "57(B) Biology.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Biology/57(B)%20Biology.pdf"
+              },
+              {
+                  "name": "57-S-1 Biology.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Biology/57-S-1%20Biology.pdf"
+              },
+              {
+                  "name": "57-S-2 BIOLOGY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Biology/57-S-2%20BIOLOGY.pdf"
+              },
+              {
+                  "name": "57-S-3 BIOLOGY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Biology/57-S-3%20BIOLOGY.pdf"
+              }
+          ]
+          },
+          {
+            name: "BIOTECHNOLOGY",
+            papers: [
+              {
+                name: "99-S BIOTECHNOLOGY",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/BIOTECHNOLOGY/99-S%20BIOTECHNOLOGY.pdf",
+              },
+            ],
+          },
+          {
+            name: "BUSINESS_STUDIES",
+            papers: [
+              {
+                  "name": "66-S-1 Business Studies.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/BUSINESS_STUDIES/66-S-1%20Business%20Studies.pdf"
+              },
+              {
+                  "name": "66-S-2 BUSINESS STUDIES.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/BUSINESS_STUDIES/66-S-2%20BUSINESS%20STUDIES.pdf"
+              },
+              {
+                  "name": "66-S-3 BUSINESS STUDIES.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/BUSINESS_STUDIES/66-S-3%20BUSINESS%20STUDIES.pdf"
+              }
+          ]
+          },
+          {
+            name: "Chemistry",
+            papers: [
+              {
+                  "name": "56(B)-S Chemistry.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Chemistry/56(B)-S%20Chemistry.pdf"
+              },
+              {
+                  "name": "56-S-1 Chemistry.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Chemistry/56-S-1%20Chemistry.pdf"
+              },
+              {
+                  "name": "56-S-2 CHEMISTRY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Chemistry/56-S-2%20CHEMISTRY.pdf"
+              },
+              {
+                  "name": "56-S-3 CHEMISTRY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Chemistry/56-S-3%20CHEMISTRY.pdf"
+              }
+          ]
+          },
+          {
+            name: "Computer_Science",
+            papers: [
+              {
+                name: "91-S Computer Science",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Computer_Science/91-S%20Computer%20Science.pdf",
+              },
+            ],
+          },
+          {
+            name: "Data_Science",
+            papers: [
+              {
+                name: "368-S Data science",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Data_Science/368-S%20Data%20science.pdf",
+              },
+            ],
+          },
+          {
+            name: "Economics",
+            papers: [
+              {
+                  "name": "58-S-1 Economics.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Economics/58-S-1%20Economics.pdf"
+              },
+              {
+                  "name": "58-S-2 ECONOMICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Economics/58-S-2%20ECONOMICS.pdf"
+              },
+              {
+                  "name": "58-S-3 ECONOMICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Economics/58-S-3%20ECONOMICS.pdf"
+              }
+          ]
+          },
+          {
+            name: "English_Core",
+            papers: [
+              {
+                  "name": "1-S-1 English Core.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/English_Core/1-S-1%20English%20Core.pdf"
+              },
+              {
+                  "name": "1-S-2 English Core.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/English_Core/1-S-2%20English%20Core.pdf"
+              },
+              {
+                  "name": "1-S-3 English Core.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/English_Core/1-S-3%20English%20Core.pdf"
+              }
+          ]
+          },
+          {
+            name: "English_Elective",
+            papers: [
+              {
+                name: "28 -S - English Elective",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/English_Elective/28%20-S%20-%20English%20Elective.pdf",
+              },
+            ],
+          },
+          {
+            name: "Financial_Markets_Management",
+            papers: [
+              {
+                name: "329-S Financial Markets Management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Financial_Markets_Management/329-S%20Financial%20Markets%20Management.pdf",
+              },
+            ],
+          },
+          {
+            name: "History",
+            papers: [
+              {
+                  "name": "61-S-1 HISTORY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/History/61-S-1%20HISTORY.pdf"
+              },
+              {
+                  "name": "61-S-2 HISTORY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/History/61-S-2%20HISTORY.pdf"
+              },
+              {
+                  "name": "61-S-3 HISTORY.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/History/61-S-3%20HISTORY.pdf"
+              }
+          ]
+          },
+          {
+            name: "Home_Science",
+            papers: [
+              {
+                name: "69-S Home Science (Theory)",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Home_Science/69-S%20Home%20Science%20(Theory).pdf",
+              },
+            ],
+          },
+          {
+            name: "Information_Practices",
+            papers: [
+              {
+                name: "90-S Information Practices",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Information_Practices/90-S%20Information%20Practices.pdf",
+              },
+            ],
+          },
+          {
+            name: "Information_Technology",
+            papers: [
+              {
+                name: "326-S Information Technology-S",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Information_Technology/326-S%20Information%20Technology-S.pdf",
+              },
+            ],
+          },
+          {
+            name: "Mathematics",
+            papers: [
+              {
+                  "name": "65-S-1 MATHEMATICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Mathematics/65-S-1%20MATHEMATICS.pdf"
+              },
+              {
+                  "name": "65-S-2 MATHEMATICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Mathematics/65-S-2%20MATHEMATICS.pdf"
+              },
+              {
+                  "name": "65-S-3 MATHEMATICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Mathematics/65-S-3%20MATHEMATICS.pdf"
+              }
+          ]
+          },
+          {
+            name: "Physical_Education",
+            papers: [
+              {
+                  "name": "75-S Physical Education.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Physical_Education/75-S%20Physical%20Education.pdf"
+              }
+          ]
+          },
+          {
+            name: "Physics",
+            papers: [
+              {
+                  "name": "55(B)-S Physics.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Physics/55(B)-S%20Physics.pdf"
+              },
+              {
+                  "name": "55-S-1 Physics.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Physics/55-S-1%20Physics.pdf"
+              },
+              {
+                  "name": "55-S-2 PHYSICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Physics/55-S-2%20PHYSICS.pdf"
+              },
+              {
+                  "name": "55-S-3 PHYSICS.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Physics/55-S-3%20PHYSICS.pdf"
+              }
+          ]
+          },
+          {
+            name: "Poltical_Science",
+            papers: [
+              {
+                  "name": "59-1-1 POL SCIENCE.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Poltical_Science/59-1-1%20POL%20SCIENCE.pdf"
+              },
+              {
+                  "name": "59-1-2 POL SCIENCE.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Poltical_Science/59-1-2%20POL%20SCIENCE.pdf"
+              },
+              {
+                  "name": "59-1-3 POL SCIENCE.pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Poltical_Science/59-1-3%20POL%20SCIENCE.pdf"
+              }
+          ]
+          },
+          {
+            name: "SHORTHAND",
+            papers: [
+              {
+                  "name": "349-S SHORTHAND (ENGLISH).pdf",
+                  "url": "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/SHORTHAND/349-S%20SHORTHAND%20(ENGLISH).pdf"
+              }
+          ]
+          },
+          {
+            name: "Sociology",
+            papers: [
+              {
+                name: "62-S Sociology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Sociology/62-S%20Sociology.pdf",
+              },
+            ],
+          },
+          {
+            name: "Yoga",
+            papers: [
+              {
+                name: "365-S Yoga",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/EXAMS-PAPER/12th/Compartment/2024/Yoga/365-S%20Yoga.pdf",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  { name: "Mains", years: [{ name: "2022", subjects: [] }] },
+];
+
+export const examPapers2 = [{ name: "10th", categories: grade10thCategories },
+{ name: "12th", categories: grade12thCategories }
+];

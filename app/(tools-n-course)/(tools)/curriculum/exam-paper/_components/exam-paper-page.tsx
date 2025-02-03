@@ -395,7 +395,7 @@ export const ExamPaperPage = ({
 
   const defaultClass = examPapers[0];
   const defaultSubject = examPapers[0].subjects[0];
-  const defaultBook = examPapers[0].subjects[0].papers[0];
+  const defaultPaper = examPapers[0].subjects[0].papers[0];
 
   const [activeClassAccordion, setActiveClassAccordion] = useState(
     searchParams.g ?? defaultClass.name
@@ -404,17 +404,18 @@ export const ExamPaperPage = ({
     searchParams.s ?? defaultSubject.name
   );
   const [activeBookAccordion, setActiveBookAccordion] = useState(
-    searchParams.b ?? defaultBook.name
+    searchParams.b ?? defaultPaper.name
   );
   // const [activeChapterAccordion, setActiveChapterAccordion] = useState(
   //   searchParams.c ?? defaultChapter.name
   // );
 
-  const activeClass = examPapers.find(
-    (ncertClass) => ncertClass.name === searchParams.g
+  const activeGrade = examPapers.find((grade) => grade.name === searchParams.g);
+  const activeGrade2 = examPapers2.find(
+    (grade) => grade.name === searchParams.g
   );
 
-  const activeCategory = (examPapers2[0].categories ?? []).find(
+  const activeCategory = (activeGrade2?.categories ?? []).find(
     (category) => category.name === searchParams.category
   );
   const activeYear = (activeCategory?.years ?? []).find(
@@ -422,88 +423,162 @@ export const ExamPaperPage = ({
   );
 
   const activeSubject = (
-    (searchParams.category ? activeYear?.subjects : activeClass?.subjects) ?? []
+    (searchParams.category ? activeYear?.subjects : activeGrade?.subjects) ?? []
   ).find((subject) => subject.name === searchParams.s);
 
-  const activeBook = (activeSubject?.papers ?? []).find(
-    (book) =>
-      book.name.replaceAll("&", "").trim() === searchParams.b?.replaceAll("%20", " ")?.trim()
+  const activePaper = (activeSubject?.papers ?? []).find(
+    (paper) =>
+      paper.name.replaceAll("&", "").trim() ===
+      searchParams.b?.replaceAll("%20", " ")?.trim()
   );
 
-  // const activeChapter = (activeBook?.chapters ?? []).find(
+  console.log({ activePaper });
+
+  // const activeChapter = (activePaper?.chapters ?? []).find(
   //   (chapter) => chapter.name === searchParams.c
   // );
 
-  // console.log({ activeClass, activeSubject, activeBook, activeYear, activeCategory });
+  // console.log({ activeGrade, activeSubject, activePaper, activeYear, activeCategory });
 
   return (
     <div className="grid md:grid-cols-2 gap-8 pb-10 md:pb-0">
       <ScrollArea className="h-[70vh] md:h-[89vh] rounded-xl ">
         <div className="flex flex-col gap-4 pb-4">
-          {examPapers.map((ncertClass) => (
-            <Accordion
-              value={activeClassAccordion}
-              onValueChange={(v) => setActiveClassAccordion(v)}
-              key={ncertClass.name}
-              type="single"
-              collapsible
-            >
-              <AccordionItem
-                value={ncertClass.name}
-                className="border border-border/40 rounded-xl px-4 bg-card"
+          {examPapers
+            .filter((g) => ["7th", "8th", "9th"].includes(g.name))
+            .map((grade) => (
+              <Accordion
+                value={activeClassAccordion}
+                onValueChange={(v) => setActiveClassAccordion(v)}
+                key={grade.name}
+                type="single"
+                collapsible
               >
-                <AccordionTrigger>{ncertClass.name} grade</AccordionTrigger>
-                <AccordionContent>
-                  {ncertClass.subjects.map((subject) => (
-                    <Accordion
-                      key={subject.name}
-                      type="single"
-                      collapsible
-                      className=""
-                      value={activeSubjectAccordion}
-                      onValueChange={(v) => setActiveSubjectAccordion(v)}
-                    >
-                      <AccordionItem
-                        value={subject.name}
-                        className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
+                <AccordionItem
+                  value={grade.name}
+                  className="border border-border/40 rounded-xl px-4 bg-card"
+                >
+                  <AccordionTrigger>{grade.name} grade</AccordionTrigger>
+                  <AccordionContent>
+                    {grade.subjects.map((subject) => (
+                      <Accordion
+                        key={subject.name}
+                        type="single"
+                        collapsible
+                        className=""
+                        value={activeSubjectAccordion}
+                        onValueChange={(v) => setActiveSubjectAccordion(v)}
                       >
-                        <AccordionTrigger className="">
-                          <div className="flex items-center gap-4">
-                            <CornerDownRight className="size-4" />{" "}
-                            {subject.name}
-                          </div>
-                        </AccordionTrigger>
-                        <AccordionContent>
-                          {subject.papers.map((paper) => (
-                            <Link
-                              href={`/curriculum/exam-paper/?g=${ncertClass.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
-                              className={cn(
-                                "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
-                                (activeBook ?? defaultBook).name === paper.name
-                                  ? "bg-muted"
-                                  : ""
-                              )}
-                              key={paper.name}
-                            >
-                              <BookText className="size-5" /> {paper.name}
-                            </Link>
-                          ))}
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
-                  ))}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          ))}
-          <ExamPaperPage2 searchParams={searchParams} userId={userId} />
+                        <AccordionItem
+                          value={subject.name}
+                          className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
+                        >
+                          <AccordionTrigger className="">
+                            <div className="flex items-center gap-4">
+                              <CornerDownRight className="size-4" />{" "}
+                              {subject.name}
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            {subject.papers.map((paper) => (
+                              <Link
+                                href={`/curriculum/exam-paper/?g=${grade.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
+                                className={cn(
+                                  "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
+                                  (activePaper ?? defaultPaper).name ===
+                                    paper.name
+                                    ? "bg-muted"
+                                    : ""
+                                )}
+                                key={paper.name}
+                              >
+                                <BookText className="size-5" /> {paper.name}
+                              </Link>
+                            ))}
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ))}
+
+          <ExamPaperPage2
+            searchParams={searchParams}
+            userId={userId}
+            gradeRank="10th"
+          />
+          {examPapers
+            .filter((g) => g.name === "11th")
+            .map((grade) => (
+              <Accordion
+                value={activeClassAccordion}
+                onValueChange={(v) => setActiveClassAccordion(v)}
+                key={grade.name}
+                type="single"
+                collapsible
+              >
+                <AccordionItem
+                  value={grade.name}
+                  className="border border-border/40 rounded-xl px-4 bg-card"
+                >
+                  <AccordionTrigger>{grade.name} grade</AccordionTrigger>
+                  <AccordionContent>
+                    {grade.subjects.map((subject) => (
+                      <Accordion
+                        key={subject.name}
+                        type="single"
+                        collapsible
+                        className=""
+                        value={activeSubjectAccordion}
+                        onValueChange={(v) => setActiveSubjectAccordion(v)}
+                      >
+                        <AccordionItem
+                          value={subject.name}
+                          className="border-none bg-gray-400/15 dark:bg-gray-900/35 rounded-xl px-4 mb-2"
+                        >
+                          <AccordionTrigger className="">
+                            <div className="flex items-center gap-4">
+                              <CornerDownRight className="size-4" />{" "}
+                              {subject.name}
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            {subject.papers.map((paper) => (
+                              <Link
+                                href={`/curriculum/exam-paper/?g=${grade.name}&s=${subject.name}&b=${paper.name.replaceAll("&", "")}`}
+                                className={cn(
+                                  "px-4 py-3 flex items-center gap-4 hover:bg-muted rounded-xl",
+                                  (activePaper ?? defaultPaper).name ===
+                                    paper.name
+                                    ? "bg-muted"
+                                    : ""
+                                )}
+                                key={paper.name}
+                              >
+                                <BookText className="size-5" /> {paper.name}
+                              </Link>
+                            ))}
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ))}
+          <ExamPaperPage2
+            searchParams={searchParams}
+            userId={userId}
+            gradeRank="12th"
+          />
         </div>
       </ScrollArea>
 
       <div>
         <PDFViewer
-          pdfUrl={(activeBook ?? defaultBook).url}
-          // pdfUrl="https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/7th/English/Honeycomb/gehc101.pdf?t=2025-01-01T08%3A32%3A10.988Z"
+          pdfUrl={(activePaper ?? defaultPaper).url}
           sourcePage="ncert"
           userId={userId}
         />
