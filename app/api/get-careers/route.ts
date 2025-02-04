@@ -54,6 +54,8 @@ Return your answer as an array of objects with the following keys:
 - aboutTheRole: Describe the role and responsibilities.
 - whyItsagoodfit: List reasons why this career is a good match.
 - roadmap: Provide a roadmap as an array of weekly milestones (e.g., [{"step": "Step description", "description": "Detailed step to transition into the role"}, ...]).
+
+Please suggest at least 6 potential career transitions.
 `,
   });
 
