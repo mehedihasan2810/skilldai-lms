@@ -137,17 +137,17 @@ function CareerNode({ data }: NodeProps<CareerNodeProps>) {
               {roadmap?.map((step, index) => (
                 <div key={index} className='flex gap-3'>
                   <div className='font-light min-w-28'>
-                    {Object.keys(step)[0]}:
+                    {step.step}:
                   </div>
-                  <div>{Object.values(step)[0]}</div>
+                  <div>{step.description}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <DialogFooter>
+        {/* <DialogFooter>
           <Button type='submit'>Save changes</Button>
-        </DialogFooter>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );

@@ -1,22 +1,46 @@
+// @ts-expect-error: pdf.worker.min.mjs is not typed
+import * as pdfjs from "pdfjs-dist/build/pdf.mjs";
+import "@ungap/with-resolvers";
 import { normalizeText } from "@/lib/utils";
-import { NextRequest } from "next/server";
-import pdfParse from "pdf-parse";
 
-interface PDFParseRequest {
-  resumeUrl: string;
-}
+export const POST = async (req: Request) => {
+  try {
+    // @ts-expect-error: pdf.worker.min.mjs is not typed
+    await import("pdfjs-dist/build/pdf.worker.min.mjs");
 
-export async function POST(request: NextRequest) {
-  const { resumeUrl } = (await request.json()) as PDFParseRequest;
+    const { resumeUrl } = await req.json();
 
-  console.log({ resumeUrl });
+    console.log({ resumeUrl });
 
-  const response = await fetch(resumeUrl);
-  const arrayBuffer = await response.arrayBuffer();
-  const pdfData = await pdfParse(Buffer.from(arrayBuffer));
-  const normalizedText = normalizeText(pdfData.text);
+    const doc = await pdfjs.getDocument(resumeUrl).promise;
+    const numPages = doc.numPages;
+    console.log({ numPages });
+    const fileContent: string[] = [];
 
-  return new Response(JSON.stringify(normalizedText), {
-    status: 200,
-  });
-}
+    for (let i = 1; i <= numPages; i++) {
+      const page = await doc.getPage(i);
+      const textContent = await page.getTextContent();
+
+      const text = textContent.items.map((item: any) => item.str).join(" ");
+
+      console.log({ text });
+
+      fileContent.push(text);
+
+      //   textContent.items.forEach((item: TextItem) => {
+      //     fileContent.push(`${item.str}${item.hasEOL ? "\n" : ""}`);
+      //   });
+    }
+    console.log("PDF parsed data:", fileContent.length);
+    console.log(fileContent.join("\n"));
+
+    const normalizedText = normalizeText(fileContent.join("\n"));
+
+    return Response.json(normalizedText, { status: 200 });
+  } catch (error) {
+    return Response.json(
+      { error: { message: (error as Error).message } },
+      { status: 400 }
+    );
+  }
+};

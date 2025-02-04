@@ -27,7 +27,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileUp, Plus, Loader2 } from "lucide-react";
+import { FileUp, Plus, Loader2, Loader } from "lucide-react";
 import { useTheme } from "next-themes";
 import { createClient } from "@/lib/supabase/client";
 import { add } from "date-fns";
@@ -365,7 +365,7 @@ export default function Start() {
   };
 
   return (
-    <div className="flex-1">
+    <div className="flex-1 p-4">
       {careerInfo.length !== 0 ? (
         <div className="h-[calc(100vh-66px)] mx-auto flex-1">
           <ReactFlow
@@ -386,7 +386,7 @@ export default function Start() {
           </ReactFlow>
         </div>
       ) : (
-        <div className="p-10 mt-16 flex justify-center items-center flex-col mx-auto">
+        <div className="mt-8 lg:mt-28 flex justify-center items-center flex-col mx-auto">
           {/* <h1 className="text-center text-5xl mb-5 font-bold">
             Upload your resume
           </h1>
@@ -447,7 +447,7 @@ export default function Start() {
                 </motion.div>
               )}
             </AnimatePresence> */}
-            <Card className="w-full max-w-2xl h-full border-0 sm:border sm:h-fit mt-12">
+            <Card className="w-full max-w-3xl">
               <CardHeader className="text-center space-y-6">
                 <CardTitle className="text-2xl font-bold">
                   Upload your resume
@@ -492,7 +492,7 @@ export default function Start() {
                   placeholder="Describe any of your career interests and passions. This will help us match you with the right job paths (optional)."
                   value={additionalContext}
                   onChange={(e) => setAdditionalContext(e.target.value)}
-                  className=""
+                  className="bg-transparent"
                   //   rows={5}
                 />
               </CardContent>
@@ -501,11 +501,13 @@ export default function Start() {
                 <Button
                   onClick={parsePdf}
                   className="w-full"
-                  //   disabled={url ? false : true}
+                    disabled={files.length === 0 || loading}
                   size={"lg"}
                 >
                   {loading ? (
-                    <LoadingDots style="big" color="white" />
+                    <>
+                    <Loader className="animate-spin size-5 mr-2"  /> Generating...
+                    </>
                   ) : (
                     "Find your ideal career"
                   )}
