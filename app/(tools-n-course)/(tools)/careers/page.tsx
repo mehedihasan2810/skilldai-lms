@@ -414,7 +414,7 @@ export default function Start() {
 
   return (
     <div className="flex-1 p-4">
-      {careerInfo && careerInfo.length !== 0 ? (
+      {careerInfo && careerInfo.length !== 0 && !isLoading ? (
         <div className="h-[calc(100vh-66px)] mx-auto flex-1">
           <ReactFlow
             // nodes={initialNodes}
