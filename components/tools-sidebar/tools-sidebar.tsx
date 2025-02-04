@@ -139,6 +139,11 @@ const data = {
           url: "/skill-assessment",
           icon: BookOpenCheck,
         },
+        {
+          title: "Explore careers",
+          url: "/careers",
+          icon: GraduationCap,
+        },
       ],
     },
     // {
@@ -323,6 +328,7 @@ export function AppSidebar({
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>
+       
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
