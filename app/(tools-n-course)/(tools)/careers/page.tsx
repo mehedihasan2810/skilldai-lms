@@ -31,6 +31,23 @@ import { FileUp, Plus, Loader2, Loader } from "lucide-react";
 import { useTheme } from "next-themes";
 import { createClient } from "@/lib/supabase/client";
 import { add } from "date-fns";
+import { experimental_useObject } from "ai/react";
+import { z } from "zod";
+
+const careerSchema = z.object({
+  jobTitle: z.string(),
+  jobDescription: z.string(),
+  timeline: z.string(),
+  salary: z.string(),
+  difficulty: z.string(),
+  workRequired: z.string(),
+  aboutTheRole: z.string(),
+  whyItsagoodfit: z.array(z.string()),
+  // roadmap: z.array(z.record(z.string())).default([]),
+  roadmap: z.array(z.object({ step: z.string(), description: z.string() })),
+});
+
+const careerArraySchema = z.array(careerSchema);
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
@@ -183,7 +200,7 @@ export default function Start() {
     initialNodes as Node[]
   );
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [careerInfo, setCareerInfo] = useState<finalCareerInfo[]>([]);
+  // const [careerInfo, setCareerInfo] = useState<finalCareerInfo[]>([]);
   const [additionalContext, setAdditionalContext] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -191,6 +208,33 @@ export default function Start() {
   const [isDragging, setIsDragging] = useState(false);
 
   const { theme } = useTheme();
+
+  const {
+    submit,
+    object: careerInfo,
+    isLoading,
+  } = experimental_useObject({
+    api: "/api/get-careers",
+    schema: careerArraySchema,
+    // initialValue: undefined,
+    onError: (lessonPlanError) => {
+      console.log({ lessonPlanError });
+      toast.error(lessonPlanError.message);
+    },
+    onFinish: async ({ object }) => {
+      try {
+        if (!object) {
+          throw new Error("No lesson plan generated.");
+        }
+        console.log({ object });
+      } catch (error) {
+        console.log({ error });
+        toast.error((error as Error).message);
+      }
+    },
+  });
+
+  console.log({ careerInfo });
 
   useEffect(() => {
     setNodes((initialNodes) =>
@@ -212,7 +256,7 @@ export default function Start() {
                   fontSize: "20px",
                 };
         } else {
-          let realdata = careerInfo[Number(node.id) - 2];
+          let realdata = (careerInfo ?? [])[Number(node.id) - 2];
 
           if (node.id === "2" || node.id === "3" || node.id === "6") {
             // @ts-ignore
@@ -290,6 +334,10 @@ export default function Start() {
     });
     let data = await response.json();
 
+    submit({ resumeInfo: data, context: additionalContext });
+
+    return;
+
     let response2 = await fetch("/api/get-careers", {
       method: "POST",
       headers: {
@@ -310,7 +358,7 @@ export default function Start() {
 
     let data2 = await response2.json();
     console.log({ data2 });
-    setCareerInfo(data2);
+    // setCareerInfo(data2);
     setLoading(false);
   }
 
@@ -366,7 +414,7 @@ export default function Start() {
 
   return (
     <div className="flex-1 p-4">
-      {careerInfo.length !== 0 ? (
+      {careerInfo && careerInfo.length !== 0 && !isLoading ? (
         <div className="h-[calc(100vh-66px)] mx-auto flex-1">
           <ReactFlow
             // nodes={initialNodes}
@@ -501,12 +549,13 @@ export default function Start() {
                 <Button
                   onClick={parsePdf}
                   className="w-full"
-                    disabled={files.length === 0 || loading}
+                  disabled={files.length === 0 || loading}
                   size={"lg"}
                 >
                   {loading ? (
                     <>
-                    <Loader className="animate-spin size-5 mr-2"  /> Generating...
+                      <Loader className="animate-spin size-5 mr-2" />{" "}
+                      Generating...
                     </>
                   ) : (
                     "Find your ideal career"
