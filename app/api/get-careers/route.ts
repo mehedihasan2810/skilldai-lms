@@ -3,6 +3,8 @@ import { streamObject } from "ai";
 import { z } from "zod";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
+export const maxDuration = 60;
+
 interface GetCareersRequest {
   resumeInfo: string;
   context: string;
@@ -12,16 +14,40 @@ export async function POST(request: NextRequest) {
   const { resumeInfo, context } = (await request.json()) as GetCareersRequest;
 
   const careerSchema = z.object({
-    jobTitle: z.string(),
-    jobDescription: z.string(),
-    timeline: z.string(),
-    salary: z.string(),
-    difficulty: z.string(),
-    workRequired: z.string(),
-    aboutTheRole: z.string(),
-    whyItsagoodfit: z.array(z.string()),
-    // roadmap: z.array(z.record(z.string())).default([]),
-    roadmap: z.array(z.object({ step: z.string(), description: z.string() })),
+    jobTitle: z
+      .string()
+      .describe("Title of the potential career (e.g., 'Full-Stack Developer')"),
+    jobDescription: z.string().describe("A brief description of the career"),
+    timeline: z
+      .string()
+      .describe("Suggested timeline for transitioning (e.g., '3-6 months')"),
+    salary: z
+      .string()
+      .describe("Approximate salary range (e.g., '$85k - $110k')"),
+    difficulty: z
+      .string()
+      .describe("Difficulty level for making the transition"),
+    workRequired: z
+      .string()
+      .describe("Expected commitment (e.g., '20-30 hrs/week')"),
+    aboutTheRole: z
+      .string()
+      .describe("Detailed description of the role and responsibilities"),
+    whyItsagoodfit: z
+      .array(z.string().describe("Reason why this career is a good match"))
+      .describe("List of reasons why this career is a good fit"),
+    roadmap: z
+      .array(
+        z.object({
+          step: z.string().describe("Step description for the roadmap"),
+          description: z
+            .string()
+            .describe("Detailed explanation for this step"),
+        })
+      )
+      .describe(
+        "Roadmap as an array of weekly milestones for transitioning into the career"
+      ),
   });
 
   const openrouter = createOpenRouter({
@@ -29,30 +55,29 @@ export async function POST(request: NextRequest) {
   });
 
   const result = streamObject({
-    // model: openai("gpt-4o"),
     model: openrouter("openai/gpt-4o"),
     output: "array",
     schema: careerSchema,
-    prompt: `As a career advisor, analyze the following resume and context, and suggest 6 potential career transitions.
-    
+    prompt: `As a career advisor, carefully examine the following resume and additional context, then propose exactly 6 potential career transitions.
+
 Resume:
 ${resumeInfo}
 
 Additional Context:
 ${context}
 
-Return your answer as an array containing exactly 6 objects. Each object must have the following keys:
-- jobTitle: Title of the career (e.g., "Full-Stack Developer").
+Return your answer as a JSON array containing exactly 6 objects. Each object must include:
+- jobTitle: Title of the career.
 - jobDescription: A brief description of the career.
-- timeline: Suggested timeline for transitioning (e.g., "3-6 months").
-- salary: Approximate salary range (e.g., "$85k - $110k").
-- difficulty: Difficulty level of making the transition.
-- workRequired: Indicate the expected hours or commitment (e.g,  "20-30 hrs/week").
-- aboutTheRole: Describe the role and responsibilities.
-- whyItsagoodfit: List reasons why this career is a good match.
-- roadmap: Provide a roadmap as an array of weekly milestones (e.g., [{"step": "Step description", "description": "Detailed step to transition into the role"}, ...]).
+- timeline: Suggested timeline for the transition.
+- salary: Approximate salary range.
+- difficulty: Difficulty level of the transition.
+- workRequired: Expected hours or commitment required.
+- aboutTheRole: Description of the role and responsibilities.
+- whyItsagoodfit: Reasons why the career is a good match.
+- roadmap: An array of weekly milestones with each milestone having "step" and "description" properties.
 
-Please suggest exactly 6 potential career transitions.
+Ensure the result strictly adheres to this schema.
 `,
   });
 
