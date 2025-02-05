@@ -47,7 +47,7 @@ const careerSchema = z.object({
   roadmap: z.array(z.object({ step: z.string(), description: z.string() })),
 });
 
-const careerArraySchema = z.array(careerSchema).min(6);
+const careerArraySchema = z.array(careerSchema).length(6);
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
