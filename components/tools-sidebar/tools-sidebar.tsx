@@ -62,6 +62,24 @@ const data = {
       plan: "Free",
     },
   ],
+  navCareers: [
+    {
+      title: "Careers",
+      url: "#",
+      icon: GraduationCap,
+      isActive: true,
+      items: [
+        {
+          title: "AI Skill Assessment",
+          url: "/skill-assessment",
+        },
+        {
+          title: "Explore careers",
+          url: "/careers",
+        },
+      ],
+    },
+  ],
   navMain: [
     {
       title: "Curriculum",
@@ -79,8 +97,8 @@ const data = {
         // },
       ],
     },
-   
   ],
+
   navTools: [
     {
       title: "AI Tools",
@@ -134,146 +152,8 @@ const data = {
           url: "/pdf-chat",
           icon: BookOpenCheck,
         },
-        {
-          title: "AI Skill Assessment",
-          url: "/skill-assessment",
-          icon: BookOpenCheck,
-        },
-        {
-          title: "Explore careers",
-          url: "/careers",
-          icon: GraduationCap,
-        },
       ],
     },
-    // {
-    //   title: "Models",
-    //   url: "#",
-    //   icon: Bot,
-    //   items: [
-    //     {
-    //       title: "Genesis",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Explorer",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Quantum",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Documentation",
-    //   url: "#",
-    //   icon: BookOpen,
-    //   items: [
-    //     {
-    //       title: "Introduction",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Get Started",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Tutorials",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Changelog",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Settings",
-    //   url: "#",
-    //   icon: Settings2,
-    //   items: [
-    //     {
-    //       title: "General",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Team",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Billing",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Limits",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-  ],
-  projects: [
-    {
-      name: "AI Tools",
-      url: "/tools",
-      icon: Book,
-    },
-    {
-      name: "Courses",
-      url: "/courses",
-      icon: Book,
-    },
-    {
-      name: "Course Generator",
-      url: "/courses/create",
-      icon: GraduationCap,
-    },
-    {
-      name: "Reports",
-      url: "/reports",
-      icon: AreaChart,
-    },
-
-    {
-      name: "Quiz Generator",
-      url: "/quiz-from-doc",
-      icon: ShieldQuestion,
-    },
-    {
-      name: "Lesson Plan Generator",
-      url: "/lesson-plan-generator",
-      icon: BookOpenCheck,
-    },
-    {
-      name: "Worksheet Generator",
-      url: "/worksheet-generator",
-      icon: BookOpenCheck,
-    },
-    {
-      name: "PDF Chat",
-      url: "/pdf-chat",
-      icon: BookOpenCheck,
-    },
-    {
-      name: "AI Skill Assessment",
-      url: "/skill-assessment",
-      icon: BookOpenCheck,
-    },
-    // {
-    //   name: "Design Engineering",
-    //   url: "#",
-    //   icon: Frame,
-    // },
-    // {
-    //   name: "Sales & Marketing",
-    //   url: "#",
-    //   icon: PieChart,
-    // },
-    // {
-    //   name: "Travel",
-    //   url: "#",
-    //   icon: Map,
-    // },
   ],
 };
 
@@ -316,19 +196,19 @@ export function AppSidebar({
       <SidebarContent>
         {/* <NavProjects projects={data.projects} /> */}
         <NavMain items={filteredNavItems} />
+        <NavMain items={data.navCareers} />
         <NavMain items={data.navMain} />
         <SidebarGroup>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <Link href={`/exam-paper`}>
-              <SidebarMenuButton tooltip="Exams">
-                <BookOpenCheck />
-                <span>Exams</span>
-              </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
-        </SidebarMenu>
-       
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <Link href={`/exam-paper`}>
+                <SidebarMenuButton tooltip="Exams">
+                  <BookOpenCheck />
+                  <span>Exams</span>
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
