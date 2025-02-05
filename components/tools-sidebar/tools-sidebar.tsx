@@ -139,11 +139,11 @@ const data = {
           url: "/skill-assessment",
           icon: BookOpenCheck,
         },
-        // {
-        //   title: "Explore careers",
-        //   url: "/careers",
-        //   icon: GraduationCap,
-        // },
+        {
+          title: "Explore careers",
+          url: "/careers",
+          icon: GraduationCap,
+        },
       ],
     },
     // {
