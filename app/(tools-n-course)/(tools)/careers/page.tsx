@@ -33,6 +33,7 @@ import { createClient } from "@/lib/supabase/client";
 import { add } from "date-fns";
 import { experimental_useObject } from "ai/react";
 import { z } from "zod";
+import { Progress } from "@/components/ui/progress";
 
 const careerSchema = z.object({
   jobTitle: z.string(),
@@ -213,27 +214,35 @@ export default function Start() {
     submit,
     object: careerInfo,
     isLoading,
+    error,
   } = experimental_useObject({
     api: "/api/get-careers",
     schema: careerArraySchema,
     // initialValue: undefined,
-    onError: (lessonPlanError) => {
-      console.log({ lessonPlanError });
-      toast.error(lessonPlanError.message);
+    onError: (careerInfoError) => {
+      console.log({ careerInfoError });
+      toast.error(careerInfoError.message);
+      setLoading(false);
     },
     onFinish: async ({ object }) => {
-      try {
-        if (!object) {
-          throw new Error("No lesson plan generated.");
-        }
-        console.log({ object });
-      } catch (error) {
-        console.log({ error });
-        toast.error((error as Error).message);
-      }
+      console.log({ object });
+      setLoading(false);
+      // if (!object) {
+      //   throw new Error("Something went wrong. Please try again.");
+      // }
+      // try {
+      //   if (!object) {
+      //     throw new Error("Something went wrong. Please try again.");
+      //   }
+      //   console.log({ object });
+      // } catch (error) {
+      //   console.log({ error });
+      //   toast.error((error as Error).message);
+      // }
     },
   });
 
+  console.log({ error });
   console.log({ careerInfo });
 
   useEffect(() => {
@@ -412,6 +421,8 @@ export default function Start() {
     // setTitle("hello");
   };
 
+  const progress = careerInfo ? (careerInfo.length / 6) * 100 : 0;
+
   return (
     <div className="flex-1 p-4">
       {careerInfo && careerInfo.length !== 0 && !isLoading ? (
@@ -419,7 +430,13 @@ export default function Start() {
           <ReactFlow
             // nodes={initialNodes}
             // edges={initialEdges}
-            nodes={nodes}
+            nodes={nodes.filter((node) => {
+              if (node.id === "1") {
+                return true;
+              } else {
+                return !!node.data?.jobTitle;
+              }
+            })}
             edges={
               theme === "light"
                 ? edges
@@ -545,7 +562,17 @@ export default function Start() {
                 />
               </CardContent>
 
-              <CardFooter>
+              <CardFooter className="flex-col gap-4">
+                {isLoading && (
+                  <div className="w-full space-y-1">
+                    <div className="flex justify-between text-sm text-muted-foreground">
+                      <span>Progress</span>
+                      <span>{Math.round(progress)}%</span>
+                    </div>
+                    <Progress value={progress} className="h-2" />
+                  </div>
+                )}
+
                 <Button
                   onClick={parsePdf}
                   className="w-full"

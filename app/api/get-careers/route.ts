@@ -55,7 +55,8 @@ export async function POST(request: NextRequest) {
   });
 
   const result = streamObject({
-    model: openrouter("openai/gpt-4o"),
+    // model: openrouter("google/gemini-pro-1.5"),
+    model: openrouter("openai/gpt-4o-mini"),
     output: "array",
     schema: careerSchema,
     prompt: `As a career advisor, carefully examine the following resume and additional context, then propose exactly 6 potential career transitions.
@@ -79,6 +80,9 @@ Return your answer as a JSON array containing exactly 6 objects. Each object mus
 
 Ensure the result strictly adheres to this schema.
 `,
+    onFinish: ({ usage }) => {
+      console.log({ usage });
+    },
   });
 
   return result.toTextStreamResponse();
