@@ -44,6 +44,12 @@ const tools = [
     description: "Evaluate skills effortlessly with our AI-powered tool. Generate personalized assessments to measure knowledge, track progress, and identify areas for improvement!",
     href: "/skill-assessment",
   },
+  {
+    id: 7,
+    title: "Explore Careers",
+    description: "Explore Careers analyzes your resume and suggests personalized career paths based on your skills, experience, and goals.",
+    href: "/careers",
+  },
   // {
   //   id: 7,
   //   title: "NCERT",
