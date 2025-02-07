@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { streamObject } from "ai";
 import { z } from "zod";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { google } from "@ai-sdk/google";
 
 export const maxDuration = 60;
 
@@ -39,7 +40,7 @@ export async function POST(request: NextRequest) {
     roadmap: z
       .array(
         z.object({
-          step: z.string().describe("Step description for the roadmap"),
+          step: z.string().describe("Step description for the roadmap (e.g., '1-2 weeks')."),
           description: z
             .string()
             .describe("Detailed explanation for this step"),
@@ -55,8 +56,10 @@ export async function POST(request: NextRequest) {
   });
 
   const result = streamObject({
-    // model: openrouter("google/gemini-pro-1.5"),
-    model: openrouter("openai/gpt-4o-mini"),
+    model: google('gemini-2.0-flash-001'),
+    // model: google('gemini-2.0-flash-lite-preview-02-05'),
+    // model: openrouter("google/gemini-2.0-flash-lite-preview-02-05:free"),
+    // model: openrouter("openai/gpt-4o-mini"),
     output: "array",
     schema: careerSchema,
     prompt: `As a career advisor, carefully examine the following resume and additional context, then propose exactly 6 potential career transitions.
