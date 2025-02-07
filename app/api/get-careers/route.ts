@@ -102,7 +102,6 @@ Ensure the result strictly adheres to this schema.
       isEnabled: true,
       functionId: "CareerExplorer-function",
       metadata: {
-        // langfuseTraceId: "trace-123", // Langfuse trace
         tags: ["CareerExplorer", email],
         userId: email,
         sessionId: "CareerExplorer-session",

@@ -98,6 +98,16 @@ export async function POST(req: Request) {
     // prompt: `Generate 1 notifications for a messages app in this context: make one`,
     system: systemPrompt,
     prompt: getUserPrompt(courseTopic, targetAudience, difficultyLevel, grade),
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "courseGenerator-function",
+      metadata: {
+        tags: ["courseGenerator", userEmail],
+        userId: userEmail,
+        sessionId: "courseGenerator-session",
+        user: userEmail,
+      },
+    },
     onFinish: async ({ object, usage }) => {
       console.log("finish");
       console.log(usage);

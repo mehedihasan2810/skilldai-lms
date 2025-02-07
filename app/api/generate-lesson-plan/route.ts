@@ -73,6 +73,16 @@ export async function POST(req: Request) {
     maxTokens: 1000,
     schema: outputSchema,
     // output: "array",
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "lessonPlan-function",
+      metadata: {
+        tags: ["lessonPlan", inputData.userEmail],
+        userId: inputData.userEmail,
+        sessionId: "lessonPlan-session",
+        user: inputData.userEmail,
+      },
+    },
     onFinish: async ({ object, usage }) => {
       const { data, error: error } = await supabase
         .from("token_usage")
@@ -168,75 +178,3 @@ i) Resources Required: List all materials needed for the lesson, including any t
 Remember to tailor the lesson plan to the specific inputs provided, ensuring it is engaging, age-appropriate, and aligned with the given topic and focus area.
 `;
 };
-// const getPrompt = ({
-//   topic,
-//   focusingOn,
-//   gradeLevel,
-//   style,
-//   duration,
-//   previousLessonInfo,
-// }: InputData) => {
-//   return `
-// You are an expert educational consultant and curriculum developer. Your task is to create detailed, engaging, and actionable lesson plans based on user input. Each lesson plan should include clear objectives, an overview of the previous lesson if provided, a structured lesson flow, practice activities, assessments, a summary, homework, and required resources. Ensure the tone is professional yet approachable, and adapt the content to the specific inputs provided.
-
-// User Inputs:
-
-// Lesson Topic: ${topic}
-// Focusing On (optional): ${focusingOn}
-// Grade Level (optional): ${gradeLevel}
-// Lesson Style (optional): ${style}
-// Lesson Duration (in minutes): ${duration}
-// Previous Lesson Information (optional): ${previousLessonInfo}
-
-// Generate a lesson plan with the following structure:
-
-// Objectives: [List 2-3 clear, measurable goals for the lesson.]
-// Previous Lesson: [Summarize if previous lesson information is provided.]
-// Beginning of the Lesson: [Engaging starter activity to introduce the topic.]
-// Learning/Inquiry: [Main instructional content delivery with interactive elements.]
-// Practice/Experience: [Hands-on or collaborative activities for skill reinforcement.]
-// Assessment: [Methods to assess understanding, e.g., quizzes, discussions, projects.]
-// Summary: [Key takeaways and recap of the lesson.]
-// Homework: [Assignments to extend learning outside the classroom.]
-// Resources Required: [List all materials needed for the lesson.]
-
-// Be creative, thorough, and make the lesson plan practical for teachers to implement.
-// `;
-// };
-
-// "**Title: Introduction to History for Beginners**
-
-// **Introduction:**
-// Welcome to your history worksheet! In this activity, you will learn about important events and figures from the past. Understanding history helps us learn from our experiences and shapes our future.
-
-// **Questions:**
-// 1. **Multiple Choice:** Who was the first President of the United States?
-//    a) Abraham Lincoln
-//    b) George Washington
-//    c) Thomas Jefferson
-//    d) John Adams
-
-// 2. **True/False:** The Titanic sank on its first voyage.
-
-// 3. **Fill in the Blank:** The ancient Egyptian writing system is called __________.
-
-// 4. **Short Answer:** Name one reason why the ancient Greeks are important in history.
-
-// 5. **Multiple Choice:** Which event is celebrated on July 4th in the United States?
-//    a) Thanksgiving
-//    b) Independence Day
-//    c) New Year's Day
-//    d) Memorial Day
-
-// **Creative Task:**
-// Imagine you are a time traveler visiting ancient Egypt. Write a short diary entry (3-5 sentences) about what you see and experience. What do you find interesting?
-
-// **Answer Key:**
-// 1. b) George Washington
-// 2. True
-// 3. Hieroglyphics
-// 4. Acceptable answers include: They created democracy, made advances in philosophy, or contributed to art and architecture.
-// 5. b) Independence Day
-
-// **Creative Task Answer Guidelines:**
-// Students should mention elements like pyramids, pharaohs, or daily life in ancient Egypt. Encourage creativity and personal expression."

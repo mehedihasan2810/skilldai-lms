@@ -1,7 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
-import { anthropic } from "@ai-sdk/anthropic";
 import { google } from "@ai-sdk/google";
-import { openai } from "@ai-sdk/openai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamText, Message, ToolInvocation, Attachment } from "ai";
 
@@ -71,6 +68,16 @@ export async function POST(req: Request) {
     // frequencyPenalty: 0,
     // presencePenalty: 0,
     // temperature: 0.2,
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "pdfChat-function",
+      metadata: {
+        tags: ["pdfChat", userEmail],
+        userId: userEmail,
+        sessionId: "pdfChat-session",
+        user: userEmail,
+      },
+    },
     onFinish: async ({ finishReason, usage }) => {
       console.log({ finishReason, usage });
       // const supabase = await createClient();

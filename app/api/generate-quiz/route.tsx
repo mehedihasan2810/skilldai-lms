@@ -112,61 +112,19 @@ export async function POST(req: Request) {
     system:
       "You are a helpful AI that generates educational quizzes. Provide accurate, grade-appropriate questions and answers.",
     prompt: userPrompt,
-    // messages: [
-    //   {
-    //     role: "system",
-    //     content:
-    //       "You are a teacher. Your job is to take a document, and create a multiple choice test (with maximum 10 questions) based on the content of the document. Each option should be roughly equal in length.",
-    //   },
-    //   {
-    //     role: "user",
-    //     content: [
-    //       {
-    //         type: "text",
-    //         text: "Create a multiple choice test based on this document.",
-    //       },
-    //       {
-    //         type: "file",
-    //         data: firstFile,
-    //         mimeType: "application/pdf",
-    //       },
-    //     ],
-    //   },
-    // ],
-    // messages: convertToCoreMessages([
-    //   {
-    //     role: "system",
-    //     content:
-    //       "You are a teacher. Your job is to take a document, and create a multiple choice test (with 4 questions) based on the content of the document. Each option should be roughly equal in length.",
-    //   },
-    //   {
-    //     role: "user",
-    //     content: "Create a multiple choice test based on this document.",
-    //     experimental_attachments: [
-    //       {
-    //         name: "file",
-    //         contentType: 'application/pdf',
-    //         url: firstFile
-    //       }
-    //     ]
-    //   }
-    //   // {
-    //   //   role: "user",
-    //   //   content: [
-    //   //     {
-    //   //       type: "text",
-    //   //       text: "Create a multiple choice test based on this document.",
-    //   //     },
-    //   //     {
-    //   //       type: "file",
-    //   //       data: firstFile,
-    //   //       mimeType: "application/pdf",
-    //   //     },
-    //   //   ],
-    //   // },
-    // ]),
+  
     schema: questionSchema,
     output: "array",
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "quizGenerator-function",
+      metadata: {
+        tags: ["quizGenerator", userEmail],
+        userId: userEmail,
+        sessionId: "quizGenerator-session",
+        user: userEmail,
+      },
+    },
     onFinish: async ({ object, usage }) => {
       console.log({ object, usage });
 

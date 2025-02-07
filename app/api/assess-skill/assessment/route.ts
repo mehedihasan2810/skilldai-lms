@@ -132,6 +132,16 @@ Ensure that your output uses appropriate markdown formatting, such as headings (
     maxTokens: 1000,
     prompt,
     // output: "array",
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "skillAssessment-function",
+      metadata: {
+        tags: ["skillAssessment", userEmail],
+        userId: userEmail,
+        sessionId: "skillAssessment-session",
+        user: userEmail,
+      },
+    },
     onFinish: async ({ object, usage }) => {
       console.log({ object, usage });
     },

@@ -65,6 +65,17 @@ export async function POST(req: Request) {
     maxTokens: 1000,
     schema: outputSchema,
     // output: "array",
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "worksheetGenerator-function",
+      metadata: {
+        // langfuseTraceId: "trace-123", // Langfuse trace
+        tags: ["worksheetGenerator", inputData.userEmail],
+        userId: inputData.userEmail,
+        sessionId: "worksheetGenerator-session",
+        user: inputData.userEmail,
+      },
+    },
     onFinish: async ({ object, usage }) => {
       const { data, error: error } = await supabase
         .from("token_usage")

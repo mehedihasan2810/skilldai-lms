@@ -50,6 +50,16 @@ export async function POST(req: Request) {
     maxTokens: 1000,
     prompt,
     output: "array",
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "questionnaire-function",
+      metadata: {
+        tags: ["questionnaire", userEmail],
+        userId: userEmail,
+        sessionId: "questionnaire-session",
+        user: userEmail,
+      },
+    },
     onFinish: async ({ object, usage }) => {
       console.log({ object, usage });
     },
