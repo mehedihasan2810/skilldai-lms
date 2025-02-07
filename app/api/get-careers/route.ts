@@ -3,6 +3,7 @@ import { streamObject } from "ai";
 import { z } from "zod";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { google } from "@ai-sdk/google";
+import { createClient } from "@/lib/supabase/server";
 
 export const maxDuration = 60;
 
@@ -13,6 +14,18 @@ interface GetCareersRequest {
 
 export async function POST(request: NextRequest) {
   const { resumeInfo, context } = (await request.json()) as GetCareersRequest;
+
+  const supabase = await createClient();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
+  const email = session.user.email ?? session.user.id;
 
   const careerSchema = z.object({
     jobTitle: z
@@ -40,7 +53,9 @@ export async function POST(request: NextRequest) {
     roadmap: z
       .array(
         z.object({
-          step: z.string().describe("Step description for the roadmap (e.g., '1-2 weeks')."),
+          step: z
+            .string()
+            .describe("Step description for the roadmap (e.g., '1-2 weeks')."),
           description: z
             .string()
             .describe("Detailed explanation for this step"),
@@ -56,7 +71,7 @@ export async function POST(request: NextRequest) {
   });
 
   const result = streamObject({
-    model: google('gemini-2.0-flash-001'),
+    model: google("gemini-2.0-flash-001"),
     // model: google('gemini-2.0-flash-lite-preview-02-05'),
     // model: openrouter("google/gemini-2.0-flash-lite-preview-02-05:free"),
     // model: openrouter("openai/gpt-4o-mini"),
@@ -83,6 +98,17 @@ Return your answer as a JSON array containing exactly 6 objects. Each object mus
 
 Ensure the result strictly adheres to this schema.
 `,
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "CareerExplorer-function",
+      metadata: {
+        // langfuseTraceId: "trace-123", // Langfuse trace
+        tags: ["CareerExplorer", email],
+        userId: email,
+        sessionId: "CareerExplorer-session",
+        user: email,
+      },
+    },
     onFinish: ({ usage }) => {
       console.log({ usage });
     },
