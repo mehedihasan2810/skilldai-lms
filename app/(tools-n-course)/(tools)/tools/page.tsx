@@ -23,31 +23,36 @@ const tools = [
   {
     id: 3,
     title: "AI Lesson Plan Generator",
-    description: "Design comprehensive lesson plans effortlessly with our AI. Input your topic, and our tool generates structured, detailed plans to make teaching more effective and efficient!",
+    description:
+      "Design comprehensive lesson plans effortlessly with our AI. Input your topic, and our tool generates structured, detailed plans to make teaching more effective and efficient!",
     href: "/lesson-plan-generator",
   },
   {
     id: 4,
     title: "AI Worksheet Generator",
-    description: "Effortlessly create engaging worksheets with our AI.Specify a topic, and our tool generates customized, printable worksheets to enhance classroom learning!",
+    description:
+      "Effortlessly create engaging worksheets with our AI.Specify a topic, and our tool generates customized, printable worksheets to enhance classroom learning!",
     href: "/worksheet-generator",
   },
   {
     id: 5,
     title: "PDF Chat",
-    description: "Chat with your PDF documents effortlessly. Upload, ask questions, and get answers instantly using advanced AI-powered PDF analysis.",
+    description:
+      "Chat with your PDF documents effortlessly. Upload, ask questions, and get answers instantly using advanced AI-powered PDF analysis.",
     href: "/pdf-chat",
   },
   {
     id: 6,
     title: "AI Skill Assessment",
-    description: "Evaluate skills effortlessly with our AI-powered tool. Generate personalized assessments to measure knowledge, track progress, and identify areas for improvement!",
+    description:
+      "Evaluate skills effortlessly with our AI-powered tool. Generate personalized assessments to measure knowledge, track progress, and identify areas for improvement!",
     href: "/skill-assessment",
   },
   {
     id: 7,
     title: "Explore Careers",
-    description: "Explore Careers analyzes your resume and suggests personalized career paths based on your skills, experience, and goals.",
+    description:
+      "Explore Careers analyzes your resume and suggests personalized career paths based on your skills, experience, and goals.",
     href: "/careers",
   },
   // {
@@ -61,35 +66,35 @@ const tools = [
 const teacherOnlyTools = ["/lesson-plan-generator", "/worksheet-generator"];
 
 const Page = async () => {
-   const supabase = await createClient();
-  
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-  
-    if (!user) {
-      return redirect("/");
-    }
-  
-    const { error, data } = await supabase
-      .from("user_info")
-      .select("id,profession")
-      .eq("user_id", user.id)
-      .single();
-  
-    if (error) {
-      console.error(error);
-      // throw new Error(error.message);
-    }
-  
-    const isRoleTeacher = data?.profession === "Teacher";
-  
-    const filteredTools = isRoleTeacher
+  const supabase = await createClient();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    return redirect("/");
+  }
+
+  const user = session.user;
+
+  const { error, data } = await supabase
+    .from("user_info")
+    .select("id,profession")
+    .eq("user_id", user.id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    // throw new Error(error.message);
+  }
+
+  const isRoleTeacher = data?.profession === "Teacher";
+
+  const filteredTools = isRoleTeacher
     ? tools
-    : tools.filter(
-        (navItem) => !teacherOnlyTools.includes(navItem.href ?? "")
-      );
-  
+    : tools.filter((navItem) => !teacherOnlyTools.includes(navItem.href ?? ""));
+
   return (
     <PageContainer scrollable>
       <h2 className="text-2xl font-bold mb-3">AI Tools</h2>
@@ -100,18 +105,18 @@ const Page = async () => {
             className="p-6 rounded-lg shadow bg-card text-card-foreground border border-border/60 flex flex-col justify-between"
           >
             <div>
-            <Link href="#">
-              <h5 className="mb-2 text-xl font-semibold tracking-tight ">
-                {tool.title}
-              </h5>
-            </Link>
-            <p className="mb-3 font-normal text-muted-foreground">
-              {tool.description}
-            </p>
+              <Link href="#">
+                <h5 className="mb-2 text-xl font-semibold tracking-tight ">
+                  {tool.title}
+                </h5>
+              </Link>
+              <p className="mb-3 font-normal text-muted-foreground">
+                {tool.description}
+              </p>
             </div>
             <Link
               href={tool.href}
-              className={buttonVariants({className: "w-fit"})}
+              className={buttonVariants({ className: "w-fit" })}
             >
               Try It
               <svg

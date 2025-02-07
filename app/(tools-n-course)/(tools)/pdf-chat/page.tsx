@@ -10,18 +10,22 @@ const Page = async () => {
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!user) {
+  if (!session) {
     return redirect("/");
   }
+
+  const userId = session.user.id;
+  const email = session.user.email;
+
 
   return (
     <>
       <PageContainer scrollable>
-        <PDFChatPage userId={user.id} userEmail={user.email ?? ""} />
-        <RecentPDFList userId={user.id} />
+        <PDFChatPage userId={userId} userEmail={email ?? ""} />
+        <RecentPDFList userId={userId} />
       </PageContainer>
       <GuideVideoDialog />
     </>

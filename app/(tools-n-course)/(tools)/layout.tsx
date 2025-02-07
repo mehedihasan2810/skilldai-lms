@@ -81,13 +81,19 @@ const teacherOnlyNavItems = ["/lesson-plan-generator", "/worksheet-generator"];
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = await createClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
 
-  if (!user) {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
     return redirect("/");
   }
+
+  const user = session.user;
 
   const { error: userInfoError, data: userInfo } = await supabase
     .from("user_info")

@@ -117,7 +117,6 @@ export function PDFViewer({ pdfUrl, sourcePage, userId }: Props) {
         </div>
         {sourcePage ? (
           <Button
-            className="flex items-center gap-2"
             onClick={() => {
               createNCERTChatMutation.mutate({ userId, pdfUrl });
             }}

@@ -2,20 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { ResetPasswordForm } from "./form";
 import { Message } from "@/components/signin-form-message";
-import { createClient } from "@/lib/supabase/server";
 
 export default async function Page(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
 
-  console.log({ searchParams });
+  // console.log({ searchParams });
 
-  const supabase = await createClient();
+  // const supabase = await createClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
 
-  console.log({ user });
+  // console.log({ user });
 
   // if (!user) {
   //   return redirect("/sign-in");

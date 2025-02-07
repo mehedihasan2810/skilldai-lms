@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { encodedRedirect } from "@/lib/utils";
+import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -19,7 +20,8 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect("error", "/", error.message);
   }
 
-  return redirect("/new");
+  revalidatePath("/", "layout");
+  // return redirect("/new");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -37,8 +39,6 @@ export const forgotPasswordAction = async (formData: FormData) => {
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/api/auth/callback?redirect_to=/reset-password`,
   });
-
-  
 
   if (error) {
     console.error(error.message);
@@ -86,12 +86,13 @@ export const resetPasswordAction = async (formData: FormData) => {
     encodedRedirect("error", "/reset-password", "Password update failed");
   }
 
-  redirect("/new")
+  redirect("/new");
   // encodedRedirect("success", "/reset-password", "Password updated");
 };
 
 export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/");
+  revalidatePath("/", "layout");
+  // return redirect("/");
 };

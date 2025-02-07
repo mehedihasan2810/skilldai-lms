@@ -8,9 +8,7 @@ const supabase = createClient();
 
 const queryClient = getQueryClient();
 
-export const getChats = async (
-  userId: string | null | undefined
-) => {
+export const getChats = async (userId: string | null | undefined) => {
   if (!userId) throw new Error("User not authenticated");
 
   const { data, error } = await supabase
@@ -1248,15 +1246,29 @@ export const deletePDFChat = async ({ id }: { id: string }) => {
     throw new Error(error.message);
   }
 
-  // console.log({data})
+  console.log({ data });
 
-  // const storagePath = data.file_url.split("public/pdf_chat/")[1];
+  const storagePath: string = data.file_url.split("public/pdf_chat/")[1];
 
-  // const { data: storageData, error: storageError } = await supabase.storage
-  //   .from("pdf_chat")
-  //   .remove([storagePath]);
+  const filePathsArray = storagePath.split("/");
 
-  // console.log({ storageData, storageError });
+  console.log({ filePathsArray });
+
+  if (
+    filePathsArray.includes("NCERT") ||
+    filePathsArray.includes("EXAMS-PAPER")
+  ) {
+    console.log("NCERT or EXAMS-PAPER NOT DELETING");
+    return data;
+  }
+
+  console.log("DELETING");
+
+  const { data: deleteStorageRes, error: deleteStorageError } = await supabase.storage
+    .from("pdf_chat")
+    .remove([storagePath]);
+
+  console.log({ deleteStorageRes, deleteStorageError });
 
   return data;
 };

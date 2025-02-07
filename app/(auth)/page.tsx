@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Message } from "@/components/signin-form-message";
 import { createClient } from "@/lib/supabase/server";
 import SignInForm from "./signin/form";
 import GetToken from "@/components/get-token";
@@ -14,19 +13,14 @@ interface PageProps {
 }
 
 export default async function Page({ params, searchParams }: PageProps) {
-  console.log("hello");
-
-  console.log({ searchParams });
 
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  // console.log({ user });
-
-  if (user) {
+  if (session) {
     return redirect("/new");
   }
 

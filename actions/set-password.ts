@@ -3,6 +3,7 @@
 import { action, ActionError } from "@/lib/safe-action";
 import { createClient } from "@/lib/supabase/server";
 import { flattenValidationErrors } from "next-safe-action";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 const setPasswordSchema = z.object({
   password: z
@@ -45,6 +46,8 @@ export const setPasswordAction = action
     if (userError) {
       throw new ActionError(userError.message);
     }
+
+    revalidatePath("/", "layout");
 
     return userData;
   });
