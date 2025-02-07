@@ -53,7 +53,7 @@ const tools = [
     title: "Explore Careers",
     description:
       "Explore Careers analyzes your resume and suggests personalized career paths based on your skills, experience, and goals.",
-    href: "/careers",
+    href: "/explore-careers",
   },
   // {
   //   id: 7,

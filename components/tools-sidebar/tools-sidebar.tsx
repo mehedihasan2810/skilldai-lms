@@ -75,7 +75,7 @@ const data = {
         },
         {
           title: "Explore careers",
-          url: "/careers",
+          url: "/explore-careers",
         },
       ],
     },
