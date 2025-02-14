@@ -13,18 +13,18 @@ const Page = async ({
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!user) {
+  if (!session) {
     return redirect("/");
   }
   return (
     <div className="h-full flex-1">
       <TalkToPDF
         pdfId={params.id}
-        userId={user.id}
-        userEmail={user.email ?? ""}
+        userId={session.user.id}
+        userEmail={session.user.email ?? ""}
       />
     </div>
   );
