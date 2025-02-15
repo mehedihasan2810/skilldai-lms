@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 import QuestionSection from "./question-section";
-import { Loader, Mic, MicOff, Router } from "lucide-react";
+import { Loader, Mic, MicOff, Router, WebcamIcon } from "lucide-react";
 import { isUserAnswerProcessingAtom } from "../atoms";
 import { useAtom, useAtomValue } from "jotai";
 import { useRouter } from "nextjs-toploader/app";
@@ -124,34 +124,31 @@ export const StartInterviewPage = ({
 
   return (
     <div className="flex-1 p-4 lg:p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <QuestionSection
           mockInterviewQuestion={jsonMockResp}
           activeQuestionIndex={activeQuestionIndex}
         />
 
-        <div className="flex flex-col items-center justify-center overflow-hidden">
-          <div className="flex flex-col justify-center items-center rounded-lg p-5 bg-black mt-4 w-[30rem] ">
+        <div className="flex flex-col overflow-hidden w-full">
+          <div className="w-full">
             {webCamEnabled ? (
               <Webcam
                 mirrored={true}
-                style={{ height: 250, width: "100%", zIndex: 10 }}
+                className="w-full rounded-md border"
+                height={400}
+                width={400}
               />
             ) : (
-              <Image
-                src={"/camera.jpg"}
-                width={200}
-                height={200}
-                alt="Camera placeholder"
-              />
+              <div className="flex items-center justify-center p-10 bg-secondary border rounded-md w-full">
+                <WebcamIcon className="h-72 w-full" />
+              </div>
             )}
           </div>
-          <div className="md:flex mt-4 md:mt-8 md:gap-5">
-            <div className="my-4 md:my-0">
-              <Button onClick={() => setWebCamEnabled(!webCamEnabled)}>
+          <div className="grid grid-cols-2 gap-4 mt-4 w-full">
+              <Button className="w-full" onClick={() => setWebCamEnabled(!webCamEnabled)}>
                 {webCamEnabled ? "Close WebCam" : "Enable WebCam"}
               </Button>
-            </div>
             <Button
               variant={isListening ? "destructive" : "secondary"}
               onClick={isListening ? stopListening : startListening}
@@ -171,15 +168,15 @@ export const StartInterviewPage = ({
             </Button>
           </div>
           {/* Check transcription code */}
-          {transcript && (
+          {/* {transcript && (
             <div className="mt-4 p-4 rounded-lg">
               <h3 className="font-bold">Transcribed Answer:</h3>
               <p>{transcript}</p>
             </div>
-          )}
+          )} */}
         </div>
       </div>
-      <div className="flex gap-3 my-5 md:my-0 md:justify-end md:gap-6">
+      <div className="flex gap-3 md:justify-end md:gap-6 mt-4">
         {activeQuestionIndex > 0 && (
           <Button
             onClick={() => {

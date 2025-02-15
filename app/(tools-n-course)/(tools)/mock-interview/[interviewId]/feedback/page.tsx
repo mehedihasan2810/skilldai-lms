@@ -13,6 +13,7 @@ import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
+import PageContainer from "@/components/dashboard/page-container";
 
 const Feedback = () => {
   const router = useRouter();
@@ -87,68 +88,78 @@ const Feedback = () => {
   }
 
   return (
-    <div className="p-10">
-      {feedbackList?.length == 0 ? (
-        <h2 className="font-bold text-xl text-gray-500 my-5">
-          No Interview feedback Record Found
-        </h2>
-      ) : (
-        <>
-          <h2 className="text-3xl font-bold text-green-500">Congratulations</h2>
-          <h2 className="font-bold text-2xl">
-            Here is your interview feedback
+    <PageContainer scrollable>
+      <div className="p-4 lg:p-10">
+        {feedbackList?.length == 0 ? (
+          <h2 className="font-bold text-xl my-5">
+            No Interview feedback Record Found
           </h2>
-          <h2 className="text-primary text-lg my-3">
-            Your overall interview rating{" "}
-            <strong
-              className={`${
-                overallRating >= 5 ? "text-green-500" : "text-red-600"
-              }`}
-            >
-              {overallRating}
-              <span className="text-black">/10</span>
-            </strong>
-          </h2>
-          <h2 className="text-sm text-gray-500">
-            Find below interview question with correct answer, Your answer and
-            feedback for improvement
-          </h2>
-          {feedbackList &&
-            feedbackList.map((item, index) => (
-              <Collapsible key={index} className="mt-7">
-                <CollapsibleTrigger className="p-2 bg-secondary rounded-lg my-2 text-left flex justify-between gap-7 w-full">
-                  {item.question} <ChevronDown className="h-5 w-5" />{" "}
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <div className="flex flex-col gap-2">
-                    <h2 className="text-red-500 p-2 border rounded-lg">
-                      <strong>Rating: </strong>
-                      {item.rating}
-                    </h2>
-                    <h2 className="p-2 border rounded-lg bg-red-50 text-sm text-red-900">
-                      <strong>Your Answer: </strong>
-                      {item.user_answer}
-                    </h2>
-                    <h2 className="p-2 border rounded-lg bg-green-50 text-sm text-green-900">
-                      <strong>Correct Answer: </strong>
-                      {item.correct_answer}{" "}
-                      {/* Updated to match the API response field */}
-                    </h2>
-                    <h2 className="p-2 border rounded-lg bg-card text-sm text-primary-900">
-                      <strong>Feedback: </strong>
-                      {item.feedback}
-                    </h2>
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            ))}
-        </>
-      )}
+        ) : (
+          <>
+            <h2 className="text-3xl font-bold text-green-500">
+              Congratulations
+            </h2>
+            <p className="font-medium text-xl mt-2">
+              Here is your interview feedback
+            </p>
+            <h2 className="text-primary text-lg my-3">
+              Your overall interview rating{" "}
+              <strong
+                className={`${
+                  overallRating >= 5 ? "text-green-500" : "text-red-600"
+                }`}
+              >
+                {overallRating}
+                <span className="text-foreground"> / 10</span>
+              </strong>
+            </h2>
+            <p className="">
+              Find below interview question with correct answer, Your answer and
+              feedback for improvement
+            </p>
+            {feedbackList &&
+              feedbackList.map((item, index) => (
+                <Collapsible
+                  key={index}
+                  className="mt-4 bg-card p-4 rounded-xl border"
+                >
+                  <CollapsibleTrigger className="rounded-lg my-2 text-left flex justify-between gap-7 w-full">
+                    {item.question} <ChevronDown className="h-5 w-5 shrink-0" />{" "}
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="flex flex-col gap-4">
+                      <h2 className="text-red-600 p-4 border border-red-600 rounded-lg bg-red-600/5">
+                        <strong>Rating: </strong>
+                        {item.rating}
+                      </h2>
+                      <h2 className="p-4 border border-red-600 rounded-lg bg-red-600/5 text-sm text-red-600">
+                        <strong>Your Answer: </strong>
+                        {item.user_answer}
+                      </h2>
+                      <h2 className="p-4 border rounded-lg border-green-600 bg-green-600/5 text-sm text-green-600">
+                        <strong>Correct Answer: </strong>
+                        {item.correct_answer}{" "}
+                        {/* Updated to match the API response field */}
+                      </h2>
+                      <h2 className="p-4 border rounded-lg bg-card text-sm text-primary-900">
+                        <strong>Feedback: </strong>
+                        {item.feedback}
+                      </h2>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              ))}
+          </>
+        )}
 
-      <Link className={buttonVariants()} href={"/mock-interview"}>
-        New interview
-      </Link>
-    </div>
+        <Link
+          className={buttonVariants({ className: "mt-4" })}
+          href={"/mock-interview"}
+        >
+          New interview
+        </Link>
+      </div>
+    </PageContainer>
   );
 };
 

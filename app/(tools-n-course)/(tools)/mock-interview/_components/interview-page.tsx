@@ -52,7 +52,7 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
   return (
     <div className="p-4 lg:p-6 flex-1">
       <h2 className="font-bold text-2xl mb-6">Let&apos;s Get Started</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col p-5 rounded-lg border gap-5 bg-card shadow">
             <h2 className="text-lg">
@@ -68,7 +68,7 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
               {interviewData?.job_experience}
             </h2>
           </div>
-          <div className="p-5 border rounded-lg border-yellow-600 bg-yellow-700/5">
+          <div className="p-5 border rounded-lg border-yellow-600 bg-yellow-600/5">
             <h2 className="flex gap-2 items-center text-yellow-500 mb-2">
               <Lightbulb />
               <strong>Information</strong>
@@ -82,20 +82,18 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
             </h2>
           </div>
         </div>
-        <div>
+        <div className="w-full ">
           {webCamEnabled ? (
-            <div className=" flex items-center justify-center">
               <Webcam
                 onUserMedia={() => setWebCamEnabled(true)}
                 onUserMediaError={() => setWebCamEnabled(false)}
-                height={400}
-                width={400}
+                height={300}
+                width={300}
                 mirrored={true}
                 className="w-full rounded-md"
               />
-            </div>
           ) : (
-            <div className="flex items-center justify-center p-10 bg-secondary border rounded-md">
+            <div className="p-4 bg-secondary border rounded-md">
               <WebcamIcon className="h-72 w-full" />
             </div>
           )}
