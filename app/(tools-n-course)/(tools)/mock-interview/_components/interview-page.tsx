@@ -64,7 +64,7 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
               <strong>Information</strong>
             </h2>
             <h2 className="mt-3 text-yellow-500">
-              {process.env.NEXT_PUBLIC_INFORMATION}
+            Enable Video Web Cam and Microphone to start your AI generated mock interview, It has 5 question which you can answer and at the last you will get report on the basis of your answer.NOT: We never record your video , web cam access you can disable at any time if you want
             </h2>
           </div>
         </div>

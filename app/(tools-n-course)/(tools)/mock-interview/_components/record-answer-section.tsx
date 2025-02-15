@@ -6,15 +6,10 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import Webcam from "react-webcam";
 import { Mic } from "lucide-react";
 import { toast } from "sonner";
-// import { chatSession } from "@/utils/GeminiAIModal";
-// import { db } from "@/utils/db";
-// import { UserAnswer } from "@/utils/schema";
-// import { useUser } from "@clerk/nextjs";
-import moment from "moment";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { WebCamContext } from "../layout";
 import { useMutation } from "@tanstack/react-query";
 import { updateUserAnswer } from "@/lib/db";
+import { transcribeMockInterview } from "@/actions/transcribe-mock-interview-audio";
 
 interface MockInterviewQuestion {
   Question: string;
@@ -57,6 +52,14 @@ const RecordAnswerSection = ({
         mockId,
       });
     },
+    onSuccess: () => {
+      setUserAnswer("");
+      toast.success("User Answer recorded successfully");
+    },
+    onError: (error) => {
+      console.error(error);
+      toast.error("An error occurred while recording the user answer");
+    },
   });
 
   useEffect(() => {
@@ -78,12 +81,14 @@ const RecordAnswerSection = ({
 
       mediaRecorderRef.current.ondataavailable = (event) => {
         if (event.data.size > 0) {
+          console.log(event.data);
           chunksRef.current.push(event.data);
         }
       };
 
       mediaRecorderRef.current.onstop = async () => {
         const audioBlob = new Blob(chunksRef.current, { type: "audio/webm" });
+        console.log({ audioBlob });
         await transcribeAudio(audioBlob);
       };
 
@@ -113,7 +118,16 @@ const RecordAnswerSection = ({
       const reader = new FileReader();
       reader.readAsDataURL(audioBlob);
       reader.onloadend = async () => {
-        const base64Audio = (reader.result as string)?.split(",")[1];
+        const base64Audio = reader.result as string;
+        // const base64Audio = (reader.result as string)?.split(",")[1];
+
+        console.log({ base64Audio });
+
+        const transcription = await transcribeMockInterview({
+          audioBase64: base64Audio,
+        });
+
+        console.log({ transcription });
 
         // const result = await model.generateContent([
         //   "Transcribe the following audio:",
@@ -121,12 +135,12 @@ const RecordAnswerSection = ({
         // ]);
 
         // const transcription = result.response.text();
-        // setUserAnswer((prevAnswer) => prevAnswer + " " + transcription);
+        setUserAnswer((prevAnswer) => prevAnswer + " " + transcription);
         setLoading(false);
       };
     } catch (error) {
       console.error("Error transcribing audio:", error);
-      toast("Error transcribing audio. Please try again.");
+      toast.error("Error transcribing audio. Please try again.");
       setLoading(false);
     }
   };

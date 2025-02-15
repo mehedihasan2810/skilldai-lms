@@ -12,11 +12,15 @@ export const StartInterviewPage = ({
 }: {
   interviewId: string;
 }) => {
-//   const [interviewData, setInterviewData] = useState();
-//   const [mockInterviewQuestion, setMockInterviewQuestion] = useState();
+  //   const [interviewData, setInterviewData] = useState();
+  //   const [mockInterviewQuestion, setMockInterviewQuestion] = useState();
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
-  const { data: interviewData, error, isPending } = useQuery({
+  const {
+    data: interviewData,
+    error,
+    isPending,
+  } = useQuery({
     queryKey: ["mockInterviews", interviewId],
     queryFn: async () => {
       const supabase = createClient();
@@ -31,42 +35,48 @@ export const StartInterviewPage = ({
     },
   });
 
-//   useEffect(() => {
-//     GetInterviewDetails();
-//   }, []);
+  //   useEffect(() => {
+  //     GetInterviewDetails();
+  //   }, []);
 
-//   const GetInterviewDetails = async () => {
-//     const result = await db
-//       .select()
-//       .from(MockInterview)
-//       .where(eq(MockInterview.mockId, interviewId));
+  //   const GetInterviewDetails = async () => {
+  //     const result = await db
+  //       .select()
+  //       .from(MockInterview)
+  //       .where(eq(MockInterview.mockId, interviewId));
 
-//     const jsonMockResp = JSON.parse(result[0].jsonMockResp);
-//     console.log(jsonMockResp);
-//     setMockInterviewQuestion(jsonMockResp);
-//     setInterviewData(result[0]);
-//   };
+  //     const jsonMockResp = JSON.parse(result[0].jsonMockResp);
+  //     console.log(jsonMockResp);
+  //     setMockInterviewQuestion(jsonMockResp);
+  //     setInterviewData(result[0]);
+  //   };
 
-if (error) {
+  if (error) {
     return <div>Error: {error.message}</div>;
   }
 
-    if (isPending) {
-        return <div>Loading...</div>;
-    }
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+
+  console.log({ interviewData });
+
+  const jsonMockResp = JSON.parse(interviewData.json_mock_resp);
+
+  console.log({ jsonMockResp });
 
   return (
-    <div>
+    <div className="flex-1 p-4 lg:p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 my-10">
         {/* Questin Section */}
         <QuestionSection
-          mockInterviewQuestion={interviewData.json_mock_resp}
+          mockInterviewQuestion={jsonMockResp}
           activeQuestionIndex={activeQuestionIndex}
         />
 
         {/* Video/audio Recording */}
         <RecordAnswerSection
-          mockInterviewQuestion={interviewData.json_mock_resp}
+          mockInterviewQuestion={jsonMockResp}
           activeQuestionIndex={activeQuestionIndex}
           interviewData={interviewData}
         />
@@ -79,16 +89,16 @@ if (error) {
             Previous Question
           </Button>
         )}
-        {activeQuestionIndex != interviewData?.json_mock_resp?.length - 1 && (
+        {activeQuestionIndex != jsonMockResp.length - 1 && (
           <Button
             onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}
           >
             Next Question
           </Button>
         )}
-        {activeQuestionIndex == interviewData?.json_mock_resp?.length - 1 && (
+        {activeQuestionIndex == jsonMockResp.length - 1 && (
           <Link
-            href={"/dashboard/interview/" + interviewData?.mockId + "/feedback"}
+            href={"/mock-interview/" + interviewData.id + "/feedback"}
           >
             <Button>End Interview</Button>
           </Link>
