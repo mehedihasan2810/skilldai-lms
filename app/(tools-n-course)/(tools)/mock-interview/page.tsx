@@ -18,7 +18,7 @@ const Page = async () => {
   const userId = session.user.id;
 
   return (
-    <div className="p-10">
+    <div className="p-10 flex-1">
       <h2 className="font-bold text-2xl">Dashboard</h2>
       <h2 className="text-gray-500">
         Create and start your AI Mockup Interview

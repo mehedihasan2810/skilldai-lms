@@ -1,5 +1,5 @@
 import React from "react";
-import { InterviewPage } from "../_components/interview-page";
+import { StartInterviewPage } from "../../_components/start-interview-page";
 import { notFound } from "next/navigation";
 
 const Page = ({
@@ -10,8 +10,7 @@ const Page = ({
   };
 }) => {
   if (!params.interviewId?.trim()) notFound();
-
-  return <InterviewPage interviewId={params.interviewId} />;
+  return <StartInterviewPage interviewId={params.interviewId} />;
 };
 
 export default Page;

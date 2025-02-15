@@ -5,6 +5,8 @@ import { getQueryClient } from "@/app/react-query-provider";
 import { shortUid } from "./utils";
 import { getMockInterviewQNA } from "@/actions/get-mock-interview-q-n-a";
 import { v4 as uuidv4 } from "uuid";
+import { getMockInterviewFeedback } from "@/actions/get-mock-interview-feedback";
+import { mock } from "node:test";
 
 const supabase = createClient();
 
@@ -1325,6 +1327,44 @@ export const saveMockInterviewQNA = async ({
       job_desc: jobDesc,
       job_experience: jobExperience,
       user_id: userId,
+    })
+    .select("id")
+    .single();
+
+  console.log({ data, error });
+
+  if (error) {
+    console.error("Error inserting data:", error);
+    throw new Error(error.message ?? "Something went wrong!");
+  }
+
+  return data;
+};
+
+export const updateUserAnswer = async ({
+  mockId,
+  userAnswer,
+  mockQuestion,
+  correctAnswer,
+}: {
+  mockId: string;
+  userAnswer: string;
+  mockQuestion: string;
+  correctAnswer: string;
+}) => {
+  const result = await getMockInterviewFeedback({
+    mockQuestion,
+    userAnswer
+  });
+
+  const { data, error } = await supabase
+    .from("mock_interview_user_answers")
+    .insert({
+      mock_id: mockId,
+      rating: result.rating,
+      feedback: result.feedback,
+      correct_answer: correctAnswer,
+      question: mockQuestion,
     })
     .select("id")
     .single();
