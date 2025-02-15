@@ -3,6 +3,8 @@ import { createClient } from "./supabase/client";
 import { generateQuizTitle } from "@/actions/generate-quiz-title";
 import { getQueryClient } from "@/app/react-query-provider";
 import { shortUid } from "./utils";
+import { getMockInterviewQNA } from "@/actions/get-mock-interview-q-n-a";
+import { v4 as uuidv4 } from "uuid";
 
 const supabase = createClient();
 
@@ -1264,9 +1266,8 @@ export const deletePDFChat = async ({ id }: { id: string }) => {
 
   console.log("DELETING");
 
-  const { data: deleteStorageRes, error: deleteStorageError } = await supabase.storage
-    .from("pdf_chat")
-    .remove([storagePath]);
+  const { data: deleteStorageRes, error: deleteStorageError } =
+    await supabase.storage.from("pdf_chat").remove([storagePath]);
 
   console.log({ deleteStorageRes, deleteStorageError });
 
@@ -1295,6 +1296,45 @@ export const renamePDFChatTitle = async ({
   }
 
   console.log({ data });
+
+  return data;
+};
+
+export const saveMockInterviewQNA = async ({
+  jobPosition,
+  jobDesc,
+  jobExperience,
+  userId,
+}: {
+  jobPosition: string;
+  jobDesc: string;
+  jobExperience: string;
+  userId: string;
+}) => {
+  const result = await getMockInterviewQNA({
+    jobPosition: jobPosition,
+    jobDesc: jobDesc,
+    jobExperience: jobExperience,
+  });
+
+  const { data, error } = await supabase
+    .from("mock_interviews")
+    .insert({
+      json_mock_resp: JSON.stringify(result),
+      job_position: jobPosition,
+      job_desc: jobDesc,
+      job_experience: jobExperience,
+      user_id: userId,
+    })
+    .select("id")
+    .single();
+
+  console.log({ data, error });
+
+  if (error) {
+    console.error("Error inserting data:", error);
+    throw new Error(error.message ?? "Something went wrong!");
+  }
 
   return data;
 };
