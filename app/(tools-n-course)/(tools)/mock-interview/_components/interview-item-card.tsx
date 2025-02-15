@@ -1,26 +1,21 @@
 import React from "react";
 import { buttonVariants } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import { formatDate } from "@/lib/formate-date";
 import Link from "next/link";
 
 // @ts-expect-error: Unreachable code error
 const InterviewItemCard = ({ interview }) => {
-  const router = useRouter();
-
   return (
-    <div className="border border-gray-500 shadow-sm rounded-lg p-3">
-      <h2 className="font-bold text-primary">{interview.job_position}</h2>
-      <h2 className="text-sm text-gray-600">
-        {interview.job_experience} Years of experience
-      </h2>
-      <h2 className="text-xs text-gray-400">
-        Created At:{formatDate(interview.created_at)}
-      </h2>
+    <div className="bg-card shadow-md p-4 rounded-md border">
+      <h2 className="text-lg font-bold mb-2">{interview.job_position}</h2>
+      <p className="">{interview.job_experience} Years of experience</p>
+      <p className="text-muted-foreground mt-2 text-sm">
+        {formatDate(interview.created_at)}
+      </p>
 
-      <div className="flex justify-between mt-2 gap-5 ">
+      <div className="grid grid-cols-2 gap-4 mt-4">
         <Link
-          className={buttonVariants()}
+          className={buttonVariants({ variant: "outline" })}
           href={`/mock-interview/${interview.id}/feedback`}
         >
           Feedback
