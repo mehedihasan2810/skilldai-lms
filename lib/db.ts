@@ -1343,31 +1343,32 @@ export const saveMockInterviewQNA = async ({
 
 export const updateUserAnswer = async ({
   mockId,
-  userAnswer,
-  mockQuestion,
-  correctAnswer,
+  userAnswers,
 }: {
   mockId: string;
-  userAnswer: string;
-  mockQuestion: string;
-  correctAnswer: string;
+  userAnswers: {
+    question: string;
+    userAnswer: string;
+    correctAnswer: string;
+  }[];
 }) => {
   const result = await getMockInterviewFeedback({
-    mockQuestion,
-    userAnswer
+    userAnswers,
   });
+
+  const inputData = result.map((question, i) => ({
+    mock_id: mockId,
+    rating: question.rating,
+    feedback: question.feedback,
+    correct_answer: userAnswers[i].correctAnswer,
+    question: userAnswers[i].question,
+    user_answer: userAnswers[i].userAnswer,
+  }));
 
   const { data, error } = await supabase
     .from("mock_interview_user_answers")
-    .insert({
-      mock_id: mockId,
-      rating: result.rating,
-      feedback: result.feedback,
-      correct_answer: correctAnswer,
-      question: mockQuestion,
-    })
-    .select("id")
-    .single();
+    .insert(inputData)
+    .select("id");
 
   console.log({ data, error });
 

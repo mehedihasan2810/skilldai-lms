@@ -5,26 +5,38 @@ import { generateObject } from "ai";
 import { z } from "zod";
 
 export const getMockInterviewFeedback = async ({
-  userAnswer,
-  mockQuestion,
+  userAnswers,
 }: {
-  userAnswer: string;
-  mockQuestion: string;
+  userAnswers: {
+    question: string;
+    userAnswer: string;
+  }[];
 }) => {
-  const feedbackPrompt = `
-    You are an expert interview coach providing feedback on mock interview answers.
+  const mergedPrompt = `
+    You are an expert interview coach providing feedback on multiple mock interview answers.
 
-    Question ${mockQuestion}: ${userAnswer}
+    The user answered the following questions:
+    ${userAnswers
+      .map(
+        ({ question, userAnswer }, index) => `
+    (${index + 1}) Question: ${question}
+    Answer: ${userAnswer}
+    `
+      )
+      .join("\n")}
 
-    Provide a rating (1-5) and constructive feedback (3-5 sentences) on how the user can improve their answer. Focus on clarity, conciseness, and relevance to the question. Highlight specific areas for improvement.
+    For each question, provide:
+    - A rating (1-5)
+    - 3-5 sentences of constructive feedback on how to improve the answer
     
-    Response should contain rating and feedback field.
-    `;
+    Return an array of objects, each with "rating" and "feedback" fields.
+  `;
 
   const openrouter = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY,
   });
 
+  // Expect an array of feedback objects
   const { object } = await generateObject({
     model: openrouter("google/gemini-2.0-flash-001"),
     schema: z.object({
@@ -36,10 +48,10 @@ export const getMockInterviewFeedback = async ({
         .describe("Rating for the answer (1-5)"),
       feedback: z
         .string()
-        .max(280)
         .describe("Constructive feedback for improving the answer"),
     }),
-    prompt: feedbackPrompt,
+    output: "array",
+    prompt: mergedPrompt,
   });
 
   return object;

@@ -15,9 +15,14 @@ export const getMockInterviewQNA = async ({
 }) => {
   const InputPrompt = `
   You are an expert career coach specializing in interview preparation. 
-  Based on the following job details, generate 5 insightful and challenging interview questions along with detailed and helpful answers.
-  Consider the job requirements and typical expectations for a candidate with the specified years of experience.
-
+  Generate exactly 5 interview questions and answers in valid JSON format,
+  each item with keys "question" and "answer". For example:
+  [
+    {
+      "question": "What is ...?",
+      "answer": "The reason ... is ..."
+    }
+  ]
   Job Position: ${jobPosition}
   Job Description: ${jobDesc}
   Years of Experience: ${jobExperience}

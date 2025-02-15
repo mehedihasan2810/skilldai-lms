@@ -34,12 +34,12 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({ mockInterviewQuestion
             ))}
         </div>
         <h2 className="my-5 text-md md:text-lg">
-          {mockInterviewQuestion[activeQuestionIndex]?.Question}
+          {mockInterviewQuestion[activeQuestionIndex]?.question}
         </h2>
         <Volume2
           className="cursor-pointer"
           onClick={() =>
-            textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.Question)
+            textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)
           }
         />
         <div className="border rounded-lg p-5 bg-blue-100 mt-18 md:block hidden">
@@ -48,7 +48,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({ mockInterviewQuestion
             <strong>Note:</strong>
           </h2>
           <h2 className="text-sm text-blue-600 my-2">
-            {process.env.NEXT_PUBLIC_QUESTION_NOTE}
+          Click on record answer when you want to answer the question. At the end of interview we will give you the feedback along with correct answer for each of question and your answer to compare it.
           </h2>
         </div>
       </div>

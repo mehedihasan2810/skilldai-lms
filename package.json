@@ -84,6 +84,7 @@
     "exa-js": "^1.3.3",
     "framer-motion": "^11.3.19",
     "geist": "^1.3.1",
+    "jotai": "^2.12.0",
     "katex": "^0.16.19",
     "langfuse-vercel": "^3.26.0",
     "lowlight": "^3.2.0",
