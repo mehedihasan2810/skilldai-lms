@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui";
-import { Lightbulb, Volume2 } from "lucide-react";
+import { useSpeechSynthesis } from "@/lib/hooks/use-speech-synthesis";
+import { CircleStop, Lightbulb, Volume2 } from "lucide-react";
 import React from "react";
 
 interface QuestionSectionProps {
@@ -11,6 +12,8 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
   mockInterviewQuestion,
   activeQuestionIndex,
 }) => {
+  const { speak, stop, isSpeaking, voices } = useSpeechSynthesis();
+
   const textToSpeech = (text: string) => {
     if ("speechSynthesis" in window) {
       const speech = new SpeechSynthesisUtterance(text);
@@ -44,12 +47,21 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
           <Button
             size={"icon"}
             variant={"ghost"}
-            onClick={() =>
-              textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)
-            }
+            onClick={() => {
+              // textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)
+              if (isSpeaking) {
+                stop();
+                return;
+              }
+              speak(mockInterviewQuestion[activeQuestionIndex]?.question);
+            }}
             className="mt-2"
           >
-            <Volume2 className="cursor-pointer" />
+            {isSpeaking ? (
+              <CircleStop className="size-5" />
+            ) : (
+              <Volume2 className="size-5" />
+            )}
           </Button>
         </div>
 

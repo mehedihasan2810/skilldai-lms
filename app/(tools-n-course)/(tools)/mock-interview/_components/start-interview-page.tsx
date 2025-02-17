@@ -65,6 +65,8 @@ export const StartInterviewPage = ({
       });
     },
     onSuccess: () => {
+      setWebCamEnabled(false);
+      stopListening();
       toast.success("User Answer recorded successfully");
       router.push(`/mock-interview/${interviewData.id}/feedback`);
     },
@@ -146,9 +148,12 @@ export const StartInterviewPage = ({
             )}
           </div>
           <div className="grid grid-cols-2 gap-4 mt-4 w-full">
-              <Button className="w-full" onClick={() => setWebCamEnabled(!webCamEnabled)}>
-                {webCamEnabled ? "Close WebCam" : "Enable WebCam"}
-              </Button>
+            <Button
+              className="w-full"
+              onClick={() => setWebCamEnabled(!webCamEnabled)}
+            >
+              {webCamEnabled ? "Close WebCam" : "Enable WebCam"}
+            </Button>
             <Button
               variant={isListening ? "destructive" : "secondary"}
               onClick={isListening ? stopListening : startListening}
@@ -279,7 +284,7 @@ export const StartInterviewPage = ({
             {updateUserAnswerMutation.isPending ? (
               <>
                 <Loader className="size-5 animate-spin" />
-                Processing answers...
+                Evaluating answers...
               </>
             ) : (
               "End Interview"

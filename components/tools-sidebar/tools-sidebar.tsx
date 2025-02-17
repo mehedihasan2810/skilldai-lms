@@ -77,6 +77,10 @@ const data = {
           title: "Explore careers",
           url: "/explore-careers",
         },
+        {
+          title: "Mock Interview",
+          url: "/mock-interview",
+        },
       ],
     },
   ],

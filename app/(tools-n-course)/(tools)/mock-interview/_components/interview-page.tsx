@@ -6,11 +6,28 @@ import Webcam from "react-webcam";
 import Link from "next/link";
 import { useContext } from "react";
 import { WebCamContext } from "../layout";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
+import { useRouter } from "nextjs-toploader/app";
+import { toast } from "sonner";
 
 export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
   const { webCamEnabled, setWebCamEnabled } = useContext(WebCamContext);
+
+  const queryClient = useQueryClient();
+
+  const router = useRouter();
+
+  const deleteAnswersMutation = useMutation({
+    mutationFn: async ({ mockId }: { mockId: string }) => {
+      const supabase = createClient();
+      const { error } = await supabase
+        .from("mock_interview_user_answers")
+        .delete()
+        .eq("mock_id", mockId);
+      if (error) throw new Error(error.message);
+    },
+  });
 
   const {
     data: interviewData,
@@ -41,7 +58,7 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
 
   if (isPending) {
     return (
-      <div className="flex-1 grid place-items-center ">
+      <div className="flex-1 grid place-items-center h-full">
         <div className="flex gap-2 items-center">
           <Loader className="size-5 animate-spin" /> Please wait...
         </div>
@@ -84,14 +101,14 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
         </div>
         <div className="w-full ">
           {webCamEnabled ? (
-              <Webcam
-                onUserMedia={() => setWebCamEnabled(true)}
-                onUserMediaError={() => setWebCamEnabled(false)}
-                height={300}
-                width={300}
-                mirrored={true}
-                className="w-full rounded-md"
-              />
+            <Webcam
+              onUserMedia={() => setWebCamEnabled(true)}
+              onUserMediaError={() => setWebCamEnabled(false)}
+              height={300}
+              width={300}
+              mirrored={true}
+              className="w-full rounded-md"
+            />
           ) : (
             <div className="p-4 bg-secondary border rounded-md">
               <WebcamIcon className="h-72 w-full" />
@@ -99,18 +116,39 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
           )}
           <div className="grid grid-cols-2 gap-4 mt-4">
             <Button
-            variant={webCamEnabled ? "destructive" : "outline"}
+              variant={webCamEnabled ? "destructive" : "outline"}
               className={`${webCamEnabled ? "w-full" : "w-full"}`}
               onClick={() => setWebCamEnabled(!webCamEnabled)}
             >
               {webCamEnabled ? "Close WebCam" : "Enable WebCam"}
             </Button>
-            <Link
-              className={buttonVariants()}
-              href={`/mock-interview/${interviewId}/start`}
+            <Button
+              disabled={deleteAnswersMutation.isPending}
+              onClick={() => {
+                deleteAnswersMutation.mutate(
+                  { mockId: interviewId },
+                  {
+                    onSuccess: async () => {
+                      await queryClient.invalidateQueries({
+                        queryKey: ["feedbacks"],
+                      });
+                      router.push(`/mock-interview/${interviewId}/start`);
+                    },
+                    onError: (error) => {
+                      console.error(error);
+                      toast.error(error.message);
+                    },
+                  }
+                );
+              }}
+              // href={`/mock-interview/${interviewId}/start`}
             >
-              Start Interview
-            </Link>
+              {deleteAnswersMutation.isPending ? (
+                <Loader className="size-5 animate-spin" />
+              ) : (
+                "Start Interview"
+              )}
+            </Button>
           </div>
         </div>
       </div>

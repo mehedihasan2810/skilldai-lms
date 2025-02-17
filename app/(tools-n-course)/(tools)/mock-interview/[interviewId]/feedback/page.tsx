@@ -40,6 +40,8 @@ const Feedback = () => {
     },
   });
 
+  console.log({ feedbackList });
+
   //   useEffect(() => {
   //     GetFeedback();
   //   }, []);
