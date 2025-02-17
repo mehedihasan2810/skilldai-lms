@@ -5,11 +5,11 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import Webcam from "react-webcam";
 import Link from "next/link";
 import { useContext } from "react";
-import { WebCamContext } from "../layout";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "nextjs-toploader/app";
 import { toast } from "sonner";
+import { WebCamContext } from "../context";
 
 export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
   const { webCamEnabled, setWebCamEnabled } = useContext(WebCamContext);

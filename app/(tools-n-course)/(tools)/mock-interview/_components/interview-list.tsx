@@ -5,18 +5,19 @@ import InterviewItemCard from "./interview-item-card";
 import { useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 
-const InterviewList = () => {
+const InterviewList = ({ userId }: { userId: string }) => {
   const {
     data: interviewList,
     error,
     isPending,
   } = useQuery({
-    queryKey: ["mockInterviews"],
+    queryKey: ["mockInterviews", userId],
     queryFn: async () => {
       const supabase = createClient();
       const { data, error } = await supabase
         .from("mock_interviews")
-        .select("*");
+        .select("*")
+        .eq("user_id", userId);
       if (error) throw new Error(error.message);
       return data;
     },
@@ -24,7 +25,9 @@ const InterviewList = () => {
 
   return (
     <div>
-      <h2 className="font-medium text-xl mt-8 mb-2">Previous Mock Interviews</h2>
+      <h2 className="font-medium text-xl mt-8 mb-2">
+        Previous Mock Interviews
+      </h2>
 
       {error ? (
         <div>Error loading interviews: {error.message}</div>

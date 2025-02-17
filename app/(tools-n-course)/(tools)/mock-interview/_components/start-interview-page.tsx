@@ -9,7 +9,6 @@ import { useRouter } from "nextjs-toploader/app";
 import { toast } from "sonner";
 import { updateUserAnswer } from "@/lib/db";
 import { useVoiceToText } from "@/hooks/use-voice-to-text";
-import { WebCamContext } from "../layout";
 import Webcam from "react-webcam";
 import {
   Tooltip,
@@ -17,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { WebCamContext } from "../context";
 
 export const StartInterviewPage = ({
   interviewId,

@@ -29,7 +29,7 @@ const Page = async () => {
           <AddNewInterview userId={userId} />
         </div>
 
-        <InterviewList />
+        <InterviewList userId={userId} />
       </div>
     </PageContainer>
   );
