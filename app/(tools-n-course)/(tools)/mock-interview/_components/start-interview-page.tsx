@@ -65,7 +65,7 @@ export const StartInterviewPage = ({
         mockId,
       });
     },
-    
+
     onSuccess: () => {
       setWebCamEnabled(false);
       stopListening();
@@ -223,11 +223,15 @@ export const StartInterviewPage = ({
           (transcript.length === 0 ? (
             <TooltipProvider>
               <Tooltip delayDuration={0}>
-                <TooltipTrigger className={buttonVariants({className: "opacity-50 cursor-not-allowed"})}>
+                <TooltipTrigger
+                  className={buttonVariants({
+                    className: "opacity-50 cursor-not-allowed",
+                  })}
+                >
                   Next Question
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px]">
-                    Please record your answer before moving to the next question.
+                  Please record your answer before moving to the next question.
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -282,9 +286,7 @@ export const StartInterviewPage = ({
             >
               Next Question
             </Button>
-          )
-          )
-          }
+          ))}
         {activeQuestionIndex == jsonMockResp.length - 1 && (
           <Button
             disabled={
@@ -292,7 +294,14 @@ export const StartInterviewPage = ({
             }
             onClick={() => {
               updateUserAnswerMutation.mutate({
-                userAnswers,
+                userAnswers: [
+                  ...userAnswers,
+                  {
+                    question: jsonMockResp[activeQuestionIndex]?.question,
+                    userAnswer: transcript,
+                    correctAnswer: jsonMockResp[activeQuestionIndex]?.answer,
+                  },
+                ],
                 mockId: interviewId,
               });
             }}
