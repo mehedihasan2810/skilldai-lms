@@ -65,6 +65,7 @@ export const StartInterviewPage = ({
         mockId,
       });
     },
+    
     onSuccess: () => {
       setWebCamEnabled(false);
       stopListening();

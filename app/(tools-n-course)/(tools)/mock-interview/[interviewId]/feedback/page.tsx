@@ -28,7 +28,7 @@ const Feedback = () => {
     error,
     isPending,
   } = useQuery({
-    queryKey: ["feedbacks"],
+    queryKey: ["feedbacks", params.interviewId],
     queryFn: async () => {
       const supabase = createClient();
       const { data, error } = await supabase

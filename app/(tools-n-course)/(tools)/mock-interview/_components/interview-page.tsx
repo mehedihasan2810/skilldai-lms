@@ -130,7 +130,7 @@ export const InterviewPage = ({ interviewId }: { interviewId: string }) => {
                   {
                     onSuccess: async () => {
                       await queryClient.invalidateQueries({
-                        queryKey: ["feedbacks"],
+                        queryKey: ["feedbacks", interviewId],
                       });
                       router.push(`/mock-interview/${interviewId}/start`);
                     },
