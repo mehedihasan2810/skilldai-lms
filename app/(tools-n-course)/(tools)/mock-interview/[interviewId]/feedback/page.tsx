@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import PageContainer from "@/components/dashboard/page-container";
+import { cn } from "@/lib/utils";
 
 const Feedback = () => {
   const router = useRouter();
@@ -65,7 +66,8 @@ const Feedback = () => {
       );
       // console.log("total",totalRating);
       // console.log("length",feedbackList.length);
-      return +(totalRating / feedbackList.length).toFixed(1);
+      // return +(totalRating / feedbackList.length).toFixed(1);
+      return totalRating;
     }
     return 0;
   }, [feedbackList]);
@@ -108,11 +110,16 @@ const Feedback = () => {
               Your overall interview rating{" "}
               <strong
                 className={`${
-                  overallRating >= 5 ? "text-green-500" : "text-red-600"
+                  10 >= ((feedbackList ?? []).length * 5) / 2
+                    ? "text-green-500"
+                    : "text-red-600"
                 }`}
               >
                 {overallRating}
-                <span className="text-foreground"> / 10</span>
+                <span className="text-foreground">
+                  {" "}
+                  / {(feedbackList ?? []).length * 5}
+                </span>
               </strong>
             </h2>
             <p className="">
@@ -123,27 +130,41 @@ const Feedback = () => {
               feedbackList.map((item, index) => (
                 <Collapsible
                   key={index}
-                  className="mt-4 bg-card p-4 rounded-xl border"
+                  className="mt-4 bg-card rounded-xl border p-4"
                 >
-                  <CollapsibleTrigger className="rounded-lg my-2 text-left flex justify-between gap-7 w-full">
+                  <CollapsibleTrigger className="rounded-lg text-left flex justify-between gap-7 w-full  pb-4 ">
                     {item.question} <ChevronDown className="h-5 w-5 shrink-0" />{" "}
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <div className="flex flex-col gap-4">
-                      <h2 className="text-red-600 p-4 border border-red-600 rounded-lg bg-red-600/5">
+                      <h2
+                        className={cn(
+                          "p-4 border  rounded-lg ",
+                          item.rating >= 3
+                            ? "text-green-600 border-green-600 bg-green-600/5"
+                            : "text-red-600 border-red-600 bg-red-600/5"
+                        )}
+                      >
                         <strong>Rating: </strong>
-                        {item.rating}
+                        {item.rating} / 5
                       </h2>
-                      <h2 className="p-4 border border-red-600 rounded-lg bg-red-600/5 text-sm text-red-600">
+                      <h2
+                        className={cn(
+                          "p-4 border  rounded-lg ",
+                          item.rating >= 3
+                            ? "text-green-600 border-green-600 bg-green-600/5"
+                            : "text-red-600 border-red-600 bg-red-600/5"
+                        )}
+                      >
                         <strong>Your Answer: </strong>
                         {item.user_answer}
                       </h2>
-                      <h2 className="p-4 border rounded-lg border-green-600 bg-green-600/5 text-sm text-green-600">
+                      <h2 className="p-4 border rounded-lg border-green-600 bg-green-600/5 text-green-600">
                         <strong>Correct Answer: </strong>
                         {item.correct_answer}{" "}
                         {/* Updated to match the API response field */}
                       </h2>
-                      <h2 className="p-4 border rounded-lg bg-card text-sm text-primary-900">
+                      <h2 className="p-4 border rounded-lg bg-card text-primary-900">
                         <strong>Feedback: </strong>
                         {item.feedback}
                       </h2>
