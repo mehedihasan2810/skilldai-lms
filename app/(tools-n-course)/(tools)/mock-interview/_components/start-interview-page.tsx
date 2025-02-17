@@ -1,21 +1,22 @@
 "use client";
 import React, { useContext, useState } from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 import QuestionSection from "./question-section";
-import { Loader, Mic, MicOff, Router, WebcamIcon } from "lucide-react";
-import { isUserAnswerProcessingAtom } from "../atoms";
-import { useAtom, useAtomValue } from "jotai";
+import { Loader, Mic, MicOff, WebcamIcon } from "lucide-react";
 import { useRouter } from "nextjs-toploader/app";
-import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { updateUserAnswer } from "@/lib/db";
 import { useVoiceToText } from "@/hooks/use-voice-to-text";
-import Image from "next/image";
 import { WebCamContext } from "../layout";
 import Webcam from "react-webcam";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const StartInterviewPage = ({
   interviewId,
@@ -107,8 +108,7 @@ export const StartInterviewPage = ({
 
   if (isPending) {
     return (
-      <div className="flex-1 grid place-items-center">
-        {" "}
+      <div className="flex-1 grid place-items-center h-full">
         <div className="flex items-center gap-2">
           <Loader className="size-5 animate-spin" /> Please wait...
         </div>
@@ -218,39 +218,25 @@ export const StartInterviewPage = ({
             Previous Question
           </Button>
         )}
-        {activeQuestionIndex != jsonMockResp.length - 1 && (
-          <Button
-            onClick={() => {
-              reset();
-              setUserAnswers((prev) => {
-                if (prev.length === 0) {
-                  return [
-                    {
-                      question: jsonMockResp[activeQuestionIndex]?.question,
-                      userAnswer: transcript,
-                      correctAnswer: jsonMockResp[activeQuestionIndex]?.answer,
-                    },
-                  ];
-                } else {
-                  const currentIndexData = prev[activeQuestionIndex];
-                  console.log({ currentIndexData });
-
-                  if (currentIndexData) {
-                    return prev.map((item) => {
-                      if (currentIndexData.question === item.question) {
-                        return {
-                          question: jsonMockResp[activeQuestionIndex]?.question,
-                          userAnswer: transcript,
-                          correctAnswer:
-                            jsonMockResp[activeQuestionIndex]?.answer,
-                        };
-                      }
-
-                      return item;
-                    });
-                  } else {
+        {activeQuestionIndex != jsonMockResp.length - 1 &&
+          (transcript.length === 0 ? (
+            <TooltipProvider>
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger className={buttonVariants({className: "opacity-50 cursor-not-allowed"})}>
+                  Next Question
+                </TooltipTrigger>
+                <TooltipContent className="max-w-[200px]">
+                    Please record your answer before moving to the next question.
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ) : (
+            <Button
+              onClick={() => {
+                reset();
+                setUserAnswers((prev) => {
+                  if (prev.length === 0) {
                     return [
-                      ...prev,
                       {
                         question: jsonMockResp[activeQuestionIndex]?.question,
                         userAnswer: transcript,
@@ -258,16 +244,46 @@ export const StartInterviewPage = ({
                           jsonMockResp[activeQuestionIndex]?.answer,
                       },
                     ];
+                  } else {
+                    const currentIndexData = prev[activeQuestionIndex];
+                    console.log({ currentIndexData });
+
+                    if (currentIndexData) {
+                      return prev.map((item) => {
+                        if (currentIndexData.question === item.question) {
+                          return {
+                            question:
+                              jsonMockResp[activeQuestionIndex]?.question,
+                            userAnswer: transcript,
+                            correctAnswer:
+                              jsonMockResp[activeQuestionIndex]?.answer,
+                          };
+                        }
+
+                        return item;
+                      });
+                    } else {
+                      return [
+                        ...prev,
+                        {
+                          question: jsonMockResp[activeQuestionIndex]?.question,
+                          userAnswer: transcript,
+                          correctAnswer:
+                            jsonMockResp[activeQuestionIndex]?.answer,
+                        },
+                      ];
+                    }
                   }
-                }
-              });
-              setActiveQuestionIndex(activeQuestionIndex + 1);
-            }}
-            disabled={transcript.length === 0}
-          >
-            Next Question
-          </Button>
-        )}
+                });
+                setActiveQuestionIndex(activeQuestionIndex + 1);
+              }}
+              disabled={transcript.length === 0}
+            >
+              Next Question
+            </Button>
+          )
+          )
+          }
         {activeQuestionIndex == jsonMockResp.length - 1 && (
           <Button
             disabled={
