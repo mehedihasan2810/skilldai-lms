@@ -106,7 +106,7 @@ const AddNewInterview = ({ userId }: { userId: string }) => {
               </label>
               <Input
                 className="mt-1"
-                placeholder="Ex. Full stack Developer"
+                placeholder="Ex. Full stack Developer, Sales Head, Lawyer"
                 required
                 onChange={(e) => setJobPosition(e.target.value)}
               />
@@ -117,7 +117,7 @@ const AddNewInterview = ({ userId }: { userId: string }) => {
               </label>
               <Textarea
                 className="placeholder-opacity-50"
-                placeholder="Ex. React, Angular, Nodejs, Mysql, Nosql, Python"
+                placeholder="Ex. React, Angular, Nodejs, Mysql, Nosql, Python, Sales, Legal, Marketing"
                 required
                 onChange={(e) => setJobDesc(e.target.value)}
               />
