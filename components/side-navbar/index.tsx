@@ -10,6 +10,8 @@ import {
   Loader2Icon,
   SidebarIcon,
   SquarePenIcon,
+  BellIcon,
+  UserCog ,
 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -19,6 +21,7 @@ import Image from "next/image";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
+import NotificationCenter from "@/novu/NotificationCenter"; // Import Notification Center
 
 export const SideNavBar = ({
   userId,
@@ -28,7 +31,6 @@ export const SideNavBar = ({
   userEmail: string;
 }) => {
   const [open, setOpen] = useState(false);
-
   const params = useParams();
 
   const {
@@ -70,6 +72,18 @@ export const SideNavBar = ({
                 <SquarePenIcon className="w-4 h-4" />
               </Button>
             </Link>
+
+            {/* Notification Center Button */}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="ghost">
+                  <BellIcon className="w-4 h-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Notifications</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
 
@@ -92,7 +106,10 @@ export const SideNavBar = ({
           {error && <p className="text-red-500">Could not fetch chats</p>}
         </div>
 
-        <div className=" mt-2">
+        {/* Add Notification Center Here */}
+        <NotificationCenter />
+
+        <div className="mt-2">
           <Link
             className={buttonVariants({
               variant: "ghost",
@@ -107,6 +124,16 @@ export const SideNavBar = ({
             <ThemeToggle />
             <UserButton expanded userEmail={userEmail} />
           </div>
+          <Link
+            className={buttonVariants({
+              variant: "ghost",
+              className: cn("flex gap-2 items-center w-full mb-1"),
+            })}
+            href="/admin"
+          >
+             <UserCog size={20} />
+          </Link>
+
         </div>
       </div>
     );
@@ -129,6 +156,21 @@ export const SideNavBar = ({
               <SquarePenIcon className="w-4 h-4" />
             </Button>
           </Link>
+
+          {/* Notification Center Button */}
+          <Tooltip>
+  <TooltipTrigger asChild>
+    <div className="relative">
+      <Button size="icon" variant="ghost" className="w-5 h-5 text-white" >
+        <NotificationCenter/>
+      </Button>
+    </div>
+  </TooltipTrigger>
+  <TooltipContent side="right">
+    <p>Notifications</p>
+  </TooltipContent>
+</Tooltip>
+
         </div>
       </div>
 
@@ -143,7 +185,7 @@ export const SideNavBar = ({
               })}
               href="/tools"
             >
-              <BookOpen className="size-5" />{" "}
+              <BookOpen className="size-5" />
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">
@@ -153,6 +195,23 @@ export const SideNavBar = ({
 
         <FeedbackForm email={userEmail} />
         <ThemeToggle />
+        <Tooltip>
+          <TooltipTrigger>
+            <Link
+              className={buttonVariants({
+                variant: "outline",
+                size: "icon",
+                className: cn("flex gap-2 items-center"),
+              })}
+              href="/admin"
+            >
+              <UserCog size={20} />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>Admin</p>
+          </TooltipContent>
+        </Tooltip>
         <UserButton userEmail={userEmail} />
       </div>
     </div>
