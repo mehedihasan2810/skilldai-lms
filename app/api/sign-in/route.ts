@@ -14,7 +14,14 @@ export const POST = async (req: Request) => {
     if (error) {
       throw new Error(error.message);
     }
-
+    if (data.user) {
+      // Ensure Novu user exists when user logs in
+      await fetch("/api/novu/createUser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: data.user.id, email: data.user.email }),
+      });
+    }
     return Response.json(data);
   } catch (error) {
     return Response.json({ message: (error as Error).message });
