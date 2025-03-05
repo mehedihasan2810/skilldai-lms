@@ -11,7 +11,12 @@ const NotificationInbox = () => {
   const { resolvedTheme } = useTheme();
   const { data: user, isLoading, error } = useUser(); // Get user directly
 
-  if (isLoading) return <p>...</p>;
+  if (isLoading) return  <Inbox
+  applicationIdentifier="RsdBv-8Nnrgr"
+  subscriberId="guest-user"
+  appearance={{ baseTheme: resolvedTheme === "dark" ? dark : undefined }}
+>
+</Inbox>;
   if (error) {
     console.error("Error fetching Novu user:", error);
     return <p>Error loading notifications!</p>;

@@ -11,6 +11,5 @@ export async function GET() {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
-console.log(data.session?.user)
   return NextResponse.json({ user: data.session?.user });
 }

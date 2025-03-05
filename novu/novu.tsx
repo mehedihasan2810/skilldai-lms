@@ -5,7 +5,9 @@ import { createClient } from "@/lib/supabase/server";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const novu = new Novu(process.env.NOVU_SECRET_KEY!);
+const novu = new Novu(process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!);
+console.log(process.env.NEXT_PUBLIC_NOVU_SECRET_KEY);
+
 
 // Cache to store Novu users (avoid redundant API calls)
 const novuUserCache = new Map<string, string>();
@@ -18,7 +20,6 @@ export const fetchUser = async () => {
   try {
     const response = await fetch("/api/auth/session");
     const data = await response.json();
-    console.log("from novu component ", data);
     return data.user;
   } catch (error) {
     console.error("❌ Error fetching user session:", error);
@@ -104,7 +105,7 @@ export async function sendNovuNotification(
       await axios.post(
         "https://api.novu.co/v1/events/trigger",
         { name: "skilld-email", ...notificationPayload },
-        { headers: { Authorization: `ApiKey ${process.env.NOVU_SECRET_KEY!}` } }
+        { headers: { Authorization: `ApiKey ${process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!}` } }
       );
       console.log("✅ Email notification sent successfully");
     }
@@ -113,7 +114,7 @@ export async function sendNovuNotification(
       await axios.post(
         "https://api.novu.co/v1/events/trigger",
         { name: "skilld-in-app-notifications", ...notificationPayload },
-        { headers: { Authorization: `ApiKey ${process.env.NOVU_SECRET_KEY!}` } }
+        { headers: { Authorization: `ApiKey ${process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!}` } }
       );
       console.log("✅ In-app notification sent successfully");
     }

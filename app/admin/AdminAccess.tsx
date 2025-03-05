@@ -8,7 +8,7 @@ export default function AdminAccess() {
 
   if (isLoading) return <p className="text-center text-gray-500">Loading...</p>;
 
-  if (isError || !user || user.email !== "akshat@akshats.com") {
+  if (isError || !user || user.email !== "iamvishnuamarapu@gmail.com") {
     return (
       <p className="text-center text-red-500 text-lg font-semibold mt-10">
         ❌ Access Denied: You are not an admin.
