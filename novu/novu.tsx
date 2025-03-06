@@ -1,8 +1,10 @@
 import { Novu } from "@novu/node";
 import { createClient } from "@/lib/supabase/server";
+
 import axios from "axios";
 
-const novu = new Novu(process.env.NOVU_SECRET_KEY as string);
+const novu = new Novu(process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!);
+
 
 // Cache to store Novu users (avoid redundant API calls)
 const novuUserCache = new Map<string, string>();
@@ -10,18 +12,24 @@ const novuUserCache = new Map<string, string>();
 // Topic name
 const TOPIC_KEY = "all-subscribers";
 
-// Function to get the currently logged-in user from Supabase
-export const getLoggedInUser = async () => {
+// Function to fetch the currently logged-in user
+export const fetchUser = async () => {
   const supabase = await createClient();
-  const { data: { user }, error } = await supabase.auth.getUser();
-  if (error || !user) throw new Error("Failed to fetch user from Supabase.");
-  return user;
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const user = session?.user;
+    return user;
+  } catch (error) {
+    console.error("❌ Error fetching user session:", error);
+    return null;
+  }
 };
 
 // Function to add user to Novu Topic
 const addUserToTopic = async (userId: string) => {
-  if (!userId) return; // Avoid adding empty users
-
+  if (!userId) return;
   try {
     await novu.topics.addSubscribers(TOPIC_KEY, { subscribers: [userId] });
     console.log(`✅ User ${userId} added to topic: ${TOPIC_KEY}`);
@@ -33,32 +41,28 @@ const addUserToTopic = async (userId: string) => {
 // Create Novu user and add to topic
 export const createNovuUser = async (userId: string, email: string) => {
   try {
-    // Check if the user already exists
     await novu.subscribers.get(userId);
     console.log(`✅ User already exists in Novu: ${userId}`);
   } catch {
-    // If user doesn't exist, create them in Novu
     await novu.subscribers.identify(userId, { email });
     console.log(`🎉 New Novu user created: ${userId}`);
   }
 
-  // Store user in cache
   novuUserCache.set(userId, email);
-
-  // Add user to "all-subscribers" topic
   await addUserToTopic(userId);
 };
 
 // Get or create Novu user
 export const getOrCreateNovuUser = async () => {
   try {
-    const user = await getLoggedInUser();
-    const userId = user.id;
-    const email = user.email as string;
+    const user = await fetchUser();
+    if (!user?.id || !user?.email) {
+      throw new Error("User not authenticated");
+    }
 
+    const { id: userId, email } = user;
     if (novuUserCache.has(userId)) return { userId, email };
 
-    // Ensure the user exists in Novu
     try {
       await novu.subscribers.get(userId);
     } catch {
@@ -74,6 +78,7 @@ export const getOrCreateNovuUser = async () => {
   }
 };
 
+
 // Function to send notifications to the topic
 export async function sendNovuNotification(
   message: { subject: string; body: string },
@@ -81,38 +86,29 @@ export async function sendNovuNotification(
   isInApp: boolean
 ) {
   try {
-    console.log(message)
+    console.log("📢 Sending notification:", message);
+
+    const notificationPayload = {
+      to: { type: "Topic", topicKey: "all-subscribers" },
+      payload: { subject: message.subject, body: message.body },
+    };
 
     if (isEmail) {
-      try {
-        axios.post("https://api.novu.co/v1/events/trigger", {
-          name: "skilld-email",  // Make sure this event name exists in Novu workflows
-          to: { type: "Topic", topicKey: "all-subscribers" }, 
-          payload: { subject:message.subject,body:message.body }
-        }, {
-          headers: { Authorization: `ApiKey ${process.env.NOVU_SECRET_KEY as string}` }
-        })
-        .then(response => console.log("Notification sent:", response.data))
-        .catch(error => console.error("Error sending notification:", error.response?.data || error.message));
-      } catch (error) {
-        console.error("❌ Failed to send email notification:", error);
-      }
+      await axios.post(
+        "https://api.novu.co/v1/events/trigger",
+        { name: "skilld-email", ...notificationPayload },
+        { headers: { Authorization: `ApiKey ${process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!}` } }
+      );
+      console.log("✅ Email notification sent successfully");
     }
 
     if (isInApp) {
-      try {
-        axios.post("https://api.novu.co/v1/events/trigger", {
-          name: "skilld-in-app-notifications",  // Make sure this event name exists in Novu workflows
-          to: { type: "Topic", topicKey: "all-subscribers" }, 
-          payload: { subject:message.subject,body:message.body }
-        }, {
-          headers: { Authorization: `ApiKey ${process.env.NOVU_SECRET_KEY as string}` }
-        })
-        .then(response => console.log("Notification sent:", response.data))
-        .catch(error => console.error("Error sending notification:", error.response?.data || error.message));
-      } catch (error) {
-        console.error("❌ Failed to send in-app notification:", error);
-      }
+      await axios.post(
+        "https://api.novu.co/v1/events/trigger",
+        { name: "skilld-in-app-notifications", ...notificationPayload },
+        { headers: { Authorization: `ApiKey ${process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!}` } }
+      );
+      console.log("✅ In-app notification sent successfully");
     }
   } catch (error) {
     console.error("❌ Error sending notification:", error);

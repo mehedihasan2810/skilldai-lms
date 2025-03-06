@@ -11,7 +11,6 @@ import {
   SidebarIcon,
   SquarePenIcon,
   BellIcon,
-  UserCog ,
 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -21,7 +20,7 @@ import Image from "next/image";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
-import NotificationCenter from "@/novu/NotificationCenter"; // Import Notification Center
+import NotificationInbox from "@/novu/notificationinbox"; // Import Notification Center
 
 export const SideNavBar = ({
   userId,
@@ -107,7 +106,7 @@ export const SideNavBar = ({
         </div>
 
         {/* Add Notification Center Here */}
-        <NotificationCenter />
+        <NotificationInbox userId={userId}/>
 
         <div className="mt-2">
           <Link
@@ -124,15 +123,6 @@ export const SideNavBar = ({
             <ThemeToggle />
             <UserButton expanded userEmail={userEmail} />
           </div>
-          <Link
-            className={buttonVariants({
-              variant: "ghost",
-              className: cn("flex gap-2 items-center w-full mb-1"),
-            })}
-            href="/admin"
-          >
-             <UserCog size={20} />
-          </Link>
 
         </div>
       </div>
@@ -162,7 +152,7 @@ export const SideNavBar = ({
   <TooltipTrigger asChild>
     <div className="relative">
       <Button size="icon" variant="ghost" className="w-5 h-5 text-white" >
-        <NotificationCenter/>
+        <NotificationInbox userId={userId}/>
       </Button>
     </div>
   </TooltipTrigger>
@@ -195,23 +185,6 @@ export const SideNavBar = ({
 
         <FeedbackForm email={userEmail} />
         <ThemeToggle />
-        <Tooltip>
-          <TooltipTrigger>
-            <Link
-              className={buttonVariants({
-                variant: "outline",
-                size: "icon",
-                className: cn("flex gap-2 items-center"),
-              })}
-              href="/admin"
-            >
-              <UserCog size={20} />
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent side="right">
-            <p>Admin</p>
-          </TooltipContent>
-        </Tooltip>
         <UserButton userEmail={userEmail} />
       </div>
     </div>
