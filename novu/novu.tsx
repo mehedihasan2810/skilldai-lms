@@ -1,12 +1,9 @@
 import { Novu } from "@novu/node";
-
 import { createClient } from "@/lib/supabase/server";
 
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const novu = new Novu(process.env.NEXT_PUBLIC_NOVU_SECRET_KEY!);
-console.log(process.env.NEXT_PUBLIC_NOVU_SECRET_KEY);
 
 
 // Cache to store Novu users (avoid redundant API calls)
@@ -17,25 +14,17 @@ const TOPIC_KEY = "all-subscribers";
 
 // Function to fetch the currently logged-in user
 export const fetchUser = async () => {
+  const supabase = await createClient();
   try {
-    const response = await fetch("/api/auth/session");
-    const data = await response.json();
-    return data.user;
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const user = session?.user;
+    return user;
   } catch (error) {
     console.error("❌ Error fetching user session:", error);
     return null;
   }
-};
-
-
-// React Query Hook for fetching Supabase user
-export const useUser = () => {
-  return useQuery({
-    queryKey: ["user"],
-    queryFn: fetchUser,
-    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
-    retry: 1, // Retry once on failure
-  });
 };
 
 // Function to add user to Novu Topic
@@ -67,9 +56,11 @@ export const createNovuUser = async (userId: string, email: string) => {
 export const getOrCreateNovuUser = async () => {
   try {
     const user = await fetchUser();
-    const userId = user?.id||"";
-    const email = user?.email||"" as string;
+    if (!user?.id || !user?.email) {
+      throw new Error("User not authenticated");
+    }
 
+    const { id: userId, email } = user;
     if (novuUserCache.has(userId)) return { userId, email };
 
     try {
@@ -86,6 +77,7 @@ export const getOrCreateNovuUser = async () => {
     throw new Error((error as Error).message);
   }
 };
+
 
 // Function to send notifications to the topic
 export async function sendNovuNotification(

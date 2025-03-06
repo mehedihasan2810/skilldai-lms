@@ -106,7 +106,7 @@ export const SideNavBar = ({
         </div>
 
         {/* Add Notification Center Here */}
-        <NotificationInbox />
+        <NotificationInbox userId={userId}/>
 
         <div className="mt-2">
           <Link
@@ -152,7 +152,7 @@ export const SideNavBar = ({
   <TooltipTrigger asChild>
     <div className="relative">
       <Button size="icon" variant="ghost" className="w-5 h-5 text-white" >
-        <NotificationInbox/>
+        <NotificationInbox userId={userId}/>
       </Button>
     </div>
   </TooltipTrigger>

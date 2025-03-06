@@ -88,12 +88,12 @@ export default function NotificationForm() {
         <div className="flex items-center justify-between">
           <label className="flex items-center space-x-2 text-gray-300">
             <Checkbox checked={isInApp} onCheckedChange={(checked) => setIsInApp(checked === true)} />
-            <span>Email Notification</span>
+            <span>In-App Notification</span>
           </label>
 
           <label className="flex items-center space-x-2 text-gray-300">
             <Checkbox checked={isEmail} onCheckedChange={(checked) => setIsEmail(checked === true)} />
-            <span>In-App Notification</span>
+            <span>Email Notification</span>
           </label>
         </div>
 

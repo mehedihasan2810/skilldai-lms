@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { createNovuUser } from "@/novu/novu";
 
 export const POST = async (req: Request) => {
   try {
@@ -16,11 +17,7 @@ export const POST = async (req: Request) => {
     }
     if (data.user) {
       // Ensure Novu user exists when user logs in
-      await fetch("/api/novu/createUser", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: data.user.id, email: data.user.email }),
-      });
+      await createNovuUser(data.user.id, data.user.email!);
     }
     return Response.json(data);
   } catch (error) {
