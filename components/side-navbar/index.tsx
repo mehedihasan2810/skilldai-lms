@@ -10,6 +10,7 @@ import {
   Loader2Icon,
   SidebarIcon,
   SquarePenIcon,
+  BellIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -19,6 +20,7 @@ import Image from "next/image";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
+import NotificationInbox from "@/novu/notificationinbox"; // Import Notification Center
 
 export const SideNavBar = ({
   userId,
@@ -28,7 +30,6 @@ export const SideNavBar = ({
   userEmail: string;
 }) => {
   const [open, setOpen] = useState(false);
-
   const params = useParams();
 
   const {
@@ -70,6 +71,18 @@ export const SideNavBar = ({
                 <SquarePenIcon className="w-4 h-4" />
               </Button>
             </Link>
+
+            {/* Notification Center Button */}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="ghost">
+                  <BellIcon className="w-4 h-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Notifications</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
 
@@ -92,7 +105,10 @@ export const SideNavBar = ({
           {error && <p className="text-red-500">Could not fetch chats</p>}
         </div>
 
-        <div className=" mt-2">
+        {/* Add Notification Center Here */}
+        <NotificationInbox userId={userId}/>
+
+        <div className="mt-2">
           <Link
             className={buttonVariants({
               variant: "ghost",
@@ -107,6 +123,7 @@ export const SideNavBar = ({
             <ThemeToggle />
             <UserButton expanded userEmail={userEmail} />
           </div>
+
         </div>
       </div>
     );
@@ -129,6 +146,21 @@ export const SideNavBar = ({
               <SquarePenIcon className="w-4 h-4" />
             </Button>
           </Link>
+
+          {/* Notification Center Button */}
+          <Tooltip>
+  <TooltipTrigger asChild>
+    <div className="relative">
+      <Button size="icon" variant="ghost" className="w-5 h-5 text-white" >
+        <NotificationInbox userId={userId}/>
+      </Button>
+    </div>
+  </TooltipTrigger>
+  <TooltipContent side="right">
+    <p>Notifications</p>
+  </TooltipContent>
+</Tooltip>
+
         </div>
       </div>
 
@@ -143,7 +175,7 @@ export const SideNavBar = ({
               })}
               href="/tools"
             >
-              <BookOpen className="size-5" />{" "}
+              <BookOpen className="size-5" />
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">
