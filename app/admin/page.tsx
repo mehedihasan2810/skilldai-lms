@@ -27,7 +27,7 @@ const Admin = async () => {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session || session.user.email !== "iamvishnuamarapu@gmail.com") {
+  if (!session || session.user.email !== "akshat@akshats.com") {
     return redirect("/");
   }
 
