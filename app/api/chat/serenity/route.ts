@@ -1,10 +1,35 @@
 import { streamText, convertToCoreMessages } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { createClient } from "@/lib/supabase/server";
 
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  const { messages, email } = await req.json();
+  const { messages, email, userId } = await req.json();
+
+  console.log({ email, userId });
+
+  const supabase = await createClient();
+
+  const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
+  const CURRENT_MONTH = new Date().getMonth() + 1;
+  const CURRENT_YEAR = new Date().getFullYear();
+
+  const { data: tokenUsage, error } = await supabase
+    .from("token_usage")
+    .select("total_tokens,input_token,output_token")
+    .eq("user_email", email)
+    .eq("month", CURRENT_MONTH)
+    .eq("year", CURRENT_YEAR)
+    .single();
+
+  console.log({ tokenUsage, error });
+
+  console.log({ MAX_TOKENS });
+
+  if ((tokenUsage?.total_tokens || 0) >= (Number(MAX_TOKENS) || 0)) {
+    return new Response("Monthly token limit reached", { status: 429 });
+  }
 
   const openrouter = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY,
@@ -30,6 +55,28 @@ export async function POST(req: Request) {
 
     onFinish: async ({ finishReason, usage }) => {
       console.log({ finishReason, usage });
+      const { data, error: updateError } = await supabase
+        .from("token_usage")
+        .upsert(
+          {
+            type: `chat:serenity`,
+            user_id: userId,
+            user_email: email,
+            email: email,
+            month: CURRENT_MONTH,
+            year: CURRENT_YEAR,
+            input_token: (tokenUsage?.input_token || 0) + usage.promptTokens,
+            output_token:
+              (tokenUsage?.output_token || 0) + usage.completionTokens,
+            total_tokens: (tokenUsage?.total_tokens || 0) + usage.totalTokens,
+            llm: "google",
+            model: "gemini-2.0-flash-001",
+          },
+          {
+            onConflict: "user_email",
+          }
+        )
+        .select("total_tokens");
     },
   });
 
