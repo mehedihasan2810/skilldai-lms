@@ -1,17 +1,10 @@
-import {
-  codeGPTSystemPrompt,
-  studyBuddySystemPrompt,
-} from "@/app/api/chat/systemPrompt";
-import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
-import { streamText, convertToCoreMessages, Message, ImagePart } from "ai";
-import { createOpenAI, openai } from "@ai-sdk/openai";
-import { createClient } from "@/lib/supabase/server";
+import { streamText, convertToCoreMessages } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages, email } = await req.json();
 
   const openrouter = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY,
@@ -24,16 +17,16 @@ export async function POST(req: Request) {
 
     // maxTokens: 50,
     messages: convertToCoreMessages(messages),
-    //  experimental_telemetry: {
-    //   isEnabled: true,
-    //   functionId: "serenity-chat",
-    //   metadata: {
-    //     tags: ["serenity-chat", user_email],
-    //     userId: user_email,
-    //     sessionId: "serenity-chat",
-    //     user: user_email,
-    //   },
-    // },
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "serenity-chat",
+      metadata: {
+        tags: ["serenity-chat", email],
+        userId: email,
+        sessionId: "serenity-chat",
+        user: email,
+      },
+    },
 
     onFinish: async ({ finishReason, usage }) => {
       console.log({ finishReason, usage });

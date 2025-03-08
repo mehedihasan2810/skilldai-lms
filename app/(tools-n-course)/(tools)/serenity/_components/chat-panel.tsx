@@ -114,11 +114,9 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   } = useChat({
     api: "/api/chat/serenity",
     initialMessages,
+
     onFinish: async (message) => {
       console.log({ chatId, message });
-      // if (chatId) {
-      //   await addMessage(chatId, message);
-      // }
     },
     onError(error) {
       console.log({ chatError: error.message });
@@ -129,23 +127,20 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       reportErrorAction({
         userEmail,
         errorMessage: error.message,
-        errorTrace: `[ChatPanel] [useChat] [onError] [app/components/chat/panel.tsx]`,
-        errorSourceUrl: "/chat",
+        errorTrace: `[ChatPanel] [useChat] [onError] [app/(tools-n-course)/(tools)/serenity/_components/chat-panel.tsx]`,
+        errorSourceUrl: "/serenity",
       });
     },
     sendExtraMessageFields: true,
-    // body: { user_email: session?.user.email || "userrrr" },
+    body: { email: userEmail },
   });
 
   // Scroll as new messages are added
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
 
-  // Whisper hook setup for voice input
   const useWhispherHook = useRealWhisper;
-  // const useWhispherHook = "getSettings().openaiApiKey"
-  //   ? useRealWhisper
-  //   : useFakeWhisper;
+
   const { recording, transcribing, transcript, startRecording, stopRecording } =
     useWhispherHook({
       apiKey: "getSettings().openaiApiKey",
@@ -157,73 +152,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       setInput((prev) => prev + ` ${transcript.text}`);
     }
   }, [recording, transcribing, transcript?.text, setInput]);
-
-  // Handle attachment management
-  const handleAddAttachment: ChatInputProps["onAddAttachment"] = (
-    newAttachments
-  ) => {
-    setAttachments((prev) => [...prev, ...newAttachments]);
-  };
-
-  const handleAddFiles = (newFiles: FileList) => {
-    setFiles(newFiles);
-    // setFiles((prev) => [...prev, ...newFiles]);
-  };
-
-  const handleRemoveAttachment: ChatInputProps["onRemoveAttachment"] = (
-    attachment
-  ) => {
-    setFiles(null);
-    setAttachments((prev) =>
-      prev.filter((item) => item.url !== attachment.url)
-    );
-  };
-
-  // Handle sending messages
-  const handleSend = async (event?: SyntheticEvent) => {
-    const query = input.trim();
-
-    if (!query) return;
-
-    const options = files ? { experimental_attachments: files } : {};
-    console.log({ files });
-    handleSubmit(event, {
-      body: {
-        userId,
-        user_email: userEmail,
-        activeChatTab: chat?.type ?? activeChatTab,
-      },
-      ...options,
-    });
-
-    setInput("");
-    stopRecording();
-
-    const userAttachment = files
-      ? [
-          {
-            contentType: files[0].type,
-            name: files[0].name,
-            url: await convertFileToBase64(files[0]),
-          },
-        ]
-      : [];
-
-    if (chatId) {
-      await addMessage(
-        // supabase,
-        chatId,
-        { role: "user", content: query },
-        userAttachment
-      );
-    }
-
-    setAttachments([]);
-    setSelectedArtifacts([]);
-    setFiles(null);
-  };
-
-  console.log({ messages });
 
   return (
     <>
