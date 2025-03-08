@@ -90,7 +90,10 @@ export const ChatInput = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
-      <button className="rounded-full size-10 flex items-center justify-center bg-muted text-muted-foreground p-2">
+      <button
+        onClick={submitForm}
+        className="rounded-full size-10 flex items-center justify-center bg-muted text-muted-foreground p-2"
+      >
         <SendIcon />
       </button>
     </div>
