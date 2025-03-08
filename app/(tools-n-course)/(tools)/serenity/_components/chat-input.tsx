@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Attachment, ChatRequestOptions, CreateMessage, Message } from "ai";
 import { SendIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { toast } from "sonner";
@@ -40,6 +41,8 @@ export const ChatInput = ({
   ) => void;
   className?: string;
 }) => {
+  const pathname = usePathname();
+  console.log({ pathname });
   const [isFocused, setIsFocused] = useState(false);
   const submitForm = useCallback(() => {
     window.history.replaceState({}, "", `/serenity/${chatId}`);
@@ -49,12 +52,7 @@ export const ChatInput = ({
     });
 
     setAttachments([]);
-  }, [
-    attachments,
-    handleSubmit,
-    setAttachments,
-    chatId,
-  ]);
+  }, [attachments, handleSubmit, setAttachments, chatId]);
   return (
     <div
       className={cn(
@@ -84,7 +82,11 @@ export const ChatInput = ({
         }}
         autoFocus
         maxRows={5}
-        placeholder="Type a message..."
+        placeholder={
+          pathname !== "/serenity"
+            ? "Type a message..."
+            : "How do you feel today?"
+        }
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />

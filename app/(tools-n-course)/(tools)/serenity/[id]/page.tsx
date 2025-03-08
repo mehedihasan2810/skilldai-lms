@@ -1,10 +1,14 @@
 import React from "react";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { generateUUID } from "@/lib/utils";
 import { ChatPanel } from "../_components/chat-panel";
 
-export default async function Serenity() {
+export default async function Serenity({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const supabase = await createClient();
 
   const {
@@ -16,8 +20,6 @@ export default async function Serenity() {
   }
 
   const user = session.user;
-
-  const id = generateUUID();
 
   return <ChatPanel id={id} userEmail={user.email ?? ""} userId={user.id} />;
 }

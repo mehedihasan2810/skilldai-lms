@@ -17,6 +17,14 @@ import { toast } from "sonner";
 import { reportErrorAction } from "@/actions/report-error-via-mail";
 import { ChatInput } from "./chat-input";
 import { ChatMessageList } from "./message-list";
+import { Plus } from "lucide-react";
+import {
+  Button,
+  TooltipTrigger,
+  TooltipProvider,
+  TooltipContent,
+  Tooltip,
+} from "@/components/ui";
 
 type Props = {
   id: string | null;
@@ -30,7 +38,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
   // State management
   const [chatId, setChatId] = useState(id);
-  const [initialMessages, setInitialMessages] = useState<Message[]>(dummyMessages);
+  const [initialMessages, setInitialMessages] = useState<Message[]>([]);
   const [fetchingMessages, setFetchingMessages] = useState(false);
   const [currentArtifact, setCurrentArtifact] =
     useState<ArtifactMessagePartData | null>(null);
@@ -225,7 +233,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
         )}
         ref={scrollRef}
       >
-        <div className="relative mx-auto flex flex-col max-w-3xl flex-1 md:px-2">
+        <div className="relative mx-auto flex flex-col max-w-3xl flex-1 px-4 md:px-0 h-full">
           <ChatMessageList
             messages={messages}
             containerRef={messagesRef}
@@ -245,6 +253,27 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
             handleSubmit={handleSubmit}
           />
         </div>
+        {messages.length !== 0 && (
+          <TooltipProvider>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute top-4 left-4 w-8 h-8 px-1.5"
+                  onClick={() => {
+                    setMessages([]);
+                    setInput("");
+                    window.history.replaceState({}, "", "/serenity");
+                  }}
+                >
+                  <Plus />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>New chat</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
       </div>
     </>
   );

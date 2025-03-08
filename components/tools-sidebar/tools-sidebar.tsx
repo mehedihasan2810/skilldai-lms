@@ -8,6 +8,7 @@ import {
   BookOpen,
   BookOpenCheck,
   Bot,
+  Brain,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -209,6 +210,18 @@ export function AppSidebar({
                 <SidebarMenuButton tooltip="Exams">
                   <BookOpenCheck />
                   <span>Exams</span>
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <Link href={`/serenity`}>
+                <SidebarMenuButton tooltip="Serenity">
+                  <Brain />
+                  <span>Serenity</span>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>

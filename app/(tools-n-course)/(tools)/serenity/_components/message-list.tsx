@@ -16,7 +16,8 @@ import {
 import Image from "next/image";
 import React, { Fragment, RefObject, useState } from "react";
 import { ChatMessage } from "./message";
-
+import { MessageLoading } from "@/components/message-loading";
+import { cn } from "@/lib/utils";
 type Props = {
   messages: Message[];
   containerRef: RefObject<HTMLDivElement>;
@@ -60,10 +61,26 @@ export const ChatMessageList = React.memo(
     console.log({ isSpeaking, voices });
 
     return (
-      <div
-        ref={containerRef}
-        className="flex-1 flex flex-col gap-4"
-      >
+      <div ref={containerRef} className="flex-1 flex flex-col gap-4">
+        {messages.length === 0 && (
+          <div className="flex items-center justify-center h-full">
+            <div className="text-center">
+              <Image
+                src="/serenity.png"
+                alt="Ai assistant logo"
+                className="max-w-[300px] object-contain shrink-0"
+                width={300}
+                height={300}
+              />
+              <p className="text-lg font-medium mt-4">
+                Hi I am Anita, your AI therapist.
+              </p>
+              <p className="text-lg font-medium mt-2">
+                I am here to listen to your struggles.
+              </p>
+            </div>
+          </div>
+        )}
         {messages.map((message, index) => (
           <Fragment key={message.id}>
             <ChatMessage
@@ -72,7 +89,12 @@ export const ChatMessageList = React.memo(
               attachments={message.experimental_attachments || []}
             />
             {message.role === "assistant" && !isLoading && (
-              <div className="flex items-center  gap-1 text-muted-foreground -translate-y-2 pl-8">
+              <div
+                className={cn(
+                  "flex items-center  gap-1 text-muted-foreground -translate-y-2 pl-8",
+                  index === messages.length - 1 && "pb-4"
+                )}
+              >
                 <button
                   title="Read aloud"
                   className="p-1.5 rounded-md hover:bg-muted"
@@ -105,14 +127,12 @@ export const ChatMessageList = React.memo(
                 </button>
               </div>
             )}
-
           </Fragment>
         ))}
         {isChatLoading && (
           <>
-            <Separator />
-            <div className={`flex items-start gap-3 px-2 py-2 rounded-md`}>
-              <div className={`border rounded-md p-1 shrink-0 mt-1.5`}>
+            <div className={`flex items-center gap-3`}>
+              <div className={`border rounded-md p-1 shrink-0`}>
                 {" "}
                 <Image
                   src="/skilld-logo.png"
@@ -122,7 +142,7 @@ export const ChatMessageList = React.memo(
                   height={20}
                 />{" "}
               </div>{" "}
-              <Loader className="size-6 animate-spin mt-2.5" />
+              <MessageLoading />
             </div>
           </>
         )}
