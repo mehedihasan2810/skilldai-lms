@@ -1,7 +1,6 @@
 "use client";
 
 import { Props as ChatInputProps } from "@/components/chat/input";
-import { ChatMessageList } from "@/components/chat/message-list";
 import { Message, useChat } from "ai/react";
 import { addMessage, createChat, getChat, getChatMessages } from "@/lib/db";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -17,6 +16,7 @@ import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { toast } from "sonner";
 import { reportErrorAction } from "@/actions/report-error-via-mail";
 import { ChatInput } from "./chat-input";
+import { ChatMessageList } from "./message-list";
 
 type Props = {
   id: string | null;
@@ -129,6 +129,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     isLoading: generatingResponse,
     handleSubmit,
   } = useChat({
+    api: "/api/chat/serenity",
     initialMessages,
     onFinish: async (message) => {
       console.log({ chatId, message });
@@ -264,11 +265,11 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     <>
       <div
         className={cn(
-          "relative flex w-full pt-4 sm:pt-6 flex-1 overflow-x-hidden overflow-y-scroll"
+          "relative flex w-full flex-1 overflow-x-hidden overflow-y-auto h-[calc(100dvh-64px)] border border-red-500"
         )}
         ref={scrollRef}
       >
-        <div className="relative mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2">
+        <div className=" mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2 border border-blue-500">
           <ChatMessageList
             messages={messages}
             containerRef={messagesRef}
