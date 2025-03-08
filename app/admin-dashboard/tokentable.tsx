@@ -52,7 +52,9 @@ export default function TokenUsageTable({ data }: { data: TokenUsage[] }) {
               <TableCell>{row.type}</TableCell>
               <TableCell>{row.model || "N/A"}</TableCell>
               <TableCell>{row.llm || "N/A"}</TableCell>
-              <TableCell>{new Date(row.created_at).toLocaleString()}</TableCell>
+              <TableCell>{new Date(row.created_at).toLocaleString("en-US", { hour12: true })}</TableCell>
+
+
             </TableRow>
           ))}
         </TableBody>

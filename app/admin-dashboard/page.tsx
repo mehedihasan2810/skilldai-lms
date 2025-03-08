@@ -4,7 +4,10 @@ import TokenUsageTable from "./tokentable";
 export default async function AdminDashboard() {
     const supabase =await createClient();
   // Fetch data from Supabase (server-side)
-  const { data, error } = await supabase.from("token_usage").select("*");
+  const { data, error } = await supabase
+  .from("token_usage")
+  .select("*")
+  .order("total_tokens", { ascending: false }); // Sorts in descending order
 
   if (error) {
     console.error("Error fetching token usage:", error);
