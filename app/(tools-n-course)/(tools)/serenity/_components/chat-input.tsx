@@ -58,7 +58,7 @@ export const ChatInput = ({
   return (
     <div
       className={cn(
-        "absolute bottom-0 left-0 right-0 w-full rounded-[2rem] bg-secondary text-sm outline-none shadow flex items-center gap-1 pr-2 mb-2 overflow-hidden transition-all shrink-0",
+        "sticky bottom-4 left-0 right-0 w-full rounded-[2rem] bg-secondary text-sm outline-none shadow flex items-center gap-1 pr-2 mb-4 overflow-hidden transition-all shrink-0",
         isFocused && "border border-ring outline-none ring-[4px] ring-ring/20",
         className
       )}

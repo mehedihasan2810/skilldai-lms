@@ -30,7 +30,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
   // State management
   const [chatId, setChatId] = useState(id);
-  const [initialMessages, setInitialMessages] = useState<Message[]>([]);
+  const [initialMessages, setInitialMessages] = useState<Message[]>(dummyMessages);
   const [fetchingMessages, setFetchingMessages] = useState(false);
   const [currentArtifact, setCurrentArtifact] =
     useState<ArtifactMessagePartData | null>(null);
@@ -53,9 +53,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
   console.log({ chat });
 
-
-
- 
   // Create new chat mutation
   const createChatMutation = useMutation({
     mutationFn: async ({
@@ -111,9 +108,9 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     initialMessages,
     onFinish: async (message) => {
       console.log({ chatId, message });
-      if (chatId) {
-        await addMessage(chatId, message);
-      }
+      // if (chatId) {
+      //   await addMessage(chatId, message);
+      // }
     },
     onError(error) {
       console.log({ chatError: error.message });
@@ -136,8 +133,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
 
- 
-
   // Whisper hook setup for voice input
   const useWhispherHook = useRealWhisper;
   // const useWhispherHook = "getSettings().openaiApiKey"
@@ -154,8 +149,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       setInput((prev) => prev + ` ${transcript.text}`);
     }
   }, [recording, transcribing, transcript?.text, setInput]);
-
-
 
   // Handle attachment management
   const handleAddAttachment: ChatInputProps["onAddAttachment"] = (
@@ -184,8 +177,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
     if (!query) return;
 
-
-
     const options = files ? { experimental_attachments: files } : {};
     console.log({ files });
     handleSubmit(event, {
@@ -196,8 +187,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
       },
       ...options,
     });
-
-   
 
     setInput("");
     stopRecording();
@@ -232,11 +221,11 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     <>
       <div
         className={cn(
-          "max-w-3xl mx-auto relative flex flex-col w-full flex-1 overflow-x-hidden overflow-y-auto h-[calc(100dvh-64px)] border border-red-500"
+          "relative w-full flex-1 overflow-x-hidden overflow-y-auto h-[calc(100dvh-64px)] pt-4"
         )}
         ref={scrollRef}
       >
-        {/* <div className=" mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2 border border-blue-500"> */}
+        <div className="relative mx-auto flex flex-col max-w-3xl flex-1 md:px-2">
           <ChatMessageList
             messages={messages}
             containerRef={messagesRef}
@@ -255,8 +244,63 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
             append={append}
             handleSubmit={handleSubmit}
           />
-        {/* </div> */}
+        </div>
       </div>
     </>
   );
 };
+
+const dummyMessages = [
+  {
+    id: "qvFrhnHoyV7J2clI",
+    createdAt: "2025-03-08T14:11:34.688Z",
+    role: "user",
+    content: "hello tell me how you can help me",
+    parts: [
+      {
+        type: "text",
+        text: "hello tell me how you can help me",
+      },
+    ],
+  },
+  {
+    id: "msg-tRzRbfaMlIwiM5OmNueTNMz9",
+    createdAt: "2025-03-08T14:11:38.441Z",
+    role: "assistant",
+    content:
+      "Hi there! I'm Anita, and I'm here to listen and chat with you about whatever's on your mind. Think of me as a friendly ear and a supportive guide.\n\nI can help you explore your thoughts and feelings, understand patterns in your behavior, and work towards positive changes in your life. I often use ideas from different therapy approaches like Cognitive Behavioral Therapy, Solution-Focused Therapy, Person-Centered Therapy, and Gestalt Therapy.\n\nWhat's been on your mind lately?\n",
+    parts: [
+      {
+        type: "text",
+        text: "Hi there! I'm Anita, and I'm here to listen and chat with you about whatever's on your mind. Think of me as a friendly ear and a supportive guide.\n\nI can help you explore your thoughts and feelings, understand patterns in your behavior, and work towards positive changes in your life. I often use ideas from different therapy approaches like Cognitive Behavioral Therapy, Solution-Focused Therapy, Person-Centered Therapy, and Gestalt Therapy.\n\nWhat's been on your mind lately?\n",
+      },
+    ],
+    revisionId: "pmZTJaiX3Wrqcyl2",
+  },
+  {
+    id: "G6HrI3k96aznFHrc",
+    createdAt: "2025-03-08T14:11:48.167Z",
+    role: "user",
+    content: "who are you?",
+    parts: [
+      {
+        type: "text",
+        text: "who are you?",
+      },
+    ],
+  },
+  {
+    id: "msg-qRzeN9gNefqUkC81JSpJhlga",
+    createdAt: "2025-03-08T14:11:50.451Z",
+    role: "assistant",
+    content:
+      "I'm Anita, a therapist here to listen and support you. I'm trained in various therapeutic techniques, and I'm here to provide a safe space for you to explore your thoughts and feelings.\n\nWhat's something you'd like to talk about today?\n",
+    parts: [
+      {
+        type: "text",
+        text: "I'm Anita, a therapist here to listen and support you. I'm trained in various therapeutic techniques, and I'm here to provide a safe space for you to explore your thoughts and feelings.\n\nWhat's something you'd like to talk about today?\n",
+      },
+    ],
+    revisionId: "dY8BLiHrCdcm1ngd",
+  },
+];

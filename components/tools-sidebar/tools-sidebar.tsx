@@ -180,7 +180,7 @@ export function AppSidebar({
       );
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" variant="floating" {...props}>
       <SidebarHeader className="overflow-x-hidden">
         <Link
           href={"/new"}

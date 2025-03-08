@@ -62,7 +62,7 @@ export const ChatMessageList = React.memo(
     return (
       <div
         ref={containerRef}
-        className="flex-1 flex flex-col gap-4 max-w-3xl mx-auto w-full pt-20 sm:pt-4 pb-10 px-2 sm:px-0 "
+        className="flex-1 flex flex-col gap-4"
       >
         {messages.map((message, index) => (
           <Fragment key={message.id}>
@@ -72,7 +72,7 @@ export const ChatMessageList = React.memo(
               attachments={message.experimental_attachments || []}
             />
             {message.role === "assistant" && !isLoading && (
-              <div className="flex items-center  gap-1 text-muted-foreground -translate-y-2 pl-10">
+              <div className="flex items-center  gap-1 text-muted-foreground -translate-y-2 pl-8">
                 <button
                   title="Read aloud"
                   className="p-1.5 rounded-md hover:bg-muted"
@@ -106,7 +106,6 @@ export const ChatMessageList = React.memo(
               </div>
             )}
 
-            {index !== messages.length - 1 && <Separator />}
           </Fragment>
         ))}
         {isChatLoading && (
