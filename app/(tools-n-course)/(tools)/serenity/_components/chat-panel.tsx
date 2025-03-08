@@ -55,29 +55,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
 
 
 
-  // Fetch messages for existing chat
-  const fetchMessages = async () => {
-    if (chatId) {
-      setFetchingMessages(true);
-      const messages = await getChatMessages(chatId);
-      setInitialMessages(
-        messages.map((message) => ({
-          id: String(message.id),
-          role: message.role as Message["role"],
-          content: message.text,
-          experimental_attachments: (message.attachments as Attachment[]) || [],
-        }))
-      );
-      setFetchingMessages(false);
-    } else {
-      setInitialMessages([]);
-    }
-  };
-
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
+ 
   // Create new chat mutation
   const createChatMutation = useMutation({
     mutationFn: async ({
@@ -158,18 +136,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
 
-  // Create new chat when conditions are met
-  useEffect(() => {
-    if (!chatId && messages.length === 2 && !generatingResponse) {
-      createChatMutation.mutate({
-        title: messages[0].content.slice(0, 100),
-        firstMessage: messages[0],
-        secondMessage: messages[1],
-        userId,
-        type: activeChatTab,
-      });
-    }
-  }, [chatId, messages, generatingResponse]);
+ 
 
   // Whisper hook setup for voice input
   const useWhispherHook = useRealWhisper;
@@ -265,11 +232,11 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     <>
       <div
         className={cn(
-          "relative flex w-full flex-1 overflow-x-hidden overflow-y-auto h-[calc(100dvh-64px)] border border-red-500"
+          "max-w-3xl mx-auto relative flex flex-col w-full flex-1 overflow-x-hidden overflow-y-auto h-[calc(100dvh-64px)] border border-red-500"
         )}
         ref={scrollRef}
       >
-        <div className=" mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2 border border-blue-500">
+        {/* <div className=" mx-auto flex h-full w-full max-w-3xl flex-1 flex-col md:px-2 border border-blue-500"> */}
           <ChatMessageList
             messages={messages}
             containerRef={messagesRef}
@@ -288,7 +255,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
             append={append}
             handleSubmit={handleSubmit}
           />
-        </div>
+        {/* </div> */}
       </div>
     </>
   );
