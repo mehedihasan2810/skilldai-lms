@@ -20,7 +20,6 @@ import Image from "next/image";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
-import NotificationInbox from "@/novu/notificationinbox"; // Import Notification Center
 
 export const SideNavBar = ({
   userId,
@@ -71,18 +70,6 @@ export const SideNavBar = ({
                 <SquarePenIcon className="w-4 h-4" />
               </Button>
             </Link>
-
-            {/* Notification Center Button */}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button size="icon" variant="ghost">
-                  <BellIcon className="w-4 h-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="right">
-                <p>Notifications</p>
-              </TooltipContent>
-            </Tooltip>
           </div>
         </div>
 
@@ -104,9 +91,6 @@ export const SideNavBar = ({
           {isLoading && <Loader2Icon className="w-4 h-4 animate-spin" />}
           {error && <p className="text-red-500">Could not fetch chats</p>}
         </div>
-
-        {/* Add Notification Center Here */}
-        <NotificationInbox userId={userId}/>
 
         <div className="mt-2">
           <Link
@@ -146,20 +130,6 @@ export const SideNavBar = ({
               <SquarePenIcon className="w-4 h-4" />
             </Button>
           </Link>
-
-          {/* Notification Center Button */}
-          <Tooltip>
-  <TooltipTrigger asChild>
-    <div className="relative">
-      <Button size="icon" variant="ghost" className="w-5 h-5 text-white" >
-        <NotificationInbox userId={userId}/>
-      </Button>
-    </div>
-  </TooltipTrigger>
-  <TooltipContent side="right">
-    <p>Notifications</p>
-  </TooltipContent>
-</Tooltip>
 
         </div>
       </div>
