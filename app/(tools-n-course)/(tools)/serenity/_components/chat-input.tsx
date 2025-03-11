@@ -1,8 +1,16 @@
+import { Button } from "@/components/ui/button";
+import { useVoiceToText } from "@/hooks/use-voice-to-text";
 import { cn } from "@/lib/utils";
 import { Attachment, ChatRequestOptions, CreateMessage, Message } from "ai";
-import { SendIcon } from "lucide-react";
+import { SendIcon, Mic, MicOff } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { Dispatch, SetStateAction, useCallback, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { toast } from "sonner";
 
@@ -44,6 +52,16 @@ export const ChatInput = ({
   const pathname = usePathname();
   console.log({ pathname });
   const [isFocused, setIsFocused] = useState(false);
+
+  const {
+    startListening,
+    stopListening,
+    transcript,
+    setTranscript,
+    reset,
+    isListening,
+  } = useVoiceToText();
+
   const submitForm = useCallback(() => {
     window.history.replaceState({}, "", `/serenity/${chatId}`);
 
@@ -53,6 +71,13 @@ export const ChatInput = ({
 
     setAttachments([]);
   }, [attachments, handleSubmit, setAttachments, chatId]);
+
+  useEffect(() => {
+    if (transcript && isListening) {
+      setInput(transcript.trim());
+    }
+  }, [isListening, setInput, transcript]);
+
   return (
     <div
       className={cn(
@@ -91,8 +116,31 @@ export const ChatInput = ({
         onBlur={() => setIsFocused(false)}
       />
       <button
+        onClick={
+          isListening
+            ? () => {
+                stopListening();
+                setInput("");
+              }
+            : startListening
+        }
+        type="button"
+        className={cn(
+          "size-9 p-2 flex items-center justify-center relative rounded-full bg-muted text-muted-foreground",
+          isListening
+            ? "text-red-500 after:absolute after:right-0 after:top-0 after:size-3 after:animate-ping after:rounded-full after:bg-red-500 after:duration-1000 hover:text-red-500/80"
+            : ""
+        )}
+      >
+        {isListening ? (
+          <MicOff className="" />
+        ) : (
+          <Mic className="" />
+        )}
+      </button>
+      <button
         onClick={submitForm}
-        className="rounded-full size-10 flex items-center justify-center bg-muted text-muted-foreground p-2"
+        className="rounded-full size-9 flex items-center justify-center bg-primary/15 text-primary p-2"
       >
         <SendIcon />
       </button>
