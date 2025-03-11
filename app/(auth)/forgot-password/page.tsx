@@ -12,8 +12,10 @@ export default async function Page(props: { searchParams: Promise<Message> }) {
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const user = session?.user;
 
   console.log({ user });
 

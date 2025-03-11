@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader } from "lucide-react";
@@ -28,7 +28,7 @@ import { saveUserInfo } from "@/lib/db";
 import { useRouter } from "nextjs-toploader/app";
 import { revalidateSetupForm } from "@/actions/revalidate-setup-form";
 import { reportErrorAction } from "@/actions/report-error-via-mail";
-
+import { updateUserInfo } from "@/actions/update-user-info";
 const professions = ["Student", "Teacher", "Developer", "Other"];
 
 const formSchema = z.object({
@@ -39,7 +39,15 @@ const formSchema = z.object({
   subject: z.string(),
 });
 
-export const SetupForm = ({ userId, userEmail }: { userId: string, userEmail: string }) => {
+export const SetupForm = ({
+  userId,
+  userEmail,
+}: {
+  userId: string;
+  userEmail: string;
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const router = useRouter();
 
   const saveUserInfoMutation = useMutation({
@@ -99,7 +107,9 @@ export const SetupForm = ({ userId, userEmail }: { userId: string, userEmail: st
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ values });
 
-    saveUserInfoMutation.mutate({
+    setIsLoading(true);
+
+    const { data, error } = await updateUserInfo({
       userId,
       profession: values.profession,
       institution: values.institution,
@@ -107,6 +117,28 @@ export const SetupForm = ({ userId, userEmail }: { userId: string, userEmail: st
       section: values.section,
       subject: values.subject,
     });
+
+    setIsLoading(false);
+
+    if (error) {
+      toast.error(error);
+      reportErrorAction({
+        userEmail: userEmail,
+        errorMessage: error,
+        errorTrace: `[SetupForm] [onSubmit] [updateUserInfo] [app/(auth)/setup/setup-form.tsx]`,
+        errorSourceUrl: "/setup",
+      });
+    }
+
+    router.push("/new");
+
+    // saveUserInfoMutation.mutate({
+    //   userId,
+    //   profession: values.profession,
+    //   institution: values.institution,
+    //   section: values.section,
+    //   subject: values.subject,
+    // });
   }
 
   return (
@@ -226,11 +258,9 @@ export const SetupForm = ({ userId, userEmail }: { userId: string, userEmail: st
         <Button
           type="submit"
           className="w-full flex justify-center gap-2"
-          disabled={saveUserInfoMutation.isPending}
+          disabled={isLoading}
         >
-          {saveUserInfoMutation.isPending && (
-            <Loader className="animate-spin size-5" />
-          )}
+          {isLoading && <Loader className="animate-spin size-5" />}
           Confirm
         </Button>
       </form>

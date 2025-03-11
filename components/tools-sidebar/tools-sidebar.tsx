@@ -172,13 +172,25 @@ export function AppSidebar({
   userProfession: string;
   userEmail: string;
 }) {
+  console.log({ userProfession });
   const isRoleTeacher = userProfession === "Teacher";
 
-  const filteredNavItems = isRoleTeacher
+  // const filteredNavItems = isRoleTeacher
+  //   ? data.navTools
+  //   : data.navTools.filter(
+  //       (navItem) => !teacherOnlyNavItems.includes(navItem.url ?? "")
+  //     );
+
+  const filteredNavTools = isRoleTeacher
     ? data.navTools
-    : data.navTools.filter(
-        (navItem) => !teacherOnlyNavItems.includes(navItem.url ?? "")
-      );
+    : data.navTools.map((navItem) => {
+        return {
+          ...navItem,
+          items: navItem.items?.filter(
+            (item) => !teacherOnlyNavItems.includes(item.url)
+          ),
+        };
+      });
 
   return (
     <Sidebar collapsible="icon" variant="floating" {...props}>
@@ -200,7 +212,7 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         {/* <NavProjects projects={data.projects} /> */}
-        <NavMain items={filteredNavItems} />
+        <NavMain items={filteredNavTools} />
         <NavMain items={data.navCareers} />
         <NavMain items={data.navMain} />
         <SidebarGroup>

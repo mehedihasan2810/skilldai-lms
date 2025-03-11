@@ -7,6 +7,8 @@ import { redirect } from "next/navigation";
 const NewChatPage = async () => {
   const supabase = await createClient();
 
+  // await supabase.auth.refreshSession();
+
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -16,6 +18,8 @@ const NewChatPage = async () => {
   }
 
   const user = session.user;
+
+  console.log(user);
 
   // const { error, data } = await supabase
   //   .from("user_info")

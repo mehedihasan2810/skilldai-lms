@@ -7,6 +7,7 @@ import { getMockInterviewQNA } from "@/actions/get-mock-interview-q-n-a";
 import { v4 as uuidv4 } from "uuid";
 import { getMockInterviewFeedback } from "@/actions/get-mock-interview-feedback";
 import { mock } from "node:test";
+import { updateUserInfo } from "@/actions/update-user-info";
 
 const supabase = createClient();
 
@@ -529,6 +530,15 @@ export const saveUserInfo = async ({
     )
     .select("id")
     .single();
+
+   await updateUserInfo({
+    userId,
+    institution,
+    profession,
+    className,
+    section,
+    subject,
+  });
 
   if (error) {
     console.error(error);

@@ -85,19 +85,20 @@ const Page = async () => {
   }
 
   const user = session.user;
+  const userMetadata = session.user.user_metadata;
 
-  const { error, data } = await supabase
-    .from("user_info")
-    .select("id,profession")
-    .eq("user_id", user.id)
-    .single();
+  // const { error, data } = await supabase
+  //   .from("user_info")
+  //   .select("id,profession")
+  //   .eq("user_id", user.id)
+  //   .single();
 
-  if (error) {
-    console.error(error);
-    // throw new Error(error.message);
-  }
+  // if (error) {
+  //   console.error(error);
+  //   // throw new Error(error.message);
+  // }
 
-  const isRoleTeacher = data?.profession === "Teacher";
+  const isRoleTeacher = userMetadata?.profession === "Teacher";
 
   const filteredTools = isRoleTeacher
     ? tools

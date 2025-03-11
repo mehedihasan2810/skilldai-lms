@@ -9,25 +9,29 @@ const Page = async () => {
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!user) {
+  if (!session) {
     return redirect("/");
   }
 
-  const { error, data } = await supabase
-    .from("user_info")
-    .select("id,profession")
-    .eq("user_id", user.id)
-    .single();
+  // const { error, data } = await supabase
+  //   .from("user_info")
+  //   .select("id,profession")
+  //   .eq("user_id", user.id)
+  //   .single();
 
-  if (error) {
-    console.error(error);
-    // throw new Error(error.message);
-  }
+  // if (error) {
+  //   console.error(error);
+  //   // throw new Error(error.message);
+  // }
 
-  const isRoleTeacher = data?.profession === "Teacher";
+  const user = session.user;
+
+  const userMetadata = user.user_metadata;
+
+  const isRoleTeacher = userMetadata?.profession === "Teacher";
 
   if (!isRoleTeacher) {
     notFound();

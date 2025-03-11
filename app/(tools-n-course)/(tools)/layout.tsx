@@ -81,9 +81,7 @@ const teacherOnlyNavItems = ["/lesson-plan-generator", "/worksheet-generator"];
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = await createClient();
 
-  // const {
-  //   data: { user },
-  // } = await supabase.auth.getUser();
+
 
   const {
     data: { session },
@@ -94,45 +92,48 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   }
 
   const user = session.user;
+  const userMetadata = session.user.user_metadata;
 
-  const { error: userInfoError, data: userInfo } = await supabase
-    .from("user_info")
-    .select("id,profession")
-    .eq("user_id", user.id)
-    .single();
+  console.log({ user });
 
-  // console.log({ userInfo });
+  // const { error: userInfoError, data: userInfo } = await supabase
+  //   .from("user_info")
+  //   .select("id,profession")
+  //   .eq("user_id", user.id)
+  //   .single();
 
-  if (
-    userInfoError?.message ===
-    "JSON object requested, multiple (or no) rows returned"
-  ) {
-    console.error(userInfoError);
-    const { data: userCreatedData, error: userCreatedErr } = await supabase
-      .from("user_info")
-      .upsert(
-        {
-          user_id: user.id,
-          institution: "",
-          profession: "Student",
-          class_name: "",
-          section: "",
-          subject: "",
-        },
-        { onConflict: "user_id" }
-      )
-      .select("id")
-      .single();
+  // // console.log({ userInfo });
 
-    // console.log({ userCreatedData });
-    // console.error({ userCreatedErr });
+  // if (
+  //   userInfoError?.message ===
+  //   "JSON object requested, multiple (or no) rows returned"
+  // ) {
+  //   console.error(userInfoError);
+  //   const { data: userCreatedData, error: userCreatedErr } = await supabase
+  //     .from("user_info")
+  //     .upsert(
+  //       {
+  //         user_id: user.id,
+  //         institution: "",
+  //         profession: "Student",
+  //         class_name: "",
+  //         section: "",
+  //         subject: "",
+  //       },
+  //       { onConflict: "user_id" }
+  //     )
+  //     .select("id")
+  //     .single();
 
-    // if (userCreatedData) {
-    //   revalidatePath("/courses");
-    // }
-  }
+  //   // console.log({ userCreatedData });
+  //   // console.error({ userCreatedErr });
 
-  const isRoleTeacher = userInfo?.profession === "Teacher";
+  //   // if (userCreatedData) {
+  //   //   revalidatePath("/courses");
+  //   // }
+  // }
+
+  const isRoleTeacher = userMetadata?.profession === "Teacher";
 
   const filteredNavItems = isRoleTeacher
     ? navItems
@@ -143,7 +144,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider className="w-screen">
       <AppSidebar
-        userProfession={userInfo?.profession ?? ""}
+        userProfession={userMetadata?.profession ?? ""}
         userEmail={user.email ?? ""}
       />
       <SidebarInset>

@@ -9,17 +9,19 @@ const Page = async () => {
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!user) {
+  if (!session) {
     return redirect("/");
   }
+  const user = session.user;
+
   return (
     <PageContainer scrollable>
       {/* <QuizPage userId={""} userEmail={""} /> */}
       <QuizPage userId={user.id} userEmail={user.email ?? ""} />
-       <RecentQuizList userId={user.id} />
+      <RecentQuizList userId={user.id} />
     </PageContainer>
   );
 };
