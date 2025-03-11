@@ -60,12 +60,12 @@ const SignInForm = () => {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
-        reportErrorAction({
-          userEmail: "Unknown",
-          errorMessage: error.serverError ?? "Unknown",
-          errorTrace: `[SignInForm] [signInUser] [onError] [app/(auth)/signin/form.tsx]`,
-          errorSourceUrl: "/signin",
-        });
+        // reportErrorAction({
+        //   userEmail: "Unknown",
+        //   errorMessage: error.serverError ?? "Unknown",
+        //   errorTrace: `[SignInForm] [signInUser] [onError] [app/(auth)/signin/form.tsx]`,
+        //   errorSourceUrl: "/signin",
+        // });
       }
       if (error.validationErrors) {
         toast.error(
@@ -73,14 +73,14 @@ const SignInForm = () => {
             error.validationErrors.password?.join(", ") ?? ""
           }`
         );
-        reportErrorAction({
-          userEmail: "Unknown",
-          errorMessage: `${error.validationErrors.email?.join(", ") ?? ""}. ${
-            error.validationErrors.password?.join(", ") ?? ""
-          }`,
-          errorTrace: `[SignInForm] [signInUser] [onError] [ValidationError] [app/(auth)/signin/form.tsx]`,
-          errorSourceUrl: "/signin",
-        });
+        // reportErrorAction({
+        //   userEmail: "Unknown",
+        //   errorMessage: `${error.validationErrors.email?.join(", ") ?? ""}. ${
+        //     error.validationErrors.password?.join(", ") ?? ""
+        //   }`,
+        //   errorTrace: `[SignInForm] [signInUser] [onError] [ValidationError] [app/(auth)/signin/form.tsx]`,
+        //   errorSourceUrl: "/signin",
+        // });
       }
     },
   });
