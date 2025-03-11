@@ -72,11 +72,8 @@ export const ChatMessageList = React.memo(
                 width={300}
                 height={300}
               />
-              <p className="text-lg font-medium mt-4">
-                Hi I am Anita, your AI therapist.
-              </p>
-              <p className="text-lg font-medium mt-2">
-                I am here to listen to your struggles.
+              <p className="text-lg font-medium mt-4 text-center">
+                Hi I am Anita your AI therapist <br /> and I am listening
               </p>
             </div>
           </div>
