@@ -55,12 +55,20 @@ const tools = [
       "Explore Careers analyzes your resume and suggests personalized career paths based on your skills, experience, and goals.",
     href: "/explore-careers",
   },
-  // {
-  //   id: 7,
-  //   title: "NCERT",
-  //   description: "The NCERT curriculum is based on the National Curriculum Framework (NCF) developed by the National Council of Educational Research and Training. The curriculum is designed to provide a comprehensive and holistic education to students from pre-primary to higher secondary levels",
-  //   href: "/ncert",
-  // },
+  {
+    id: 8,
+    title: "Serenity",
+    description:
+      "Serenity is your AI therapist, offering compassionate support, guided conversations, and mental well-being tools for self-reflection and emotional growth.",
+    href: "/serenity",
+  },
+  {
+    id: 9,
+    title: "Mock Interview",
+    description:
+      "An AI-powered mock interviewer that provides realistic interview simulations, instant feedback, and personalized coaching to help you ace any job interview.",
+    href: "/mock-interview",
+  },
 ];
 
 const teacherOnlyTools = ["/lesson-plan-generator", "/worksheet-generator"];

@@ -81,13 +81,13 @@ export const ChatInput = ({
   return (
     <div
       className={cn(
-        "sticky bottom-4 left-0 right-0 w-full rounded-[2rem] bg-secondary text-sm outline-none shadow flex items-center gap-1 pr-2 mb-4 overflow-hidden transition-all shrink-0",
+        "sticky bottom-4 left-0 right-0 w-full rounded-[2rem] bg-background dark:bg-secondary text-sm outline-none shadow flex items-center gap-1 pr-2 mb-4 overflow-hidden transition-all shrink-0",
         isFocused && "border border-ring outline-none ring-[4px] ring-ring/20",
         className
       )}
     >
       <TextareaAutosize
-        className="w-full px-4 py-4 outline-none resize-none"
+        className="w-full px-6 py-4 outline-none resize-none bg-background dark:bg-secondary"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(event) => {
