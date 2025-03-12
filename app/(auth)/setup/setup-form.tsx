@@ -128,6 +128,8 @@ export const SetupForm = ({
         errorTrace: `[SetupForm] [onSubmit] [updateUserInfo] [app/(auth)/setup/setup-form.tsx]`,
         errorSourceUrl: "/setup",
       });
+
+      return;
     }
 
     router.push("/new");

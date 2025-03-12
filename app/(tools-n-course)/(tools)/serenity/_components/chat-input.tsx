@@ -63,6 +63,8 @@ export const ChatInput = ({
   } = useVoiceToText();
 
   const submitForm = useCallback(() => {
+    reset();
+
     window.history.replaceState({}, "", `/serenity/${chatId}`);
 
     handleSubmit(undefined, {
@@ -132,11 +134,7 @@ export const ChatInput = ({
             : ""
         )}
       >
-        {isListening ? (
-          <MicOff className="" />
-        ) : (
-          <Mic className="" />
-        )}
+        {isListening ? <MicOff className="" /> : <Mic className="" />}
       </button>
       <button
         onClick={submitForm}
