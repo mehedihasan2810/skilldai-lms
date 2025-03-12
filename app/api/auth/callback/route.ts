@@ -25,7 +25,6 @@
 //   return NextResponse.redirect(origin);
 // }
 
-
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 
@@ -43,12 +42,10 @@ export async function GET(request: Request) {
     await supabase.auth.exchangeCodeForSession(code);
     const user = await supabase.auth.getUser();
 
-    if (user.data.user?.user_metadata.permission === "granted") {
-      return NextResponse.redirect(`${origin}/new`);
+    if (user.data.user?.user_metadata.permission !== "granted") {
+      return NextResponse.redirect(`${origin}/access`);
     }
   }
-
- 
 
   if (redirectTo) {
     return NextResponse.redirect(`${origin}${redirectTo}`);
