@@ -5,23 +5,69 @@ import { encodedRedirect } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { signInSchema } from "@/lib/validations/auth";
+import { z } from "zod";
 
-export const signInAction = async (formData: FormData) => {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const supabase = await createClient();
+export const signInAction = async (values: z.infer<typeof signInSchema>) => {
+  try {
+    const result = signInSchema.safeParse({
+      email: values.email,
+      password: values.password,
+    });
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+    if (!result.success) {
+      throw new Error(result.error.message);
+    }
 
-  if (error) {
-    return encodedRedirect("error", "/", error.message);
+    const { email, password } = result.data;
+
+    const supabase = await createClient();
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    revalidatePath("/", "layout");
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error: (error as Error).message };
   }
+};
 
-  revalidatePath("/", "layout");
-  // return redirect("/new");
+export const signUpAction = async (values: z.infer<typeof signInSchema>) => {
+  try {
+    const result = signInSchema.safeParse({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (!result.success) {
+      throw new Error(result.error.message);
+    }
+
+    const { email, password } = result.data;
+
+    const supabase = await createClient();
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    revalidatePath("/", "layout");
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error: (error as Error).message };
+  }
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {

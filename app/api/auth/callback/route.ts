@@ -41,7 +41,14 @@ export async function GET(request: Request) {
   if (code) {
     const supabase = await createClient();
     await supabase.auth.exchangeCodeForSession(code);
+    const user = await supabase.auth.getUser();
+
+    if (user.data.user?.user_metadata.permission === "granted") {
+      return NextResponse.redirect(`${origin}/new`);
+    }
   }
+
+ 
 
   if (redirectTo) {
     return NextResponse.redirect(`${origin}${redirectTo}`);

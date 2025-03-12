@@ -31,45 +31,21 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { SubmitButton } from "@/components/submit-button";
-import { signInAction } from "@/actions/auth";
+import { signInAction, signUpAction } from "@/actions/auth";
 import { Message } from "@/components/signin-form-message";
 import { Label } from "@/components/ui";
 import { useAction } from "next-safe-action/hooks";
 import { signInUser } from "@/actions/sign-in";
 import { toast } from "sonner";
 import { signInSchema } from "@/lib/validations/auth";
+import { reportErrorAction } from "@/actions/report-error-via-mail";
 import { createClient } from "@/lib/supabase/client";
 
-enum FormStatus {
-  Idle,
-  Loading,
-  Error,
-  Success,
-}
-
-const SignInForm = () => {
+export const SignUpForm = () => {
   const [isShowPass, setIsShowPass] = useState(false);
   const router = useRouter();
 
-  const { executeAsync, result, isPending } = useAction(signInUser, {
-    onSuccess: ({ data, input }) => {
-      console.log({ data });
-      // router.replace("/new");
-    },
-    onError: ({ error, input }) => {
-      console.log({ error });
-      if (error.serverError) {
-        toast.error(error.serverError);
-      }
-      if (error.validationErrors) {
-        toast.error(
-          `${error.validationErrors.email?.join(", ") ?? ""}. ${
-            error.validationErrors.password?.join(", ") ?? ""
-          }`
-        );
-      }
-    },
-  });
+  const [isPending, setIsPending] = useState(false);
 
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -79,10 +55,19 @@ const SignInForm = () => {
     },
   });
 
+  // const [formStatus, setFormStatus] = useState<FormStatus>(FormStatus.Idle);
+
   const onSubmit = async (values: z.infer<typeof signInSchema>) => {
-    console.log({ values });
-    const result = await executeAsync(values);
-    console.log({ result });
+    setIsPending(true);
+    const { data, error } = await signUpAction(values);
+    if (error) {
+      toast.error(error);
+    }
+    if (data) {
+      toast.success("Account created successfully");
+      //   router.push("/");
+    }
+    setIsPending(false);
   };
 
   const handleGoogleSignIn = async () => {
@@ -101,10 +86,11 @@ const SignInForm = () => {
       });
     }
   };
+
   return (
     <Card className="max-w-md w-full border">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-xl"> Sign In To Your Account</CardTitle>
+        <CardTitle className="text-xl"> Sign Up To Your Account</CardTitle>
       </CardHeader>
 
       <CardContent className="grid gap-4">
@@ -130,15 +116,7 @@ const SignInForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <div className="flex justify-between items-center">
-                    <FormLabel>Password</FormLabel>
-                    <Link
-                      className="text-sm underline text-muted-foreground"
-                      href="/forgot-password"
-                    >
-                      Forgot Password?
-                    </Link>
-                  </div>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -167,10 +145,10 @@ const SignInForm = () => {
             <Button disabled={isPending} type="submit" className="w-full">
               {isPending ? (
                 <>
-                  <Loader className="animate-spin size-5 mr-2" /> Signing In
+                  <Loader className="animate-spin size-5 mr-2" /> Signing Up
                 </>
               ) : (
-                "Sign In"
+                "Sign Up"
               )}
             </Button>
           </form>
@@ -199,9 +177,9 @@ const SignInForm = () => {
 
         <div className="flex justify-center items-center">
           <p className="text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link href="/sign-up" className="text-primary">
-              Sign Up
+            Already have an account?{" "}
+            <Link href="/" className="text-primary">
+              Sign In
             </Link>
           </p>
         </div>
@@ -209,5 +187,3 @@ const SignInForm = () => {
     </Card>
   );
 };
-
-export default SignInForm;

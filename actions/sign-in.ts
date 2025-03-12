@@ -8,15 +8,15 @@ import {
   returnValidationErrors,
 } from "next-safe-action";
 import { z } from "zod";
+import { revalidatePath } from "next/cache";
 
 async function getSchema() {
-  return signInSchema
+  return signInSchema;
 }
 
 export const signInUser = action
   .metadata({ actionName: "signInUser" })
   .schema(getSchema, {
-
     handleValidationErrorsShape: async (ve) =>
       flattenValidationErrors(ve).fieldErrors,
   })
@@ -28,12 +28,13 @@ export const signInUser = action
     const { error, data } = await supabase.auth.signInWithPassword({
       email,
       password,
-      
     });
 
     if (error) {
       throw new ActionError(error.message);
     }
+
+    revalidatePath("/", "layout");
 
     return data;
 
