@@ -1457,8 +1457,8 @@ const ncertClasses = [
         'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/Consumer rights.pdf'},
        {'name': 'jess2ps',
         'url': 'https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/10th/Social%20Science/Understanding%20Economic%20Development/jess2ps.pdf'}]}]}]
-       },
-        {
+  },
+ {
     name: "11th",
     subjects: [
       {
@@ -1870,8 +1870,2687 @@ const ncertClasses = [
         
         ],
       },
+      {
+        name: "Economic",
+        books: [
+          {
+            name: "Indian Economic Development",
+            chapters: [
+              {
+                name: "Development Policies and Expereince-Indian economy on the eve of Independence",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Development%20Policies%20and%20Expereince-Indian%20economy%20on%20the%20eve%20of%20Independence.pdf",
+              },
+              {
+                name: "Economic reforms since 1991- Libralisation,privatisation and Globalisation:an appraisal",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Economic%20reforms%20since%201991-%20Libralisation,privatisation%20and%20Globalisation:an%20appraisal.pdf",
+              },
+              {
+                name: "Rural development",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Rural%20development.pdf",
+              },
+              {
+                name: "Indian economy 1950-1990",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Indian%20economy%201950-1990.pdf",
+              },
+              {
+                name: "Current challenges facing the Indian economy- Human Capital formation in india",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Current%20challenges%20facing%20the%20Indian%20economy-%20Human%20Capital%20formation%20in%20india.pdf",
+              },
+              {
+                name: "Employment-growth, informalisation and other issues",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Employment-growth,%20informalisation%20and%20other%20issues.pdf",
+              },
+              {
+                name: "keec1gl",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/keec1gl.pdf",
+              },
+              {
+                name: "Environment and sustainable development",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Environment%20and%20sustainable%20development.pdf",
+              },
+              {
+                name: "Development Experiences of India- a comparison with neighbours",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/Development%20Experiences%20of%20India-%20a%20comparison%20with%20neighbours.pdf",
+              },
+              {
+                name: "keec1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Indian%20Economic%20Development/keec1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Statistics for Economics",
+            chapters: [
+              {
+                name: "Introduction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Introduction.pdf",
+              },
+              {
+                name: "Collection of Data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Collection%20of%20Data.pdf",
+              },
+              {
+                name: "Correlation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Correlation.pdf",
+              },
+              {
+                name: "Measures of Central Tendency",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Measures%20of%20Central%20Tendency.pdf",
+              },
+              {
+                name: "Presentation of Data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Presentation%20of%20Data.pdf",
+              },
+              {
+                name: "Organisation of Data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Organisation%20of%20Data.pdf",
+              },
+              {
+                name: "kest1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/kest1ps.pdf",
+              },
+              {
+                name: "Use of Statistical Tools",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Use%20of%20Statistical%20Tools.pdf",
+              },
+              {
+                name: "Index Numbers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Economic/Statistics%20for%20Economics/Index%20Numbers.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "English",
+        books: [
+          {
+            name: "Hornbill",
+            chapters: [
+              {
+                name: "We are not afraid to die",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/We%20are%20not%20afraid%20to%20die.pdf",
+              },
+              {
+                name: "The Ailing Planet",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/The%20Ailing%20Planet.pdf",
+              },
+              {
+                name: "The Adventure",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/The%20Adventure.pdf",
+              },
+              {
+                name: "Note-making",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Note-making.pdf",
+              },
+              {
+                name: "Silk Road",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Silk%20Road.pdf",
+              },
+              {
+                name: "The Portrait of a Lady",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/The%20Portrait%20of%20a%20Lady.pdf",
+              },
+              {
+                name: "Discovering Tut: the Saga Continues",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Discovering%20Tut:%20the%20Saga%20Continues.pdf",
+              },
+              {
+                name: "Sub-titling",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Sub-titling.pdf",
+              },
+              {
+                name: "Letter-writing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Letter-writing.pdf",
+              },
+              {
+                name: "Summarising",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Summarising.pdf",
+              },
+              {
+                name: "kehb114",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/kehb114.pdf",
+              },
+              {
+                name: "Essay-writing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/Essay-writing.pdf",
+              },
+              {
+                name: "kehb1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Hornbill/kehb1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Snapshots Suppl.Reader English",
+            chapters: [
+              {
+                name: "Birth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Snapshots%20Suppl.Reader%20English/Birth.pdf",
+              },
+              {
+                name: "The Address",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Snapshots%20Suppl.Reader%20English/The%20Address.pdf",
+              },
+              {
+                name: "The Summer of the Beautiful White Horse",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Snapshots%20Suppl.Reader%20English/The%20Summer%20of%20the%20Beautiful%20White%20Horse.pdf",
+              },
+
+              {
+                name: "Mothers Day",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Snapshots%20Suppl.Reader%20English/Mothers%20Day.pdf",
+              },
+              
+              {
+                name: "The Tale of Melon City",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Snapshots%20Suppl.Reader%20English/The%20Tale%20of%20Melon%20City.pdf",
+              },
+              
+              {
+                name: "kesp1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Snapshots%20Suppl.Reader%20English/kesp1ps.pdf",
+              },
+           
+            ],
+          },
+          {
+            name: "Woven Words",
+            chapters: [
+              {
+                name: "Pappachis Moth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Pappachis%20Moth.pdf",
+              },
+              {
+                name: "The Luncheon",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Luncheon.pdf",
+              },
+              {
+                name: "The Lament",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Lament.pdf",
+              },
+
+              {
+                name: "A Pair of Mustachio",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/A%20Pair%20of%20Mustachios.pdf",
+              },
+              {
+                name: "Glory at Twilight",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Glory%20at%20Twilight.pdf",
+              },
+              {
+                name: "The Rocking-horse Winner",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Rocking-horse%20Winner.pdf",
+              },
+              {
+                name: "The Adventure of the Three Garridebs",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Adventure%20of%20the%20Three%20Garridebs.pdf",
+              },
+              {
+                name: "The Third and Final Continent",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Third%20and%20Final%20Continent.pdf",
+              },
+              {
+                name: "The World is too much with us",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20World%20is%20too%20much%20with%20us.pdf",
+              },
+              {
+                name: "Mother Tongue",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Mother%20Tongue.pdf",
+              },
+              {
+                name: "Let Me Not to the Marriage of True Minds",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Let%20Me%20Not%20to%20the%20Marriage%20of%20True%20Minds.pdf",
+              },
+              {
+                name: "Coming",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Coming.pdf",
+              },
+              {
+                name: "The Peacock",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Peacock.pdf",
+              },
+              {
+                name: "Telephone Conversation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Telephone%20Conversation.pdf",
+              },
+              {
+                name: "Refugee Blue",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Refugee%20Blues.pdf",
+              },
+              {
+                name: "Hawk Roosting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Hawk%20Roosting.pdf",
+              },
+              {
+                name: "Felling of the Banyan Treen",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Felling%20of%20the%20Banyan%20Tree.pdf",
+              },
+              {
+                name: "For Elkana",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/For%20Elkana.pdf",
+              },
+              {
+                name: "My Three Passions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/My%20Three%20Passions.pdf",
+              },
+              {
+                name: "Ajamil and the Tigers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Ajamil%20and%20the%20Tigers.pdf",
+              },
+              {
+                name: "Ode to a Nightingale",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Ode%20to%20a%20Nightingale.pdf",
+              },
+              {
+                name: "The Story",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/The%20Story.pdf",
+              },
+              {
+                name: "My Watch",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/My%20Watch.pdf",
+              },
+              {
+                name: "What is a Good Book?",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/What%20is%20a%20Good%20Book?.pdf",
+              },
+              {
+                name: "Patterns of Creativity",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Patterns%20of%20Creativity.pdf",
+              },
+              {
+                name: "Bridges",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Bridges.pdf",
+              },
+              {
+                name: "keww1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/keww1ps.pdf",
+              },
+              {
+                name: "Tribal Verse",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/English/Woven%20Words/Tribal%20Verse.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Fine Art",
+        books: [
+          {
+            name: "An Introduction to Indian Art Part-I",
+            chapters: [
+              {
+                name: "kefa1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/kefa1ps.pdf",
+              },
+              {
+                name: "Prehistoric rock paintings",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/Prehistoric%20rock%20paintings.pdf",
+              },
+              {
+                name: "kefa105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/kefa105.pdf",
+              },
+              {
+                name: "Arts of the indus valley",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/Arts%20of%20the%20indus%20valley.pdf",
+              },
+              {
+                name: "kefa107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/kefa107.pdf",
+              },
+              {
+                name: "kefa108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/kefa108.pdf",
+              },
+              {
+                name: "Arts of the Mauryan period",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/Arts%20of%20the%20Mauryan%20period.pdf",
+              },
+              {
+                name: "kefa106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Fine%20Art/An%20Introduction%20to%20Indian%20Art%20Part-I/kefa106.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+      {
+        name: "Geography",
+        books: [
+          {
+            name: "Fundamental of Physical Geography",
+            chapters: [
+              {
+                name: "The earth- The origin and evolution of the earth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/The%20earth-%20The%20origin%20and%20evolution%20of%20the%20earth.pdf",
+              },
+              {
+                name: "Geography as a discipline",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Geography%20as%20a%20discipline.pdf",
+              },
+              {
+                name: "Climate-Composition and structure of atmosphere",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Climate-Composition%20and%20structure%20of%20atmosphere.pdf",
+              },
+              {
+                name: "water in the atmosphere",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/water%20in%20the%20atmosphere.pdf",
+              },
+              {
+                name: "Solar radiation, heat balance, and temperature",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Solar%20radiation,%20heat%20balance,%20and%20temperature.pdf",
+              },
+              {
+                name: "Distribution of oceans and continents",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Distribution%20of%20oceans%20and%20continents.pdf",
+              },
+              {
+                name: "landforms",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/landforms.pdf",
+              },
+              {
+                name: "Water( oceans)",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Water(%20oceans).pdf",
+              },
+              {
+                name: "interior of the earth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/interior%20of%20the%20earth.pdf",
+              },
+              {
+                name: "Atmospheric circulation and weather system",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Atmospheric%20circulation%20and%20weather%20system.pdf",
+              },
+              {
+                name: "World climate and climate changes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/World%20climate%20and%20climate%20changes.pdf",
+              },
+              {
+                name: "Landforms and their evaluation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Landforms%20and%20their%20evaluation.pdf",
+              },
+              {
+                name: "kegy2gl",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/kegy2gl.pdf",
+              },
+              {
+                name: "Life on the earth- Biodiversity and conservation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Life%20on%20the%20earth-%20Biodiversity%20and%20conservation.pdf",
+              },
+              {
+                name: "Movements of ocean water",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/Movements%20of%20ocean%20water.pdf",
+              },
+              {
+                name: "kegy2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Fundamental%20of%20Physical%20Geography/kegy2ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "India Physical Environment",
+            chapters: [
+              {
+                name: "Drainage system",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/Drainage%20system.pdf",
+              },
+              {
+                name: "Structure and physiography",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/Structure%20and%20physiography.pdf",
+              },
+              {
+                name: "India - location",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/India%20-%20location.pdf",
+              },
+
+              {
+                name: "natural vegetation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/natural%20vegetation.pdf",
+              },
+              
+              {
+                name: "Climate and vegetation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/Climate%20and%20vegetation.pdf",
+              },
+              
+              {
+                name: "Natural hazards and disasters",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/Natural%20hazards%20and%20disasters.pdf",
+              },
+              {
+                name: "kegy1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/India%20Physical%20Environment/kegy1ps.pdf",
+              },
+           
+            ],
+          },
+          {
+            name: "Pratical Work in Geography",
+            chapters: [
+              {
+                name: "Map Scale",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/Map%20Scale.pdf",
+              },
+              {
+                name: "Latitude, Longitude and time",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/Latitude,%20Longitude%20and%20time.pdf",
+              },
+              {
+                name: "kegy3ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/kegy3ps.pdf",
+              },
+
+              {
+                name: "Map Projections",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/Map%20Projections.pdf",
+              },
+              {
+                name: "Topographical Maps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/Topographical%20Maps.pdf",
+              },
+              {
+                name: "Introduction To Remote Sensing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/Introduction%20To%20Remote%20Sensing.pdf",
+              },
+              {
+                name: "Introduction to Maps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Geography/Pratical%20Work%20in%20Geography/Introduction%20to%20Maps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Health and Physical Education",
+        books: [
+          {
+            name: "Health and Physical Education",
+            chapters: [
+              {
+                name: "Physical Education",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Physical%20Education.pdf",
+              },
+              {
+                name: "Understanding Health",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Understanding%20Health.pdf",
+              },
+              {
+                name: "kehp1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/kehp1ps.pdf",
+              },
+              {
+                name: "Measurement and Evaluation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Measurement%20and%20Evaluation.pdf",
+              },
+              {
+                name: "Adventure Sports",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Adventure%20Sports.pdf",
+              },
+              {
+                name: "Physical and Physiological Aspects of Physical Education and Sports",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Physical%20and%20Physiological%20Aspects%20of%20Physical%20Education%20and%20Sports.pdf",
+              },
+              {
+                name: "Health Related Physical Fitness",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Health%20Related%20Physical%20Fitness.pdf",
+              },
+              {
+                name: "Safety and Security",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Safety%20and%20Security.pdf",
+              },
+              {
+                name: "Tournaments and Competitions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Tournaments%20and%20Competitions.pdf",
+              },
+              {
+                name: "Yoga and its Relevance in the Modern Times",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Yoga%20and%20its%20Relevance%20in%20the%20Modern%20Times.pdf",
+              },
+              {
+                name: "Team Games",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Team%20Games.pdf",
+              },
+              {
+                name: "Individual Games",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Health%20and%20Physical%20Education/Health%20and%20Physical%20Education/Individual%20Games.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+      {
+        name: "History",
+        books: [
+          {
+            name: "kehs1dd",
+            chapters: [
+              {
+                name: "kehs1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/kehs1ps.pdf",
+              },
+              {
+                name: "Changing Cultural Traditions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/Changing%20Cultural%20Traditions.pdf",
+              },
+              {
+                name: "Nomadic Empires",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/Nomadic%20Empires.pdf",
+              },
+              {
+                name: "Displacing Indigenous Peoples",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/Displacing%20Indigenous%20Peoples.pdf",
+              },
+              {
+                name: "Early societies",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/Early%20societies.pdf",
+              },
+              {
+                name: "Paths to Modernisation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/Paths%20to%20Modernisation.pdf",
+              },
+              {
+                name: "An Empire Across Three Continents",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/An%20Empire%20Across%20Three%20Continents.pdf",
+              },
+              {
+                name: "Changing traditions - The Three Orders",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/History/kehs1dd/Changing%20traditions%20-%20The%20Three%20Orders.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+
+      {
+        name: "Home Science",
+        books: [
+          {
+            name: "Human Ecology and Family Sciences Part I",
+            chapters: [
+              {
+                name: "Human ecology and Family science",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Human%20ecology%20and%20Family%20science.pdf",
+              },
+              {
+                name: "Understanding oneself adolescence",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Understanding%20oneself%20%20adolescence.pdf",
+              },
+              {
+                name: "Management of Resource",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Management%20of%20Resources.pdf",
+              },
+              {
+                name: "kehe1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/kehe1ps.pdf",
+              },
+              {
+                name: "Food, Nutrition, Health and Fitness",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Food,%20Nutrition,%20Health%20and%20Fitness.pdf",
+              },
+              {
+                name: "Media and Communication Technology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Media%20and%20Communication%20Technology.pdf",
+              },
+              {
+                name: "Fabrics Around Us",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Fabrics%20Around%20Us.pdf",
+              },
+              {
+                name: "Understanding family, community and society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Understanding%20family,%20community%20and%20society.pdf",
+              },
+            ],
+          },
+          {
+            name: "Human Ecology and Family Sciences Part II",
+            chapters: [
+              {
+                name: "Financial Management and Planning",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Financial%20Management%20and%20Planning.pdf",
+              },
+              {
+                name: "Our Apparel",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Our%20Apparel.pdf",
+              },
+              {
+                name: "Care and Maintenance of Fabrics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Care%20and%20Maintenance%20of%20Fabrics.pdf",
+              },
+
+              {
+                name: "Nutrition, Health and Well-being",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Nutrition,%20Health%20and%20Well-being.pdf",
+              },
+              {
+                name: "kehe2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/kehe2ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Informatics practice",
+        books: [
+          {
+            name: "keip1dd",
+            chapters: [
+              {
+                name: "keip1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/keip1ps.pdf",
+              },
+              {
+                name: "Understanding data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Understanding%20data.pdf",
+              },
+              {
+                name: "Computer System",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Computer%20System.pdf",
+              },
+              {
+                name: "Database concepts",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Database%20concepts.pdf",
+              },
+              {
+                name: "Emerging trends",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Emerging%20trends.pdf",
+              },
+              {
+                name: "Working with lists and dictionaries",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Working%20with%20lists%20and%20dictionaries.pdf",
+              },
+              {
+                name: "Brief overview of python",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Brief%20overview%20of%20python.pdf",
+              },
+              {
+                name: "Introductions of Numpy",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Introductions%20of%20Numpy.pdf",
+              },
+              {
+                name: "Introductions of structured query language",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Informatics%20practice/keip1dd/Introductions%20of%20structured%20query%20language.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+
+      {
+        name: "Knowledge traditions and practices of india",
+        books: [
+          {
+            name: "keks1dd",
+            chapters: [
+              {
+                name: "keks1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/keks1ps.pdf",
+              },
+              {
+                name: "Mathematics in India",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Mathematics%20in%20India.pdf",
+              },
+              {
+                name: "Chemistry and Metallurgy in India",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Chemistry%20and%20Metallurgy%20in%20India.pdf",
+              },
+              {
+                name: "Indian Philosophical Systems",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Indian%20Philosophical%20Systems.pdf",
+              },
+              {
+                name: "Astronomy in India",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Astronomy%20in%20India.pdf",
+              },
+              {
+                name: "Introducing Ayurveda: the Science of Health and Disease",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Introducing%20Ayurveda:%20the%20Science%20of%20Health%20and%20Disease.pdf",
+              },
+              {
+                name: "Yoga",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Yoga.pdf",
+              },
+              {
+                name: "Language and Literature of India",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Language%20and%20Literature%20of%20India.pdf",
+              },
+              {
+                name: "Indian Art and Architecture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Knowledge%20traditions%20and%20practices%20of%20india/keks1dd/Indian%20Art%20and%20Architecture.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+      {
+        name: "Maths",
+        books: [
+          {
+            name: "kemh1dd",
+            chapters: [
+              {
+                name: "Sets",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Sets.pdf",
+              },
+              {
+                name: "Binomial Theorem",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Binomial%20Theorem.pdf",
+              },
+              {
+                name: "Introduction to Three Dimensional Geometry",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Introduction%20to%20Three%20Dimensional%20Geometry.pdf",
+              },
+              {
+                name: "Linear Inequalities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Linear%20Inequalities.pdf",
+              },
+              {
+                name: "Complex Numbers and Quadratic Equations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Complex%20Numbers%20and%20Quadratic%20Equations.pdf",
+              },
+              {
+                name: "Sequences and Series",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Sequences%20and%20Series.pdf",
+              },
+              {
+                name: "Relations and Functions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Relations%20and%20Functions.pdf",
+              },
+              {
+                name: "Permutations and Combinations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Permutations%20and%20Combinations.pdf",
+              },
+              {
+                name: "Straight Lines",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Straight%20Lines.pdf",
+              },
+              {
+                name: "Conic Sections",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Conic%20Sections.pdf",
+              },
+              {
+                name: "Trigonometric Functions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Trigonometric%20Functions.pdf",
+              },
+              {
+                name: "kemh1sm",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/kemh1sm.pdf",
+              },
+              {
+                name: "kemh1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/kemh1a1.pdf",
+              },
+              {
+                name: "kemh1a2",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/kemh1a2.pdf",
+              },
+              {
+                name: "kemh1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/kemh1ps.pdf",
+              },
+              {
+                name: "kemh1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/kemh1an.pdf",
+              },
+              {
+                name: "Statistics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Statistics.pdf",
+              },
+              {
+                name: "Probability",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Probability.pdf",
+              },
+              {
+                name: "Limits and Derivatives",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Maths/kemh1dd/Limits%20and%20Derivatives.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+
+      {
+        name: "Physics",
+        books: [
+          {
+            name: "Physics Part-I",
+            chapters: [
+              {
+                name: "Units and measurements",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/Units%20and%20measurements.pdf",
+              },
+              {
+                name: "Motion in a straight line",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/Motion%20in%20a%20straight%20line.pdf",
+              },
+              {
+                name: "keph1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/keph1an.pdf",
+              },
+              {
+                name: "keph1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/keph1ps.pdf",
+              },
+              {
+                name: "Gravitation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/Gravitation.pdf",
+              },
+              {
+                name: "Laws of motion",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/Laws%20of%20motion.pdf",
+              },
+              {
+                name: "Work, energy and power",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/Work,%20energy%20and%20power.pdf",
+              },
+              {
+                name: "Motion in a plane",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/Motion%20in%20a%20plane.pdf",
+              },
+              {
+                name: "keph1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/keph1a1.pdf",
+              },
+              {
+                name: "System of particles and rotational motion",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-I/System%20of%20particles%20and%20rotational%20motion.pdf",
+              },
+            ],
+          },
+          {
+            name: "Physics Part-II",
+            chapters: [
+              {
+                name: "Mechanical Properties of solids",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Mechanical%20%20Properties%20of%20solids.pdf",
+              },
+              {
+                name: "Mechanical Properties of Fluids",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Mechanical%20%20Properties%20of%20Fluids.pdf",
+              },
+              {
+                name: "keph2an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/keph2an.pdf",
+              },
+
+              {
+                name: "keph2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/keph2ps.pdf",
+              },
+              {
+                name: "Kinetic theory",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Kinetic%20theory.pdf",
+              },
+              {
+                name: "Oscillations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Oscillations.pdf",
+              },
+              {
+                name: "Thermodynamics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Thermodynamics.pdf",
+              },
+              {
+                name: "Waves",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Waves.pdf",
+              },
+              {
+                name: "Thermal properties of matter",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Physics/Physics%20Part-II/Thermal%20properties%20of%20matter.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Political science",
+        books: [
+          {
+            name: "India Constitution at Work",
+            chapters: [
+              {
+                name: "Constitution why and how?",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Constitution%20why%20and%20how?.pdf",
+              },
+              {
+                name: "Rights in the Indian constitution",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Rights%20in%20the%20Indian%20constitution.pdf",
+              },
+              {
+                name: "Election and Representation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Election%20and%20Representation.pdf",
+              },
+              {
+                name: "keps2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/keps2ps.pdf",
+              },
+              {
+                name: "Local Governments",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Local%20Governments.pdf",
+              },
+              {
+                name: "The Philosophy of the constitution",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/The%20Philosophy%20of%20the%20constitution.pdf",
+              },
+              {
+                name: "Constitution as a living document",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Constitution%20as%20a%20living%20document.pdf",
+              },
+              {
+                name: "Executive",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Executive.pdf",
+              },
+              {
+                name: "Judiciary",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Judiciary.pdf",
+              },
+              {
+                name: "Federalism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Federalism.pdf",
+              },
+              {
+                name: "Legislature",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/India%20Constitution%20at%20Work/Legislature.pdf",
+              },
+            ],
+          },
+          {
+            name: "Political Theory",
+            chapters: [
+              {
+                name: "Freedom",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Freedom.pdf",
+              },
+              {
+                name: "Political Theory: An Introduction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Political%20Theory:%20An%20Introduction.pdf",
+              },
+              {
+                name: "keps1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/keps1ps.pdf",
+              },
+
+              {
+                name: "Rights",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Rights.pdf",
+              },
+              {
+                name: "Social Justice",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Social%20Justice.pdf",
+              },
+              {
+                name: "Secularism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Secularism.pdf",
+              },
+              {
+                name: "Nationalism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Nationalism.pdf",
+              },
+              {
+                name: "Equality",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Equality.pdf",
+              },
+              {
+                name: "Citizenship",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Political%20science/Political%20Theory/Citizenship.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Sociology",
+        books: [
+          {
+            name: "Introducing Sociology",
+            chapters: [
+              {
+                name: "Terms, concepts and their use in sociology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Introducing%20Sociology/Terms,%20concepts%20and%20their%20use%20in%20sociology.pdf",
+              },
+              {
+                name: "Understanding social institutions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Introducing%20Sociology/Understanding%20social%20institutions.pdf",
+              },
+              {
+                name: "Sociology and society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Introducing%20Sociology/Sociology%20and%20society.pdf",
+              },
+              {
+                name: "kesy1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Introducing%20Sociology/kesy1ps.pdf",
+              },
+              {
+                name: "Doing sociology: Research Method",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Introducing%20Sociology/Doing%20sociology:%20Research%20Method.pdf",
+              },
+              {
+                name: "Culture and socialisation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Introducing%20Sociology/Culture%20and%20socialisation.pdf",
+              },
+            ],
+          },
+          {
+            name: "Understanding Society",
+            chapters: [
+              {
+                name: "Environment and society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Understanding%20Society/Environment%20and%20society.pdf",
+              },
+              {
+                name: "Social Structure, Stratification and Social Processes in Society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Understanding%20Society/Social%20Structure,%20Stratification%20and%20Social%20Processes%20in%20Society.pdf",
+              },
+              {
+                name: "kesy2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Understanding%20Society/kesy2ps.pdf",
+              },
+
+              {
+                name: "Introducing Western Sociologists",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Understanding%20Society/Introducing%20Western%20Sociologists.pdf",
+              },
+              {
+                name: "Indian sociologists",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Understanding%20Society/Indian%20sociologists.pdf",
+              },
+              {
+                name: "Social change and social order in rural and Urban society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Sociology/Understanding%20Society/Social%20change%20and%20social%20order%20in%20rural%20and%20Urban%20society.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Psychology",
+        books: [
+          {
+            name: "kepy1dd",
+            chapters: [
+              {
+                name: "What is Psychology?",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/What%20is%20Psychology?.pdf",
+              },
+              {
+                name: "Human Development",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Human%20Development.pdf",
+              },
+              {
+                name: "Methods of Enquiry in Psychology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Methods%20of%20Enquiry%20in%20Psychology.pdf",
+              },
+              {
+                name: "kepy1gl",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/kepy1gl.pdf",
+              },
+              {
+                name: "Motivation and Emotion",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Motivation%20and%20Emotion.pdf",
+              },
+              {
+                name: "Human Memory",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Human%20Memory.pdf",
+              },
+              {
+                name: "kepy1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/kepy1ps.pdf",
+              },
+              {
+                name: "Learning",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Learning.pdf",
+              },
+              {
+                name: "Sensory, Attentional and Perceptual Processes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Sensory,%20Attentional%20and%20Perceptual%20Processes.pdf",
+              },
+              {
+                name: "Thinking",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/11th/Psychology/kepy1dd/Thinking.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+
     ],
   },
+  {
+    name: "12th",
+    subjects: [
+      {
+        name: "Accountancy",
+        books: [
+          {
+            name: "Accountancy Part II",
+            chapters: [
+              {
+                name: "Analysis of Financial Statements",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/Analysis%20of%20Financial%20Statements.pdf",
+              },
+              {
+                name: "Financial Statements of a Company",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/Financial%20Statements%20of%20a%20Company.pdf",
+              },
+              {
+                name: "Accounting Ratios",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/Accounting%20Ratios.pdf",
+              },
+              {
+                name: "Issue and Redemption of Debentures",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/Issue%20and%20Redemption%20of%20Debentures.pdf",
+              },
+              {
+                name: "Accounting for Share Capital",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/Accounting%20for%20Share%20Capital.pdf",
+              },
+              {
+                name: "leac2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/leac2ps.pdf",
+              },
+              {
+                name: "Cash Flow Statement",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20II/Cash%20Flow%20Statement.pdf",
+              },
+            ],
+          },
+          {
+            name: "Accountancy Part I",
+            chapters: [
+              {
+                name: "leac1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20I/leac1ps.pdf",
+              },
+              {
+                name: "Dissolution of Partnership Firm",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20I/Dissolution%20of%20Partnership%20Firm.pdf",
+              },
+              {
+                name: "Accounting for Partnership: Basic Concepts",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20I/Accounting%20for%20Partnership:%20Basic%20Concepts.pdf",
+              },
+
+              {
+                name: "Reconstitution of a Partnership Firm Admission of a Partner",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Accountancy%20Part%20I/Reconstitution%20of%20a%20Partnership%20Firm%20%20Admission%20of%20a%20Partner.pdf",
+              },
+            ],
+          },
+          {
+            name: "Computerised Accounting System",
+            chapters: [
+              {
+                name: "leca1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Computerised%20Accounting%20System/leca1ps.pdf",
+              },
+              {
+                name: "Overview of computerised accounting system",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Computerised%20Accounting%20System/Overview%20of%20computerised%20accounting%20system.pdf",
+              },
+              {
+                name: "use of spreadsheet in business Applications",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Computerised%20Accounting%20System/use%20of%20spreadsheet%20in%20business%20Applications.pdf",
+              },
+
+              {
+                name: "Graphs and charts for business data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Computerised%20Accounting%20System/Graphs%20and%20charts%20for%20business%20data.pdf",
+              },
+              {
+                name: "Spreadsheet",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Accounctancy/Computerised%20Accounting%20System/Spreadsheet.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Biology",
+        books: [
+          {
+            name: "lebo1dd",
+            chapters: [
+              {
+                name: "Reproductive Health",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/Reproductive%20Health.pdf",
+              },
+              {
+                name: "lebo105",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo105.pdf",
+              },
+              {
+                name: "lebo106",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo106.pdf",
+              },
+              {
+                name: "lebo1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo1ps.pdf",
+              },
+              {
+                name: "lebo110",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo110.pdf",
+              },
+              {
+                name: "lebo111",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo111.pdf",
+              },
+              {
+                name: "lebo112",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo112.pdf",
+              },
+              {
+                name: "lebo113",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo113.pdf",
+              },
+              {
+                name: "lebo109",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo109.pdf",
+              },
+              {
+                name: "lebo107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo107.pdf",
+              },
+              {
+                name: "lebo108",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo108.pdf",
+              },
+              {
+                name: "lebo101",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo101.pdf",
+              },
+              {
+                name: "lebo102",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biology/lebo1dd/lebo102.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Biotechnology",
+        books: [
+          {
+            name: "lebt1dd",
+            chapters: [
+              {
+                name: "An Overview of Recombinant DNA Technology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/An%20Overview%20of%20Recombinant%20DNA%20Technology.pdf",
+              },
+              {
+                name: "Host Vector System",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Host%20Vector%20System.pdf",
+              },
+              {
+                name: "Plant Tissue Culture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Plant%20Tissue%20Culture.pdf",
+              },
+              {
+                name: "Microbial Culture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Microbial%20Culture.pdf",
+              },
+              {
+                name: "Stem Cell Culture and Organ Culture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Stem%20Cell%20Culture%20and%20Organ%20Culture.pdf",
+              },
+              {
+                name: "Bioprocessing and Biomanufacturing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Bioprocessing%20and%20Biomanufacturing.pdf",
+              },
+              {
+                name: "Animal Cell Culture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Animal%20Cell%20Culture.pdf",
+              },
+              {
+                name: "Genome Technology and Engineering",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Genome%20Technology%20and%20Engineering.pdf",
+              },
+              {
+                name: "Recent Innovations in Biotechnology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Recent%20Innovations%20in%20Biotechnology.pdf",
+              },
+              {
+                name: "Bioremediation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Bioremediation.pdf",
+              },
+              {
+                name: "Applications of Recombinant DNA Technology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Applications%20of%20Recombinant%20DNA%20Technology.pdf",
+              },
+              {
+                name: "Gene Cloning",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Gene%20Cloning.pdf",
+              },
+              {
+                name: "lebt1cc",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/lebt1cc.jpg",
+              },
+              {
+                name: "lebt1cc",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/lebt1cc.pdf",
+              },
+              {
+                name: "lebt1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/lebt1ps.pdf",
+              },
+              {
+                name: "Entrepreneurship",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Biotechnolgy/lebt1dd/Entrepreneurship.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      
+      {
+        name: "Business Studies",
+        books: [
+          {
+            name: "Business Studies I",
+            chapters: [
+              {
+                name: "Planning",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Planning.pdf",
+              },
+              {
+                name: "Business environment",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Planning.pdf",
+              },
+              {
+                name: "Nature and significance of management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Planning.pdf",
+              },
+              {
+                name: "Staffing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Planning.pdf",
+              },
+              {
+                name: "Organising",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Organising.pdf",
+              },
+              {
+                name: "Principles of management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Principles%20of%20management.pdf",
+              },
+              {
+                name: "lebs1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/lebs1ps.pdf",
+              },
+              {
+                name: "Controlling",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Controlling.pdf",
+              },
+              {
+                name: "Directing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20I/Directing.pdf",
+              },
+            ],
+          },
+          {
+            name: "Business Studies II",
+            chapters: [
+              {
+                name: "lebs2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20II/lebs2ps.pdf",
+              },
+              {
+                name: "Consumer Protection",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20II/Consumer%20Protection.pdf",
+              },
+              {
+                name: "Financial management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20II/Financial%20management.pdf",
+              },
+
+              {
+                name: "Marketing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Business%20Studies/Business%20Studies%20II/Marketing.pdf",
+              },
+            ],
+          },
+        ],
+      },       
+             
+      {
+        name: "Chemistry",
+        books: [
+          {
+            name: "chemistry I",
+            chapters: [
+              {
+                name: "Solutions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/Solutions.pdf",
+              },
+              {
+                name: "Chemical Kinetics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/Chemical%20Kinetics.pdf",
+              },
+              {
+                name: "Electrochemistry",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/Electrochemistry.pdf",
+              },
+              {
+                name: "lech1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/lech1an.pdf",
+              },
+              {
+                name: "lech1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/lech1a1.pdf",
+              },
+              {
+                name: "lech1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/lech1ps.pdf",
+              },
+              {
+                name: "Coordination Compounds",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/Coordination%20Compounds.pdf",
+              },
+              {
+                name: "The d and f Block Elements",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20I/The%20d%20and%20f%20Block%20Elements.pdf",
+              },
+            ],
+          },
+          {
+            name: "chemistry II",
+            chapters: [
+              {
+                name: "Amines",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/Amines.pdf",
+              },
+              {
+                name: "Biomolecules",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/Biomolecules.pdf",
+              },
+              {
+                name: "Haloalkanes and Haloarenes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/Haloalkanes%20and%20Haloarenes.pdf",
+              },
+              {
+                name: "Aldehydes, Ketones and Carboxylic Acids",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/Aldehydes,%20Ketones%20and%20Carboxylic%20Acids.pdf",
+              },
+              {
+                name: "Alcohols, Phenols and Ethers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/Alcohols,%20Phenols%20and%20Ethers.pdf",
+              },
+              {
+                name: "lech2an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/lech2an.pdf",
+              },
+              {
+                name: "lech2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Chemistry/chemistry%20II/lech2ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Computer Science",
+        books: [
+          {
+            name: "lecs1dd",
+            chapters: [
+              {
+                name: "Searching",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Searching.pdf",
+              },
+              {
+                name: "Understanding Data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Understanding%20Data.pdf",
+              },
+              {
+                name: "Stack",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Stack.pdf",
+              },
+              {
+                name: "Sorting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Sorting.pdf",
+              },
+              {
+                name: "File Handling in python",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/File%20Handling%20in%20python.pdf",
+              },
+              {
+                name: "Queue",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Queue.pdf",
+              },
+              {
+                name: "Database Concepts",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Database%20Concepts.pdf",
+              },
+              {
+                name: "Exception Handling in python",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Exception%20Handling%20in%20python.pdf",
+              },
+              {
+                name: "Project Based Learning",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Project%20Based%20Learning.pdf",
+              },
+              {
+                name: "lecs1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/lecs1ps.pdf",
+              },
+              {
+                name: "Security Aspects",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Security%20Aspects.pdf",
+              },
+              {
+                name: "Computer Networks",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Computer%20Networks.pdf",
+              },
+              {
+                name: "Data Communication",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Data%20Communication.pdf",
+              },
+              {
+                name: "Structured Query Language (SQL)",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Computer%20science/lecs1dd/Structured%20Query%20Language%20(SQL).pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+      {
+        name: "Economics",
+        books: [
+          {
+            name: "Introductory Macroeconomics",
+            chapters: [
+              {
+                name: "Introduction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/Introduction.pdf",
+              },
+              {
+                name: "Determination of Income and Employment",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/Determination%20of%20Income%20and%20Employment.pdf",
+              },
+              {
+                name: "Money and Banking",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/Money%20and%20Banking.pdf",
+              },
+              {
+                name: "National Income Accounting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/National%20Income%20Accounting.pdf",
+              },
+              {
+                name: "leec1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/leec1ps.pdf",
+              },
+              {
+                name: "Open Economy Macroeconomics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/Open%20Economy%20Macroeconomics.pdf",
+              },
+              {
+                name: "Government Budget and the Economy",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Macroeconomics/Government%20Budget%20and%20the%20Economy.pdf",
+              },
+            ],
+          },
+          {
+            name: "Introductory Microeconomi",
+            chapters: [
+              {
+                name: "Glossary",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/Glossary.pdf",
+              },
+              {
+                name: "Market Equilibrium",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/Market%20Equilibrium.pdf",
+              },
+              {
+                name: "leec205",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/leec205.pdf",
+              },
+              {
+                name: "Production and costs",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/Production%20and%20costs.pdf",
+              },
+              {
+                name: "The Theory of the Firm under Perfect Competition",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/The%20Theory%20of%20the%20Firm%20under%20Perfect%20Competition.pdf",
+              },
+              {
+                name: "Introduction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/Introduction.pdf",
+              },
+              {
+                name: "Theory of consumer behaviour",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Economics/Introductory%20Microeconomics/Theory%20of%20consumer%20behaviour.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "English",
+        books: [
+          {
+            name: "Flamingo",
+            chapters: [
+              {
+                name: "Keeping Quiet",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Keeping%20Quiet.pdf",
+              },
+              {
+                name: "My Mother at Sixty-six",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/My%20Mother%20at%20Sixty-six.pdf",
+              },
+              {
+                name: "Deep Water",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Deep%20Water.pdf",
+              },
+              {
+                name: "The Interview",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/The%20Interview.pdf",
+              },
+              {
+                name: "Lost Spring",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Lost%20Spring.pdf",
+              },
+              {
+                name: "Poets and Pancakes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Poets%20and%20Pancakes.pdf",
+              },
+              {
+                name: "Indigo",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Indigo.pdf",
+              },
+              {
+                name: "Going Places",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Going%20Places.pdf",
+              },
+              {
+                name: "The Rattrap",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/The%20Rattrap.pdf",
+              },
+              {
+                name: "The Last Lesson",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/The%20Last%20Lesson.pdf",
+              },
+              {
+                name: "A Thing of Beauty",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/A%20Thing%20of%20Beauty.pdf",
+              },
+              {
+                name: "A Roadside Stand",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/A%20Roadside%20Stand.pdf",
+              },
+              {
+                name: "Aunt Jennifers Tigers",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/Aunt%20Jennifers%20Tigers.pdf",
+              },
+              {
+                name: "lefl1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Flamingo/lefl1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Kaliedoscope",
+            chapters: [
+              {
+                name: "A Lecture Upon the Shadow",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/A%20Lecture%20Upon%20the%20Shadow.pdf",
+              },
+              {
+                name: "Eveline",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Eveline.pdf",
+              },
+              {
+                name: "I Sell my Dreams",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/I%20Sell%20my%20Dreams.pdf",
+              },
+
+              {
+                name: "A Wedding in Brownsville",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/A%20Wedding%20in%20Brownsville.pdf",
+              },
+              
+              {
+                name: "One Centimetre",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/One%20Centimetre.pdf",
+              },
+              
+              {
+                name: "Tomorrow",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Tomorrow.pdf",
+              },
+              
+              {
+                name: "The Wild Swans at Coole",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/The%20Wild%20Swans%20at%20Coole.pdf",
+              },
+              
+              {
+                name: "Time and Time Again",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Time%20and%20Time%20Again.pdf",
+              },
+              
+              {
+                name: "Trees",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Trees.pdf",
+              },
+              
+              {
+                name: "Poems by Milton",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Poems%20by%20Milton.pdf",
+              },
+              
+              {
+                name: "Kubla Khan",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Kubla%20Khan.pdf",
+              },
+              
+              {
+                name: "Blood",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Blood.pdf",
+              },
+              
+              {
+                name: "The Mark on the Wall",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/The%20Mark%20on%20the%20Wall.pdf",
+              },
+              
+              {
+                name: "Freedom",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Freedom.pdf",
+              },
+              
+              {
+                name: "Film-making",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Film-making.pdf",
+              },
+              
+              {
+                name: "Poems by Blake",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Poems%20by%20Blake.pdf",
+              },
+              
+              {
+                name: "lekl1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/lekl1ps.pdf",
+              },
+              
+              {
+                name: "Why the Novel Matters",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Why%20the%20Novel%20Matters.pdf",
+              },
+              
+              {
+                name: "On Science Fiction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/On%20Science%20Fiction.pdf",
+              },
+              
+              {
+                name: "The Argumentative Indian",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/The%20Argumentative%20Indian.pdf",
+              },
+              
+              {
+                name: "Broken Images",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Broken%20Images.pdf",
+              },
+              
+              {
+                name: "Chandalika",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Kaliedoscope/Chandalika.pdf",
+              },
+            ],
+          },
+          {
+            name: "Vistas",
+            chapters: [
+              {
+                name: "Journey to the end of the Earth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/Journey%20to%20the%20end%20of%20the%20Earth.pdf",
+              },
+              {
+                name: "The Tiger King",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/The%20Tiger%20King.pdf",
+              },
+              {
+                name: "The Enemy",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/The%20Enemy.pdf",
+              },
+
+              {
+                name: "The Third Level",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/The%20Third%20Level.pdf",
+              },
+              {
+                name: "Memories of Childhood",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/Memories%20of%20Childhood.pdf",
+              },
+              {
+                name: "On The Face Of It",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/On%20The%20Face%20Of%20It.pdf",
+              },
+              {
+                name: "levt1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/English/Vistas/levt1ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Fine Art",
+        books: [
+          {
+            name: "lefa1dd",
+            chapters: [
+              {
+                name: "The Manuscript Painting Tradition",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Manuscript%20Painting%20Tradition.pdf",
+              },
+              {
+                name: "The Bengal School and Cultural Nationalism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Bengal%20School%20and%20Cultural%20Nationalism.pdf",
+              },
+              {
+                name: "The Modern Indian Art",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Modern%20Indian%20Art.pdf",
+              },
+              {
+                name: "The Mughal School of Miniature Painting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Mughal%20School%20of%20Miniature%20Painting.pdf",
+              },
+              {
+                name: "The Pahari Schools of Painting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Pahari%20Schools%20of%20Painting.pdf",
+              },
+              {
+                name: "The Deccani Schools of Painting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Deccani%20Schools%20of%20Painting.pdf",
+              },
+              {
+                name: "The Rajasthani Schools of Painting",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Rajasthani%20Schools%20of%20Painting.pdf",
+              },
+              {
+                name: "lefa1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/lefa1ps.pdf",
+              },
+              {
+                name: "The Living Art Traditions of India",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Fine%20Art/lefa1dd/The%20Living%20Art%20Traditions%20of%20India.pdf",
+              },
+            ],
+          },
+        
+        ],
+      },
+      {
+        name: "Geography",
+        books: [
+          {
+            name: "Fundamentals of Human Geography",
+            chapters: [
+              {
+                name: "The World Population-Distribution, Density and Growth",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/The%20World%20Population-Distribution,%20Density%20and%20Growth.pdf",
+              },
+              {
+                name: "Human Development",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/Human%20Development.pdf",
+              },
+              {
+                name: "Tertiary and Quaternary Activities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/Tertiary%20and%20Quaternary%20Activities.pdf",
+              },
+              {
+                name: "International Trade",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/International%20Trade.pdf",
+              },
+              {
+                name: "Human Geography Nature and Scope",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/Human%20Geography%20Nature%20and%20Scope.pdf",
+              },
+              {
+                name: "Secondary Activities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/Secondary%20Activities.pdf",
+              },
+              {
+                name: "Transport and Communication",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/Transport%20and%20Communication.pdf",
+              },
+              {
+                name: "Primary Activities",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/Primary%20Activities.pdf",
+              },
+              {
+                name: "legy1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/legy1a1.pdf",
+              },
+              {
+                name: "legy1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Fundamentals%20of%20Human%20Geography/legy1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "India -People And Economy",
+            chapters: [
+              {
+                name: "Human Settlements",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Human%20Settlements.pdf",
+              },
+              {
+                name: "Planning and Sustainable Development in Indian Context",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Planning%20and%20Sustainable%20Development%20in%20Indian%20Context.pdf",
+              },
+              {
+                name: "International Trade",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/International%20Trade.pdf",
+              },
+
+              {
+                name: "Transport and Communication",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Transport%20and%20Communication.pdf",
+              },
+              
+              {
+                name: "Water Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Water%20Resources.pdf",
+              },
+              
+              {
+                name: "Population Distribution, Density, Growth and Composition",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Population%20Distribution,%20Density,%20Growth%20and%20Composition.pdf",
+              },
+              
+              {
+                name: "Mineral and Energy Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Mineral%20and%20Energy%20Resources.pdf",
+              },
+              
+              {
+                name: "Land Resources and Agriculture",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Land%20Resources%20and%20Agriculture.pdf",
+              },
+              
+              {
+                name: "legy2a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/legy2a1.pdf",
+              },
+              
+              {
+                name: "legy2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/legy2ps.pdf",
+              },
+              
+              {
+                name: "Geographical Perspective on Selected Issues and Problems",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/India%20-People%20And%20Economy/Geographical%20Perspective%20on%20Selected%20Issues%20and%20Problems.pdf",
+              },
+            ],
+          },
+          {
+            name: "Practical Work in Geography Part II",
+            chapters: [
+              {
+                name: "Data Processing",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Practical%20Work%20in%20Geography%20Part%20II/Data%20Processing.pdf",
+              },
+              {
+                name: "Data Its Source and Compilation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Practical%20Work%20in%20Geography%20Part%20II/Data%20%20Its%20Source%20and%20Compilation.pdf",
+              },
+              {
+                name: "legy3ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Practical%20Work%20in%20Geography%20Part%20II/legy3ps.pdf",
+              },
+
+              {
+                name: "Spatial Information Technology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Practical%20Work%20in%20Geography%20Part%20II/Spatial%20Information%20Technology.pdf",
+              },
+              {
+                name: "Graphical Representation of Data",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Geography/Practical%20Work%20in%20Geography%20Part%20II/Graphical%20Representation%20of%20Data.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "History",
+        books: [
+          {
+            name: "Themes in Indian History-I",
+            chapters: [
+              {
+                name: "Kings, Farmers and Towns Early States and Economics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-I/Kings,%20Farmers%20and%20Towns%20Early%20States%20and%20Economics.pdf",
+              },
+              {
+                name: "Bricks , Beads And Bones The Harappan Civilisation",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-I/Bricks%20,%20Beads%20And%20Bones%20The%20Harappan%20Civilisation.pdf",
+              },
+              {
+                name: "lehs1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-I/lehs1ps.pdf",
+              },
+              {
+                name: "Kinship, Caste And Class Early Societies",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-I/Kinship,%20Caste%20And%20Class%20Early%20Societies.pdf",
+              },
+              {
+                name: "Thinkers, Beliefs and Buildings Cultural Developments",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-I/Thinkers,%20Beliefs%20and%20Buildings%20%20Cultural%20Developments.pdf",
+              },
+            ],
+          },
+          {
+            name: "Themes in Indian History-II",
+            chapters: [
+              {
+                name: "lehs2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-II/lehs2ps.pdf",
+              },
+              {
+                name: "Through The Eyes Of Travellers Perceptions of Society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-II/Through%20The%20Eyes%20Of%20Travellers%20Perceptions%20of%20Society.pdf",
+              },
+              {
+                name: "An Imperial Capital Vijayanagara",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-II/An%20Imperial%20Capital%20Vijayanagara%20%20.pdf",
+              },
+
+              {
+                name: "Peasants, Zamindars and the State Agrarian Society and the Mughal Empire",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-II/Peasants,%20Zamindars%20and%20the%20State%20Agrarian%20Society%20and%20the%20Mughal%20Empire.pdf",
+              },
+              
+              {
+                name: "Bhakti Sufi Traditions Changes in Religious Beliefs and Devotional Texts",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-II/Bhakti%20%20Sufi%20Traditions%20Changes%20in%20Religious%20Beliefs%20and%20Devotional%20Texts.pdf",
+              },
+            ],
+          },
+          {
+            name: "Themes in Indian History-III",
+            chapters: [
+              {
+                name: "Rebels And the Raj",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Rebels%20And%20the%20Raj.pdf",
+              },
+              {
+                name: "Colonialism and The Countryside",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Colonialism%20and%20The%20Countryside.pdf",
+              },
+              {
+                name: "Framing the Constitution",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Framing%20the%20Constitution.pdf",
+              },
+
+              {
+                name: "lehs3ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/lehs3ps.pdf",
+              },
+              {
+                name: "Mahatma Gandhi and the national movement",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Mahatma%20Gandhi%20and%20the%20national%20movement.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Home Science",
+        books: [
+          {
+            name: "Human Ecology and Family Sciences Part I",
+            chapters: [
+              {
+                name: "Food Processing and Technology",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Food%20Processing%20and%20Technology.pdf",
+              },
+              {
+                name: "Clinical Nutrition and Dietetics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Clinical%20Nutrition%20and%20Dietetics.pdf",
+              },
+              {
+                name: "Early Childhood Care and Education",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Early%20Childhood%20Care%20and%20Education.pdf",
+              },
+              {
+                name: "Work, Livelihood and Career",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Work,%20Livelihood%20and%20Career.pdf",
+              },
+              {
+                name: "Food Quality and Food Safety",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Food%20Quality%20and%20Food%20Safety.pdf",
+              },
+              {
+                name: "Public Nutrition and Health",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Public%20Nutrition%20and%20Health.pdf",
+              },
+              {
+                name: "Management of Support Services, Institutions and Programmes for Children, Youth and Elderly",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/Management%20of%20Support%20Services,%20Institutions%20and%20Programmes%20for%20Children,%20Youth%20and%20Elderly.pdf",
+              },
+              {
+                name: "lehe1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20I/lehe1ps.pdf",
+              },
+            ],
+          },
+          {
+            name: "Human Ecology and Family Sciences Part II",
+            chapters: [
+              {
+                name: "Care and Maintenance of Fabrics in Institutions References",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Care%20and%20Maintenance%20of%20Fabrics%20in%20Institutions%20References.pdf",
+              },
+              {
+                name: "Corporate Communication and Public Relations References",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Corporate%20Communication%20and%20Public%20Relations%20References.pdf",
+              },
+              {
+                name: "Development Communication and Journalism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Development%20Communication%20and%20Journalism.pdf",
+              },
+
+              {
+                name: "Consumer Education and Protection References",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Consumer%20Education%20and%20Protection%20References.pdf",
+              },
+              
+              {
+                name: "Fashion Design and Merchandising",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Fashion%20Design%20and%20Merchandising.pdf",
+              },
+              {
+                name: "Hospitality Management",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Hospitality%20Management.pdf",
+              },
+              {
+                name: "lehe2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/lehe2ps.pdf",
+              },
+              {
+                name: "Design for Fabric and Apparel",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Home%20Science/Human%20Ecology%20and%20Family%20Sciences%20Part%20II/Design%20for%20Fabric%20and%20Apparel.pdf",
+              },
+            ],
+          },
+          {
+            name: "Themes in Indian History-III",
+            chapters: [
+              {
+                name: "Rebels And the Raj",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Rebels%20And%20the%20Raj.pdf",
+              },
+              {
+                name: "Colonialism and The Countryside",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Colonialism%20and%20The%20Countryside.pdf",
+              },
+              {
+                name: "Framing the Constitution",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Framing%20the%20Constitution.pdf",
+              },
+
+              {
+                name: "lehs3ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/lehs3ps.pdf",
+              },
+              {
+                name: "Mahatma Gandhi and the national movement",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/History/Themes%20in%20Indian%20History-III/Mahatma%20Gandhi%20and%20the%20national%20movement.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Informatics Practices",
+        books: [
+          {
+            name: "leip1dd",
+            chapters: [
+              {
+                name: "Querying and SQL Functions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/Querying%20and%20SQL%20Functions.pdf",
+              },
+              {
+                name: "leip1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/leip1ps.pdf",
+              },
+              {
+                name: "Project Based Learning",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/%20Project%20Based%20Learning.pdf",
+              },
+              {
+                name: "Societal Impacts",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/%20Societal%20Impacts.pdf",
+              },
+              {
+                name: "Data Handling Using Pandas I",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/Data%20Handling%20Using%20Pandas%20%20I.pdf",
+              },
+              {
+                name: "Data Handling Using Pandas II",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/Data%20Handling%20Using%20Pandas%20II.pdf",
+              },
+              {
+                name: "Plotting Data using Matplotlib",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/Plotting%20Data%20using%20Matplotlib.pdf",
+              },
+              {
+                name: "Internet and Web",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Informatics%20Practices/leip1dd/Internet%20and%20Web.pdf",
+              },
+            ],
+          },
+  
+        ],
+      },
+      {
+        name: "Maths",
+        books: [
+          {
+            name: "Mathematics Part-I",
+            chapters: [
+              {
+                name: "Relations and Functions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/Relations%20and%20Functions.pdf",
+              },
+              {
+                name: "Inverse Trigonometric Functions",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/Inverse%20Trigonometric%20Functions.pdf",
+              },
+              {
+                name: "Matrices",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/Matrices.pdf",
+              },
+              {
+                name: "lemh1a1",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/lemh1a1.pdf",
+              },
+              {
+                name: "lemh1a2",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/lemh1a2.pdf",
+              },
+              {
+                name: "lemh1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/lemh1an.pdf",
+              },
+              {
+                name: "lemh1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/lemh1ps.pdf",
+              },
+              {
+                name: "Determinants",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/Determinants.pdf",
+              },
+              {
+                name: "Application of Derivatives",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/Application%20of%20Derivatives.pdf",
+              },
+              {
+                name: "Continuity and Differentiability",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-I/Continuity%20and%20Differentiability.pdf",
+              },
+            ],
+          },
+          {
+            name: "Mathematics Part-II",
+            chapters: [
+              {
+                name: "Application of Integrals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/Application%20of%20Integrals.pdf",
+              },
+              {
+                name: "Differential Equations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/Differential%20Equations.pdf",
+              },
+              {
+                name: "Integrals",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/Integrals.pdf",
+              },
+
+              {
+                name: "Linear Programming",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/Linear%20Programming.pdf",
+              },
+              
+              {
+                name: "lemh2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/lemh2ps.pdf",
+              },
+              {
+                name: "lemh2an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/lemh2an.pdf",
+              },
+              {
+                name: "Probability",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/Probability.pdf",
+              },
+              {
+                name: "Vector Algebra",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Maths/Mathematics%20Part-II/Vector%20Algebra.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Physics",
+        books: [
+          {
+            name: "Physics Part-I",
+            chapters: [
+              {
+                name: "Current Electricity",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Current%20Electricity.pdf",
+              },
+              {
+                name: "Moving Charges and Magnetism",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Moving%20Charges%20and%20Magnetism.pdf",
+              },
+              {
+                name: "Electrostatic Potential and Capacitance",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Electrostatic%20Potential%20and%20Capacitance.pdf",
+              },
+              {
+                name: "Electric Charges and Fields",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Electric%20Charges%20and%20Fields.pdf",
+              },
+              {
+                name: "leph1an",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/leph1an.pdf",
+              },
+              {
+                name: "leph1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/leph1ps.pdf",
+              },
+              {
+                name: "Electromagnetic Waves",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Electromagnetic%20Waves.pdf",
+              },
+              {
+                name: "Magnetism and Matter",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Magnetism%20and%20Matter.pdf",
+              },
+              {
+                name: "Electromagnetic Induction",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Electromagnetic%20Induction.pdf",
+              },
+              {
+                name: "Alternating Current",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-I/Alternating%20Current.pdf",
+              },
+            ],
+          },
+          {
+            name: "Physics Part-II",
+            chapters: [
+              {
+                name: "Dual Nature of Radiation and Matter",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/Dual%20Nature%20of%20Radiation%20and%20Matter.pdf",
+              },
+              {
+                name: "Atoms",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/Atoms.pdf",
+              },
+              {
+                name: "Wave Optics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/Wave%20Optics.pdf",
+              },
+
+              {
+                name: "Ray Optics and Optical Instruments",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/Ray%20Optics%20and%20Optical%20Instruments.pdf",
+              },
+              
+              {
+                name: "Semiconductor Electronics Materials, Devices and Simple Circuits",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/Semiconductor%20Electronics%20Materials,%20Devices%20and%20Simple%20Circuits%20.pdf",
+              },
+              {
+                name: "Nuclei",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/Nuclei.pdf",
+              },
+              {
+                name: "leph2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Physics/Physics%20Part-II/leph2ps.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Political science",
+        books: [
+          {
+            name: "Contemporary World Politics",
+            chapters: [
+              {
+                name: "leps1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/leps1ps.pdf",
+              },
+              {
+                name: "The End Of Bipolarity",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/The%20End%20Of%20Bipolarity.pdf",
+              },
+              {
+                name: "Contemporary South Asia",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/Contemporary%20South%20Asia.pdf",
+              },
+              {
+                name: "Contemporary Centres of Power",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/Contemporary%20Centres%20of%20Power.pdf",
+              },
+              {
+                name: "International Organisations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/International%20Organisations.pdf",
+              },
+              {
+                name: "Security in the Contemporary World",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/Security%20in%20the%20Contemporary%20World.pdf",
+              },
+              {
+                name: "Environment and Natural Resources",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/Environment%20and%20Natural%20Resources.pdf",
+              },
+              {
+                name: "leps107",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Contemporary%20World%20Politics/leps107.pdf",
+              },
+            ],
+          },
+          {
+            name: "Politics in India Since Independence",
+            chapters: [
+              {
+                name: "leps2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/leps2ps.pdf",
+              },
+              {
+                name: "Politics Of Planned Development",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/Politics%20Of%20Planned%20Development.pdf",
+              },
+              {
+                name: "Era of one party dominance",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/Era%20of%20one%20party%20dominance.pdf",
+              },
+
+              {
+                name: "Challenges to and Restoration of the Congress System",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/Challenges%20to%20and%20Restoration%20of%20the%20Congress%20System.pdf",
+              },
+              
+              {
+                name: "The Crisis Of Democratic Order",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/The%20Crisis%20Of%20Democratic%20Order.pdf",
+              },
+              {
+                name: "Regional Aspiration",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/Regional%20Aspiration.pdf",
+              },
+              {
+                name: "Indias External Relations",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/Indias%20External%20Relations.pdf",
+              },
+              {
+                name: "Recent Developments In Indian Politics",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/Recent%20Developments%20In%20Indian%20Politics.pdf",
+              },
+              {
+                name: "leps201",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Political%20science/Politics%20in%20India%20Since%20Independence/leps201.pdf",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Psychology",
+        books: [
+          {
+            name: "lepy1dd",
+            chapters: [
+              {
+                name: "Variations in Psychological Attributes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Variations%20in%20Psychological%20Attributes.pdf",
+              },
+              {
+                name: "Self and Personality",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Self%20and%20Personality.pdf",
+              },
+              {
+                name: "lepy1gl",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/lepy1gl.pdf",
+              },
+              {
+                name: "Social Influence and Group Processes",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Social%20Influence%20and%20Group%20Processes.pdf",
+              },
+              {
+                name: "Therapeutic Approaches",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Therapeutic%20Approaches.pdf",
+              },
+              {
+                name: "Psychological Disorders",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Psychological%20Disorders.pdf",
+              },
+              {
+                name: "Attitude and Social Cognition",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Attitude%20and%20Social%20Cognition.pdf",
+              },
+              {
+                name: "Meeting Life Challenges",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/Meeting%20Life%20Challenges.pdf",
+              },
+              {
+                name: "lepy1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Psychology/lepy1dd/lepy1ps.pdf",
+              },
+            ],
+          },
+  
+        ],
+      },
+      {
+        name: "Sociology",
+        books: [
+          {
+            name: "Indian Society",
+            chapters: [
+              {
+                name: "Introducing Indian Society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/Introducing%20Indian%20Society.pdf",
+              },
+              {
+                name: "Social Institutions: Continuity and Change",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/Social%20Institutions:%20Continuity%20and%20Change.pdf",
+              },
+              {
+                name: "The Demographic Structure of the Indian Society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/The%20Demographic%20Structure%20of%20the%20Indian%20Society.pdf",
+              },
+              {
+                name: "Suggestions for Project Work",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/Suggestions%20for%20Project%20Work.pdf",
+              },
+              {
+                name: "lesy1ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/lesy1ps.pdf",
+              },
+              {
+                name: "The Market as a Social Institution",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/The%20Market%20as%20a%20Social%20Institution.pdf",
+              },
+              {
+                name: "The Challenges of Cultural Diversity",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/The%20Challenges%20of%20Cultural%20Diversity.pdf",
+              },
+              {
+                name: "Patterns of Social Inequality and Exclusion",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Indian%20Society/Patterns%20of%20Social%20Inequality%20and%20Exclusion.pdf",
+              },
+            ],
+          },
+          {
+            name: "Social Change and Development in India",
+            chapters: [
+              {
+                name: "The Constitution and Social Change",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/The%20Constitution%20and%20Social%20Change.pdf",
+              },
+              {
+                name: "Change and Development in Industrial Society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Change%20and%20Development%20in%20Industrial%20Society.pdf",
+              },
+              {
+                name: "Cultural Change",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Cultural%20Change.pdf",
+              },
+
+              {
+                name: "Structural Change",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Structural%20Change.pdf",
+              },
+              
+              {
+                name: "Change and Development in Rural Society",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Change%20and%20Development%20in%20Rural%20Society.pdf",
+              },
+              {
+                name: "lesy2ps",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/lesy2ps.pdf",
+              },
+              {
+                name: "Globalisation and Social Change",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Globalisation%20and%20Social%20Change.pdf",
+              },
+              {
+                name: "Mass Media and Communications",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Mass%20Media%20and%20Communications.pdf",
+              },
+              {
+                name: "Social Movements",
+                url: "https://opnrribnotbfgfrvuqrk.supabase.co/storage/v1/object/public/pdf_chat/NCERT/12th/Sociology/Social%20Change%20and%20Development%20in%20India/Social%20Movements.pdf",
+              },
+            ],
+          },
+        ],
+      },
+
+    ],
+  },
+  
 ];
 
 export const NCERTPage = ({
