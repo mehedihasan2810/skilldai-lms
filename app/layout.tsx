@@ -10,12 +10,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
 import NextTopLoader from "nextjs-toploader";
 import { TooltipProvider } from "@/components/ui";
-import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { RestrictSupportChat } from "@/components/restrict-support-chat";
 import { CSPostHogProvider } from "./providers";
+import { RefreshSession } from "@/components/refresh-session";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -78,6 +78,7 @@ export default async function RootLayout({
           />
 
           <RestrictSupportChat />
+          <RefreshSession />
           {/* <Analytics /> */}
 
           {/* <Script

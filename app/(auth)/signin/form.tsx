@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -104,7 +104,10 @@ const SignInForm = () => {
   return (
     <Card className="max-w-md w-full border">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-xl"> Sign In To Your Account</CardTitle>
+        <CardTitle className="text-xl">Sign in to your account</CardTitle>
+        <CardDescription>
+          Sign in to your account to continue
+        </CardDescription>
       </CardHeader>
 
       <CardContent className="grid gap-4">
