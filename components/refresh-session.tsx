@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { refreshSession } from "@/actions/refresh-session";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+const supabase = createClient();
+
 export function RefreshSession() {
   useEffect(() => {
-    const supabase = createClient();
     const subscription = supabase
       .channel(`user-info`)
       .on(
