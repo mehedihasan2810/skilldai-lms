@@ -29,7 +29,8 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { SignOutDialog } from "../user-button/sign-out-dialog";
 import { useState } from "react";
-
+import { signOutAction } from "@/actions/auth";
+import { toast } from "sonner";
 export function NavUser({
   user,
 }: {
@@ -111,34 +112,18 @@ export function NavUser({
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {/* <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator /> */}
               <DropdownMenuItem
                 className="flex items-center gap-2"
-                onClick={handleOpenSignoutDialog}
+                onClick={() => {
+                  toast.promise(signOutAction, {
+                    loading: "Signing out...",
+                    success: "Signed out successfully",
+                    error: (error) => error.message,
+                  });
+                }}
               >
                 <LogOut className="size-5" />
-                Log out
+                Sign out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

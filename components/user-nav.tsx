@@ -16,6 +16,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SignOutDialog } from "./user-button/sign-out-dialog";
 import { createClient } from "@/lib/supabase/client";
+import { signOutAction } from "@/actions/auth";
+import { toast } from "sonner";
 export function UserNav({ email }: { email: string }) {
   const [isSignoutDialogOpen, setIsSignoutDialogOpen] = useState(false);
   const handleOpenSignoutDialog = () => setIsSignoutDialogOpen(true);
@@ -72,8 +74,16 @@ export function UserNav({ email }: { email: string }) {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem onClick={handleOpenSignoutDialog}>
-            Log out
+          <DropdownMenuItem
+            onClick={() => {
+              toast.promise(signOutAction, {
+                loading: "Signing out...",
+                success: "Signed out successfully",
+                error: (error) => error.message,
+              });
+            }}
+          >
+            Sign out
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -21,7 +21,8 @@ import {
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "nextjs-toploader/app";
 import { buttonVariants } from "../ui";
-
+import { signOutAction } from "@/actions/auth";
+import { toast } from "sonner";
 type Props = {
   expanded?: boolean;
   userEmail?: string;
@@ -73,7 +74,7 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                  <UserIcon className="w-full" />
+                <UserIcon className="w-full" />
               </TooltipTrigger>
               <TooltipContent side="right">User</TooltipContent>
             </Tooltip>
@@ -88,7 +89,13 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
           <DropdownMenuSeparator />
 
           <DropdownMenuItem
-            onClick={handleOpenSignoutDialog}
+            onClick={() => {
+              toast.promise(signOutAction, {
+                loading: "Signing out...",
+                success: "Signed out successfully",
+                error: (error) => error.message,
+              });
+            }}
             className="cursor-pointer"
           >
             Sign Out

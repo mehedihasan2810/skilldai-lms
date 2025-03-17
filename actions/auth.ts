@@ -138,7 +138,9 @@ export const resetPasswordAction = async (formData: FormData) => {
 
 export const signOutAction = async () => {
   const supabase = await createClient();
-  await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    throw new Error(error.message);
+  }
   revalidatePath("/", "layout");
-  return { data: null, error: null };
 };
