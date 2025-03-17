@@ -3,13 +3,14 @@ import { TalkToPDF } from "./_components/pdf-chat-page";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
-const Page = async ({
-  params,
-}: {
-  params: {
-    id: string;
-  };
-}) => {
+const Page = async (
+  props: {
+    params: Promise<{
+      id: string;
+    }>;
+  }
+) => {
+  const params = await props.params;
   const supabase = await createClient();
 
   const {

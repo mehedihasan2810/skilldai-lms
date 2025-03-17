@@ -4,20 +4,20 @@ import { redirect } from "next/navigation";
 import { NCERTPage } from "./_components/ncert-page";
 import PageContainer from "@/components/dashboard/page-container";
 
-const Page = async ({
-  params,
-  searchParams,
-}: {
-  params: {
-    id: string;
-  };
-  searchParams: {
-    g: string | undefined;
-    s: string | undefined;
-    b: string | undefined;
-    c: string | undefined;
-  };
-}) => {
+const Page = async (
+  props: {
+    params: Promise<{
+      id: string;
+    }>;
+    searchParams: Promise<{
+      g: string | undefined;
+      s: string | undefined;
+      b: string | undefined;
+      c: string | undefined;
+    }>;
+  }
+) => {
+  const searchParams = await props.searchParams;
   const supabase = await createClient();
 
   const {

@@ -40,7 +40,7 @@ export const reportErrorAction = async ({
       device,
     });
 
-    const headersList = headers();
+    const headersList = await headers();
     const userAgent = headersList.get("user-agent") || "";
 
     const parser = new UAParser(userAgent);

@@ -2,13 +2,13 @@ import React from "react";
 import { QuizPanel } from "../_components/quiz-panel";
 import PageContainer from "@/components/dashboard/page-container";
 
-const Page = async ({
-  params,
-  searchParams,
-}: {
-  params: { quizId: string };
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) => {
+const Page = async (
+  props: {
+    params: Promise<{ quizId: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  }
+) => {
+  const params = await props.params;
   console.log(params);
 
   return (

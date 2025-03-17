@@ -95,9 +95,9 @@ export type Props = {
   setInput: (value: string) => void;
   onSubmit: (event?: SyntheticEvent) => void;
   isLoading: boolean;
-  recording: boolean;
-  onStartRecord: () => void;
-  onStopRecord: () => void;
+  // recording: boolean;
+  // onStartRecord: () => void;
+  // onStopRecord: () => void;
   attachments: Attachment[];
   onRemoveAttachment: (attachment: Attachment) => void;
   onAddAttachment: (newAttachments: Attachment[]) => void;
@@ -120,9 +120,9 @@ export const ChatInput = memo(function ChatInput({
   setInput,
   onSubmit,
   isLoading,
-  recording,
-  onStartRecord,
-  onStopRecord,
+  // recording,
+  // onStartRecord,
+  // onStopRecord,
   attachments,
   onRemoveAttachment,
   onAddAttachment,

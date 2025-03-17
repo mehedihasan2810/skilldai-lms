@@ -12,7 +12,6 @@ import { Attachment } from "@/app/types";
 import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
 // import { useRouter } from "next/navigation";
 import { useRouter } from "nextjs-toploader/app";
-import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
 import { Props as ReactArtifactProps } from "@/components/artifact/react";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
@@ -178,22 +177,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     }
   }, [chatId, messages, generatingResponse]);
 
-  // Whisper hook setup for voice input
-  const useWhispherHook = useRealWhisper;
-  // const useWhispherHook = "getSettings().openaiApiKey"
-  //   ? useRealWhisper
-  //   : useFakeWhisper;
-  const { recording, transcribing, transcript, startRecording, stopRecording } =
-    useWhispherHook({
-      apiKey: "getSettings().openaiApiKey",
-    });
-
-  // Update input with transcribed text
-  useEffect(() => {
-    if (!recording && !transcribing && transcript?.text) {
-      setInput((prev) => prev + ` ${transcript.text}`);
-    }
-  }, [recording, transcribing, transcript?.text, setInput]);
+ 
 
   // Handle artifact capture
   const handleCapture: ReactArtifactProps["onCapture"] = ({
@@ -291,7 +275,6 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
     // );
 
     setInput("");
-    stopRecording();
 
     const userAttachment = files
       ? [
@@ -349,9 +332,9 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 setInput={setInput}
                 onSubmit={handleSend}
                 isLoading={generatingResponse}
-                recording={recording}
-                onStartRecord={startRecording}
-                onStopRecord={stopRecording}
+                // recording={recording}
+                // onStartRecord={startRecording}
+                // onStopRecord={stopRecording}
                 attachments={attachments}
                 onAddAttachment={handleAddAttachment}
                 onRemoveAttachment={handleRemoveAttachment}
@@ -381,9 +364,9 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
                 setInput={setInput}
                 onSubmit={handleSend}
                 isLoading={generatingResponse}
-                recording={recording}
-                onStartRecord={startRecording}
-                onStopRecord={stopRecording}
+                // recording={recording}
+                // onStartRecord={startRecording}
+                // onStopRecord={stopRecording}
                 attachments={attachments}
                 onAddAttachment={handleAddAttachment}
                 onRemoveAttachment={handleRemoveAttachment}
@@ -399,21 +382,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
         </div>
       </div>
 
-      {currentArtifact && (
-        <div className="w-full max-w-xl h-full max-h-full pt-6 pb-4">
-          <ArtifactPanel
-            title={currentArtifact.title}
-            id={currentArtifact.id}
-            type={currentArtifact.type}
-            generating={currentArtifact.generating}
-            content={currentArtifact.content}
-            language={currentArtifact.language}
-            onClose={() => setCurrentArtifact(null)}
-            recording={recording}
-            onCapture={handleCapture}
-          />
-        </div>
-      )}
+
     </>
   );
 };

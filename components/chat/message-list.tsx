@@ -19,7 +19,7 @@ import React, { Fragment, RefObject, useState } from "react";
 
 type Props = {
   messages: Message[];
-  containerRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
   isLoading: boolean;
 };
 
