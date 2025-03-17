@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { refreshSession } from "@/actions/refresh-session";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { revalidateServerData } from "@/actions/revalidate-server-data";
 const supabase = createClient();
 
 export function RefreshSession() {
@@ -20,9 +21,11 @@ export function RefreshSession() {
         async (payload) => {
           console.log({ accessPayload: payload });
           try {
-            const { data, error } = await refreshSession();
+            // const { data, error } = await refreshSession();
+            const { data, error } = await supabase.auth.refreshSession();
+            await revalidateServerData();
             if (error) {
-              toast.error(error);
+              toast.error(error.message);
             }
             console.log({ data, error });
           } catch (error) {
