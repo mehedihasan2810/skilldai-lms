@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ClipboardCheck } from "lucide-react"; // Changed icon to represent pending approval
 import { createClient } from "@/lib/supabase/server";
-import { RefreshButton } from "./components/refresh-button";
 import { redirect } from "next/navigation";
 
 export default async function AccessPage() {

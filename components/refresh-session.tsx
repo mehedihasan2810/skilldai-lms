@@ -18,14 +18,16 @@ export function RefreshSession() {
         },
         async (payload) => {
           console.log({ accessPayload: payload });
-          const { data, error } = await refreshSession();
-          if (error) {
-            toast.error(error);
+          try {
+            const { data, error } = await refreshSession();
+            if (error) {
+              toast.error(error);
+            }
+            console.log({ data, error });
+          } catch (error) {
+            console.error(error);
+            toast.error((error as Error).message);
           }
-          console.log({ data, error });
-          //   await queryClient.invalidateQueries({
-          //     queryKey: ["chats", userId],
-          //   });
         }
       )
       .subscribe();
