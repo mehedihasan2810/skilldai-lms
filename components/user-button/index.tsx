@@ -23,6 +23,7 @@ import { useRouter } from "nextjs-toploader/app";
 import { buttonVariants } from "../ui";
 import { signOutAction } from "@/actions/auth";
 import { toast } from "sonner";
+import { revalidateServerData } from "@/actions/revalidate-server-data";
 type Props = {
   expanded?: boolean;
   userEmail?: string;
@@ -38,26 +39,14 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
   const handleOpenSignoutDialog = () => setIsSignoutDialogOpen(true);
   const handleCloseSignoutDialog = () => setIsSignoutDialogOpen(false);
 
-  const handleSignOut: React.MouseEventHandler<HTMLButtonElement> = async (
-    e
-  ) => {
-    e.preventDefault();
-
+  const handleSignOut = async () => {
     const supabase = createClient();
 
-    try {
-      const res = await supabase.auth.signOut();
+    const res = await supabase.auth.signOut();
 
-      if (res.error) throw new Error(res.error.message);
+    if (res.error) throw new Error(res.error.message);
 
-      router.refresh();
-      router.push("/");
-    } catch (error) {
-      console.error(error);
-      alert("Error signing out");
-    } finally {
-      handleCloseSignoutDialog();
-    }
+    await revalidateServerData();
   };
 
   return (
@@ -90,7 +79,7 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
 
           <DropdownMenuItem
             onClick={() => {
-              toast.promise(signOutAction, {
+              toast.promise(handleSignOut, {
                 loading: "Signing out...",
                 success: "Signed out successfully",
                 error: (error) => error.message,
