@@ -7,17 +7,16 @@ import { redirect } from "next/navigation";
 const NewChatPage = async () => {
   const supabase = await createClient();
 
-  // await supabase.auth.refreshSession();
-
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!user) {
+  if (!session) {
     return redirect("/");
   }
 
-  console.log(user);
+  const user = session.user;
+
   if (user.user_metadata.permission !== "granted") {
     return redirect("/access");
   }
