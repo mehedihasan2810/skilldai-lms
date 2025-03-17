@@ -65,9 +65,9 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    instrumentationHook: true,
-  },
+  // experimental: {
+  //   instrumentationHook: true,
+  // },
   // webpack: (config) => {
   //   config.resolve.alias.canvas = false;
 

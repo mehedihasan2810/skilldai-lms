@@ -9,7 +9,6 @@ import { Attachment } from "@/app/types";
 import { ArtifactMessagePartData, cn, convertFileToBase64 } from "@/lib/utils";
 // import { useRouter } from "next/navigation";
 import { useRouter } from "nextjs-toploader/app";
-import { useWhisper as useRealWhisper } from "@chengsokdara/use-whisper";
 import { Props as ReactArtifactProps } from "@/components/artifact/react";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
@@ -139,19 +138,7 @@ export const ChatPanel = ({ id, userEmail, userId }: Props) => {
   const { messagesRef, scrollRef, showScrollButton, handleManualScroll } =
     useScrollAnchor(messages);
 
-  const useWhispherHook = useRealWhisper;
-
-  const { recording, transcribing, transcript, startRecording, stopRecording } =
-    useWhispherHook({
-      apiKey: "getSettings().openaiApiKey",
-    });
-
-  // Update input with transcribed text
-  useEffect(() => {
-    if (!recording && !transcribing && transcript?.text) {
-      setInput((prev) => prev + ` ${transcript.text}`);
-    }
-  }, [recording, transcribing, transcript?.text, setInput]);
+ 
 
   return (
     <>

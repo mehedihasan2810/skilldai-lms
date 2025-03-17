@@ -4,22 +4,22 @@ import { redirect } from "next/navigation";
 import PageContainer from "@/components/dashboard/page-container";
 import { ExamPaperPage } from "./_components/exam-paper-page";
 
-const Page = async ({
-  params,
-  searchParams,
-}: {
-  params: {
-    id: string;
-  };
-  searchParams: {
-    g: string | undefined;
-    category: string | undefined;
-    y: string | undefined;
-    s: string | undefined;
-    b: string | undefined;
-    c: string | undefined;
-  };
-}) => {
+const Page = async (
+  props: {
+    params: Promise<{
+      id: string;
+    }>;
+    searchParams: Promise<{
+      g: string | undefined;
+      category: string | undefined;
+      y: string | undefined;
+      s: string | undefined;
+      b: string | undefined;
+      c: string | undefined;
+    }>;
+  }
+) => {
+  const searchParams = await props.searchParams;
   const supabase = await createClient();
 
   const {

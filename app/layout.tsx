@@ -1,32 +1,20 @@
 import type { Metadata } from "next";
-import { EB_Garamond, Inter as FontSans, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import ReactQueryProvider from "@/app/react-query-provider";
-import { cookies } from "next/headers";
-// import { SupabaseProvider } from "@/lib/supabase";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
-import { GeistSans } from "geist/font/sans";
 import NextTopLoader from "nextjs-toploader";
 import { TooltipProvider } from "@/components/ui";
 import { Toaster } from "@/components/ui/sonner";
-import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { RestrictSupportChat } from "@/components/restrict-support-chat";
 import { CSPostHogProvider } from "./providers";
 import { RefreshSession } from "@/components/refresh-session";
 
-const fontSans = FontSans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const eb_garamond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-heading",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -42,20 +30,11 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      // className={cn(inter.variable, eb_garamond.variable)}
+      className={cn(`${inter.className} antialiased`)}
       suppressHydrationWarning
     >
-
       <CSPostHogProvider>
-        <body
-          className={cn(
-            "min-h-screen font-sans",
-            // GeistSans.variable, eb_garamond.variable
-            inter.className,
-            eb_garamond.variable
-            // fontSans.variable
-          )}
-        >
+        <body className={cn("min-h-screen font-sans")}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

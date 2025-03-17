@@ -7,12 +7,18 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-const ChatPage = ({ params: { id } }: Props) => {
+const ChatPage = async (props: Props) => {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   return (
     <div className="relative isolate size-full">
       <Suspense

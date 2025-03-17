@@ -5,15 +5,15 @@ import { LessonPlanPage } from "./_components/lesson-plan-page";
 import PageContainer from "@/components/dashboard/page-container";
 import { redirect } from "next/navigation";
 
-const Page = async ({
-  params,
-  searchParams,
-}: {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = async (
+  props: {
+    params: Promise<{
+      id: string;
+    }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  }
+) => {
+  const params = await props.params;
   console.log({ params });
 
   const supabase = await createClient();

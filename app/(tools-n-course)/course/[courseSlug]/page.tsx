@@ -25,13 +25,15 @@ import { CoursePage } from "../_components/course-page";
 import { createClient } from "@/lib/supabase/server";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     courseSlug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default async function Page(props: PageProps) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   // console.log({ searchParams });
 
   // const queryClient = useQueryClient();

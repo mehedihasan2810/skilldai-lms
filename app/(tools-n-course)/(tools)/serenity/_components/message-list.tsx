@@ -20,7 +20,7 @@ import { MessageLoading } from "@/components/message-loading";
 import { cn } from "@/lib/utils";
 type Props = {
   messages: Message[];
-  containerRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
   isLoading: boolean;
 };
 
