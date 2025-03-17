@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,7 +14,7 @@ import {
 import { Button } from "../ui";
 import { signOutAction } from "@/actions/auth";
 import { SubmitButton } from "../submit-button";
-
+import { toast } from "sonner";
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -31,15 +33,18 @@ export const SignOutDialog = ({ open, onOpenChange, handleSignOut }: Props) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <form>
-            <SubmitButton
-              className="w-full"
-              pendingText="Signing out..."
-              formAction={signOutAction}
-            >
-              Sign out
-            </SubmitButton>
-          </form>
+          <Button
+            className=""
+            onClick={() => {
+              toast.promise(signOutAction(), {
+                loading: "Signing out...",
+                success: "Signed out successfully",
+                error: (error) => error.message,
+              });
+            }}
+          >
+            Sign out
+          </Button>
 
           {/* <AlertDialogAction onClick={handleSignOut}>
             Sign Out
