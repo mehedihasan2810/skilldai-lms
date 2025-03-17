@@ -17,7 +17,7 @@ export function RefreshSession() {
             //   filter: `or.initiatorId.eq.${userId},participatorId.eq.${userId}`,
             },
             async (payload) => {
-              console.log({ chatPayload: payload });
+              console.log({ accessPayload: payload });
               await refreshSession();
                     //   await queryClient.invalidateQueries({
                     //     queryKey: ["chats", userId],

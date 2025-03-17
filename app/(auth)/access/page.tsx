@@ -3,14 +3,23 @@ import { Button } from "@/components/ui/button";
 import { ClipboardCheck } from "lucide-react"; // Changed icon to represent pending approval
 import { createClient } from "@/lib/supabase/server";
 import { RefreshButton } from "./components/refresh-button";
-  
+import { redirect } from "next/navigation";
+
 export default async function AccessPage() {
   const supabase = await createClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const user = session?.user;
+  if (!session) {
+    return redirect("/");
+  }
+
+  const user = session.user;
+
+  if (user.user_metadata.permission === "granted") {
+    return redirect("/new");
+  }
 
   console.log(user);
   return (
@@ -28,7 +37,7 @@ export default async function AccessPage() {
           Your account is currently awaiting approval from our administrators.
         </p>
 
-        <RefreshButton />
+        {/* <RefreshButton /> */}
 
         {/* <div className="bg-muted/50 p-4 rounded-md">
           <p className="text-sm text-muted-foreground">
@@ -50,14 +59,13 @@ export default async function AccessPage() {
         <p className="text-sm text-muted-foreground pt-4">
           If you need immediate assistance or have questions about your account
           status, please contact our support team at{" "}
-          <a
-            href="mailto:support@example.com"
+          <Link
+            href="mailto:support@skilld.ai"
             className="text-primary hover:underline"
           >
-            support@example.com
-          </a>
+            support@skilld.ai
+          </Link>
         </p>
-
       </div>
     </div>
   );

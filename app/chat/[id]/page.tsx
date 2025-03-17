@@ -41,6 +41,10 @@ const Chat = async ({ chatId }: { chatId: string }) => {
 
   const user = session.user;
 
+  if (user.user_metadata.permission !== "granted") {
+    return redirect("/access");
+  }
+
   return (
     <>
       <ChatHeader userId={user.id} email={user.email!} />

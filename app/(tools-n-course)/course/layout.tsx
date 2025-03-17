@@ -51,6 +51,10 @@ export default async function CourseLayout({ children }: CourseLayoutProps) {
 
   const user = session.user;
 
+  if (user.user_metadata.permission !== "granted") {
+    return redirect("/access");
+  }
+
   return (
     <>
       <SiteHeader />

@@ -18,23 +18,12 @@ const NewChatPage = async () => {
   }
 
   console.log(user);
+  if (user.user_metadata.permission !== "granted") {
+    return redirect("/access");
+  }
 
-  // const { error, data } = await supabase
-  //   .from("user_info")
-  //   .select("id,profession")
-  //   .eq("user_id", user.id)
-  //   .single();
-
-  // if (
-  //   error?.message === "JSON object requested, multiple (or no) rows returned"
-  // ) {
-  //   console.error(error);
-  //   return redirect("/setup");
-  // }
-
-  // if (error) {
-  //   console.error(error);
-  //   throw new Error(error.message);
+  // if (user.user_metadata.permission === "denied") {
+  //   return redirect("/si");
   // }
 
   return (
