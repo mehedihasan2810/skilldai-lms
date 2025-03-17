@@ -17,7 +17,7 @@ const NewChatPage = async () => {
 
   const user = session.user;
 
-  if (user.user_metadata.permission !== "granted") {
+  if (user.user_metadata?.permission !== "granted") {
     return redirect("/access");
   }
 

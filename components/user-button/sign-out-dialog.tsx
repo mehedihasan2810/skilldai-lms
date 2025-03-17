@@ -36,7 +36,7 @@ export const SignOutDialog = ({ open, onOpenChange, handleSignOut }: Props) => {
           <Button
             className=""
             onClick={() => {
-              toast.promise(signOutAction(), {
+              toast.promise(signOutAction, {
                 loading: "Signing out...",
                 success: "Signed out successfully",
                 error: (error) => error.message,
