@@ -29,6 +29,8 @@ export const reportErrorAction = async ({
 }: Props) => {
   if (process.env.NODE_ENV === "development") return;
 
+  if (process.env.NEXT_PUBLIC_SITE_URL === "https://dev.skilld.ai") return;
+
   try {
     console.log({
       userEmail,
