@@ -8,7 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
-export const LayoutHeader = () => {
+export const LayoutHeader = ({ userId }: { userId: string }) => {
   const pathname = usePathname();
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-16 border-b border-border/30 overflow-x-hidden">
@@ -21,7 +21,7 @@ export const LayoutHeader = () => {
               <Plus />
             </Button>
             <div className="">
-              <ChatSidebar />
+              <ChatSidebar userId={userId} />
             </div>
           </div>
         ) : (
@@ -33,7 +33,6 @@ export const LayoutHeader = () => {
               </Link>
               <ThemeToggle />
 
-              <ChatSidebar />
             </div>
           </div>
         )}

@@ -12,7 +12,6 @@ export const ChatHeader = () => {
         <div className="flex items-center justify-between gap-6 grow">
           <div></div>
           <div className="flex items-center gap-6">
-            <ChatSidebar />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui";
-import { EllipsisIcon, Trash } from "lucide-react";
+import { EllipsisIcon, Trash, MessageCircleIcon } from "lucide-react";
 import DeleteChatDialog from "./delete-chat-dialog";
 
 type ChatItemProps = {
@@ -22,8 +22,9 @@ export const ChatItem = ({ id, title, selected, onClick }: ChatItemProps) => {
           onClick && onClick();
         }}
         href={`/chat/${id}`}
-        className="flex-1 truncate text-sm"
+        className="flex-1 truncate flex items-center gap-3"
       >
+        <MessageCircleIcon className="size-4" />
         <span className="flex-1 truncate text-sm">{title}</span>
       </Link>
       <DeleteChatDialog chatId={id} />

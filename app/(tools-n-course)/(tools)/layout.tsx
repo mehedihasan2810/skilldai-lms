@@ -152,7 +152,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         side="left"
       />
       <SidebarInset>
-        <LayoutHeader />
+        <LayoutHeader userId={user.id} />
         <div className="flex flex-1 overflow-hidden w-full">
           {children}
           {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
