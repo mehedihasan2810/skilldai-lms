@@ -21,21 +21,22 @@ export function RefreshSession() {
         async (payload) => {
           console.log({ accessPayload: payload });
           try {
-            // const { data, error } = await refreshSession();
             console.log("refreshing session");
-            const { data, error } = await supabase.auth.refreshSession();
+            const { data, error } = await refreshSession();
+            // const { data, error } = await supabase.auth.refreshSession();
             console.log("refreshed session");
 
             if (error) {
               console.error(error);
-              toast.error(error.message);
+              toast.error(error);
+              // toast.error(error.message);
               return;
             }
 
-            console.log("revalidating server data");
+            // console.log("revalidating server data");
 
-            await revalidateServerData();
-            console.log("revalidated server data");
+            // await revalidateServerData();
+            // console.log("revalidated server data");
           } catch (error) {
             console.log("error refreshing session");
             console.error(error);
