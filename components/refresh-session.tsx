@@ -4,9 +4,11 @@ import { refreshSession } from "@/actions/refresh-session";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { revalidateServerData } from "@/actions/revalidate-server-data";
+import { useRouter } from "next/navigation";
 const supabase = createClient();
 
 export function RefreshSession() {
+  const router = useRouter();
   useEffect(() => {
     const subscription = supabase
       .channel(`user-info`)
@@ -22,16 +24,17 @@ export function RefreshSession() {
           console.log({ accessPayload: payload });
           try {
             console.log("refreshing session");
-            const { data, error } = await refreshSession();
-            // const { data, error } = await supabase.auth.refreshSession();
+            // const { data, error } = await refreshSession();
+            const { data, error } = await supabase.auth.refreshSession();
             console.log("refreshed session");
 
             if (error) {
               console.error(error);
-              toast.error(error);
-              // toast.error(error.message);
+              toast.error(error.message);
               return;
             }
+
+            router.refresh();
 
             // console.log("revalidating server data");
 
