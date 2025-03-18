@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ClipboardCheck } from "lucide-react"; // Changed icon to represent pending approval
+import { ClipboardCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -16,7 +16,7 @@ export default async function AccessPage() {
   const user = session.user;
 
   if (user.user_metadata.permission === "granted") {
-    return redirect("/tools");
+    return redirect("/new");
   }
 
   console.log(user);
@@ -35,33 +35,14 @@ export default async function AccessPage() {
           Your account is currently awaiting approval from our administrators.
         </p>
 
-        {/* <RefreshButton /> */}
-
-        {/* <div className="bg-muted/50 p-4 rounded-md">
-          <p className="text-sm text-muted-foreground">
-            This process typically takes 1-2 business days. You&apos;ll receive an email notification 
-            once your account has been approved.
-          </p>
-        </div> */}
-
-        {/* <div className="flex flex-col space-y-3 pt-4">
-          <Button asChild variant="default">
-            <Link href="/">Return to Home</Link>
-          </Button>
-
-          <Button asChild variant="outline">
-            <Link href="mailto:support@example.com">Contact Support</Link>
-          </Button>
-        </div> */}
-
         <p className="text-sm text-muted-foreground pt-4">
           If you need immediate assistance or have questions about your account
           status, please contact our support team at{" "}
           <Link
-            href="mailto:support@skilld.ai"
+            href="mailto:hello@skilld.team"
             className="text-primary hover:underline"
           >
-            support@skilld.ai
+            hello@skilld.team
           </Link>
         </p>
       </div>

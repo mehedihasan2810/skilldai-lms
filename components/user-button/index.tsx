@@ -11,7 +11,6 @@ import {
 import { SignOutDialog } from "./sign-out-dialog";
 import { UserIcon } from "lucide-react";
 import { useState } from "react";
-// import { useSupabase } from "@/lib/supabase";
 import {
   Tooltip,
   TooltipContent,
@@ -23,7 +22,6 @@ import { useRouter } from "nextjs-toploader/app";
 import { buttonVariants } from "../ui";
 import { signOutAction } from "@/actions/auth";
 import { toast } from "sonner";
-import { revalidateServerData } from "@/actions/revalidate-server-data";
 type Props = {
   expanded?: boolean;
   userEmail?: string;
@@ -31,8 +29,6 @@ type Props = {
 
 export const UserButton = ({ expanded = false, userEmail }: Props) => {
   const router = useRouter();
-
-  // const { supabase, session } = useSupabase();
 
   const [isSignoutDialogOpen, setIsSignoutDialogOpen] = useState(false);
 
@@ -46,7 +42,7 @@ export const UserButton = ({ expanded = false, userEmail }: Props) => {
 
     if (res.error) throw new Error(res.error.message);
 
-    await revalidateServerData();
+    router.refresh();
   };
 
   return (

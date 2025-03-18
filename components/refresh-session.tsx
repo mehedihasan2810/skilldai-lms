@@ -1,9 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { refreshSession } from "@/actions/refresh-session";
 import { createClient } from "@/lib/supabase/client";
-import { toast } from "sonner";
-import { revalidateServerData } from "@/actions/revalidate-server-data";
 import { useRouter } from "next/navigation";
 const supabase = createClient();
 
@@ -24,26 +21,14 @@ export function RefreshSession() {
           console.log({ accessPayload: payload });
           try {
             console.log("refreshing session");
-            // const { data, error } = await refreshSession();
             const { data, error } = await supabase.auth.refreshSession();
+            console.log({ data, error });
             console.log("refreshed session");
 
-            if (error) {
-              console.error(error);
-              toast.error(error.message);
-              return;
-            }
-
             router.refresh();
-
-            // console.log("revalidating server data");
-
-            // await revalidateServerData();
-            // console.log("revalidated server data");
           } catch (error) {
             console.log("error refreshing session");
             console.error(error);
-            toast.error((error as Error).message);
           }
         }
       )
