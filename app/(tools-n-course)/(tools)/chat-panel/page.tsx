@@ -1,3 +1,4 @@
+import React from "react";
 import { ChatPanel } from "@/components/chat/panel";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";

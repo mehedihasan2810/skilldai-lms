@@ -23,11 +23,14 @@ export function RefreshSession() {
           try {
             // const { data, error } = await refreshSession();
             const { data, error } = await supabase.auth.refreshSession();
-            await revalidateServerData();
+
             if (error) {
+              console.error(error);
               toast.error(error.message);
+              return;
             }
-            console.log({ data, error });
+
+            await revalidateServerData();
           } catch (error) {
             console.error(error);
             toast.error((error as Error).message);
