@@ -21,7 +21,8 @@ import {
 import { AppSidebar } from "@/components/tools-sidebar/tools-sidebar";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
-
+import { ChatSidebar } from "./chat-panel/_components/chat-sidebar";
+import { LayoutHeader } from "./_components/layout-header";
 const navItems: NavItem[] = [
   {
     title: "AI Tools",
@@ -151,34 +152,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         side="left"
       />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-16 border-b border-border/30 overflow-x-hidden">
-          <div className="flex items-center gap-2 px-4 grow">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <div className="flex items-center justify-between gap-6 grow">
-              <div></div>
-              <div className="flex items-center gap-6">
-                <Link className="hover:underline" href="/new">
-                  Skilld AI
-                </Link>
-                <ThemeToggle />
-              </div>
-            </div>
-            {/* <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb> */}
-          </div>
-        </header>
+        <LayoutHeader />
         <div className="flex flex-1 overflow-hidden w-full">
           {children}
           {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -189,6 +163,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
         </div>
       </SidebarInset>
+      
       {/* <AppSidebar
         userProfession={userMetadata?.profession ?? ""}
         userEmail={user.email ?? ""}

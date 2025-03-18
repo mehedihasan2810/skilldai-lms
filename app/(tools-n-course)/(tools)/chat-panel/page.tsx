@@ -1,6 +1,4 @@
-import { ChatHeader } from "@/components/chat-header";
 import { ChatPanel } from "@/components/chat/panel";
-import { SideNavBar } from "@/components/side-navbar";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -17,9 +15,7 @@ const Page = async () => {
 
   const user = session.user;
 
-  if (user.user_metadata?.permission !== "granted") {
-    return redirect("/access");
-  }
+ 
 
   // if (user.user_metadata.permission === "denied") {
   //   return redirect("/si");
