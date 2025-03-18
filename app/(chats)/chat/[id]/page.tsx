@@ -21,15 +21,7 @@ const ChatPage = async (props: Props) => {
 
   return (
     <div className="relative isolate size-full">
-      <Suspense
-        fallback={
-          <div className="h-screen w-screen flex items-center justify-center gap-2">
-            <Loader className="size-6 animate-spin" /> Please wait...
-          </div>
-        }
-      >
-        <Chat chatId={id} />
-      </Suspense>
+      <Chat chatId={id} />
     </div>
   );
 };

@@ -81,8 +81,6 @@ const teacherOnlyNavItems = ["/lesson-plan-generator", "/worksheet-generator"];
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = await createClient();
 
-
-
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -150,6 +148,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <AppSidebar
         userProfession={userMetadata?.profession ?? ""}
         userEmail={user.email ?? ""}
+        side="left"
       />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-16 border-b border-border/30 overflow-x-hidden">
@@ -190,6 +189,11 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
         </div>
       </SidebarInset>
+      {/* <AppSidebar
+        userProfession={userMetadata?.profession ?? ""}
+        userEmail={user.email ?? ""}
+        side="right"
+      /> */}
     </SidebarProvider>
 
     // <div className="flex overflow-hidden">
