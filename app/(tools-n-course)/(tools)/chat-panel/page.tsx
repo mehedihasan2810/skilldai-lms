@@ -25,8 +25,9 @@ const Page = async () => {
     <div className="relative isolate size-full">
       {/* <ChatHeader userId={user.id} email={user.email!} /> */}
       <div className="flex gap-4 w-full h-screen max-h-screen overflow-hidden">
+        hello
         {/* <SideNavBar userId={user.id} userEmail={user.email ?? ""} /> */}
-        <ChatPanel id={null} userEmail={user.email ?? ""} userId={user.id} />
+        {/* <ChatPanel id={null} userEmail={user.email ?? ""} userId={user.id} /> */}
       </div>
     </div>
   );
