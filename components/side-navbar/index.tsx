@@ -137,7 +137,7 @@ export const SideNavBar = ({
       </div>
 
       <div className="flex flex-col items-center gap-4">
-        <NotificationButton userId={userId} />
+        <NotificationButton userId={userId} side="right" />
         <Tooltip>
           <TooltipTrigger>
             <Link
