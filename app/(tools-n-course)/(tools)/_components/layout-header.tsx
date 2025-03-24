@@ -1,6 +1,6 @@
 "use client";
-import { SidebarTrigger } from "@/components/ui/sidebar";
 
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { ChatSidebar } from "../chat-panel/_components/chat-sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
+
 export const LayoutHeader = ({ userId }: { userId: string }) => {
   const pathname = usePathname();
   return (
