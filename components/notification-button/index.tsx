@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { useQuery } from "@tanstack/react-query";
+import { createClient } from "@/lib/supabase/client";
 
 // Sample notifications for testing the UI
 const sampleNotifications = [
@@ -111,6 +113,18 @@ const sampleNotifications = [
 type Notification = (typeof sampleNotifications)[0];
 
 export function NotificationButton({ userId }: { userId: string }) {
+  const { data: notificationsData, isLoading } = useQuery({
+    queryKey: ["notifications"],
+    queryFn: async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase.from("notifications").select("*");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  console.log({ notificationsData });
+
   const [notifications, setNotifications] =
     useState<Notification[]>(sampleNotifications);
   const [isOpen, setIsOpen] = useState(false);
@@ -137,8 +151,7 @@ export function NotificationButton({ userId }: { userId: string }) {
               className={buttonVariants({
                 variant: "ghost",
                 size: "icon",
-                className:
-                  "relative",
+                className: "relative",
               })}
             >
               <Bell className="w-full" />
@@ -154,27 +167,45 @@ export function NotificationButton({ userId }: { userId: string }) {
       </TooltipProvider>
 
       <PopoverContent className="w-80 p-0" align="end">
-        <div className="flex justify-between items-center px-4 py-2 border-b">
+        <div className="flex justify-between items-center px-4 py-3 border-b">
           <h3 className="font-semibold">Notifications</h3>
-          {unreadCount > 0 && (
+          {/* {unreadCount > 0 && (
             <Button variant="ghost" size="sm" onClick={markAllAsRead}>
               Mark all as read
             </Button>
-          )}
+          )} */}
         </div>
 
-        <Tabs defaultValue="unread" className="pt-1">
+        <ScrollArea className="h-[300px] bg-transparent">
+          {notifications.filter((n) => !n.is_read).length > 0 ? (
+            notifications
+              .filter((n) => !n.is_read)
+              .map((notification) => (
+                <NotificationItem
+                  key={notification.user_notification_id}
+                  notification={notification}
+                  onMarkAsRead={markAsRead}
+                />
+              ))
+          ) : (
+            <div className="p-4 text-center text-muted-foreground">
+              No notifications
+            </div>
+          )}
+        </ScrollArea>
+
+        {/* <Tabs defaultValue="unread" className="pt-1">
           <div className="px-2">
             <TabsList className="w-full grid grid-cols-2 rounded-full">
               <TabsTrigger value="unread" className="relative rounded-full">
                 Unread
-              {unreadCount > 0 && (
-                <span className="absolute top-0.5 right-7 bg-primary text-primary-foreground text-[10px] rounded-full min-w-5 h-5 flex items-center justify-center">
-                  {unreadCount > 99 ? "99+" : unreadCount}
-                </span>
-              )}
-            </TabsTrigger>
-            <TabsTrigger value="all" className="rounded-full">
+                {unreadCount > 0 && (
+                  <span className="absolute top-0.5 right-7 bg-primary text-primary-foreground text-[10px] rounded-full min-w-5 h-5 flex items-center justify-center">
+                    {unreadCount > 99 ? "99+" : unreadCount}
+                  </span>
+                )}
+              </TabsTrigger>
+              <TabsTrigger value="all" className="rounded-full">
                 All
               </TabsTrigger>
             </TabsList>
@@ -217,7 +248,7 @@ export function NotificationButton({ userId }: { userId: string }) {
               )}
             </ScrollArea>
           </TabsContent>
-        </Tabs>
+        </Tabs> */}
       </PopoverContent>
     </Popover>
   );
@@ -234,11 +265,11 @@ function NotificationItem({
     <div
       className={cn(
         "p-4 hover:bg-muted/50 cursor-pointer",
-        !notification.is_read && "bg-muted/20"
+        // !notification.is_read && "bg-muted/20"
       )}
-      onClick={() =>
-        !notification.is_read && onMarkAsRead(notification.user_notification_id)
-      }
+    //   onClick={() =>
+    //     !notification.is_read && onMarkAsRead(notification.user_notification_id)
+    //   }
     >
       <div className="flex justify-between items-start mb-1">
         <h4 className="font-medium text-sm">{notification.title}</h4>
@@ -249,7 +280,7 @@ function NotificationItem({
       <p className="text-sm text-muted-foreground line-clamp-2">
         {notification.message}
       </p>
-      {!notification.is_read && (
+      {/* {!notification.is_read && (
         <div className="mt-2 flex justify-end">
           <Button
             variant="ghost"
@@ -263,7 +294,7 @@ function NotificationItem({
             Mark as read
           </Button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
