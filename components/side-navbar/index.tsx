@@ -20,6 +20,7 @@ import Image from "next/image";
 import FeedbackForm from "../feedback-form";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui";
+import { NotificationButton } from "../notification-button";
 
 export const SideNavBar = ({
   userId,
@@ -93,6 +94,7 @@ export const SideNavBar = ({
         </div>
 
         <div className="mt-2">
+          {/* <NotificationButton userId={userId} /> */}
           <Link
             className={buttonVariants({
               variant: "ghost",
@@ -135,6 +137,7 @@ export const SideNavBar = ({
       </div>
 
       <div className="flex flex-col items-center gap-4">
+        <NotificationButton userId={userId} />
         <Tooltip>
           <TooltipTrigger>
             <Link

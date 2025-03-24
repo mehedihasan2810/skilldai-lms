@@ -67,12 +67,12 @@ const SetPasswordForm = () => {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
-        reportErrorAction({
-          userEmail: "Unknown",
-          errorMessage: error.serverError,
-          errorTrace: `[SetPasswordForm] [setPasswordAction] [onError] [app/(auth)/set-password/form.tsx]`,
-          errorSourceUrl: "/set-password",
-        });
+        // reportErrorAction({
+        //   userEmail: "Unknown",
+        //   errorMessage: error.serverError,
+        //   errorTrace: `[SetPasswordForm] [setPasswordAction] [onError] [app/(auth)/set-password/form.tsx]`,
+        //   errorSourceUrl: "/set-password",
+        // });
       }
       if (error.validationErrors) {
         toast.error(
@@ -80,14 +80,14 @@ const SetPasswordForm = () => {
             error.validationErrors.refreshToken?.join(", ") ?? ""
           }`
         );
-        reportErrorAction({
-          userEmail: "Unknown",
-          errorMessage: `${error.validationErrors.password?.join(", ") ?? ""}. ${
-            error.validationErrors.refreshToken?.join(", ") ?? ""
-          }`,
-          errorTrace: `[SetPasswordForm] [setPasswordAction] [onError] [ValidationError] [app/(auth)/set-password/form.tsx]`,
-          errorSourceUrl: "/set-password",
-        });
+        // reportErrorAction({
+        //   userEmail: "Unknown",
+        //   errorMessage: `${error.validationErrors.password?.join(", ") ?? ""}. ${
+        //     error.validationErrors.refreshToken?.join(", ") ?? ""
+        //   }`,
+        //   errorTrace: `[SetPasswordForm] [setPasswordAction] [onError] [ValidationError] [app/(auth)/set-password/form.tsx]`,
+        //   errorSourceUrl: "/set-password",
+        // });
       }
     },
   });

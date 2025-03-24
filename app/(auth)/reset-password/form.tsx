@@ -48,12 +48,12 @@ export function ResetPasswordForm({ message }: { message: Message }) {
       console.log({ error });
       if (error.serverError) {
         toast.error(error.serverError);
-        reportErrorAction({
-          userEmail: "Unknown",
-          errorMessage: error.serverError ?? "Unknown",
-          errorTrace: `[ResetPasswordForm] [resetPasswordAction] [onError] [app/(auth)/reset-password/form.tsx]`,
-          errorSourceUrl: "/reset-password",
-        });
+        // reportErrorAction({
+        //   userEmail: "Unknown",
+        //   errorMessage: error.serverError ?? "Unknown",
+        //   errorTrace: `[ResetPasswordForm] [resetPasswordAction] [onError] [app/(auth)/reset-password/form.tsx]`,
+        //   errorSourceUrl: "/reset-password",
+        // });
       }
       if (error.validationErrors) {
         toast.error(
@@ -61,14 +61,14 @@ export function ResetPasswordForm({ message }: { message: Message }) {
             error.validationErrors.confirmPassword?.join(", ") ?? ""
           }`
         );
-        reportErrorAction({
-          userEmail: "Unknown",
-          errorMessage: `${error.validationErrors.password?.join(", ") ?? ""}. ${
-            error.validationErrors.confirmPassword?.join(", ") ?? ""
-          }`,
-          errorTrace: `[ResetPasswordForm] [resetPasswordAction] [onError] [ValidationError] [app/(auth)/reset-password/form.tsx]`,
-          errorSourceUrl: "/reset-password",
-        });
+        // reportErrorAction({
+        //   userEmail: "Unknown",
+        //   errorMessage: `${error.validationErrors.password?.join(", ") ?? ""}. ${
+        //     error.validationErrors.confirmPassword?.join(", ") ?? ""
+        //   }`,
+        //   errorTrace: `[ResetPasswordForm] [resetPasswordAction] [onError] [ValidationError] [app/(auth)/reset-password/form.tsx]`,
+        //   errorSourceUrl: "/reset-password",
+        // });
       }
     },
   });
