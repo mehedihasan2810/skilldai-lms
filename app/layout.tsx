@@ -46,6 +46,8 @@ export default async function RootLayout({
               <NuqsAdapter>
                 <TooltipProvider>{children}</TooltipProvider>
               </NuqsAdapter>
+
+              <RefreshSession />
             </ReactQueryProvider>
             {/* </SupabaseProvider> */}
             <Toaster richColors closeButton />
@@ -57,7 +59,7 @@ export default async function RootLayout({
           />
 
           <RestrictSupportChat />
-          <RefreshSession />
+
           {/* <Analytics /> */}
 
           {/* <Script
