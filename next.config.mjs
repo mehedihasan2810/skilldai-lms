@@ -74,11 +74,11 @@ const nextConfig = {
   // experimental: {
   //   instrumentationHook: true,
   // },
-  // webpack: (config) => {
-  //   config.resolve.alias.canvas = false;
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
 
-  //   return config;
-  // },
+    return config;
+  },
 };
 
 export default nextConfig;
