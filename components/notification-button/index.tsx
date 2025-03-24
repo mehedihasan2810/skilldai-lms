@@ -110,10 +110,20 @@ const sampleNotifications = [
   },
 ];
 
-type Notification = (typeof sampleNotifications)[0];
+type Notification = {
+  id: string;
+  title: string;
+  message: string;
+  created_at: string;
+  is_read: boolean;
+};
 
 export function NotificationButton({ userId }: { userId: string }) {
-  const { data: notificationsData, isLoading } = useQuery({
+  const {
+    data: notificationsData,
+    isPending: isNotificationsPending,
+    error: notificationsError,
+  } = useQuery({
     queryKey: ["notifications"],
     queryFn: async () => {
       const supabase = createClient();
@@ -123,7 +133,7 @@ export function NotificationButton({ userId }: { userId: string }) {
     },
   });
 
-  console.log({ notificationsData });
+  console.log({ notificationsData, notificationsError });
 
   const [notifications, setNotifications] =
     useState<Notification[]>(sampleNotifications);
@@ -131,11 +141,11 @@ export function NotificationButton({ userId }: { userId: string }) {
   const unreadCount = notifications.filter((n) => !n.is_read).length;
 
   const markAsRead = (notificationId: string) => {
-    setNotifications((prev) =>
-      prev.map((n) =>
-        n.user_notification_id === notificationId ? { ...n, is_read: true } : n
-      )
-    );
+    // setNotifications((prev) =>
+    //   prev.map((n) =>
+    //     n.user_notification_id === notificationId ? { ...n, is_read: true } : n
+    //   )
+    // );
   };
 
   const markAllAsRead = () => {
@@ -177,12 +187,20 @@ export function NotificationButton({ userId }: { userId: string }) {
         </div>
 
         <ScrollArea className="h-[300px] bg-transparent">
-          {notifications.filter((n) => !n.is_read).length > 0 ? (
-            notifications
-              .filter((n) => !n.is_read)
+          {notificationsError ? (
+            <div className="p-4 text-center text-red-500">
+              Error loading notifications
+            </div>
+          ) : isNotificationsPending ? (
+            <div className="p-4 text-center text-muted-foreground">
+              Loading...
+            </div>
+          ) : notificationsData.length > 0 ? (
+            notificationsData
+              //   .filter((n) => !n.is_read)
               .map((notification) => (
                 <NotificationItem
-                  key={notification.user_notification_id}
+                  key={notification.id}
                   notification={notification}
                   onMarkAsRead={markAsRead}
                 />
@@ -264,16 +282,16 @@ function NotificationItem({
   return (
     <div
       className={cn(
-        "p-4 hover:bg-muted/50 cursor-pointer",
+        "p-4 hover:bg-muted/50 cursor-pointer"
         // !notification.is_read && "bg-muted/20"
       )}
-    //   onClick={() =>
-    //     !notification.is_read && onMarkAsRead(notification.user_notification_id)
-    //   }
+      //   onClick={() =>
+      //     !notification.is_read && onMarkAsRead(notification.user_notification_id)
+      //   }
     >
-      <div className="flex justify-between items-start mb-1">
+      <div className="flex justify-between items-start mb-1 gap-1">
         <h4 className="font-medium text-sm">{notification.title}</h4>
-        <span className="text-xs text-muted-foreground">
+        <span className="text-xs text-muted-foreground w-fit">
           {format(new Date(notification.created_at), "MMM d, h:mm a")}
         </span>
       </div>
