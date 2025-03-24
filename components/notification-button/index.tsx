@@ -37,6 +37,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useMediaQuery } from "usehooks-ts";
+import Markdown from "react-markdown";
 
 // Sample notifications for testing the UI
 const sampleNotifications = [
@@ -317,7 +318,8 @@ function NotificationItem({
         <p className="text-sm text-muted-foreground line-clamp-2">
           {notification.message
             .slice(0, 100)
-            .replace(/\*\*|__|\*|_|`|#|>|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\)|-{3,}|\|.*\|/g,
+            .replace(
+              /\*\*|__|\*|_|`|#|>|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\)|-{3,}|\|.*\|/g,
               ""
             )}
           {notification.message.length > 100 && "..."}
@@ -352,10 +354,7 @@ interface ShowNotificationProps
   message: string;
 }
 
-export function ShowNotification({
-  message,
-  ...props
-}: ShowNotificationProps) {
+export function ShowNotification({ message, ...props }: ShowNotificationProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
@@ -391,5 +390,9 @@ export function ShowNotification({
 }
 
 function MessageBody({ message }: { message: string }) {
-  return <div>{message}</div>;
+  return (
+    <div className="prose dark:prose-invert prose-sm max-w-none">
+      <Markdown>{message}</Markdown>
+    </div>
+  );
 }
