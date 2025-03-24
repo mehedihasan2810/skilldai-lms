@@ -315,7 +315,12 @@ function NotificationItem({
           </span>
         </div>
         <p className="text-sm text-muted-foreground line-clamp-2">
-          {notification.message}
+          {notification.message
+            .slice(0, 100)
+            .replace(/\*\*|__|\*|_|`|#|>|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\)|-{3,}|\|.*\|/g,
+              ""
+            )}
+          {notification.message.length > 100 && "..."}
         </p>
         {/* {!notification.is_read && (
         <div className="mt-2 flex justify-end">
@@ -334,6 +339,7 @@ function NotificationItem({
       )} */}
       </div>
       <ShowNotification
+        message={notification.message}
         open={showNotification}
         onOpenChange={setShowNotification}
       />
@@ -342,9 +348,14 @@ function NotificationItem({
 }
 
 interface ShowNotificationProps
-  extends React.ComponentPropsWithoutRef<typeof Dialog> {}
+  extends React.ComponentPropsWithoutRef<typeof Dialog> {
+  message: string;
+}
 
-export function ShowNotification({ ...props }: ShowNotificationProps) {
+export function ShowNotification({
+  message,
+  ...props
+}: ShowNotificationProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
@@ -354,7 +365,7 @@ export function ShowNotification({ ...props }: ShowNotificationProps) {
           <Button variant="outline">Send Email</Button>
         </DialogTrigger> */}
         <DialogContent className="sm:max-w-[700px] max-h-[95dvh] overflow-auto flex flex-col [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-sidebar [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-transparent dark:[&::-webkit-scrollbar-thumb]:bg-sidebar [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
-          <MessageBody />
+          <MessageBody message={message} />
         </DialogContent>
       </Dialog>
     );
@@ -367,7 +378,7 @@ export function ShowNotification({ ...props }: ShowNotificationProps) {
       </DrawerTrigger> */}
       <DrawerContent className="max-h-[95%] flex flex-col p-0">
         <div className="flex flex-col gap-6 flex-1 overflow-y-auto px-4 py-6 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-sidebar [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-transparent dark:[&::-webkit-scrollbar-thumb]:bg-sidebar [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
-          <MessageBody />
+          <MessageBody message={message} />
           {/* <DrawerFooter className="pt-2">
             <DrawerClose asChild>
               <Button variant="outline">Close</Button>
@@ -379,6 +390,6 @@ export function ShowNotification({ ...props }: ShowNotificationProps) {
   );
 }
 
-function MessageBody() {
-  return <div>hello</div>;
+function MessageBody({ message }: { message: string }) {
+  return <div>{message}</div>;
 }
