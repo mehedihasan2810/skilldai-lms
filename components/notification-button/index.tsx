@@ -8,9 +8,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button, buttonVariants } from "@/components/ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
@@ -21,6 +19,24 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { useQuery } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { useMediaQuery } from "usehooks-ts";
 
 // Sample notifications for testing the UI
 const sampleNotifications = [
@@ -279,26 +295,29 @@ function NotificationItem({
   notification: Notification;
   onMarkAsRead: (id: string) => void;
 }) {
+  const [showNotification, setShowNotification] = useState(false);
   return (
-    <div
-      className={cn(
-        "p-4 hover:bg-muted/50 cursor-pointer"
-        // !notification.is_read && "bg-muted/20"
-      )}
-      //   onClick={() =>
-      //     !notification.is_read && onMarkAsRead(notification.user_notification_id)
-      //   }
-    >
-      <div className="flex justify-between items-start mb-1 gap-1">
-        <h4 className="font-medium text-sm">{notification.title}</h4>
-        <span className="text-xs text-muted-foreground w-fit">
-          {format(new Date(notification.created_at), "MMM d, h:mm a")}
-        </span>
-      </div>
-      <p className="text-sm text-muted-foreground line-clamp-2">
-        {notification.message}
-      </p>
-      {/* {!notification.is_read && (
+    <>
+      <div
+        onClick={() => setShowNotification(true)}
+        className={cn(
+          "p-4 hover:bg-muted/50 cursor-pointer"
+          // !notification.is_read && "bg-muted/20"
+        )}
+        //   onClick={() =>
+        //     !notification.is_read && onMarkAsRead(notification.user_notification_id)
+        //   }
+      >
+        <div className="flex justify-between items-start mb-1 gap-1">
+          <h4 className="font-medium text-sm">{notification.title}</h4>
+          <span className="text-xs text-muted-foreground w-fit">
+            {format(new Date(notification.created_at), "MMM d, h:mm a")}
+          </span>
+        </div>
+        <p className="text-sm text-muted-foreground line-clamp-2">
+          {notification.message}
+        </p>
+        {/* {!notification.is_read && (
         <div className="mt-2 flex justify-end">
           <Button
             variant="ghost"
@@ -313,6 +332,53 @@ function NotificationItem({
           </Button>
         </div>
       )} */}
-    </div>
+      </div>
+      <ShowNotification
+        open={showNotification}
+        onOpenChange={setShowNotification}
+      />
+    </>
   );
+}
+
+interface ShowNotificationProps
+  extends React.ComponentPropsWithoutRef<typeof Dialog> {}
+
+export function ShowNotification({ ...props }: ShowNotificationProps) {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  if (isDesktop) {
+    return (
+      <Dialog {...props}>
+        {/* <DialogTrigger asChild>
+          <Button variant="outline">Send Email</Button>
+        </DialogTrigger> */}
+        <DialogContent className="sm:max-w-[700px] max-h-[95dvh] overflow-auto flex flex-col [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-sidebar [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-transparent dark:[&::-webkit-scrollbar-thumb]:bg-sidebar [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
+          <MessageBody />
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  return (
+    <Drawer {...props}>
+      {/* <DrawerTrigger asChild>
+        <Button variant="outline">Send Email</Button>
+      </DrawerTrigger> */}
+      <DrawerContent className="max-h-[95%] flex flex-col p-0">
+        <div className="flex flex-col gap-6 flex-1 overflow-y-auto px-4 py-6 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-sidebar [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-transparent dark:[&::-webkit-scrollbar-thumb]:bg-sidebar [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
+          <MessageBody />
+          {/* <DrawerFooter className="pt-2">
+            <DrawerClose asChild>
+              <Button variant="outline">Close</Button>
+            </DrawerClose>
+          </DrawerFooter> */}
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+}
+
+function MessageBody() {
+  return <div>hello</div>;
 }
