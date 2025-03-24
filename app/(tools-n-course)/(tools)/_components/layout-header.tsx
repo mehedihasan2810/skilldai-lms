@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
+import { NotificationButton } from "@/components/notification-button";
 
 export const LayoutHeader = ({ userId }: { userId: string }) => {
   const pathname = usePathname();
@@ -32,8 +33,8 @@ export const LayoutHeader = ({ userId }: { userId: string }) => {
               <Link className="hover:underline" href="/new">
                 Skilld AI
               </Link>
+              <NotificationButton userId={userId} />
               <ThemeToggle />
-
             </div>
           </div>
         )}
