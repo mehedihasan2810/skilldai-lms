@@ -1,7 +1,7 @@
 "use client";
 
 import { Bell } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Popover,
   PopoverContent,
@@ -39,94 +39,6 @@ import {
 import { useMediaQuery } from "usehooks-ts";
 import Markdown from "react-markdown";
 
-// Sample notifications for testing the UI
-const sampleNotifications = [
-  {
-    id: "1",
-    user_notification_id: "un1",
-    title: "Welcome to the Platform!",
-    message:
-      "Thank you for joining our platform. We're excited to have you here. Explore all the features and let us know if you have any questions.",
-    type: "announcement",
-    is_global: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 15).toISOString(), // 15 minutes ago
-    is_read: false,
-    sender_id: "admin-1",
-  },
-  {
-    id: "2",
-    user_notification_id: "un2",
-    title: "New Features Released",
-    message:
-      "We've just released several new features including advanced analytics, improved chat interface, and better performance. Check them out now!",
-    type: "announcement",
-    is_global: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(), // 5 hours ago
-    is_read: false,
-    sender_id: "admin-1",
-  },
-  {
-    id: "3",
-    user_notification_id: "un3",
-    title: "Scheduled Maintenance",
-    message:
-      "We'll be performing scheduled maintenance this Saturday from 2AM-4AM UTC. The service might experience brief interruptions during this time.",
-    type: "system",
-    is_global: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(), // 1 day ago
-    is_read: true,
-    sender_id: "admin-2",
-  },
-  {
-    id: "4",
-    user_notification_id: "un4",
-    title: "Your Subscription",
-    message:
-      "Your subscription will renew in 7 days. Please ensure your payment method is up to date to avoid any interruption in service.",
-    type: "system",
-    is_global: false,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(), // 3 days ago
-    is_read: false,
-    sender_id: "system",
-  },
-  {
-    id: "5",
-    user_notification_id: "un5",
-    title: "Special Offer",
-    message:
-      "For a limited time, upgrade to our premium plan and get 20% off your first three months. Use code SPECIAL20 at checkout.",
-    type: "announcement",
-    is_global: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5).toISOString(), // 5 days ago
-    is_read: true,
-    sender_id: "admin-1",
-  },
-  {
-    id: "6",
-    user_notification_id: "un6",
-    title: "Community Webinar",
-    message:
-      "Join us for a live webinar on 'Maximizing Productivity with Our Tools' this Friday at 1PM EST. Register now to secure your spot!",
-    type: "announcement",
-    is_global: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7).toISOString(), // 7 days ago
-    is_read: true,
-    sender_id: "admin-3",
-  },
-  {
-    id: "7",
-    user_notification_id: "un7",
-    title: "Security Update",
-    message:
-      "We've enhanced our security protocols. Please consider enabling two-factor authentication in your account settings for additional protection.",
-    type: "system",
-    is_global: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10).toISOString(), // 10 days ago
-    is_read: true,
-    sender_id: "admin-2",
-  },
-];
-
 type Notification = {
   id: string;
   title: string;
@@ -150,24 +62,58 @@ export function NotificationButton({ userId }: { userId: string }) {
     },
   });
 
-  console.log({ notificationsData, notificationsError });
+  // Get read notification IDs from localStorage
+  const [readNotificationIds, setReadNotificationIds] = useState<string[]>(
+    () => {
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem(`${userId}_read_notifications`);
+        return saved ? JSON.parse(saved) : [];
+      }
+      return [];
+    }
+  );
 
-  const [notifications, setNotifications] =
-    useState<Notification[]>(sampleNotifications);
+  // Process notifications with read status
+  const processedNotifications = useMemo(() => {
+    if (!notificationsData) return [];
+
+    return notificationsData.map((notification) => ({
+      ...notification,
+      is_read: readNotificationIds.includes(notification.id),
+    }));
+  }, [notificationsData, readNotificationIds]);
+
   const [isOpen, setIsOpen] = useState(false);
-  const unreadCount = notifications.filter((n) => !n.is_read).length;
+  const unreadCount = processedNotifications.filter((n) => !n.is_read).length;
 
+  // Mark a single notification as read
   const markAsRead = (notificationId: string) => {
-    // setNotifications((prev) =>
-    //   prev.map((n) =>
-    //     n.user_notification_id === notificationId ? { ...n, is_read: true } : n
-    //   )
-    // );
+    if (!readNotificationIds.includes(notificationId)) {
+      const newReadIds = [...readNotificationIds, notificationId];
+      setReadNotificationIds(newReadIds);
+      localStorage.setItem(
+        `${userId}_read_notifications`,
+        JSON.stringify(newReadIds)
+      );
+    }
   };
 
+  // Mark all notifications as read
   const markAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
+    const allIds = processedNotifications.map((n) => n.id);
+    setReadNotificationIds(allIds);
+    localStorage.setItem(
+      `${userId}_read_notifications`,
+      JSON.stringify(allIds)
+    );
   };
+
+  // Mark notifications as read when opening the popover
+  useEffect(() => {
+    if (isOpen && unreadCount > 0) {
+      markAllAsRead();
+    }
+  }, [isOpen]);
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -212,16 +158,14 @@ export function NotificationButton({ userId }: { userId: string }) {
             <div className="p-4 text-center text-muted-foreground">
               Loading...
             </div>
-          ) : notificationsData.length > 0 ? (
-            notificationsData
-              //   .filter((n) => !n.is_read)
-              .map((notification) => (
-                <NotificationItem
-                  key={notification.id}
-                  notification={notification}
-                  onMarkAsRead={markAsRead}
-                />
-              ))
+          ) : processedNotifications.length > 0 ? (
+            processedNotifications.map((notification) => (
+              <NotificationItem
+                key={notification.id}
+                notification={notification}
+                onMarkAsRead={markAsRead}
+              />
+            ))
           ) : (
             <div className="p-4 text-center text-muted-foreground">
               No notifications
@@ -297,17 +241,22 @@ function NotificationItem({
   onMarkAsRead: (id: string) => void;
 }) {
   const [showNotification, setShowNotification] = useState(false);
+
+  const handleClick = () => {
+    setShowNotification(true);
+    if (!notification.is_read) {
+      onMarkAsRead(notification.id);
+    }
+  };
+
   return (
     <>
       <div
-        onClick={() => setShowNotification(true)}
+        onClick={handleClick}
         className={cn(
-          "p-4 hover:bg-muted/50 cursor-pointer"
-          // !notification.is_read && "bg-muted/20"
+          "p-4 hover:bg-muted/50 cursor-pointer",
+          !notification.is_read && "bg-muted/20"
         )}
-        //   onClick={() =>
-        //     !notification.is_read && onMarkAsRead(notification.user_notification_id)
-        //   }
       >
         <div className="flex justify-between items-start mb-1 gap-1">
           <h4 className="font-medium text-sm">{notification.title}</h4>
