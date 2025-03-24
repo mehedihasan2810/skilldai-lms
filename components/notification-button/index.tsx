@@ -135,15 +135,15 @@ export function NotificationButton({ userId }: { userId: string }) {
           <TooltipTrigger asChild>
             <PopoverTrigger
               className={buttonVariants({
-                variant: "outline",
+                variant: "ghost",
                 size: "icon",
                 className:
-                  "size-10 p-2 border flex justify-center items-center rounded hover:bg-secondary relative",
+                  "relative",
               })}
             >
               <Bell className="w-full" />
               {unreadCount > 0 && (
-                <span className="absolute top-1 right-1 bg-red-500 text-white text-xs rounded-full min-w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-0.5 right-0.5 bg-primary text-primary-foreground text-[10px] rounded-full min-w-5 h-5 flex items-center justify-center">
                   {unreadCount > 99 ? "99+" : unreadCount}
                 </span>
               )}
