@@ -154,7 +154,7 @@ export function NotificationButton({ userId }: { userId: string }) {
       </TooltipProvider>
 
       <PopoverContent className="w-80 p-0" align="end">
-        <div className="flex justify-between items-center p-4 border-b">
+        <div className="flex justify-between items-center px-4 py-2 border-b">
           <h3 className="font-semibold">Notifications</h3>
           {unreadCount > 0 && (
             <Button variant="ghost" size="sm" onClick={markAllAsRead}>
@@ -163,18 +163,22 @@ export function NotificationButton({ userId }: { userId: string }) {
           )}
         </div>
 
-        <Tabs defaultValue="unread">
-          <TabsList className="w-full grid grid-cols-2">
-            <TabsTrigger value="unread" className="relative">
-              Unread
+        <Tabs defaultValue="unread" className="pt-1">
+          <div className="px-2">
+            <TabsList className="w-full grid grid-cols-2 rounded-full">
+              <TabsTrigger value="unread" className="relative rounded-full">
+                Unread
               {unreadCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 bg-red-500 text-white text-xs rounded-full min-w-5 h-5 flex items-center justify-center">
+                <span className="absolute top-0.5 right-7 bg-primary text-primary-foreground text-[10px] rounded-full min-w-5 h-5 flex items-center justify-center">
                   {unreadCount > 99 ? "99+" : unreadCount}
                 </span>
               )}
             </TabsTrigger>
-            <TabsTrigger value="all">All</TabsTrigger>
-          </TabsList>
+            <TabsTrigger value="all" className="rounded-full">
+                All
+              </TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="unread">
             <ScrollArea className="h-[300px]">
@@ -260,7 +264,6 @@ function NotificationItem({
           </Button>
         </div>
       )}
-      <Separator className="mt-2" />
     </div>
   );
 }
