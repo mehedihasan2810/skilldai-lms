@@ -50,9 +50,11 @@ type Notification = {
 export function NotificationButton({
   userId,
   side,
+  align,
 }: {
   userId: string;
   side: "left" | "right" | "top" | "bottom";
+  align: "start" | "center" | "end";
 }) {
   const {
     data: notificationsData,
@@ -148,7 +150,7 @@ export function NotificationButton({
         </Tooltip>
       </TooltipProvider>
 
-      <PopoverContent className="w-80 p-0" align="end" side={side}>
+      <PopoverContent className="w-80 p-0" align={align} side={side}>
         <div className="flex justify-between items-center px-4 py-3 border-b">
           <h3 className="font-semibold">Notifications</h3>
           {/* {unreadCount > 0 && (

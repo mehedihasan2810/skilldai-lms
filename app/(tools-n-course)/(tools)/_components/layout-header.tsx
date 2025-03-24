@@ -33,7 +33,7 @@ export const LayoutHeader = ({ userId }: { userId: string }) => {
               <Link className="hover:underline" href="/new">
                 Skilld AI
               </Link>
-              <NotificationButton userId={userId} side="bottom" />
+              <NotificationButton userId={userId} side="bottom" align="end" />
               <ThemeToggle />
             </div>
           </div>
