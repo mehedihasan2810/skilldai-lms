@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import * as z from "zod";
 import { useRouter } from "nextjs-toploader/app";
-import { experimental_useObject as useObject } from "ai/react";
+import { experimental_useObject as useObject } from "@ai-sdk/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FileUp, Loader, Loader2, MessageSquareMore, Plus } from "lucide-react";

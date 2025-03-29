@@ -17,7 +17,7 @@ import { getSuggestedSkills } from "@/actions/skill-assessment";
 import { toast } from "sonner";
 import { useAction } from "next-safe-action/hooks";
 import { useDebouncedCallback } from "use-debounce";
-import { experimental_useObject as useObject } from "ai/react";
+import { experimental_useObject as useObject } from "@ai-sdk/react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Markdown from "@/components/markdown/markdown";
