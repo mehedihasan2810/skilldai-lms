@@ -60,7 +60,7 @@ export async function POST(req: Request) {
   });
 
   const result = streamObject({
-    model: openrouter("deepseek/deepseek-chat"),
+    model: openrouter("google/gemini-2.0-flash-001"),
     // model: openrouter("openai/gpt-4o-mini"),
     prompt: systemPrompt,
     // messages: [

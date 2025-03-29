@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useRouter } from "nextjs-toploader/app";
 import { Textarea } from "@/components/ui";
-import { experimental_useObject as useObject } from "ai/react";
+import { experimental_useObject as useObject } from "@ai-sdk/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";

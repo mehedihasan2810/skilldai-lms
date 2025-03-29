@@ -68,7 +68,7 @@ export async function POST(req: Request) {
 
   console.log({ userPrompt });
 
-//   return
+  //   return
 
   //   const supabase = await createClient();
 
@@ -106,13 +106,13 @@ export async function POST(req: Request) {
     // model: anthropic("claude-3-5-sonnet-20241022"),
     // model: openrouter("anthropic/claude-3.5-sonnet"),
     // model: openai("gpt-4o-mini"),
-    model: openrouter("deepseek/deepseek-chat"),
+    model: openrouter("google/gemini-2.0-flash-001"),
 
     // model: google("gemini-1.5-pro-latest"),
     system:
       "You are a helpful AI that generates educational quizzes. Provide accurate, grade-appropriate questions and answers.",
     prompt: userPrompt,
-  
+
     schema: questionSchema,
     output: "array",
     experimental_telemetry: {
