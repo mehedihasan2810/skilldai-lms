@@ -15,7 +15,7 @@ export default async function AccessPage() {
 
   const user = session.user;
 
-  if (user.user_metadata.permission == "granted") {
+  if (user.user_metadata.permission === "granted") {
     return redirect("/new");
   }
 
