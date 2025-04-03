@@ -10,6 +10,8 @@ type TokenUsage = {
   total_tokens: number;
   input_token: number;
   output_token: number;
+  model: string;
+  type: string;
 };
 
 // Helper function to group data by user_id, month, and year
@@ -17,13 +19,14 @@ function groupByUserAndMonth(data: TokenUsage[]): TokenUsage[] {
   return Object.values(
     data.reduce((acc, row) => {
       const key = `${row.user_id}-${row.month}-${row.year}`;
-
       if (!acc[key]) {
         acc[key] = {
           user_id: row.user_id,
           email: row.email, 
           user_email: row.user_email,
           month: row.month,
+          model: row.model,
+          type: row.type,
           year: row.year,
           total_tokens: 0,
           input_token: 0,
