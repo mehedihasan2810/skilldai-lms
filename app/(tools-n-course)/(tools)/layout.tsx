@@ -75,6 +75,12 @@ const navItems: NavItem[] = [
     href: "/skill-assessment",
     icon: "bookOpen",
   },
+  {
+    title: "AI Learning Assistant",
+    href: "/ai-learning-assistant",
+    icon: "bookOpen",
+  },
+  
 ];
 
 const teacherOnlyNavItems = ["/lesson-plan-generator", "/worksheet-generator"];
@@ -95,9 +101,9 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
 
   console.log({ user });
 
-  if (user.user_metadata.permission !== "granted") {
-    return redirect("/access");
-  }
+  // if (user.user_metadata.permission !== "granted") {
+  //   return redirect("/access");
+  // }
 
   // const { error: userInfoError, data: userInfo } = await supabase
   //   .from("user_info")
