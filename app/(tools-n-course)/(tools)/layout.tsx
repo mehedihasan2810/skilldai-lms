@@ -75,6 +75,12 @@ const navItems: NavItem[] = [
     href: "/skill-assessment",
     icon: "bookOpen",
   },
+  {
+    title: "AI Learning Assistant",
+    href: "/ai-learning-assistant",
+    icon: "bookOpen",
+  },
+  
 ];
 
 const teacherOnlyNavItems = ["/lesson-plan-generator", "/worksheet-generator"];

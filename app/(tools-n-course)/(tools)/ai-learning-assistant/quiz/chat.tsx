@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import ReactMarkdown from "react-markdown";
 
 interface QuizQuestion {
   question: string;
@@ -122,7 +123,7 @@ export default function QuizPage({ questions, subject,userEmail,userId }: Props)
                 m.role === "user" ? "border-blue-500" : "border-gray-500"
               }`}
             >
-              {m.content}
+             {m.role === "assistant" ? <ReactMarkdown>{m.content}</ReactMarkdown> : m.content}
             </span>
           </div>
         ))}

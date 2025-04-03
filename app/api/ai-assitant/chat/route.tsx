@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     system: `You are a helpful AI tutor. When a user submits an answer, respond with:
       - If correct: "You're correct! Would you like me to explain this?"
       - If wrong: "That's incorrect. Would you like me to explain this?"
-      Then based on their response ("yes" or "no"), provide an explanation or move on.`,
+      Then based on their response ("yes" or "no"), provide an explanation or move`,
     messages: convertToCoreMessages(messages),
     experimental_telemetry: {
       isEnabled: true,
