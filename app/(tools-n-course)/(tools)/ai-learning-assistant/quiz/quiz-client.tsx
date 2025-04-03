@@ -1,0 +1,62 @@
+// app/quiz/quiz-client.tsx (Client Component)
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import QuizPage from "./chat";
+
+interface QuizQuestion {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+}
+
+interface QuizClientProps {
+  subject: string;
+  proficiency: string;
+  userEmail:string;
+  userId:string;
+}
+
+async function fetchQuizQuestions({ subject, proficiency,userEmail,userId }: QuizClientProps) {
+  const response = await fetch("/api/ai-assitant/generate-quiz", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ subject, proficiency,userEmail,userId }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch quiz questions.");
+  }
+
+  return response.json() as Promise<{ questions: QuizQuestion[] }>;
+}
+
+export default function QuizClient({ subject, proficiency,userEmail,userId}: QuizClientProps) {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["quiz", subject, proficiency,userEmail,userId],
+    queryFn: () => fetchQuizQuestions({ subject, proficiency ,userEmail,userId}),
+    enabled: !!subject && !!proficiency && !!userEmail&& !!userId,
+  });
+
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading quiz...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Error loading quiz: {(error as Error).message}
+      </div>
+    );
+  }
+
+  if (!data?.questions) {
+    return <div className="min-h-screen flex items-center justify-center">No questions available</div>;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <QuizPage questions={data.questions} subject={subject} userId={userId} userEmail={userEmail}/>
+    </div>
+  );
+}
