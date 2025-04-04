@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       Each question should have 4 options and one correct answer.
       Return the response in the required JSON schema format.
     `,
-    prompt: `Generate 5 ${proficiency} level quiz questions about ${subject}. 
+    prompt: `Generate 10 ${proficiency} level quiz questions about ${subject}. 
       Each question should have 4 options and one correct answer.`,
     experimental_telemetry: {
       isEnabled: true,

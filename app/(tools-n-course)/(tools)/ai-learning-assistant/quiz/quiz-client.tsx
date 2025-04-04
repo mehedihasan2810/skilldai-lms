@@ -3,6 +3,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import QuizPage from "./chat";
+import { Loader } from "lucide-react";
 
 interface QuizQuestion {
   question: string;
@@ -39,7 +40,9 @@ export default function QuizClient({ subject, proficiency,userEmail,userId}: Qui
   });
 
   if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading quiz...</div>;
+    return <div className="h-screen w-screen flex items-center justify-center gap-2">
+          <Loader className="animate-spin size-6" /> Please wait...
+        </div>;
   }
 
   if (error) {
