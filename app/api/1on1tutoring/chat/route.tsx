@@ -8,15 +8,42 @@ type MessageRole = "system" | "user" | "assistant" | "data";
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
-  const { messages, email, userId }: { 
+  const { messages, email, userId ,chatId,quizCompleted}: { 
     messages: { role: MessageRole; content: string }[],
     email: string,
-    userId: string 
+    userId: string ,
+    chatId:string,
+    quizCompleted:boolean,
+
   } = await req.json();
 
   console.log({ email, userId });
 
   const supabase = await createClient();
+  function cleanChatLogs(logs: any[]) {
+    return logs.map((log) => ({
+      role: log.role,
+      content: typeof log.content === "string"
+        ? log.content.replace(/\\n/g, "\n").replace(/\\"/g, '"').trim()
+        : "",
+    }));
+  }
+  function cleanFeedbackLogs(feedback: any[]) {
+    return feedback.map((entry) => {
+      const fullText = (entry.content || [])
+        .map((c: any) => c?.text || "")
+        .join("\n")
+        .replace(/\\n/g, "\n")
+        .replace(/\\"/g, '"')
+        .trim();
+  
+      return {
+        role: entry.role,
+        content: fullText,
+      };
+    });
+  }
+  
 
   const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
   const CURRENT_MONTH = new Date().getMonth() + 1;
@@ -63,7 +90,36 @@ export async function POST(req: NextRequest) {
         user: email,
       },
     },
-    onFinish: async ({ finishReason, usage }) => {
+    onFinish: async ({ response,finishReason, usage }) => {
+      const userMessage = messages[messages.length - 1]?.content;
+
+      if(quizCompleted)
+      {
+        //store feedback
+        const { error: logError } = await supabase.from("feedback_1on1tutor").insert({
+          quiz_id: chatId, 
+          user_id: userId,
+          email:email,
+          comments: JSON.stringify(cleanFeedbackLogs(response.messages)),
+        });
+      
+        if (logError) {
+          console.error("Error saving chat logs:", logError);
+        }
+      }
+        const { error: logError } = await supabase.from("ai_chat_logs_1on1tutor").upsert(
+          {
+            quiz_id: chatId,
+            user_id: userId,
+            email:email,
+            chat: JSON.stringify(cleanChatLogs(messages)),
+          },
+          { onConflict: "quiz_id" }
+        );        
+      
+        if (logError) {
+          console.error("Error saving chat logs:", logError);
+        }
       console.log({ finishReason, usage });
       const { data, error: updateError } = await supabase
         .from("token_usage")

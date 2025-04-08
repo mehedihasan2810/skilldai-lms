@@ -16,20 +16,21 @@ interface QuizQuestion {
 
 interface Props {
   questions: QuizQuestion[];
-  subject: string;
   userEmail: string;
   userId: string;
+  chatId:string;
+  subject: string;
 }
 
-export default function QuizPage({ questions, subject, userEmail, userId }: Props) {
+export default function QuizPage({ questions, subject, userEmail, userId ,chatId}: Props) {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
 
   const { messages, append, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: "/api/ai-assitant/chat",
-    body: { email: userEmail, userId },
+    api: "/api/1on1tutoring/chat",
+    body: { email: userEmail, userId ,chatId,subject,quizCompleted},
   });
 
   const handleAnswerSubmit = () => {
@@ -41,6 +42,7 @@ export default function QuizPage({ questions, subject, userEmail, userId }: Prop
       role: "user",
       content: `I answered "${selectedAnswer}" to "${questions[currentQuestion].question}". The correct answer is "${correctAnswer}".`,
     });
+
 
     setShowFeedback(true);
   };
@@ -162,7 +164,7 @@ export default function QuizPage({ questions, subject, userEmail, userId }: Prop
                 disabled={isLoading}
               />
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Sending..." : "Send"}
+                {isLoading ? "Asking..." : "Ask"}
               </Button>
             </form>
           </CardContent>

@@ -157,6 +157,11 @@ const data = {
           url: "/pdf-chat",
           icon: BookOpenCheck,
         },
+        {
+            title: "1 on 1 Tutoring",
+            url: "/1on1tutoring",
+            icon: BookOpenCheck,
+        },
       ],
     },
   ],

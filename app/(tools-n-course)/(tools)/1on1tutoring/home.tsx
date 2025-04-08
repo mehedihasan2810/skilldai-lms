@@ -21,7 +21,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/ai-learning-assistant/quiz?subject=${encodeURIComponent(subject)}&proficiency=${encodeURIComponent(proficiency)}`);
+    router.push(`/1on1tutoring/quiz?subject=${encodeURIComponent(subject)}&proficiency=${encodeURIComponent(proficiency)}`);
   };
 
   return (
