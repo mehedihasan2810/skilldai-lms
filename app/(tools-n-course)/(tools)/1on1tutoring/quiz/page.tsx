@@ -28,5 +28,5 @@ export default async function Page({ searchParams }: { searchParams: { [key: str
   }
 
   // Pass the validated params to the client component
-  return <QuizClient subject={subject} proficiency={proficiency} userId={user.id} userEmail={user.email ?? ""}/>;
+  return <QuizClient chatId={id} subject={subject} proficiency={proficiency} userId={user.id} userEmail={user.email ?? ""}/>;
 }

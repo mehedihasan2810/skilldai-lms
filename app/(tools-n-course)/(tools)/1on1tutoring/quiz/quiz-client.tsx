@@ -16,13 +16,14 @@ interface QuizClientProps {
   proficiency: string;
   userEmail:string;
   userId:string;
+  chatId:string;
 }
 
-async function fetchQuizQuestions({ subject, proficiency,userEmail,userId }: QuizClientProps) {
-  const response = await fetch("/api/ai-assitant/generate-quiz", {
+async function fetchQuizQuestions({ subject, proficiency,userEmail,userId ,chatId}: QuizClientProps) {
+  const response = await fetch("/api/1on1tutoring/generate-quiz", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ subject, proficiency,userEmail,userId }),
+    body: JSON.stringify({ subject, proficiency,userEmail,userId ,chatId}),
   });
 
   if (!response.ok) {
@@ -32,10 +33,10 @@ async function fetchQuizQuestions({ subject, proficiency,userEmail,userId }: Qui
   return response.json() as Promise<{ questions: QuizQuestion[] }>;
 }
 
-export default function QuizClient({ subject, proficiency,userEmail,userId}: QuizClientProps) {
+export default function QuizClient({ subject, proficiency,userEmail,userId,chatId}: QuizClientProps) {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["quiz", subject, proficiency,userEmail,userId],
-    queryFn: () => fetchQuizQuestions({ subject, proficiency ,userEmail,userId}),
+    queryKey: ["quiz", subject, proficiency,userEmail,userId,chatId],
+    queryFn: () => fetchQuizQuestions({ subject, proficiency ,userEmail,userId,chatId}),
     enabled: !!subject && !!proficiency && !!userEmail&& !!userId,
   });
 
@@ -59,7 +60,7 @@ export default function QuizClient({ subject, proficiency,userEmail,userId}: Qui
 
   return (
     <div className="min-h-screen flex flex-col">
-      <QuizPage questions={data.questions} subject={subject} userId={userId} userEmail={userEmail}/>
+      <QuizPage questions={data.questions} subject={subject}  userId={userId} userEmail={userEmail} chatId={chatId}/>
     </div>
   );
 }

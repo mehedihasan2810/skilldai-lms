@@ -18,14 +18,17 @@ const quizSchema = z.object({
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
-  const { subject, proficiency, userEmail, userId }: { 
+  const { subject, proficiency, userEmail, userId ,chatId}: { 
     subject: string; 
     proficiency: string; 
     userEmail: string; 
-    userId: string 
+    userId: string ;
+    chatId:string;
   } = await req.json();
 
   const supabase = await createClient();
+
+  
 
   const MAX_TOKENS = process.env.NEXT_PUBLIC_MAX_TOKENS;
   const CURRENT_MONTH = new Date().getMonth() + 1;
@@ -77,8 +80,28 @@ export async function POST(req: NextRequest) {
         user: userEmail,
       },
     },
-    onFinish: async ({ usage }) => {
+    onFinish: async ({ object, usage }) => {
       console.log(usage)
+      if (!object || !object.questions) {
+        console.error("❌ No questions found in AI response.");
+        return;
+      }
+
+      const { questions } = object;
+
+      // Save quiz to DB
+      const { error: insertError } = await supabase.from("quizzes_1on1tutor").insert({
+        id: chatId,
+        user_id: userId,
+        subject,
+        proficiency,
+        questions,
+        email:userEmail,
+      });
+
+      if (insertError) {
+        console.error("❌ Error inserting quiz:", insertError);
+      }
       // Update token usage in Supabase
       const { error: updateError } = await supabase
         .from("token_usage")

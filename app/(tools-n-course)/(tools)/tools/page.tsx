@@ -74,7 +74,7 @@ const tools = [
     title: "1 on 1 Tutoring",
     description:
       "An AI-powered Learning Assistant that generates questions based on your proficiency in the subject and allows you to query based on your answers will help you achieve better understanding",
-    href: "/ai-learning-assistant",
+    href: "/1on1tutoring",
   },
 ];
 
