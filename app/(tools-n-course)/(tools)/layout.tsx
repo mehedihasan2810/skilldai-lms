@@ -77,7 +77,7 @@ const navItems: NavItem[] = [
   },
   {
     title: "1 on 1 Tutoring",
-    href: "/ai-learning-assistant",
+    href: "/1on1tutoring",
     icon: "bookOpen",
   },
   
