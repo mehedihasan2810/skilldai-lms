@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
         .from("token_usage")
         .upsert(
           {
-            type: `quiz:generation`,
+            type: `chat:tutor`,
             user_id: userId,
             user_email: userEmail,
             email: userEmail,
