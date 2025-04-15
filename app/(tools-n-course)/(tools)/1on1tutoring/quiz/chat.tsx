@@ -20,9 +20,10 @@ interface Props {
   userId: string;
   chatId:string;
   subject: string;
+  proficiency:string;
 }
 
-export default function QuizPage({ questions, subject, userEmail, userId ,chatId}: Props) {
+export default function QuizPage({ questions, subject, userEmail, userId ,chatId,proficiency}: Props) {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
@@ -113,6 +114,7 @@ export default function QuizPage({ questions, subject, userEmail, userId ,chatId
             ) : (
               <div className="text-center text-lg">
                 Quiz Completed! Check the AI Assistant for feedback.
+                if you want to continue for a course click <Button onClick={() => {window.location.href = `/1on1tutoring/course?subject=${subject}&proficiency=${proficiency}&chatId=${chatId}&userEmail=${userEmail}&userId=${userId}`;}}>Go For Course</Button>
               </div>
             )}
           </CardContent>

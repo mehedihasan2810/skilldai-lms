@@ -101,9 +101,9 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
 
   console.log({ user });
 
-  if (user.user_metadata.permission !== "granted") {
-    return redirect("/access");
-  }
+  // if (user.user_metadata.permission !== "granted") {
+  //   return redirect("/access");
+  // }
 
   // const { error: userInfoError, data: userInfo } = await supabase
   //   .from("user_info")
