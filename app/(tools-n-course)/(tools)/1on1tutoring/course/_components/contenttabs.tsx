@@ -171,8 +171,8 @@ const handleFinalSubmit = async () => {
           <CardHeader>
             <CardTitle>{module.title} - Learn</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Markdown text={module.contents} className="max-w-2xl break-all text-center w-full" />
+          <CardContent className="space-y-4 w-full">
+            <Markdown text={module.contents} className="max-w-2xl break-all text-center " />
             {module.weak && (
               <p className="text-red-500">
                 Focus on this module to improve your skills.
