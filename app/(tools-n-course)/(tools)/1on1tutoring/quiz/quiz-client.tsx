@@ -60,7 +60,7 @@ export default function QuizClient({ subject, proficiency,userEmail,userId,chatI
 
   return (
     <div className="min-h-screen flex flex-col">
-      <QuizPage questions={data.questions} subject={subject}  userId={userId} userEmail={userEmail} chatId={chatId}/>
+      <QuizPage questions={data.questions} subject={subject}  userId={userId} userEmail={userEmail} chatId={chatId} proficiency={proficiency}/>
     </div>
   );
 }
