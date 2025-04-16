@@ -162,6 +162,11 @@ const data = {
             url: "/1on1tutoring",
             icon: BookOpenCheck,
         },
+        {
+          title: "my-learning",
+          url: "/1on1tutoring/my-courses",
+          icon: BookOpenCheck,
+      },
       ],
     },
   ],
