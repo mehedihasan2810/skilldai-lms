@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
         - If no logs or feedback are available, generate general modules suitable for ${proficiency}-level ${subject}.
         Generate 5-8 modules tailored to the user:
         - For each identified weakness, create a module with 'weak: true', 'progress: 0', and:
-          - 'contents': Markdown string with 2-5 elaborated paragraphs explaining the topic, video references, documents(if applicable).
+          - 'contents': Markdown string with 2-5 elaborated paragraphs explaining the topic, external references, documents(if applicable).
           - 'practice': 5-10 exercise prompts targeting the gap area.
           - 'quiz': 5-10 questions with 4 options each, correct option index (0-3), testing the weak area.
         - For strengths or complementary topics, create modules with 'weak: false', estimate 'progress' (0-100) based on performance, and include:

@@ -163,7 +163,7 @@ const data = {
             icon: BookOpenCheck,
         },
         {
-          title: "my-learning",
+          title: "My-learning",
           url: "/1on1tutoring/my-courses",
           icon: BookOpenCheck,
       },
