@@ -82,6 +82,11 @@ export default function QuizPage({ questions, subject, userEmail, userId ,chatId
                 <div className="space-y-2">
                   {questions[currentQuestion].options.map((option, index) => (
                     <Button
+                    style={{
+                      whiteSpace: 'normal', // Allow text to wrap
+                      height: 'auto', // Allow button to grow with content
+                      textAlign: 'left', // Align text
+                    }}
                       key={index}
                       variant={selectedAnswer === option ? "default" : "outline"}
                       className="w-full text-left justify-start"
@@ -113,8 +118,28 @@ export default function QuizPage({ questions, subject, userEmail, userId ,chatId
               </div>
             ) : (
               <div className="text-center text-lg">
-                Quiz Completed! Check the AI Assistant for feedback.
-                if you want to continue for a course click <Button onClick={() => {window.location.href = `/1on1tutoring/course?subject=${subject}&proficiency=${proficiency}&chatId=${chatId}&userEmail=${userEmail}&userId=${userId}`;}}>Go For Course</Button>
+                <div style={{
+  border: "1px solid #ccc",
+  borderRadius: "10px",
+  padding: "20px",
+  maxWidth: "600px",
+  fontFamily: "sans-serif",
+}}>
+  <h2 >We can help you with your skill gaps!</h2>
+  <p>Would you like us to create a personalized course to help bridge those gaps?</p>
+
+  <p><strong>This course will offer:</strong></p>
+  <ul>
+    <li><strong>Tailored Modules</strong> focused on your specific weaknesses</li>
+    <li><strong>External References</strong> to deepen your understanding</li>
+    <li><strong>Interactive Quizzes</strong> to assess and reinforce your learning</li>
+    <li><strong>Hands-on Assignments</strong> where you'll gather info, explore topics, and apply your knowledge</li>
+  </ul>
+
+  <p>If you're ready to improve and grow your skills, let’s get started! 🚀</p>
+  <Button onClick={() => {window.location.href = `/1on1tutoring/course?subject=${subject}&proficiency=${proficiency}&chatId=${chatId}&userEmail=${userEmail}&userId=${userId}`;}}>Yes, create my course</Button>
+
+</div>
               </div>
             )}
           </CardContent>
