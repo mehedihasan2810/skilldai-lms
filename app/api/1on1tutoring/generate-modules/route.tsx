@@ -184,7 +184,7 @@ export async function POST(req: NextRequest) {
               output_token: (tokenUsage?.output_token || 0) + (usage?.completionTokens || 0),
               total_tokens: (tokenUsage?.total_tokens || 0) + (usage?.totalTokens || 0),
               llm: 'google',
-              model: 'gemini-1.5-flash-8b',
+              model: 'gemini-2.0-flash-001',
             },
             {
               onConflict: 'user_id,month,year',
