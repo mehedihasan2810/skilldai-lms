@@ -38,17 +38,17 @@ export default function ModuleSelector({
           onClick={() => onSelectModule(module.id)}
         >
           <CardHeader className="p-4">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-md font-medium">{module.title}</CardTitle>
+            <div className="flex items-center justify-center gap-2">
+              <CardTitle className="text-md font-medium text-center">{module.title}</CardTitle>
               {module.weak && (
-                <Badge variant="destructive" className="text-xs">
+                <Badge variant="destructive" className="text-xs text-center">
                   Weak Area
                 </Badge>
               )}
             </div>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <p className="text-sm text-gray-500">Progress: {module.progress}%</p>
+            <p className="text-sm text-gray-500">Skill Proficiency: {module.progress}%</p>
           </CardContent>
         </Card>
       ))}
