@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       .from('modules_1on1tutor')
       .select('modules')
       .eq('id', chatId)
-      .single();
+      .maybeSingle();
 
     if (moduleError && moduleError.code !== 'PGRST116') { // PGRST116: no rows found
       console.error('Error checking modules:', moduleError);
