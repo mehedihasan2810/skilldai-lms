@@ -68,6 +68,17 @@ export function NavUser({
     }
   };
 
+  const handleSignOut2 = async () => {
+    const supabase = createClient();
+
+    const res = await supabase.auth.signOut();
+
+    if (res.error) throw new Error(res.error.message);
+
+    router.refresh();
+    router.replace("/");
+  };
+
   return (
     <>
       <SidebarMenu>
@@ -115,7 +126,7 @@ export function NavUser({
               <DropdownMenuItem
                 className="flex items-center gap-2"
                 onClick={() => {
-                  toast.promise(signOutAction, {
+                  toast.promise(handleSignOut2, {
                     loading: "Signing out...",
                     success: "Signed out successfully",
                     error: (error) => error.message,
