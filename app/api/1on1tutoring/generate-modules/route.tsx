@@ -50,10 +50,10 @@ export async function POST(req: NextRequest) {
       .eq('id', chatId)
       .maybeSingle();
 
-    if (moduleError && moduleError.code !== 'PGRST116') { // PGRST116: no rows found
-      console.error('Error checking modules:', moduleError);
-      return NextResponse.json({ error: 'Failed to check existing modules' }, { status: 500 });
-    }
+    // if (moduleError && moduleError.code !== 'PGRST116') { // PGRST116: no rows found
+    //   console.error('Error checking modules:', moduleError);
+    //   return NextResponse.json({ error: 'Failed to check existing modules' }, { status: 500 });
+    // }
 
     if (existingModules?.modules) {
       return NextResponse.json(existingModules);

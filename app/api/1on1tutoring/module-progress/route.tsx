@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
       .select('modules')
       .eq('chat_id', chatId)
       .eq('user_id', userId)
-      .single();
+      .maybeSingle();
 
     if (error && error.code !== 'PGRST116') {
       console.error('Error fetching progress:', error);
