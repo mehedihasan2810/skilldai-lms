@@ -15,6 +15,8 @@ import { Button } from "../ui";
 import { signOutAction } from "@/actions/auth";
 import { SubmitButton } from "../submit-button";
 import { toast } from "sonner";
+import { createClient } from "@/lib/supabase/client";
+import { useRouter } from "next/navigation";
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -22,6 +24,16 @@ type Props = {
 };
 
 export const SignOutDialog = ({ open, onOpenChange, handleSignOut }: Props) => {
+  const router = useRouter();
+  const handleSignOut2 = async () => {
+    const supabase = createClient();
+
+    const res = await supabase.auth.signOut();
+
+    if (res.error) throw new Error(res.error.message);
+
+    router.refresh();
+  };
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
@@ -36,7 +48,7 @@ export const SignOutDialog = ({ open, onOpenChange, handleSignOut }: Props) => {
           <Button
             className=""
             onClick={() => {
-              toast.promise(signOutAction, {
+              toast.promise(handleSignOut2, {
                 loading: "Signing out...",
                 success: "Signed out successfully",
                 error: (error) => error.message,
