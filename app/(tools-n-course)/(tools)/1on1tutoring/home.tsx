@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from 'sonner';
 
 export default function Home() {
   const [subject, setSubject] = useState<string>("");
@@ -21,6 +22,20 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if(!subject){
+      toast.error("please enter subject", {
+            position: "top-center",
+            duration: 3000,
+          });
+          return ;
+    }
+    if(!proficiency){
+      toast.error("please enter proficiency", {
+            position: "top-center",
+            duration: 3000,
+          });
+          return ;
+    }
     router.push(`/1on1tutoring/quiz?subject=${encodeURIComponent(subject)}&proficiency=${encodeURIComponent(proficiency)}`);
   };
 

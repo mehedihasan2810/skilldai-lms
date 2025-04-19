@@ -125,6 +125,7 @@ export default function QuizPage({ questions, subject, userEmail, userId ,chatId
   maxWidth: "600px",
   fontFamily: "sans-serif",
 }}>
+  <p style={{color:"red"}}><strong>Kindly refer to the AI Assistant section for your quiz feedback</strong></p>
   <h2 >We can help you with your skill gaps!</h2>
   <p>Would you like us to create a personalized course to help bridge those gaps?</p>
 
@@ -137,7 +138,7 @@ export default function QuizPage({ questions, subject, userEmail, userId ,chatId
   </ul>
 
   <p>If you're ready to improve and grow your skills, let’s get started! 🚀</p>
-  <Button onClick={() => {window.location.href = `/1on1tutoring/course?subject=${subject}&proficiency=${proficiency}&chatId=${chatId}&userEmail=${userEmail}&userId=${userId}`;}}>Yes, create my course</Button>
+  <Button disabled={isLoading} onClick={() => {window.location.href = `/1on1tutoring/course?subject=${subject}&proficiency=${proficiency}&chatId=${chatId}&userEmail=${userEmail}&userId=${userId}`;}}>{isLoading?"please wait....":"Yes, create my course"}</Button>
 
 </div>
               </div>
