@@ -50,10 +50,9 @@ export async function POST(req: NextRequest) {
       .eq('id', chatId)
       .maybeSingle();
 
-    // if (moduleError && moduleError.code !== 'PGRST116') { // PGRST116: no rows found
-    //   console.error('Error checking modules:', moduleError);
-    //   return NextResponse.json({ error: 'Failed to check existing modules' }, { status: 500 });
-    // }
+    if (moduleError && moduleError.code !== 'PGRST116') { // PGRST116: no rows found
+      console.error('Error checking modules:', moduleError);
+    }
 
     if (existingModules?.modules) {
       return NextResponse.json(existingModules);
@@ -72,10 +71,7 @@ export async function POST(req: NextRequest) {
       .eq('year', CURRENT_YEAR)
       .single();
 
-    if (tokenError) {
-      console.error('Error fetching token usage:', tokenError);
-      return NextResponse.json({ error: 'Failed to verify token usage' }, { status: 500 });
-    }
+      console.log({ tokenUsage, tokenError });
 
     // Check token limit
     if ((tokenUsage?.total_tokens || 0) >= (Number(MAX_TOKENS) || 0)) {
@@ -187,7 +183,7 @@ export async function POST(req: NextRequest) {
               model: 'gemini-2.0-flash-001',
             },
             {
-              onConflict: 'user_id,month,year',
+              onConflict: 'user_email',
             }
           );
 

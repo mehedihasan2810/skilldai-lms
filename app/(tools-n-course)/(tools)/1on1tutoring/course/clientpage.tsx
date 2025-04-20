@@ -25,7 +25,7 @@ interface ClientPageProps {
   proficiency: string;
   userEmail: string;
   userId: string;
-  chatId?: string;
+  chatId: string;
 }
 
 const defaultModule: Module = {
@@ -73,7 +73,7 @@ export default function ClientPage({
   proficiency,
   userEmail,
   userId,
-  chatId = crypto.randomUUID(),
+  chatId,
 }: ClientPageProps) {
   const queryClient = useQueryClient();
   const { data: modulesData = [], isLoading: modulesLoading, error: modulesError, refetch } = useQuery({
