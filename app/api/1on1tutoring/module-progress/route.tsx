@@ -29,10 +29,10 @@ export async function GET(req: NextRequest) {
       .eq('user_id', userId)
       .maybeSingle();
 
-    if (error && error.code !== 'PGRST116') {
-      console.error('Error fetching progress:', error);
-      return NextResponse.json({ error: 'Failed to fetch progress' }, { status: 500 });
-    }
+    // if (error && error.code !== 'PGRST116') {
+    //   console.error('Error fetching progress:', error);
+    //   return NextResponse.json({ error: 'Failed to fetch progress' }, { status: 500 });
+    // }
 
     return NextResponse.json({ modules: data?.modules || [] });
   } catch (error) {
