@@ -76,6 +76,13 @@ const tools = [
       "An AI-powered Learning Assistant that generates questions based on your proficiency in the subject and allows you to query based on your answers will help you achieve better understanding",
     href: "/1on1tutoring",
   },
+  {
+    id: 11,
+    title: "Sat-prep",
+    description:
+      "An AI-powered SAT prep module delivering a personalized, intuitive learning experience. It adapts content to user needs across SAT sections, with interactive topic selection, engaging study",
+    href: "/sat",
+  },
 ];
 
 const teacherOnlyTools = ["/lesson-plan-generator", "/worksheet-generator"];
