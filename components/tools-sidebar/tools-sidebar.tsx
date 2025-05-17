@@ -167,6 +167,11 @@ const data = {
           url: "/1on1tutoring/my-courses",
           icon: BookOpenCheck,
       },
+      {
+        title:"Sat-prep",
+        url:"/sat",
+        icon:BookOpenCheck,
+      }
       ],
     },
   ],
